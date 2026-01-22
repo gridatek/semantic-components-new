@@ -10,6 +10,7 @@ import { CaptionTableDemo } from './caption-table-demo';
       <app-caption-table-demo />
     </app-demo-container>
   `,
+  host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CaptionTableDemoContainer {

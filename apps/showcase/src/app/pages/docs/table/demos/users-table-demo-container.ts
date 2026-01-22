@@ -10,6 +10,7 @@ import { UsersTableDemo } from './users-table-demo';
       <app-users-table-demo />
     </app-demo-container>
   `,
+  host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class UsersTableDemoContainer {

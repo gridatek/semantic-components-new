@@ -10,6 +10,7 @@ import { FooterTableDemo } from './footer-table-demo';
       <app-footer-table-demo />
     </app-demo-container>
   `,
+  host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class FooterTableDemoContainer {
