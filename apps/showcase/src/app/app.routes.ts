@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { StackedLayout } from './components/stacked-layout/stacked-layout';
 import { componentsRoutes } from './routes/components.routes';
+import { demosRoutes } from './routes/demos.routes';
 
 export const appRoutes: Route[] = [
   {
@@ -12,6 +13,7 @@ export const appRoutes: Route[] = [
         loadComponent: () => import('./pages/home/home'),
       },
       ...componentsRoutes,
+      ...demosRoutes,
     ],
   },
 ];
