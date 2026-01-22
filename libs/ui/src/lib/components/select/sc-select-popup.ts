@@ -1,0 +1,48 @@
+import { ComboboxPopupContainer } from '@angular/aria/combobox';
+import { OverlayModule } from '@angular/cdk/overlay';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScSelect } from './sc-select';
+import { cn } from '../../utils';
+
+@Component({
+  selector: 'div[sc-select-popup]',
+  imports: [ComboboxPopupContainer, OverlayModule],
+  template: `
+    <ng-template ngComboboxPopupContainer>
+      @if (origin(); as origin) {
+        <ng-template
+          [cdkConnectedOverlay]="{
+            origin,
+            usePopover: 'inline',
+            matchWidth: true,
+          }"
+          [cdkConnectedOverlayOpen]="true"
+        >
+          <ng-content />
+        </ng-template>
+      }
+    </ng-template>
+  `,
+  host: {
+    'data-slot': 'select-popup',
+    '[class]': 'class()',
+  },
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ScSelectPopup {
+  private readonly select = inject(ScSelect);
+
+  protected readonly origin = computed(() => this.select.origin());
+
+  readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly class = computed(() => cn('', this.classInput()));
+}

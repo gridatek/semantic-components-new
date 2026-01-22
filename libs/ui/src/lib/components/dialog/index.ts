@@ -1,0 +1,9 @@
+export { ScDialog } from './sc-dialog';
+export { ScDialogTrigger } from './sc-dialog-trigger';
+export { ScDialogPortal } from './sc-dialog-portal';
+export { ScDialogContent } from './sc-dialog-content';
+export { ScDialogHeader } from './sc-dialog-header';
+export { ScDialogTitle } from './sc-dialog-title';
+export { ScDialogDescription } from './sc-dialog-description';
+export { ScDialogFooter } from './sc-dialog-footer';
+export { ScDialogClose } from './sc-dialog-close';

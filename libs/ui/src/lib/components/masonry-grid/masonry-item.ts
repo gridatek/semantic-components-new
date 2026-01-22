@@ -1,0 +1,62 @@
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  input,
+  output,
+} from '@angular/core';
+
+@Component({
+  selector: 'sc-masonry-item',
+  template: `
+    <ng-content />
+  `,
+  styles: `
+    :host {
+      display: block;
+      break-inside: avoid;
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ScMasonryItem implements AfterViewInit {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly destroyRef = inject(DestroyRef);
+  private resizeObserver: ResizeObserver | null = null;
+
+  readonly class = input<string>('');
+
+  readonly sizeChange = output<{ width: number; height: number }>();
+
+  ngAfterViewInit(): void {
+    this.observeSize();
+  }
+
+  private observeSize(): void {
+    if (typeof ResizeObserver === 'undefined') return;
+
+    this.resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        this.sizeChange.emit({ width, height });
+      }
+    });
+
+    this.resizeObserver.observe(this.elementRef.nativeElement);
+
+    this.destroyRef.onDestroy(() => {
+      this.resizeObserver?.disconnect();
+    });
+  }
+
+  getElement(): HTMLElement {
+    return this.elementRef.nativeElement;
+  }
+
+  getHeight(): number {
+    return this.elementRef.nativeElement.offsetHeight;
+  }
+}

@@ -1,0 +1,10 @@
+export { ScAlertDialog } from './sc-alert-dialog';
+export { ScAlertDialogTrigger } from './sc-alert-dialog-trigger';
+export { ScAlertDialogPortal } from './sc-alert-dialog-portal';
+export { ScAlertDialogContent } from './sc-alert-dialog-content';
+export { ScAlertDialogHeader } from './sc-alert-dialog-header';
+export { ScAlertDialogTitle } from './sc-alert-dialog-title';
+export { ScAlertDialogDescription } from './sc-alert-dialog-description';
+export { ScAlertDialogFooter } from './sc-alert-dialog-footer';
+export { ScAlertDialogCancel } from './sc-alert-dialog-cancel';
+export { ScAlertDialogAction } from './sc-alert-dialog-action';
