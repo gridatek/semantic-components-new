@@ -18,6 +18,7 @@ import {
 import { filter } from 'rxjs';
 import { Toc } from '../../components/toc/toc';
 import { TocService } from '../../components/toc/toc.service';
+import { COMPONENTS } from '../../data/components';
 
 @Component({
   selector: 'app-components-layout',
@@ -75,50 +76,7 @@ export class ComponentsLayout implements AfterViewInit {
   private readonly contentArea =
     viewChild.required<ElementRef<HTMLElement>>('contentArea');
 
-  readonly components = [
-    { name: 'Accordion', path: 'accordion' },
-    { name: 'Alert', path: 'alert' },
-    { name: 'Alert Dialog', path: 'alert-dialog' },
-    { name: 'Avatar', path: 'avatar' },
-    { name: 'Badge', path: 'badge' },
-    { name: 'Breadcrumb', path: 'breadcrumb' },
-    { name: 'Button', path: 'button' },
-    { name: 'Calendar', path: 'calendar' },
-    { name: 'Card', path: 'card' },
-    { name: 'Checkbox', path: 'checkbox' },
-    { name: 'Collapsible', path: 'collapsible' },
-    { name: 'Combobox', path: 'combobox' },
-    { name: 'Command', path: 'command' },
-    { name: 'Context Menu', path: 'context-menu' },
-    { name: 'Date Picker', path: 'date-picker' },
-    { name: 'Dialog', path: 'dialog' },
-    { name: 'Drawer', path: 'drawer' },
-    { name: 'Dropdown Menu', path: 'dropdown-menu' },
-    { name: 'Form', path: 'form' },
-    { name: 'Hover Card', path: 'hover-card' },
-    { name: 'Input', path: 'input' },
-    { name: 'Label', path: 'label' },
-    { name: 'Menu', path: 'menu' },
-    { name: 'Navigation Menu', path: 'navigation-menu' },
-    { name: 'Popover', path: 'popover' },
-    { name: 'Progress', path: 'progress' },
-    { name: 'Radio Group', path: 'radio-group' },
-    { name: 'Scroll Area', path: 'scroll-area' },
-    { name: 'Select', path: 'select' },
-    { name: 'Separator', path: 'separator' },
-    { name: 'Sheet', path: 'sheet' },
-    { name: 'Sidebar', path: 'sidebar' },
-    { name: 'Skeleton', path: 'skeleton' },
-    { name: 'Slider', path: 'slider' },
-    { name: 'Switch', path: 'switch' },
-    { name: 'Table', path: 'table' },
-    { name: 'Tabs', path: 'tabs' },
-    { name: 'Textarea', path: 'textarea' },
-    { name: 'Toast', path: 'toast' },
-    { name: 'Toggle', path: 'toggle' },
-    { name: 'Toggle Group', path: 'toggle-group' },
-    { name: 'Tooltip', path: 'tooltip' },
-  ];
+  readonly components = COMPONENTS;
 
   ngAfterViewInit(): void {
     this.extractTocHeadings();
