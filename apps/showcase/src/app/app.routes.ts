@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { StackedLayout } from './components/stacked-layout/stacked-layout';
-import { ComponentsLayout } from './layouts/components-layout/components-layout';
+import { componentsRoutes } from './routes/components.routes';
 
 export const appRoutes: Route[] = [
   {
@@ -11,21 +11,7 @@ export const appRoutes: Route[] = [
         path: '',
         loadComponent: () => import('./pages/home/home'),
       },
-      {
-        path: 'docs/components',
-        component: ComponentsLayout,
-        children: [
-          {
-            path: '',
-            loadComponent: () =>
-              import('./pages/docs/components/components-page'),
-          },
-          {
-            path: 'button',
-            loadComponent: () => import('./pages/docs/button/button.page'),
-          },
-        ],
-      },
+      ...componentsRoutes,
     ],
   },
 ];
