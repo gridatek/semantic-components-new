@@ -6,7 +6,7 @@ import { FooterTableDemo } from './footer-table-demo';
   selector: 'app-footer-table-demo-container',
   imports: [DemoContainer, FooterTableDemo],
   template: `
-    <app-demo-container title="With Footer" [code]="code" language="typescript">
+    <app-demo-container title="With Footer" [code]="code">
       <app-footer-table-demo />
     </app-demo-container>
   `,

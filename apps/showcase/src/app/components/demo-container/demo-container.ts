@@ -31,7 +31,7 @@ import {
           <sc-code-viewer
             [code]="code()"
             [language]="language()"
-            [showHeader]="false"
+            [showLineNumbers]="true"
           />
         </div>
       </div>
@@ -45,5 +45,5 @@ import {
 export class DemoContainer {
   readonly title = input<string>('');
   readonly code = input.required<string>();
-  readonly language = input<CodeViewerLanguage>('typescript');
+  readonly language = input<CodeViewerLanguage>('angular-ts');
 }

@@ -13,6 +13,7 @@ import { codeToHtml } from 'shiki';
 import { cn } from '../../utils';
 
 export type CodeViewerLanguage =
+  | 'angular-ts'
   | 'typescript'
   | 'javascript'
   | 'html'

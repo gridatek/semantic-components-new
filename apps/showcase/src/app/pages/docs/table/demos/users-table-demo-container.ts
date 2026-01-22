@@ -6,7 +6,7 @@ import { UsersTableDemo } from './users-table-demo';
   selector: 'app-users-table-demo-container',
   imports: [DemoContainer, UsersTableDemo],
   template: `
-    <app-demo-container title="Users Table" [code]="code" language="typescript">
+    <app-demo-container title="Users Table" [code]="code">
       <app-users-table-demo />
     </app-demo-container>
   `,
