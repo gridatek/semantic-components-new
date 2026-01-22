@@ -15,1126 +15,552 @@ import { RouterLink } from '@angular/router';
       </div>
 
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <a
-          routerLink="/select"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Select</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays a list of options for the user to pick from.
-          </p>
-        </a>
-
-        <a
-          routerLink="/menu"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Menu</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays a menu with a list of actions or options.
-          </p>
-        </a>
-
-        <a
-          routerLink="/dialog"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Dialog</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A modal dialog that interrupts the user with important content.
-          </p>
-        </a>
-
-        <a
-          routerLink="/sheet"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Sheet</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A panel that slides in from the edge of the screen.
-          </p>
-        </a>
-
-        <a
-          routerLink="/popover"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Popover</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays floating content in relation to a trigger.
-          </p>
-        </a>
-
-        <a
-          routerLink="/tooltip"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Tooltip</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A popup that displays information on hover or focus.
-          </p>
-        </a>
-
-        <a
-          routerLink="/collapsible"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Collapsible</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An interactive component that expands and collapses.
-          </p>
-        </a>
-
-        <a
-          routerLink="/alert-dialog"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Alert Dialog
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A modal dialog for important alerts requiring confirmation.
-          </p>
-        </a>
-
-        <a
-          routerLink="/toast"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Toast</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A brief notification that appears temporarily.
-          </p>
-        </a>
-
-        <a
-          routerLink="/hover-card"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Hover Card</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A card that appears when hovering over an element.
-          </p>
-        </a>
-
-        <a
-          routerLink="/navigation-menu"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Navigation Menu
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A navigation menu with links and dropdowns.
-          </p>
-        </a>
-
-        <a
-          routerLink="/context-menu"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Context Menu
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A menu displayed on right-click.
-          </p>
-        </a>
-
-        <a
-          routerLink="/tabs"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Tabs</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Organize content into multiple sections with tabs.
-          </p>
-        </a>
-
-        <a
-          routerLink="/accordion"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Accordion</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A vertically stacked set of interactive headings.
-          </p>
-        </a>
-
-        <a
-          routerLink="/command"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Command</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A command palette for quick actions and search.
-          </p>
-        </a>
-
-        <a
-          routerLink="/drawer"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Drawer</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A touch-friendly drawer that slides from the bottom.
-          </p>
-        </a>
-
-        <a
-          routerLink="/progress"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Progress</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays an indicator showing completion progress.
-          </p>
-        </a>
-
-        <a
-          routerLink="/scroll-area"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Scroll Area</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A custom scrollable area with styled scrollbars.
-          </p>
-        </a>
-
-        <a
-          routerLink="/breadcrumb"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Breadcrumb</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays the path to the current resource.
-          </p>
-        </a>
-
-        <a
-          routerLink="/separator"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Separator</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Visually separates content with a line.
-          </p>
-        </a>
-
-        <a
-          routerLink="/skeleton"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Skeleton</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A placeholder to show while content is loading.
-          </p>
-        </a>
-
-        <a
-          routerLink="/avatar"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Avatar</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An image element with a fallback for representing users.
-          </p>
-        </a>
-
-        <a
-          routerLink="/badge"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Badge</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays a small status indicator or label.
-          </p>
-        </a>
-
-        <a
-          routerLink="/switch"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Switch</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A toggle control for switching between two states.
-          </p>
-        </a>
-
-        <a
-          routerLink="/slider"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Slider</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An input for selecting a value from a range.
-          </p>
-        </a>
-
-        <a
-          routerLink="/toggle"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Toggle</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A two-state button that can be on or off.
-          </p>
-        </a>
-
-        <a
-          routerLink="/toggle-group"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Toggle Group
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A set of toggle buttons that work together.
-          </p>
-        </a>
-
-        <a
-          routerLink="/input-otp"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Input OTP</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An input for entering one-time passwords.
-          </p>
-        </a>
-
-        <a
-          routerLink="/checkbox"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Checkbox</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A control for toggling a single option on or off.
-          </p>
-        </a>
-
-        <a
-          routerLink="/radio-group"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Radio Group</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A group of radio buttons for single selection.
-          </p>
-        </a>
-
-        <a
-          routerLink="/label"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Label</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Renders an accessible label for form controls.
-          </p>
-        </a>
-
-        <a
-          routerLink="/input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Input</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A text input field for user data entry.
-          </p>
-        </a>
-
-        <a
-          routerLink="/textarea"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Textarea</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A multi-line text input field.
-          </p>
-        </a>
-
-        <a
-          routerLink="/card"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Card</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A container for grouping related content.
-          </p>
-        </a>
-
-        <a
-          routerLink="/alert"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Alert</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays important messages to the user.
-          </p>
-        </a>
-
-        <a
-          routerLink="/table"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Table</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A responsive table for displaying tabular data.
-          </p>
-        </a>
-
-        <a
-          routerLink="/pagination"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Pagination</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Navigation controls for paging through content.
-          </p>
-        </a>
-
-        <a
-          routerLink="/aspect-ratio"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Aspect Ratio
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays content within a fixed aspect ratio.
-          </p>
-        </a>
-
-        <a
-          routerLink="/resizable"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Resizable</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A component that can be resized by dragging.
-          </p>
-        </a>
-
-        <a
-          routerLink="/calendar"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Calendar</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A date picker calendar component.
-          </p>
-        </a>
-
-        <a
-          routerLink="/date-picker"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Date Picker</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A popover-based date selection component.
-          </p>
-        </a>
-
-        <a
-          routerLink="/button"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Button</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A clickable button with multiple variants.
-          </p>
-        </a>
-
-        <a
-          routerLink="/combobox"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Combobox</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An autocomplete input with filtering.
-          </p>
-        </a>
-
-        <a
-          routerLink="/carousel"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Carousel</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A slideshow for cycling through elements.
-          </p>
-        </a>
-
-        <a
-          routerLink="/sidebar"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Sidebar</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A collapsible side navigation panel.
-          </p>
-        </a>
-
-        <a
-          routerLink="/form"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Form</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Building accessible forms with validation.
-          </p>
-        </a>
-
-        <a
-          routerLink="/tree-view"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Tree View</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A hierarchical view of nested items.
-          </p>
-        </a>
-
-        <a
-          routerLink="/dropdown-menu"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Dropdown Menu
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A menu displayed on button click.
-          </p>
-        </a>
-
-        <a
-          routerLink="/stepper"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Stepper</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Guides users through a multi-step process.
-          </p>
-        </a>
-
-        <a
-          routerLink="/file-upload"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">File Upload</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A drag-and-drop file upload component.
-          </p>
-        </a>
-
-        <a
-          routerLink="/kbd"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Kbd</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays keyboard shortcuts and keys.
-          </p>
-        </a>
-
-        <a
-          routerLink="/chart"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Chart</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Beautiful charts for data visualization.
-          </p>
-        </a>
-
-        <a
-          routerLink="/time-picker"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Time Picker</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A component for selecting time values.
-          </p>
-        </a>
-
-        <a
-          routerLink="/color-picker"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Color Picker
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A component for selecting colors.
-          </p>
-        </a>
-
-        <a
-          routerLink="/rating"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Rating</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A star rating component for feedback.
-          </p>
-        </a>
-
-        <a
-          routerLink="/data-table"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Data Table</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An advanced table with sorting and filtering.
-          </p>
-        </a>
-
-        <a
-          routerLink="/number-input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Number Input
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An input for numeric values with controls.
-          </p>
-        </a>
-
-        <a
-          routerLink="/image-cropper"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Image Cropper
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A tool for cropping and resizing images.
-          </p>
-        </a>
-
-        <a
-          routerLink="/tag-input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Tag Input</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An input for adding and managing tags.
-          </p>
-        </a>
-
-        <a
-          routerLink="/sortable-list"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Sortable List
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A drag-and-drop sortable list.
-          </p>
-        </a>
-
-        <a
-          routerLink="/copy-button"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Copy Button</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A button that copies text to clipboard.
-          </p>
-        </a>
-
-        <a
-          routerLink="/spinner"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Spinner</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A loading indicator animation.
-          </p>
-        </a>
-
-        <a
-          routerLink="/timeline"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Timeline</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Displays events in chronological order.
-          </p>
-        </a>
-
-        <a
-          routerLink="/emoji-picker"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Emoji Picker
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A picker for selecting emojis.
-          </p>
-        </a>
-
-        <a
-          routerLink="/marquee"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Marquee</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A scrolling text or content animation.
-          </p>
-        </a>
-
-        <a
-          routerLink="/password-input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Password Input
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A password input with visibility toggle.
-          </p>
-        </a>
-
-        <a
-          routerLink="/phone-input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Phone Input</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An input for international phone numbers.
-          </p>
-        </a>
-
-        <a
-          routerLink="/mention-input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Mention Input
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            An input with mention suggestions.
-          </p>
-        </a>
-
-        <a
-          routerLink="/multi-select"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Multi-Select
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A select component for multiple selections.
-          </p>
-        </a>
-
-        <a
-          routerLink="/date-range-picker"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Date Range Picker
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Select a range of dates with a calendar.
-          </p>
-        </a>
-
-        <a
-          routerLink="/countdown"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Countdown</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A countdown timer display.
-          </p>
-        </a>
-
-        <a
-          routerLink="/infinite-scroll"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Infinite Scroll
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Load more content as the user scrolls.
-          </p>
-        </a>
-
-        <a
-          routerLink="/lightbox"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Lightbox</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A full-screen image viewer.
-          </p>
-        </a>
-
-        <a
-          routerLink="/signature-pad"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Signature Pad
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A canvas for capturing signatures.
-          </p>
-        </a>
-
-        <a
-          routerLink="/image-compare"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Image Compare
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Compare two images with a slider.
-          </p>
-        </a>
-
-        <a
-          routerLink="/audio-player"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Audio Player
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A custom audio player with controls.
-          </p>
-        </a>
-
-        <a
-          routerLink="/qr-code"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">QR Code</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Generate and display QR codes.
-          </p>
-        </a>
-
-        <a
-          routerLink="/video-player"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Video Player
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A custom video player with controls.
-          </p>
-        </a>
-
-        <a
-          routerLink="/barcode-scanner"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Barcode Scanner
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Scan barcodes using the camera.
-          </p>
-        </a>
-
-        <a
-          routerLink="/tour-guide"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Tour Guide</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Create interactive product tours.
-          </p>
-        </a>
-
-        <a
-          routerLink="/spotlight"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Spotlight</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A spotlight search interface.
-          </p>
-        </a>
-
-        <a
-          routerLink="/code-editor"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Code Editor</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A syntax-highlighted code editor.
-          </p>
-        </a>
-
-        <a
-          routerLink="/rich-text-editor"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Rich Text Editor
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A WYSIWYG text editor.
-          </p>
-        </a>
-
-        <a
-          routerLink="/diff-viewer"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Diff Viewer</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Compare and display text differences.
-          </p>
-        </a>
-
-        <a
-          routerLink="/kanban-board"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Kanban Board
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A drag-and-drop task board.
-          </p>
-        </a>
-
-        <a
-          routerLink="/timezone"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Timezone</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A component for selecting and displaying timezones.
-          </p>
-        </a>
-
-        <a
-          routerLink="/navbar"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Navbar</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            A responsive navigation bar with mobile menu support.
-          </p>
-        </a>
-
-        <a
-          routerLink="/notification-center"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Notification Center
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Grouped notification management with filtering.
-          </p>
-        </a>
-
-        <a
-          routerLink="/pdf-viewer"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">PDF Viewer</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Document viewer with navigation and zoom controls.
-          </p>
-        </a>
-
-        <a
-          routerLink="/masonry-grid"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Masonry Grid
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Pinterest-style layout with varying item heights.
-          </p>
-        </a>
-
-        <a
-          routerLink="/speed-dial"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Speed Dial</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Floating action button with expandable menu.
-          </p>
-        </a>
-
-        <a
-          routerLink="/org-chart"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Org Chart</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Hierarchical organization visualization.
-          </p>
-        </a>
-
-        <a
-          routerLink="/theme-toggle"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Theme Toggle
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Switch between light and dark themes.
-          </p>
-        </a>
-
-        <a
-          routerLink="/language-switcher"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Language Switcher
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Switch between different languages.
-          </p>
-        </a>
-
-        <a
-          routerLink="/avatar-group"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Avatar Group
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Stacked/overlapping avatars with overflow.
-          </p>
-        </a>
-
-        <a
-          routerLink="/split-button"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Split Button
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Button with dropdown actions.
-          </p>
-        </a>
-
-        <a
-          routerLink="/virtual-list"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Virtual List
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Virtualized scrolling for large lists.
-          </p>
-        </a>
-
-        <a
-          routerLink="/image-annotator"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Image Annotator
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Draw and markup on images.
-          </p>
-        </a>
-
-        <a
-          routerLink="/confetti"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Confetti</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Celebration animation effect.
-          </p>
-        </a>
-
-        <a
-          routerLink="/animated-counter"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Animated Counter
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Numbers that animate up/down.
-          </p>
-        </a>
-
-        <a
-          routerLink="/dock"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Dock</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            macOS-style icon dock with magnification.
-          </p>
-        </a>
-
-        <a
-          routerLink="/search-input"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Search Input
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Search with autocomplete suggestions.
-          </p>
-        </a>
-
-        <a
-          routerLink="/stat-card"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Stat Card</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Statistics and metrics display.
-          </p>
-        </a>
-
-        <a
-          routerLink="/empty-state"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">Empty State</h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Placeholder for empty content.
-          </p>
-        </a>
-
-        <a
-          routerLink="/transfer-list"
-          class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
-        >
-          <h3 class="font-semibold leading-none tracking-tight">
-            Transfer List
-          </h3>
-          <p class="text-sm text-muted-foreground mt-2">
-            Move items between two lists.
-          </p>
-        </a>
+        @for (item of components; track item.path) {
+          <a
+            [routerLink]="'/docs/components/' + item.path"
+            class="group relative rounded-lg border p-6 hover:bg-accent transition-colors"
+          >
+            <h3 class="font-semibold leading-none tracking-tight">
+              {{ item.name }}
+            </h3>
+            <p class="text-sm text-muted-foreground mt-2">
+              {{ item.description }}
+            </p>
+          </a>
+        }
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ComponentsPage {}
+export default class ComponentsPage {
+  readonly components = [
+    {
+      name: 'Accordion',
+      path: 'accordion',
+      description: 'A vertically stacked set of interactive headings.',
+    },
+    {
+      name: 'Alert',
+      path: 'alert',
+      description: 'Displays important messages to the user.',
+    },
+    {
+      name: 'Alert Dialog',
+      path: 'alert-dialog',
+      description:
+        'A modal dialog for important alerts requiring confirmation.',
+    },
+    {
+      name: 'Animated Counter',
+      path: 'animated-counter',
+      description: 'Numbers that animate up/down.',
+    },
+    {
+      name: 'Aspect Ratio',
+      path: 'aspect-ratio',
+      description: 'Displays content within a fixed aspect ratio.',
+    },
+    {
+      name: 'Audio Player',
+      path: 'audio-player',
+      description: 'A custom audio player with controls.',
+    },
+    {
+      name: 'Avatar',
+      path: 'avatar',
+      description: 'An image element with a fallback for representing users.',
+    },
+    {
+      name: 'Avatar Group',
+      path: 'avatar-group',
+      description: 'Stacked/overlapping avatars with overflow.',
+    },
+    {
+      name: 'Badge',
+      path: 'badge',
+      description: 'Displays a small status indicator or label.',
+    },
+    {
+      name: 'Barcode Scanner',
+      path: 'barcode-scanner',
+      description: 'Scan barcodes using the camera.',
+    },
+    {
+      name: 'Breadcrumb',
+      path: 'breadcrumb',
+      description: 'Displays the path to the current resource.',
+    },
+    {
+      name: 'Button',
+      path: 'button',
+      description: 'A clickable button with multiple variants.',
+    },
+    {
+      name: 'Calendar',
+      path: 'calendar',
+      description: 'A date picker calendar component.',
+    },
+    {
+      name: 'Card',
+      path: 'card',
+      description: 'A container for grouping related content.',
+    },
+    {
+      name: 'Carousel',
+      path: 'carousel',
+      description: 'A slideshow for cycling through elements.',
+    },
+    {
+      name: 'Chart',
+      path: 'chart',
+      description: 'Beautiful charts for data visualization.',
+    },
+    {
+      name: 'Checkbox',
+      path: 'checkbox',
+      description: 'A control for toggling a single option on or off.',
+    },
+    {
+      name: 'Code Editor',
+      path: 'code-editor',
+      description: 'A syntax-highlighted code editor.',
+    },
+    {
+      name: 'Collapsible',
+      path: 'collapsible',
+      description: 'An interactive component that expands and collapses.',
+    },
+    {
+      name: 'Color Picker',
+      path: 'color-picker',
+      description: 'A component for selecting colors.',
+    },
+    {
+      name: 'Combobox',
+      path: 'combobox',
+      description: 'An autocomplete input with filtering.',
+    },
+    {
+      name: 'Command',
+      path: 'command',
+      description: 'A command palette for quick actions and search.',
+    },
+    {
+      name: 'Confetti',
+      path: 'confetti',
+      description: 'Celebration animation effect.',
+    },
+    {
+      name: 'Context Menu',
+      path: 'context-menu',
+      description: 'A menu displayed on right-click.',
+    },
+    {
+      name: 'Copy Button',
+      path: 'copy-button',
+      description: 'A button that copies text to clipboard.',
+    },
+    {
+      name: 'Countdown',
+      path: 'countdown',
+      description: 'A countdown timer display.',
+    },
+    {
+      name: 'Data Table',
+      path: 'data-table',
+      description: 'An advanced table with sorting and filtering.',
+    },
+    {
+      name: 'Date Picker',
+      path: 'date-picker',
+      description: 'A popover-based date selection component.',
+    },
+    {
+      name: 'Date Range Picker',
+      path: 'date-range-picker',
+      description: 'Select a range of dates with a calendar.',
+    },
+    {
+      name: 'Dialog',
+      path: 'dialog',
+      description:
+        'A modal dialog that interrupts the user with important content.',
+    },
+    {
+      name: 'Diff Viewer',
+      path: 'diff-viewer',
+      description: 'Compare and display text differences.',
+    },
+    {
+      name: 'Dock',
+      path: 'dock',
+      description: 'macOS-style icon dock with magnification.',
+    },
+    {
+      name: 'Drawer',
+      path: 'drawer',
+      description: 'A touch-friendly drawer that slides from the bottom.',
+    },
+    {
+      name: 'Dropdown Menu',
+      path: 'dropdown-menu',
+      description: 'A menu displayed on button click.',
+    },
+    {
+      name: 'Emoji Picker',
+      path: 'emoji-picker',
+      description: 'A picker for selecting emojis.',
+    },
+    {
+      name: 'Empty State',
+      path: 'empty-state',
+      description: 'Placeholder for empty content.',
+    },
+    {
+      name: 'File Upload',
+      path: 'file-upload',
+      description: 'A drag-and-drop file upload component.',
+    },
+    {
+      name: 'Form',
+      path: 'form',
+      description: 'Building accessible forms with validation.',
+    },
+    {
+      name: 'Hover Card',
+      path: 'hover-card',
+      description: 'A card that appears when hovering over an element.',
+    },
+    {
+      name: 'Image Annotator',
+      path: 'image-annotator',
+      description: 'Draw and markup on images.',
+    },
+    {
+      name: 'Image Compare',
+      path: 'image-compare',
+      description: 'Compare two images with a slider.',
+    },
+    {
+      name: 'Image Cropper',
+      path: 'image-cropper',
+      description: 'A tool for cropping and resizing images.',
+    },
+    {
+      name: 'Infinite Scroll',
+      path: 'infinite-scroll',
+      description: 'Load more content as the user scrolls.',
+    },
+    {
+      name: 'Input',
+      path: 'input',
+      description: 'A text input field for user data entry.',
+    },
+    {
+      name: 'Input OTP',
+      path: 'input-otp',
+      description: 'An input for entering one-time passwords.',
+    },
+    {
+      name: 'Kanban Board',
+      path: 'kanban-board',
+      description: 'A drag-and-drop task board.',
+    },
+    {
+      name: 'Kbd',
+      path: 'kbd',
+      description: 'Displays keyboard shortcuts and keys.',
+    },
+    {
+      name: 'Label',
+      path: 'label',
+      description: 'Renders an accessible label for form controls.',
+    },
+    {
+      name: 'Language Switcher',
+      path: 'language-switcher',
+      description: 'Switch between different languages.',
+    },
+    {
+      name: 'Lightbox',
+      path: 'lightbox',
+      description: 'A full-screen image viewer.',
+    },
+    {
+      name: 'Marquee',
+      path: 'marquee',
+      description: 'A scrolling text or content animation.',
+    },
+    {
+      name: 'Masonry Grid',
+      path: 'masonry-grid',
+      description: 'Pinterest-style layout with varying item heights.',
+    },
+    {
+      name: 'Menu',
+      path: 'menu',
+      description: 'Displays a menu with a list of actions or options.',
+    },
+    {
+      name: 'Mention Input',
+      path: 'mention-input',
+      description: 'An input with mention suggestions.',
+    },
+    {
+      name: 'Multi-Select',
+      path: 'multi-select',
+      description: 'A select component for multiple selections.',
+    },
+    {
+      name: 'Navbar',
+      path: 'navbar',
+      description: 'A responsive navigation bar with mobile menu support.',
+    },
+    {
+      name: 'Navigation Menu',
+      path: 'navigation-menu',
+      description: 'A navigation menu with links and dropdowns.',
+    },
+    {
+      name: 'Notification Center',
+      path: 'notification-center',
+      description: 'Grouped notification management with filtering.',
+    },
+    {
+      name: 'Number Input',
+      path: 'number-input',
+      description: 'An input for numeric values with controls.',
+    },
+    {
+      name: 'Org Chart',
+      path: 'org-chart',
+      description: 'Hierarchical organization visualization.',
+    },
+    {
+      name: 'PDF Viewer',
+      path: 'pdf-viewer',
+      description: 'Document viewer with navigation and zoom controls.',
+    },
+    {
+      name: 'Pagination',
+      path: 'pagination',
+      description: 'Navigation controls for paging through content.',
+    },
+    {
+      name: 'Password Input',
+      path: 'password-input',
+      description: 'A password input with visibility toggle.',
+    },
+    {
+      name: 'Phone Input',
+      path: 'phone-input',
+      description: 'An input for international phone numbers.',
+    },
+    {
+      name: 'Popover',
+      path: 'popover',
+      description: 'Displays floating content in relation to a trigger.',
+    },
+    {
+      name: 'Progress',
+      path: 'progress',
+      description: 'Displays an indicator showing completion progress.',
+    },
+    {
+      name: 'QR Code',
+      path: 'qr-code',
+      description: 'Generate and display QR codes.',
+    },
+    {
+      name: 'Radio Group',
+      path: 'radio-group',
+      description: 'A group of radio buttons for single selection.',
+    },
+    {
+      name: 'Rating',
+      path: 'rating',
+      description: 'A star rating component for feedback.',
+    },
+    {
+      name: 'Resizable',
+      path: 'resizable',
+      description: 'A component that can be resized by dragging.',
+    },
+    {
+      name: 'Rich Text Editor',
+      path: 'rich-text-editor',
+      description: 'A WYSIWYG text editor.',
+    },
+    {
+      name: 'Scroll Area',
+      path: 'scroll-area',
+      description: 'A custom scrollable area with styled scrollbars.',
+    },
+    {
+      name: 'Search Input',
+      path: 'search-input',
+      description: 'Search with autocomplete suggestions.',
+    },
+    {
+      name: 'Select',
+      path: 'select',
+      description: 'Displays a list of options for the user to pick from.',
+    },
+    {
+      name: 'Separator',
+      path: 'separator',
+      description: 'Visually separates content with a line.',
+    },
+    {
+      name: 'Sheet',
+      path: 'sheet',
+      description: 'A panel that slides in from the edge of the screen.',
+    },
+    {
+      name: 'Sidebar',
+      path: 'sidebar',
+      description: 'A collapsible side navigation panel.',
+    },
+    {
+      name: 'Signature Pad',
+      path: 'signature-pad',
+      description: 'A canvas for capturing signatures.',
+    },
+    {
+      name: 'Skeleton',
+      path: 'skeleton',
+      description: 'A placeholder to show while content is loading.',
+    },
+    {
+      name: 'Slider',
+      path: 'slider',
+      description: 'An input for selecting a value from a range.',
+    },
+    {
+      name: 'Sortable List',
+      path: 'sortable-list',
+      description: 'A drag-and-drop sortable list.',
+    },
+    {
+      name: 'Speed Dial',
+      path: 'speed-dial',
+      description: 'Floating action button with expandable menu.',
+    },
+    {
+      name: 'Spinner',
+      path: 'spinner',
+      description: 'A loading indicator animation.',
+    },
+    {
+      name: 'Split Button',
+      path: 'split-button',
+      description: 'Button with dropdown actions.',
+    },
+    {
+      name: 'Spotlight',
+      path: 'spotlight',
+      description: 'A spotlight search interface.',
+    },
+    {
+      name: 'Stat Card',
+      path: 'stat-card',
+      description: 'Statistics and metrics display.',
+    },
+    {
+      name: 'Stepper',
+      path: 'stepper',
+      description: 'Guides users through a multi-step process.',
+    },
+    {
+      name: 'Switch',
+      path: 'switch',
+      description: 'A toggle control for switching between two states.',
+    },
+    {
+      name: 'Table',
+      path: 'table',
+      description: 'A responsive table for displaying tabular data.',
+    },
+    {
+      name: 'Tabs',
+      path: 'tabs',
+      description: 'Organize content into multiple sections with tabs.',
+    },
+    {
+      name: 'Tag Input',
+      path: 'tag-input',
+      description: 'An input for adding and managing tags.',
+    },
+    {
+      name: 'Textarea',
+      path: 'textarea',
+      description: 'A multi-line text input field.',
+    },
+    {
+      name: 'Theme Toggle',
+      path: 'theme-toggle',
+      description: 'Switch between light and dark themes.',
+    },
+    {
+      name: 'Time Picker',
+      path: 'time-picker',
+      description: 'A component for selecting time values.',
+    },
+    {
+      name: 'Timeline',
+      path: 'timeline',
+      description: 'Displays events in chronological order.',
+    },
+    {
+      name: 'Timezone',
+      path: 'timezone',
+      description: 'A component for selecting and displaying timezones.',
+    },
+    {
+      name: 'Toast',
+      path: 'toast',
+      description: 'A brief notification that appears temporarily.',
+    },
+    {
+      name: 'Toggle',
+      path: 'toggle',
+      description: 'A two-state button that can be on or off.',
+    },
+    {
+      name: 'Toggle Group',
+      path: 'toggle-group',
+      description: 'A set of toggle buttons that work together.',
+    },
+    {
+      name: 'Tooltip',
+      path: 'tooltip',
+      description: 'A popup that displays information on hover or focus.',
+    },
+    {
+      name: 'Tour Guide',
+      path: 'tour-guide',
+      description: 'Create interactive product tours.',
+    },
+    {
+      name: 'Transfer List',
+      path: 'transfer-list',
+      description: 'Move items between two lists.',
+    },
+    {
+      name: 'Tree View',
+      path: 'tree-view',
+      description: 'A hierarchical view of nested items.',
+    },
+    {
+      name: 'Video Player',
+      path: 'video-player',
+      description: 'A custom video player with controls.',
+    },
+    {
+      name: 'Virtual List',
+      path: 'virtual-list',
+      description: 'Virtualized scrolling for large lists.',
+    },
+  ];
+}
