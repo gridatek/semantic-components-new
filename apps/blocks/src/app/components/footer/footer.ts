@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <footer class="border-t py-8 px-4 md:px-6 lg:px-8">
       <div
-        class="container flex flex-col md:flex-row justify-between items-center gap-4"
+        class="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4"
       >
         <div class="flex items-center gap-2">
           <svg

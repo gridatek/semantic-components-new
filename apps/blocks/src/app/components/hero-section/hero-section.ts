@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <section
       class="py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30"
     >
-      <div class="container max-w-4xl mx-auto text-center space-y-6">
+      <div class="max-w-4xl px-4 md:px-6 lg:px-8 mx-auto text-center space-y-6">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
           Build Something Amazing
         </h1>

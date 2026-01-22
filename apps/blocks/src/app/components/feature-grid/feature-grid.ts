@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-feature-grid',
   template: `
     <section class="py-16 px-4 md:px-6 lg:px-8">
-      <div class="container">
+      <div class="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">
           Features
         </h2>

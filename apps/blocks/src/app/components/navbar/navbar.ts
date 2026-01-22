@@ -8,7 +8,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     <nav
       class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
-      <div class="container flex h-14 items-center">
+      <div
+        class="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8 flex h-14 items-center"
+      >
         <!-- Brand -->
         <a routerLink="/" class="mr-6 flex items-center space-x-2">
           <svg
@@ -117,7 +119,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       <!-- Mobile Menu -->
       @if (mobileMenuOpen()) {
         <div class="md:hidden border-t">
-          <div class="container py-4 space-y-3">
+          <div
+            class="mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8 py-4 space-y-3"
+          >
             <a
               routerLink="/"
               class="block text-sm font-medium text-foreground"
