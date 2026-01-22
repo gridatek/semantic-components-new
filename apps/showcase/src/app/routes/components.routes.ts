@@ -18,6 +18,10 @@ export const componentsRoutes: Route[] = [
         path: 'table',
         loadComponent: () => import('../pages/docs/table/table-page'),
       },
+      {
+        path: '**',
+        redirectTo: '',
+      },
     ],
   },
 ];
