@@ -9,7 +9,7 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-tabs-list]',
+  selector: 'div[sc-tab-list]',
   hostDirectives: [
     {
       directive: TabList,
@@ -20,13 +20,13 @@ import { cn } from '../../utils';
     <ng-content />
   `,
   host: {
-    'data-slot': 'tabs-list',
+    'data-slot': 'tab-list',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScTabsList {
+export class ScTabList {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

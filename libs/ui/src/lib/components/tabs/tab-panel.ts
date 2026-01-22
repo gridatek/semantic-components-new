@@ -10,7 +10,7 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-tabs-content]',
+  selector: 'div[sc-tab-panel]',
   imports: [TabContent],
   hostDirectives: [
     {
@@ -24,14 +24,13 @@ import { cn } from '../../utils';
     </ng-template>
   `,
   host: {
-    'data-slot': 'tabs-content',
-    // '[attr.data-state]': 'tabPanel.active() ? "active" : "inactive"',
+    'data-slot': 'tab-panel',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScTabsContent {
+export class ScTabPanel {
   protected readonly tabPanel = inject(TabPanel);
 
   readonly classInput = input<string>('', { alias: 'class' });

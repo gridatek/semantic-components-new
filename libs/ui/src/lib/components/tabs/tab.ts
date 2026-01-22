@@ -10,7 +10,7 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'button[sc-tabs-trigger]',
+  selector: 'button[sc-tab]',
   hostDirectives: [
     {
       directive: Tab,
@@ -21,14 +21,14 @@ import { cn } from '../../utils';
     <ng-content />
   `,
   host: {
-    'data-slot': 'tabs-trigger',
+    'data-slot': 'tab',
     '[attr.data-state]': 'tab.selected() ? "active" : "inactive"',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScTabsTrigger {
+export class ScTab {
   protected readonly tab = inject(Tab);
 
   readonly classInput = input<string>('', { alias: 'class' });
