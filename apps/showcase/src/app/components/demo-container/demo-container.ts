@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import {
-  Language,
+  CodeViewerLanguage,
+  ScCodeViewer,
   ScTab,
   ScTabList,
   ScTabPanel,
   ScTabs,
 } from '@semantic-components/ui';
-import { CodeViewer } from '../code-viewer/code-viewer';
 
 @Component({
   selector: 'app-demo-container',
-  imports: [ScTabs, ScTabList, ScTab, ScTabPanel, CodeViewer],
+  imports: [ScTabs, ScTabList, ScTab, ScTabPanel, ScCodeViewer],
   template: `
     <div class="space-y-4">
       @if (title()) {
@@ -28,7 +28,7 @@ import { CodeViewer } from '../code-viewer/code-viewer';
         </div>
 
         <div sc-tab-panel value="code">
-          <app-code-viewer
+          <sc-code-viewer
             [code]="code()"
             [language]="language()"
             [showHeader]="false"
@@ -45,5 +45,5 @@ import { CodeViewer } from '../code-viewer/code-viewer';
 export class DemoContainer {
   readonly title = input<string>('');
   readonly code = input.required<string>();
-  readonly language = input<Language>('html');
+  readonly language = input<CodeViewerLanguage>('typescript');
 }
