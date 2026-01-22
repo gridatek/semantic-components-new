@@ -12,17 +12,16 @@ import { cn } from '../../utils';
   selector: 'sc-stacked-layout',
   imports: [RouterOutlet],
   template: `
-    <div class="min-h-screen flex flex-col">
-      <ng-content select="[scNavbar]" />
+    <ng-content select="[scNavbar]" />
 
-      <main class="flex-1">
-        <router-outlet />
-      </main>
+    <main data-slot="stacked-layout-content" class="flex-1">
+      <router-outlet />
+    </main>
 
-      <ng-content select="[scFooter]" />
-    </div>
+    <ng-content select="[scFooter]" />
   `,
   host: {
+    'data-slot': 'stacked-layout',
     '[class]': 'class()',
   },
   styles: ``,
@@ -34,5 +33,7 @@ export class ScStackedLayout {
     alias: 'class',
   });
 
-  protected readonly class = computed(() => cn('block', this.classInput()));
+  protected readonly class = computed(() =>
+    cn('min-h-screen flex flex-col', this.classInput()),
+  );
 }
