@@ -58,25 +58,28 @@ import {
       <div sc-navbar-content>
         <a
           sc-navbar-link
-          routerLink="/navbar"
+          routerLink="/"
           routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           #homeRla="routerLinkActive"
           [active]="homeRla.isActive"
         >
           Home
         </a>
-        <a sc-navbar-link href="#" [active]="false">Products</a>
-        <a sc-navbar-link href="#" [active]="false">Solutions</a>
-        <a sc-navbar-link href="#" [active]="false">Pricing</a>
-        <a sc-navbar-link href="#" [active]="false">About</a>
+        <a
+          sc-navbar-link
+          routerLink="/docs/components"
+          routerLinkActive="active"
+          #componentsRla="routerLinkActive"
+          [active]="componentsRla.isActive"
+        >
+          Components
+        </a>
       </div>
 
       <!-- Actions -->
       <div sc-navbar-actions>
         <button sc-navbar-mobile-trigger></button>
-        <button sc-button variant="ghost" class="hidden md:inline-flex">
-          Sign In
-        </button>
         <button sc-button class="hidden md:inline-flex">Get Started</button>
       </div>
 
@@ -87,19 +90,24 @@ import {
       <div sc-navbar-mobile-content>
         <a
           sc-navbar-mobile-link
-          routerLink="/navbar"
+          routerLink="/"
           routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           #mobileHomeRla="routerLinkActive"
           [active]="mobileHomeRla.isActive"
         >
           Home
         </a>
-        <a sc-navbar-mobile-link href="#" [active]="false">Products</a>
-        <a sc-navbar-mobile-link href="#" [active]="false">Solutions</a>
-        <a sc-navbar-mobile-link href="#" [active]="false">Pricing</a>
-        <a sc-navbar-mobile-link href="#" [active]="false">About</a>
+        <a
+          sc-navbar-mobile-link
+          routerLink="/docs/components"
+          routerLinkActive="active"
+          #mobileComponentsRla="routerLinkActive"
+          [active]="mobileComponentsRla.isActive"
+        >
+          Components
+        </a>
         <hr class="my-2 border-border" />
-        <a sc-navbar-mobile-link href="#">Sign In</a>
         <button sc-button class="w-full mt-2">Get Started</button>
       </div>
     </nav>
