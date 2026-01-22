@@ -11,6 +11,7 @@ import {
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { codeToHtml } from 'shiki';
 import { cn } from '../../utils';
+import { ScCopyButton } from '../copy-button';
 
 export type CodeViewerLanguage =
   | 'angular-ts'
@@ -32,6 +33,7 @@ export type CodeViewerLanguage =
 
 @Component({
   selector: 'sc-code-viewer',
+  imports: [ScCopyButton],
   template: `
     <div [class]="containerClass()">
       @if (showHeader()) {
@@ -42,43 +44,7 @@ export type CodeViewerLanguage =
             {{ filename() || language() }}
           </span>
           @if (showCopyButton()) {
-            <button
-              type="button"
-              (click)="copyCode($event)"
-              class="inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              [attr.aria-label]="copied() ? 'Copied' : 'Copy code'"
-            >
-              @if (copied()) {
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="size-3.5"
-                >
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              } @else {
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="size-3.5"
-                >
-                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                  <path
-                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-                  />
-                </svg>
-              }
-            </button>
+            <button sc-copy-button [value]="code()"></button>
           }
         </div>
       }
@@ -159,7 +125,6 @@ export class ScCodeViewer {
 
   private readonly sanitizer = inject(DomSanitizer);
 
-  protected readonly copied = signal(false);
   protected readonly highlightedHtml = signal<SafeHtml | null>(null);
 
   protected readonly containerClass = computed(() =>
@@ -198,17 +163,6 @@ export class ScCodeViewer {
       this.highlightedHtml.set(this.sanitizer.bypassSecurityTrustHtml(html));
     } catch {
       this.highlightedHtml.set(null);
-    }
-  }
-
-  protected async copyCode(event: Event): Promise<void> {
-    event.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(this.code());
-      this.copied.set(true);
-      setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      // Clipboard API not available
     }
   }
 }
