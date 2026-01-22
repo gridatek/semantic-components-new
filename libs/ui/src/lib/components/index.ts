@@ -15,6 +15,7 @@ export * from './card';
 export * from './chart';
 export * from './checkbox';
 export * from './code-editor';
+export * from './code-viewer';
 export * from './collapsible';
 export * from './color-picker';
 export * from './combobox';
