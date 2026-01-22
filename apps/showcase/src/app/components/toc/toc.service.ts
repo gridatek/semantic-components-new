@@ -17,6 +17,8 @@ export class TocService {
   readonly activeId = signal<string>('');
 
   extractHeadings(container: HTMLElement): void {
+    this.disconnectObserver();
+
     const headings = container.querySelectorAll('h2, h3');
     const tocItems: TocItem[] = [];
 
@@ -46,8 +48,6 @@ export class TocService {
   }
 
   private setupScrollSpy(container: HTMLElement): void {
-    this.cleanup();
-
     const headings = container.querySelectorAll('h2[id], h3[id]');
     if (headings.length === 0) return;
 
@@ -77,11 +77,15 @@ export class TocService {
     this.destroyRef.onDestroy(() => this.cleanup());
   }
 
-  cleanup(): void {
+  private disconnectObserver(): void {
     if (this.observer) {
       this.observer.disconnect();
       this.observer = null;
     }
+  }
+
+  cleanup(): void {
+    this.disconnectObserver();
     this.items.set([]);
     this.activeId.set('');
   }
