@@ -30,8 +30,6 @@ export type CodeViewerLanguage =
   | 'java'
   | 'plaintext';
 
-export type CodeViewerTheme = 'github-dark' | 'github-light';
-
 @Component({
   selector: 'sc-code-viewer',
   template: `
@@ -106,7 +104,18 @@ export type CodeViewerTheme = 'github-dark' | 'github-light';
       overflow-x: auto;
       font-size: 0.875rem;
       line-height: 1.625;
-      background-color: transparent !important;
+    }
+
+    .sc-code-viewer__content pre.shiki,
+    .sc-code-viewer__content pre.shiki span {
+      color: var(--shiki-light);
+      background-color: var(--shiki-light-bg);
+    }
+
+    .dark .sc-code-viewer__content pre.shiki,
+    .dark .sc-code-viewer__content pre.shiki span {
+      color: var(--shiki-dark);
+      background-color: var(--shiki-dark-bg);
     }
 
     .sc-code-viewer__content pre.shiki code {
@@ -141,7 +150,6 @@ export type CodeViewerTheme = 'github-dark' | 'github-light';
 export class ScCodeViewer {
   readonly code = input.required<string>();
   readonly language = input<CodeViewerLanguage>('plaintext');
-  readonly theme = input<CodeViewerTheme>('github-dark');
   readonly filename = input<string>('');
   readonly showHeader = input(true);
   readonly showCopyButton = input(true);
@@ -155,10 +163,7 @@ export class ScCodeViewer {
   protected readonly highlightedHtml = signal<SafeHtml | null>(null);
 
   protected readonly containerClass = computed(() =>
-    cn(
-      'overflow-hidden rounded-lg border border-border bg-muted/50',
-      this.classInput(),
-    ),
+    cn('overflow-hidden rounded-lg border border-border', this.classInput()),
   );
 
   protected readonly contentClass = computed(() =>
@@ -172,19 +177,24 @@ export class ScCodeViewer {
     effect(() => {
       const code = this.code();
       const lang = this.language();
-      const theme = this.theme();
 
-      this.highlight(code, lang, theme);
+      this.highlight(code, lang);
     });
   }
 
   private async highlight(
     code: string,
     lang: CodeViewerLanguage,
-    theme: CodeViewerTheme,
   ): Promise<void> {
     try {
-      const html = await codeToHtml(code, { lang, theme });
+      const html = await codeToHtml(code, {
+        lang,
+        themes: {
+          light: 'github-light',
+          dark: 'github-dark',
+        },
+        defaultColor: false,
+      });
       this.highlightedHtml.set(this.sanitizer.bypassSecurityTrustHtml(html));
     } catch {
       this.highlightedHtml.set(null);
