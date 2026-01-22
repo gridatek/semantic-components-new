@@ -14,6 +14,10 @@ export const componentsRoutes: Route[] = [
         path: 'button',
         loadComponent: () => import('../pages/docs/button/button.page'),
       },
+      {
+        path: 'components/table',
+        loadComponent: () => import('../pages/docs/table/table-page'),
+      },
     ],
   },
 ];
