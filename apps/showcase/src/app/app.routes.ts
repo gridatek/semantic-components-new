@@ -4,6 +4,7 @@ import { componentsRoutes } from './routes/components.routes';
 import { demosRoutes } from './routes/demos.routes';
 
 export const appRoutes: Route[] = [
+  ...demosRoutes,
   {
     path: '',
     component: StackedLayout,
@@ -13,7 +14,6 @@ export const appRoutes: Route[] = [
         loadComponent: () => import('./pages/home/home'),
       },
       ...componentsRoutes,
-      ...demosRoutes,
     ],
   },
 ];
