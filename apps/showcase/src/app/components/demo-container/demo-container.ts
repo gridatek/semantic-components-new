@@ -17,8 +17,8 @@ import { CodeViewer } from '../code-viewer/code-viewer';
         <h3 class="text-sm font-medium">{{ title() }}</h3>
       }
 
-      <div sc-tabs [defaultValue]="'preview'" class="w-full">
-        <div sc-tabs-list>
+      <div sc-tabs class="w-full">
+        <div sc-tabs-list selectedTab="preview">
           <button sc-tabs-trigger value="preview">Preview</button>
           <button sc-tabs-trigger value="code">Code</button>
         </div>

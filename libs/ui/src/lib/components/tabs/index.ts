@@ -1,4 +1,4 @@
-export { ScTabs } from './sc-tabs';
-export { ScTabsContent } from './sc-tabs-content';
-export { ScTabsList } from './sc-tabs-list';
-export { ScTabsTrigger } from './sc-tabs-trigger';
+export { ScTabs } from './tabs';
+export { ScTabsContent } from './tabs-content';
+export { ScTabsList } from './tabs-list';
+export { ScTabsTrigger } from './tabs-trigger';
