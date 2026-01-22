@@ -1,0 +1,78 @@
+# ScStackedLayout
+
+A generic layout component that provides a stacked structure with slots for navbar, main content, and footer.
+
+## Structure
+
+```
+┌─────────────────────────────┐
+│         [scNavbar]          │
+├─────────────────────────────┤
+│                             │
+│      <router-outlet />      │
+│         (main content)      │
+│                             │
+├─────────────────────────────┤
+│         [scFooter]          │
+└─────────────────────────────┘
+```
+
+## Usage
+
+### Basic Usage
+
+```typescript
+import { ScStackedLayout } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-layout',
+  imports: [ScStackedLayout, MyNavbar, MyFooter],
+  template: `
+    <sc-stacked-layout>
+      <my-navbar scNavbar />
+      <my-footer scFooter />
+    </sc-stacked-layout>
+  `,
+})
+export class AppLayout {}
+```
+
+### With Routes
+
+Configure your routes to use the layout as a parent:
+
+```typescript
+const routes: Routes = [
+  {
+    path: '',
+    component: AppLayout,
+    children: [
+      { path: '', loadComponent: () => import('./pages/home') },
+      { path: 'about', loadComponent: () => import('./pages/about') },
+    ],
+  },
+];
+```
+
+## Content Projection Slots
+
+| Slot       | Description                                  |
+| ---------- | -------------------------------------------- |
+| `scNavbar` | Projects content into the top navbar area    |
+| `scFooter` | Projects content into the bottom footer area |
+
+The main content area uses `<router-outlet />` to render routed components.
+
+## Inputs
+
+| Input   | Type     | Default | Description                         |
+| ------- | -------- | ------- | ----------------------------------- |
+| `class` | `string` | `''`    | Additional CSS classes for the host |
+
+## Styling
+
+The layout applies the following default styles:
+
+- `min-h-screen`: Minimum height of full viewport
+- `flex flex-col`: Flexbox column layout
+- `flex-1` on main: Main content expands to fill available space

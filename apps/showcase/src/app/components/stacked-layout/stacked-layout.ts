@@ -1,21 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ScStackedLayout } from '@semantic-components/ui';
 import Navbar from '../navbar/navbar';
 import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-stacked-layout',
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [ScStackedLayout, Navbar, Footer],
   template: `
-    <div class="min-h-screen flex flex-col">
-      <app-navbar />
-
-      <main class="flex-1">
-        <router-outlet />
-      </main>
-
-      <app-footer />
-    </div>
+    <sc-stacked-layout>
+      <app-navbar scNavbar />
+      <app-footer scFooter />
+    </sc-stacked-layout>
   `,
   host: {
     class: 'block',
