@@ -150,6 +150,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   `,
   host: {
     'data-slot': 'navbar',
+    class: 'block',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

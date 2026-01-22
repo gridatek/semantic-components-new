@@ -95,6 +95,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   host: {
     'data-slot': 'feature-grid',
+    class: 'block',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

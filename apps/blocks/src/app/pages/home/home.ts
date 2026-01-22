@@ -27,6 +27,7 @@ import { FeatureGrid } from '../../components/feature-grid/feature-grid';
   `,
   host: {
     'data-slot': 'home-page',
+    class: 'block',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

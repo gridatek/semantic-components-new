@@ -31,6 +31,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   host: {
     'data-slot': 'hero-section',
+    class: 'block',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

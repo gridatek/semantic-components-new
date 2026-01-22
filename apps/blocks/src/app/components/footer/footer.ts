@@ -32,6 +32,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   host: {
     'data-slot': 'footer',
+    class: 'block',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
