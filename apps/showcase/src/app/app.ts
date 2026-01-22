@@ -11,7 +11,9 @@ import { cn } from '@semantic-components/ui';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  template: `<router-outlet />`,
+  template: `
+    <router-outlet />
+  `,
   host: {
     '[class]': 'class()',
   },

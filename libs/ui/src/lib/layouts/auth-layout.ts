@@ -8,11 +8,12 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { cn } from '../utils';
 
-
 @Component({
   selector: 'sc-auth-layout',
   imports: [RouterOutlet],
-  template: `<router-outlet />`,
+  template: `
+    <router-outlet />
+  `,
   host: {
     '[class]': 'class()',
   },
