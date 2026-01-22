@@ -12,19 +12,26 @@ import { cn } from '../utils';
   selector: 'sc-sidebar-layout',
   imports: [RouterOutlet],
   template: `
-    <router-outlet />
+    <ng-content select="[scSidebar]" />
+
+    <main data-slot="sidebar-layout-content" class="flex-1 overflow-auto">
+      <router-outlet />
+    </main>
   `,
   host: {
+    'data-slot': 'sidebar-layout',
     '[class]': 'class()',
   },
   styles: ``,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidebarLayout {
+export class ScSidebarLayout {
   readonly classInput = input<string>('', {
     alias: 'class',
   });
 
-  protected readonly class = computed(() => cn('block', this.classInput()));
+  protected readonly class = computed(() =>
+    cn('flex min-h-screen', this.classInput()),
+  );
 }

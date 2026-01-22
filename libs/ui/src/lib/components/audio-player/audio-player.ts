@@ -10,6 +10,7 @@ import {
   output,
   signal,
   viewChild,
+  AfterViewInit,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -300,7 +301,7 @@ export interface AudioTrack {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScAudioPlayer {
+export class ScAudioPlayer implements AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly audioRef =
     viewChild.required<ElementRef<HTMLAudioElement>>('audioElement');

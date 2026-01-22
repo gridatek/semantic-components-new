@@ -8,6 +8,7 @@ import {
   input,
   output,
   signal,
+  DoCheck,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -264,7 +265,7 @@ export class TourService {
     '(window:scroll)': 'updateTargetRect()',
   },
 })
-export class ScTourGuide {
+export class ScTourGuide implements DoCheck {
   readonly tourService = inject(TourService);
   private readonly destroyRef = inject(DestroyRef);
 

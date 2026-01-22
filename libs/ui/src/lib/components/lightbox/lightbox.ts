@@ -372,7 +372,7 @@ export class ScLightbox {
     );
   }
 
-  open(index: number = 0): void {
+  open(index = 0): void {
     this.currentIndex.set(index);
     this.isOpen.set(true);
     this.zoomLevel.set(1);

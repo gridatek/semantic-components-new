@@ -10,6 +10,7 @@ import {
   output,
   signal,
   viewChild,
+  AfterViewInit,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -91,7 +92,7 @@ export interface SignatureLine {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSignaturePad {
+export class ScSignaturePad implements AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly canvasRef =
     viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
