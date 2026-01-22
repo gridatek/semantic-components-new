@@ -1,3 +1,8 @@
 import { Route } from '@angular/router';
 
-export const appRoutes: Route[] = [];
+export const componentsRoutes: Route[] = [
+  {
+    path: 'docs/components',
+    loadComponent: () => import('../pages/docs/components/components-page'),
+  },
+];
