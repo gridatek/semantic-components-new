@@ -5,7 +5,7 @@ export const appRoutes: Route[] = [
   // Component documentation routes under /docs/components
   ...componentsRoutes,
   {
-    path: 'components',
+    path: '',
     loadComponent: () => import('./pages/home/home-page'),
   },
 ];
