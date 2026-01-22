@@ -11,6 +11,7 @@ import {
   ScNavbarMobileLink,
   ScNavbarMobileOverlay,
   ScButton,
+  ScThemeToggle,
 } from '@semantic-components/ui';
 
 @Component({
@@ -28,6 +29,7 @@ import {
     ScNavbarMobileLink,
     ScNavbarMobileOverlay,
     ScButton,
+    ScThemeToggle,
   ],
   template: `
     <nav
@@ -79,6 +81,7 @@ import {
 
       <!-- Actions -->
       <div sc-navbar-actions>
+        <button sc-theme-toggle></button>
         <button sc-navbar-mobile-trigger></button>
         <button sc-button class="hidden md:inline-flex">Get Started</button>
       </div>
