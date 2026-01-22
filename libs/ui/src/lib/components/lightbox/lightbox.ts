@@ -102,8 +102,8 @@ export class ScLightboxTrigger {
         <!-- Main image container -->
         <div [class]="imageContainerClass()">
           <img
-            [src]="currentImage()?.src"
-            [alt]="currentImage()?.alt || 'Image ' + (currentIndex() + 1)"
+            [src]="currentImage().src"
+            [alt]="currentImage().alt || 'Image ' + (currentIndex() + 1)"
             [class]="imageClass()"
             [style.transform]="'scale(' + zoomLevel() + ')'"
             (load)="onImageLoad()"
@@ -163,15 +163,15 @@ export class ScLightboxTrigger {
         <div [class]="bottomBarClass()">
           <!-- Image info -->
           @if (
-            showInfo() && (currentImage()?.title || currentImage()?.description)
+            showInfo() && (currentImage().title || currentImage().description)
           ) {
             <div class="flex-1 text-white">
-              @if (currentImage()?.title) {
-                <h3 class="font-semibold">{{ currentImage()?.title }}</h3>
+              @if (currentImage().title) {
+                <h3 class="font-semibold">{{ currentImage().title }}</h3>
               }
-              @if (currentImage()?.description) {
+              @if (currentImage().description) {
                 <p class="text-sm text-white/80">
-                  {{ currentImage()?.description }}
+                  {{ currentImage().description }}
                 </p>
               }
             </div>

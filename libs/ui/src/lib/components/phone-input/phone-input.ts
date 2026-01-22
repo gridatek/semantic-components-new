@@ -28,11 +28,11 @@ import { Country, COUNTRIES, getCountryByCode } from './countries';
           (click)="toggleDropdown()"
           [attr.aria-expanded]="dropdownOpen()"
           [attr.aria-haspopup]="'listbox'"
-          [attr.aria-label]="'Select country: ' + selectedCountry()?.name"
+          [attr.aria-label]="'Select country: ' + selectedCountry().name"
         >
-          <span class="text-base">{{ selectedCountry()?.flag }}</span>
+          <span class="text-base">{{ selectedCountry().flag }}</span>
           <span class="text-sm text-muted-foreground">
-            {{ selectedCountry()?.dialCode }}
+            {{ selectedCountry().dialCode }}
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,9 +72,7 @@ import { Country, COUNTRIES, getCountryByCode } from './countries';
                   type="button"
                   role="option"
                   [class]="countryOptionClass(country)"
-                  [attr.aria-selected]="
-                    country.code === selectedCountry()?.code
-                  "
+                  [attr.aria-selected]="country.code === selectedCountry().code"
                   (click)="selectCountry(country)"
                   (keydown)="onOptionKeydown($event, country)"
                 >

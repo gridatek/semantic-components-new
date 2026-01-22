@@ -27,11 +27,11 @@ export interface AudioTrack {
   template: `
     <div [class]="containerClass()">
       <!-- Cover Art -->
-      @if (showCover() && currentTrack()?.cover) {
+      @if (showCover() && currentTrack().cover) {
         <div [class]="coverClass()">
           <img
-            [src]="currentTrack()?.cover"
-            [alt]="currentTrack()?.title || 'Album cover'"
+            [src]="currentTrack().cover"
+            [alt]="currentTrack().title || 'Album cover'"
             class="size-full object-cover"
           />
         </div>
@@ -41,11 +41,11 @@ export interface AudioTrack {
       @if (showInfo()) {
         <div [class]="infoClass()">
           <p class="font-medium truncate">
-            {{ currentTrack()?.title || 'Unknown Track' }}
+            {{ currentTrack().title || 'Unknown Track' }}
           </p>
-          @if (currentTrack()?.artist) {
+          @if (currentTrack().artist) {
             <p class="text-sm text-muted-foreground truncate">
-              {{ currentTrack()?.artist }}
+              {{ currentTrack().artist }}
             </p>
           }
         </div>
@@ -290,7 +290,7 @@ export interface AudioTrack {
       <!-- Hidden Audio Element -->
       <audio
         #audioElement
-        [src]="currentTrack()?.src"
+        [src]="currentTrack().src"
         (timeupdate)="onTimeUpdate()"
         (loadedmetadata)="onLoadedMetadata()"
         (ended)="onEnded()"
