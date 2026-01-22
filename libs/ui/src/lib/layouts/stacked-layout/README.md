@@ -5,16 +5,17 @@ A generic layout component that provides a stacked structure with slots for navb
 ## Structure
 
 ```
-┌─────────────────────────────┐
-│         [scNavbar]          │
-├─────────────────────────────┤
-│                             │
-│      <router-outlet />      │
-│         (main content)      │
-│                             │
-├─────────────────────────────┤
-│         [scFooter]          │
-└─────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│ sc-stacked-layout (data-slot="stacked-layout")
+├─────────────────────────────────────────────┤
+│              [scNavbar]                     │
+├─────────────────────────────────────────────┤
+│  <main data-slot="stacked-layout-content">  │
+│         <router-outlet />                   │
+│  </main>                                    │
+├─────────────────────────────────────────────┤
+│              [scFooter]                     │
+└─────────────────────────────────────────────┘
 ```
 
 ## Usage
@@ -54,14 +55,19 @@ const routes: Routes = [
 ];
 ```
 
-## Content Projection Slots
+## Content Projection
 
-| Slot       | Description                                  |
-| ---------- | -------------------------------------------- |
-| `scNavbar` | Projects content into the top navbar area    |
-| `scFooter` | Projects content into the bottom footer area |
+| Attribute  | Description                               |
+| ---------- | ----------------------------------------- |
+| `scNavbar` | Projects content into the top navbar area |
+| `scFooter` | Projects content into the footer area     |
 
-The main content area uses `<router-outlet />` to render routed components.
+## Data Slots
+
+| Element | Slot                                 | Description              |
+| ------- | ------------------------------------ | ------------------------ |
+| Host    | `data-slot="stacked-layout"`         | The layout container     |
+| Main    | `data-slot="stacked-layout-content"` | Main content with router |
 
 ## Inputs
 
