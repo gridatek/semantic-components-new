@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScMenuDemoContainer } from './demos/menu-demo-container';
+import { MenuShortcutsDemoContainer } from './demos/menu-shortcuts-demo-container';
+import { MenuToolsDemoContainer } from './demos/menu-tools-demo-container';
+import { MenuAvatarDemoContainer } from './demos/menu-avatar-demo-container';
 
 @Component({
   selector: 'app-menu-page',
-  imports: [ScMenuDemoContainer],
+  imports: [
+    ScMenuDemoContainer,
+    MenuShortcutsDemoContainer,
+    MenuToolsDemoContainer,
+    MenuAvatarDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,6 +25,9 @@ import { ScMenuDemoContainer } from './demos/menu-demo-container';
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-menu-demo-container />
+        <app-menu-shortcuts-demo-container />
+        <app-menu-tools-demo-container />
+        <app-menu-avatar-demo-container />
       </section>
     </div>
   `,
