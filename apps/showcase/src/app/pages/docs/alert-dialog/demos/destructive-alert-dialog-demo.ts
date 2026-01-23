@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ScAlertDialog,
+  ScAlertDialogProvider,
   ScAlertDialogAction,
   ScAlertDialogCancel,
   ScAlertDialogContent,
@@ -15,7 +15,7 @@ import {
 @Component({
   selector: 'app-destructive-alert-dialog-demo',
   imports: [
-    ScAlertDialog,
+    ScAlertDialogProvider,
     ScAlertDialogAction,
     ScAlertDialogCancel,
     ScAlertDialogContent,
@@ -27,7 +27,7 @@ import {
     ScAlertDialogTrigger,
   ],
   template: `
-    <div sc-alert-dialog>
+    <div sc-alert-dialog-provider>
       <button
         sc-alert-dialog-trigger
         class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground shadow-xs transition-colors hover:bg-destructive/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
