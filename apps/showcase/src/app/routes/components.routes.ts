@@ -157,11 +157,6 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/drawer/drawer-page'),
       },
       {
-        path: 'dropdown-menu',
-        loadComponent: () =>
-          import('../pages/docs/dropdown-menu/dropdown-menu-page'),
-      },
-      {
         path: 'emoji-picker',
         loadComponent: () =>
           import('../pages/docs/emoji-picker/emoji-picker-page'),

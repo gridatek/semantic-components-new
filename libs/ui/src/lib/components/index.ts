@@ -31,7 +31,6 @@ export * from './dialog';
 export * from './diff-viewer';
 export * from './dock';
 export * from './drawer';
-export * from './dropdown-menu';
 export * from './emoji-picker';
 export * from './empty-state';
 export * from './file-upload';

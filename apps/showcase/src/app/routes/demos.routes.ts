@@ -466,18 +466,6 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
-    path: 'demos/dropdown-menu',
-    children: [
-      {
-        path: 'dropdown-menu-demo',
-        loadComponent: () =>
-          import('../pages/docs/dropdown-menu/demos/dropdown-menu-demo').then(
-            (m) => m.ScDropdownMenuDemo,
-          ),
-      },
-    ],
-  },
-  {
     path: 'demos/emoji-picker',
     children: [
       {

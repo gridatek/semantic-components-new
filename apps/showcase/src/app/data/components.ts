@@ -172,11 +172,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A touch-friendly drawer that slides from the bottom.',
   },
   {
-    name: 'Dropdown Menu',
-    path: 'dropdown-menu',
-    description: 'A menu displayed on button click.',
-  },
-  {
     name: 'Emoji Picker',
     path: 'emoji-picker',
     description: 'A picker for selecting emojis.',
