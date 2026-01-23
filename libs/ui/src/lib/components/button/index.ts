@@ -1,1 +1,1 @@
-export * from './sc-button';
+export * from './button';
