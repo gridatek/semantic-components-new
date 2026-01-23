@@ -1,1 +1,1 @@
-export * from './sc-combobox';
+export * from './combobox';

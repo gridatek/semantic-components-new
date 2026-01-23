@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChildren,
   input,
   model,
   signal,
@@ -10,19 +9,19 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import {
-  ScPopover,
-  ScPopoverContent,
-  ScPopoverTrigger,
-  PopoverAlign,
-  PopoverSide,
-} from '../popover';
-import {
   ScCommand,
   ScCommandEmpty,
   ScCommandInput,
   ScCommandItem,
   ScCommandList,
 } from '../command';
+import {
+  PopoverAlign,
+  PopoverSide,
+  ScPopover,
+  ScPopoverContent,
+  ScPopoverTrigger,
+} from '../popover';
 
 export interface ComboboxOption {
   value: string;

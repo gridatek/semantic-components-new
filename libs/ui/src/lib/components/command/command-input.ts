@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScCommand } from './sc-command';
+import { ScCommand } from './command';
 
 @Component({
   selector: 'div[sc-command-input]',

@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input, output } from '@angular/core';
 import { cn } from '../../utils';
-import { ScCommand } from './sc-command';
+import { ScCommand } from './command';
 
 @Directive({
   selector: 'div[sc-command-item]',
