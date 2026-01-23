@@ -65,7 +65,7 @@ import {
       </div>
 
       <!-- Top Popover -->
-      <div sc-popover side="top">
+      <div sc-popover-provider side="top">
         <button
           sc-popover-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -91,7 +91,7 @@ import {
       </div>
 
       <!-- Left Popover -->
-      <div sc-popover side="left">
+      <div sc-popover-provider side="left">
         <button
           sc-popover-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -104,7 +104,7 @@ import {
       </div>
 
       <!-- Aligned Start -->
-      <div sc-popover align="start">
+      <div sc-popover-provider align="start">
         <button
           sc-popover-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
