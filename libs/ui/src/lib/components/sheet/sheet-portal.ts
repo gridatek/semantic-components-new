@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet } from './sheet';
+import { ScSheetProvider } from './sheet-provider';
 
 @Component({
   selector: 'div[sc-sheet-portal]',
@@ -40,7 +40,7 @@ import { ScSheet } from './sheet';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSheetPortal {
-  private readonly sheet = inject(ScSheet);
+  private readonly sheetProvider = inject(ScSheetProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -60,7 +60,7 @@ export class ScSheetPortal {
   protected readonly backdropClass = computed(() =>
     cn(
       'fixed inset-0 bg-black/80',
-      this.sheet.open()
+      this.sheetProvider.open()
         ? 'opacity-100 visible transition-[opacity,visibility] duration-300 ease-out'
         : 'opacity-0 invisible transition-[opacity,visibility] duration-300 ease-in [transition-delay:0s,300ms]',
     ),
@@ -68,7 +68,7 @@ export class ScSheetPortal {
 
   constructor() {
     effect(() => {
-      if (this.sheet.open()) {
+      if (this.sheetProvider.open()) {
         this.attachSheet();
       } else {
         this.detachSheet();
@@ -99,6 +99,6 @@ export class ScSheetPortal {
   }
 
   closeSheet(): void {
-    this.sheet.open.set(false);
+    this.sheetProvider.open.set(false);
   }
 }

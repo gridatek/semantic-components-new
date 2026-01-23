@@ -4,10 +4,10 @@ A set of Angular components for creating accessible side panels (drawers) with s
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScSheet` to access shared state.
+The components follow a dependency injection (DI) pattern where child components inject the parent `ScSheetProvider` to access shared state.
 
 ```
-ScSheet (root wrapper - manages open state and side)
+ScSheetProvider (root wrapper - manages open state and side)
 ├── ScSheetTrigger (button that opens sheet)
 └── ScSheetPortal (overlay with backdrop)
     └── ScSheetContent (sheet panel)
@@ -23,7 +23,7 @@ ScSheet (root wrapper - manages open state and side)
 
 | Component            | Selector                   | Description                          |
 | -------------------- | -------------------------- | ------------------------------------ |
-| `ScSheet`            | `div[sc-sheet]`            | Root wrapper, manages open state     |
+| `ScSheetProvider`    | `div[sc-sheet-provider]`   | Root wrapper, manages open state     |
 | `ScSheetTrigger`     | `button[sc-sheet-trigger]` | Button that opens the sheet          |
 | `ScSheetPortal`      | `div[sc-sheet-portal]`     | Overlay container with backdrop      |
 | `ScSheetContent`     | `div[sc-sheet-content]`    | Sheet panel with slide animations    |

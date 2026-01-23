@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ScSheet,
+  ScSheetProvider,
   ScSheetClose,
   ScSheetContent,
   ScSheetDescription,
@@ -14,7 +14,7 @@ import {
 @Component({
   selector: 'app-sc-sheet-demo',
   imports: [
-    ScSheet,
+    ScSheetProvider,
     ScSheetClose,
     ScSheetContent,
     ScSheetDescription,
@@ -27,7 +27,7 @@ import {
   template: `
     <div class="flex gap-4">
       <!-- Right Sheet (default) -->
-      <div sc-sheet>
+      <div sc-sheet-provider>
         <button
           sc-sheet-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

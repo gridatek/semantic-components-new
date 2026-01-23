@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet, SheetSide } from './sheet';
+import { ScSheetProvider, SheetSide } from './sheet-provider';
 
 let sheetIdCounter = 0;
 
@@ -51,7 +51,7 @@ const sideClosedClasses: Record<SheetSide, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSheetContent {
-  private readonly sheet = inject(ScSheet);
+  private readonly sheetProvider = inject(ScSheetProvider);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
@@ -61,8 +61,8 @@ export class ScSheetContent {
   readonly descriptionId = `${this.sheetId}-description`;
 
   protected readonly class = computed(() => {
-    const side = this.sheet.side();
-    const isOpen = this.sheet.open();
+    const side = this.sheetProvider.side();
+    const isOpen = this.sheetProvider.open();
 
     return cn(
       'bg-background fixed z-50 flex flex-col gap-4 p-6 shadow-lg transition-transform duration-300 ease-in-out',

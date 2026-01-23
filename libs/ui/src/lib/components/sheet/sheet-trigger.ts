@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet } from './sheet';
+import { ScSheetProvider } from './sheet-provider';
 
 @Directive({
   selector: 'button[sc-sheet-trigger]',
@@ -8,17 +8,17 @@ import { ScSheet } from './sheet';
     'data-slot': 'sheet-trigger',
     '[class]': 'class()',
     '[attr.aria-haspopup]': '"dialog"',
-    '[attr.aria-expanded]': 'sheet.open()',
+    '[attr.aria-expanded]': 'sheetProvider.open()',
     '(click)': 'openSheet()',
   },
 })
 export class ScSheetTrigger {
-  readonly sheet = inject(ScSheet);
+  readonly sheetProvider = inject(ScSheetProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
   openSheet(): void {
-    this.sheet.open.set(true);
+    this.sheetProvider.open.set(true);
   }
 }

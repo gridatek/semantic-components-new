@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet } from './sheet';
+import { ScSheetProvider } from './sheet-provider';
 
 @Directive({
   selector: 'button[sc-sheet-close]',
@@ -11,7 +11,7 @@ import { ScSheet } from './sheet';
   },
 })
 export class ScSheetClose {
-  private readonly sheet = inject(ScSheet);
+  private readonly sheetProvider = inject(ScSheetProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
@@ -25,6 +25,6 @@ export class ScSheetClose {
   );
 
   closeSheet(): void {
-    this.sheet.open.set(false);
+    this.sheetProvider.open.set(false);
   }
 }

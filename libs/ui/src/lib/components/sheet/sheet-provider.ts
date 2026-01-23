@@ -11,18 +11,18 @@ import { cn } from '../../utils';
 export type SheetSide = 'top' | 'right' | 'bottom' | 'left';
 
 @Component({
-  selector: 'div[sc-sheet]',
+  selector: 'div[sc-sheet-provider]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'sheet',
+    'data-slot': 'sheet-provider',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSheet {
+export class ScSheetProvider {
   readonly classInput = input<string>('', { alias: 'class' });
 
   /** Which side the sheet slides in from */
