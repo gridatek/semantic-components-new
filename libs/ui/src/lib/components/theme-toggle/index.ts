@@ -1,2 +1,2 @@
-export * from './sc-theme-toggle';
-export * from './sc-theme.service';
+export * from './theme-toggle';
+export * from './theme.service';

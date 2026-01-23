@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScThemeService, Theme } from './sc-theme.service';
+import { ScThemeService, Theme } from './theme.service';
 
 export type ThemeToggleVariant = 'default' | 'outline' | 'ghost';
 export type ThemeToggleSize = 'default' | 'sm' | 'lg' | 'icon';
