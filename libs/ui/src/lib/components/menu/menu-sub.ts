@@ -1,22 +1,22 @@
+import { Menu, MenuContent } from '@angular/aria/menu';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChild,
-  effect,
+  inject,
   input,
   ViewEncapsulation,
 } from '@angular/core';
-import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 import { cn } from '../../utils';
-import { ScMenuSubTrigger } from './menu-sub-trigger';
-import { ScMenuSubContent } from './menu-sub-content';
 
 @Component({
   selector: 'div[sc-menu-sub]',
-  imports: [],
+  imports: [MenuContent],
+  hostDirectives: [Menu],
   template: `
-    <ng-content />
+    <ng-template ngMenuContent>
+      <ng-content />
+    </ng-template>
   `,
   host: {
     'data-slot': 'menu-sub',
@@ -26,27 +26,16 @@ import { ScMenuSubContent } from './menu-sub-content';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenuSub {
+  readonly menu = inject(Menu);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  private readonly triggerChild = contentChild(ScMenuSubTrigger);
-  private readonly content = contentChild(ScMenuSubContent, {
-    descendants: true,
-  });
-
-  readonly origin = computed(() => this.triggerChild()?.overlayOrigin);
-  readonly menuItem = computed(() => this.triggerChild()?.menuItem);
-  readonly submenu = computed(() => this.content()?.menu);
-
-  protected readonly class = computed(() => cn('relative', this.classInput()));
-
-  constructor() {
-    // Auto-connect trigger's submenu to the content's menu
-    effect(() => {
-      const menuItem = this.triggerChild()?.menuItem;
-      const submenu = this.content()?.menu;
-      if (menuItem && submenu) {
-        signalSetFn(menuItem.submenu[SIGNAL], submenu);
-      }
-    });
-  }
+  protected readonly class = computed(() =>
+    cn(
+      'bg-popover text-popover-foreground z-50 min-w-[8rem] rounded-md border p-1 shadow-md',
+      this.menu.visible()
+        ? 'opacity-100 visible transition-[opacity,visibility] duration-150 ease-out'
+        : 'opacity-0 invisible transition-[opacity,visibility] duration-150 ease-in [transition-delay:0s,150ms]',
+      this.classInput(),
+    ),
+  );
 }

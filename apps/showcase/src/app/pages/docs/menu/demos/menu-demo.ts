@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScMenu,
-  ScMenuContent,
   ScMenuItem,
-  ScMenuPopup,
+  ScMenuPortal,
   ScMenuSeparator,
+  ScMenuSubProvider,
   ScMenuSub,
-  ScMenuSubContent,
   ScMenuSubIcon,
-  ScMenuSubPopup,
+  ScMenuSubPortal,
   ScMenuSubTrigger,
+  ScMenuProvider,
   ScMenuTrigger,
 } from '@semantic-components/ui';
 
@@ -17,19 +17,19 @@ import {
   selector: 'app-sc-menu-demo',
   imports: [
     ScMenu,
-    ScMenuContent,
     ScMenuItem,
-    ScMenuPopup,
+    ScMenuPortal,
     ScMenuSeparator,
+    ScMenuSubProvider,
     ScMenuSub,
-    ScMenuSubContent,
     ScMenuSubIcon,
-    ScMenuSubPopup,
+    ScMenuSubPortal,
     ScMenuSubTrigger,
+    ScMenuProvider,
     ScMenuTrigger,
   ],
   template: `
-    <div sc-menu>
+    <div sc-menu-provider>
       <button sc-menu-trigger>
         <svg
           class="size-4"
@@ -50,8 +50,8 @@ import {
         </svg>
         Open Menu
       </button>
-      <div sc-menu-popup>
-        <div sc-menu-content>
+      <div sc-menu-portal>
+        <div sc-menu>
           <div sc-menu-item value="Mark as read">
             <svg
               class="text-muted-foreground size-4"
@@ -95,7 +95,7 @@ import {
           </div>
           <div sc-menu-separator></div>
           <!-- Submenu -->
-          <div sc-menu-sub>
+          <div sc-menu-sub-provider>
             <div sc-menu-sub-trigger value="More options">
               <svg
                 class="text-muted-foreground size-4"
@@ -130,8 +130,8 @@ import {
                 <path d="m9 18 6-6-6-6" />
               </svg>
             </div>
-            <div sc-menu-sub-popup>
-              <div sc-menu-sub-content>
+            <div sc-menu-sub-portal>
+              <div sc-menu-sub>
                 <div sc-menu-item value="Reply">
                   <svg
                     class="text-muted-foreground size-4"
@@ -265,6 +265,7 @@ import {
       </div>
     </div>
   `,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenuDemo {}

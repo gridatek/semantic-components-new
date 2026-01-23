@@ -7,44 +7,44 @@ A set of Angular components that wrap `@angular/aria/menu` directives with shadc
 The components follow a dependency injection (DI) pattern where parent wrapper components automatically connect child components without requiring template variables.
 
 ```
-ScMenu (root wrapper)
+ScMenuProvider (root wrapper)
 ├── ScMenuTrigger (button that opens menu)
-└── ScMenuPopup (overlay positioning)
-    └── ScMenuContent (menu container with Menu directive)
+└── ScMenuPortal (overlay positioning)
+    └── ScMenu (menu container with Menu directive)
         ├── ScMenuItem (menu items)
         ├── ScMenuSeparator (visual divider)
-        └── ScMenuSub (submenu wrapper)
+        └── ScMenuSubProvider (submenu wrapper)
             ├── ScMenuSubTrigger (item that opens submenu)
-            └── ScMenuSubPopup (submenu overlay positioning)
-                └── ScMenuSubContent (submenu container)
+            └── ScMenuSubPortal (submenu overlay positioning)
+                └── ScMenuSub (submenu container)
                     └── ScMenuItem (submenu items)
 ```
 
 ## Components
 
-| Component          | Selector                   | Description                                     |
-| ------------------ | -------------------------- | ----------------------------------------------- |
-| `ScMenu`           | `div[sc-menu]`             | Root wrapper that auto-connects trigger to menu |
-| `ScMenuTrigger`    | `button[sc-menu-trigger]`  | Button that opens the menu                      |
-| `ScMenuPopup`      | `div[sc-menu-popup]`       | Handles overlay positioning                     |
-| `ScMenuContent`    | `div[sc-menu-content]`     | Menu container with animations                  |
-| `ScMenuItem`       | `div[sc-menu-item]`        | Selectable menu item                            |
-| `ScMenuSeparator`  | `div[sc-menu-separator]`   | Visual separator                                |
-| `ScMenuSub`        | `div[sc-menu-sub]`         | Submenu wrapper                                 |
-| `ScMenuSubTrigger` | `div[sc-menu-sub-trigger]` | Item that opens submenu                         |
-| `ScMenuSubPopup`   | `div[sc-menu-sub-popup]`   | Submenu overlay positioning                     |
-| `ScMenuSubContent` | `div[sc-menu-sub-content]` | Submenu container with animations               |
-| `ScMenuSubIcon`    | `svg[sc-menu-sub-icon]`    | Chevron icon for submenu triggers               |
+| Component           | Selector                    | Description                                     |
+| ------------------- | --------------------------- | ----------------------------------------------- |
+| `ScMenuProvider`    | `div[sc-menu-provider]`     | Root wrapper that auto-connects trigger to menu |
+| `ScMenuTrigger`     | `button[sc-menu-trigger]`   | Button that opens the menu                      |
+| `ScMenuPortal`      | `div[sc-menu-portal]`       | Handles overlay positioning                     |
+| `ScMenu`            | `div[sc-menu]`              | Menu container with animations                  |
+| `ScMenuItem`        | `div[sc-menu-item]`         | Selectable menu item                            |
+| `ScMenuSeparator`   | `div[sc-menu-separator]`    | Visual separator                                |
+| `ScMenuSubProvider` | `div[sc-menu-sub-provider]` | Submenu wrapper                                 |
+| `ScMenuSubTrigger`  | `div[sc-menu-sub-trigger]`  | Item that opens submenu                         |
+| `ScMenuSubPortal`   | `div[sc-menu-sub-portal]`   | Submenu overlay positioning                     |
+| `ScMenuSub`         | `div[sc-menu-sub]`          | Submenu container with animations               |
+| `ScMenuSubIcon`     | `svg[sc-menu-sub-icon]`     | Chevron icon for submenu triggers               |
 
 ## Usage
 
 ### Basic Menu
 
 ```html
-<div sc-menu>
+<div sc-menu-provider>
   <button sc-menu-trigger>Open Menu</button>
-  <div sc-menu-popup>
-    <div sc-menu-content>
+  <div sc-menu-portal>
+    <div sc-menu>
       <div sc-menu-item value="edit">Edit</div>
       <div sc-menu-item value="duplicate">Duplicate</div>
       <div sc-menu-separator></div>
@@ -57,19 +57,19 @@ ScMenu (root wrapper)
 ### Menu with Submenu
 
 ```html
-<div sc-menu>
+<div sc-menu-provider>
   <button sc-menu-trigger>Open Menu</button>
-  <div sc-menu-popup>
-    <div sc-menu-content>
+  <div sc-menu-portal>
+    <div sc-menu>
       <div sc-menu-item value="new">New</div>
       <div sc-menu-separator></div>
-      <div sc-menu-sub>
+      <div sc-menu-sub-provider>
         <div sc-menu-sub-trigger value="share">
           Share
           <svg sc-menu-sub-icon><!-- chevron icon --></svg>
         </div>
-        <div sc-menu-sub-popup>
-          <div sc-menu-sub-content>
+        <div sc-menu-sub-portal>
+          <div sc-menu-sub>
             <div sc-menu-item value="email">Email</div>
             <div sc-menu-item value="message">Message</div>
           </div>
@@ -114,7 +114,7 @@ ScMenu (root wrapper)
 
 ### Auto-Connection via DI
 
-The `ScMenu` component uses `contentChild` to find its `ScMenuTrigger` and `ScMenuContent` descendants. An `effect` automatically connects the trigger's `menu` input to the content's `Menu` directive using `signalSetFn`:
+The `ScMenuProvider` component uses `contentChild` to find its `ScMenuTrigger` and `ScMenu` descendants. An `effect` automatically connects the trigger's `menu` input to the content's `Menu` directive using `signalSetFn`:
 
 ```typescript
 effect(() => {
@@ -130,7 +130,7 @@ This eliminates the need for template variables like `#menu="ngMenu"`.
 
 ### Overlay Positioning
 
-`ScMenuPopup` injects `ScMenu` to access the trigger's `CdkOverlayOrigin` and `expanded` state:
+`ScMenuPortal` injects `ScMenuProvider` to access the trigger's `CdkOverlayOrigin` and `expanded` state:
 
 ```typescript
 protected readonly origin = computed(() => this.scMenu.origin());
@@ -139,7 +139,7 @@ protected readonly expanded = computed(() => this.scMenu.trigger()?.expanded() ?
 
 ### Animations
 
-`ScMenuContent` applies Tailwind CSS transitions based on the menu's visibility:
+`ScMenu` applies Tailwind CSS transitions based on the menu's visibility:
 
 ```typescript
 protected readonly class = computed(() =>
@@ -168,7 +168,7 @@ The `[transition-delay:0s,150ms]` ensures visibility changes after opacity durin
 All components accept a `class` input for custom styling:
 
 ```html
-<div sc-menu-content class="w-64">
+<div sc-menu class="w-64">
   <!-- wider menu -->
 </div>
 

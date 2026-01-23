@@ -1,11 +1,11 @@
-export { ScMenu } from './menu';
+export { ScMenuProvider } from './menu-provider';
 export { ScMenuTrigger } from './menu-trigger';
-export { ScMenuPopup } from './menu-popup';
-export { ScMenuContent } from './menu-content';
+export { ScMenuPortal } from './menu-portal';
+export { ScMenu } from './menu';
 export { ScMenuItem } from './menu-item';
 export { ScMenuSeparator } from './menu-separator';
-export { ScMenuSub } from './menu-sub';
+export { ScMenuSubProvider } from './menu-sub-provider';
 export { ScMenuSubTrigger } from './menu-sub-trigger';
-export { ScMenuSubPopup } from './menu-sub-popup';
-export { ScMenuSubContent } from './menu-sub-content';
+export { ScMenuSubPortal } from './menu-sub-portal';
+export { ScMenuSub } from './menu-sub';
 export { ScMenuSubIcon } from './menu-sub-icon';

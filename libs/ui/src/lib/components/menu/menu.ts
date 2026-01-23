@@ -1,22 +1,22 @@
+import { Menu, MenuContent } from '@angular/aria/menu';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChild,
-  effect,
+  inject,
   input,
   ViewEncapsulation,
 } from '@angular/core';
-import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 import { cn } from '../../utils';
-import { ScMenuTrigger } from './menu-trigger';
-import { ScMenuContent } from './menu-content';
 
 @Component({
   selector: 'div[sc-menu]',
-  imports: [],
+  imports: [MenuContent],
+  hostDirectives: [Menu],
   template: `
-    <ng-content />
+    <ng-template ngMenuContent>
+      <ng-content />
+    </ng-template>
   `,
   host: {
     'data-slot': 'menu',
@@ -26,25 +26,16 @@ import { ScMenuContent } from './menu-content';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenu {
+  readonly menu = inject(Menu);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  private readonly triggerChild = contentChild(ScMenuTrigger);
-  private readonly content = contentChild(ScMenuContent, { descendants: true });
-
-  readonly origin = computed(() => this.triggerChild()?.overlayOrigin);
-  readonly trigger = computed(() => this.triggerChild()?.trigger);
-  readonly menu = computed(() => this.content()?.menu);
-
-  protected readonly class = computed(() => cn('relative', this.classInput()));
-
-  constructor() {
-    // Auto-connect trigger to menu
-    effect(() => {
-      const trigger = this.triggerChild()?.trigger;
-      const menu = this.content()?.menu;
-      if (trigger && menu) {
-        signalSetFn(trigger.menu[SIGNAL], menu);
-      }
-    });
-  }
+  protected readonly class = computed(() =>
+    cn(
+      'bg-popover text-popover-foreground z-50 min-w-[8rem] rounded-md border p-1 shadow-md',
+      this.menu.visible()
+        ? 'opacity-100 visible transition-[opacity,visibility] duration-150 ease-out'
+        : 'opacity-0 invisible transition-[opacity,visibility] duration-150 ease-in [transition-delay:0s,150ms]',
+      this.classInput(),
+    ),
+  );
 }
