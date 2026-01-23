@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet } from './sc-sheet';
+import { ScSheet } from './sheet';
 
 @Directive({
   selector: 'button[sc-sheet-close]',

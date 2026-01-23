@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet } from './sc-sheet';
+import { ScSheet } from './sheet';
 
 @Component({
   selector: 'div[sc-sheet-portal]',

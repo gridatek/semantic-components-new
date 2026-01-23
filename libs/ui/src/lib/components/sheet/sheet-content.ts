@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheet, SheetSide } from './sc-sheet';
+import { ScSheet, SheetSide } from './sheet';
 
 let sheetIdCounter = 0;
 

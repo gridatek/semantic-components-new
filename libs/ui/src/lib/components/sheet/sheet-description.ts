@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheetContent } from './sc-sheet-content';
+import { ScSheetContent } from './sheet-content';
 
 @Directive({
   selector: 'p[sc-sheet-description]',
