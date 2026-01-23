@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScLanguageService } from './sc-language.service';
+import { ScLanguageService } from './language.service';
 
 export type LanguageSwitcherVariant = 'default' | 'outline' | 'ghost';
 export type LanguageSwitcherSize = 'default' | 'sm' | 'lg' | 'icon';

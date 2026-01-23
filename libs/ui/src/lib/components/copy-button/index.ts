@@ -3,4 +3,4 @@ export {
   ScCopyButtonWithText,
   ScCopyInput,
   ScCopyCode,
-} from './sc-copy-button';
+} from './copy-button';

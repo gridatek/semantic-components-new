@@ -4,5 +4,5 @@ export {
   ScImageCropperControls,
   ScImageCropperPreview,
   ScImageCropperAspectRatio,
-} from './sc-image-cropper';
-export type { CropArea, CropResult } from './sc-image-cropper';
+} from './image-cropper';
+export type { CropArea, CropResult } from './image-cropper';
