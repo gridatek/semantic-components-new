@@ -13,6 +13,6 @@ import { MultipleAccordionDemo } from './multiple-accordion-demo';
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class MultipleAccordionDemoContainer {
+export class MultipleAccordionDemoContainer {
   readonly code = '';
 }

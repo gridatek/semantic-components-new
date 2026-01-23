@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import BasicAccordionDemoContainer from './demos/basic-accordion-demo-container';
-import MultipleAccordionDemoContainer from './demos/multiple-accordion-demo-container';
-import DisabledAccordionDemoContainer from './demos/disabled-accordion-demo-container';
+import { BasicAccordionDemoContainer } from './demos/basic-accordion-demo-container';
+import { MultipleAccordionDemoContainer } from './demos/multiple-accordion-demo-container';
+import { DisabledAccordionDemoContainer } from './demos/disabled-accordion-demo-container';
 
 @Component({
   selector: 'app-accordion-page',

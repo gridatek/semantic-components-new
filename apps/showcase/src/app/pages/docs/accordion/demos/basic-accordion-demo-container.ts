@@ -13,6 +13,6 @@ import { BasicAccordionDemo } from './basic-accordion-demo';
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BasicAccordionDemoContainer {
+export class BasicAccordionDemoContainer {
   readonly code = '';
 }

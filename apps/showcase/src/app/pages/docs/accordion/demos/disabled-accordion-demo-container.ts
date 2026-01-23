@@ -13,6 +13,6 @@ import { DisabledAccordionDemo } from './disabled-accordion-demo';
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DisabledAccordionDemoContainer {
+export class DisabledAccordionDemoContainer {
   readonly code = '';
 }
