@@ -836,10 +836,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/popover',
     children: [
       {
-        path: 'popover-demo',
+        path: 'basic-popover-demo',
         loadComponent: () =>
-          import('../pages/docs/popover/demos/popover-demo').then(
-            (m) => m.ScPopoverDemo,
+          import('../pages/docs/popover/demos/basic-popover-demo').then(
+            (m) => m.BasicPopoverDemo,
+          ),
+      },
+      {
+        path: 'top-popover-demo',
+        loadComponent: () =>
+          import('../pages/docs/popover/demos/top-popover-demo').then(
+            (m) => m.TopPopoverDemo,
+          ),
+      },
+      {
+        path: 'right-popover-demo',
+        loadComponent: () =>
+          import('../pages/docs/popover/demos/right-popover-demo').then(
+            (m) => m.RightPopoverDemo,
+          ),
+      },
+      {
+        path: 'left-popover-demo',
+        loadComponent: () =>
+          import('../pages/docs/popover/demos/left-popover-demo').then(
+            (m) => m.LeftPopoverDemo,
+          ),
+      },
+      {
+        path: 'align-start-popover-demo',
+        loadComponent: () =>
+          import('../pages/docs/popover/demos/align-start-popover-demo').then(
+            (m) => m.AlignStartPopoverDemo,
+          ),
+      },
+      {
+        path: 'align-end-popover-demo',
+        loadComponent: () =>
+          import('../pages/docs/popover/demos/align-end-popover-demo').then(
+            (m) => m.AlignEndPopoverDemo,
           ),
       },
     ],

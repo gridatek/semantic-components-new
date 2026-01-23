@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScPopoverDemoContainer } from './demos/popover-demo-container';
+import { BasicPopoverDemoContainer } from './demos/basic-popover-demo-container';
+import { TopPopoverDemoContainer } from './demos/top-popover-demo-container';
+import { RightPopoverDemoContainer } from './demos/right-popover-demo-container';
+import { LeftPopoverDemoContainer } from './demos/left-popover-demo-container';
+import { AlignStartPopoverDemoContainer } from './demos/align-start-popover-demo-container';
+import { AlignEndPopoverDemoContainer } from './demos/align-end-popover-demo-container';
 
 @Component({
   selector: 'app-popover-page',
-  imports: [ScPopoverDemoContainer],
+  imports: [
+    BasicPopoverDemoContainer,
+    TopPopoverDemoContainer,
+    RightPopoverDemoContainer,
+    LeftPopoverDemoContainer,
+    AlignStartPopoverDemoContainer,
+    AlignEndPopoverDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +27,12 @@ import { ScPopoverDemoContainer } from './demos/popover-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-popover-demo-container />
+        <app-basic-popover-demo-container />
+        <app-top-popover-demo-container />
+        <app-right-popover-demo-container />
+        <app-left-popover-demo-container />
+        <app-align-start-popover-demo-container />
+        <app-align-end-popover-demo-container />
       </section>
     </div>
   `,
