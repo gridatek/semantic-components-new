@@ -14,7 +14,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScContextMenuContent } from './sc-context-menu-content';
+import { ScContextMenuContent } from './context-menu-content';
 
 @Component({
   selector: 'div[sc-context-menu]',

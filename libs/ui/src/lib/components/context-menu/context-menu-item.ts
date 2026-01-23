@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input, output } from '@angular/core';
 import { cn } from '../../utils';
-import { ScContextMenu } from './sc-context-menu';
+import { ScContextMenu } from './context-menu';
 
 @Directive({
   selector: '[sc-context-menu-item]',

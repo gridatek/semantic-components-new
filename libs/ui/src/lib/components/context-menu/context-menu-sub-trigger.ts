@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScContextMenuSub } from './sc-context-menu-sub';
+import { ScContextMenuSub } from './context-menu-sub';
 
 @Component({
   selector: 'div[sc-context-menu-sub-trigger]',

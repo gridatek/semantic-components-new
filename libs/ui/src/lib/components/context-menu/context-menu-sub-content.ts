@@ -8,8 +8,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScContextMenuSub } from './sc-context-menu-sub';
-import { ScContextMenuSubTrigger } from './sc-context-menu-sub-trigger';
+import { ScContextMenuSub } from './context-menu-sub';
+import { ScContextMenuSubTrigger } from './context-menu-sub-trigger';
 
 const positions: ConnectedPosition[] = [
   {

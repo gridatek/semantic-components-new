@@ -7,8 +7,8 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScContextMenu } from './sc-context-menu';
-import { ScContextMenuContent } from './sc-context-menu-content';
+import { ScContextMenu } from './context-menu';
+import { ScContextMenuContent } from './context-menu-content';
 
 @Directive({
   selector: '[sc-context-menu-trigger]',
