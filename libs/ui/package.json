@@ -10,7 +10,9 @@
     "@angular/forms": ">=21.1.1",
     "@angular/common": ">=21.1.1",
     "@angular/aria": ">=21.1.1",
-    "rxjs": ">=7.8.2"
+    "rxjs": ">=7.8.2",
+    "@angular/platform-browser": ">=21.1.1",
+    "shiki": ">=3.21.0"
   },
   "sideEffects": false
 }
