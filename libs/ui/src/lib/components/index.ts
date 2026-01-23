@@ -100,3 +100,7 @@ export * from './transfer-list';
 export * from './tree-view';
 export * from './video-player';
 export * from './virtual-list';
+export * from './split-button';
+export * from './spinner';
+export * from './language-switcher';
+export * from './carousel';
