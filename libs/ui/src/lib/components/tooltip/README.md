@@ -4,30 +4,32 @@ A set of Angular components for creating accessible tooltips with shadcn/ui styl
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScTooltip` to access shared state.
+The components follow a dependency injection (DI) pattern where child components inject the parent `ScTooltipProvider` to access shared state. Positioning is handled via CDK Overlay.
 
 ```
-ScTooltip (root wrapper - manages open state, side, delay)
-├── ScTooltipTrigger (element that triggers tooltip on hover/focus)
-└── ScTooltipContent (floating tooltip panel)
+ScTooltipProvider (root wrapper - manages open state, side, delay)
+├── ScTooltipTrigger (directive on element that triggers tooltip on hover/focus)
+└── ScTooltipPortal (overlay portal for positioning)
+    └── ScTooltip (tooltip content with role="tooltip")
 ```
 
 ## Components
 
-| Component          | Selector                  | Description                           |
-| ------------------ | ------------------------- | ------------------------------------- |
-| `ScTooltip`        | `div[sc-tooltip]`         | Root wrapper, manages state           |
-| `ScTooltipTrigger` | `[sc-tooltip-trigger]`    | Element that shows tooltip on hover   |
-| `ScTooltipContent` | `div[sc-tooltip-content]` | Floating tooltip panel with animation |
+| Component           | Selector                   | Type      | Description                                 |
+| ------------------- | -------------------------- | --------- | ------------------------------------------- |
+| `ScTooltipProvider` | `div[sc-tooltip-provider]` | Component | Root wrapper, manages state and positioning |
+| `ScTooltipTrigger`  | `[sc-tooltip-trigger]`     | Directive | Element that shows tooltip on hover/focus   |
+| `ScTooltipPortal`   | `div[sc-tooltip-portal]`   | Component | CDK overlay portal for tooltip positioning  |
+| `ScTooltip`         | `div[sc-tooltip]`          | Component | Tooltip content panel with animation        |
 
 ## Usage
 
 ### Basic Tooltip
 
 ```html
-<div sc-tooltip>
+<div sc-tooltip-provider>
   <button sc-tooltip-trigger>Hover me</button>
-  <div sc-tooltip-content>Add to library</div>
+  <div sc-tooltip-portal><div sc-tooltip>Add to library</div></div>
 </div>
 ```
 
@@ -35,27 +37,27 @@ ScTooltip (root wrapper - manages open state, side, delay)
 
 ```html
 <!-- Top (default) -->
-<div sc-tooltip side="top">
+<div sc-tooltip-provider side="top">
   <button sc-tooltip-trigger>Top</button>
-  <div sc-tooltip-content>Tooltip on top</div>
+  <div sc-tooltip-portal><div sc-tooltip>Tooltip on top</div></div>
 </div>
 
 <!-- Bottom -->
-<div sc-tooltip side="bottom">
+<div sc-tooltip-provider side="bottom">
   <button sc-tooltip-trigger>Bottom</button>
-  <div sc-tooltip-content>Tooltip on bottom</div>
+  <div sc-tooltip-portal><div sc-tooltip>Tooltip on bottom</div></div>
 </div>
 
 <!-- Left -->
-<div sc-tooltip side="left">
+<div sc-tooltip-provider side="left">
   <button sc-tooltip-trigger>Left</button>
-  <div sc-tooltip-content>Tooltip on left</div>
+  <div sc-tooltip-portal><div sc-tooltip>Tooltip on left</div></div>
 </div>
 
 <!-- Right -->
-<div sc-tooltip side="right">
+<div sc-tooltip-provider side="right">
   <button sc-tooltip-trigger>Right</button>
-  <div sc-tooltip-content>Tooltip on right</div>
+  <div sc-tooltip-portal><div sc-tooltip>Tooltip on right</div></div>
 </div>
 ```
 
@@ -63,27 +65,27 @@ ScTooltip (root wrapper - manages open state, side, delay)
 
 ```html
 <!-- 500ms delay -->
-<div sc-tooltip [delayDuration]="500">
+<div sc-tooltip-provider [delayDuration]="500">
   <button sc-tooltip-trigger>Slow tooltip</button>
-  <div sc-tooltip-content>This appears after 500ms</div>
+  <div sc-tooltip-portal><div sc-tooltip>This appears after 500ms</div></div>
 </div>
 
 <!-- No delay (instant) -->
-<div sc-tooltip [delayDuration]="0">
+<div sc-tooltip-provider [delayDuration]="0">
   <button sc-tooltip-trigger>Instant tooltip</button>
-  <div sc-tooltip-content>This appears instantly</div>
+  <div sc-tooltip-portal><div sc-tooltip>This appears instantly</div></div>
 </div>
 ```
 
 ### Icon Button with Tooltip
 
 ```html
-<div sc-tooltip>
+<div sc-tooltip-provider>
   <button sc-tooltip-trigger class="icon-button">
     <svg><!-- icon --></svg>
     <span class="sr-only">Add item</span>
   </button>
-  <div sc-tooltip-content>Add item</div>
+  <div sc-tooltip-portal><div sc-tooltip>Add item</div></div>
 </div>
 ```
 
@@ -92,9 +94,9 @@ ScTooltip (root wrapper - manages open state, side, delay)
 The trigger can be applied to any element, not just buttons:
 
 ```html
-<div sc-tooltip>
+<div sc-tooltip-provider>
   <span sc-tooltip-trigger class="underline cursor-help">What is this?</span>
-  <div sc-tooltip-content>This is an explanation</div>
+  <div sc-tooltip-portal><div sc-tooltip>This is an explanation</div></div>
 </div>
 ```
 
@@ -120,7 +122,7 @@ The trigger can be applied to any element, not just buttons:
 
 ### State Management
 
-`ScTooltip` uses a signal for the `open` state:
+`ScTooltipProvider` uses a signal for the `open` state:
 
 ```typescript
 readonly open = signal<boolean>(false);
@@ -140,6 +142,7 @@ hide(): void {
 
 ```typescript
 private scheduleShow(): void {
+  this.cancelShow();
   this.showTimeout = setTimeout(() => {
     this.tooltip.show();
   }, this.tooltip.delayDuration());
@@ -151,7 +154,7 @@ private scheduleShow(): void {
 The tooltip stays open when hovering over the content itself:
 
 ```typescript
-// In ScTooltipContent
+// In ScTooltip
 onMouseEnter(): void {
   this.tooltip.show();
 }
@@ -161,9 +164,13 @@ onMouseLeave(): void {
 }
 ```
 
+### Positioning
+
+`ScTooltipPortal` uses CDK Connected Overlay to position the tooltip relative to the trigger based on the configured `side`.
+
 ## Accessibility
 
-- `role="tooltip"` on the content
+- `role="tooltip"` on the `ScTooltip` content
 - Tooltip appears on keyboard focus (not just hover)
 - Screen readers announce tooltip content
 
@@ -172,5 +179,5 @@ onMouseLeave(): void {
 All components accept a `class` input for custom styling:
 
 ```html
-<div sc-tooltip-content class="bg-destructive text-destructive-foreground">Warning: This action cannot be undone</div>
+<div sc-tooltip-portal><div sc-tooltip class="bg-destructive text-destructive-foreground">Warning: This action cannot be undone</div></div>
 ```
