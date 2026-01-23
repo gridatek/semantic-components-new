@@ -1235,10 +1235,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/tooltip',
     children: [
       {
-        path: 'tooltip-demo',
+        path: 'basic-tooltip-demo',
         loadComponent: () =>
-          import('../pages/docs/tooltip/demos/tooltip-demo').then(
-            (m) => m.ScTooltipDemo,
+          import('../pages/docs/tooltip/demos/basic-tooltip-demo').then(
+            (m) => m.BasicTooltipDemo,
+          ),
+      },
+      {
+        path: 'positions-tooltip-demo',
+        loadComponent: () =>
+          import('../pages/docs/tooltip/demos/positions-tooltip-demo').then(
+            (m) => m.PositionsTooltipDemo,
+          ),
+      },
+      {
+        path: 'icon-button-tooltip-demo',
+        loadComponent: () =>
+          import('../pages/docs/tooltip/demos/icon-button-tooltip-demo').then(
+            (m) => m.IconButtonTooltipDemo,
+          ),
+      },
+      {
+        path: 'delay-tooltip-demo',
+        loadComponent: () =>
+          import('../pages/docs/tooltip/demos/delay-tooltip-demo').then(
+            (m) => m.DelayTooltipDemo,
           ),
       },
     ],

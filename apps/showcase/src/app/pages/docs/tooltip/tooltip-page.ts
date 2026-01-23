@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltipDemoContainer } from './demos/tooltip-demo-container';
+import { BasicTooltipDemoContainer } from './demos/basic-tooltip-demo-container';
+import { PositionsTooltipDemoContainer } from './demos/positions-tooltip-demo-container';
+import { IconButtonTooltipDemoContainer } from './demos/icon-button-tooltip-demo-container';
+import { DelayTooltipDemoContainer } from './demos/delay-tooltip-demo-container';
 
 @Component({
   selector: 'app-tooltip-page',
-  imports: [ScTooltipDemoContainer],
+  imports: [
+    BasicTooltipDemoContainer,
+    PositionsTooltipDemoContainer,
+    IconButtonTooltipDemoContainer,
+    DelayTooltipDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +24,10 @@ import { ScTooltipDemoContainer } from './demos/tooltip-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-tooltip-demo-container />
+        <app-basic-tooltip-demo-container />
+        <app-positions-tooltip-demo-container />
+        <app-icon-button-tooltip-demo-container />
+        <app-delay-tooltip-demo-container />
       </section>
     </div>
   `,
