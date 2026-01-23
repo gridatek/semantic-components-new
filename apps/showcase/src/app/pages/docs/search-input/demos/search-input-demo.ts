@@ -3,7 +3,7 @@ import { ScSearchInput } from '@semantic-components/ui';
 import type { SearchSuggestion } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-search-input-demo',
+  selector: 'app-search-input-demo',
   imports: [ScSearchInput],
   template: `
     <div class="flex flex-col gap-8">
@@ -59,7 +59,7 @@ import type { SearchSuggestion } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchInputDemoComponent {
+export class SearchInputDemo {
   readonly selectedItem = signal<SearchSuggestion | null>(null);
   readonly isLoading = signal(false);
   readonly asyncSuggestions = signal<SearchSuggestion[]>([]);

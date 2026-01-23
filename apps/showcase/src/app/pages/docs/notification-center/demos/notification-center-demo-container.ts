@@ -69,7 +69,7 @@ import {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotificationCenterDemoComponent {
+export class NotificationCenterDemo {
   readonly groups = signal<NotificationGroup[]>([
     { id: 'messages', title: 'Messages' },
     { id: 'updates', title: 'Updates' },

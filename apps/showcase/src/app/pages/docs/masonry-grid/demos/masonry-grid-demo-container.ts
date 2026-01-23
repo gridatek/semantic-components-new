@@ -148,7 +148,7 @@ interface DemoItem {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MasonryGridDemoComponent {
+export class MasonryGridDemo {
   readonly colors = [
     '#ef4444',
     '#f97316',

@@ -75,7 +75,7 @@ import type { SearchSuggestion } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchInputDemoComponent {
+export class SearchInputDemo {
   readonly selectedItem = signal<SearchSuggestion | null>(null);
   readonly isLoading = signal(false);
   readonly asyncSuggestions = signal<SearchSuggestion[]>([]);

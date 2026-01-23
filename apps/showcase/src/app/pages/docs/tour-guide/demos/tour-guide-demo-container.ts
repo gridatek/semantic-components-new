@@ -13,7 +13,7 @@ import { TourGuideDemo } from './tour-guide-demo';
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TourGuideDemoComponent {
+export class TourGuideDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
 
@@ -106,7 +106,7 @@ import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TourGuideDemoComponent {
+export class TourGuideDemo {
   private readonly tourService = inject(TourService);
 
   startTour(): void {

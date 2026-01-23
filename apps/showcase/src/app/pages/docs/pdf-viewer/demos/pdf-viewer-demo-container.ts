@@ -114,7 +114,7 @@ import {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PdfViewerDemoComponent {
+export class PdfViewerDemo {
   pdfUrl = '';
 
   readonly currentPdf = signal(

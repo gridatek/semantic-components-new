@@ -79,7 +79,7 @@ import { ScImageAnnotator, type Annotation } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImageAnnotatorDemoComponent {
+export class ImageAnnotatorDemo {
   readonly annotationCount = signal(0);
 
   readonly imageSrc = signal('https://picsum.photos/seed/annotate1/700/450');

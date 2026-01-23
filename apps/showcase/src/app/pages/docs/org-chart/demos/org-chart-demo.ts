@@ -87,7 +87,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OrgChartDemoComponent {
+export class OrgChartDemo {
   readonly selectedNode = signal<OrgChartNode | null>(null);
 
   readonly basicOrgData = signal<OrgChartNode>({

@@ -188,7 +188,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CodeEditorDemoComponent {
+export class CodeEditorDemo {
   readonly lightTheme = THEMES['light'];
 
   readonly selectedLanguage = signal<CodeEditorLanguage>('javascript');

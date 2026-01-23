@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TourGuideDemoComponent } from './demos/tour-guide-demo-container';
+import { TourGuideDemoContainer } from './demos/tour-guide-demo-container';
 
 @Component({
   selector: 'app-tour-guide-page',
-  imports: [TourGuideDemoComponent],
+  imports: [TourGuideDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -43,7 +43,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KanbanBoardDemoComponent {
+export class KanbanBoardDemo {
   readonly columns = signal<KanbanColumn[]>([
     { id: 'backlog', title: 'Backlog', order: 0, color: '#6b7280' },
     { id: 'todo', title: 'To Do', order: 1, color: '#3b82f6' },

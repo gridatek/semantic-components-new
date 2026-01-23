@@ -86,5 +86,5 @@ export default class TablePage {
     </table>
   \`,
 })
-export class MyComponent {}`;
+export class My {}`;
 }

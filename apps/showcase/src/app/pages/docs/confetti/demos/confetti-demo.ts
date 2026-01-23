@@ -67,7 +67,7 @@ import { ScConfetti } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConfettiDemoComponent {
+export class ConfettiDemo {
   readonly confetti = viewChild.required<ScConfetti>('confetti');
 
   fireBasic(): void {

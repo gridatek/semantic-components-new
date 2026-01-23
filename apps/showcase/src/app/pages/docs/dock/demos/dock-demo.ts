@@ -84,7 +84,7 @@ import type { DockItem, DockPosition, DockSize } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DockDemoComponent {
+export class DockDemo {
   readonly clickedItem = signal<string | null>(null);
 
   readonly basicItems: DockItem[] = [

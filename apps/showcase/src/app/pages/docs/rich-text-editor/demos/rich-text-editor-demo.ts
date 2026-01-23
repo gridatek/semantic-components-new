@@ -102,7 +102,7 @@ import { ScRichTextEditor, ToolbarConfig } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RichTextEditorDemoComponent {
+export class RichTextEditorDemo {
   basicContent = '';
 
   prefilledContent = `

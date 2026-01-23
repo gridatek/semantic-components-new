@@ -13,7 +13,7 @@ import { TransferListDemo } from './transfer-list-demo';
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransferListDemoComponent {
+export class TransferListDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScTransferList } from '@semantic-components/ui';
 import type { TransferListItem } from '@semantic-components/ui';
@@ -77,7 +77,7 @@ import type { TransferListItem } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransferListDemoComponent {
+export class TransferListDemo {
   readonly sourceItems = signal<TransferListItem[]>([
     { id: '1', label: 'JavaScript', description: 'Programming language' },
     { id: '2', label: 'TypeScript', description: 'Typed JavaScript' },

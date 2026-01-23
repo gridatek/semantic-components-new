@@ -294,7 +294,7 @@ export class ScCopyButtonDemo {
   selector: 'app-hello',
   template: '<h1>Hello, World!</h1>'
 })
-export class HelloComponent {}\`;
+export class Hello {}\`;
 
   readonly shareUrl = 'https://example.com/share/demo-page';
 

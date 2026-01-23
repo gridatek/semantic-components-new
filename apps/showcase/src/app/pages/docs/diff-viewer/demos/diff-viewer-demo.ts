@@ -96,14 +96,14 @@ const y = 2;'"
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DiffViewerDemoComponent {
+export class DiffViewerDemo {
   oldCode = `import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: '<h1>Hello World</h1>',
 })
-export class AppComponent {
+export class App {
   title = 'my-app';
 
   ngOnInit() {

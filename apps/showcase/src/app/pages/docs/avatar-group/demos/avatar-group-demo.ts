@@ -125,7 +125,7 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvatarGroupDemoComponent {
+export class AvatarGroupDemo {
   readonly clickedUser = signal<string | null>(null);
 
   readonly users = signal<AvatarGroupItem[]>([

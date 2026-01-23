@@ -13,7 +13,7 @@ import { VirtualListDemo } from './virtual-list-demo';
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VirtualListDemoComponent {
+export class VirtualListDemoContainer {
   readonly code = `import {
   ChangeDetectionStrategy,
   Component,
@@ -190,7 +190,7 @@ interface User {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VirtualListDemoComponent {
+export class VirtualListDemo {
   readonly controlledList = viewChild<ScVirtualList<string>>('controlledList');
 
   readonly visibleRange = signal<VirtualListRange>({ start: 0, end: 0 });
