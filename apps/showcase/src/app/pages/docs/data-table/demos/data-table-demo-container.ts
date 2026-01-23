@@ -7,7 +7,7 @@ import { ScDataTableDemo } from './data-table-demo';
   imports: [DemoContainer, ScDataTableDemo],
   template: `
     <app-demo-container title="Data" [code]="code">
-      <app-sc-data-table-demo />
+      <app-data-table-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -142,7 +142,7 @@ const SAMPLE_DATA: User[] = [
 ];
 
 @Component({
-  selector: 'app-sc-data-table-demo',
+  selector: 'app-data-table-demo',
   imports: [
     ScDataTable,
     ScDataTableHeader,

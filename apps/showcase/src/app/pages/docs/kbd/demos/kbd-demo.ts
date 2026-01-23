@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScKbd } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-kbd-demo',
+  selector: 'app-kbd-demo',
   imports: [ScKbd],
   template: `
     <div class="space-y-8">

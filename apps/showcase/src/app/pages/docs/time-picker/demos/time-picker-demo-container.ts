@@ -7,7 +7,7 @@ import { ScTimePickerDemo } from './time-picker-demo';
   imports: [DemoContainer, ScTimePickerDemo],
   template: `
     <app-demo-container title="Time" [code]="code">
-      <app-sc-time-picker-demo />
+      <app-time-picker-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -25,7 +25,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-time-picker-demo',
+  selector: 'app-time-picker-demo',
   imports: [
     ScTimePicker,
     ScTimePickerInput,

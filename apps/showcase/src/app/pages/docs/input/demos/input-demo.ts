@@ -3,7 +3,7 @@ import { ScInput } from '@semantic-components/ui';
 import { ScLabel } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-input-demo',
+  selector: 'app-input-demo',
   imports: [ScInput, ScLabel],
   template: `
     <div class="space-y-8">

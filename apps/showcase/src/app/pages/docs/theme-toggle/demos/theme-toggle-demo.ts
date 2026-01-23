@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-theme-toggle-demo',
+  selector: 'app-theme-toggle-demo',
   imports: [ScThemeToggle, ScThemeSelect],
   template: `
     <div class="space-y-8">

@@ -9,7 +9,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-image-cropper-demo',
+  selector: 'app-image-cropper-demo',
   imports: [
     ScImageCropper,
     ScImageCropperControls,

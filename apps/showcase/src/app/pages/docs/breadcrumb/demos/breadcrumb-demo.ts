@@ -10,7 +10,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-breadcrumb-demo',
+  selector: 'app-breadcrumb-demo',
   imports: [
     ScBreadcrumb,
     ScBreadcrumbEllipsis,

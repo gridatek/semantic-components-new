@@ -7,7 +7,7 @@ import { ScTreeViewDemo } from './tree-view-demo';
   imports: [DemoContainer, ScTreeViewDemo],
   template: `
     <app-demo-container title="Tree" [code]="code">
-      <app-sc-tree-view-demo />
+      <app-tree-view-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -24,7 +24,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-tree-view-demo',
+  selector: 'app-tree-view-demo',
   imports: [
     ScTree,
     ScTreeItem,

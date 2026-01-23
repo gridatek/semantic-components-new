@@ -7,7 +7,7 @@ import { ScBreadcrumbDemo } from './breadcrumb-demo';
   imports: [DemoContainer, ScBreadcrumbDemo],
   template: `
     <app-demo-container title="Breadcrumb" [code]="code">
-      <app-sc-breadcrumb-demo />
+      <app-breadcrumb-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -26,7 +26,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-breadcrumb-demo',
+  selector: 'app-breadcrumb-demo',
   imports: [
     ScBreadcrumb,
     ScBreadcrumbEllipsis,

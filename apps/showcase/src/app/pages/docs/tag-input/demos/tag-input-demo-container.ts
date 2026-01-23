@@ -7,7 +7,7 @@ import { ScTagInputDemo } from './tag-input-demo';
   imports: [DemoContainer, ScTagInputDemo],
   template: `
     <app-demo-container title="Tag" [code]="code">
-      <app-sc-tag-input-demo />
+      <app-tag-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -25,7 +25,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-tag-input-demo',
+  selector: 'app-tag-input-demo',
   imports: [
     JsonPipe,
     ScTagInput,

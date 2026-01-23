@@ -7,7 +7,7 @@ import { ScTimezoneDemo } from './timezone-demo';
   imports: [DemoContainer, ScTimezoneDemo],
   template: `
     <app-demo-container title="Timezone" [code]="code">
-      <app-sc-timezone-demo />
+      <app-timezone-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -24,7 +24,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-timezone-demo',
+  selector: 'app-timezone-demo',
   imports: [
     ScTimezoneDisplay,
     ScTimezoneSelect,

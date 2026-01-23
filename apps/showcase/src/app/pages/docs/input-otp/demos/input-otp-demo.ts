@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-input-otp-demo',
+  selector: 'app-input-otp-demo',
   imports: [ScInputOtp, ScInputOtpGroup, ScInputOtpSeparator, ScInputOtpSlot],
   template: `
     <div class="space-y-8">

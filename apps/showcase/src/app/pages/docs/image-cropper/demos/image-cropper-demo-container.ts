@@ -7,7 +7,7 @@ import { ScImageCropperDemo } from './image-cropper-demo';
   imports: [DemoContainer, ScImageCropperDemo],
   template: `
     <app-demo-container title="Image" [code]="code">
-      <app-sc-image-cropper-demo />
+      <app-image-cropper-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -25,7 +25,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-image-cropper-demo',
+  selector: 'app-image-cropper-demo',
   imports: [
     ScImageCropper,
     ScImageCropperControls,

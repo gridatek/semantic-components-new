@@ -7,7 +7,7 @@ import { ScSwitchDemo } from './switch-demo';
   imports: [DemoContainer, ScSwitchDemo],
   template: `
     <app-demo-container title="Switch" [code]="code">
-      <app-sc-switch-demo />
+      <app-switch-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScSwitchDemoContainer {
 import { ScSwitch } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-switch-demo',
+  selector: 'app-switch-demo',
   imports: [ScSwitch],
   template: \`
     <div class="space-y-8">

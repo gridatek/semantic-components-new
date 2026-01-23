@@ -7,7 +7,7 @@ import { ScFileUploadDemo } from './file-upload-demo';
   imports: [DemoContainer, ScFileUploadDemo],
   template: `
     <app-demo-container title="File" [code]="code">
-      <app-sc-file-upload-demo />
+      <app-file-upload-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -30,7 +30,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-file-upload-demo',
+  selector: 'app-file-upload-demo',
   imports: [
     ScFileUpload,
     ScFileUploadDropzone,

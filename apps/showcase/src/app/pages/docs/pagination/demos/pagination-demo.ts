@@ -10,7 +10,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-pagination-demo',
+  selector: 'app-pagination-demo',
   imports: [
     ScPagination,
     ScPaginationContent,

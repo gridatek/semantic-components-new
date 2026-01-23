@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScToggle } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-toggle-demo',
+  selector: 'app-toggle-demo',
   imports: [ScToggle],
   template: `
     <div class="space-y-8">

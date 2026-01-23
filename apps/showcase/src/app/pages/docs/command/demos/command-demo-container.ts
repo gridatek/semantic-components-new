@@ -7,7 +7,7 @@ import { ScCommandDemo } from './command-demo';
   imports: [DemoContainer, ScCommandDemo],
   template: `
     <app-demo-container title="Command" [code]="code">
-      <app-sc-command-demo />
+      <app-command-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -28,7 +28,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-command-demo',
+  selector: 'app-command-demo',
   imports: [
     ScCommand,
     ScCommandEmpty,

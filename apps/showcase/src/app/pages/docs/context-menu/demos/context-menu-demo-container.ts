@@ -7,7 +7,7 @@ import { ScContextMenuDemo } from './context-menu-demo';
   imports: [DemoContainer, ScContextMenuDemo],
   template: `
     <app-demo-container title="Context" [code]="code">
-      <app-sc-context-menu-demo />
+      <app-context-menu-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -29,7 +29,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-context-menu-demo',
+  selector: 'app-context-menu-demo',
   imports: [
     ScContextMenu,
     ScContextMenuContent,

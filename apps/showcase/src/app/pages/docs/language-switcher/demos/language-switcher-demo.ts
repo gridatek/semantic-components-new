@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-language-switcher-demo',
+  selector: 'app-language-switcher-demo',
   imports: [ScLanguageToggle, ScLanguageSelect, ScLanguageButton],
   template: `
     <div class="space-y-8">

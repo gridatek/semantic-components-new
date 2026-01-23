@@ -8,7 +8,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-timezone-demo',
+  selector: 'app-timezone-demo',
   imports: [
     ScTimezoneDisplay,
     ScTimezoneSelect,

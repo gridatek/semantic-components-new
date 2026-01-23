@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScSlider } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-slider-demo',
+  selector: 'app-slider-demo',
   imports: [ScSlider],
   template: `
     <div class="space-y-8">

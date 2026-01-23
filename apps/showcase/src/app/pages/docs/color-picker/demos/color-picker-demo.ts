@@ -10,7 +10,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-color-picker-demo',
+  selector: 'app-color-picker-demo',
   imports: [
     ScColorPicker,
     ScColorPickerArea,

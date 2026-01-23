@@ -7,7 +7,7 @@ import { ScCollapsibleDemo } from './collapsible-demo';
   imports: [DemoContainer, ScCollapsibleDemo],
   template: `
     <app-demo-container title="Collapsible" [code]="code">
-      <app-sc-collapsible-demo />
+      <app-collapsible-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-collapsible-demo',
+  selector: 'app-collapsible-demo',
   imports: [ScCollapsible, ScCollapsibleContent, ScCollapsibleTrigger],
   template: \`
     <div class="flex flex-col gap-8">

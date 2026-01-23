@@ -7,7 +7,7 @@ import { ScCalendarDemo } from './calendar-demo';
   imports: [DemoContainer, ScCalendarDemo],
   template: `
     <app-demo-container title="Calendar" [code]="code">
-      <app-sc-calendar-demo />
+      <app-calendar-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScCalendarDemoContainer {
 import { DateRange, ScCalendar } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-calendar-demo',
+  selector: 'app-calendar-demo',
   imports: [ScCalendar],
   template: \`
     <div class="space-y-8">

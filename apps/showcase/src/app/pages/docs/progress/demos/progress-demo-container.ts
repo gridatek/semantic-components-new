@@ -7,7 +7,7 @@ import { ScProgressDemo } from './progress-demo';
   imports: [DemoContainer, ScProgressDemo],
   template: `
     <app-demo-container title="Progress" [code]="code">
-      <app-sc-progress-demo />
+      <app-progress-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -24,7 +24,7 @@ export class ScProgressDemoContainer {
 import { ScProgress } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-progress-demo',
+  selector: 'app-progress-demo',
   imports: [ScProgress],
   template: \`
     <div class="space-y-8">

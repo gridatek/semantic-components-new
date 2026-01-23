@@ -7,7 +7,7 @@ import { ScCopyButtonDemo } from './copy-button-demo';
   imports: [DemoContainer, ScCopyButtonDemo],
   template: `
     <app-demo-container title="Copy" [code]="code">
-      <app-sc-copy-button-demo />
+      <app-copy-button-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-copy-button-demo',
+  selector: 'app-copy-button-demo',
   imports: [ScCopyButton, ScCopyButtonWithText, ScCopyInput, ScCopyCode],
   template: \`
     <div class="space-y-8">

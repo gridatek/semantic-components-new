@@ -3,7 +3,7 @@ import { ScLabel } from '@semantic-components/ui';
 import { ScCheckbox } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-label-demo',
+  selector: 'app-label-demo',
   imports: [ScLabel, ScCheckbox],
   template: `
     <div class="space-y-8">

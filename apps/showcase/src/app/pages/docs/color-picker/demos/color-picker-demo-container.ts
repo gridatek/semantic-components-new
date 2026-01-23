@@ -7,7 +7,7 @@ import { ScColorPickerDemo } from './color-picker-demo';
   imports: [DemoContainer, ScColorPickerDemo],
   template: `
     <app-demo-container title="Color" [code]="code">
-      <app-sc-color-picker-demo />
+      <app-color-picker-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -26,7 +26,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-color-picker-demo',
+  selector: 'app-color-picker-demo',
   imports: [
     ScColorPicker,
     ScColorPickerArea,

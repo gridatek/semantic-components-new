@@ -16,7 +16,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-sidebar-demo',
+  selector: 'app-sidebar-demo',
   imports: [
     ScSidebarProvider,
     ScSidebar,

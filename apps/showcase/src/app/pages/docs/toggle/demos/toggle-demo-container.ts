@@ -7,7 +7,7 @@ import { ScToggleDemo } from './toggle-demo';
   imports: [DemoContainer, ScToggleDemo],
   template: `
     <app-demo-container title="Toggle" [code]="code">
-      <app-sc-toggle-demo />
+      <app-toggle-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScToggleDemoContainer {
 import { ScToggle } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-toggle-demo',
+  selector: 'app-toggle-demo',
   imports: [ScToggle],
   template: \`
     <div class="space-y-8">

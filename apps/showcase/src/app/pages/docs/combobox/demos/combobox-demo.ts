@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ComboboxOption, ScCombobox } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-combobox-demo',
+  selector: 'app-combobox-demo',
   imports: [ScCombobox],
   template: `
     <div class="space-y-8">

@@ -7,7 +7,7 @@ import { ScTabsDemo } from './tabs-demo';
   imports: [DemoContainer, ScTabsDemo],
   template: `
     <app-demo-container title="Tabs" [code]="code">
-      <app-sc-tabs-demo />
+      <app-tabs-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScTabsDemoContainer {
 import { ScTabs, ScTabPanel, ScTabList } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-tabs-demo',
+  selector: 'app-tabs-demo',
   imports: [ScTabs, ScTabPanel, ScTabList],
   template: \`
     <div class="flex flex-col gap-8">

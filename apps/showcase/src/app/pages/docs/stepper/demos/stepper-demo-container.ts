@@ -7,7 +7,7 @@ import { ScStepperDemo } from './stepper-demo';
   imports: [DemoContainer, ScStepperDemo],
   template: `
     <app-demo-container title="Stepper" [code]="code">
-      <app-sc-stepper-demo />
+      <app-stepper-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -29,7 +29,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-stepper-demo',
+  selector: 'app-stepper-demo',
   imports: [
     ScStepper,
     ScStepperList,

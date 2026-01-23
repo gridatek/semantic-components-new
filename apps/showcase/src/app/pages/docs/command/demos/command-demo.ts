@@ -12,7 +12,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-command-demo',
+  selector: 'app-command-demo',
   imports: [
     ScCommand,
     ScCommandEmpty,

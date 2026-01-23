@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-collapsible-demo',
+  selector: 'app-collapsible-demo',
   imports: [ScCollapsible, ScCollapsibleContent, ScCollapsibleTrigger],
   template: `
     <div class="flex flex-col gap-8">

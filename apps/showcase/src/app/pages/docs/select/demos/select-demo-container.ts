@@ -7,7 +7,7 @@ import { ScSelectDemo } from './select-demo';
   imports: [DemoContainer, ScSelectDemo],
   template: `
     <app-demo-container title="Select" [code]="code">
-      <app-sc-select-demo />
+      <app-select-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -35,7 +35,7 @@ import {
 
 
 @Component({
-  selector: 'app-sc-select-demo',
+  selector: 'app-select-demo',
   imports: [
     ScSelect,
     ScSelectContent,

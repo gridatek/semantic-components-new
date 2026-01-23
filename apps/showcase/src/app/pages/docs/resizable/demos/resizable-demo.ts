@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-resizable-demo',
+  selector: 'app-resizable-demo',
   imports: [ScResizableHandle, ScResizablePanel, ScResizablePanelGroup],
   template: `
     <div class="space-y-8">

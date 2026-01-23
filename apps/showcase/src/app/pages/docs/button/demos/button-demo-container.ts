@@ -7,7 +7,7 @@ import { ScButtonDemo } from './button-demo';
   imports: [DemoContainer, ScButtonDemo],
   template: `
     <app-demo-container title="Button" [code]="code">
-      <app-sc-button-demo />
+      <app-button-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScButtonDemoContainer {
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-button-demo',
+  selector: 'app-button-demo',
   imports: [ScButton],
   template: \`
     <div class="space-y-8">

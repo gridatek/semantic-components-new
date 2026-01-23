@@ -7,7 +7,7 @@ import { ScThemeToggleDemo } from './theme-toggle-demo';
   imports: [DemoContainer, ScThemeToggleDemo],
   template: `
     <app-demo-container title="Theme" [code]="code">
-      <app-sc-theme-toggle-demo />
+      <app-theme-toggle-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-theme-toggle-demo',
+  selector: 'app-theme-toggle-demo',
   imports: [ScThemeToggle, ScThemeSelect],
   template: \`
     <div class="space-y-8">

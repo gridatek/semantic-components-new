@@ -8,7 +8,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-tree-view-demo',
+  selector: 'app-tree-view-demo',
   imports: [
     ScTree,
     ScTreeItem,

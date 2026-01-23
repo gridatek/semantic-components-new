@@ -13,7 +13,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-stepper-demo',
+  selector: 'app-stepper-demo',
   imports: [
     ScStepper,
     ScStepperList,

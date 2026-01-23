@@ -9,7 +9,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-navigation-menu-demo',
+  selector: 'app-navigation-menu-demo',
   imports: [
     ScNavigationMenu,
     ScNavigationMenuContent,

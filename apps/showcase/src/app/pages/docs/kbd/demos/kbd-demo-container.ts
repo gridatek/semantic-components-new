@@ -7,7 +7,7 @@ import { ScKbdDemo } from './kbd-demo';
   imports: [DemoContainer, ScKbdDemo],
   template: `
     <app-demo-container title="Kbd" [code]="code">
-      <app-sc-kbd-demo />
+      <app-kbd-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScKbdDemoContainer {
 import { ScKbd } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-kbd-demo',
+  selector: 'app-kbd-demo',
   imports: [ScKbd],
   template: \`
     <div class="space-y-8">

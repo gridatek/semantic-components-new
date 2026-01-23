@@ -7,7 +7,7 @@ import { ScRadioGroupDemo } from './radio-group-demo';
   imports: [DemoContainer, ScRadioGroupDemo],
   template: `
     <app-demo-container title="Radio" [code]="code">
-      <app-sc-radio-group-demo />
+      <app-radio-group-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScRadioGroupDemoContainer {
 import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-radio-group-demo',
+  selector: 'app-radio-group-demo',
   imports: [ScRadioGroup, ScRadioGroupItem],
   template: \`
     <div class="space-y-8">

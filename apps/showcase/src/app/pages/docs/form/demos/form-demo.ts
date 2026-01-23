@@ -11,7 +11,7 @@ import {
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-form-demo',
+  selector: 'app-form-demo',
   imports: [
     ReactiveFormsModule,
     ScFormField,

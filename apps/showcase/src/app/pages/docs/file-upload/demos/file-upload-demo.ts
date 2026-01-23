@@ -14,7 +14,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-file-upload-demo',
+  selector: 'app-file-upload-demo',
   imports: [
     ScFileUpload,
     ScFileUploadDropzone,

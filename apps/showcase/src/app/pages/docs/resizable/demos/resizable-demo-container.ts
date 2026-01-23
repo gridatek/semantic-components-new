@@ -7,7 +7,7 @@ import { ScResizableDemo } from './resizable-demo';
   imports: [DemoContainer, ScResizableDemo],
   template: `
     <app-demo-container title="Resizable" [code]="code">
-      <app-sc-resizable-demo />
+      <app-resizable-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-resizable-demo',
+  selector: 'app-resizable-demo',
   imports: [ScResizableHandle, ScResizablePanel, ScResizablePanelGroup],
   template: \`
     <div class="space-y-8">

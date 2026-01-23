@@ -7,7 +7,7 @@ import { ScRatingDemo } from './rating-demo';
   imports: [DemoContainer, ScRatingDemo],
   template: `
     <app-demo-container title="Rating" [code]="code">
-      <app-sc-rating-demo />
+      <app-rating-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScRatingDemoContainer {
 import { ScRating, ScRatingItem, ScRatingStars } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-rating-demo',
+  selector: 'app-rating-demo',
   imports: [ScRating, ScRatingItem, ScRatingStars],
   template: \`
     <div class="space-y-8">

@@ -18,7 +18,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-select-demo',
+  selector: 'app-select-demo',
   imports: [
     ScSelect,
     ScSelectContent,

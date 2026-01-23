@@ -7,7 +7,7 @@ import { ScToggleGroupDemo } from './toggle-group-demo';
   imports: [DemoContainer, ScToggleGroupDemo],
   template: `
     <app-demo-container title="Toggle" [code]="code">
-      <app-sc-toggle-group-demo />
+      <app-toggle-group-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScToggleGroupDemoContainer {
 import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-toggle-group-demo',
+  selector: 'app-toggle-group-demo',
   imports: [ScToggleGroup, ScToggleGroupItem],
   template: \`
     <div class="space-y-8">

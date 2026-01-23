@@ -7,7 +7,7 @@ import { ScChartDemo } from './chart-demo';
   imports: [DemoContainer, ScChartDemo],
   template: `
     <app-demo-container title="Chart" [code]="code">
-      <app-sc-chart-demo />
+      <app-chart-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -26,7 +26,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-chart-demo',
+  selector: 'app-chart-demo',
   imports: [
     ScChartContainer,
     ScChartLegend,

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScSkeleton } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-skeleton-demo',
+  selector: 'app-skeleton-demo',
   imports: [ScSkeleton],
   template: `
     <div class="space-y-8">

@@ -8,7 +8,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-carousel-demo',
+  selector: 'app-carousel-demo',
   imports: [
     ScCarousel,
     ScCarouselContent,

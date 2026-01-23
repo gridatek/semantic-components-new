@@ -7,7 +7,7 @@ import { ScDrawerDemo } from './drawer-demo';
   imports: [DemoContainer, ScDrawerDemo],
   template: `
     <app-demo-container title="Drawer" [code]="code">
-      <app-sc-drawer-demo />
+      <app-drawer-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -29,7 +29,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-drawer-demo',
+  selector: 'app-drawer-demo',
   imports: [
     ScDrawer,
     ScDrawerClose,

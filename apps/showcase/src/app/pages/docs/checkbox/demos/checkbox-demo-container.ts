@@ -7,7 +7,7 @@ import { ScCheckboxDemo } from './checkbox-demo';
   imports: [DemoContainer, ScCheckboxDemo],
   template: `
     <app-demo-container title="Checkbox" [code]="code">
-      <app-sc-checkbox-demo />
+      <app-checkbox-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScCheckboxDemoContainer {
 import { ScCheckbox } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-checkbox-demo',
+  selector: 'app-checkbox-demo',
   imports: [ScCheckbox],
   template: \`
     <div class="space-y-8">

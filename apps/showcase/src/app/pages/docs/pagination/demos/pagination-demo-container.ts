@@ -7,7 +7,7 @@ import { ScPaginationDemo } from './pagination-demo';
   imports: [DemoContainer, ScPaginationDemo],
   template: `
     <app-demo-container title="Pagination" [code]="code">
-      <app-sc-pagination-demo />
+      <app-pagination-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -26,7 +26,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-pagination-demo',
+  selector: 'app-pagination-demo',
   imports: [
     ScPagination,
     ScPaginationContent,

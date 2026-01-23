@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScSeparator } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-separator-demo',
+  selector: 'app-separator-demo',
   imports: [ScSeparator],
   template: `
     <div class="space-y-8">

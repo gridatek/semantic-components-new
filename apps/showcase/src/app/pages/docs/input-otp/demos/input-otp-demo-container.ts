@@ -7,7 +7,7 @@ import { ScInputOtpDemo } from './input-otp-demo';
   imports: [DemoContainer, ScInputOtpDemo],
   template: `
     <app-demo-container title="Input" [code]="code">
-      <app-sc-input-otp-demo />
+      <app-input-otp-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-input-otp-demo',
+  selector: 'app-input-otp-demo',
   imports: [ScInputOtp, ScInputOtpGroup, ScInputOtpSeparator, ScInputOtpSlot],
   template: \`
     <div class="space-y-8">

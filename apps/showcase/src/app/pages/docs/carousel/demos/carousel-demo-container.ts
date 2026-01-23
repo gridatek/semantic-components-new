@@ -7,7 +7,7 @@ import { ScCarouselDemo } from './carousel-demo';
   imports: [DemoContainer, ScCarouselDemo],
   template: `
     <app-demo-container title="Carousel" [code]="code">
-      <app-sc-carousel-demo />
+      <app-carousel-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -24,7 +24,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-carousel-demo',
+  selector: 'app-carousel-demo',
   imports: [
     ScCarousel,
     ScCarouselContent,

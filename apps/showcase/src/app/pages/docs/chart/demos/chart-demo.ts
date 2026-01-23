@@ -10,7 +10,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-chart-demo',
+  selector: 'app-chart-demo',
   imports: [
     ScChartContainer,
     ScChartLegend,

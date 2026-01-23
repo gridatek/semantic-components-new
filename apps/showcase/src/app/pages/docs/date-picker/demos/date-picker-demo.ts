@@ -3,7 +3,7 @@ import { DateRange } from '@semantic-components/ui';
 import { ScDatePicker } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-date-picker-demo',
+  selector: 'app-date-picker-demo',
   imports: [ScDatePicker],
   template: `
     <div class="space-y-8">

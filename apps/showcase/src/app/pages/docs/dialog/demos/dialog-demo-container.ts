@@ -7,7 +7,7 @@ import { ScDialogDemo } from './dialog-demo';
   imports: [DemoContainer, ScDialogDemo],
   template: `
     <app-demo-container title="Dialog" [code]="code">
-      <app-sc-dialog-demo />
+      <app-dialog-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -28,7 +28,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-dialog-demo',
+  selector: 'app-dialog-demo',
   imports: [
     ScDialog,
     ScDialogClose,

@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-copy-button-demo',
+  selector: 'app-copy-button-demo',
   imports: [ScCopyButton, ScCopyButtonWithText, ScCopyInput, ScCopyCode],
   template: `
     <div class="space-y-8">

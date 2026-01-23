@@ -12,7 +12,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-dialog-demo',
+  selector: 'app-dialog-demo',
   imports: [
     ScDialogProvider,
     ScDialogClose,

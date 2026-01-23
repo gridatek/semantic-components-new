@@ -126,7 +126,7 @@ const SAMPLE_DATA: User[] = [
 ];
 
 @Component({
-  selector: 'app-sc-data-table-demo',
+  selector: 'app-data-table-demo',
   imports: [
     ScDataTable,
     ScDataTableHeader,

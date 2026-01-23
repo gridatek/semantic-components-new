@@ -7,7 +7,7 @@ import { ScFormDemo } from './form-demo';
   imports: [DemoContainer, ScFormDemo],
   template: `
     <app-demo-container title="Form" [code]="code">
-      <app-sc-form-demo />
+      <app-form-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -27,7 +27,7 @@ import {
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-form-demo',
+  selector: 'app-form-demo',
   imports: [
     ReactiveFormsModule,
     ScFormField,

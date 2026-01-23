@@ -13,7 +13,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-drawer-demo',
+  selector: 'app-drawer-demo',
   imports: [
     ScDrawer,
     ScDrawerClose,

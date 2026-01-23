@@ -7,7 +7,7 @@ import { ScNavigationMenuDemo } from './navigation-menu-demo';
   imports: [DemoContainer, ScNavigationMenuDemo],
   template: `
     <app-demo-container title="Navigation" [code]="code">
-      <app-sc-navigation-menu-demo />
+      <app-navigation-menu-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -25,7 +25,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-navigation-menu-demo',
+  selector: 'app-navigation-menu-demo',
   imports: [
     ScNavigationMenu,
     ScNavigationMenuContent,

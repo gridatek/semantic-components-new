@@ -7,7 +7,7 @@ import { ScLabelDemo } from './label-demo';
   imports: [DemoContainer, ScLabelDemo],
   template: `
     <app-demo-container title="Label" [code]="code">
-      <app-sc-label-demo />
+      <app-label-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -19,7 +19,7 @@ import { ScLabel } from '@semantic-components/ui';
 import { ScCheckbox } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-label-demo',
+  selector: 'app-label-demo',
   imports: [ScLabel, ScCheckbox],
   template: \`
     <div class="space-y-8">

@@ -7,7 +7,7 @@ import { ScComboboxDemo } from './combobox-demo';
   imports: [DemoContainer, ScComboboxDemo],
   template: `
     <app-demo-container title="Combobox" [code]="code">
-      <app-sc-combobox-demo />
+      <app-combobox-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScComboboxDemoContainer {
 import { ComboboxOption, ScCombobox } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-combobox-demo',
+  selector: 'app-combobox-demo',
   imports: [ScCombobox],
   template: \`
     <div class="space-y-8">

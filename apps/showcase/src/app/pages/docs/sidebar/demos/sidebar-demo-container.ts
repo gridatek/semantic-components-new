@@ -7,7 +7,7 @@ import { ScSidebarDemo } from './sidebar-demo';
   imports: [DemoContainer, ScSidebarDemo],
   template: `
     <app-demo-container title="Sidebar" [code]="code">
-      <app-sc-sidebar-demo />
+      <app-sidebar-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -32,7 +32,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-sidebar-demo',
+  selector: 'app-sidebar-demo',
   imports: [
     ScSidebarProvider,
     ScSidebar,

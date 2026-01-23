@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { DateRange, ScCalendar } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-calendar-demo',
+  selector: 'app-calendar-demo',
   imports: [ScCalendar],
   template: `
     <div class="space-y-8">

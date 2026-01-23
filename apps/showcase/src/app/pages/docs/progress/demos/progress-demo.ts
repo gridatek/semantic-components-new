@@ -8,7 +8,7 @@ import {
 import { ScProgress } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-progress-demo',
+  selector: 'app-progress-demo',
   imports: [ScProgress],
   template: `
     <div class="space-y-8">

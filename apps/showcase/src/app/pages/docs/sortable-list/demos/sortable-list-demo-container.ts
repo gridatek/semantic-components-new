@@ -7,7 +7,7 @@ import { ScSortableListDemo } from './sortable-list-demo';
   imports: [DemoContainer, ScSortableListDemo],
   template: `
     <app-demo-container title="Sortable" [code]="code">
-      <app-sc-sortable-list-demo />
+      <app-sortable-list-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -38,7 +38,7 @@ interface PlaylistItem {
 }
 
 @Component({
-  selector: 'app-sc-sortable-list-demo',
+  selector: 'app-sortable-list-demo',
   imports: [
     ScSortableList,
     ScSortableItem,

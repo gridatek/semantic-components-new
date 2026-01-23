@@ -11,7 +11,7 @@ import { ScInput } from '@semantic-components/ui';
 import { ScLabel } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-card-demo',
+  selector: 'app-card-demo',
   imports: [
     ScCard,
     ScCardContent,

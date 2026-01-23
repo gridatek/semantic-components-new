@@ -7,7 +7,7 @@ import { ScInputDemo } from './input-demo';
   imports: [DemoContainer, ScInputDemo],
   template: `
     <app-demo-container title="Input" [code]="code">
-      <app-sc-input-demo />
+      <app-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -19,7 +19,7 @@ import { ScInput } from '@semantic-components/ui';
 import { ScLabel } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-input-demo',
+  selector: 'app-input-demo',
   imports: [ScInput, ScLabel],
   template: \`
     <div class="space-y-8">

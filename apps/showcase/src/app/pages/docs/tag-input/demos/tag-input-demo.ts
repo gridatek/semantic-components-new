@@ -9,7 +9,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-tag-input-demo',
+  selector: 'app-tag-input-demo',
   imports: [
     JsonPipe,
     ScTagInput,

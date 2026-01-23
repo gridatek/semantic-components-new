@@ -13,7 +13,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-context-menu-demo',
+  selector: 'app-context-menu-demo',
   imports: [
     ScContextMenu,
     ScContextMenuContent,

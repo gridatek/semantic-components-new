@@ -8,7 +8,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-number-input-demo',
+  selector: 'app-number-input-demo',
   imports: [
     ScNumberInput,
     ScNumberInputField,

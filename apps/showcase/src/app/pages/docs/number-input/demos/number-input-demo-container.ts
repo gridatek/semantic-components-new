@@ -7,7 +7,7 @@ import { ScNumberInputDemo } from './number-input-demo';
   imports: [DemoContainer, ScNumberInputDemo],
   template: `
     <app-demo-container title="Number" [code]="code">
-      <app-sc-number-input-demo />
+      <app-number-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -24,7 +24,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-number-input-demo',
+  selector: 'app-number-input-demo',
   imports: [
     ScNumberInput,
     ScNumberInputField,

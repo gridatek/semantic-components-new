@@ -11,7 +11,7 @@ import { ScMenuDemo } from './menu-demo';
       demoUrl="/demos/menu/menu-demo"
       [code]="code"
     >
-      <app-sc-menu-demo />
+      <app-menu-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -35,7 +35,7 @@ import {
 
 
 @Component({
-  selector: 'app-sc-menu-demo',
+  selector: 'app-menu-demo',
   imports: [
     ScMenuProvider,
     ScMenu,

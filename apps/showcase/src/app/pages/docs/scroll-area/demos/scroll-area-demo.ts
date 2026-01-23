@@ -7,7 +7,7 @@ interface Tag {
 }
 
 @Component({
-  selector: 'app-sc-scroll-area-demo',
+  selector: 'app-scroll-area-demo',
   imports: [ScScrollArea, ScScrollBar],
   template: `
     <div class="space-y-8">

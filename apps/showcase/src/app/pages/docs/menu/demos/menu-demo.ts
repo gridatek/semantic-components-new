@@ -14,7 +14,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-menu-demo',
+  selector: 'app-menu-demo',
   imports: [
     ScMenu,
     ScMenuItem,

@@ -9,7 +9,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-time-picker-demo',
+  selector: 'app-time-picker-demo',
   imports: [
     ScTimePicker,
     ScTimePickerInput,

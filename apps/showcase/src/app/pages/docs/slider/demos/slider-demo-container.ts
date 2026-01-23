@@ -7,7 +7,7 @@ import { ScSliderDemo } from './slider-demo';
   imports: [DemoContainer, ScSliderDemo],
   template: `
     <app-demo-container title="Slider" [code]="code">
-      <app-sc-slider-demo />
+      <app-slider-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScSliderDemoContainer {
 import { ScSlider } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-slider-demo',
+  selector: 'app-slider-demo',
   imports: [ScSlider],
   template: \`
     <div class="space-y-8">

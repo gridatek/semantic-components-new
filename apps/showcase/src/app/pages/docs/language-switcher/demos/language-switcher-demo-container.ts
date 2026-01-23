@@ -7,7 +7,7 @@ import { ScLanguageSwitcherDemo } from './language-switcher-demo';
   imports: [DemoContainer, ScLanguageSwitcherDemo],
   template: `
     <app-demo-container title="Language" [code]="code">
-      <app-sc-language-switcher-demo />
+      <app-language-switcher-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-language-switcher-demo',
+  selector: 'app-language-switcher-demo',
   imports: [ScLanguageToggle, ScLanguageSelect, ScLanguageButton],
   template: \`
     <div class="space-y-8">

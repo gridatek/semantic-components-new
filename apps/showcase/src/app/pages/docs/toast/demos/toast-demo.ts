@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ScToaster, ToastService } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-toast-demo',
+  selector: 'app-toast-demo',
   imports: [ScToaster],
   template: `
     <div class="flex flex-wrap gap-4">

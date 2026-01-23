@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScRating, ScRatingItem, ScRatingStars } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-rating-demo',
+  selector: 'app-rating-demo',
   imports: [ScRating, ScRatingItem, ScRatingStars],
   template: `
     <div class="space-y-8">

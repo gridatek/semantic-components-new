@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-radio-group-demo',
+  selector: 'app-radio-group-demo',
   imports: [ScRadioGroup, ScRadioGroupItem],
   template: `
     <div class="space-y-8">

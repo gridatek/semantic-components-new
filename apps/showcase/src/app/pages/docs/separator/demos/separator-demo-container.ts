@@ -7,7 +7,7 @@ import { ScSeparatorDemo } from './separator-demo';
   imports: [DemoContainer, ScSeparatorDemo],
   template: `
     <app-demo-container title="Separator" [code]="code">
-      <app-sc-separator-demo />
+      <app-separator-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScSeparatorDemoContainer {
 import { ScSeparator } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-separator-demo',
+  selector: 'app-separator-demo',
   imports: [ScSeparator],
   template: \`
     <div class="space-y-8">

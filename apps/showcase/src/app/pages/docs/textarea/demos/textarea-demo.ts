@@ -3,7 +3,7 @@ import { ScTextarea } from '@semantic-components/ui';
 import { ScLabel } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-textarea-demo',
+  selector: 'app-textarea-demo',
   imports: [ScTextarea, ScLabel],
   template: `
     <div class="space-y-8">

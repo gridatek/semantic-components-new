@@ -7,7 +7,7 @@ import { ScTextareaDemo } from './textarea-demo';
   imports: [DemoContainer, ScTextareaDemo],
   template: `
     <app-demo-container title="Textarea" [code]="code">
-      <app-sc-textarea-demo />
+      <app-textarea-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -19,7 +19,7 @@ import { ScTextarea } from '@semantic-components/ui';
 import { ScLabel } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-textarea-demo',
+  selector: 'app-textarea-demo',
   imports: [ScTextarea, ScLabel],
   template: \`
     <div class="space-y-8">

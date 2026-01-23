@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-button-demo',
+  selector: 'app-button-demo',
   imports: [ScButton],
   template: `
     <div class="space-y-8">

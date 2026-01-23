@@ -22,7 +22,7 @@ interface PlaylistItem {
 }
 
 @Component({
-  selector: 'app-sc-sortable-list-demo',
+  selector: 'app-sortable-list-demo',
   imports: [
     ScSortableList,
     ScSortableItem,

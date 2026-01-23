@@ -7,7 +7,7 @@ import { ScSkeletonDemo } from './skeleton-demo';
   imports: [DemoContainer, ScSkeletonDemo],
   template: `
     <app-demo-container title="Skeleton" [code]="code">
-      <app-sc-skeleton-demo />
+      <app-skeleton-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScSkeletonDemoContainer {
 import { ScSkeleton } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-skeleton-demo',
+  selector: 'app-skeleton-demo',
   imports: [ScSkeleton],
   template: \`
     <div class="space-y-8">

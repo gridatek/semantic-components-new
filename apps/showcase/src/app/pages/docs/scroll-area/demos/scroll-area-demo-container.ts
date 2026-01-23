@@ -7,7 +7,7 @@ import { ScScrollAreaDemo } from './scroll-area-demo';
   imports: [DemoContainer, ScScrollAreaDemo],
   template: `
     <app-demo-container title="Scroll" [code]="code">
-      <app-sc-scroll-area-demo />
+      <app-scroll-area-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ interface Tag {
 }
 
 @Component({
-  selector: 'app-sc-scroll-area-demo',
+  selector: 'app-scroll-area-demo',
   imports: [ScScrollArea, ScScrollBar],
   template: \`
     <div class="space-y-8">

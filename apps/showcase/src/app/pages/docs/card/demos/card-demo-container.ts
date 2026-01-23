@@ -7,7 +7,7 @@ import { ScCardDemo } from './card-demo';
   imports: [DemoContainer, ScCardDemo],
   template: `
     <app-demo-container title="Card" [code]="code">
-      <app-sc-card-demo />
+      <app-card-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -27,7 +27,7 @@ import { ScInput } from '@semantic-components/ui';
 import { ScLabel } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-card-demo',
+  selector: 'app-card-demo',
   imports: [
     ScCard,
     ScCardContent,

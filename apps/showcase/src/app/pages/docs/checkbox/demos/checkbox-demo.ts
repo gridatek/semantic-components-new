@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScCheckbox } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-checkbox-demo',
+  selector: 'app-checkbox-demo',
   imports: [ScCheckbox],
   template: `
     <div class="space-y-8">

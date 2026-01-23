@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScSwitch } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-sc-switch-demo',
+  selector: 'app-switch-demo',
   imports: [ScSwitch],
   template: `
     <div class="space-y-8">
