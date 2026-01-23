@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScHoverCardDemoContainer } from './demos/hover-card-demo-container';
+import { BasicHoverCardDemoContainer } from './demos/basic-hover-card-demo-container';
+import { RightHoverCardDemoContainer } from './demos/right-hover-card-demo-container';
+import { TopHoverCardDemoContainer } from './demos/top-hover-card-demo-container';
 
 @Component({
   selector: 'app-hover-card-page',
-  imports: [ScHoverCardDemoContainer],
+  imports: [
+    BasicHoverCardDemoContainer,
+    RightHoverCardDemoContainer,
+    TopHoverCardDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +21,9 @@ import { ScHoverCardDemoContainer } from './demos/hover-card-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-hover-card-demo-container />
+        <app-basic-hover-card-demo-container />
+        <app-right-hover-card-demo-container />
+        <app-top-hover-card-demo-container />
       </section>
     </div>
   `,

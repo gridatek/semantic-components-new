@@ -517,10 +517,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/hover-card',
     children: [
       {
-        path: 'hover-card-demo',
+        path: 'basic-hover-card-demo',
         loadComponent: () =>
-          import('../pages/docs/hover-card/demos/hover-card-demo').then(
-            (m) => m.ScHoverCardDemo,
+          import('../pages/docs/hover-card/demos/basic-hover-card-demo').then(
+            (m) => m.BasicHoverCardDemo,
+          ),
+      },
+      {
+        path: 'right-hover-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/hover-card/demos/right-hover-card-demo').then(
+            (m) => m.RightHoverCardDemo,
+          ),
+      },
+      {
+        path: 'top-hover-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/hover-card/demos/top-hover-card-demo').then(
+            (m) => m.TopHoverCardDemo,
           ),
       },
     ],
