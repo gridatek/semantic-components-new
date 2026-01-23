@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAlertDialog } from './sc-alert-dialog';
+import { ScAlertDialog } from './alert-dialog';
 
 let alertDialogIdCounter = 0;
 

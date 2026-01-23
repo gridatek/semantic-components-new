@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAlertDialog } from './sc-alert-dialog';
+import { ScAlertDialog } from './alert-dialog';
 
 @Directive({
   selector: 'button[sc-alert-dialog-trigger]',
