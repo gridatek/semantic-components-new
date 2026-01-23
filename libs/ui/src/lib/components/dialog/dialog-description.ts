@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialogContent } from './sc-dialog-content';
+import { ScDialogContent } from './dialog-content';
 
 @Directive({
   selector: 'p[sc-dialog-description]',

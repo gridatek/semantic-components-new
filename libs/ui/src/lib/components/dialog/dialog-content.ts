@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialog } from './sc-dialog';
+import { ScDialog } from './dialog';
 
 let dialogIdCounter = 0;
 

@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialog } from './sc-dialog';
+import { ScDialog } from './dialog';
 
 @Component({
   selector: 'div[sc-dialog-portal]',
