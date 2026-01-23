@@ -19,11 +19,11 @@ import { IconButtonTooltipDemo } from './icon-button-tooltip-demo';
 })
 export class IconButtonTooltipDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-components/ui';
+import { ScTooltip, ScTooltipPortal, ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-icon-button-tooltip-demo',
-  imports: [ScTooltip, ScTooltipContent, ScTooltipTrigger],
+  imports: [ScTooltip, ScTooltipPortal, ScTooltipTrigger],
   template: \`
     <div sc-tooltip>
       <button
@@ -48,7 +48,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
         </svg>
         <span class="sr-only">Add item</span>
       </button>
-      <div sc-tooltip-content>Add item</div>
+      <div sc-tooltip-portal>Add item</div>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,

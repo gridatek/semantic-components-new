@@ -19,11 +19,11 @@ import { PositionsTooltipDemo } from './positions-tooltip-demo';
 })
 export class PositionsTooltipDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-components/ui';
+import { ScTooltip, ScTooltipPortal, ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-positions-tooltip-demo',
-  imports: [ScTooltip, ScTooltipContent, ScTooltipTrigger],
+  imports: [ScTooltip, ScTooltipPortal, ScTooltipTrigger],
   template: \`
     <div class="flex flex-wrap items-center gap-8">
       <div sc-tooltip side="bottom">
@@ -33,7 +33,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
         >
           Bottom
         </button>
-        <div sc-tooltip-content>Tooltip on bottom</div>
+        <div sc-tooltip-portal>Tooltip on bottom</div>
       </div>
 
       <div sc-tooltip side="left">
@@ -43,7 +43,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
         >
           Left
         </button>
-        <div sc-tooltip-content>Tooltip on left</div>
+        <div sc-tooltip-portal>Tooltip on left</div>
       </div>
 
       <div sc-tooltip side="right">
@@ -53,7 +53,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
         >
           Right
         </button>
-        <div sc-tooltip-content>Tooltip on right</div>
+        <div sc-tooltip-portal>Tooltip on right</div>
       </div>
     </div>
   \`,

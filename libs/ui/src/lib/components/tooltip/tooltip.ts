@@ -2,15 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChild,
+  inject,
   input,
-  signal,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScTooltipTrigger } from './tooltip-trigger';
-
-export type TooltipSide = 'top' | 'right' | 'bottom' | 'left';
+import { ScTooltipProvider } from './tooltip-provider';
 
 @Component({
   selector: 'div[sc-tooltip]',
@@ -19,36 +16,33 @@ export type TooltipSide = 'top' | 'right' | 'bottom' | 'left';
   `,
   host: {
     'data-slot': 'tooltip',
+    role: 'tooltip',
     '[class]': 'class()',
+    '(mouseenter)': 'onMouseEnter()',
+    '(mouseleave)': 'onMouseLeave()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTooltip {
+  private readonly tooltip = inject(ScTooltipProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  /** Which side the tooltip appears on */
-  readonly side = input<TooltipSide>('top');
-
-  /** Delay before showing tooltip (ms) */
-  readonly delayDuration = input<number>(200);
-
-  /** Whether the tooltip is open */
-  readonly open = signal<boolean>(false);
-
-  private readonly triggerChild = contentChild(ScTooltipTrigger);
-
-  readonly origin = computed(() => this.triggerChild()?.overlayOrigin);
-
   protected readonly class = computed(() =>
-    cn('relative inline-block', this.classInput()),
+    cn(
+      'bg-primary text-primary-foreground z-50 rounded-md px-3 py-1.5 text-xs',
+      this.tooltip.open()
+        ? 'opacity-100 scale-100 transition-[opacity,transform] duration-150 ease-out'
+        : 'opacity-0 scale-95 transition-[opacity,transform] duration-150 ease-in',
+      this.classInput(),
+    ),
   );
 
-  show(): void {
-    this.open.set(true);
+  onMouseEnter(): void {
+    this.tooltip.show();
   }
 
-  hide(): void {
-    this.open.set(false);
+  onMouseLeave(): void {
+    this.tooltip.hide();
   }
 }

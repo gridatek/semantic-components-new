@@ -19,11 +19,11 @@ import { DelayTooltipDemo } from './delay-tooltip-demo';
 })
 export class DelayTooltipDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-components/ui';
+import { ScTooltip, ScTooltipPortal, ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-delay-tooltip-demo',
-  imports: [ScTooltip, ScTooltipContent, ScTooltipTrigger],
+  imports: [ScTooltip, ScTooltipPortal, ScTooltipTrigger],
   template: \`
     <div class="flex flex-wrap items-center gap-8">
       <div sc-tooltip [delayDuration]="500">
@@ -33,7 +33,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
         >
           500ms delay
         </button>
-        <div sc-tooltip-content>This tooltip has a 500ms delay</div>
+        <div sc-tooltip-portal>This tooltip has a 500ms delay</div>
       </div>
 
       <div sc-tooltip [delayDuration]="0">
@@ -43,7 +43,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
         >
           No delay
         </button>
-        <div sc-tooltip-content>Instant tooltip</div>
+        <div sc-tooltip-portal>Instant tooltip</div>
       </div>
     </div>
   \`,

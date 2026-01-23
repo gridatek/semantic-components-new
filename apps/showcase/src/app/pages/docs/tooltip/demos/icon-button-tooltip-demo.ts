@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScTooltip,
-  ScTooltipContent,
+  ScTooltipPortal,
   ScTooltipTrigger,
+  ScTooltipProvider,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-icon-button-tooltip-demo',
-  imports: [ScTooltip, ScTooltipContent, ScTooltipTrigger],
+  imports: [ScTooltip, ScTooltipPortal, ScTooltipTrigger, ScTooltipProvider],
   template: `
-    <div sc-tooltip>
+    <div sc-tooltip-provider>
       <button
         sc-tooltip-trigger
         class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-input bg-background text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -32,7 +33,7 @@ import {
         </svg>
         <span class="sr-only">Add item</span>
       </button>
-      <div sc-tooltip-content>Add item</div>
+      <div sc-tooltip-portal><div sc-tooltip>Add item</div></div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,5 @@
-export { ScTooltip } from './tooltip';
-export type { TooltipSide } from './tooltip';
+export { ScTooltipProvider } from './tooltip-provider';
+export type { TooltipSide } from './tooltip-provider';
 export { ScTooltipTrigger } from './tooltip-trigger';
-export { ScTooltipContent } from './tooltip-content';
+export { ScTooltipPortal } from './tooltip-portal';
+export { ScTooltip } from './tooltip';

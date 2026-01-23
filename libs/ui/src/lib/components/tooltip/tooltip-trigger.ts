@@ -1,7 +1,7 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScTooltip } from './tooltip';
+import { ScTooltipProvider } from './tooltip-provider';
 
 @Directive({
   selector: '[sc-tooltip-trigger]',
@@ -16,7 +16,7 @@ import { ScTooltip } from './tooltip';
   },
 })
 export class ScTooltipTrigger {
-  readonly tooltip = inject(ScTooltip);
+  readonly tooltip = inject(ScTooltipProvider);
   readonly overlayOrigin = inject(CdkOverlayOrigin);
   readonly classInput = input<string>('', { alias: 'class' });
 

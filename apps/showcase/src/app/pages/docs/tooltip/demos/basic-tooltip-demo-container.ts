@@ -19,11 +19,11 @@ import { BasicTooltipDemo } from './basic-tooltip-demo';
 })
 export class BasicTooltipDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-components/ui';
+import { ScTooltip, ScTooltipPortal, ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-tooltip-demo',
-  imports: [ScTooltip, ScTooltipContent, ScTooltipTrigger],
+  imports: [ScTooltip, ScTooltipPortal, ScTooltipTrigger],
   template: \`
     <div sc-tooltip>
       <button
@@ -32,7 +32,7 @@ import { ScTooltip, ScTooltipContent, ScTooltipTrigger } from '@semantic-compone
       >
         Hover me
       </button>
-      <div sc-tooltip-content>Add to library</div>
+      <div sc-tooltip-portal>Add to library</div>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,

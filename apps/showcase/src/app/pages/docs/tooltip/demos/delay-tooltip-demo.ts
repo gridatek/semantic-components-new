@@ -1,33 +1,36 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScTooltip,
-  ScTooltipContent,
+  ScTooltipPortal,
+  ScTooltipProvider,
   ScTooltipTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-delay-tooltip-demo',
-  imports: [ScTooltip, ScTooltipContent, ScTooltipTrigger],
+  imports: [ScTooltip, ScTooltipProvider, ScTooltipPortal, ScTooltipTrigger],
   template: `
     <div class="flex flex-wrap items-center gap-8">
-      <div sc-tooltip [delayDuration]="500">
+      <div sc-tooltip-provider [delayDuration]="500">
         <button
           sc-tooltip-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           500ms delay
         </button>
-        <div sc-tooltip-content>This tooltip has a 500ms delay</div>
+        <div sc-tooltip-portal>
+          <div sc-tooltip>This tooltip has a 500ms delay</div>
+        </div>
       </div>
 
-      <div sc-tooltip [delayDuration]="0">
+      <div sc-tooltip-provider [delayDuration]="0">
         <button
           sc-tooltip-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           No delay
         </button>
-        <div sc-tooltip-content>Instant tooltip</div>
+        <div sc-tooltip-portal><div sc-tooltip>Instant tooltip</div></div>
       </div>
     </div>
   `,
