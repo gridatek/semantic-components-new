@@ -13,10 +13,6 @@ import {
   ScMenuTrigger,
 } from '@semantic-components/ui';
 
-/**
- * Demo 3: SC Menu wrapper components - Clean markup, styles encapsulated
- * This demonstrates the desired user API with sc-prefixed wrapper components.
- */
 @Component({
   selector: 'app-sc-menu-demo',
   imports: [
