@@ -1,6 +1,11 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ScCodeEditor, THEMES, Language } from '@semantic-components/ui';
+import {
+  ScCodeEditor,
+  THEMES,
+  Language,
+  CodeEditorLanguage,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-code-editor-demo',
@@ -186,7 +191,7 @@ import { ScCodeEditor, THEMES, Language } from '@semantic-components/ui';
 export class CodeEditorDemoComponent {
   readonly lightTheme = THEMES['light'];
 
-  readonly selectedLanguage = signal<Language>('javascript');
+  readonly selectedLanguage = signal<CodeEditorLanguage>('javascript');
   readonly showLineNumbers = signal(true);
   readonly wordWrapEnabled = signal(false);
 
@@ -385,8 +390,8 @@ function example() {
     console.log('Cursor position:', position);
   }
 
-  getExtension(lang: Language): string {
-    const extensions: Record<Language, string> = {
+  getExtension(lang: CodeEditorLanguage): string {
+    const extensions: Record<CodeEditorLanguage, string> = {
       javascript: 'js',
       typescript: 'ts',
       html: 'html',

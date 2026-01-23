@@ -1,4 +1,4 @@
-export type Language =
+export type CodeEditorLanguage =
   | 'javascript'
   | 'typescript'
   | 'html'
@@ -528,7 +528,7 @@ const LANGUAGES: Record<string, LanguageDefinition> = {
   },
 };
 
-export function tokenize(code: string, language: Language): Token[] {
+export function tokenize(code: string, language: CodeEditorLanguage): Token[] {
   const lang = LANGUAGES[language] || LANGUAGES['plaintext'];
   const tokens: Token[] = [];
   let remaining = code;
@@ -660,7 +660,10 @@ export function tokenize(code: string, language: Language): Token[] {
   return tokens;
 }
 
-export function highlightCode(code: string, language: Language): string {
+export function highlightCode(
+  code: string,
+  language: CodeEditorLanguage,
+): string {
   const tokens = tokenize(code, language);
   return tokens
     .map((token) => {
@@ -682,10 +685,13 @@ function escapeHtml(text: string): string {
     .replace(/'/g, '&#039;');
 }
 
-export function detectLanguage(code: string, filename?: string): Language {
+export function detectLanguage(
+  code: string,
+  filename?: string,
+): CodeEditorLanguage {
   if (filename) {
     const ext = filename.split('.').pop()?.toLowerCase();
-    const extMap: Record<string, Language> = {
+    const extMap: Record<string, CodeEditorLanguage> = {
       js: 'javascript',
       mjs: 'javascript',
       cjs: 'javascript',

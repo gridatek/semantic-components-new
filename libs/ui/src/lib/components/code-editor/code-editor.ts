@@ -11,9 +11,13 @@ import {
   viewChild,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { highlightCode, detectLanguage, Language } from './syntax-highlighter';
+import {
+  highlightCode,
+  detectLanguage,
+  CodeEditorLanguage,
+} from './syntax-highlighter';
 
-export type { Language } from './syntax-highlighter';
+export type { CodeEditorLanguage } from './syntax-highlighter';
 
 export interface CodeEditorTheme {
   background: string;
@@ -277,7 +281,7 @@ export class ScCodeEditor {
   readonly value = model<string>('');
 
   // Inputs
-  readonly language = input<Language>('plaintext');
+  readonly language = input<CodeEditorLanguage>('plaintext');
   readonly theme = input<CodeEditorTheme>(THEMES['dark']);
   readonly filename = input<string>('');
   readonly placeholder = input<string>('');
@@ -300,7 +304,7 @@ export class ScCodeEditor {
 
   // Outputs
   readonly valueChange = output<string>();
-  readonly languageDetected = output<Language>();
+  readonly languageDetected = output<CodeEditorLanguage>();
   readonly cursorChange = output<{ line: number; column: number }>();
 
   // Internal state
