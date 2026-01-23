@@ -6,7 +6,11 @@ import { RightHoverCardDemo } from './right-hover-card-demo';
   selector: 'app-right-hover-card-demo-container',
   imports: [DemoContainer, RightHoverCardDemo],
   template: `
-    <app-demo-container title="Right Side" [code]="code">
+    <app-demo-container
+      title="Right Side"
+      demoUrl="/demos/hover-card/right-hover-card-demo"
+      [code]="code"
+    >
       <app-right-hover-card-demo />
     </app-demo-container>
   `,

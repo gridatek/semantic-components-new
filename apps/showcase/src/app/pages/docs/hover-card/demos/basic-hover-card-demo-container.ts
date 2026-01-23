@@ -6,7 +6,11 @@ import { BasicHoverCardDemo } from './basic-hover-card-demo';
   selector: 'app-basic-hover-card-demo-container',
   imports: [DemoContainer, BasicHoverCardDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/hover-card/basic-hover-card-demo"
+      [code]="code"
+    >
       <app-basic-hover-card-demo />
     </app-demo-container>
   `,

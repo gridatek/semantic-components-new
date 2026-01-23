@@ -6,7 +6,11 @@ import { TopHoverCardDemo } from './top-hover-card-demo';
   selector: 'app-top-hover-card-demo-container',
   imports: [DemoContainer, TopHoverCardDemo],
   template: `
-    <app-demo-container title="Top Aligned" [code]="code">
+    <app-demo-container
+      title="Top Aligned"
+      demoUrl="/demos/hover-card/top-hover-card-demo"
+      [code]="code"
+    >
       <app-top-hover-card-demo />
     </app-demo-container>
   `,
