@@ -5,10 +5,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/accordion',
     children: [
       {
-        path: 'accordion-demo',
+        path: 'basic-accordion-demo',
         loadComponent: () =>
-          import('../pages/docs/accordion/demos/accordion-demo').then(
-            (m) => m.ScAccordionDemo,
+          import('../pages/docs/accordion/demos/basic-accordion-demo').then(
+            (m) => m.BasicAccordionDemo,
+          ),
+      },
+      {
+        path: 'multiple-accordion-demo',
+        loadComponent: () =>
+          import('../pages/docs/accordion/demos/multiple-accordion-demo').then(
+            (m) => m.MultipleAccordionDemo,
+          ),
+      },
+      {
+        path: 'disabled-accordion-demo',
+        loadComponent: () =>
+          import('../pages/docs/accordion/demos/disabled-accordion-demo').then(
+            (m) => m.DisabledAccordionDemo,
           ),
       },
     ],

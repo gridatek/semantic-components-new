@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import AccordionDemoContainer from './demos/accordion-demo-container';
+import BasicAccordionDemoContainer from './demos/basic-accordion-demo-container';
+import MultipleAccordionDemoContainer from './demos/multiple-accordion-demo-container';
+import DisabledAccordionDemoContainer from './demos/disabled-accordion-demo-container';
 
 @Component({
   selector: 'app-accordion-page',
-  imports: [AccordionDemoContainer],
+  imports: [
+    BasicAccordionDemoContainer,
+    MultipleAccordionDemoContainer,
+    DisabledAccordionDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +22,9 @@ import AccordionDemoContainer from './demos/accordion-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-accordion-demo-container />
+        <app-basic-accordion-demo-container />
+        <app-multiple-accordion-demo-container />
+        <app-disabled-accordion-demo-container />
       </section>
     </div>
   `,

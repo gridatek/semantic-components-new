@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { ScAccordionDemo } from './accordion-demo';
+import { DisabledAccordionDemo } from './disabled-accordion-demo';
 
 @Component({
-  selector: 'app-accordion-demo-container',
-  imports: [DemoContainer, ScAccordionDemo],
+  selector: 'app-disabled-accordion-demo-container',
+  imports: [DemoContainer, DisabledAccordionDemo],
   template: `
-    <app-demo-container title="Accordion" [code]="code">
-      <app-sc-accordion-demo />
+    <app-demo-container title="Disabled" [code]="code">
+      <app-disabled-accordion-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class AccordionDemoContainer {
+export default class DisabledAccordionDemoContainer {
   readonly code = '';
 }
