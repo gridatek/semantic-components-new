@@ -85,13 +85,15 @@ import { BasicAccordionDemo } from './basic-accordion-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAccordionDemoContainer {
-  readonly code = '';
+  readonly code = `// The exact content of basic-accordion-demo.ts goes here
+// Backticks in the demo source must be escaped with \\`;
 }
 ```
 
 Key points:
 
 - Use a **named export** — only page components use default exports.
+- The `code` property contains the **exact source code** of the demo file (backticks escaped with `\`).
 - The `title` should be short and describe the variant (e.g. "Basic", "Multiple", "Disabled"), not repeat the component name.
 
 ## Step 3: Create the Page Component
