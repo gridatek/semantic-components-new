@@ -1,2 +1,2 @@
-export * from './sc-timezone.service';
-export * from './sc-timezone';
+export * from './timezone.service';
+export * from './timezone';

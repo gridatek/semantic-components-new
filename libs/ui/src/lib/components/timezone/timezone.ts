@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScTimezoneService } from './sc-timezone.service';
+import { ScTimezoneService } from './timezone.service';
 
 export type TimezoneVariant = 'default' | 'outline' | 'ghost';
 export type TimezoneSize = 'default' | 'sm' | 'lg' | 'icon';
