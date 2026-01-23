@@ -1,1 +1,1 @@
-export * from './sc-date-picker';
+export * from './date-picker';

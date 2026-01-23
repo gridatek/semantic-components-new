@@ -1,1 +1,1 @@
-export * from './sc-textarea';
+export * from './textarea';

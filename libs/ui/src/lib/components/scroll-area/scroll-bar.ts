@@ -13,7 +13,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent, merge } from 'rxjs';
 import { cn } from '../../utils';
-import { ScScrollArea } from './sc-scroll-area';
+import { ScScrollArea } from './scroll-area';
 
 export type ScrollBarOrientation = 'vertical' | 'horizontal';
 

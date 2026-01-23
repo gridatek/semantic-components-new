@@ -1,1 +1,1 @@
-export * from './sc-separator';
+export * from './separator';

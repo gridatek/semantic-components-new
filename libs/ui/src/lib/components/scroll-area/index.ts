@@ -1,2 +1,2 @@
-export * from './sc-scroll-area';
-export * from './sc-scroll-bar';
+export * from './scroll-area';
+export * from './scroll-bar';

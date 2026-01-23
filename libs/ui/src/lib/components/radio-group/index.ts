@@ -1,1 +1,1 @@
-export * from './sc-radio-group';
+export * from './radio-group';

@@ -9,7 +9,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScScrollBar } from './sc-scroll-bar';
+import { ScScrollBar } from './scroll-bar';
 
 @Component({
   selector: 'div[sc-scroll-area]',
