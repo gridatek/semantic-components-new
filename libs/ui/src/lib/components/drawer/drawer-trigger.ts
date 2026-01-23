@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDrawer } from './sc-drawer';
+import { ScDrawer } from './drawer';
 
 @Directive({
   selector: 'button[sc-drawer-trigger]',

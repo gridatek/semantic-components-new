@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDrawer } from './sc-drawer';
+import { ScDrawer } from './drawer';
 
 @Component({
   selector: 'div[sc-drawer-portal]',

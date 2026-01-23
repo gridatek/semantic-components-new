@@ -1,5 +1,5 @@
 import { Directive, inject } from '@angular/core';
-import { ScDrawer } from './sc-drawer';
+import { ScDrawer } from './drawer';
 
 @Directive({
   selector: 'button[sc-drawer-close]',

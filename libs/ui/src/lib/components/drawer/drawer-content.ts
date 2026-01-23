@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { DrawerDirection, ScDrawer } from './sc-drawer';
+import { DrawerDirection, ScDrawer } from './drawer';
 
 const directionBaseClasses: Record<DrawerDirection, string> = {
   top: 'inset-x-0 top-0 border-b rounded-b-[10px]',
