@@ -4,7 +4,7 @@ import {
   ScToggleGroup,
   ToggleGroupSize,
   ToggleGroupVariant,
-} from './sc-toggle-group';
+} from './toggle-group';
 
 const variantClasses: Record<ToggleGroupVariant, string> = {
   default: 'bg-transparent',

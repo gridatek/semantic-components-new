@@ -5,4 +5,4 @@ export {
   ScTreeItemTrigger,
   ScTreeItemContent,
   ScTreeItemIcon,
-} from './sc-tree-view';
+} from './tree-view';
