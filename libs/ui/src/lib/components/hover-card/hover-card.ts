@@ -2,16 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChild,
+  inject,
   input,
-  signal,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScHoverCardTrigger } from './hover-card-trigger';
-
-export type HoverCardSide = 'top' | 'right' | 'bottom' | 'left';
-export type HoverCardAlign = 'start' | 'center' | 'end';
+import { ScHoverCardProvider } from './hover-card-provider';
 
 @Component({
   selector: 'div[sc-hover-card]',
@@ -21,46 +17,49 @@ export type HoverCardAlign = 'start' | 'center' | 'end';
   host: {
     'data-slot': 'hover-card',
     '[class]': 'class()',
+    '(mouseenter)': 'onMouseEnter()',
+    '(mouseleave)': 'onMouseLeave()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScHoverCard {
+  readonly hoverCardProvider = inject(ScHoverCardProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  /** Which side the hover card appears on */
-  readonly side = input<HoverCardSide>('bottom');
-
-  /** Alignment along the side */
-  readonly align = input<HoverCardAlign>('center');
-
-  /** Delay before showing hover card (ms) */
-  readonly openDelay = input<number>(700);
-
-  /** Delay before hiding hover card (ms) */
-  readonly closeDelay = input<number>(300);
-
-  /** Whether the hover card is open */
-  readonly open = signal<boolean>(false);
-
-  private readonly triggerChild = contentChild(ScHoverCardTrigger);
-
-  readonly origin = computed(() => this.triggerChild()?.overlayOrigin);
-
   protected readonly class = computed(() =>
-    cn('relative inline-block', this.classInput()),
+    cn(
+      'z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none',
+      this.hoverCardProvider.open()
+        ? 'opacity-100 scale-100 transition-[opacity,transform] duration-150 ease-out'
+        : 'opacity-0 scale-95 transition-[opacity,transform] duration-150 ease-in',
+      this.classInput(),
+    ),
   );
 
-  show(): void {
-    this.open.set(true);
+  private hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  onMouseEnter(): void {
+    this.hoverCardProvider.cancelTriggerHide();
+    this.cancelHide();
+    this.hoverCardProvider.show();
   }
 
-  hide(): void {
-    this.open.set(false);
+  onMouseLeave(): void {
+    this.scheduleHide();
   }
 
-  /** Cancel pending hide timeout on the trigger */
-  cancelTriggerHide(): void {
-    this.triggerChild()?.cancelHide();
+  private scheduleHide(): void {
+    this.cancelHide();
+    this.hideTimeout = setTimeout(() => {
+      this.hoverCardProvider.hide();
+    }, this.hoverCardProvider.closeDelay());
+  }
+
+  private cancelHide(): void {
+    if (this.hideTimeout) {
+      clearTimeout(this.hideTimeout);
+      this.hideTimeout = null;
+    }
   }
 }

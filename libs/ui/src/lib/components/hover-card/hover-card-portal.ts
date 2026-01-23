@@ -8,7 +8,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { HoverCardAlign, HoverCardSide, ScHoverCard } from './hover-card';
+import {
+  HoverCardAlign,
+  HoverCardSide,
+  ScHoverCardProvider,
+} from './hover-card-provider';
 
 type PositionKey = `${HoverCardSide}-${HoverCardAlign}`;
 
@@ -100,80 +104,39 @@ const positionMap: Record<PositionKey, ConnectedPosition> = {
 };
 
 @Component({
-  selector: 'div[sc-hover-card-content]',
+  selector: 'div[sc-hover-card-portal]',
   imports: [OverlayModule],
   template: `
     @if (origin(); as origin) {
       <ng-template
         cdkConnectedOverlay
         [cdkConnectedOverlayOrigin]="origin"
-        [cdkConnectedOverlayOpen]="hoverCard.open()"
+        [cdkConnectedOverlayOpen]="hoverCardProvider.open()"
         [cdkConnectedOverlayPositions]="[position()]"
       >
-        <div
-          [class]="contentClass()"
-          (mouseenter)="onMouseEnter()"
-          (mouseleave)="onMouseLeave()"
-        >
-          <ng-content />
-        </div>
+        <ng-content />
       </ng-template>
     }
   `,
   host: {
-    'data-slot': 'hover-card-content',
+    'data-slot': 'hover-card-portal',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScHoverCardContent {
-  readonly hoverCard = inject(ScHoverCard);
+export class ScHoverCardPortal {
+  readonly hoverCardProvider = inject(ScHoverCardProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly origin = computed(() => this.hoverCard.origin());
+  protected readonly origin = computed(() => this.hoverCardProvider.origin());
 
   protected readonly position = computed(() => {
-    const side = this.hoverCard.side();
-    const align = this.hoverCard.align();
+    const side = this.hoverCardProvider.side();
+    const align = this.hoverCardProvider.align();
     const key: PositionKey = `${side}-${align}`;
     return positionMap[key];
   });
 
   protected readonly class = computed(() => cn('', this.classInput()));
-
-  protected readonly contentClass = computed(() =>
-    cn(
-      'z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none',
-      this.hoverCard.open()
-        ? 'opacity-100 scale-100 transition-[opacity,transform] duration-150 ease-out'
-        : 'opacity-0 scale-95 transition-[opacity,transform] duration-150 ease-in',
-    ),
-  );
-
-  private hideTimeout: ReturnType<typeof setTimeout> | null = null;
-
-  onMouseEnter(): void {
-    this.hoverCard.cancelTriggerHide();
-    this.cancelHide();
-    this.hoverCard.show();
-  }
-
-  onMouseLeave(): void {
-    this.scheduleHide();
-  }
-
-  private scheduleHide(): void {
-    this.cancelHide();
-    this.hideTimeout = setTimeout(() => {
-      this.hoverCard.hide();
-    }, this.hoverCard.closeDelay());
-  }
-
-  private cancelHide(): void {
-    if (this.hideTimeout) {
-      clearTimeout(this.hideTimeout);
-      this.hideTimeout = null;
-    }
-  }
 }

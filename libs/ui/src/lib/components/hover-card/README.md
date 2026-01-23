@@ -5,7 +5,7 @@ For sighted users to preview content available behind a link.
 ## Architecture
 
 ```
-ScHoverCard (Root)
+ScHoverCardProvider (Root)
     ├── open: signal<boolean>
     ├── side: input ('top' | 'right' | 'bottom' | 'left')
     ├── align: input ('start' | 'center' | 'end')
@@ -13,27 +13,33 @@ ScHoverCard (Root)
     └── closeDelay: input (default: 300ms)
          │
          ├── ScHoverCardTrigger
-         │     ├── Injects ScHoverCard
+         │     ├── Injects ScHoverCardProvider
          │     ├── Uses CdkOverlayOrigin
          │     └── Handles hover/focus with delay
          │
-         └── ScHoverCardContent
-               ├── Injects ScHoverCard
+         └── ScHoverCardPortal
+               ├── Injects ScHoverCardProvider
                ├── Uses cdkConnectedOverlay
                └── Positions based on side/align
+                    │
+                    └── ScHoverCard
+                          ├── Injects ScHoverCardProvider
+                          ├── Content panel with styling
+                          └── Handles hover to keep card open
 ```
 
 ## Components
 
-| Component            | Selector                     | Description                                     |
-| -------------------- | ---------------------------- | ----------------------------------------------- |
-| `ScHoverCard`        | `div[sc-hover-card]`         | Root wrapper with state and configuration       |
-| `ScHoverCardTrigger` | `[sc-hover-card-trigger]`    | Element that triggers hover card on hover/focus |
-| `ScHoverCardContent` | `div[sc-hover-card-content]` | The card content displayed on hover             |
+| Component             | Selector                      | Description                                     |
+| --------------------- | ----------------------------- | ----------------------------------------------- |
+| `ScHoverCardProvider` | `div[sc-hover-card-provider]` | Root wrapper with state and configuration       |
+| `ScHoverCardTrigger`  | `[sc-hover-card-trigger]`     | Element that triggers hover card on hover/focus |
+| `ScHoverCardPortal`   | `div[sc-hover-card-portal]`   | CDK overlay positioning layer                   |
+| `ScHoverCard`         | `div[sc-hover-card]`          | The card content displayed on hover             |
 
 ## Inputs
 
-### ScHoverCard
+### ScHoverCardProvider
 
 | Input        | Type                                     | Default    | Description                 |
 | ------------ | ---------------------------------------- | ---------- | --------------------------- |
@@ -45,14 +51,16 @@ ScHoverCard (Root)
 ## Usage
 
 ```html
-<div sc-hover-card>
+<div sc-hover-card-provider>
   <a sc-hover-card-trigger href="/profile">@username</a>
-  <div sc-hover-card-content>
-    <div class="flex gap-4">
-      <img src="avatar.jpg" class="size-12 rounded-full" />
-      <div>
-        <h4 class="font-semibold">@username</h4>
-        <p class="text-sm text-muted-foreground">Software developer at Example Corp.</p>
+  <div sc-hover-card-portal>
+    <div sc-hover-card>
+      <div class="flex gap-4">
+        <img src="avatar.jpg" class="size-12 rounded-full" />
+        <div>
+          <h4 class="font-semibold">@username</h4>
+          <p class="text-sm text-muted-foreground">Software developer at Example Corp.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,18 +70,22 @@ ScHoverCard (Root)
 ### With Custom Position
 
 ```html
-<div sc-hover-card side="right" align="start">
+<div sc-hover-card-provider side="right" align="start">
   <button sc-hover-card-trigger>Hover me</button>
-  <div sc-hover-card-content>Content appears to the right, aligned to the top</div>
+  <div sc-hover-card-portal>
+    <div sc-hover-card>Content appears to the right, aligned to the top</div>
+  </div>
 </div>
 ```
 
 ### With Custom Delays
 
 ```html
-<div sc-hover-card [openDelay]="500" [closeDelay]="200">
+<div sc-hover-card-provider [openDelay]="500" [closeDelay]="200">
   <span sc-hover-card-trigger>Quick hover</span>
-  <div sc-hover-card-content>Shows faster, hides faster</div>
+  <div sc-hover-card-portal>
+    <div sc-hover-card>Shows faster, hides faster</div>
+  </div>
 </div>
 ```
 

@@ -1,7 +1,7 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScHoverCard } from './hover-card';
+import { ScHoverCardProvider } from './hover-card-provider';
 
 @Directive({
   selector: '[sc-hover-card-trigger]',
@@ -16,7 +16,7 @@ import { ScHoverCard } from './hover-card';
   },
 })
 export class ScHoverCardTrigger {
-  readonly hoverCard = inject(ScHoverCard);
+  readonly hoverCardProvider = inject(ScHoverCardProvider);
   readonly overlayOrigin = inject(CdkOverlayOrigin);
   readonly classInput = input<string>('', { alias: 'class' });
 
@@ -48,8 +48,8 @@ export class ScHoverCardTrigger {
   private scheduleShow(): void {
     this.cancelShow();
     this.showTimeout = setTimeout(() => {
-      this.hoverCard.show();
-    }, this.hoverCard.openDelay());
+      this.hoverCardProvider.show();
+    }, this.hoverCardProvider.openDelay());
   }
 
   private cancelShow(): void {
@@ -62,8 +62,8 @@ export class ScHoverCardTrigger {
   private scheduleHide(): void {
     this.cancelHide();
     this.hideTimeout = setTimeout(() => {
-      this.hoverCard.hide();
-    }, this.hoverCard.closeDelay());
+      this.hoverCardProvider.hide();
+    }, this.hoverCardProvider.closeDelay());
   }
 
   cancelHide(): void {
