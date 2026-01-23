@@ -18,8 +18,8 @@ import {
 import {
   PopoverAlign,
   PopoverSide,
-  ScPopover,
   ScPopoverContent,
+  ScPopoverProvider,
   ScPopoverTrigger,
 } from '../popover';
 
@@ -32,7 +32,7 @@ export interface ComboboxOption {
 @Component({
   selector: 'sc-combobox',
   imports: [
-    ScPopover,
+    ScPopoverProvider,
     ScPopoverTrigger,
     ScPopoverContent,
     ScCommand,
@@ -42,7 +42,7 @@ export interface ComboboxOption {
     ScCommandEmpty,
   ],
   template: `
-    <div sc-popover [(open)]="open" [side]="side()" [align]="align()">
+    <div sc-popover-provider [(open)]="open" [side]="side()" [align]="align()">
       <button
         sc-popover-trigger
         type="button"

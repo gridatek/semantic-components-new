@@ -14,18 +14,18 @@ export type PopoverAlign = 'start' | 'center' | 'end';
 export type PopoverSide = 'top' | 'right' | 'bottom' | 'left';
 
 @Component({
-  selector: 'div[sc-popover]',
+  selector: 'div[sc-popover-provider]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'popover',
+    'data-slot': 'popover-provider',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScPopover {
+export class ScPopoverProvider {
   readonly classInput = input<string>('', { alias: 'class' });
 
   /** Which side the popover appears on */

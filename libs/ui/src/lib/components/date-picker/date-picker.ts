@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import {
-  ScPopover,
+  ScPopoverProvider,
   ScPopoverContent,
   ScPopoverTrigger,
   PopoverAlign,
@@ -18,9 +18,9 @@ import { ScCalendar, CalendarMode, DateRange } from '../calendar';
 
 @Component({
   selector: 'sc-date-picker',
-  imports: [ScPopover, ScPopoverTrigger, ScPopoverContent, ScCalendar],
+  imports: [ScPopoverProvider, ScPopoverTrigger, ScPopoverContent, ScCalendar],
   template: `
-    <div sc-popover [(open)]="open" [side]="side()" [align]="align()">
+    <div sc-popover-provider [(open)]="open" [side]="side()" [align]="align()">
       <button sc-popover-trigger type="button" [class]="triggerClass()">
         <svg
           xmlns="http://www.w3.org/2000/svg"

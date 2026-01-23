@@ -1,7 +1,7 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScPopover } from './popover';
+import { ScPopoverProvider } from './popover-provider';
 
 @Directive({
   selector: 'button[sc-popover-trigger]',
@@ -15,7 +15,7 @@ import { ScPopover } from './popover';
   },
 })
 export class ScPopoverTrigger {
-  readonly popover = inject(ScPopover);
+  readonly popover = inject(ScPopoverProvider);
   readonly overlayOrigin = inject(CdkOverlayOrigin);
   readonly classInput = input<string>('', { alias: 'class' });
 

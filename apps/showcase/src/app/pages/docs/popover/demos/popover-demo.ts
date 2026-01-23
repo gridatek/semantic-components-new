@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ScPopover,
+  ScPopoverProvider,
   ScPopoverContent,
   ScPopoverTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-sc-popover-demo',
-  imports: [ScPopover, ScPopoverContent, ScPopoverTrigger],
+  imports: [ScPopoverProvider, ScPopoverContent, ScPopoverTrigger],
   template: `
     <div class="flex flex-wrap gap-8">
       <!-- Basic Popover -->
-      <div sc-popover>
+      <div sc-popover-provider>
         <button
           sc-popover-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

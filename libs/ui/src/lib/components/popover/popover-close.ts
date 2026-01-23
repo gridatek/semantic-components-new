@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScPopover } from './popover';
+import { ScPopoverProvider } from './popover-provider';
 
 @Directive({
   selector: 'button[sc-popover-close]',
@@ -11,7 +11,7 @@ import { ScPopover } from './popover';
   },
 })
 export class ScPopoverClose {
-  private readonly popover = inject(ScPopover);
+  private readonly popover = inject(ScPopoverProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

@@ -8,7 +8,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScPopover, PopoverSide, PopoverAlign } from './popover';
+import {
+  ScPopoverProvider,
+  PopoverSide,
+  PopoverAlign,
+} from './popover-provider';
 
 const positionMap: Record<
   PopoverSide,
@@ -134,7 +138,7 @@ const positionMap: Record<
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPopoverContent {
-  readonly popover = inject(ScPopover);
+  readonly popover = inject(ScPopoverProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly origin = computed(() => this.popover.origin());
