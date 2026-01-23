@@ -1,17 +1,17 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScSheetContent } from './sheet-content';
+import { ScSheet } from './sheet';
 
 @Directive({
   selector: 'h2[sc-sheet-title]',
   host: {
     'data-slot': 'sheet-title',
-    '[id]': 'sheetContent.titleId',
+    '[id]': 'sheet.titleId',
     '[class]': 'class()',
   },
 })
 export class ScSheetTitle {
-  readonly sheetContent = inject(ScSheetContent);
+  readonly sheet = inject(ScSheet);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

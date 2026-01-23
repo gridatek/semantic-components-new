@@ -10,7 +10,7 @@ The components follow a dependency injection (DI) pattern where child components
 ScSheetProvider (root wrapper - manages open state and side)
 ├── ScSheetTrigger (button that opens sheet)
 └── ScSheetPortal (overlay with backdrop)
-    └── ScSheetContent (sheet panel)
+    └── ScSheet (sheet)
         ├── ScSheetClose (close button)
         ├── ScSheetHeader
         │   ├── ScSheetTitle

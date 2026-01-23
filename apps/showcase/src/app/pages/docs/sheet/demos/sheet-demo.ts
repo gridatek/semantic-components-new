@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScSheetProvider,
   ScSheetClose,
-  ScSheetContent,
+  ScSheet,
   ScSheetDescription,
   ScSheetFooter,
   ScSheetHeader,
@@ -16,7 +16,7 @@ import {
   imports: [
     ScSheetProvider,
     ScSheetClose,
-    ScSheetContent,
+    ScSheet,
     ScSheetDescription,
     ScSheetFooter,
     ScSheetHeader,
@@ -35,7 +35,7 @@ import {
           Open Right Sheet
         </button>
         <div sc-sheet-portal>
-          <div sc-sheet-content>
+          <div sc-sheet>
             <button sc-sheet-close>
               <svg
                 class="size-4"
@@ -96,7 +96,7 @@ import {
       </div>
 
       <!-- Left Sheet -->
-      <div sc-sheet side="left">
+      <div sc-sheet-provider side="left">
         <button
           sc-sheet-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -104,7 +104,7 @@ import {
           Open Left Sheet
         </button>
         <div sc-sheet-portal>
-          <div sc-sheet-content>
+          <div sc-sheet>
             <button sc-sheet-close>
               <svg
                 class="size-4"
@@ -159,7 +159,7 @@ import {
       </div>
 
       <!-- Top Sheet -->
-      <div sc-sheet side="top">
+      <div sc-sheet-provider side="top">
         <button
           sc-sheet-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -167,7 +167,7 @@ import {
           Open Top Sheet
         </button>
         <div sc-sheet-portal>
-          <div sc-sheet-content>
+          <div sc-sheet>
             <button sc-sheet-close>
               <svg
                 class="size-4"
@@ -196,7 +196,7 @@ import {
       </div>
 
       <!-- Bottom Sheet -->
-      <div sc-sheet side="bottom">
+      <div sc-sheet-provider side="bottom">
         <button
           sc-sheet-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -204,7 +204,7 @@ import {
           Open Bottom Sheet
         </button>
         <div sc-sheet-portal>
-          <div sc-sheet-content>
+          <div sc-sheet>
             <button sc-sheet-close>
               <svg
                 class="size-4"

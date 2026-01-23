@@ -34,12 +34,12 @@ const sideClosedClasses: Record<SheetSide, string> = {
 };
 
 @Component({
-  selector: 'div[sc-sheet-content]',
+  selector: 'div[sc-sheet]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'sheet-content',
+    'data-slot': 'sheet',
     role: 'dialog',
     'aria-modal': 'true',
     '[attr.aria-labelledby]': 'titleId',
@@ -50,7 +50,7 @@ const sideClosedClasses: Record<SheetSide, string> = {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSheetContent {
+export class ScSheet {
   private readonly sheetProvider = inject(ScSheetProvider);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
