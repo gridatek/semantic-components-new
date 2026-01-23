@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DiffViewerDemoComponent } from './demos/diff-viewer-demo-container';
+import { DiffViewerDemoContainer } from './demos/diff-viewer-demo-container';
 
 @Component({
   selector: 'app-diff-viewer-page',
-  imports: [DiffViewerDemoComponent],
+  imports: [DiffViewerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

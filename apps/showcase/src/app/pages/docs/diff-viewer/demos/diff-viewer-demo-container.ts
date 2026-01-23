@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { DiffViewerDemoComponent } from './diff-viewer-demo';
+import { DiffViewerDemo } from './diff-viewer-demo';
 
 @Component({
   selector: 'app-diff-viewer-demo-container',
-  imports: [DemoContainer, DiffViewerDemoComponent],
+  imports: [DemoContainer, DiffViewerDemo],
   template: `
     <app-demo-container title="Diff" [code]="code">
       <app-diff-viewer-demo />

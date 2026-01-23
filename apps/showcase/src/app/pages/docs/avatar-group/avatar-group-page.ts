@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AvatarGroupDemoComponent } from './demos/avatar-group-demo-container';
+import { AvatarGroupDemoContainer } from './demos/avatar-group-demo-container';
 
 @Component({
   selector: 'app-avatar-group-page',
-  imports: [AvatarGroupDemoComponent],
+  imports: [AvatarGroupDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

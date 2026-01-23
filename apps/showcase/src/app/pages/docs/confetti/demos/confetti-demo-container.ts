@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { ConfettiDemoComponent } from './confetti-demo';
+import { ConfettiDemo } from './confetti-demo';
 
 @Component({
   selector: 'app-confetti-demo-container',
-  imports: [DemoContainer, ConfettiDemoComponent],
+  imports: [DemoContainer, ConfettiDemo],
   template: `
     <app-demo-container title="Confetti" [code]="code">
       <sc-confetti-demo />

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { CodeEditorDemoComponent } from './code-editor-demo';
+import { CodeEditorDemo } from './code-editor-demo';
 
 @Component({
   selector: 'app-code-editor-demo-container',
-  imports: [DemoContainer, CodeEditorDemoComponent],
+  imports: [DemoContainer, CodeEditorDemo],
   template: `
     <app-demo-container title="Code" [code]="code">
       <app-code-editor-demo />
