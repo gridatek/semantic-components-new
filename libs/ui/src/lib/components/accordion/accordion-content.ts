@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAccordionItem } from './sc-accordion-item';
+import { ScAccordionItem } from './accordion-item';
 
 @Component({
   selector: 'div[sc-accordion-content]',

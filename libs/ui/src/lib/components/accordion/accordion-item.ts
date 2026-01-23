@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAccordion } from './sc-accordion';
+import { ScAccordion } from './accordion';
 
 @Directive({
   selector: 'div[sc-accordion-item]',
