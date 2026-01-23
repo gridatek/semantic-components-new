@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SpotlightDemoComponent } from './demos/spotlight-demo-container';
+import { SpotlightDemoContainer } from './demos/spotlight-demo-container';
 
 @Component({
   selector: 'app-spotlight-page',
-  imports: [SpotlightDemoComponent],
+  imports: [SpotlightDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

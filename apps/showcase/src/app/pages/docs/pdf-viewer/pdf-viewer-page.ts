@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PdfViewerDemoComponent } from './demos/pdf-viewer-demo-container';
+import { PdfViewerDemoContainer } from './demos/pdf-viewer-demo-container';
 
 @Component({
   selector: 'app-pdf-viewer-page',
-  imports: [PdfViewerDemoComponent],
+  imports: [PdfViewerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

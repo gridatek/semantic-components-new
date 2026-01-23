@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { RichTextEditorDemoComponent } from './rich-text-editor-demo';
+import { RichTextEditorDemo } from './rich-text-editor-demo';
 
 @Component({
   selector: 'app-rich-text-editor-demo-container',
-  imports: [DemoContainer, RichTextEditorDemoComponent],
+  imports: [DemoContainer, RichTextEditorDemo],
   template: `
     <app-demo-container title="Rich" [code]="code">
       <app-rich-text-editor-demo />

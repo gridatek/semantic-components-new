@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SpeedDialDemoComponent } from './demos/speed-dial-demo-container';
+import { SpeedDialDemoContainer } from './demos/speed-dial-demo-container';
 
 @Component({
   selector: 'app-speed-dial-page',
-  imports: [SpeedDialDemoComponent],
+  imports: [SpeedDialDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

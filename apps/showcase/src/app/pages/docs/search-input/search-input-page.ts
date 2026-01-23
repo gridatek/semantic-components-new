@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SearchInputDemoComponent } from './demos/search-input-demo-container';
+import { SearchInputDemoContainer } from './demos/search-input-demo-container';
 
 @Component({
   selector: 'app-search-input-page',
-  imports: [SearchInputDemoComponent],
+  imports: [SearchInputDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

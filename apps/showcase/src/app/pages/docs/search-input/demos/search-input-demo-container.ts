@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { SearchInputDemoComponent } from './search-input-demo';
+import { SearchInputDemo } from './search-input-demo';
 
 @Component({
   selector: 'app-search-input-demo-container',
-  imports: [DemoContainer, SearchInputDemoComponent],
+  imports: [DemoContainer, SearchInputDemo],
   template: `
     <app-demo-container title="Search" [code]="code">
-      <sc-search-input-demo />
+      <app-search-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
