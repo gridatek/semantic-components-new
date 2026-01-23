@@ -117,7 +117,7 @@ import {
       </div>
 
       <!-- Aligned End -->
-      <div sc-popover align="end">
+      <div sc-popover-provider align="end">
         <button
           sc-popover-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
