@@ -6,7 +6,11 @@ import { BasicTooltipDemo } from './basic-tooltip-demo';
   selector: 'app-basic-tooltip-demo-container',
   imports: [DemoContainer, BasicTooltipDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/tooltip/basic-tooltip-demo"
+      [code]="code"
+    >
       <app-basic-tooltip-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { DelayTooltipDemo } from './delay-tooltip-demo';
   selector: 'app-delay-tooltip-demo-container',
   imports: [DemoContainer, DelayTooltipDemo],
   template: `
-    <app-demo-container title="Delay" [code]="code">
+    <app-demo-container
+      title="Delay"
+      demoUrl="/demos/tooltip/delay-tooltip-demo"
+      [code]="code"
+    >
       <app-delay-tooltip-demo />
     </app-demo-container>
   `,

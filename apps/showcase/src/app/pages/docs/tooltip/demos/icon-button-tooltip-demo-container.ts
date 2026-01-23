@@ -6,7 +6,11 @@ import { IconButtonTooltipDemo } from './icon-button-tooltip-demo';
   selector: 'app-icon-button-tooltip-demo-container',
   imports: [DemoContainer, IconButtonTooltipDemo],
   template: `
-    <app-demo-container title="Icon Button" [code]="code">
+    <app-demo-container
+      title="Icon Button"
+      demoUrl="/demos/tooltip/icon-button-tooltip-demo"
+      [code]="code"
+    >
       <app-icon-button-tooltip-demo />
     </app-demo-container>
   `,

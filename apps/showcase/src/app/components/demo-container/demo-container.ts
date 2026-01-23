@@ -14,7 +14,38 @@ import {
   template: `
     <div class="space-y-4">
       @if (title()) {
-        <h3 class="text-sm font-medium">{{ title() }}</h3>
+        <div class="flex items-center gap-2">
+          <h3 class="text-sm font-medium">{{ title() }}</h3>
+          @if (demoUrl()) {
+            <a
+              [href]="demoUrl()"
+              target="_blank"
+              class="inline-flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground hover:text-foreground"
+              title="Open in isolation"
+            >
+              <svg
+                class="size-3.5"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 3h6v6" />
+                <path d="M10 14 21 3" />
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+              </svg>
+              <span class="sr-only">Open {{ title() }} demo in isolation</span>
+            </a>
+          }
+        </div>
       }
 
       <div sc-tabs class="w-full">
@@ -44,6 +75,7 @@ import {
 })
 export class DemoContainer {
   readonly title = input<string>('');
+  readonly demoUrl = input<string>('');
   readonly code = input.required<string>();
   readonly language = input<CodeViewerLanguage>('angular-ts');
 }

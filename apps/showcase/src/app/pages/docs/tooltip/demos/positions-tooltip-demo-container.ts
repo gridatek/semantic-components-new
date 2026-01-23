@@ -6,7 +6,11 @@ import { PositionsTooltipDemo } from './positions-tooltip-demo';
   selector: 'app-positions-tooltip-demo-container',
   imports: [DemoContainer, PositionsTooltipDemo],
   template: `
-    <app-demo-container title="Positions" [code]="code">
+    <app-demo-container
+      title="Positions"
+      demoUrl="/demos/tooltip/positions-tooltip-demo"
+      [code]="code"
+    >
       <app-positions-tooltip-demo />
     </app-demo-container>
   `,
