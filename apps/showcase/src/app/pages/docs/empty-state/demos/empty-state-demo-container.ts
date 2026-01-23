@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { EmptyStateDemoComponent } from './empty-state-demo';
+import { EmptyStateDemo } from './empty-state-demo';
 
 @Component({
   selector: 'app-empty-state-demo-container',
-  imports: [DemoContainer, EmptyStateDemoComponent],
+  imports: [DemoContainer, EmptyStateDemo],
   template: `
     <app-demo-container title="Empty" [code]="code">
-      <sc-empty-state-demo />
+      <app-empty-state-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },

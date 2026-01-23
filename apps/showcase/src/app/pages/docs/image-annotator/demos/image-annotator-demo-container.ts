@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { ImageAnnotatorDemoComponent } from './image-annotator-demo';
+import { ImageAnnotatorDemo } from './image-annotator-demo';
 
 @Component({
   selector: 'app-image-annotator-demo-container',
-  imports: [DemoContainer, ImageAnnotatorDemoComponent],
+  imports: [DemoContainer, ImageAnnotatorDemo],
   template: `
     <app-demo-container title="Image" [code]="code">
       <app-image-annotator-demo />
