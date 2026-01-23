@@ -3,4 +3,4 @@ export {
   ScSpinnerDots,
   ScSpinnerBars,
   ScSpinnerRing,
-} from './sc-spinner';
+} from './spinner';

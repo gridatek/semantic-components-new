@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavbar } from './sc-navbar';
+import { ScNavbar } from './navbar';
 
 @Component({
   selector: 'button[sc-navbar-mobile-trigger]',

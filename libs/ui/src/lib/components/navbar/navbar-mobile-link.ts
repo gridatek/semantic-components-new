@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavbar } from './sc-navbar';
+import { ScNavbar } from './navbar';
 
 @Directive({
   selector: 'a[sc-navbar-mobile-link], button[sc-navbar-mobile-link]',
