@@ -7,11 +7,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScToast } from './sc-toast';
-import { ScToastAction } from './sc-toast-action';
-import { ScToastClose } from './sc-toast-close';
-import { ScToastDescription } from './sc-toast-description';
-import { ScToastTitle } from './sc-toast-title';
+import { ScToast } from './toast';
+import { ScToastAction } from './toast-action';
+import { ScToastClose } from './toast-close';
+import { ScToastDescription } from './toast-description';
+import { ScToastTitle } from './toast-title';
 import { ToastService } from './toast.service';
 
 @Component({
