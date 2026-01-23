@@ -4,13 +4,13 @@ A set of Angular components for creating accessible modal dialogs with shadcn/ui
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScDialog` to access shared state.
+The components follow a dependency injection (DI) pattern where child components inject the parent `ScDialogProvider` to access shared state.
 
 ```
-ScDialog (root wrapper - manages open state)
+ScDialogProvider (root wrapper - manages open state)
 ├── ScDialogTrigger (button that opens dialog)
 └── ScDialogPortal (overlay with backdrop)
-    └── ScDialogContent (dialog container)
+    └── ScDialog (dialog container)
         ├── ScDialogClose (close button)
         ├── ScDialogHeader
         │   ├── ScDialogTitle
