@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialog } from './dialog';
+import { ScDialogProvider } from './dialog-provider';
 
 @Directive({
   selector: 'button[sc-dialog-trigger]',
@@ -8,17 +8,17 @@ import { ScDialog } from './dialog';
     'data-slot': 'dialog-trigger',
     '[class]': 'class()',
     '[attr.aria-haspopup]': '"dialog"',
-    '[attr.aria-expanded]': 'dialog.open()',
+    '[attr.aria-expanded]': 'dialogProvider.open()',
     '(click)': 'openDialog()',
   },
 })
 export class ScDialogTrigger {
-  readonly dialog = inject(ScDialog);
+  readonly dialogProvider = inject(ScDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
   openDialog(): void {
-    this.dialog.open.set(true);
+    this.dialogProvider.open.set(true);
   }
 }

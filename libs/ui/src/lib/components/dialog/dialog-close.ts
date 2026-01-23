@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialog } from './dialog';
+import { ScDialogProvider } from './dialog-provider';
 
 @Directive({
   selector: 'button[sc-dialog-close]',
@@ -11,7 +11,7 @@ import { ScDialog } from './dialog';
   },
 })
 export class ScDialogClose {
-  private readonly dialog = inject(ScDialog);
+  private readonly dialogProvider = inject(ScDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
@@ -25,6 +25,6 @@ export class ScDialogClose {
   );
 
   closeDialog(): void {
-    this.dialog.open.set(false);
+    this.dialogProvider.open.set(false);
   }
 }

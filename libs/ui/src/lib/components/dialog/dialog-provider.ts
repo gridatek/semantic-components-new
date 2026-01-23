@@ -9,18 +9,18 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-dialog]',
+  selector: 'div[sc-dialog-provider]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'dialog',
+    'data-slot': 'dialog-provider',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScDialog {
+export class ScDialogProvider {
   readonly classInput = input<string>('', { alias: 'class' });
 
   /** Whether the dialog is open */

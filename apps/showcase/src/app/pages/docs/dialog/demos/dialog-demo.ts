@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ScDialog,
+  ScDialogProvider,
   ScDialogClose,
   ScDialogContent,
   ScDialogDescription,
@@ -14,7 +14,7 @@ import {
 @Component({
   selector: 'app-sc-dialog-demo',
   imports: [
-    ScDialog,
+    ScDialogProvider,
     ScDialogClose,
     ScDialogContent,
     ScDialogDescription,
@@ -25,7 +25,7 @@ import {
     ScDialogTrigger,
   ],
   template: `
-    <div sc-dialog>
+    <div sc-dialog-provider>
       <button
         sc-dialog-trigger
         class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

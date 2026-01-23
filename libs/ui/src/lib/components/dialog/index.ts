@@ -1,4 +1,4 @@
-export { ScDialog } from './dialog';
+export { ScDialogProvider } from './dialog-provider';
 export { ScDialogTrigger } from './dialog-trigger';
 export { ScDialogPortal } from './dialog-portal';
 export { ScDialogContent } from './dialog-content';

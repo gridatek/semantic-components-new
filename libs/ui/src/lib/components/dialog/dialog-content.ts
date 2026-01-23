@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialog } from './dialog';
+import { ScDialogProvider } from './dialog-provider';
 
 let dialogIdCounter = 0;
 
@@ -30,7 +30,7 @@ let dialogIdCounter = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScDialogContent {
-  private readonly dialog = inject(ScDialog);
+  private readonly dialogProvider = inject(ScDialogProvider);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
@@ -42,7 +42,7 @@ export class ScDialogContent {
   protected readonly class = computed(() =>
     cn(
       'bg-background relative z-50 grid w-full max-w-lg gap-4 rounded-lg border p-6 shadow-lg',
-      this.dialog.open()
+      this.dialogProvider.open()
         ? 'opacity-100 scale-100 transition-[opacity,transform] duration-150 ease-out'
         : 'opacity-0 scale-95 transition-[opacity,transform] duration-150 ease-in',
       this.classInput(),

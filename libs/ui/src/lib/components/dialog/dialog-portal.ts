@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialog } from './dialog';
+import { ScDialogProvider } from './dialog-provider';
 
 @Component({
   selector: 'div[sc-dialog-portal]',
@@ -40,7 +40,7 @@ import { ScDialog } from './dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScDialogPortal {
-  private readonly dialog = inject(ScDialog);
+  private readonly dialogProvider = inject(ScDialogProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -64,7 +64,7 @@ export class ScDialogPortal {
   protected readonly backdropClass = computed(() =>
     cn(
       'fixed inset-0 bg-black/80',
-      this.dialog.open()
+      this.dialogProvider.open()
         ? 'opacity-100 visible transition-[opacity,visibility] duration-150 ease-out'
         : 'opacity-0 invisible transition-[opacity,visibility] duration-150 ease-in [transition-delay:0s,150ms]',
     ),
@@ -72,7 +72,7 @@ export class ScDialogPortal {
 
   constructor() {
     effect(() => {
-      if (this.dialog.open()) {
+      if (this.dialogProvider.open()) {
         this.attachDialog();
       } else {
         this.detachDialog();
@@ -103,6 +103,6 @@ export class ScDialogPortal {
   }
 
   closeDialog(): void {
-    this.dialog.open.set(false);
+    this.dialogProvider.open.set(false);
   }
 }
