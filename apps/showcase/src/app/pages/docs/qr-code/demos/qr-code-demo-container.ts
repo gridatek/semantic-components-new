@@ -7,7 +7,7 @@ import { ScQrCodeDemo } from './qr-code-demo';
   imports: [DemoContainer, ScQrCodeDemo],
   template: `
     <app-demo-container title="Qr" [code]="code">
-      <sc-qr-code-demo />
+      <app-qr-code-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ScQrCode, ScQrCodeDownload } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-qr-code-demo',
+  selector: 'app-qr-code-demo',
   imports: [ScQrCode, ScQrCodeDownload, FormsModule],
   template: \`
     <div class="space-y-8">

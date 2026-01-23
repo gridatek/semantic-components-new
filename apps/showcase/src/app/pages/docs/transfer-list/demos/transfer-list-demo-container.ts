@@ -19,7 +19,7 @@ import { ScTransferList } from '@semantic-components/ui';
 import type { TransferListItem } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-transfer-list-demo',
+  selector: 'app-transfer-list-demo',
   imports: [ScTransferList],
   template: \`
     <div class="flex flex-col gap-8">

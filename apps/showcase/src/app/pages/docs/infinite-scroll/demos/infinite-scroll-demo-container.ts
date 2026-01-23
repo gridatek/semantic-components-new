@@ -7,7 +7,7 @@ import { ScInfiniteScrollDemo } from './infinite-scroll-demo';
   imports: [DemoContainer, ScInfiniteScrollDemo],
   template: `
     <app-demo-container title="Infinite" [code]="code">
-      <sc-infinite-scroll-demo />
+      <app-infinite-scroll-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -27,7 +27,7 @@ interface Item {
 }
 
 @Component({
-  selector: 'sc-infinite-scroll-demo',
+  selector: 'app-infinite-scroll-demo',
   imports: [ScInfiniteScroll, ScInfiniteScrollLoader],
   template: \`
     <div class="space-y-8">

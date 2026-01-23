@@ -7,7 +7,7 @@ import { ScImageCompareDemo } from './image-compare-demo';
   imports: [DemoContainer, ScImageCompareDemo],
   template: `
     <app-demo-container title="Image" [code]="code">
-      <sc-image-compare-demo />
+      <app-image-compare-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScImageCompareDemoContainer {
 import { ScImageCompare } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-image-compare-demo',
+  selector: 'app-image-compare-demo',
   imports: [ScImageCompare],
   template: \`
     <div class="space-y-8">

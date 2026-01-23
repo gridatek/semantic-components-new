@@ -7,7 +7,7 @@ import { ScAudioPlayerDemo } from './audio-player-demo';
   imports: [DemoContainer, ScAudioPlayerDemo],
   template: `
     <app-demo-container title="Audio" [code]="code">
-      <sc-audio-player-demo />
+      <app-audio-player-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScAudioPlayerDemoContainer {
 import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-audio-player-demo',
+  selector: 'app-audio-player-demo',
   imports: [ScAudioPlayer],
   template: \`
     <div class="space-y-8">

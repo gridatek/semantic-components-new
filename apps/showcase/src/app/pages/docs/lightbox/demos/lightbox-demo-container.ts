@@ -7,7 +7,7 @@ import { ScLightboxDemo } from './lightbox-demo';
   imports: [DemoContainer, ScLightboxDemo],
   template: `
     <app-demo-container title="Lightbox" [code]="code">
-      <sc-lightbox-demo />
+      <app-lightbox-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-lightbox-demo',
+  selector: 'app-lightbox-demo',
   imports: [ScLightbox, ScLightboxTrigger, ScLightboxGallery],
   template: \`
     <div class="space-y-8">

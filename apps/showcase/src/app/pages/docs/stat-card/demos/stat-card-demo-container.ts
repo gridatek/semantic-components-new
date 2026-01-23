@@ -18,7 +18,7 @@ export class StatCardDemoContainer {
 import { ScStatCard } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-stat-card-demo',
+  selector: 'app-stat-card-demo',
   imports: [ScStatCard],
   template: \`
     <div class="flex flex-col gap-8">

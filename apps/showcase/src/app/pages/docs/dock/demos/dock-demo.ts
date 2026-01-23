@@ -3,7 +3,7 @@ import { ScDock } from '@semantic-components/ui';
 import type { DockItem, DockPosition, DockSize } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-dock-demo',
+  selector: 'app-dock-demo',
   imports: [ScDock],
   template: `
     <div class="flex flex-col gap-8">

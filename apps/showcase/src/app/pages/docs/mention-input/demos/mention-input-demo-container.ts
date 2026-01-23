@@ -7,7 +7,7 @@ import { ScMentionInputDemo } from './mention-input-demo';
   imports: [DemoContainer, ScMentionInputDemo],
   template: `
     <app-demo-container title="Mention" [code]="code">
-      <sc-mention-input-demo />
+      <app-mention-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScMentionInputDemoContainer {
 import { ScMentionInput, MentionUser } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-mention-input-demo',
+  selector: 'app-mention-input-demo',
   imports: [ScMentionInput],
   template: \`
     <div class="space-y-8">

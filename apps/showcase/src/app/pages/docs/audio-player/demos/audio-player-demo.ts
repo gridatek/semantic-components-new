@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-audio-player-demo',
+  selector: 'app-audio-player-demo',
   imports: [ScAudioPlayer],
   template: `
     <div class="space-y-8">

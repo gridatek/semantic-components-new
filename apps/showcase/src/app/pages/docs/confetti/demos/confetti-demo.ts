@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
 import { ScConfetti } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-confetti-demo',
+  selector: 'app-confetti-demo',
   imports: [ScConfetti],
   template: `
     <sc-confetti #confetti (complete)="onComplete()" />

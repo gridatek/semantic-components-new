@@ -7,7 +7,7 @@ import { ScMultiSelectDemo } from './multi-select-demo';
   imports: [DemoContainer, ScMultiSelectDemo],
   template: `
     <app-demo-container title="Multi" [code]="code">
-      <sc-multi-select-demo />
+      <app-multi-select-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScMultiSelectDemoContainer {
 import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-multi-select-demo',
+  selector: 'app-multi-select-demo',
   imports: [ScMultiSelect],
   template: \`
     <div class="space-y-8">

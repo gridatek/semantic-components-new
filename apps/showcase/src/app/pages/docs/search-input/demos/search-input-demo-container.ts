@@ -19,7 +19,7 @@ import { ScSearchInput } from '@semantic-components/ui';
 import type { SearchSuggestion } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-search-input-demo',
+  selector: 'app-search-input-demo',
   imports: [ScSearchInput],
   template: \`
     <div class="flex flex-col gap-8">

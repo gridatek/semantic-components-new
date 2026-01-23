@@ -7,7 +7,7 @@ import { ScSignaturePadDemo } from './signature-pad-demo';
   imports: [DemoContainer, ScSignaturePadDemo],
   template: `
     <app-demo-container title="Signature" [code]="code">
-      <sc-signature-pad-demo />
+      <app-signature-pad-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScSignaturePadDemoContainer {
 import { ScSignaturePad } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-signature-pad-demo',
+  selector: 'app-signature-pad-demo',
   imports: [ScSignaturePad],
   template: \`
     <div class="space-y-8">

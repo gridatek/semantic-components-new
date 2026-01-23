@@ -11,7 +11,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-timeline-demo',
+  selector: 'app-timeline-demo',
   imports: [
     ScTimeline,
     ScTimelineItem,

@@ -7,7 +7,7 @@ import { ConfettiDemo } from './confetti-demo';
   imports: [DemoContainer, ConfettiDemo],
   template: `
     <app-demo-container title="Confetti" [code]="code">
-      <sc-confetti-demo />
+      <app-confetti-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ConfettiDemoContainer {
 import { ScConfetti } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-confetti-demo',
+  selector: 'app-confetti-demo',
   imports: [ScConfetti],
   template: \`
     <sc-confetti #confetti (complete)="onComplete()" />

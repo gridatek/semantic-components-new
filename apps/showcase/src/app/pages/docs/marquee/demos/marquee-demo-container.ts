@@ -7,7 +7,7 @@ import { ScMarqueeDemo } from './marquee-demo';
   imports: [DemoContainer, ScMarqueeDemo],
   template: `
     <app-demo-container title="Marquee" [code]="code">
-      <sc-marquee-demo />
+      <app-marquee-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-marquee-demo',
+  selector: 'app-marquee-demo',
   imports: [ScMarquee, ScMarqueeItem, ScMarqueeClone, ScMarqueeText],
   template: \`
     <div class="space-y-10">

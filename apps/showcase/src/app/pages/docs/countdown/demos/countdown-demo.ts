@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-countdown-demo',
+  selector: 'app-countdown-demo',
   imports: [ScCountdown, ScCountdownSimple],
   template: `
     <div class="space-y-8">

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScMentionInput, MentionUser } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-mention-input-demo',
+  selector: 'app-mention-input-demo',
   imports: [ScMentionInput],
   template: `
     <div class="space-y-8">

@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-password-input-demo',
+  selector: 'app-password-input-demo',
   imports: [ScPasswordInput, ScPasswordInputStrength, ScPasswordInputConfirm],
   template: `
     <div class="space-y-8">

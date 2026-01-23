@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-barcode-scanner-demo',
+  selector: 'app-barcode-scanner-demo',
   imports: [ScBarcodeScanner],
   template: `
     <div class="space-y-8">

@@ -7,7 +7,7 @@ import { ScPasswordInputDemo } from './password-input-demo';
   imports: [DemoContainer, ScPasswordInputDemo],
   template: `
     <app-demo-container title="Password" [code]="code">
-      <sc-password-input-demo />
+      <app-password-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-password-input-demo',
+  selector: 'app-password-input-demo',
   imports: [ScPasswordInput, ScPasswordInputStrength, ScPasswordInputConfirm],
   template: \`
     <div class="space-y-8">

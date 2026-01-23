@@ -7,7 +7,7 @@ import { ScPhoneInputDemo } from './phone-input-demo';
   imports: [DemoContainer, ScPhoneInputDemo],
   template: `
     <app-demo-container title="Phone" [code]="code">
-      <sc-phone-input-demo />
+      <app-phone-input-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-phone-input-demo',
+  selector: 'app-phone-input-demo',
   imports: [ScPhoneInput, ScPhoneInputSimple],
   template: \`
     <div class="space-y-8">

@@ -7,7 +7,7 @@ import { ScSpinnerDemo } from './spinner-demo';
   imports: [DemoContainer, ScSpinnerDemo],
   template: `
     <app-demo-container title="Spinner" [code]="code">
-      <sc-spinner-demo />
+      <app-spinner-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -23,7 +23,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-spinner-demo',
+  selector: 'app-spinner-demo',
   imports: [ScSpinner, ScSpinnerDots, ScSpinnerBars, ScSpinnerRing],
   template: \`
     <div class="space-y-8">

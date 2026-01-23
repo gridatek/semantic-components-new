@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-marquee-demo',
+  selector: 'app-marquee-demo',
   imports: [ScMarquee, ScMarqueeItem, ScMarqueeClone, ScMarqueeText],
   template: `
     <div class="space-y-10">

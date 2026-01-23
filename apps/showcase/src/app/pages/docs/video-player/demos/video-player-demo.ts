@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScVideoPlayer, VideoSource } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-video-player-demo',
+  selector: 'app-video-player-demo',
   imports: [ScVideoPlayer],
   template: `
     <div class="space-y-8">

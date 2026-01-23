@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-spinner-demo',
+  selector: 'app-spinner-demo',
   imports: [ScSpinner, ScSpinnerDots, ScSpinnerBars, ScSpinnerRing],
   template: `
     <div class="space-y-8">

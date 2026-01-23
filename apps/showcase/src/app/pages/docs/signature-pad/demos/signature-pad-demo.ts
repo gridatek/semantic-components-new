@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScSignaturePad } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-signature-pad-demo',
+  selector: 'app-signature-pad-demo',
   imports: [ScSignaturePad],
   template: `
     <div class="space-y-8">

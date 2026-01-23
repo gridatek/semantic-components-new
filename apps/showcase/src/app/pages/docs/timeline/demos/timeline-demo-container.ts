@@ -7,7 +7,7 @@ import { ScTimelineDemo } from './timeline-demo';
   imports: [DemoContainer, ScTimelineDemo],
   template: `
     <app-demo-container title="Timeline" [code]="code">
-      <sc-timeline-demo />
+      <app-timeline-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -27,7 +27,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-timeline-demo',
+  selector: 'app-timeline-demo',
   imports: [
     ScTimeline,
     ScTimelineItem,

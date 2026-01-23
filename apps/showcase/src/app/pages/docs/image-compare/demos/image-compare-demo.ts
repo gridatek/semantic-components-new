@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScImageCompare } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-image-compare-demo',
+  selector: 'app-image-compare-demo',
   imports: [ScImageCompare],
   template: `
     <div class="space-y-8">

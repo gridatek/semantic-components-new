@@ -7,7 +7,7 @@ import { ScVideoPlayerDemo } from './video-player-demo';
   imports: [DemoContainer, ScVideoPlayerDemo],
   template: `
     <app-demo-container title="Video" [code]="code">
-      <sc-video-player-demo />
+      <app-video-player-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -18,7 +18,7 @@ export class ScVideoPlayerDemoContainer {
 import { ScVideoPlayer, VideoSource } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-video-player-demo',
+  selector: 'app-video-player-demo',
   imports: [ScVideoPlayer],
   template: \`
     <div class="space-y-8">

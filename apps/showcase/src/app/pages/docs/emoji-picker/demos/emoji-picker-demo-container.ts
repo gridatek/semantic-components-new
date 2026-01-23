@@ -7,7 +7,7 @@ import { ScEmojiPickerDemo } from './emoji-picker-demo';
   imports: [DemoContainer, ScEmojiPickerDemo],
   template: `
     <app-demo-container title="Emoji" [code]="code">
-      <sc-emoji-picker-demo />
+      <app-emoji-picker-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-emoji-picker-demo',
+  selector: 'app-emoji-picker-demo',
   imports: [ScEmojiPicker, ScEmojiPickerTrigger],
   template: \`
     <div class="space-y-8">

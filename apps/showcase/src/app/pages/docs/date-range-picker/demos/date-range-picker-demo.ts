@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-date-range-picker-demo',
+  selector: 'app-date-range-picker-demo',
   imports: [ScDateRangePicker],
   template: `
     <div class="space-y-8">

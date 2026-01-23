@@ -6,7 +6,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-phone-input-demo',
+  selector: 'app-phone-input-demo',
   imports: [ScPhoneInput, ScPhoneInputSimple],
   template: `
     <div class="space-y-8">

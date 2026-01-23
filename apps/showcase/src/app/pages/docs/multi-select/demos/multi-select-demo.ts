@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-multi-select-demo',
+  selector: 'app-multi-select-demo',
   imports: [ScMultiSelect],
   template: `
     <div class="space-y-8">

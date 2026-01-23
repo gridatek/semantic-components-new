@@ -7,7 +7,7 @@ import { ScBarcodeScannerDemo } from './barcode-scanner-demo';
   imports: [DemoContainer, ScBarcodeScannerDemo],
   template: `
     <app-demo-container title="Barcode" [code]="code">
-      <sc-barcode-scanner-demo />
+      <app-barcode-scanner-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
@@ -22,7 +22,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-barcode-scanner-demo',
+  selector: 'app-barcode-scanner-demo',
   imports: [ScBarcodeScanner],
   template: \`
     <div class="space-y-8">

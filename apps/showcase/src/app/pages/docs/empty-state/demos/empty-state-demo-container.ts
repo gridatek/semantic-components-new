@@ -19,7 +19,7 @@ import { ScEmptyState } from '@semantic-components/ui';
 import type { EmptyStateAction } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-empty-state-demo',
+  selector: 'app-empty-state-demo',
   imports: [ScEmptyState],
   template: \`
     <div class="flex flex-col gap-8">

@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ScQrCode, ScQrCodeDownload } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-qr-code-demo',
+  selector: 'app-qr-code-demo',
   imports: [ScQrCode, ScQrCodeDownload, FormsModule],
   template: `
     <div class="space-y-8">

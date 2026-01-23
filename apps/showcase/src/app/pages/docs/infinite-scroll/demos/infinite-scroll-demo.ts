@@ -11,7 +11,7 @@ interface Item {
 }
 
 @Component({
-  selector: 'sc-infinite-scroll-demo',
+  selector: 'app-infinite-scroll-demo',
   imports: [ScInfiniteScroll, ScInfiniteScrollLoader],
   template: `
     <div class="space-y-8">
