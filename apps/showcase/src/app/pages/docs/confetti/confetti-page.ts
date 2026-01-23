@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ConfettiDemoContainer from './demos/confetti-demo-container';
+import { ConfettiDemoComponent } from './demos/confetti-demo-container';
 
 @Component({
   selector: 'app-confetti-page',
-  imports: [ConfettiDemoContainer],
+  imports: [ConfettiDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

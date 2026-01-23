@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import PopoverDemoContainer from './demos/popover-demo-container';
+import { ScPopoverDemoContainer } from './demos/popover-demo-container';
 
 @Component({
   selector: 'app-popover-page',
-  imports: [PopoverDemoContainer],
+  imports: [ScPopoverDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

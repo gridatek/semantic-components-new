@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import QrCodeDemoContainer from './demos/qr-code-demo-container';
+import { ScQrCodeDemoContainer } from './demos/qr-code-demo-container';
 
 @Component({
   selector: 'app-qr-code-page',
-  imports: [QrCodeDemoContainer],
+  imports: [ScQrCodeDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

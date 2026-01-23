@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ToggleGroupDemoContainer from './demos/toggle-group-demo-container';
+import { ScToggleGroupDemoContainer } from './demos/toggle-group-demo-container';
 
 @Component({
   selector: 'app-toggle-group-page',
-  imports: [ToggleGroupDemoContainer],
+  imports: [ScToggleGroupDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TimePickerDemoContainer from './demos/time-picker-demo-container';
+import { ScTimePickerDemoContainer } from './demos/time-picker-demo-container';
 
 @Component({
   selector: 'app-time-picker-page',
-  imports: [TimePickerDemoContainer],
+  imports: [ScTimePickerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

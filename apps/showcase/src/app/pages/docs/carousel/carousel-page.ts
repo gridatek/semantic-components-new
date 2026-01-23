@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CarouselDemoContainer from './demos/carousel-demo-container';
+import { ScCarouselDemoContainer } from './demos/carousel-demo-container';
 
 @Component({
   selector: 'app-carousel-page',
-  imports: [CarouselDemoContainer],
+  imports: [ScCarouselDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

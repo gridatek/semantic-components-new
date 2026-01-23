@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TabsDemoContainer from './demos/tabs-demo-container';
+import { ScTabsDemoContainer } from './demos/tabs-demo-container';
 
 @Component({
   selector: 'app-tabs-page',
-  imports: [TabsDemoContainer],
+  imports: [ScTabsDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

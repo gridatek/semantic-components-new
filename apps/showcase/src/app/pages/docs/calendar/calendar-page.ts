@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CalendarDemoContainer from './demos/calendar-demo-container';
+import { ScCalendarDemoContainer } from './demos/calendar-demo-container';
 
 @Component({
   selector: 'app-calendar-page',
-  imports: [CalendarDemoContainer],
+  imports: [ScCalendarDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

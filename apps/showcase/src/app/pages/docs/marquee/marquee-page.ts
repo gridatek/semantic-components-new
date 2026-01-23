@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import MarqueeDemoContainer from './demos/marquee-demo-container';
+import { ScMarqueeDemoContainer } from './demos/marquee-demo-container';
 
 @Component({
   selector: 'app-marquee-page',
-  imports: [MarqueeDemoContainer],
+  imports: [ScMarqueeDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

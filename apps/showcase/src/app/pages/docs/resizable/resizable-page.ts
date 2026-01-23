@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ResizableDemoContainer from './demos/resizable-demo-container';
+import { ScResizableDemoContainer } from './demos/resizable-demo-container';
 
 @Component({
   selector: 'app-resizable-page',
-  imports: [ResizableDemoContainer],
+  imports: [ScResizableDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

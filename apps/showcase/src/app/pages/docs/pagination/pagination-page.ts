@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import PaginationDemoContainer from './demos/pagination-demo-container';
+import { ScPaginationDemoContainer } from './demos/pagination-demo-container';
 
 @Component({
   selector: 'app-pagination-page',
-  imports: [PaginationDemoContainer],
+  imports: [ScPaginationDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

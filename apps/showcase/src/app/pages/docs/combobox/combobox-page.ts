@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ComboboxDemoContainer from './demos/combobox-demo-container';
+import { ScComboboxDemoContainer } from './demos/combobox-demo-container';
 
 @Component({
   selector: 'app-combobox-page',
-  imports: [ComboboxDemoContainer],
+  imports: [ScComboboxDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

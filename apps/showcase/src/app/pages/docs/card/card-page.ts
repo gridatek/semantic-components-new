@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CardDemoContainer from './demos/card-demo-container';
+import { ScCardDemoContainer } from './demos/card-demo-container';
 
 @Component({
   selector: 'app-card-page',
-  imports: [CardDemoContainer],
+  imports: [ScCardDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

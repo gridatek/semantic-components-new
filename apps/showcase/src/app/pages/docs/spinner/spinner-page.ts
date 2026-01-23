@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SpinnerDemoContainer from './demos/spinner-demo-container';
+import { ScSpinnerDemoContainer } from './demos/spinner-demo-container';
 
 @Component({
   selector: 'app-spinner-page',
-  imports: [SpinnerDemoContainer],
+  imports: [ScSpinnerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

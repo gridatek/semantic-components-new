@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import KanbanBoardDemoContainer from './demos/kanban-board-demo-container';
+import { KanbanBoardDemoComponent } from './demos/kanban-board-demo-container';
 
 @Component({
   selector: 'app-kanban-board-page',
-  imports: [KanbanBoardDemoContainer],
+  imports: [KanbanBoardDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

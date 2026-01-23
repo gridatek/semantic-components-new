@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import PhoneInputDemoContainer from './demos/phone-input-demo-container';
+import { ScPhoneInputDemoContainer } from './demos/phone-input-demo-container';
 
 @Component({
   selector: 'app-phone-input-page',
-  imports: [PhoneInputDemoContainer],
+  imports: [ScPhoneInputDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

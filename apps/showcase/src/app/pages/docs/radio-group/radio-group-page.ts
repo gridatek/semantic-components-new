@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import RadioGroupDemoContainer from './demos/radio-group-demo-container';
+import { ScRadioGroupDemoContainer } from './demos/radio-group-demo-container';
 
 @Component({
   selector: 'app-radio-group-page',
-  imports: [RadioGroupDemoContainer],
+  imports: [ScRadioGroupDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import MasonryGridDemoContainer from './demos/masonry-grid-demo-container';
+import { MasonryGridDemoComponent } from './demos/masonry-grid-demo-container';
 
 @Component({
   selector: 'app-masonry-grid-page',
-  imports: [MasonryGridDemoContainer],
+  imports: [MasonryGridDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

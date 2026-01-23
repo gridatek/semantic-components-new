@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ProgressDemoContainer from './demos/progress-demo-container';
+import { ScProgressDemoContainer } from './demos/progress-demo-container';
 
 @Component({
   selector: 'app-progress-page',
-  imports: [ProgressDemoContainer],
+  imports: [ScProgressDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

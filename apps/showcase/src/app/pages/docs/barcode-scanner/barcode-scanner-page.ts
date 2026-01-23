@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import BarcodeScannerDemoContainer from './demos/barcode-scanner-demo-container';
+import { ScBarcodeScannerDemoContainer } from './demos/barcode-scanner-demo-container';
 
 @Component({
   selector: 'app-barcode-scanner-page',
-  imports: [BarcodeScannerDemoContainer],
+  imports: [ScBarcodeScannerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import AnimatedCounterDemoContainer from './demos/animated-counter-demo-container';
+import { BasicAnimatedCounterDemoContainer } from './demos/basic-animated-counter-demo-container';
+import { EasingAnimatedCounterDemoContainer } from './demos/easing-animated-counter-demo-container';
+import { PrefixAnimatedCounterDemoContainer } from './demos/prefix-animated-counter-demo-container';
 
 @Component({
   selector: 'app-animated-counter-page',
-  imports: [AnimatedCounterDemoContainer],
+  imports: [
+    BasicAnimatedCounterDemoContainer,
+    EasingAnimatedCounterDemoContainer,
+    PrefixAnimatedCounterDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -13,7 +19,9 @@ import AnimatedCounterDemoContainer from './demos/animated-counter-demo-containe
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-animated-counter-demo-container />
+        <app-basic-animated-counter-demo-container />
+        <app-easing-animated-counter-demo-container />
+        <app-prefix-animated-counter-demo-container />
       </section>
     </div>
   `,

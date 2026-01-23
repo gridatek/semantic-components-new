@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TooltipDemoContainer from './demos/tooltip-demo-container';
+import { ScTooltipDemoContainer } from './demos/tooltip-demo-container';
 
 @Component({
   selector: 'app-tooltip-page',
-  imports: [TooltipDemoContainer],
+  imports: [ScTooltipDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

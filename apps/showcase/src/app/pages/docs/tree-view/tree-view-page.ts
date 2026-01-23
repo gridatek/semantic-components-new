@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TreeViewDemoContainer from './demos/tree-view-demo-container';
+import { ScTreeViewDemoContainer } from './demos/tree-view-demo-container';
 
 @Component({
   selector: 'app-tree-view-page',
-  imports: [TreeViewDemoContainer],
+  imports: [ScTreeViewDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import MentionInputDemoContainer from './demos/mention-input-demo-container';
+import { ScMentionInputDemoContainer } from './demos/mention-input-demo-container';
 
 @Component({
   selector: 'app-mention-input-page',
-  imports: [MentionInputDemoContainer],
+  imports: [ScMentionInputDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

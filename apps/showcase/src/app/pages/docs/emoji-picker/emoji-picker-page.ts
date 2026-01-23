@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import EmojiPickerDemoContainer from './demos/emoji-picker-demo-container';
+import { ScEmojiPickerDemoContainer } from './demos/emoji-picker-demo-container';
 
 @Component({
   selector: 'app-emoji-picker-page',
-  imports: [EmojiPickerDemoContainer],
+  imports: [ScEmojiPickerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

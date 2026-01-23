@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import AudioPlayerDemoContainer from './demos/audio-player-demo-container';
+import { ScAudioPlayerDemoContainer } from './demos/audio-player-demo-container';
 
 @Component({
   selector: 'app-audio-player-page',
-  imports: [AudioPlayerDemoContainer],
+  imports: [ScAudioPlayerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

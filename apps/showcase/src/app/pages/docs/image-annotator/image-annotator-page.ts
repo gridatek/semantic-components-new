@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ImageAnnotatorDemoContainer from './demos/image-annotator-demo-container';
+import { ImageAnnotatorDemoComponent } from './demos/image-annotator-demo-container';
 
 @Component({
   selector: 'app-image-annotator-page',
-  imports: [ImageAnnotatorDemoContainer],
+  imports: [ImageAnnotatorDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

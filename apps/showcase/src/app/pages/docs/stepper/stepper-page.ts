@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import StepperDemoContainer from './demos/stepper-demo-container';
+import { ScStepperDemoContainer } from './demos/stepper-demo-container';
 
 @Component({
   selector: 'app-stepper-page',
-  imports: [StepperDemoContainer],
+  imports: [ScStepperDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

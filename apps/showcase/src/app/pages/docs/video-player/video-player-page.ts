@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import VideoPlayerDemoContainer from './demos/video-player-demo-container';
+import { ScVideoPlayerDemoContainer } from './demos/video-player-demo-container';
 
 @Component({
   selector: 'app-video-player-page',
-  imports: [VideoPlayerDemoContainer],
+  imports: [ScVideoPlayerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

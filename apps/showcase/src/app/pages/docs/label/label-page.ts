@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import LabelDemoContainer from './demos/label-demo-container';
+import { ScLabelDemoContainer } from './demos/label-demo-container';
 
 @Component({
   selector: 'app-label-page',
-  imports: [LabelDemoContainer],
+  imports: [ScLabelDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TextareaDemoContainer from './demos/textarea-demo-container';
+import { ScTextareaDemoContainer } from './demos/textarea-demo-container';
 
 @Component({
   selector: 'app-textarea-page',
-  imports: [TextareaDemoContainer],
+  imports: [ScTextareaDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

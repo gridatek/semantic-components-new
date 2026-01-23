@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ImageCompareDemoContainer from './demos/image-compare-demo-container';
+import { ScImageCompareDemoContainer } from './demos/image-compare-demo-container';
 
 @Component({
   selector: 'app-image-compare-page',
-  imports: [ImageCompareDemoContainer],
+  imports: [ScImageCompareDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

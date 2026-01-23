@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import DataTableDemoContainer from './demos/data-table-demo-container';
+import { ScDataTableDemoContainer } from './demos/data-table-demo-container';
 
 @Component({
   selector: 'app-data-table-page',
-  imports: [DataTableDemoContainer],
+  imports: [ScDataTableDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

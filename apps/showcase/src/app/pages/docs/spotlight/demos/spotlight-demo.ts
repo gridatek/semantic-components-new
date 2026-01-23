@@ -1,14 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
 import {
   ScSpotlight,
-  ScSpotlightTitle,
-  ScSpotlightDescription,
   ScSpotlightActions,
+  ScSpotlightDescription,
+  ScSpotlightTitle,
 } from '@semantic-components/ui';
 
 @Component({
@@ -246,7 +241,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpotlightDemoComponent {
+export class SpotlightDemo {
   private readonly spotlight1 = viewChild.required<ScSpotlight>('spotlight1');
   private readonly spotlight2 = viewChild.required<ScSpotlight>('spotlight2');
   private readonly spotlight3 = viewChild.required<ScSpotlight>('spotlight3');

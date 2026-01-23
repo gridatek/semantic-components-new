@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ContextMenuDemoContainer from './demos/context-menu-demo-container';
+import { ScContextMenuDemoContainer } from './demos/context-menu-demo-container';
 
 @Component({
   selector: 'app-context-menu-page',
-  imports: [ContextMenuDemoContainer],
+  imports: [ScContextMenuDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

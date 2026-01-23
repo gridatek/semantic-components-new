@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SeparatorDemoContainer from './demos/separator-demo-container';
+import { ScSeparatorDemoContainer } from './demos/separator-demo-container';
 
 @Component({
   selector: 'app-separator-page',
-  imports: [SeparatorDemoContainer],
+  imports: [ScSeparatorDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

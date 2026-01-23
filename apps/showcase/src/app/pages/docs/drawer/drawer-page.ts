@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import DrawerDemoContainer from './demos/drawer-demo-container';
+import { ScDrawerDemoContainer } from './demos/drawer-demo-container';
 
 @Component({
   selector: 'app-drawer-page',
-  imports: [DrawerDemoContainer],
+  imports: [ScDrawerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

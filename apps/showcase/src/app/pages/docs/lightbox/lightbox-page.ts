@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import LightboxDemoContainer from './demos/lightbox-demo-container';
+import { ScLightboxDemoContainer } from './demos/lightbox-demo-container';
 
 @Component({
   selector: 'app-lightbox-page',
-  imports: [LightboxDemoContainer],
+  imports: [ScLightboxDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

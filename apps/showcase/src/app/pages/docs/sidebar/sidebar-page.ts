@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SidebarDemoContainer from './demos/sidebar-demo-container';
+import { ScSidebarDemoContainer } from './demos/sidebar-demo-container';
 
 @Component({
   selector: 'app-sidebar-page',
-  imports: [SidebarDemoContainer],
+  imports: [ScSidebarDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

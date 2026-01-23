@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ButtonDemoContainer from './demos/button-demo-container';
+import { ScButtonDemoContainer } from './demos/button-demo-container';
 
 @Component({
   selector: 'app-button-page',
-  imports: [ButtonDemoContainer],
+  imports: [ScButtonDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

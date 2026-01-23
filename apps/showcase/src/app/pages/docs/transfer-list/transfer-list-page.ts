@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TransferListDemoContainer from './demos/transfer-list-demo-container';
+import { TransferListDemoComponent } from './demos/transfer-list-demo-container';
 
 @Component({
   selector: 'app-transfer-list-page',
-  imports: [TransferListDemoContainer],
+  imports: [TransferListDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

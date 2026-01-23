@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import InfiniteScrollDemoContainer from './demos/infinite-scroll-demo-container';
+import { ScInfiniteScrollDemoContainer } from './demos/infinite-scroll-demo-container';
 
 @Component({
   selector: 'app-infinite-scroll-page',
-  imports: [InfiniteScrollDemoContainer],
+  imports: [ScInfiniteScrollDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

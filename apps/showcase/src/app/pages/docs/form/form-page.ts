@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import FormDemoContainer from './demos/form-demo-container';
+import { ScFormDemoContainer } from './demos/form-demo-container';
 
 @Component({
   selector: 'app-form-page',
-  imports: [FormDemoContainer],
+  imports: [ScFormDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

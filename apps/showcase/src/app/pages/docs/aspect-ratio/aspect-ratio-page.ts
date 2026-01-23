@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import AspectRatioDemoContainer from './demos/aspect-ratio-demo-container';
+import { BasicAspectRatioDemoContainer } from './demos/basic-aspect-ratio-demo-container';
+import { PlaceholderAspectRatioDemoContainer } from './demos/placeholder-aspect-ratio-demo-container';
 
 @Component({
   selector: 'app-aspect-ratio-page',
-  imports: [AspectRatioDemoContainer],
+  imports: [BasicAspectRatioDemoContainer, PlaceholderAspectRatioDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,8 @@ import AspectRatioDemoContainer from './demos/aspect-ratio-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-aspect-ratio-demo-container />
+        <app-basic-aspect-ratio-demo-container />
+        <app-placeholder-aspect-ratio-demo-container />
       </section>
     </div>
   `,

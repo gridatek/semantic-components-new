@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import KbdDemoContainer from './demos/kbd-demo-container';
+import { ScKbdDemoContainer } from './demos/kbd-demo-container';
 
 @Component({
   selector: 'app-kbd-page',
-  imports: [KbdDemoContainer],
+  imports: [ScKbdDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

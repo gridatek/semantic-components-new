@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import MultiSelectDemoContainer from './demos/multi-select-demo-container';
+import { ScMultiSelectDemoContainer } from './demos/multi-select-demo-container';
 
 @Component({
   selector: 'app-multi-select-page',
-  imports: [MultiSelectDemoContainer],
+  imports: [ScMultiSelectDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

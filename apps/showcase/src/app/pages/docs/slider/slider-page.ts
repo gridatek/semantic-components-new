@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SliderDemoContainer from './demos/slider-demo-container';
+import { ScSliderDemoContainer } from './demos/slider-demo-container';
 
 @Component({
   selector: 'app-slider-page',
-  imports: [SliderDemoContainer],
+  imports: [ScSliderDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SignaturePadDemoContainer from './demos/signature-pad-demo-container';
+import { ScSignaturePadDemoContainer } from './demos/signature-pad-demo-container';
 
 @Component({
   selector: 'app-signature-pad-page',
-  imports: [SignaturePadDemoContainer],
+  imports: [ScSignaturePadDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

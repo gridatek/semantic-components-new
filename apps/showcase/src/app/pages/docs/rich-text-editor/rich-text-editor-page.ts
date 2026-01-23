@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import RichTextEditorDemoContainer from './demos/rich-text-editor-demo-container';
+import { RichTextEditorDemoComponent } from './demos/rich-text-editor-demo-container';
 
 @Component({
   selector: 'app-rich-text-editor-page',
-  imports: [RichTextEditorDemoContainer],
+  imports: [RichTextEditorDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

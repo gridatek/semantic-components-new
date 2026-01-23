@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import PasswordInputDemoContainer from './demos/password-input-demo-container';
+import { ScPasswordInputDemoContainer } from './demos/password-input-demo-container';
 
 @Component({
   selector: 'app-password-input-page',
-  imports: [PasswordInputDemoContainer],
+  imports: [ScPasswordInputDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

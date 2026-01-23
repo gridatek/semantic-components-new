@@ -6,13 +6,13 @@ import { DiffViewerDemoComponent } from './diff-viewer-demo';
   selector: 'app-diff-viewer-demo-container',
   imports: [DemoContainer, DiffViewerDemoComponent],
   template: `
-    <app-demo-container title="DiffViewer" [code]="code">
+    <app-demo-container title="Diff" [code]="code">
       <app-diff-viewer-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DiffViewerDemoContainer {
-  readonly code = '';
+export class DiffViewerDemoContainer {
+  readonly code = ``;
 }

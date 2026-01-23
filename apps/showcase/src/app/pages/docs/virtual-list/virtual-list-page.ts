@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import VirtualListDemoContainer from './demos/virtual-list-demo-container';
+import { VirtualListDemoComponent } from './demos/virtual-list-demo-container';
 
 @Component({
   selector: 'app-virtual-list-page',
-  imports: [VirtualListDemoContainer],
+  imports: [VirtualListDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SkeletonDemoContainer from './demos/skeleton-demo-container';
+import { ScSkeletonDemoContainer } from './demos/skeleton-demo-container';
 
 @Component({
   selector: 'app-skeleton-page',
-  imports: [SkeletonDemoContainer],
+  imports: [ScSkeletonDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

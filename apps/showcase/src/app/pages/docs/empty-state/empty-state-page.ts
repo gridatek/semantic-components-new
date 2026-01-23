@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import EmptyStateDemoContainer from './demos/empty-state-demo-container';
+import { EmptyStateDemoComponent } from './demos/empty-state-demo-container';
 
 @Component({
   selector: 'app-empty-state-page',
-  imports: [EmptyStateDemoContainer],
+  imports: [EmptyStateDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

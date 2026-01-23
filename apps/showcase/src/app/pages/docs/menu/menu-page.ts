@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import MenuDemoContainer from './demos/menu-demo-container';
+import { ScMenuDemoContainer } from './demos/menu-demo-container';
 
 @Component({
   selector: 'app-menu-page',
-  imports: [MenuDemoContainer],
+  imports: [ScMenuDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ScrollAreaDemoContainer from './demos/scroll-area-demo-container';
+import { ScScrollAreaDemoContainer } from './demos/scroll-area-demo-container';
 
 @Component({
   selector: 'app-scroll-area-page',
-  imports: [ScrollAreaDemoContainer],
+  imports: [ScScrollAreaDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

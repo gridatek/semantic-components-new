@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import BreadcrumbDemoContainer from './demos/breadcrumb-demo-container';
+import { ScBreadcrumbDemoContainer } from './demos/breadcrumb-demo-container';
 
 @Component({
   selector: 'app-breadcrumb-page',
-  imports: [BreadcrumbDemoContainer],
+  imports: [ScBreadcrumbDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

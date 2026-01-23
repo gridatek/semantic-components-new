@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CheckboxDemoContainer from './demos/checkbox-demo-container';
+import { ScCheckboxDemoContainer } from './demos/checkbox-demo-container';
 
 @Component({
   selector: 'app-checkbox-page',
-  imports: [CheckboxDemoContainer],
+  imports: [ScCheckboxDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

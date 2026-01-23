@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import DialogDemoContainer from './demos/dialog-demo-container';
+import { ScDialogDemoContainer } from './demos/dialog-demo-container';
 
 @Component({
   selector: 'app-dialog-page',
-  imports: [DialogDemoContainer],
+  imports: [ScDialogDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

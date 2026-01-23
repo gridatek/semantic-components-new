@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import StatCardDemoContainer from './demos/stat-card-demo-container';
+import { StatCardDemoComponent } from './demos/stat-card-demo-container';
 
 @Component({
   selector: 'app-stat-card-page',
-  imports: [StatCardDemoContainer],
+  imports: [StatCardDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

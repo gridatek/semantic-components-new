@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import DockDemoContainer from './demos/dock-demo-container';
+import { DockDemoComponent } from './demos/dock-demo-container';
 
 @Component({
   selector: 'app-dock-page',
-  imports: [DockDemoContainer],
+  imports: [DockDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CodeEditorDemoContainer from './demos/code-editor-demo-container';
+import { CodeEditorDemoComponent } from './demos/code-editor-demo-container';
 
 @Component({
   selector: 'app-code-editor-page',
-  imports: [CodeEditorDemoContainer],
+  imports: [CodeEditorDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

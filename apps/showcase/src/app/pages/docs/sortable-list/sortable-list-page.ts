@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SortableListDemoContainer from './demos/sortable-list-demo-container';
+import { ScSortableListDemoContainer } from './demos/sortable-list-demo-container';
 
 @Component({
   selector: 'app-sortable-list-page',
-  imports: [SortableListDemoContainer],
+  imports: [ScSortableListDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

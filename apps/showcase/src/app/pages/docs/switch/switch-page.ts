@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SwitchDemoContainer from './demos/switch-demo-container';
+import { ScSwitchDemoContainer } from './demos/switch-demo-container';
 
 @Component({
   selector: 'app-switch-page',
-  imports: [SwitchDemoContainer],
+  imports: [ScSwitchDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

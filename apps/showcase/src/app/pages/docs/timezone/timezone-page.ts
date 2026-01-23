@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TimezoneDemoContainer from './demos/timezone-demo-container';
+import { ScTimezoneDemoContainer } from './demos/timezone-demo-container';
 
 @Component({
   selector: 'app-timezone-page',
-  imports: [TimezoneDemoContainer],
+  imports: [ScTimezoneDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

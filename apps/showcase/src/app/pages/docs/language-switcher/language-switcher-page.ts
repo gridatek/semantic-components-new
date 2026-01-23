@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import LanguageSwitcherDemoContainer from './demos/language-switcher-demo-container';
+import { ScLanguageSwitcherDemoContainer } from './demos/language-switcher-demo-container';
 
 @Component({
   selector: 'app-language-switcher-page',
-  imports: [LanguageSwitcherDemoContainer],
+  imports: [ScLanguageSwitcherDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

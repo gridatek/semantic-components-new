@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import DateRangePickerDemoContainer from './demos/date-range-picker-demo-container';
+import { ScDateRangePickerDemoContainer } from './demos/date-range-picker-demo-container';
 
 @Component({
   selector: 'app-date-range-picker-page',
-  imports: [DateRangePickerDemoContainer],
+  imports: [ScDateRangePickerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

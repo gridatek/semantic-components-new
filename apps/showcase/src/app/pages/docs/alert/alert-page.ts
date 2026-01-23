@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import AlertDemoContainer from './demos/alert-demo-container';
+import { DefaultAlertDemoContainer } from './demos/default-alert-demo-container';
+import { DestructiveAlertDemoContainer } from './demos/destructive-alert-demo-container';
 
 @Component({
   selector: 'app-alert-page',
-  imports: [AlertDemoContainer],
+  imports: [DefaultAlertDemoContainer, DestructiveAlertDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,8 @@ import AlertDemoContainer from './demos/alert-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-alert-demo-container />
+        <app-default-alert-demo-container />
+        <app-destructive-alert-demo-container />
       </section>
     </div>
   `,

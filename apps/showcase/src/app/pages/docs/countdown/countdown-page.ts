@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CountdownDemoContainer from './demos/countdown-demo-container';
+import { ScCountdownDemoContainer } from './demos/countdown-demo-container';
 
 @Component({
   selector: 'app-countdown-page',
-  imports: [CountdownDemoContainer],
+  imports: [ScCountdownDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

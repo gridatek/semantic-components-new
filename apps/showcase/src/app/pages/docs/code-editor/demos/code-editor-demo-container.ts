@@ -6,13 +6,13 @@ import { CodeEditorDemoComponent } from './code-editor-demo';
   selector: 'app-code-editor-demo-container',
   imports: [DemoContainer, CodeEditorDemoComponent],
   template: `
-    <app-demo-container title="CodeEditor" [code]="code">
+    <app-demo-container title="Code" [code]="code">
       <app-code-editor-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CodeEditorDemoContainer {
-  readonly code = '';
+export class CodeEditorDemoContainer {
+  readonly code = ``;
 }

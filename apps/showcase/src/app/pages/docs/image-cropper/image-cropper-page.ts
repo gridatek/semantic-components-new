@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ImageCropperDemoContainer from './demos/image-cropper-demo-container';
+import { ScImageCropperDemoContainer } from './demos/image-cropper-demo-container';
 
 @Component({
   selector: 'app-image-cropper-page',
-  imports: [ImageCropperDemoContainer],
+  imports: [ScImageCropperDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

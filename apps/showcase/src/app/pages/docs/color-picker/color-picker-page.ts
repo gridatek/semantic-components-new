@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ColorPickerDemoContainer from './demos/color-picker-demo-container';
+import { ScColorPickerDemoContainer } from './demos/color-picker-demo-container';
 
 @Component({
   selector: 'app-color-picker-page',
-  imports: [ColorPickerDemoContainer],
+  imports: [ScColorPickerDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ToastDemoContainer from './demos/toast-demo-container';
+import { ScToastDemoContainer } from './demos/toast-demo-container';
 
 @Component({
   selector: 'app-toast-page',
-  imports: [ToastDemoContainer],
+  imports: [ScToastDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SplitButtonDemoContainer from './demos/split-button-demo-container';
+import { SplitButtonDemoComponent } from './demos/split-button-demo-container';
 
 @Component({
   selector: 'app-split-button-page',
-  imports: [SplitButtonDemoContainer],
+  imports: [SplitButtonDemoComponent],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

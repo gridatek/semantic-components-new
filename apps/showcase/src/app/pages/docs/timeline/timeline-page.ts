@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import TimelineDemoContainer from './demos/timeline-demo-container';
+import { ScTimelineDemoContainer } from './demos/timeline-demo-container';
 
 @Component({
   selector: 'app-timeline-page',
-  imports: [TimelineDemoContainer],
+  imports: [ScTimelineDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

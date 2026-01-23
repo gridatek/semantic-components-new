@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CopyButtonDemoContainer from './demos/copy-button-demo-container';
+import { ScCopyButtonDemoContainer } from './demos/copy-button-demo-container';
 
 @Component({
   selector: 'app-copy-button-page',
-  imports: [CopyButtonDemoContainer],
+  imports: [ScCopyButtonDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

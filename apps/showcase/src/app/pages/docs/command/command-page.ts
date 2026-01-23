@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CommandDemoContainer from './demos/command-demo-container';
+import { ScCommandDemoContainer } from './demos/command-demo-container';
 
 @Component({
   selector: 'app-command-page',
-  imports: [CommandDemoContainer],
+  imports: [ScCommandDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

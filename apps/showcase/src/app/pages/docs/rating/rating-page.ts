@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import RatingDemoContainer from './demos/rating-demo-container';
+import { ScRatingDemoContainer } from './demos/rating-demo-container';
 
 @Component({
   selector: 'app-rating-page',
-  imports: [RatingDemoContainer],
+  imports: [ScRatingDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

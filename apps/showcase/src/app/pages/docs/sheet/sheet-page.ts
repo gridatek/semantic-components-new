@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import SheetDemoContainer from './demos/sheet-demo-container';
+import { ScSheetDemoContainer } from './demos/sheet-demo-container';
 
 @Component({
   selector: 'app-sheet-page',
-  imports: [SheetDemoContainer],
+  imports: [ScSheetDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

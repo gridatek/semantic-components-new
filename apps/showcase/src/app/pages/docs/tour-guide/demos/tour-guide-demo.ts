@@ -90,7 +90,7 @@ import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TourGuideDemoComponent {
+export class TourGuideDemo {
   private readonly tourService = inject(TourService);
 
   startTour(): void {

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import HoverCardDemoContainer from './demos/hover-card-demo-container';
+import { ScHoverCardDemoContainer } from './demos/hover-card-demo-container';
 
 @Component({
   selector: 'app-hover-card-page',
-  imports: [HoverCardDemoContainer],
+  imports: [ScHoverCardDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

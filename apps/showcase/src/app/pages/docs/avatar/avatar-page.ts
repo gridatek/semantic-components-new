@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import AvatarDemoContainer from './demos/avatar-demo-container';
+import { BasicAvatarDemoContainer } from './demos/basic-avatar-demo-container';
+import { FallbackAvatarDemoContainer } from './demos/fallback-avatar-demo-container';
+import { SizesAvatarDemoContainer } from './demos/sizes-avatar-demo-container';
 
 @Component({
   selector: 'app-avatar-page',
-  imports: [AvatarDemoContainer],
+  imports: [
+    BasicAvatarDemoContainer,
+    FallbackAvatarDemoContainer,
+    SizesAvatarDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +21,9 @@ import AvatarDemoContainer from './demos/avatar-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-avatar-demo-container />
+        <app-basic-avatar-demo-container />
+        <app-fallback-avatar-demo-container />
+        <app-sizes-avatar-demo-container />
       </section>
     </div>
   `,

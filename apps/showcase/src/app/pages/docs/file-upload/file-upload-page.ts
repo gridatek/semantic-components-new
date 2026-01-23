@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import FileUploadDemoContainer from './demos/file-upload-demo-container';
+import { ScFileUploadDemoContainer } from './demos/file-upload-demo-container';
 
 @Component({
   selector: 'app-file-upload-page',
-  imports: [FileUploadDemoContainer],
+  imports: [ScFileUploadDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

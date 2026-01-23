@@ -12,17 +12,17 @@ export const demosRoutes: Route[] = [
           ),
       },
       {
-        path: 'multiple-accordion-demo',
-        loadComponent: () =>
-          import('../pages/docs/accordion/demos/multiple-accordion-demo').then(
-            (m) => m.MultipleAccordionDemo,
-          ),
-      },
-      {
         path: 'disabled-accordion-demo',
         loadComponent: () =>
           import('../pages/docs/accordion/demos/disabled-accordion-demo').then(
             (m) => m.DisabledAccordionDemo,
+          ),
+      },
+      {
+        path: 'multiple-accordion-demo',
+        loadComponent: () =>
+          import('../pages/docs/accordion/demos/multiple-accordion-demo').then(
+            (m) => m.MultipleAccordionDemo,
           ),
       },
     ],
@@ -31,10 +31,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/alert',
     children: [
       {
-        path: 'alert-demo',
+        path: 'default-alert-demo',
         loadComponent: () =>
-          import('../pages/docs/alert/demos/alert-demo').then(
-            (m) => m.ScAlertDemo,
+          import('../pages/docs/alert/demos/default-alert-demo').then(
+            (m) => m.DefaultAlertDemo,
+          ),
+      },
+      {
+        path: 'destructive-alert-demo',
+        loadComponent: () =>
+          import('../pages/docs/alert/demos/destructive-alert-demo').then(
+            (m) => m.DestructiveAlertDemo,
           ),
       },
     ],
@@ -43,10 +50,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/alert-dialog',
     children: [
       {
-        path: 'alert-dialog-demo',
+        path: 'basic-alert-dialog-demo',
         loadComponent: () =>
-          import('../pages/docs/alert-dialog/demos/alert-dialog-demo').then(
-            (m) => m.ScAlertDialogDemo,
+          import('../pages/docs/alert-dialog/demos/basic-alert-dialog-demo').then(
+            (m) => m.BasicAlertDialogDemo,
+          ),
+      },
+      {
+        path: 'destructive-alert-dialog-demo',
+        loadComponent: () =>
+          import('../pages/docs/alert-dialog/demos/destructive-alert-dialog-demo').then(
+            (m) => m.DestructiveAlertDialogDemo,
           ),
       },
     ],
@@ -55,10 +69,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/animated-counter',
     children: [
       {
-        path: 'animated-counter-demo',
+        path: 'basic-animated-counter-demo',
         loadComponent: () =>
-          import('../pages/docs/animated-counter/demos/animated-counter-demo').then(
-            (m) => m.AnimatedCounterDemoComponent,
+          import('../pages/docs/animated-counter/demos/basic-animated-counter-demo').then(
+            (m) => m.BasicAnimatedCounterDemo,
+          ),
+      },
+      {
+        path: 'easing-animated-counter-demo',
+        loadComponent: () =>
+          import('../pages/docs/animated-counter/demos/easing-animated-counter-demo').then(
+            (m) => m.EasingAnimatedCounterDemo,
+          ),
+      },
+      {
+        path: 'prefix-animated-counter-demo',
+        loadComponent: () =>
+          import('../pages/docs/animated-counter/demos/prefix-animated-counter-demo').then(
+            (m) => m.PrefixAnimatedCounterDemo,
           ),
       },
     ],
@@ -67,10 +95,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/aspect-ratio',
     children: [
       {
-        path: 'aspect-ratio-demo',
+        path: 'basic-aspect-ratio-demo',
         loadComponent: () =>
-          import('../pages/docs/aspect-ratio/demos/aspect-ratio-demo').then(
-            (m) => m.ScAspectRatioDemo,
+          import('../pages/docs/aspect-ratio/demos/basic-aspect-ratio-demo').then(
+            (m) => m.BasicAspectRatioDemo,
+          ),
+      },
+      {
+        path: 'placeholder-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/placeholder-aspect-ratio-demo').then(
+            (m) => m.PlaceholderAspectRatioDemo,
           ),
       },
     ],
@@ -91,10 +126,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/avatar',
     children: [
       {
-        path: 'avatar-demo',
+        path: 'basic-avatar-demo',
         loadComponent: () =>
-          import('../pages/docs/avatar/demos/avatar-demo').then(
-            (m) => m.ScAvatarDemo,
+          import('../pages/docs/avatar/demos/basic-avatar-demo').then(
+            (m) => m.BasicAvatarDemo,
+          ),
+      },
+      {
+        path: 'fallback-avatar-demo',
+        loadComponent: () =>
+          import('../pages/docs/avatar/demos/fallback-avatar-demo').then(
+            (m) => m.FallbackAvatarDemo,
+          ),
+      },
+      {
+        path: 'sizes-avatar-demo',
+        loadComponent: () =>
+          import('../pages/docs/avatar/demos/sizes-avatar-demo').then(
+            (m) => m.SizesAvatarDemo,
           ),
       },
     ],
@@ -106,7 +155,7 @@ export const demosRoutes: Route[] = [
         path: 'avatar-group-demo',
         loadComponent: () =>
           import('../pages/docs/avatar-group/demos/avatar-group-demo').then(
-            (m) => m.AvatarGroupDemoComponent,
+            (m) => m.AvatarGroupDemo,
           ),
       },
     ],
@@ -115,10 +164,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/badge',
     children: [
       {
-        path: 'badge-demo',
+        path: 'variants-badge-demo',
         loadComponent: () =>
-          import('../pages/docs/badge/demos/badge-demo').then(
-            (m) => m.ScBadgeDemo,
+          import('../pages/docs/badge/demos/variants-badge-demo').then(
+            (m) => m.VariantsBadgeDemo,
+          ),
+      },
+      {
+        path: 'with-icons-badge-demo',
+        loadComponent: () =>
+          import('../pages/docs/badge/demos/with-icons-badge-demo').then(
+            (m) => m.WithIconsBadgeDemo,
           ),
       },
     ],
@@ -226,7 +282,7 @@ export const demosRoutes: Route[] = [
         path: 'code-editor-demo',
         loadComponent: () =>
           import('../pages/docs/code-editor/demos/code-editor-demo').then(
-            (m) => m.CodeEditorDemoComponent,
+            (m) => m.CodeEditorDemo,
           ),
       },
     ],
@@ -286,7 +342,7 @@ export const demosRoutes: Route[] = [
         path: 'confetti-demo',
         loadComponent: () =>
           import('../pages/docs/confetti/demos/confetti-demo').then(
-            (m) => m.ConfettiDemoComponent,
+            (m) => m.ConfettiDemo,
           ),
       },
     ],
@@ -382,7 +438,7 @@ export const demosRoutes: Route[] = [
         path: 'diff-viewer-demo',
         loadComponent: () =>
           import('../pages/docs/diff-viewer/demos/diff-viewer-demo').then(
-            (m) => m.DiffViewerDemoComponent,
+            (m) => m.DiffViewerDemo,
           ),
       },
     ],
@@ -393,9 +449,7 @@ export const demosRoutes: Route[] = [
       {
         path: 'dock-demo',
         loadComponent: () =>
-          import('../pages/docs/dock/demos/dock-demo').then(
-            (m) => m.DockDemoComponent,
-          ),
+          import('../pages/docs/dock/demos/dock-demo').then((m) => m.DockDemo),
       },
     ],
   },
@@ -442,7 +496,7 @@ export const demosRoutes: Route[] = [
         path: 'empty-state-demo',
         loadComponent: () =>
           import('../pages/docs/empty-state/demos/empty-state-demo').then(
-            (m) => m.EmptyStateDemoComponent,
+            (m) => m.EmptyStateDemo,
           ),
       },
     ],
@@ -490,7 +544,7 @@ export const demosRoutes: Route[] = [
         path: 'image-annotator-demo',
         loadComponent: () =>
           import('../pages/docs/image-annotator/demos/image-annotator-demo').then(
-            (m) => m.ImageAnnotatorDemoComponent,
+            (m) => m.ImageAnnotatorDemo,
           ),
       },
     ],
@@ -562,7 +616,7 @@ export const demosRoutes: Route[] = [
         path: 'kanban-board-demo',
         loadComponent: () =>
           import('../pages/docs/kanban-board/demos/kanban-board-demo').then(
-            (m) => m.KanbanBoardDemoComponent,
+            (m) => m.KanbanBoardDemo,
           ),
       },
     ],
@@ -632,7 +686,7 @@ export const demosRoutes: Route[] = [
         path: 'masonry-grid-demo',
         loadComponent: () =>
           import('../pages/docs/masonry-grid/demos/masonry-grid-demo').then(
-            (m) => m.MasonryGridDemoComponent,
+            (m) => m.MasonryGridDemo,
           ),
       },
     ],
@@ -692,7 +746,7 @@ export const demosRoutes: Route[] = [
         path: 'notification-center-demo',
         loadComponent: () =>
           import('../pages/docs/notification-center/demos/notification-center-demo').then(
-            (m) => m.NotificationCenterDemoComponent,
+            (m) => m.NotificationCenterDemo,
           ),
       },
     ],
@@ -716,7 +770,7 @@ export const demosRoutes: Route[] = [
         path: 'org-chart-demo',
         loadComponent: () =>
           import('../pages/docs/org-chart/demos/org-chart-demo').then(
-            (m) => m.OrgChartDemoComponent,
+            (m) => m.OrgChartDemo,
           ),
       },
     ],
@@ -752,7 +806,7 @@ export const demosRoutes: Route[] = [
         path: 'pdf-viewer-demo',
         loadComponent: () =>
           import('../pages/docs/pdf-viewer/demos/pdf-viewer-demo').then(
-            (m) => m.PdfViewerDemoComponent,
+            (m) => m.PdfViewerDemo,
           ),
       },
     ],
@@ -848,7 +902,7 @@ export const demosRoutes: Route[] = [
         path: 'rich-text-editor-demo',
         loadComponent: () =>
           import('../pages/docs/rich-text-editor/demos/rich-text-editor-demo').then(
-            (m) => m.RichTextEditorDemoComponent,
+            (m) => m.RichTextEditorDemo,
           ),
       },
     ],
@@ -872,7 +926,7 @@ export const demosRoutes: Route[] = [
         path: 'search-input-demo',
         loadComponent: () =>
           import('../pages/docs/search-input/demos/search-input-demo').then(
-            (m) => m.SearchInputDemoComponent,
+            (m) => m.SearchInputDemo,
           ),
       },
     ],
@@ -980,7 +1034,7 @@ export const demosRoutes: Route[] = [
         path: 'speed-dial-demo',
         loadComponent: () =>
           import('../pages/docs/speed-dial/demos/speed-dial-demo').then(
-            (m) => m.SpeedDialDemoComponent,
+            (m) => m.SpeedDialDemo,
           ),
       },
     ],
@@ -1004,7 +1058,7 @@ export const demosRoutes: Route[] = [
         path: 'split-button-demo',
         loadComponent: () =>
           import('../pages/docs/split-button/demos/split-button-demo').then(
-            (m) => m.SplitButtonDemoComponent,
+            (m) => m.SplitButtonDemo,
           ),
       },
     ],
@@ -1016,7 +1070,7 @@ export const demosRoutes: Route[] = [
         path: 'spotlight-demo',
         loadComponent: () =>
           import('../pages/docs/spotlight/demos/spotlight-demo').then(
-            (m) => m.SpotlightDemoComponent,
+            (m) => m.SpotlightDemo,
           ),
       },
     ],
@@ -1028,7 +1082,7 @@ export const demosRoutes: Route[] = [
         path: 'stat-card-demo',
         loadComponent: () =>
           import('../pages/docs/stat-card/demos/stat-card-demo').then(
-            (m) => m.StatCardDemoComponent,
+            (m) => m.StatCardDemo,
           ),
       },
     ],
@@ -1196,7 +1250,7 @@ export const demosRoutes: Route[] = [
         path: 'tour-guide-demo',
         loadComponent: () =>
           import('../pages/docs/tour-guide/demos/tour-guide-demo').then(
-            (m) => m.TourGuideDemoComponent,
+            (m) => m.TourGuideDemo,
           ),
       },
     ],
@@ -1208,7 +1262,7 @@ export const demosRoutes: Route[] = [
         path: 'transfer-list-demo',
         loadComponent: () =>
           import('../pages/docs/transfer-list/demos/transfer-list-demo').then(
-            (m) => m.TransferListDemoComponent,
+            (m) => m.TransferListDemo,
           ),
       },
     ],
@@ -1244,40 +1298,7 @@ export const demosRoutes: Route[] = [
         path: 'virtual-list-demo',
         loadComponent: () =>
           import('../pages/docs/virtual-list/demos/virtual-list-demo').then(
-            (m) => m.VirtualListDemoComponent,
-          ),
-      },
-    ],
-  },
-  {
-    path: 'demos/table',
-    children: [
-      {
-        path: 'basic-table-demo',
-        loadComponent: () =>
-          import('../pages/docs/table/demos/basic-table-demo').then(
-            (m) => m.BasicTableDemo,
-          ),
-      },
-      {
-        path: 'caption-table-demo',
-        loadComponent: () =>
-          import('../pages/docs/table/demos/caption-table-demo').then(
-            (m) => m.CaptionTableDemo,
-          ),
-      },
-      {
-        path: 'footer-table-demo',
-        loadComponent: () =>
-          import('../pages/docs/table/demos/footer-table-demo').then(
-            (m) => m.FooterTableDemo,
-          ),
-      },
-      {
-        path: 'users-table-demo',
-        loadComponent: () =>
-          import('../pages/docs/table/demos/users-table-demo').then(
-            (m) => m.UsersTableDemo,
+            (m) => m.VirtualListDemo,
           ),
       },
     ],

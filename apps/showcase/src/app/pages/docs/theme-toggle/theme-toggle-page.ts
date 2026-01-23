@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ThemeToggleDemoContainer from './demos/theme-toggle-demo-container';
+import { ScThemeToggleDemoContainer } from './demos/theme-toggle-demo-container';
 
 @Component({
   selector: 'app-theme-toggle-page',
-  imports: [ThemeToggleDemoContainer],
+  imports: [ScThemeToggleDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

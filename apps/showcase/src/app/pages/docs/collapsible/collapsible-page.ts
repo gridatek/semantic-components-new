@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import CollapsibleDemoContainer from './demos/collapsible-demo-container';
+import { ScCollapsibleDemoContainer } from './demos/collapsible-demo-container';
 
 @Component({
   selector: 'app-collapsible-page',
-  imports: [CollapsibleDemoContainer],
+  imports: [ScCollapsibleDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

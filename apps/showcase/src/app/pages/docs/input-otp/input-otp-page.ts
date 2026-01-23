@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import InputOtpDemoContainer from './demos/input-otp-demo-container';
+import { ScInputOtpDemoContainer } from './demos/input-otp-demo-container';
 
 @Component({
   selector: 'app-input-otp-page',
-  imports: [InputOtpDemoContainer],
+  imports: [ScInputOtpDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

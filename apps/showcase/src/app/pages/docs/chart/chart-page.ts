@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import ChartDemoContainer from './demos/chart-demo-container';
+import { ScChartDemoContainer } from './demos/chart-demo-container';
 
 @Component({
   selector: 'app-chart-page',
-  imports: [ChartDemoContainer],
+  imports: [ScChartDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

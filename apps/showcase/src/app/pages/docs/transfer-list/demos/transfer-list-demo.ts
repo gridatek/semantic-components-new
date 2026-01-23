@@ -3,7 +3,7 @@ import { ScTransferList } from '@semantic-components/ui';
 import type { TransferListItem } from '@semantic-components/ui';
 
 @Component({
-  selector: 'sc-transfer-list-demo',
+  selector: 'app-transfer-list-demo',
   imports: [ScTransferList],
   template: `
     <div class="flex flex-col gap-8">
@@ -61,7 +61,7 @@ import type { TransferListItem } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransferListDemoComponent {
+export class TransferListDemo {
   readonly sourceItems = signal<TransferListItem[]>([
     { id: '1', label: 'JavaScript', description: 'Programming language' },
     { id: '2', label: 'TypeScript', description: 'Typed JavaScript' },
