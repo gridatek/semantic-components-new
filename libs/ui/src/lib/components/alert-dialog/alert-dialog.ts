@@ -13,12 +13,12 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
 let alertDialogIdCounter = 0;
 
 @Component({
-  selector: 'div[sc-alert-dialog-content]',
+  selector: 'div[sc-alert-dialog]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'alert-dialog-content',
+    'data-slot': 'alert-dialog',
     role: 'alertdialog',
     'aria-modal': 'true',
     '[attr.aria-labelledby]': 'titleId',
@@ -29,7 +29,7 @@ let alertDialogIdCounter = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScAlertDialogContent {
+export class ScAlertDialog {
   private readonly alertDialogProvider = inject(ScAlertDialogProvider);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 

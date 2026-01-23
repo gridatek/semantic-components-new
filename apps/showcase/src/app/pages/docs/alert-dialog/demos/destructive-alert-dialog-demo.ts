@@ -3,7 +3,7 @@ import {
   ScAlertDialogProvider,
   ScAlertDialogAction,
   ScAlertDialogCancel,
-  ScAlertDialogContent,
+  ScAlertDialog,
   ScAlertDialogDescription,
   ScAlertDialogFooter,
   ScAlertDialogHeader,
@@ -18,7 +18,7 @@ import {
     ScAlertDialogProvider,
     ScAlertDialogAction,
     ScAlertDialogCancel,
-    ScAlertDialogContent,
+    ScAlertDialog,
     ScAlertDialogDescription,
     ScAlertDialogFooter,
     ScAlertDialogHeader,
@@ -35,7 +35,7 @@ import {
         Delete All
       </button>
       <div sc-alert-dialog-portal>
-        <div sc-alert-dialog-content>
+        <div sc-alert-dialog>
           <div sc-alert-dialog-header>
             <h2 sc-alert-dialog-title>Delete all items?</h2>
             <p sc-alert-dialog-description>

@@ -1,7 +1,7 @@
 export { ScAlertDialogProvider } from './alert-dialog-provider';
 export { ScAlertDialogTrigger } from './alert-dialog-trigger';
 export { ScAlertDialogPortal } from './alert-dialog-portal';
-export { ScAlertDialogContent } from './alert-dialog-content';
+export { ScAlertDialog } from './alert-dialog';
 export { ScAlertDialogHeader } from './alert-dialog-header';
 export { ScAlertDialogTitle } from './alert-dialog-title';
 export { ScAlertDialogDescription } from './alert-dialog-description';
