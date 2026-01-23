@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScDialogProvider,
   ScDialogClose,
-  ScDialogContent,
+  ScDialog,
   ScDialogDescription,
   ScDialogFooter,
   ScDialogHeader,
@@ -16,7 +16,7 @@ import {
   imports: [
     ScDialogProvider,
     ScDialogClose,
-    ScDialogContent,
+    ScDialog,
     ScDialogDescription,
     ScDialogFooter,
     ScDialogHeader,
@@ -33,7 +33,7 @@ import {
         Open Dialog
       </button>
       <div sc-dialog-portal>
-        <div sc-dialog-content>
+        <div sc-dialog>
           <button sc-dialog-close>
             <svg
               class="size-4"

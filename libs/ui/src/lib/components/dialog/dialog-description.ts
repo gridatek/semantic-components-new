@@ -1,17 +1,17 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDialogContent } from './dialog-content';
+import { ScDialog } from './dialog';
 
 @Directive({
   selector: 'p[sc-dialog-description]',
   host: {
     'data-slot': 'dialog-description',
-    '[id]': 'dialogContent.descriptionId',
+    '[id]': 'dialog.descriptionId',
     '[class]': 'class()',
   },
 })
 export class ScDialogDescription {
-  readonly dialogContent = inject(ScDialogContent);
+  readonly dialog = inject(ScDialog);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

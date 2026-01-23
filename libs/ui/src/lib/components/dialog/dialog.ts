@@ -13,12 +13,12 @@ import { ScDialogProvider } from './dialog-provider';
 let dialogIdCounter = 0;
 
 @Component({
-  selector: 'div[sc-dialog-content]',
+  selector: 'div[sc-dialog]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'dialog-content',
+    'data-slot': 'dialog',
     role: 'dialog',
     'aria-modal': 'true',
     '[attr.aria-labelledby]': 'titleId',
@@ -29,7 +29,7 @@ let dialogIdCounter = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScDialogContent {
+export class ScDialog {
   private readonly dialogProvider = inject(ScDialogProvider);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
