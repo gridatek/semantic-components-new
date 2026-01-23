@@ -17,10 +17,6 @@ import {
   ScSelectValue,
 } from '@semantic-components/ui';
 
-/**
- * Demo 3: SC Select wrapper components - Clean markup, styles encapsulated
- * This demonstrates the desired user API with sc-prefixed wrapper components.
- */
 @Component({
   selector: 'app-sc-select-demo',
   imports: [
