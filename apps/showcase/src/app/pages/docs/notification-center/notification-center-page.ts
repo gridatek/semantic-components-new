@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NotificationCenterDemoComponent } from './demos/notification-center-demo-container';
+import { NotificationCenterDemoContainer } from './demos/notification-center-demo-container';
 
 @Component({
   selector: 'app-notification-center-page',
-  imports: [NotificationCenterDemoComponent],
+  imports: [NotificationCenterDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { MasonryGridDemoComponent } from './masonry-grid-demo';
+import { MasonryGridDemo } from './masonry-grid-demo';
 
 @Component({
   selector: 'app-masonry-grid-demo-container',
-  imports: [DemoContainer, MasonryGridDemoComponent],
+  imports: [DemoContainer, MasonryGridDemo],
   template: `
     <app-demo-container title="Masonry" [code]="code">
       <app-masonry-grid-demo />

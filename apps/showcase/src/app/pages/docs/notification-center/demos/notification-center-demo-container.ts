@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { NotificationCenterDemoComponent } from './notification-center-demo';
+import { NotificationCenterDemo } from './notification-center-demo';
 
 @Component({
   selector: 'app-notification-center-demo-container',
-  imports: [DemoContainer, NotificationCenterDemoComponent],
+  imports: [DemoContainer, NotificationCenterDemo],
   template: `
     <app-demo-container title="Notification" [code]="code">
       <app-notification-center-demo />

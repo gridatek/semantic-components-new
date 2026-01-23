@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { KanbanBoardDemoComponent } from './kanban-board-demo';
+import { KanbanBoardDemo } from './kanban-board-demo';
 
 @Component({
   selector: 'app-kanban-board-demo-container',
-  imports: [DemoContainer, KanbanBoardDemoComponent],
+  imports: [DemoContainer, KanbanBoardDemo],
   template: `
     <app-demo-container title="Kanban" [code]="code">
       <app-kanban-board-demo />

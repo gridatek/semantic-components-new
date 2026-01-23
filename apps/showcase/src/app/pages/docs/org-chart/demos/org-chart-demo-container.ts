@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { OrgChartDemoComponent } from './org-chart-demo';
+import { OrgChartDemo } from './org-chart-demo';
 
 @Component({
   selector: 'app-org-chart-demo-container',
-  imports: [DemoContainer, OrgChartDemoComponent],
+  imports: [DemoContainer, OrgChartDemo],
   template: `
     <app-demo-container title="Org" [code]="code">
       <app-org-chart-demo />
