@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { HoverCardAlign, HoverCardSide, ScHoverCard } from './sc-hover-card';
+import { HoverCardAlign, HoverCardSide, ScHoverCard } from './hover-card';
 
 type PositionKey = `${HoverCardSide}-${HoverCardAlign}`;
 

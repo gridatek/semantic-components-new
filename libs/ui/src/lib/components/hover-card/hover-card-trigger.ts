@@ -1,7 +1,7 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScHoverCard } from './sc-hover-card';
+import { ScHoverCard } from './hover-card';
 
 @Directive({
   selector: '[sc-hover-card-trigger]',

@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScHoverCardTrigger } from './sc-hover-card-trigger';
+import { ScHoverCardTrigger } from './hover-card-trigger';
 
 export type HoverCardSide = 'top' | 'right' | 'bottom' | 'left';
 export type HoverCardAlign = 'start' | 'center' | 'end';
