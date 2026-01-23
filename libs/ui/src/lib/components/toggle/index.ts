@@ -1,1 +1,1 @@
-export * from './sc-toggle';
+export * from './toggle';

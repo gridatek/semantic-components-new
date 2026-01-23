@@ -1,1 +1,1 @@
-export * from './sc-progress';
+export * from './progress';

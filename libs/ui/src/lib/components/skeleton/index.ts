@@ -1,1 +1,1 @@
-export * from './sc-skeleton';
+export * from './skeleton';
