@@ -4,34 +4,38 @@ A set of Angular components for creating accessible popovers with shadcn/ui styl
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScPopover` to access shared state.
+The components follow a dependency injection (DI) pattern where child components inject the parent `ScPopoverProvider` to access shared state.
 
 ```
-ScPopover (root wrapper - manages open state, side, align)
+ScPopoverProvider (root wrapper - manages open state, side, align)
 ├── ScPopoverTrigger (button that toggles popover)
-└── ScPopoverContent (floating panel)
-    └── ScPopoverClose (optional close button)
+└── ScPopoverPortal (overlay positioning with CDK)
+    └── ScPopover (floating dialog panel)
+        └── ScPopoverClose (optional close button)
 ```
 
 ## Components
 
-| Component          | Selector                     | Description                          |
-| ------------------ | ---------------------------- | ------------------------------------ |
-| `ScPopover`        | `div[sc-popover]`            | Root wrapper, manages state          |
-| `ScPopoverTrigger` | `button[sc-popover-trigger]` | Button that toggles the popover      |
-| `ScPopoverContent` | `div[sc-popover-content]`    | Floating panel with animations       |
-| `ScPopoverClose`   | `button[sc-popover-close]`   | Optional button to close the popover |
+| Component           | Selector                     | Description                          |
+| ------------------- | ---------------------------- | ------------------------------------ |
+| `ScPopoverProvider` | `div[sc-popover-provider]`   | Root wrapper, manages state          |
+| `ScPopoverTrigger`  | `button[sc-popover-trigger]` | Button that toggles the popover      |
+| `ScPopoverPortal`   | `div[sc-popover-portal]`     | Overlay positioning with CDK         |
+| `ScPopover`         | `div[sc-popover]`            | Floating dialog panel                |
+| `ScPopoverClose`    | `button[sc-popover-close]`   | Optional button to close the popover |
 
 ## Usage
 
 ### Basic Popover
 
 ```html
-<div sc-popover>
+<div sc-popover-provider>
   <button sc-popover-trigger>Open Popover</button>
-  <div sc-popover-content>
-    <h4 class="font-medium">Title</h4>
-    <p class="text-sm text-muted-foreground">Content goes here.</p>
+  <div sc-popover-portal>
+    <div sc-popover>
+      <h4 class="font-medium">Title</h4>
+      <p class="text-sm text-muted-foreground">Content goes here.</p>
+    </div>
   </div>
 </div>
 ```
@@ -40,27 +44,35 @@ ScPopover (root wrapper - manages open state, side, align)
 
 ```html
 <!-- Top -->
-<div sc-popover side="top">
+<div sc-popover-provider side="top">
   <button sc-popover-trigger>Top</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 
 <!-- Right -->
-<div sc-popover side="right">
+<div sc-popover-provider side="right">
   <button sc-popover-trigger>Right</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 
 <!-- Bottom (default) -->
-<div sc-popover side="bottom">
+<div sc-popover-provider side="bottom">
   <button sc-popover-trigger>Bottom</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 
 <!-- Left -->
-<div sc-popover side="left">
+<div sc-popover-provider side="left">
   <button sc-popover-trigger>Left</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 ```
 
@@ -68,34 +80,42 @@ ScPopover (root wrapper - manages open state, side, align)
 
 ```html
 <!-- Align start -->
-<div sc-popover align="start">
+<div sc-popover-provider align="start">
   <button sc-popover-trigger>Align Start</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 
 <!-- Align center (default) -->
-<div sc-popover align="center">
+<div sc-popover-provider align="center">
   <button sc-popover-trigger>Align Center</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 
 <!-- Align end -->
-<div sc-popover align="end">
+<div sc-popover-provider align="end">
   <button sc-popover-trigger>Align End</button>
-  <div sc-popover-content>Content</div>
+  <div sc-popover-portal>
+    <div sc-popover>Content</div>
+  </div>
 </div>
 ```
 
 ### With Close Button
 
 ```html
-<div sc-popover>
+<div sc-popover-provider>
   <button sc-popover-trigger>Open</button>
-  <div sc-popover-content class="relative">
-    <button sc-popover-close>
-      <svg><!-- X icon --></svg>
-    </button>
-    <p>Content with close button</p>
+  <div sc-popover-portal>
+    <div sc-popover class="relative">
+      <button sc-popover-close>
+        <svg><!-- X icon --></svg>
+      </button>
+      <p>Content with close button</p>
+    </div>
   </div>
 </div>
 ```
@@ -105,9 +125,11 @@ ScPopover (root wrapper - manages open state, side, align)
 ```typescript
 @Component({
   template: `
-    <div sc-popover [(open)]="isOpen">
+    <div sc-popover-provider [(open)]="isOpen">
       <button sc-popover-trigger>Toggle</button>
-      <div sc-popover-content>Content</div>
+      <div sc-popover-portal>
+        <div sc-popover>Content</div>
+      </div>
     </div>
   `,
 })
@@ -119,22 +141,24 @@ export class MyComponent {
 ### Form Popover
 
 ```html
-<div sc-popover>
+<div sc-popover-provider>
   <button sc-popover-trigger>Update dimensions</button>
-  <div sc-popover-content>
-    <div class="grid gap-4">
-      <div class="space-y-2">
-        <h4 class="font-medium leading-none">Dimensions</h4>
-        <p class="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
-      </div>
-      <div class="grid gap-2">
-        <div class="grid grid-cols-3 items-center gap-4">
-          <label for="width">Width</label>
-          <input id="width" value="100%" class="col-span-2" />
+  <div sc-popover-portal>
+    <div sc-popover>
+      <div class="grid gap-4">
+        <div class="space-y-2">
+          <h4 class="font-medium leading-none">Dimensions</h4>
+          <p class="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
         </div>
-        <div class="grid grid-cols-3 items-center gap-4">
-          <label for="height">Height</label>
-          <input id="height" value="25px" class="col-span-2" />
+        <div class="grid gap-2">
+          <div class="grid grid-cols-3 items-center gap-4">
+            <label for="width">Width</label>
+            <input id="width" value="100%" class="col-span-2" />
+          </div>
+          <div class="grid grid-cols-3 items-center gap-4">
+            <label for="height">Height</label>
+            <input id="height" value="25px" class="col-span-2" />
+          </div>
         </div>
       </div>
     </div>
@@ -170,7 +194,7 @@ export class MyComponent {
 
 ### State Management
 
-`ScPopover` uses a `model` signal for the `open` state:
+`ScPopoverProvider` uses a `model` signal for the `open` state:
 
 ```typescript
 readonly open = model<boolean>(false);
@@ -186,7 +210,7 @@ togglePopover(): void {
 
 ### Positioning
 
-`ScPopoverContent` uses CDK connected overlay with positions computed from `side` and `align`:
+`ScPopoverPortal` uses CDK connected overlay with positions computed from `side` and `align`:
 
 ```typescript
 protected readonly position = computed(() => {
@@ -201,12 +225,12 @@ protected readonly position = computed(() => {
 The popover closes when clicking outside:
 
 ```html
-<ng-template (overlayOutsideClick)="closePopover($event)"></ng-template>
+<ng-template (overlayOutsideClick)="closePopover()"></ng-template>
 ```
 
 ## Accessibility
 
-- `role="dialog"` on the content
+- `role="dialog"` on `ScPopover`
 - `aria-haspopup="dialog"` on the trigger
 - `aria-expanded` reflects open state on trigger
 - Escape key closes the popover
@@ -217,7 +241,7 @@ The popover closes when clicking outside:
 All components accept a `class` input for custom styling:
 
 ```html
-<div sc-popover-content class="w-96">
+<div sc-popover class="w-96">
   <!-- wider popover -->
 </div>
 ```

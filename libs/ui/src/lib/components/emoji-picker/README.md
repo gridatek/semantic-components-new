@@ -89,10 +89,12 @@ The picker includes these default categories:
 ### With Popover
 
 ```html
-<div sc-popover>
+<div sc-popover-provider>
   <button sc-popover-trigger sc-emoji-picker-trigger></button>
-  <div sc-popover-content>
-    <sc-emoji-picker (emojiSelect)="insertEmoji($event)" />
+  <div sc-popover-portal>
+    <div sc-popover>
+      <sc-emoji-picker (emojiSelect)="insertEmoji($event)" />
+    </div>
   </div>
 </div>
 ```
