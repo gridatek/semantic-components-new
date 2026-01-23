@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavigationMenuItem } from './sc-navigation-menu-item';
+import { ScNavigationMenuItem } from './navigation-menu-item';
 
 const position: ConnectedPosition = {
   originX: 'start',

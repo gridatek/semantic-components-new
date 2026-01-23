@@ -1,1 +1,1 @@
-export * from './sc-calendar';
+export * from './calendar';

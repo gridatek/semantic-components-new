@@ -8,8 +8,8 @@ import {
   signal,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavigationMenu } from './sc-navigation-menu';
-import { ScNavigationMenuTrigger } from './sc-navigation-menu-trigger';
+import { ScNavigationMenu } from './navigation-menu';
+import { ScNavigationMenuTrigger } from './navigation-menu-trigger';
 
 let itemIdCounter = 0;
 

@@ -1,1 +1,1 @@
-export * from './sc-checkbox';
+export * from './checkbox';

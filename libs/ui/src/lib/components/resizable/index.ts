@@ -1,1 +1,1 @@
-export * from './sc-resizable';
+export * from './resizable';

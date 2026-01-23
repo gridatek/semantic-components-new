@@ -1,1 +1,1 @@
-export * from './sc-label';
+export * from './label';

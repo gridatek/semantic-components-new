@@ -1,1 +1,1 @@
-export * from './sc-switch';
+export * from './switch';

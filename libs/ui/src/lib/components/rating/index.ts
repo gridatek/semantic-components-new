@@ -4,4 +4,4 @@ export {
   ScRatingItem,
   ScRatingStar,
   ScRatingStars,
-} from './sc-rating';
+} from './rating';
