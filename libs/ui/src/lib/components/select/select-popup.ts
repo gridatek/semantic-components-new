@@ -8,7 +8,7 @@ import {
   input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSelect } from './sc-select';
+import { ScSelect } from './select';
 import { cn } from '../../utils';
 
 @Component({

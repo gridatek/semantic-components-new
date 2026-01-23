@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 import { cn } from '../../utils';
-import { ScSelectContent } from './sc-select-content';
-import { ScSelectTrigger } from './sc-select-trigger';
+import { ScSelectContent } from './select-content';
+import { ScSelectTrigger } from './select-trigger';
 
 @Component({
   selector: 'div[sc-select]',

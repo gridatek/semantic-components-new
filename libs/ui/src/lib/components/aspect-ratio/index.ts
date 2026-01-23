@@ -1,1 +1,1 @@
-export * from './sc-aspect-ratio';
+export * from './aspect-ratio';
