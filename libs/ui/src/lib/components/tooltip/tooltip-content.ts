@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScTooltip, TooltipSide } from './sc-tooltip';
+import { ScTooltip, TooltipSide } from './tooltip';
 
 const positionMap: Record<TooltipSide, ConnectedPosition> = {
   top: {

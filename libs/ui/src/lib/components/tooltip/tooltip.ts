@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScTooltipTrigger } from './sc-tooltip-trigger';
+import { ScTooltipTrigger } from './tooltip-trigger';
 
 export type TooltipSide = 'top' | 'right' | 'bottom' | 'left';
 
