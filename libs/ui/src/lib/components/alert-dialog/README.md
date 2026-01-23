@@ -4,13 +4,13 @@ A set of Angular components for creating accessible alert dialogs with shadcn/ui
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScAlertDialog` to access shared state.
+The components follow a dependency injection (DI) pattern where child components inject the parent `ScAlertDialogProvider` to access shared state.
 
 ```
-ScAlertDialog (root wrapper - manages open state)
+ScAlertDialogProvider (root wrapper - manages open state)
 ├── ScAlertDialogTrigger (button that opens dialog)
 └── ScAlertDialogPortal (overlay with backdrop)
-    └── ScAlertDialogContent (dialog container)
+    └── ScAlertDialog (dialog panel with animations)
         ├── ScAlertDialogHeader
         │   ├── ScAlertDialogTitle
         │   └── ScAlertDialogDescription
@@ -23,10 +23,10 @@ ScAlertDialog (root wrapper - manages open state)
 
 | Component                  | Selector                          | Description                           |
 | -------------------------- | --------------------------------- | ------------------------------------- |
-| `ScAlertDialog`            | `div[sc-alert-dialog]`            | Root wrapper, manages open state      |
+| `ScAlertDialogProvider`    | `div[sc-alert-dialog-provider]`   | Root wrapper, manages open state      |
 | `ScAlertDialogTrigger`     | `button[sc-alert-dialog-trigger]` | Button that opens the dialog          |
 | `ScAlertDialogPortal`      | `div[sc-alert-dialog-portal]`     | Overlay container with backdrop       |
-| `ScAlertDialogContent`     | `div[sc-alert-dialog-content]`    | Dialog panel with animations          |
+| `ScAlertDialog`            | `div[sc-alert-dialog]`            | Dialog panel with animations          |
 | `ScAlertDialogHeader`      | `div[sc-alert-dialog-header]`     | Header section container              |
 | `ScAlertDialogTitle`       | `h2[sc-alert-dialog-title]`       | Dialog title (aria-labelledby)        |
 | `ScAlertDialogDescription` | `p[sc-alert-dialog-description]`  | Dialog description (aria-describedby) |
@@ -39,10 +39,10 @@ ScAlertDialog (root wrapper - manages open state)
 ### Basic Alert Dialog
 
 ```html
-<div sc-alert-dialog>
+<div sc-alert-dialog-provider>
   <button sc-alert-dialog-trigger>Delete Account</button>
   <div sc-alert-dialog-portal>
-    <div sc-alert-dialog-content>
+    <div sc-alert-dialog>
       <div sc-alert-dialog-header>
         <h2 sc-alert-dialog-title>Are you absolutely sure?</h2>
         <p sc-alert-dialog-description>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
@@ -59,10 +59,10 @@ ScAlertDialog (root wrapper - manages open state)
 ### Destructive Action
 
 ```html
-<div sc-alert-dialog>
+<div sc-alert-dialog-provider>
   <button sc-alert-dialog-trigger>Delete</button>
   <div sc-alert-dialog-portal>
-    <div sc-alert-dialog-content>
+    <div sc-alert-dialog>
       <div sc-alert-dialog-header>
         <h2 sc-alert-dialog-title>Delete item?</h2>
         <p sc-alert-dialog-description>This action cannot be undone.</p>
@@ -81,10 +81,10 @@ ScAlertDialog (root wrapper - manages open state)
 ```typescript
 @Component({
   template: `
-    <div sc-alert-dialog [(open)]="isOpen">
+    <div sc-alert-dialog-provider [(open)]="isOpen">
       <button sc-alert-dialog-trigger>Open</button>
       <div sc-alert-dialog-portal>
-        <div sc-alert-dialog-content>
+        <div sc-alert-dialog>
           <!-- content -->
         </div>
       </div>
@@ -101,10 +101,10 @@ export class MyComponent {
 ```typescript
 @Component({
   template: `
-    <div sc-alert-dialog>
+    <div sc-alert-dialog-provider>
       <button sc-alert-dialog-trigger>Delete</button>
       <div sc-alert-dialog-portal>
-        <div sc-alert-dialog-content>
+        <div sc-alert-dialog>
           <div sc-alert-dialog-header>
             <h2 sc-alert-dialog-title>Confirm deletion</h2>
             <p sc-alert-dialog-description>Are you sure?</p>
@@ -138,11 +138,12 @@ export class MyComponent {
 
 ## Accessibility
 
-- `role="alertdialog"` on the content
+- `role="alertdialog"` on `ScAlertDialog`
 - `aria-modal="true"` for modal behavior
 - `aria-labelledby` linked to `ScAlertDialogTitle`
 - `aria-describedby` linked to `ScAlertDialogDescription`
 - `aria-haspopup="alertdialog"` on the trigger
+- `aria-expanded` reflects open state on trigger
 - Escape key does NOT close (user must choose)
 - Click outside does NOT close (user must choose)
 - Focus trapped within the dialog
@@ -152,7 +153,7 @@ export class MyComponent {
 All components accept a `class` input for custom styling:
 
 ```html
-<div sc-alert-dialog-content class="max-w-md">
+<div sc-alert-dialog class="max-w-md">
   <!-- narrower dialog -->
 </div>
 
