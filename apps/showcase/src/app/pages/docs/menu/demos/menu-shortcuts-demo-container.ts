@@ -6,7 +6,11 @@ import { MenuShortcutsDemo } from './menu-shortcuts-demo';
   selector: 'app-menu-shortcuts-demo-container',
   imports: [DemoContainer, MenuShortcutsDemo],
   template: `
-    <app-demo-container title="With Shortcuts" [code]="code">
+    <app-demo-container
+      title="With Shortcuts"
+      demoUrl="/demos/menu/menu-shortcuts-demo"
+      [code]="code"
+    >
       <app-menu-shortcuts-demo />
     </app-demo-container>
   `,

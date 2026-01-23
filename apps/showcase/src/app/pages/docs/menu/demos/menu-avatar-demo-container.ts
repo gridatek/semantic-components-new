@@ -6,7 +6,11 @@ import { MenuAvatarDemo } from './menu-avatar-demo';
   selector: 'app-menu-avatar-demo-container',
   imports: [DemoContainer, MenuAvatarDemo],
   template: `
-    <app-demo-container title="With Avatar" [code]="code">
+    <app-demo-container
+      title="With Avatar"
+      demoUrl="/demos/menu/menu-avatar-demo"
+      [code]="code"
+    >
       <app-menu-avatar-demo />
     </app-demo-container>
   `,

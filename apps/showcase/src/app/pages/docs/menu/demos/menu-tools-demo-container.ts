@@ -6,7 +6,11 @@ import { MenuToolsDemo } from './menu-tools-demo';
   selector: 'app-menu-tools-demo-container',
   imports: [DemoContainer, MenuToolsDemo],
   template: `
-    <app-demo-container title="With Submenu" [code]="code">
+    <app-demo-container
+      title="With Submenu"
+      demoUrl="/demos/menu/menu-tools-demo"
+      [code]="code"
+    >
       <app-menu-tools-demo />
     </app-demo-container>
   `,

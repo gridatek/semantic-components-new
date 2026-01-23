@@ -6,7 +6,11 @@ import { ScMenuDemo } from './menu-demo';
   selector: 'app-menu-demo-container',
   imports: [DemoContainer, ScMenuDemo],
   template: `
-    <app-demo-container title="Menu" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/menu/menu-demo"
+      [code]="code"
+    >
       <app-sc-menu-demo />
     </app-demo-container>
   `,

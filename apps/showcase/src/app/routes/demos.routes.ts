@@ -701,6 +701,27 @@ export const demosRoutes: Route[] = [
             (m) => m.ScMenuDemo,
           ),
       },
+      {
+        path: 'menu-shortcuts-demo',
+        loadComponent: () =>
+          import('../pages/docs/menu/demos/menu-shortcuts-demo').then(
+            (m) => m.MenuShortcutsDemo,
+          ),
+      },
+      {
+        path: 'menu-tools-demo',
+        loadComponent: () =>
+          import('../pages/docs/menu/demos/menu-tools-demo').then(
+            (m) => m.MenuToolsDemo,
+          ),
+      },
+      {
+        path: 'menu-avatar-demo',
+        loadComponent: () =>
+          import('../pages/docs/menu/demos/menu-avatar-demo').then(
+            (m) => m.MenuAvatarDemo,
+          ),
+      },
     ],
   },
   {
