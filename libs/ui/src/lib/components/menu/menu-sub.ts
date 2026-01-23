@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 import { cn } from '../../utils';
-import { ScMenuSubTrigger } from './sc-menu-sub-trigger';
-import { ScMenuSubContent } from './sc-menu-sub-content';
+import { ScMenuSubTrigger } from './menu-sub-trigger';
+import { ScMenuSubContent } from './menu-sub-content';
 
 @Component({
   selector: 'div[sc-menu-sub]',

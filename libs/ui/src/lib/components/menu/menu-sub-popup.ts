@@ -7,11 +7,11 @@ import {
   input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMenu } from './sc-menu';
+import { ScMenuSub } from './menu-sub';
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-menu-popup]',
+  selector: 'div[sc-menu-sub-popup]',
   imports: [OverlayModule],
   template: `
     @if (origin(); as origin) {
@@ -20,11 +20,11 @@ import { cn } from '../../utils';
         [cdkConnectedOverlay]="{ origin, usePopover: 'inline' }"
         [cdkConnectedOverlayPositions]="[
           {
-            originX: 'start',
-            originY: 'bottom',
+            originX: 'end',
+            originY: 'top',
             overlayX: 'start',
             overlayY: 'top',
-            offsetY: 4,
+            offsetX: 4,
           },
         ]"
         cdkAttachPopoverAsChild
@@ -34,19 +34,19 @@ import { cn } from '../../utils';
     }
   `,
   host: {
-    'data-slot': 'menu-popup',
+    'data-slot': 'menu-sub-popup',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScMenuPopup {
-  private readonly scMenu = inject(ScMenu);
+export class ScMenuSubPopup {
+  private readonly scMenuSub = inject(ScMenuSub);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly origin = computed(() => this.scMenu.origin());
+  protected readonly origin = computed(() => this.scMenuSub.origin());
   protected readonly expanded = computed(
-    () => this.scMenu.trigger()?.expanded() ?? false,
+    () => this.scMenuSub.menuItem()?.expanded() ?? false,
   );
 
   protected readonly class = computed(() => cn('', this.classInput()));
