@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAlertDialog } from './alert-dialog';
+import { ScAlertDialogProvider } from './alert-dialog-provider';
 
 @Component({
   selector: 'div[sc-alert-dialog-portal]',
@@ -39,7 +39,7 @@ import { ScAlertDialog } from './alert-dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAlertDialogPortal {
-  private readonly alertDialog = inject(ScAlertDialog);
+  private readonly alertDialogProvider = inject(ScAlertDialogProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -63,7 +63,7 @@ export class ScAlertDialogPortal {
   protected readonly backdropClass = computed(() =>
     cn(
       'fixed inset-0 bg-black/80',
-      this.alertDialog.open()
+      this.alertDialogProvider.open()
         ? 'opacity-100 visible transition-[opacity,visibility] duration-150 ease-out'
         : 'opacity-0 invisible transition-[opacity,visibility] duration-150 ease-in [transition-delay:0s,150ms]',
     ),
@@ -71,7 +71,7 @@ export class ScAlertDialogPortal {
 
   constructor() {
     effect(() => {
-      if (this.alertDialog.open()) {
+      if (this.alertDialogProvider.open()) {
         this.attachDialog();
       } else {
         this.detachDialog();

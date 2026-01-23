@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAlertDialog } from './alert-dialog';
+import { ScAlertDialogProvider } from './alert-dialog-provider';
 
 @Directive({
   selector: 'button[sc-alert-dialog-cancel]',
@@ -11,7 +11,7 @@ import { ScAlertDialog } from './alert-dialog';
   },
 })
 export class ScAlertDialogCancel {
-  private readonly alertDialog = inject(ScAlertDialog);
+  private readonly alertDialogProvider = inject(ScAlertDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
@@ -25,6 +25,6 @@ export class ScAlertDialogCancel {
   );
 
   cancel(): void {
-    this.alertDialog.open.set(false);
+    this.alertDialogProvider.open.set(false);
   }
 }

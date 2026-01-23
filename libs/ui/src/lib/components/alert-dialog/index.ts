@@ -1,4 +1,4 @@
-export { ScAlertDialog } from './alert-dialog';
+export { ScAlertDialogProvider } from './alert-dialog-provider';
 export { ScAlertDialogTrigger } from './alert-dialog-trigger';
 export { ScAlertDialogPortal } from './alert-dialog-portal';
 export { ScAlertDialogContent } from './alert-dialog-content';

@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAlertDialog } from './alert-dialog';
+import { ScAlertDialogProvider } from './alert-dialog-provider';
 
 @Directive({
   selector: 'button[sc-alert-dialog-trigger]',
@@ -8,17 +8,17 @@ import { ScAlertDialog } from './alert-dialog';
     'data-slot': 'alert-dialog-trigger',
     '[class]': 'class()',
     '[attr.aria-haspopup]': '"alertdialog"',
-    '[attr.aria-expanded]': 'alertDialog.open()',
+    '[attr.aria-expanded]': 'alertDialogProvider.open()',
     '(click)': 'openDialog()',
   },
 })
 export class ScAlertDialogTrigger {
-  readonly alertDialog = inject(ScAlertDialog);
+  readonly alertDialogProvider = inject(ScAlertDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
   openDialog(): void {
-    this.alertDialog.open.set(true);
+    this.alertDialogProvider.open.set(true);
   }
 }
