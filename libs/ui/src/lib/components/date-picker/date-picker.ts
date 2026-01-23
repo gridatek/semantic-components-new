@@ -9,7 +9,8 @@ import {
 import { cn } from '../../utils';
 import {
   ScPopoverProvider,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverTrigger,
   PopoverAlign,
   PopoverSide,
@@ -18,7 +19,13 @@ import { ScCalendar, CalendarMode, DateRange } from '../calendar';
 
 @Component({
   selector: 'sc-date-picker',
-  imports: [ScPopoverProvider, ScPopoverTrigger, ScPopoverContent, ScCalendar],
+  imports: [
+    ScPopoverProvider,
+    ScPopoverTrigger,
+    ScPopoverPortal,
+    ScPopover,
+    ScCalendar,
+  ],
   template: `
     <div sc-popover-provider [(open)]="open" [side]="side()" [align]="align()">
       <button sc-popover-trigger type="button" [class]="triggerClass()">
@@ -43,38 +50,40 @@ import { ScCalendar, CalendarMode, DateRange } from '../calendar';
           {{ displayText() || placeholder() }}
         </span>
       </button>
-      <div sc-popover-content class="w-auto p-0">
-        @switch (mode()) {
-          @case ('single') {
-            <sc-calendar
-              mode="single"
-              [(selected)]="selected"
-              [disabled]="disabled()"
-              [minDate]="minDate()"
-              [maxDate]="maxDate()"
-              (selected)="onDateSelected()"
-            />
+      <div sc-popover-portal>
+        <div sc-popover class="w-auto p-0">
+          @switch (mode()) {
+            @case ('single') {
+              <sc-calendar
+                mode="single"
+                [(selected)]="selected"
+                [disabled]="disabled()"
+                [minDate]="minDate()"
+                [maxDate]="maxDate()"
+                (selected)="onDateSelected()"
+              />
+            }
+            @case ('multiple') {
+              <sc-calendar
+                mode="multiple"
+                [(selectedDates)]="selectedDates"
+                [disabled]="disabled()"
+                [minDate]="minDate()"
+                [maxDate]="maxDate()"
+              />
+            }
+            @case ('range') {
+              <sc-calendar
+                mode="range"
+                [(selectedRange)]="selectedRange"
+                [disabled]="disabled()"
+                [minDate]="minDate()"
+                [maxDate]="maxDate()"
+                (selectedRange)="onRangeSelected()"
+              />
+            }
           }
-          @case ('multiple') {
-            <sc-calendar
-              mode="multiple"
-              [(selectedDates)]="selectedDates"
-              [disabled]="disabled()"
-              [minDate]="minDate()"
-              [maxDate]="maxDate()"
-            />
-          }
-          @case ('range') {
-            <sc-calendar
-              mode="range"
-              [(selectedRange)]="selectedRange"
-              [disabled]="disabled()"
-              [minDate]="minDate()"
-              [maxDate]="maxDate()"
-              (selectedRange)="onRangeSelected()"
-            />
-          }
-        }
+        </div>
       </div>
     </div>
   `,

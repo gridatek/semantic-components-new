@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScPopoverProvider,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-align-end-popover-demo',
-  imports: [ScPopoverProvider, ScPopoverContent, ScPopoverTrigger],
+  imports: [ScPopoverProvider, ScPopoverPortal, ScPopover, ScPopoverTrigger],
   template: `
     <div sc-popover-provider align="end">
       <button
@@ -16,8 +17,10 @@ import {
       >
         Align End
       </button>
-      <div sc-popover-content>
-        <p class="text-sm">This popover is aligned to the end.</p>
+      <div sc-popover-portal>
+        <div sc-popover>
+          <p class="text-sm">This popover is aligned to the end.</p>
+        </div>
       </div>
     </div>
   `,

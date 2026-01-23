@@ -21,13 +21,14 @@ export class TopPopoverDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScPopoverProvider,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-top-popover-demo',
-  imports: [ScPopoverProvider, ScPopoverContent, ScPopoverTrigger],
+  imports: [ScPopoverProvider, ScPopoverPortal, ScPopover, ScPopoverTrigger],
   template: \`
     <div sc-popover-provider side="top">
       <button
@@ -36,8 +37,10 @@ import {
       >
         Top
       </button>
-      <div sc-popover-content>
-        <p class="text-sm">This popover appears on top.</p>
+      <div sc-popover-portal>
+        <div sc-popover>
+          <p class="text-sm">This popover appears on top.</p>
+        </div>
       </div>
     </div>
   \`,

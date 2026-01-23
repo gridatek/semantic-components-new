@@ -21,13 +21,14 @@ export class LeftPopoverDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScPopoverProvider,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-left-popover-demo',
-  imports: [ScPopoverProvider, ScPopoverContent, ScPopoverTrigger],
+  imports: [ScPopoverProvider, ScPopoverPortal, ScPopover, ScPopoverTrigger],
   template: \`
     <div sc-popover-provider side="left">
       <button
@@ -36,8 +37,10 @@ import {
       >
         Left
       </button>
-      <div sc-popover-content>
-        <p class="text-sm">This popover appears on the left.</p>
+      <div sc-popover-portal>
+        <div sc-popover>
+          <p class="text-sm">This popover appears on the left.</p>
+        </div>
       </div>
     </div>
   \`,

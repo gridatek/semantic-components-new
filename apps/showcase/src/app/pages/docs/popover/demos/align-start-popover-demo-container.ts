@@ -21,13 +21,14 @@ export class AlignStartPopoverDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScPopoverProvider,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-align-start-popover-demo',
-  imports: [ScPopoverProvider, ScPopoverContent, ScPopoverTrigger],
+  imports: [ScPopoverProvider, ScPopoverPortal, ScPopover, ScPopoverTrigger],
   template: \`
     <div sc-popover-provider align="start">
       <button
@@ -36,8 +37,10 @@ import {
       >
         Align Start
       </button>
-      <div sc-popover-content>
-        <p class="text-sm">This popover is aligned to the start.</p>
+      <div sc-popover-portal>
+        <div sc-popover>
+          <p class="text-sm">This popover is aligned to the start.</p>
+        </div>
       </div>
     </div>
   \`,

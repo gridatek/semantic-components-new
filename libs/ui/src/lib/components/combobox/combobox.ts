@@ -18,7 +18,8 @@ import {
 import {
   PopoverAlign,
   PopoverSide,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverProvider,
   ScPopoverTrigger,
 } from '../popover';
@@ -34,7 +35,8 @@ export interface ComboboxOption {
   imports: [
     ScPopoverProvider,
     ScPopoverTrigger,
-    ScPopoverContent,
+    ScPopoverPortal,
+    ScPopover,
     ScCommand,
     ScCommandInput,
     ScCommandList,
@@ -66,37 +68,39 @@ export interface ComboboxOption {
           <path d="m7 9 5-5 5 5" />
         </svg>
       </button>
-      <div sc-popover-content class="w-[--trigger-width] p-0">
-        <div sc-command [(value)]="searchValue">
-          <div sc-command-input [placeholder]="searchPlaceholder()"></div>
-          <div sc-command-list>
-            <div sc-command-empty>{{ emptyText() }}</div>
-            @for (option of options(); track option.value) {
-              <div
-                sc-command-item
-                [value]="option.label"
-                [disabled]="option.disabled ?? false"
-                [selected]="isSelected(option.value)"
-                (select)="selectOption(option)"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="size-4"
-                  [class.opacity-0]="!isSelected(option.value)"
+      <div sc-popover-portal>
+        <div sc-popover class="w-[--trigger-width] p-0">
+          <div sc-command [(value)]="searchValue">
+            <div sc-command-input [placeholder]="searchPlaceholder()"></div>
+            <div sc-command-list>
+              <div sc-command-empty>{{ emptyText() }}</div>
+              @for (option of options(); track option.value) {
+                <div
+                  sc-command-item
+                  [value]="option.label"
+                  [disabled]="option.disabled ?? false"
+                  [selected]="isSelected(option.value)"
+                  (select)="selectOption(option)"
                 >
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-                {{ option.label }}
-              </div>
-            }
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="size-4"
+                    [class.opacity-0]="!isSelected(option.value)"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  {{ option.label }}
+                </div>
+              }
+            </div>
           </div>
         </div>
       </div>

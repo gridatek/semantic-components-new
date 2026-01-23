@@ -21,13 +21,14 @@ export class BasicPopoverDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScPopoverProvider,
-  ScPopoverContent,
+  ScPopoverPortal,
+  ScPopover,
   ScPopoverTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-popover-demo',
-  imports: [ScPopoverProvider, ScPopoverContent, ScPopoverTrigger],
+  imports: [ScPopoverProvider, ScPopoverPortal, ScPopover, ScPopoverTrigger],
   template: \`
     <div sc-popover-provider>
       <button
@@ -36,46 +37,48 @@ import {
       >
         Open Popover
       </button>
-      <div sc-popover-content>
-        <div class="grid gap-4">
-          <div class="space-y-2">
-            <h4 class="font-medium leading-none">Dimensions</h4>
-            <p class="text-sm text-muted-foreground">
-              Set the dimensions for the layer.
-            </p>
-          </div>
-          <div class="grid gap-2">
-            <div class="grid grid-cols-3 items-center gap-4">
-              <label for="width" class="text-sm">Width</label>
-              <input
-                id="width"
-                value="100%"
-                class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
-              />
+      <div sc-popover-portal>
+        <div sc-popover>
+          <div class="grid gap-4">
+            <div class="space-y-2">
+              <h4 class="font-medium leading-none">Dimensions</h4>
+              <p class="text-sm text-muted-foreground">
+                Set the dimensions for the layer.
+              </p>
             </div>
-            <div class="grid grid-cols-3 items-center gap-4">
-              <label for="maxWidth" class="text-sm">Max. width</label>
-              <input
-                id="maxWidth"
-                value="300px"
-                class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
-              />
-            </div>
-            <div class="grid grid-cols-3 items-center gap-4">
-              <label for="height" class="text-sm">Height</label>
-              <input
-                id="height"
-                value="25px"
-                class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
-              />
-            </div>
-            <div class="grid grid-cols-3 items-center gap-4">
-              <label for="maxHeight" class="text-sm">Max. height</label>
-              <input
-                id="maxHeight"
-                value="none"
-                class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
-              />
+            <div class="grid gap-2">
+              <div class="grid grid-cols-3 items-center gap-4">
+                <label for="width" class="text-sm">Width</label>
+                <input
+                  id="width"
+                  value="100%"
+                  class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
+                />
+              </div>
+              <div class="grid grid-cols-3 items-center gap-4">
+                <label for="maxWidth" class="text-sm">Max. width</label>
+                <input
+                  id="maxWidth"
+                  value="300px"
+                  class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
+                />
+              </div>
+              <div class="grid grid-cols-3 items-center gap-4">
+                <label for="height" class="text-sm">Height</label>
+                <input
+                  id="height"
+                  value="25px"
+                  class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
+                />
+              </div>
+              <div class="grid grid-cols-3 items-center gap-4">
+                <label for="maxHeight" class="text-sm">Max. height</label>
+                <input
+                  id="maxHeight"
+                  value="none"
+                  class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm"
+                />
+              </div>
             </div>
           </div>
         </div>

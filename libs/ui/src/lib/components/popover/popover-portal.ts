@@ -113,7 +113,7 @@ const positionMap: Record<
 };
 
 @Component({
-  selector: 'div[sc-popover-content]',
+  selector: 'div[sc-popover-portal]',
   imports: [OverlayModule],
   template: `
     @if (origin(); as origin) {
@@ -121,23 +121,21 @@ const positionMap: Record<
         [cdkConnectedOverlayOpen]="popover.open()"
         [cdkConnectedOverlay]="{ origin, usePopover: 'inline' }"
         [cdkConnectedOverlayPositions]="[position()]"
-        (overlayOutsideClick)="closePopover($event)"
+        (overlayOutsideClick)="closePopover()"
         (overlayKeydown)="onKeydown($event)"
       >
-        <div [class]="contentClass()" role="dialog" tabindex="-1">
-          <ng-content />
-        </div>
+        <ng-content />
       </ng-template>
     }
   `,
   host: {
-    'data-slot': 'popover-content',
+    'data-slot': 'popover-portal',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScPopoverContent {
+export class ScPopoverPortal {
   readonly popover = inject(ScPopoverProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
@@ -151,17 +149,7 @@ export class ScPopoverContent {
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
-  protected readonly contentClass = computed(() =>
-    cn(
-      'bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-none',
-      this.popover.open()
-        ? 'opacity-100 scale-100 transition-[opacity,transform] duration-150 ease-out'
-        : 'opacity-0 scale-95 transition-[opacity,transform] duration-150 ease-in',
-    ),
-  );
-
-  closePopover(event: MouseEvent): void {
-    // Only close if clicking outside
+  closePopover(): void {
     this.popover.open.set(false);
   }
 
