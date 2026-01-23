@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScPopoverTrigger } from './sc-popover-trigger';
+import { ScPopoverTrigger } from './popover-trigger';
 
 export type PopoverAlign = 'start' | 'center' | 'end';
 export type PopoverSide = 'top' | 'right' | 'bottom' | 'left';

@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScPopover, PopoverSide, PopoverAlign } from './sc-popover';
+import { ScPopover, PopoverSide, PopoverAlign } from './popover';
 
 const positionMap: Record<
   PopoverSide,

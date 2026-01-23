@@ -1,7 +1,7 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScPopover } from './sc-popover';
+import { ScPopover } from './popover';
 
 @Directive({
   selector: 'button[sc-popover-trigger]',

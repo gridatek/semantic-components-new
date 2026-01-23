@@ -1,5 +1,5 @@
-export { ScPopover } from './sc-popover';
-export type { PopoverAlign, PopoverSide } from './sc-popover';
-export { ScPopoverTrigger } from './sc-popover-trigger';
-export { ScPopoverContent } from './sc-popover-content';
-export { ScPopoverClose } from './sc-popover-close';
+export { ScPopover } from './popover';
+export type { PopoverAlign, PopoverSide } from './popover';
+export { ScPopoverTrigger } from './popover-trigger';
+export { ScPopoverContent } from './popover-content';
+export { ScPopoverClose } from './popover-close';
