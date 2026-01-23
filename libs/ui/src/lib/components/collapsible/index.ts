@@ -1,3 +1,3 @@
-export { ScCollapsible } from './sc-collapsible';
-export { ScCollapsibleTrigger } from './sc-collapsible-trigger';
-export { ScCollapsibleContent } from './sc-collapsible-content';
+export { ScCollapsible } from './collapsible';
+export { ScCollapsibleTrigger } from './collapsible-trigger';
+export { ScCollapsibleContent } from './collapsible-content';

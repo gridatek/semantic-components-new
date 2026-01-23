@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScCollapsible } from './sc-collapsible';
+import { ScCollapsible } from './collapsible';
 
 @Component({
   selector: 'div[sc-collapsible-content]',
