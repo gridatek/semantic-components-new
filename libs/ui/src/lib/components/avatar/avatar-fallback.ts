@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAvatar } from './sc-avatar';
+import { ScAvatar } from './avatar';
 
 @Directive({
   selector: 'span[sc-avatar-fallback]',

@@ -1,1 +1,1 @@
-export * from './sc-alert';
+export * from './alert';

@@ -1,1 +1,1 @@
-export * from './sc-input-otp';
+export * from './input-otp';

@@ -1,1 +1,1 @@
-export * from './sc-badge';
+export * from './badge';

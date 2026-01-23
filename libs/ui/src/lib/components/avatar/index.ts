@@ -1,3 +1,3 @@
-export * from './sc-avatar';
-export * from './sc-avatar-image';
-export * from './sc-avatar-fallback';
+export * from './avatar';
+export * from './avatar-image';
+export * from './avatar-fallback';

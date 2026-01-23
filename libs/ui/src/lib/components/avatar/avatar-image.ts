@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input, OnInit } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAvatar } from './sc-avatar';
+import { ScAvatar } from './avatar';
 
 @Directive({
   selector: 'img[sc-avatar-image]',

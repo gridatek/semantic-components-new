@@ -1,1 +1,1 @@
-export * from './sc-input';
+export * from './input';

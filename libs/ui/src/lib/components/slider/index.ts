@@ -1,1 +1,1 @@
-export * from './sc-slider';
+export * from './slider';
