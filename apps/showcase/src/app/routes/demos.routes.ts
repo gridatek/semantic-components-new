@@ -968,10 +968,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/sheet',
     children: [
       {
-        path: 'sheet-demo',
+        path: 'right-sheet-demo',
         loadComponent: () =>
-          import('../pages/docs/sheet/demos/sheet-demo').then(
-            (m) => m.ScSheetDemo,
+          import('../pages/docs/sheet/demos/right-sheet-demo').then(
+            (m) => m.RightSheetDemo,
+          ),
+      },
+      {
+        path: 'left-sheet-demo',
+        loadComponent: () =>
+          import('../pages/docs/sheet/demos/left-sheet-demo').then(
+            (m) => m.LeftSheetDemo,
+          ),
+      },
+      {
+        path: 'top-sheet-demo',
+        loadComponent: () =>
+          import('../pages/docs/sheet/demos/top-sheet-demo').then(
+            (m) => m.TopSheetDemo,
+          ),
+      },
+      {
+        path: 'bottom-sheet-demo',
+        loadComponent: () =>
+          import('../pages/docs/sheet/demos/bottom-sheet-demo').then(
+            (m) => m.BottomSheetDemo,
           ),
       },
     ],
