@@ -10,7 +10,7 @@ The components follow a dependency injection (DI) pattern where child components
 ScSheetProvider (root wrapper - manages open state and side)
 ├── ScSheetTrigger (button that opens sheet)
 └── ScSheetPortal (overlay with backdrop)
-    └── ScSheet (sheet)
+    └── ScSheet (dialog panel with slide animations)
         ├── ScSheetClose (close button)
         ├── ScSheetHeader
         │   ├── ScSheetTitle
@@ -26,7 +26,7 @@ ScSheetProvider (root wrapper - manages open state and side)
 | `ScSheetProvider`    | `div[sc-sheet-provider]`   | Root wrapper, manages open state     |
 | `ScSheetTrigger`     | `button[sc-sheet-trigger]` | Button that opens the sheet          |
 | `ScSheetPortal`      | `div[sc-sheet-portal]`     | Overlay container with backdrop      |
-| `ScSheetContent`     | `div[sc-sheet-content]`    | Sheet panel with slide animations    |
+| `ScSheet`            | `div[sc-sheet]`            | Dialog panel with slide animations   |
 | `ScSheetHeader`      | `div[sc-sheet-header]`     | Header section container             |
 | `ScSheetTitle`       | `h2[sc-sheet-title]`       | Sheet title (aria-labelledby)        |
 | `ScSheetDescription` | `p[sc-sheet-description]`  | Sheet description (aria-describedby) |
@@ -38,10 +38,10 @@ ScSheetProvider (root wrapper - manages open state and side)
 ### Basic Sheet (Right Side)
 
 ```html
-<div sc-sheet>
+<div sc-sheet-provider>
   <button sc-sheet-trigger>Open Sheet</button>
   <div sc-sheet-portal>
-    <div sc-sheet-content>
+    <div sc-sheet>
       <button sc-sheet-close>
         <svg><!-- X icon --></svg>
         <span class="sr-only">Close</span>
@@ -64,30 +64,30 @@ ScSheetProvider (root wrapper - manages open state and side)
 
 ```html
 <!-- Left side -->
-<div sc-sheet side="left">
+<div sc-sheet-provider side="left">
   <button sc-sheet-trigger>Open Left</button>
   <div sc-sheet-portal>
-    <div sc-sheet-content>
+    <div sc-sheet>
       <!-- content -->
     </div>
   </div>
 </div>
 
 <!-- Top side -->
-<div sc-sheet side="top">
+<div sc-sheet-provider side="top">
   <button sc-sheet-trigger>Open Top</button>
   <div sc-sheet-portal>
-    <div sc-sheet-content>
+    <div sc-sheet>
       <!-- content -->
     </div>
   </div>
 </div>
 
 <!-- Bottom side -->
-<div sc-sheet side="bottom">
+<div sc-sheet-provider side="bottom">
   <button sc-sheet-trigger>Open Bottom</button>
   <div sc-sheet-portal>
-    <div sc-sheet-content>
+    <div sc-sheet>
       <!-- content -->
     </div>
   </div>
@@ -99,10 +99,10 @@ ScSheetProvider (root wrapper - manages open state and side)
 ```typescript
 @Component({
   template: `
-    <div sc-sheet [(open)]="isOpen" side="right">
+    <div sc-sheet-provider [(open)]="isOpen" side="right">
       <button sc-sheet-trigger>Open</button>
       <div sc-sheet-portal>
-        <div sc-sheet-content>
+        <div sc-sheet>
           <!-- content -->
         </div>
       </div>
@@ -125,10 +125,10 @@ export class MyComponent {
 ### Navigation Sheet
 
 ```html
-<div sc-sheet side="left">
+<div sc-sheet-provider side="left">
   <button sc-sheet-trigger>Menu</button>
   <div sc-sheet-portal>
-    <div sc-sheet-content>
+    <div sc-sheet>
       <button sc-sheet-close>X</button>
       <div sc-sheet-header>
         <h2 sc-sheet-title>Navigation</h2>
@@ -164,7 +164,7 @@ export class MyComponent {
 
 ### State Management
 
-`ScSheet` uses a `model` signal for the `open` state and an `input` for the `side`:
+`ScSheetProvider` uses a `model` signal for the `open` state and an `input` for the `side`:
 
 ```typescript
 readonly side = input<SheetSide>('right');
@@ -173,7 +173,7 @@ readonly open = model<boolean>(false);
 
 ### Slide Animations
 
-`ScSheetContent` applies different transform classes based on the side and open state:
+`ScSheet` applies different transform classes based on the side and open state:
 
 ```typescript
 const sideClosedClasses: Record<SheetSide, string> = {
@@ -193,7 +193,7 @@ const sideOpenClasses: Record<SheetSide, string> = {
 
 ## Accessibility
 
-- `role="dialog"` on the content
+- `role="dialog"` on `ScSheet`
 - `aria-modal="true"` for modal behavior
 - `aria-labelledby` linked to `ScSheetTitle`
 - `aria-describedby` linked to `ScSheetDescription`
@@ -207,7 +207,7 @@ const sideOpenClasses: Record<SheetSide, string> = {
 All components accept a `class` input for custom styling:
 
 ```html
-<div sc-sheet-content class="w-[400px]">
+<div sc-sheet class="w-[400px]">
   <!-- custom width -->
 </div>
 
