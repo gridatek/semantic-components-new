@@ -363,10 +363,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/breadcrumb',
     children: [
       {
-        path: 'breadcrumb-demo',
+        path: 'basic-breadcrumb-demo',
         loadComponent: () =>
-          import('../pages/docs/breadcrumb/demos/breadcrumb-demo').then(
-            (m) => m.ScBreadcrumbDemo,
+          import('../pages/docs/breadcrumb/demos/basic-breadcrumb-demo').then(
+            (m) => m.BasicBreadcrumbDemo,
+          ),
+      },
+      {
+        path: 'ellipsis-breadcrumb-demo',
+        loadComponent: () =>
+          import('../pages/docs/breadcrumb/demos/ellipsis-breadcrumb-demo').then(
+            (m) => m.EllipsisBreadcrumbDemo,
+          ),
+      },
+      {
+        path: 'custom-separator-breadcrumb-demo',
+        loadComponent: () =>
+          import('../pages/docs/breadcrumb/demos/custom-separator-breadcrumb-demo').then(
+            (m) => m.CustomSeparatorBreadcrumbDemo,
+          ),
+      },
+      {
+        path: 'longer-path-breadcrumb-demo',
+        loadComponent: () =>
+          import('../pages/docs/breadcrumb/demos/longer-path-breadcrumb-demo').then(
+            (m) => m.LongerPathBreadcrumbDemo,
           ),
       },
     ],
