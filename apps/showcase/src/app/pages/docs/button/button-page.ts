@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScButtonDemoContainer } from './demos/button-demo-container';
+import { AsLinkButtonDemoContainer } from './demos/as-link-button-demo-container';
+import { DisabledButtonDemoContainer } from './demos/disabled-button-demo-container';
+import { LoadingButtonDemoContainer } from './demos/loading-button-demo-container';
+import { SizesButtonDemoContainer } from './demos/sizes-button-demo-container';
+import { VariantsButtonDemoContainer } from './demos/variants-button-demo-container';
+import { WithIconsButtonDemoContainer } from './demos/with-icons-button-demo-container';
 
 @Component({
   selector: 'app-button-page',
-  imports: [ScButtonDemoContainer],
+  imports: [
+    VariantsButtonDemoContainer,
+    SizesButtonDemoContainer,
+    WithIconsButtonDemoContainer,
+    DisabledButtonDemoContainer,
+    AsLinkButtonDemoContainer,
+    LoadingButtonDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +27,12 @@ import { ScButtonDemoContainer } from './demos/button-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-button-demo-container />
+        <app-variants-button-demo-container />
+        <app-sizes-button-demo-container />
+        <app-with-icons-button-demo-container />
+        <app-disabled-button-demo-container />
+        <app-as-link-button-demo-container />
+        <app-loading-button-demo-container />
       </section>
     </div>
   `,
