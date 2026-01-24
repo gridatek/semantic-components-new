@@ -443,10 +443,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/calendar',
     children: [
       {
-        path: 'calendar-demo',
+        path: 'single-date-calendar-demo',
         loadComponent: () =>
-          import('../pages/docs/calendar/demos/calendar-demo').then(
-            (m) => m.ScCalendarDemo,
+          import('../pages/docs/calendar/demos/single-date-calendar-demo').then(
+            (m) => m.SingleDateCalendarDemo,
+          ),
+      },
+      {
+        path: 'multiple-date-calendar-demo',
+        loadComponent: () =>
+          import('../pages/docs/calendar/demos/multiple-date-calendar-demo').then(
+            (m) => m.MultipleDateCalendarDemo,
+          ),
+      },
+      {
+        path: 'range-calendar-demo',
+        loadComponent: () =>
+          import('../pages/docs/calendar/demos/range-calendar-demo').then(
+            (m) => m.RangeCalendarDemo,
+          ),
+      },
+      {
+        path: 'disabled-dates-calendar-demo',
+        loadComponent: () =>
+          import('../pages/docs/calendar/demos/disabled-dates-calendar-demo').then(
+            (m) => m.DisabledDatesCalendarDemo,
+          ),
+      },
+      {
+        path: 'min-max-calendar-demo',
+        loadComponent: () =>
+          import('../pages/docs/calendar/demos/min-max-calendar-demo').then(
+            (m) => m.MinMaxCalendarDemo,
           ),
       },
     ],
