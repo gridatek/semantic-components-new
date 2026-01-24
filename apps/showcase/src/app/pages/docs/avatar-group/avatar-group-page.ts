@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AvatarGroupDemoContainer } from './demos/avatar-group-demo-container';
+import { BasicAvatarGroupDemoContainer } from './demos/basic-avatar-group-demo-container';
+import { FallbackAvatarGroupDemoContainer } from './demos/fallback-avatar-group-demo-container';
+import { MaxCountAvatarGroupDemoContainer } from './demos/max-count-avatar-group-demo-container';
+import { SizesAvatarGroupDemoContainer } from './demos/sizes-avatar-group-demo-container';
+import { SpacingAvatarGroupDemoContainer } from './demos/spacing-avatar-group-demo-container';
+import { TeamAvatarGroupDemoContainer } from './demos/team-avatar-group-demo-container';
 
 @Component({
   selector: 'app-avatar-group-page',
-  imports: [AvatarGroupDemoContainer],
+  imports: [
+    BasicAvatarGroupDemoContainer,
+    SizesAvatarGroupDemoContainer,
+    SpacingAvatarGroupDemoContainer,
+    MaxCountAvatarGroupDemoContainer,
+    FallbackAvatarGroupDemoContainer,
+    TeamAvatarGroupDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +28,12 @@ import { AvatarGroupDemoContainer } from './demos/avatar-group-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-avatar-group-demo-container />
+        <app-basic-avatar-group-demo-container />
+        <app-sizes-avatar-group-demo-container />
+        <app-spacing-avatar-group-demo-container />
+        <app-max-count-avatar-group-demo-container />
+        <app-fallback-avatar-group-demo-container />
+        <app-team-avatar-group-demo-container />
       </section>
     </div>
   `,
