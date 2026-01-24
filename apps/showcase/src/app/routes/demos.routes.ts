@@ -457,10 +457,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/drawer',
     children: [
       {
-        path: 'drawer-demo',
+        path: 'basic-drawer-demo',
         loadComponent: () =>
-          import('../pages/docs/drawer/demos/drawer-demo').then(
-            (m) => m.ScDrawerDemo,
+          import('../pages/docs/drawer/demos/basic-drawer-demo').then(
+            (m) => m.BasicDrawerDemo,
+          ),
+      },
+      {
+        path: 'top-drawer-demo',
+        loadComponent: () =>
+          import('../pages/docs/drawer/demos/top-drawer-demo').then(
+            (m) => m.TopDrawerDemo,
+          ),
+      },
+      {
+        path: 'left-drawer-demo',
+        loadComponent: () =>
+          import('../pages/docs/drawer/demos/left-drawer-demo').then(
+            (m) => m.LeftDrawerDemo,
+          ),
+      },
+      {
+        path: 'right-drawer-demo',
+        loadComponent: () =>
+          import('../pages/docs/drawer/demos/right-drawer-demo').then(
+            (m) => m.RightDrawerDemo,
           ),
       },
     ],

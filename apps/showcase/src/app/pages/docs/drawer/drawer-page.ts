@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDrawerDemoContainer } from './demos/drawer-demo-container';
+import { BasicDrawerDemoContainer } from './demos/basic-drawer-demo-container';
+import { TopDrawerDemoContainer } from './demos/top-drawer-demo-container';
+import { LeftDrawerDemoContainer } from './demos/left-drawer-demo-container';
+import { RightDrawerDemoContainer } from './demos/right-drawer-demo-container';
 
 @Component({
   selector: 'app-drawer-page',
-  imports: [ScDrawerDemoContainer],
+  imports: [
+    BasicDrawerDemoContainer,
+    TopDrawerDemoContainer,
+    LeftDrawerDemoContainer,
+    RightDrawerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,7 +25,10 @@ import { ScDrawerDemoContainer } from './demos/drawer-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-drawer-demo-container />
+        <app-basic-drawer-demo-container />
+        <app-top-drawer-demo-container />
+        <app-left-drawer-demo-container />
+        <app-right-drawer-demo-container />
       </section>
     </div>
   `,
