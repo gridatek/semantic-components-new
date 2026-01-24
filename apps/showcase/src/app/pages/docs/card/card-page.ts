@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCardDemoContainer } from './demos/card-demo-container';
+import { BasicCardDemoContainer } from './demos/basic-card-demo-container';
+import { FormCardDemoContainer } from './demos/form-card-demo-container';
+import { NotificationCardDemoContainer } from './demos/notification-card-demo-container';
+import { StatsCardDemoContainer } from './demos/stats-card-demo-container';
 
 @Component({
   selector: 'app-card-page',
-  imports: [ScCardDemoContainer],
+  imports: [
+    BasicCardDemoContainer,
+    FormCardDemoContainer,
+    NotificationCardDemoContainer,
+    StatsCardDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +23,10 @@ import { ScCardDemoContainer } from './demos/card-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-card-demo-container />
+        <app-basic-card-demo-container />
+        <app-form-card-demo-container />
+        <app-notification-card-demo-container />
+        <app-stats-card-demo-container />
       </section>
     </div>
   `,

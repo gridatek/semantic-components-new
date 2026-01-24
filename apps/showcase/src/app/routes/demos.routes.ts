@@ -483,10 +483,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/card',
     children: [
       {
-        path: 'card-demo',
+        path: 'basic-card-demo',
         loadComponent: () =>
-          import('../pages/docs/card/demos/card-demo').then(
-            (m) => m.ScCardDemo,
+          import('../pages/docs/card/demos/basic-card-demo').then(
+            (m) => m.BasicCardDemo,
+          ),
+      },
+      {
+        path: 'form-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/card/demos/form-card-demo').then(
+            (m) => m.FormCardDemo,
+          ),
+      },
+      {
+        path: 'notification-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/card/demos/notification-card-demo').then(
+            (m) => m.NotificationCardDemo,
+          ),
+      },
+      {
+        path: 'stats-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/card/demos/stats-card-demo').then(
+            (m) => m.StatsCardDemo,
           ),
       },
     ],
