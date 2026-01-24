@@ -1,32 +1,32 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { BasicAspectRatioDemo } from './basic-aspect-ratio-demo';
+import { FourThreeAspectRatioDemo } from './four-three-aspect-ratio-demo';
 
 @Component({
-  selector: 'app-basic-aspect-ratio-demo-container',
-  imports: [DemoContainer, BasicAspectRatioDemo],
+  selector: 'app-four-three-aspect-ratio-demo-container',
+  imports: [DemoContainer, FourThreeAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Basic"
-      demoUrl="/demos/aspect-ratio/basic-aspect-ratio-demo"
+      title="4:3"
+      demoUrl="/demos/aspect-ratio/four-three-aspect-ratio-demo"
       [code]="code"
     >
-      <app-basic-aspect-ratio-demo />
+      <app-four-three-aspect-ratio-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicAspectRatioDemoContainer {
+export class FourThreeAspectRatioDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScAspectRatio } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-basic-aspect-ratio-demo',
+  selector: 'app-four-three-aspect-ratio-demo',
   imports: [ScAspectRatio],
   template: \`
     <div class="w-[450px] overflow-hidden rounded-md">
-      <div sc-aspect-ratio [ratio]="16 / 9">
+      <div sc-aspect-ratio [ratio]="4 / 3">
         <img
           src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
           alt="Photo by Drew Beamer"
@@ -37,5 +37,5 @@ import { ScAspectRatio } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicAspectRatioDemo {}`;
+export class FourThreeAspectRatioDemo {}`;
 }

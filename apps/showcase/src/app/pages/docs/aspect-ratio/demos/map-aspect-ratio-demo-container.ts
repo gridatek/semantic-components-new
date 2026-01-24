@@ -1,32 +1,32 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { PlaceholderAspectRatioDemo } from './placeholder-aspect-ratio-demo';
+import { MapAspectRatioDemo } from './map-aspect-ratio-demo';
 
 @Component({
-  selector: 'app-placeholder-aspect-ratio-demo-container',
-  imports: [DemoContainer, PlaceholderAspectRatioDemo],
+  selector: 'app-map-aspect-ratio-demo-container',
+  imports: [DemoContainer, MapAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Placeholder"
-      demoUrl="/demos/aspect-ratio/placeholder-aspect-ratio-demo"
+      title="Map"
+      demoUrl="/demos/aspect-ratio/map-aspect-ratio-demo"
       [code]="code"
     >
-      <app-placeholder-aspect-ratio-demo />
+      <app-map-aspect-ratio-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlaceholderAspectRatioDemoContainer {
+export class MapAspectRatioDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScAspectRatio } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-placeholder-aspect-ratio-demo',
+  selector: 'app-map-aspect-ratio-demo',
   imports: [ScAspectRatio],
   template: \`
-    <div class="w-[450px] overflow-hidden rounded-md">
-      <div sc-aspect-ratio [ratio]="16 / 9" class="bg-muted">
+    <div class="w-[450px] overflow-hidden rounded-md border">
+      <div sc-aspect-ratio [ratio]="3 / 2" class="bg-muted">
         <div class="flex size-full items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +40,8 @@ import { ScAspectRatio } from '@semantic-components/ui';
             stroke-linejoin="round"
             class="size-10 text-muted-foreground"
           >
-            <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-            <circle cx="9" cy="9" r="2" />
-            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
           </svg>
         </div>
       </div>
@@ -50,5 +49,5 @@ import { ScAspectRatio } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlaceholderAspectRatioDemo {}`;
+export class MapAspectRatioDemo {}`;
 }

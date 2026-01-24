@@ -102,10 +102,52 @@ export const demosRoutes: Route[] = [
           ),
       },
       {
+        path: 'four-three-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/four-three-aspect-ratio-demo').then(
+            (m) => m.FourThreeAspectRatioDemo,
+          ),
+      },
+      {
+        path: 'square-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/square-aspect-ratio-demo').then(
+            (m) => m.SquareAspectRatioDemo,
+          ),
+      },
+      {
+        path: 'ultrawide-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/ultrawide-aspect-ratio-demo').then(
+            (m) => m.UltrawideAspectRatioDemo,
+          ),
+      },
+      {
+        path: 'portrait-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/portrait-aspect-ratio-demo').then(
+            (m) => m.PortraitAspectRatioDemo,
+          ),
+      },
+      {
         path: 'placeholder-aspect-ratio-demo',
         loadComponent: () =>
           import('../pages/docs/aspect-ratio/demos/placeholder-aspect-ratio-demo').then(
             (m) => m.PlaceholderAspectRatioDemo,
+          ),
+      },
+      {
+        path: 'video-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/video-aspect-ratio-demo').then(
+            (m) => m.VideoAspectRatioDemo,
+          ),
+      },
+      {
+        path: 'map-aspect-ratio-demo',
+        loadComponent: () =>
+          import('../pages/docs/aspect-ratio/demos/map-aspect-ratio-demo').then(
+            (m) => m.MapAspectRatioDemo,
           ),
       },
     ],
