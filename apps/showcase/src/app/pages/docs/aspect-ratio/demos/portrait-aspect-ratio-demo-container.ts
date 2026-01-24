@@ -7,7 +7,7 @@ import { PortraitAspectRatioDemo } from './portrait-aspect-ratio-demo';
   imports: [DemoContainer, PortraitAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Portrait"
+      title="9:16 Portrait"
       demoUrl="/demos/aspect-ratio/portrait-aspect-ratio-demo"
       [code]="code"
     >

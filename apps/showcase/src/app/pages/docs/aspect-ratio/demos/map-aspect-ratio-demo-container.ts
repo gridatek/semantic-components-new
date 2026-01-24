@@ -7,7 +7,7 @@ import { MapAspectRatioDemo } from './map-aspect-ratio-demo';
   imports: [DemoContainer, MapAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Map"
+      title="Map Container (3:2)"
       demoUrl="/demos/aspect-ratio/map-aspect-ratio-demo"
       [code]="code"
     >

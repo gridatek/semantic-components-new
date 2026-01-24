@@ -7,7 +7,7 @@ import { FourThreeAspectRatioDemo } from './four-three-aspect-ratio-demo';
   imports: [DemoContainer, FourThreeAspectRatioDemo],
   template: `
     <app-demo-container
-      title="4:3"
+      title="4:3 Aspect Ratio"
       demoUrl="/demos/aspect-ratio/four-three-aspect-ratio-demo"
       [code]="code"
     >

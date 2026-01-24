@@ -7,7 +7,7 @@ import { BasicAspectRatioDemo } from './basic-aspect-ratio-demo';
   imports: [DemoContainer, BasicAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Basic"
+      title="16:9 Aspect Ratio"
       demoUrl="/demos/aspect-ratio/basic-aspect-ratio-demo"
       [code]="code"
     >

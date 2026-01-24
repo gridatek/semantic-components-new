@@ -7,7 +7,7 @@ import { PlaceholderAspectRatioDemo } from './placeholder-aspect-ratio-demo';
   imports: [DemoContainer, PlaceholderAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Placeholder"
+      title="With Placeholder Background"
       demoUrl="/demos/aspect-ratio/placeholder-aspect-ratio-demo"
       [code]="code"
     >

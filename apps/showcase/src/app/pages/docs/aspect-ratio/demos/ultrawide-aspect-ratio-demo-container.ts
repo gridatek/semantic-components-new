@@ -7,7 +7,7 @@ import { UltrawideAspectRatioDemo } from './ultrawide-aspect-ratio-demo';
   imports: [DemoContainer, UltrawideAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Ultrawide"
+      title="21:9 Ultrawide"
       demoUrl="/demos/aspect-ratio/ultrawide-aspect-ratio-demo"
       [code]="code"
     >

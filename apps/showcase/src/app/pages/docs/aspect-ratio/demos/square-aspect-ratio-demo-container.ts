@@ -7,7 +7,7 @@ import { SquareAspectRatioDemo } from './square-aspect-ratio-demo';
   imports: [DemoContainer, SquareAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Square"
+      title="1:1 Square"
       demoUrl="/demos/aspect-ratio/square-aspect-ratio-demo"
       [code]="code"
     >

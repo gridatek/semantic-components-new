@@ -7,7 +7,7 @@ import { VideoAspectRatioDemo } from './video-aspect-ratio-demo';
   imports: [DemoContainer, VideoAspectRatioDemo],
   template: `
     <app-demo-container
-      title="Video"
+      title="Video Embed Container"
       demoUrl="/demos/aspect-ratio/video-aspect-ratio-demo"
       [code]="code"
     >
