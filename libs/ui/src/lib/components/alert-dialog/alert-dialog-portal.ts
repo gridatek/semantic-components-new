@@ -14,21 +14,14 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScAlertDialogProvider } from './alert-dialog-provider';
+import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'div[sc-alert-dialog-portal]',
   imports: [OverlayModule],
   template: `
     <ng-template #dialogTemplate>
-      <div
-        class="fixed inset-0 z-50 flex items-center justify-center"
-        (keydown.escape)="onEscapeKey($event)"
-      >
-        <!-- Backdrop -->
-        <div [class]="backdropClass()" aria-hidden="true"></div>
-        <!-- Content -->
-        <ng-content />
-      </div>
+      <ng-content />
     </ng-template>
   `,
   host: {
@@ -54,27 +47,19 @@ export class ScAlertDialogPortal {
       .global()
       .centerHorizontally()
       .centerVertically(),
-    hasBackdrop: false,
+    hasBackdrop: true,
+    backdropClass: 'sc-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
   protected readonly class = computed(() => cn('', this.classInput()));
-
-  protected readonly backdropClass = computed(() =>
-    cn(
-      'fixed inset-0 bg-black/80',
-      this.alertDialogProvider.open()
-        ? 'opacity-100 visible transition-[opacity,visibility] duration-150 ease-out'
-        : 'opacity-0 invisible transition-[opacity,visibility] duration-150 ease-in [transition-delay:0s,150ms]',
-    ),
-  );
 
   constructor() {
     effect(() => {
       if (this.alertDialogProvider.open()) {
         this.attachDialog();
       } else {
-        this.detachDialog();
+        this.detachDialogWithAnimation();
       }
     });
   }
@@ -89,14 +74,17 @@ export class ScAlertDialogPortal {
     }
   }
 
-  private detachDialog(): void {
+  private async detachDialogWithAnimation() {
     if (this.overlayRef.hasAttached()) {
+      const backdrop = this.overlayRef.backdropElement;
+
+      // Start the fade out
+      backdrop?.classList.add('sc-backdrop-hiding');
+
+      // Wait for the CSS transition (300ms)
+      await firstValueFrom(timer(300));
+
       this.overlayRef.detach();
     }
-  }
-
-  onEscapeKey(event: Event): void {
-    // AlertDialog should NOT close on Escape - user must explicitly cancel or confirm
-    event.preventDefault();
   }
 }
