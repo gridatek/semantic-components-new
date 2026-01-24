@@ -11,7 +11,7 @@ import { cn } from '../../utils';
   selector: 'sc-checkbox',
   host: {
     'data-slot': 'checkbox',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.data-state]': 'dataState()',
     '[attr.data-disabled]': 'disabled() ? "" : null',
     '(click)': 'toggle()',
@@ -61,7 +61,7 @@ export class ScCheckbox {
     return this.checked();
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'peer inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-primary ring-offset-background transition-colors',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',

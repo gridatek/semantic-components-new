@@ -40,7 +40,7 @@ const sizeStyles: Record<TimezoneSize, string> = {
   host: {
     'data-slot': 'timezone-display',
     type: 'button',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-label]': 'ariaLabel()',
   },
   template: `
@@ -83,7 +83,7 @@ export class ScTimezoneDisplay {
     return tz.abbr;
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium',
       'ring-offset-background transition-colors',
@@ -116,7 +116,7 @@ export class ScTimezoneDisplay {
   selector: 'sc-timezone-select',
   host: {
     'data-slot': 'timezone-select',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
   },
   template: `
     <label for="timezone-select" class="sr-only">Select timezone</label>
@@ -147,7 +147,7 @@ export class ScTimezoneSelect {
   );
   protected readonly timezones = this.timezoneService.timezones;
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn('inline-block', this.classInput()),
   );
 
@@ -193,7 +193,7 @@ export class ScTimezoneSelect {
   host: {
     'data-slot': 'timezone-button',
     type: 'button',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-label]': 'ariaLabel()',
   },
   template: `
@@ -246,7 +246,7 @@ export class ScTimezoneButton {
     return tz.label;
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium',
       'ring-offset-background transition-colors cursor-pointer',
@@ -279,7 +279,7 @@ export class ScTimezoneButton {
   selector: 'span[sc-timezone-badge]',
   host: {
     'data-slot': 'timezone-badge',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
   },
   template: `
     @if (showIcon()) {
@@ -329,7 +329,7 @@ export class ScTimezoneBadge {
     return tz.abbr;
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold',
       'transition-colors',

@@ -19,7 +19,7 @@ import { cn } from '../../utils';
   selector: 'div[sc-slider]',
   host: {
     'data-slot': 'slider',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.data-disabled]': 'disabled() || null',
   },
   template: `
@@ -71,7 +71,7 @@ export class ScSlider implements OnInit {
     return ((val - minVal) / (maxVal - minVal)) * 100;
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'relative flex w-full touch-none select-none items-center',
       this.disabled() && 'opacity-50 cursor-not-allowed',

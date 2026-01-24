@@ -15,7 +15,7 @@ import { ScScrollBar } from './scroll-bar';
   selector: 'div[sc-scroll-area]',
   host: {
     'data-slot': 'scroll-area',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
   },
   template: `
     <div
@@ -56,7 +56,7 @@ export class ScScrollArea {
   readonly clientHeight = signal(0);
   readonly clientWidth = signal(0);
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn('relative overflow-hidden', this.classInput()),
   );
 

@@ -30,7 +30,7 @@ const sizeStyles: Record<ThemeToggleSize, string> = {
   host: {
     'data-slot': 'theme-toggle',
     type: 'button',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-label]': 'ariaLabel()',
     '[attr.aria-pressed]': 'isDark()',
     '(click)': 'toggle()',
@@ -86,7 +86,7 @@ export class ScThemeToggle {
   protected readonly isDark = this.themeService.isDark;
   protected readonly theme = this.themeService.theme;
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium',
       'ring-offset-background transition-colors',
@@ -112,7 +112,7 @@ export class ScThemeToggle {
   selector: 'sc-theme-select',
   host: {
     'data-slot': 'theme-select',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
   },
   template: `
     <label for="theme-select" class="sr-only">Select theme</label>
@@ -136,7 +136,7 @@ export class ScThemeSelect {
 
   protected readonly theme = this.themeService.theme;
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn('inline-block', this.classInput()),
   );
 

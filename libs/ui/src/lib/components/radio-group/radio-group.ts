@@ -100,7 +100,7 @@ export class ScRadioGroup {
   host: {
     'data-slot': 'radio-group-item',
     role: 'radio',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-checked]': 'isSelected()',
     '[attr.data-state]': 'isSelected() ? "checked" : "unchecked"',
     '[attr.data-disabled]': 'isDisabled() ? "" : null',
@@ -155,7 +155,7 @@ export class ScRadioGroupItem {
     return -1;
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex cursor-pointer items-center gap-2',
       this.isDisabled() && 'cursor-not-allowed opacity-50',

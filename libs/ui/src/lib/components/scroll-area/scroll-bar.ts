@@ -21,7 +21,7 @@ export type ScrollBarOrientation = 'vertical' | 'horizontal';
   selector: 'div[sc-scroll-bar]',
   host: {
     'data-slot': 'scroll-bar',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.data-orientation]': 'orientation()',
     '[attr.data-state]': 'isVisible() ? "visible" : "hidden"',
     '(mousedown)': 'onTrackClick($event)',
@@ -92,7 +92,7 @@ export class ScScrollBar implements OnInit {
     return `translateX(${this.thumbPosition()}cqw)`;
   });
 
-  protected readonly hostClass = computed(() => {
+  protected readonly class = computed(() => {
     const isVertical = this.orientation() === 'vertical';
     return cn(
       'flex touch-none select-none transition-colors container-size',

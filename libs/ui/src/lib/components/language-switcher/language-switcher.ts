@@ -40,7 +40,7 @@ const sizeStyles: Record<LanguageSwitcherSize, string> = {
   host: {
     'data-slot': 'language-toggle',
     type: 'button',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-label]': 'ariaLabel()',
     '(click)': 'toggle()',
   },
@@ -82,7 +82,7 @@ export class ScLanguageToggle {
   protected readonly currentLanguage = this.languageService.currentLanguage;
   protected readonly languages = this.languageService.languages;
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium',
       'ring-offset-background transition-colors',
@@ -124,7 +124,7 @@ export class ScLanguageToggle {
   selector: 'sc-language-select',
   host: {
     'data-slot': 'language-select',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
   },
   template: `
     <label for="language-select" class="sr-only">Select language</label>
@@ -154,7 +154,7 @@ export class ScLanguageSelect {
   );
   protected readonly languages = this.languageService.languages;
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn('inline-block', this.classInput()),
   );
 
@@ -178,7 +178,7 @@ export class ScLanguageSelect {
   selector: 'button[sc-language-button], a[sc-language-button]',
   host: {
     'data-slot': 'language-button',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-label]': 'ariaLabel()',
     '(click)': 'onClick($event)',
   },
@@ -216,7 +216,7 @@ export class ScLanguageButton {
     return this.showNativeLabels() ? lang.nativeLabel : lang.label;
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md text-sm font-medium',
       'ring-offset-background transition-colors cursor-pointer',

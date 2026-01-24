@@ -120,7 +120,7 @@ export class ScInputOtpGroup {
   selector: 'sc-input-otp-slot',
   host: {
     'data-slot': 'input-otp-slot',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.data-active]': 'isActive() ? "" : null',
     '[attr.data-filled]': 'isFilled() ? "" : null',
   },
@@ -163,7 +163,7 @@ export class ScInputOtpSlot {
   readonly isActive = computed(() => this.focused() && !this.otp.disabled());
   readonly isFilled = computed(() => this.char() !== '');
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md',
       this.isActive() && 'z-10 ring-2 ring-ring ring-offset-background',

@@ -11,7 +11,7 @@ import { cn } from '../../utils';
   host: {
     role: 'progressbar',
     'data-slot': 'progress',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.aria-valuemin]': '0',
     '[attr.aria-valuemax]': 'max()',
     '[attr.aria-valuenow]': 'value()',
@@ -44,7 +44,7 @@ export class ScProgress {
     return val >= this.max() ? 'complete' : 'loading';
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'relative h-2 w-full overflow-hidden rounded-full bg-primary/20',
       this.classInput(),
