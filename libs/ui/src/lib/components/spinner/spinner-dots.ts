@@ -7,40 +7,39 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 
-// ============================================================================
-// Spinner
-// ============================================================================
 @Component({
-  selector: '[sc-spinner]',
+  selector: '[sc-spinner-dots]',
   template: `
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      [class]="svgClass()"
-    >
-      <circle
-        class="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-      <path
-        class="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-      />
-    </svg>
+    <span class="flex items-center gap-1">
+      <span [class]="dotClass()" style="animation-delay: 0ms"></span>
+      <span [class]="dotClass()" style="animation-delay: 150ms"></span>
+      <span [class]="dotClass()" style="animation-delay: 300ms"></span>
+    </span>
     @if (hasContent) {
       <span [class]="textClass()">
         <ng-content />
       </span>
     }
   `,
+  styles: `
+    @keyframes bounce-dot {
+      0%,
+      80%,
+      100% {
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    [data-slot='spinner-dots'] span span {
+      animation: bounce-dot 1.4s infinite ease-in-out both;
+    }
+  `,
   host: {
-    'data-slot': 'spinner',
+    'data-slot': 'spinner-dots',
     role: 'status',
     '[class]': 'class()',
     '[attr.aria-label]': 'label()',
@@ -48,26 +47,25 @@ import { cn } from '../../utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSpinner {
+export class ScSpinnerDots {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly size = input<'xs' | 'sm' | 'default' | 'lg' | 'xl'>('default');
   readonly label = input<string>('Loading');
 
-  // Check if content is projected
   hasContent = false;
 
   protected readonly class = computed(() =>
     cn('inline-flex items-center gap-2', this.classInput()),
   );
 
-  protected readonly svgClass = computed(() =>
+  protected readonly dotClass = computed(() =>
     cn(
-      'animate-spin',
-      this.size() === 'xs' && 'size-3',
-      this.size() === 'sm' && 'size-4',
-      this.size() === 'default' && 'size-5',
-      this.size() === 'lg' && 'size-6',
-      this.size() === 'xl' && 'size-8',
+      'rounded-full bg-current',
+      this.size() === 'xs' && 'size-1',
+      this.size() === 'sm' && 'size-1.5',
+      this.size() === 'default' && 'size-2',
+      this.size() === 'lg' && 'size-2.5',
+      this.size() === 'xl' && 'size-3',
     ),
   );
 
