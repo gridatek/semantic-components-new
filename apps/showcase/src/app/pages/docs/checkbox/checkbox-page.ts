@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCheckboxDemoContainer } from './demos/checkbox-demo-container';
+import { BasicCheckboxDemoContainer } from './demos/basic-checkbox-demo-container';
+import { DisabledCheckboxDemoContainer } from './demos/disabled-checkbox-demo-container';
+import { FormCheckboxDemoContainer } from './demos/form-checkbox-demo-container';
+import { IndeterminateCheckboxDemoContainer } from './demos/indeterminate-checkbox-demo-container';
+import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-checkbox-demo-container';
 
 @Component({
   selector: 'app-checkbox-page',
-  imports: [ScCheckboxDemoContainer],
+  imports: [
+    BasicCheckboxDemoContainer,
+    WithDescriptionCheckboxDemoContainer,
+    DisabledCheckboxDemoContainer,
+    IndeterminateCheckboxDemoContainer,
+    FormCheckboxDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +26,11 @@ import { ScCheckboxDemoContainer } from './demos/checkbox-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-checkbox-demo-container />
+        <app-basic-checkbox-demo-container />
+        <app-with-description-checkbox-demo-container />
+        <app-disabled-checkbox-demo-container />
+        <app-indeterminate-checkbox-demo-container />
+        <app-form-checkbox-demo-container />
       </section>
     </div>
   `,

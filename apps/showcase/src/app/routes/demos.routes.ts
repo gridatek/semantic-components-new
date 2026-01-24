@@ -617,10 +617,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/checkbox',
     children: [
       {
-        path: 'checkbox-demo',
+        path: 'basic-checkbox-demo',
         loadComponent: () =>
-          import('../pages/docs/checkbox/demos/checkbox-demo').then(
-            (m) => m.ScCheckboxDemo,
+          import('../pages/docs/checkbox/demos/basic-checkbox-demo').then(
+            (m) => m.BasicCheckboxDemo,
+          ),
+      },
+      {
+        path: 'with-description-checkbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/checkbox/demos/with-description-checkbox-demo').then(
+            (m) => m.WithDescriptionCheckboxDemo,
+          ),
+      },
+      {
+        path: 'disabled-checkbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/checkbox/demos/disabled-checkbox-demo').then(
+            (m) => m.DisabledCheckboxDemo,
+          ),
+      },
+      {
+        path: 'indeterminate-checkbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/checkbox/demos/indeterminate-checkbox-demo').then(
+            (m) => m.IndeterminateCheckboxDemo,
+          ),
+      },
+      {
+        path: 'form-checkbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/checkbox/demos/form-checkbox-demo').then(
+            (m) => m.FormCheckboxDemo,
           ),
       },
     ],
