@@ -309,10 +309,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/barcode-scanner',
     children: [
       {
-        path: 'barcode-scanner-demo',
+        path: 'basic-barcode-scanner-demo',
         loadComponent: () =>
-          import('../pages/docs/barcode-scanner/demos/barcode-scanner-demo').then(
-            (m) => m.ScBarcodeScannerDemo,
+          import('../pages/docs/barcode-scanner/demos/basic-barcode-scanner-demo').then(
+            (m) => m.BasicBarcodeScannerDemo,
+          ),
+      },
+      {
+        path: 'qr-code-barcode-scanner-demo',
+        loadComponent: () =>
+          import('../pages/docs/barcode-scanner/demos/qr-code-barcode-scanner-demo').then(
+            (m) => m.QrCodeBarcodeScannerDemo,
+          ),
+      },
+      {
+        path: 'product-barcode-scanner-demo',
+        loadComponent: () =>
+          import('../pages/docs/barcode-scanner/demos/product-barcode-scanner-demo').then(
+            (m) => m.ProductBarcodeScannerDemo,
+          ),
+      },
+      {
+        path: 'single-scan-barcode-scanner-demo',
+        loadComponent: () =>
+          import('../pages/docs/barcode-scanner/demos/single-scan-barcode-scanner-demo').then(
+            (m) => m.SingleScanBarcodeScannerDemo,
+          ),
+      },
+      {
+        path: 'history-barcode-scanner-demo',
+        loadComponent: () =>
+          import('../pages/docs/barcode-scanner/demos/history-barcode-scanner-demo').then(
+            (m) => m.HistoryBarcodeScannerDemo,
+          ),
+      },
+      {
+        path: 'formats-barcode-scanner-demo',
+        loadComponent: () =>
+          import('../pages/docs/barcode-scanner/demos/formats-barcode-scanner-demo').then(
+            (m) => m.FormatsBarcodeScannerDemo,
+          ),
+      },
+      {
+        path: 'browser-support-barcode-scanner-demo',
+        loadComponent: () =>
+          import('../pages/docs/barcode-scanner/demos/browser-support-barcode-scanner-demo').then(
+            (m) => m.BrowserSupportBarcodeScannerDemo,
           ),
       },
     ],
