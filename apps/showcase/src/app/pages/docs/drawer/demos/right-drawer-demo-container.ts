@@ -6,7 +6,11 @@ import { RightDrawerDemo } from './right-drawer-demo';
   selector: 'app-right-drawer-demo-container',
   imports: [DemoContainer, RightDrawerDemo],
   template: `
-    <app-demo-container title="Right" [code]="code">
+    <app-demo-container
+      title="Right"
+      demoUrl="/demos/drawer/right-drawer-demo"
+      [code]="code"
+    >
       <app-right-drawer-demo />
     </app-demo-container>
   `,

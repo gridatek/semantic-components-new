@@ -6,7 +6,11 @@ import { BasicDrawerDemo } from './basic-drawer-demo';
   selector: 'app-basic-drawer-demo-container',
   imports: [DemoContainer, BasicDrawerDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/drawer/basic-drawer-demo"
+      [code]="code"
+    >
       <app-basic-drawer-demo />
     </app-demo-container>
   `,
