@@ -563,10 +563,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/chart',
     children: [
       {
-        path: 'chart-demo',
+        path: 'bar-chart-demo',
         loadComponent: () =>
-          import('../pages/docs/chart/demos/chart-demo').then(
-            (m) => m.ScChartDemo,
+          import('../pages/docs/chart/demos/bar-chart-demo').then(
+            (m) => m.BarChartDemo,
+          ),
+      },
+      {
+        path: 'line-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/chart/demos/line-chart-demo').then(
+            (m) => m.LineChartDemo,
+          ),
+      },
+      {
+        path: 'area-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/chart/demos/area-chart-demo').then(
+            (m) => m.AreaChartDemo,
+          ),
+      },
+      {
+        path: 'pie-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/chart/demos/pie-chart-demo').then(
+            (m) => m.PieChartDemo,
+          ),
+      },
+      {
+        path: 'donut-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/chart/demos/donut-chart-demo').then(
+            (m) => m.DonutChartDemo,
+          ),
+      },
+      {
+        path: 'monthly-revenue-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/chart/demos/monthly-revenue-chart-demo').then(
+            (m) => m.MonthlyRevenueChartDemo,
+          ),
+      },
+      {
+        path: 'user-growth-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/chart/demos/user-growth-chart-demo').then(
+            (m) => m.UserGrowthChartDemo,
           ),
       },
     ],

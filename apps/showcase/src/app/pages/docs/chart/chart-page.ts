@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartDemoContainer } from './demos/chart-demo-container';
+import { AreaChartDemoContainer } from './demos/area-chart-demo-container';
+import { BarChartDemoContainer } from './demos/bar-chart-demo-container';
+import { DonutChartDemoContainer } from './demos/donut-chart-demo-container';
+import { LineChartDemoContainer } from './demos/line-chart-demo-container';
+import { MonthlyRevenueChartDemoContainer } from './demos/monthly-revenue-chart-demo-container';
+import { PieChartDemoContainer } from './demos/pie-chart-demo-container';
+import { UserGrowthChartDemoContainer } from './demos/user-growth-chart-demo-container';
 
 @Component({
   selector: 'app-chart-page',
-  imports: [ScChartDemoContainer],
+  imports: [
+    BarChartDemoContainer,
+    LineChartDemoContainer,
+    AreaChartDemoContainer,
+    PieChartDemoContainer,
+    DonutChartDemoContainer,
+    MonthlyRevenueChartDemoContainer,
+    UserGrowthChartDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +29,13 @@ import { ScChartDemoContainer } from './demos/chart-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-chart-demo-container />
+        <app-bar-chart-demo-container />
+        <app-line-chart-demo-container />
+        <app-area-chart-demo-container />
+        <app-pie-chart-demo-container />
+        <app-donut-chart-demo-container />
+        <app-monthly-revenue-chart-demo-container />
+        <app-user-growth-chart-demo-container />
       </section>
     </div>
   `,
