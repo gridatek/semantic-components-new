@@ -1,0 +1,18 @@
+/* 1. Define the base state of the backdrop */
+.sc-backdrop {
+  @apply bg-black/80 backdrop-blur-sm;
+
+  /* Initial state for the entrance transition */
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* 2. The "Entrance" state (Applied automatically by Angular CDK) */
+.cdk-overlay-backdrop-showing.sc-backdrop {
+  opacity: 1;
+}
+
+/* 3. The "Exit" state (Triggered manually in your component logic) */
+.sc-backdrop-hiding {
+  opacity: 0 !important;
+}

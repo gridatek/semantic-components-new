@@ -12,6 +12,7 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
+import { firstValueFrom, timer } from 'rxjs';
 import { cn } from '../../utils';
 import { ScSheetProvider } from './sheet-provider';
 
@@ -43,6 +44,7 @@ export class ScSheetPortal {
   private overlayRef = this.overlay.create({
     positionStrategy: this.overlay.position().global(),
     hasBackdrop: true,
+    backdropClass: 'sc-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
@@ -59,7 +61,7 @@ export class ScSheetPortal {
       if (this.sheetProvider.open()) {
         this.attachSheet();
       } else {
-        this.detachSheet();
+        this.detachSheetWithAnimation();
       }
     });
   }
@@ -74,8 +76,16 @@ export class ScSheetPortal {
     }
   }
 
-  private detachSheet(): void {
+  private async detachSheetWithAnimation() {
     if (this.overlayRef.hasAttached()) {
+      const backdrop = this.overlayRef.backdropElement;
+
+      // Start the fade out
+      backdrop?.classList.add('sc-backdrop-hiding');
+
+      // Wait for the CSS transition (300ms)
+      await firstValueFrom(timer(300));
+
       this.overlayRef.detach();
     }
   }
