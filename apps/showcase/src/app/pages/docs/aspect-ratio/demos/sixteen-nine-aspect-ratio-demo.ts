@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScAspectRatio } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-basic-aspect-ratio-demo',
+  selector: 'app-sixteen-nine-aspect-ratio-demo',
   imports: [ScAspectRatio],
   template: `
     <div class="w-[450px] overflow-hidden rounded-md">
@@ -17,4 +17,4 @@ import { ScAspectRatio } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicAspectRatioDemo {}
+export class SixteenNineAspectRatioDemo {}

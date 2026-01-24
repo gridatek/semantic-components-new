@@ -1,28 +1,28 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { BasicAspectRatioDemo } from './basic-aspect-ratio-demo';
+import { SixteenNineAspectRatioDemo } from './sixteen-nine-aspect-ratio-demo';
 
 @Component({
-  selector: 'app-basic-aspect-ratio-demo-container',
-  imports: [DemoContainer, BasicAspectRatioDemo],
+  selector: 'app-sixteen-nine-aspect-ratio-demo-container',
+  imports: [DemoContainer, SixteenNineAspectRatioDemo],
   template: `
     <app-demo-container
       title="16:9 Aspect Ratio"
-      demoUrl="/demos/aspect-ratio/basic-aspect-ratio-demo"
+      demoUrl="/demos/aspect-ratio/sixteen-nine-aspect-ratio-demo"
       [code]="code"
     >
-      <app-basic-aspect-ratio-demo />
+      <app-sixteen-nine-aspect-ratio-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicAspectRatioDemoContainer {
+export class SixteenNineAspectRatioDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScAspectRatio } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-basic-aspect-ratio-demo',
+  selector: 'app-sixteen-nine-aspect-ratio-demo',
   imports: [ScAspectRatio],
   template: \`
     <div class="w-[450px] overflow-hidden rounded-md">
@@ -37,5 +37,5 @@ import { ScAspectRatio } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicAspectRatioDemo {}`;
+export class SixteenNineAspectRatioDemo {}`;
 }

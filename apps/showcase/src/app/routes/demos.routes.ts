@@ -95,10 +95,10 @@ export const demosRoutes: Route[] = [
     path: 'demos/aspect-ratio',
     children: [
       {
-        path: 'basic-aspect-ratio-demo',
+        path: 'sixteen-nine-aspect-ratio-demo',
         loadComponent: () =>
-          import('../pages/docs/aspect-ratio/demos/basic-aspect-ratio-demo').then(
-            (m) => m.BasicAspectRatioDemo,
+          import('../pages/docs/aspect-ratio/demos/sixteen-nine-aspect-ratio-demo').then(
+            (m) => m.SixteenNineAspectRatioDemo,
           ),
       },
       {

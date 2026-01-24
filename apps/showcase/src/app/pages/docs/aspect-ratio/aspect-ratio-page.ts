@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BasicAspectRatioDemoContainer } from './demos/basic-aspect-ratio-demo-container';
+import { SixteenNineAspectRatioDemoContainer } from './demos/sixteen-nine-aspect-ratio-demo-container';
 import { FourThreeAspectRatioDemoContainer } from './demos/four-three-aspect-ratio-demo-container';
 import { SquareAspectRatioDemoContainer } from './demos/square-aspect-ratio-demo-container';
 import { UltrawideAspectRatioDemoContainer } from './demos/ultrawide-aspect-ratio-demo-container';
@@ -11,7 +11,7 @@ import { MapAspectRatioDemoContainer } from './demos/map-aspect-ratio-demo-conta
 @Component({
   selector: 'app-aspect-ratio-page',
   imports: [
-    BasicAspectRatioDemoContainer,
+    SixteenNineAspectRatioDemoContainer,
     FourThreeAspectRatioDemoContainer,
     SquareAspectRatioDemoContainer,
     UltrawideAspectRatioDemoContainer,
@@ -31,7 +31,7 @@ import { MapAspectRatioDemoContainer } from './demos/map-aspect-ratio-demo-conta
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-basic-aspect-ratio-demo-container />
+        <app-sixteen-nine-aspect-ratio-demo-container />
         <app-four-three-aspect-ratio-demo-container />
         <app-square-aspect-ratio-demo-container />
         <app-ultrawide-aspect-ratio-demo-container />
