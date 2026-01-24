@@ -20,16 +20,7 @@ import { ScSheetProvider } from './sheet-provider';
   imports: [OverlayModule],
   template: `
     <ng-template #sheetTemplate>
-      <div
-        class="fixed inset-0 z-50"
-        (click)="onBackdropClick($event)"
-        (keydown.escape)="closeSheet()"
-      >
-        <!-- Backdrop -->
-        <div [class]="backdropClass()" aria-hidden="true"></div>
-        <!-- Content -->
-        <ng-content />
-      </div>
+      <ng-content />
     </ng-template>
   `,
   host: {
@@ -51,22 +42,19 @@ export class ScSheetPortal {
 
   private overlayRef = this.overlay.create({
     positionStrategy: this.overlay.position().global(),
-    hasBackdrop: false,
+    hasBackdrop: true,
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
-  protected readonly backdropClass = computed(() =>
-    cn(
-      'fixed inset-0 bg-black/80',
-      this.sheetProvider.open()
-        ? 'opacity-100 visible transition-[opacity,visibility] duration-300 ease-out'
-        : 'opacity-0 invisible transition-[opacity,visibility] duration-300 ease-in [transition-delay:0s,300ms]',
-    ),
-  );
-
   constructor() {
+    // Handle Backdrop and Keyboard Close
+    this.overlayRef.backdropClick().subscribe(() => this.closeSheet());
+    this.overlayRef.keydownEvents().subscribe((event) => {
+      if (event.key === 'Escape') this.closeSheet();
+    });
+
     effect(() => {
       if (this.sheetProvider.open()) {
         this.attachSheet();
@@ -89,12 +77,6 @@ export class ScSheetPortal {
   private detachSheet(): void {
     if (this.overlayRef.hasAttached()) {
       this.overlayRef.detach();
-    }
-  }
-
-  onBackdropClick(event: MouseEvent): void {
-    if (event.target === event.currentTarget) {
-      this.closeSheet();
     }
   }
 
