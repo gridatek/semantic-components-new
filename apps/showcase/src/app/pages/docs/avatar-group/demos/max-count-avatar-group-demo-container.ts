@@ -8,6 +8,7 @@ import { MaxCountAvatarGroupDemo } from './max-count-avatar-group-demo';
   template: `
     <app-demo-container
       title="Max Display Count"
+      description="Control how many avatars are visible before showing overflow."
       demoUrl="/demos/avatar-group/max-count-avatar-group-demo"
       [code]="code"
     >

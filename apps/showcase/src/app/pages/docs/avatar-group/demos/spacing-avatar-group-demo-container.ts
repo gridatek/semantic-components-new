@@ -8,6 +8,7 @@ import { SpacingAvatarGroupDemo } from './spacing-avatar-group-demo';
   template: `
     <app-demo-container
       title="Spacing Options"
+      description="Control the overlap amount between avatars."
       demoUrl="/demos/avatar-group/spacing-avatar-group-demo"
       [code]="code"
     >

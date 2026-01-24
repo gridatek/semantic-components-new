@@ -8,6 +8,7 @@ import { BasicAvatarGroupDemo } from './basic-avatar-group-demo';
   template: `
     <app-demo-container
       title="Basic Avatar Group"
+      description="Stacked avatars with overflow indicator."
       demoUrl="/demos/avatar-group/basic-avatar-group-demo"
       [code]="code"
     >

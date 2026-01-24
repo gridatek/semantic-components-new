@@ -48,6 +48,10 @@ import {
         </div>
       }
 
+      @if (description()) {
+        <p class="text-sm text-muted-foreground">{{ description() }}</p>
+      }
+
       <div sc-tabs class="w-full">
         <div sc-tab-list selectedTab="preview">
           <button sc-tab value="preview">Preview</button>
@@ -75,6 +79,7 @@ import {
 })
 export class DemoContainer {
   readonly title = input<string>('');
+  readonly description = input<string>('');
   readonly demoUrl = input<string>('');
   readonly code = input.required<string>();
   readonly language = input<CodeViewerLanguage>('angular-ts');

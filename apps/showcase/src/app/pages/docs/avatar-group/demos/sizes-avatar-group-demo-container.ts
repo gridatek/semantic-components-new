@@ -8,6 +8,7 @@ import { SizesAvatarGroupDemo } from './sizes-avatar-group-demo';
   template: `
     <app-demo-container
       title="Size Variants"
+      description="Different sizes for various contexts."
       demoUrl="/demos/avatar-group/sizes-avatar-group-demo"
       [code]="code"
     >

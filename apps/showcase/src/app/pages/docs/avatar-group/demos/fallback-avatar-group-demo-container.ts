@@ -8,6 +8,7 @@ import { FallbackAvatarGroupDemo } from './fallback-avatar-group-demo';
   template: `
     <app-demo-container
       title="With Fallback Initials"
+      description="Avatars without images show initials."
       demoUrl="/demos/avatar-group/fallback-avatar-group-demo"
       [code]="code"
     >

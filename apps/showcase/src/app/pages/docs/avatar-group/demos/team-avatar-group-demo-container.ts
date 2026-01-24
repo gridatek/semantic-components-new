@@ -8,6 +8,7 @@ import { TeamAvatarGroupDemo } from './team-avatar-group-demo';
   template: `
     <app-demo-container
       title="Team Members Example"
+      description="Common use case for showing team members."
       demoUrl="/demos/avatar-group/team-avatar-group-demo"
       [code]="code"
     >
