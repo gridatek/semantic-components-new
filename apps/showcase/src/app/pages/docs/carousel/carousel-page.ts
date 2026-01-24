@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCarouselDemoContainer } from './demos/carousel-demo-container';
+import { CardsCarouselDemoContainer } from './demos/cards-carousel-demo-container';
+import { DefaultCarouselDemoContainer } from './demos/default-carousel-demo-container';
+import { HalfWidthCarouselDemoContainer } from './demos/half-width-carousel-demo-container';
+import { ImagesCarouselDemoContainer } from './demos/images-carousel-demo-container';
+import { ThirdWidthCarouselDemoContainer } from './demos/third-width-carousel-demo-container';
+import { VerticalCarouselDemoContainer } from './demos/vertical-carousel-demo-container';
 
 @Component({
   selector: 'app-carousel-page',
-  imports: [ScCarouselDemoContainer],
+  imports: [
+    DefaultCarouselDemoContainer,
+    CardsCarouselDemoContainer,
+    ThirdWidthCarouselDemoContainer,
+    HalfWidthCarouselDemoContainer,
+    VerticalCarouselDemoContainer,
+    ImagesCarouselDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +27,12 @@ import { ScCarouselDemoContainer } from './demos/carousel-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-carousel-demo-container />
+        <app-default-carousel-demo-container />
+        <app-cards-carousel-demo-container />
+        <app-third-width-carousel-demo-container />
+        <app-half-width-carousel-demo-container />
+        <app-vertical-carousel-demo-container />
+        <app-images-carousel-demo-container />
       </section>
     </div>
   `,

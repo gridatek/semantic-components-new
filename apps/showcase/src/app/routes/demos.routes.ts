@@ -516,10 +516,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/carousel',
     children: [
       {
-        path: 'carousel-demo',
+        path: 'default-carousel-demo',
         loadComponent: () =>
-          import('../pages/docs/carousel/demos/carousel-demo').then(
-            (m) => m.ScCarouselDemo,
+          import('../pages/docs/carousel/demos/default-carousel-demo').then(
+            (m) => m.DefaultCarouselDemo,
+          ),
+      },
+      {
+        path: 'cards-carousel-demo',
+        loadComponent: () =>
+          import('../pages/docs/carousel/demos/cards-carousel-demo').then(
+            (m) => m.CardsCarouselDemo,
+          ),
+      },
+      {
+        path: 'third-width-carousel-demo',
+        loadComponent: () =>
+          import('../pages/docs/carousel/demos/third-width-carousel-demo').then(
+            (m) => m.ThirdWidthCarouselDemo,
+          ),
+      },
+      {
+        path: 'half-width-carousel-demo',
+        loadComponent: () =>
+          import('../pages/docs/carousel/demos/half-width-carousel-demo').then(
+            (m) => m.HalfWidthCarouselDemo,
+          ),
+      },
+      {
+        path: 'vertical-carousel-demo',
+        loadComponent: () =>
+          import('../pages/docs/carousel/demos/vertical-carousel-demo').then(
+            (m) => m.VerticalCarouselDemo,
+          ),
+      },
+      {
+        path: 'images-carousel-demo',
+        loadComponent: () =>
+          import('../pages/docs/carousel/demos/images-carousel-demo').then(
+            (m) => m.ImagesCarouselDemo,
           ),
       },
     ],

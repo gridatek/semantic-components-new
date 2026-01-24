@@ -1,0 +1,57 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { HalfWidthCarouselDemo } from './half-width-carousel-demo';
+
+@Component({
+  selector: 'app-half-width-carousel-demo-container',
+  imports: [DemoContainer, HalfWidthCarouselDemo],
+  template: `
+    <app-demo-container
+      title="Partial Items (50% width)"
+      demoUrl="/demos/carousel/half-width-carousel-demo"
+      [code]="code"
+    >
+      <app-half-width-carousel-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HalfWidthCarouselDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ScCarousel,
+  ScCarouselContent,
+  ScCarouselItem,
+  ScCarouselNext,
+  ScCarouselPrevious,
+} from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-half-width-carousel-demo',
+  imports: [ScCarousel, ScCarouselContent, ScCarouselItem, ScCarouselPrevious, ScCarouselNext],
+  template: \`
+    <div class="mx-auto w-full max-w-md">
+      <div sc-carousel class="w-full">
+        <div sc-carousel-content>
+          @for (index of items; track index) {
+            <div sc-carousel-item class="basis-1/2">
+              <div class="p-1">
+                <div class="flex aspect-square items-center justify-center rounded-lg border bg-card">
+                  <span class="text-3xl font-semibold">{{ index }}</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <button sc-carousel-previous></button>
+        <button sc-carousel-next></button>
+      </div>
+    </div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HalfWidthCarouselDemo {
+  readonly items = [1, 2, 3, 4, 5];
+}`;
+}
