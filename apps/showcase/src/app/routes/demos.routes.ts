@@ -156,10 +156,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/audio-player',
     children: [
       {
-        path: 'audio-player-demo',
+        path: 'basic-audio-player-demo',
         loadComponent: () =>
-          import('../pages/docs/audio-player/demos/audio-player-demo').then(
-            (m) => m.ScAudioPlayerDemo,
+          import('../pages/docs/audio-player/demos/basic-audio-player-demo').then(
+            (m) => m.BasicAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'compact-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/compact-audio-player-demo').then(
+            (m) => m.CompactAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'minimal-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/minimal-audio-player-demo').then(
+            (m) => m.MinimalAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'no-cover-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/no-cover-audio-player-demo').then(
+            (m) => m.NoCoverAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'single-track-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/single-track-audio-player-demo').then(
+            (m) => m.SingleTrackAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'podcast-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/podcast-audio-player-demo').then(
+            (m) => m.PodcastAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'controlled-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/controlled-audio-player-demo').then(
+            (m) => m.ControlledAudioPlayerDemo,
+          ),
+      },
+      {
+        path: 'keyboard-audio-player-demo',
+        loadComponent: () =>
+          import('../pages/docs/audio-player/demos/keyboard-audio-player-demo').then(
+            (m) => m.KeyboardAudioPlayerDemo,
           ),
       },
     ],
