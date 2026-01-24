@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDrawer } from './drawer';
+import { ScDrawerProvider } from './drawer-provider';
 
 @Component({
   selector: 'div[sc-drawer-portal]',
@@ -47,7 +47,7 @@ import { ScDrawer } from './drawer';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScDrawerPortal {
-  readonly drawer = inject(ScDrawer);
+  readonly drawer = inject(ScDrawerProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 

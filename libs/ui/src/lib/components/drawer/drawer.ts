@@ -1,35 +1,53 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-  model,
-  ViewEncapsulation,
-} from '@angular/core';
+import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
+import { DrawerDirection, ScDrawerProvider } from './drawer-provider';
 
-export type DrawerDirection = 'top' | 'right' | 'bottom' | 'left';
+const directionBaseClasses: Record<DrawerDirection, string> = {
+  top: 'inset-x-0 top-0 border-b rounded-b-[10px]',
+  right: 'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
+  bottom: 'inset-x-0 bottom-0 border-t rounded-t-[10px]',
+  left: 'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
+};
 
-@Component({
+const directionOpenClasses: Record<DrawerDirection, string> = {
+  top: 'translate-y-0',
+  right: 'translate-x-0',
+  bottom: 'translate-y-0',
+  left: 'translate-x-0',
+};
+
+const directionClosedClasses: Record<DrawerDirection, string> = {
+  top: '-translate-y-full',
+  right: 'translate-x-full',
+  bottom: 'translate-y-full',
+  left: '-translate-x-full',
+};
+
+@Directive({
   selector: 'div[sc-drawer]',
-  template: `
-    <ng-content />
-  `,
   host: {
     'data-slot': 'drawer',
+    role: 'dialog',
+    'aria-modal': 'true',
+    '[attr.data-state]': 'drawer.open() ? "open" : "closed"',
     '[class]': 'class()',
   },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScDrawer {
+  readonly drawer = inject(ScDrawerProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  /** Direction the drawer slides from */
-  readonly direction = input<DrawerDirection>('bottom');
+  protected readonly class = computed(() => {
+    const direction = this.drawer.direction();
+    const isOpen = this.drawer.open();
 
-  /** Whether the drawer is open */
-  readonly open = model<boolean>(false);
-
-  protected readonly class = computed(() => cn('relative', this.classInput()));
+    return cn(
+      'fixed z-50 flex flex-col bg-background',
+      directionBaseClasses[direction],
+      isOpen
+        ? `${directionOpenClasses[direction]} transition-transform duration-300 ease-out`
+        : `${directionClosedClasses[direction]} transition-transform duration-300 ease-in`,
+      this.classInput(),
+    );
+  });
 }

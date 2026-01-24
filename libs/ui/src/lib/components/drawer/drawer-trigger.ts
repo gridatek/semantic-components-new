@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScDrawer } from './drawer';
+import { ScDrawerProvider } from './drawer-provider';
 
 @Directive({
   selector: 'button[sc-drawer-trigger]',
@@ -12,7 +12,7 @@ import { ScDrawer } from './drawer';
   },
 })
 export class ScDrawerTrigger {
-  readonly drawer = inject(ScDrawer);
+  readonly drawer = inject(ScDrawerProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() => cn('', this.classInput()));

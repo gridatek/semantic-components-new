@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScDrawer,
   ScDrawerClose,
-  ScDrawerContent,
   ScDrawerDescription,
   ScDrawerFooter,
   ScDrawerHandle,
   ScDrawerHeader,
   ScDrawerPortal,
+  ScDrawerProvider,
   ScDrawerTitle,
   ScDrawerTrigger,
 } from '@semantic-components/ui';
@@ -17,19 +17,19 @@ import {
   imports: [
     ScDrawer,
     ScDrawerClose,
-    ScDrawerContent,
     ScDrawerDescription,
     ScDrawerFooter,
     ScDrawerHandle,
     ScDrawerHeader,
     ScDrawerPortal,
+    ScDrawerProvider,
     ScDrawerTitle,
     ScDrawerTrigger,
   ],
   template: `
     <div class="flex flex-wrap gap-4">
       <!-- Bottom Drawer (default) -->
-      <div sc-drawer>
+      <div sc-drawer-provider>
         <button
           sc-drawer-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -37,7 +37,7 @@ import {
           Open Bottom Drawer
         </button>
         <div sc-drawer-portal>
-          <div sc-drawer-content>
+          <div sc-drawer>
             <div sc-drawer-handle></div>
             <div sc-drawer-header>
               <h2 sc-drawer-title>Edit Profile</h2>
@@ -115,7 +115,7 @@ import {
       </div>
 
       <!-- Top Drawer -->
-      <div sc-drawer direction="top">
+      <div sc-drawer-provider direction="top">
         <button
           sc-drawer-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -123,7 +123,7 @@ import {
           Open Top Drawer
         </button>
         <div sc-drawer-portal>
-          <div sc-drawer-content>
+          <div sc-drawer>
             <div sc-drawer-header>
               <h2 sc-drawer-title>Notifications</h2>
               <p sc-drawer-description>You have 3 unread notifications.</p>
@@ -159,7 +159,7 @@ import {
       </div>
 
       <!-- Left Drawer -->
-      <div sc-drawer direction="left">
+      <div sc-drawer-provider direction="left">
         <button
           sc-drawer-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -167,7 +167,7 @@ import {
           Open Left Drawer
         </button>
         <div sc-drawer-portal>
-          <div sc-drawer-content>
+          <div sc-drawer>
             <div sc-drawer-header>
               <h2 sc-drawer-title>Navigation</h2>
               <p sc-drawer-description>Browse through different sections.</p>
@@ -203,7 +203,7 @@ import {
       </div>
 
       <!-- Right Drawer -->
-      <div sc-drawer direction="right">
+      <div sc-drawer-provider direction="right">
         <button
           sc-drawer-trigger
           class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -211,7 +211,7 @@ import {
           Open Right Drawer
         </button>
         <div sc-drawer-portal>
-          <div sc-drawer-content>
+          <div sc-drawer>
             <button
               sc-drawer-close
               class="absolute right-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"

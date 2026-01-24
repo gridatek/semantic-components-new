@@ -1,5 +1,5 @@
 import { Directive, inject } from '@angular/core';
-import { ScDrawer } from './drawer';
+import { ScDrawerProvider } from './drawer-provider';
 
 @Directive({
   selector: 'button[sc-drawer-close]',
@@ -9,7 +9,7 @@ import { ScDrawer } from './drawer';
   },
 })
 export class ScDrawerClose {
-  private readonly drawer = inject(ScDrawer);
+  private readonly drawer = inject(ScDrawerProvider);
 
   protected close(): void {
     this.drawer.open.set(false);
