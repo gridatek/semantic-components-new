@@ -11,12 +11,6 @@ import { cn } from '../../utils';
 import { ScSheetProvider, SheetSide } from './sheet-provider';
 import { _IdGenerator } from '@angular/cdk/a11y';
 
-export enum SheetState {
-  Open = 'open',
-  Closing = 'closing',
-  Closed = 'closed',
-}
-
 const sidePositionClasses: Record<SheetSide, string> = {
   top: 'inset-x-0 top-0 border-b',
   right: 'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
