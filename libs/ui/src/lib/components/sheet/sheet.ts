@@ -9,8 +9,13 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScSheetProvider, SheetSide } from './sheet-provider';
+import { _IdGenerator } from '@angular/cdk/a11y';
 
-let sheetIdCounter = 0;
+export enum SheetState {
+  Open = 'open',
+  Closing = 'closing',
+  Closed = 'closed',
+}
 
 const sidePositionClasses: Record<SheetSide, string> = {
   top: 'inset-x-0 top-0 border-b',
@@ -56,7 +61,7 @@ export class ScSheet {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  readonly sheetId = `sc-sheet-${++sheetIdCounter}`;
+  readonly sheetId = inject(_IdGenerator).getId('sc-sheet-');
   readonly titleId = `${this.sheetId}-title`;
   readonly descriptionId = `${this.sheetId}-description`;
 
