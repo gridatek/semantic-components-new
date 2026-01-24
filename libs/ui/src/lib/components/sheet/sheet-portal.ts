@@ -90,7 +90,7 @@ export class ScSheetPortal {
     }
   }
 
-  closeSheet(): void {
+  private closeSheet(): void {
     this.sheetProvider.open.set(false);
   }
 }

@@ -14,29 +14,14 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScDrawerProvider } from './drawer-provider';
+import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'div[sc-drawer-portal]',
   imports: [OverlayModule],
   template: `
     <ng-template #drawerTemplate>
-      <div
-        class="fixed inset-0 z-50 flex"
-        [class.items-end]="drawer.direction() === 'bottom'"
-        [class.items-start]="drawer.direction() === 'top'"
-        [class.justify-end]="drawer.direction() === 'right'"
-        [class.justify-start]="drawer.direction() === 'left'"
-        (keydown.escape)="onEscapeKey()"
-      >
-        <!-- Backdrop -->
-        <div
-          [class]="backdropClass()"
-          aria-hidden="true"
-          (click)="onBackdropClick()"
-        ></div>
-        <!-- Content -->
-        <ng-content />
-      </div>
+      <ng-content />
     </ng-template>
   `,
   host: {
@@ -58,27 +43,25 @@ export class ScDrawerPortal {
 
   private overlayRef = this.overlay.create({
     positionStrategy: this.overlay.position().global(),
-    hasBackdrop: false,
+    hasBackdrop: true,
+    backdropClass: 'sc-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
-  protected readonly backdropClass = computed(() =>
-    cn(
-      'fixed inset-0 bg-black/80',
-      this.drawer.open()
-        ? 'opacity-100 visible transition-[opacity,visibility] duration-300 ease-out'
-        : 'opacity-0 invisible transition-[opacity,visibility] duration-300 ease-in [transition-delay:0s,300ms]',
-    ),
-  );
-
   constructor() {
+    // Handle Backdrop and Keyboard Close
+    this.overlayRef.backdropClick().subscribe(() => this.closeDrawer());
+    this.overlayRef.keydownEvents().subscribe((event) => {
+      if (event.key === 'Escape') this.closeDrawer();
+    });
+
     effect(() => {
       if (this.drawer.open()) {
         this.attachDrawer();
       } else {
-        this.detachDrawer();
+        this.detachDrawerWithAnimation();
       }
     });
   }
@@ -93,17 +76,21 @@ export class ScDrawerPortal {
     }
   }
 
-  private detachDrawer(): void {
+  private async detachDrawerWithAnimation() {
     if (this.overlayRef.hasAttached()) {
+      const backdrop = this.overlayRef.backdropElement;
+
+      // Start the fade out
+      backdrop?.classList.add('sc-backdrop-hiding');
+
+      // Wait for the CSS transition (300ms)
+      await firstValueFrom(timer(300));
+
       this.overlayRef.detach();
     }
   }
 
-  onBackdropClick(): void {
-    this.drawer.open.set(false);
-  }
-
-  onEscapeKey(): void {
+  private closeDrawer(): void {
     this.drawer.open.set(false);
   }
 }
