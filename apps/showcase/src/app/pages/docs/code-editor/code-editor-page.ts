@@ -1,9 +1,33 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CodeEditorDemoContainer } from './demos/code-editor-demo-container';
+import { BasicCodeEditorDemoContainer } from './demos/basic-code-editor-demo-container';
+import { CssCodeEditorDemoContainer } from './demos/css-code-editor-demo-container';
+import { HtmlCodeEditorDemoContainer } from './demos/html-code-editor-demo-container';
+import { InteractiveCodeEditorDemoContainer } from './demos/interactive-code-editor-demo-container';
+import { JsonCodeEditorDemoContainer } from './demos/json-code-editor-demo-container';
+import { LightThemeCodeEditorDemoContainer } from './demos/light-theme-code-editor-demo-container';
+import { MinimalCodeEditorDemoContainer } from './demos/minimal-code-editor-demo-container';
+import { PythonCodeEditorDemoContainer } from './demos/python-code-editor-demo-container';
+import { ReadonlyCodeEditorDemoContainer } from './demos/readonly-code-editor-demo-container';
+import { SqlCodeEditorDemoContainer } from './demos/sql-code-editor-demo-container';
+import { TypescriptCodeEditorDemoContainer } from './demos/typescript-code-editor-demo-container';
+import { WordWrapCodeEditorDemoContainer } from './demos/word-wrap-code-editor-demo-container';
 
 @Component({
   selector: 'app-code-editor-page',
-  imports: [CodeEditorDemoContainer],
+  imports: [
+    BasicCodeEditorDemoContainer,
+    TypescriptCodeEditorDemoContainer,
+    HtmlCodeEditorDemoContainer,
+    CssCodeEditorDemoContainer,
+    JsonCodeEditorDemoContainer,
+    PythonCodeEditorDemoContainer,
+    SqlCodeEditorDemoContainer,
+    LightThemeCodeEditorDemoContainer,
+    ReadonlyCodeEditorDemoContainer,
+    MinimalCodeEditorDemoContainer,
+    WordWrapCodeEditorDemoContainer,
+    InteractiveCodeEditorDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +40,18 @@ import { CodeEditorDemoContainer } from './demos/code-editor-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-code-editor-demo-container />
+        <app-basic-code-editor-demo-container />
+        <app-typescript-code-editor-demo-container />
+        <app-html-code-editor-demo-container />
+        <app-css-code-editor-demo-container />
+        <app-json-code-editor-demo-container />
+        <app-python-code-editor-demo-container />
+        <app-sql-code-editor-demo-container />
+        <app-light-theme-code-editor-demo-container />
+        <app-readonly-code-editor-demo-container />
+        <app-minimal-code-editor-demo-container />
+        <app-word-wrap-code-editor-demo-container />
+        <app-interactive-code-editor-demo-container />
       </section>
     </div>
   `,
