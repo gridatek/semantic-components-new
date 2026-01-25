@@ -772,10 +772,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/color-picker',
     children: [
       {
-        path: 'color-picker-demo',
+        path: 'full-color-picker-demo',
         loadComponent: () =>
-          import('../pages/docs/color-picker/demos/color-picker-demo').then(
-            (m) => m.ScColorPickerDemo,
+          import('../pages/docs/color-picker/demos/full-color-picker-demo').then(
+            (m) => m.FullColorPickerDemo,
+          ),
+      },
+      {
+        path: 'swatches-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/swatches-color-picker-demo').then(
+            (m) => m.SwatchesColorPickerDemo,
+          ),
+      },
+      {
+        path: 'eyedropper-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/eyedropper-color-picker-demo').then(
+            (m) => m.EyedropperColorPickerDemo,
+          ),
+      },
+      {
+        path: 'simple-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/simple-color-picker-demo').then(
+            (m) => m.SimpleColorPickerDemo,
+          ),
+      },
+      {
+        path: 'compact-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/compact-color-picker-demo').then(
+            (m) => m.CompactColorPickerDemo,
+          ),
+      },
+      {
+        path: 'rgb-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/rgb-color-picker-demo').then(
+            (m) => m.RgbColorPickerDemo,
+          ),
+      },
+      {
+        path: 'hsl-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/hsl-color-picker-demo').then(
+            (m) => m.HslColorPickerDemo,
+          ),
+      },
+      {
+        path: 'preview-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/preview-color-picker-demo').then(
+            (m) => m.PreviewColorPickerDemo,
           ),
       },
     ],
@@ -1493,10 +1542,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/multi-select',
     children: [
       {
-        path: 'multi-select-demo',
+        path: 'basic-multi-select-demo',
         loadComponent: () =>
-          import('../pages/docs/multi-select/demos/multi-select-demo').then(
-            (m) => m.ScMultiSelectDemo,
+          import('../pages/docs/multi-select/demos/basic-multi-select-demo').then(
+            (m) => m.BasicMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'selectall-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/selectall-multi-select-demo').then(
+            (m) => m.SelectallMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'count-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/count-multi-select-demo').then(
+            (m) => m.CountMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'disabled-options-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/disabled-options-multi-select-demo').then(
+            (m) => m.DisabledOptionsMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'nosearch-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/nosearch-multi-select-demo').then(
+            (m) => m.NosearchMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'disabled-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/disabled-multi-select-demo').then(
+            (m) => m.DisabledMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'form-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/form-multi-select-demo').then(
+            (m) => m.FormMultiSelectDemo,
           ),
       },
     ],
