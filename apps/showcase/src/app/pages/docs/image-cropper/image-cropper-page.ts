@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScImageCropperDemoContainer } from './demos/image-cropper-demo-container';
+import { BasicImageCropperDemoContainer } from './demos/basic-image-cropper-demo-container';
+import { AspectRatioImageCropperDemoContainer } from './demos/aspect-ratio-image-cropper-demo-container';
+import { AvatarImageCropperDemoContainer } from './demos/avatar-image-cropper-demo-container';
+import { UploadImageCropperDemoContainer } from './demos/upload-image-cropper-demo-container';
+import { InfoImageCropperDemoContainer } from './demos/info-image-cropper-demo-container';
 
 @Component({
   selector: 'app-image-cropper-page',
-  imports: [ScImageCropperDemoContainer],
+  imports: [
+    BasicImageCropperDemoContainer,
+    AspectRatioImageCropperDemoContainer,
+    AvatarImageCropperDemoContainer,
+    UploadImageCropperDemoContainer,
+    InfoImageCropperDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +26,11 @@ import { ScImageCropperDemoContainer } from './demos/image-cropper-demo-containe
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-image-cropper-demo-container />
+        <app-basic-image-cropper-demo-container />
+        <app-aspect-ratio-image-cropper-demo-container />
+        <app-avatar-image-cropper-demo-container />
+        <app-upload-image-cropper-demo-container />
+        <app-info-image-cropper-demo-container />
       </section>
     </div>
   `,

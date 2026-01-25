@@ -1505,10 +1505,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/image-cropper',
     children: [
       {
-        path: 'image-cropper-demo',
+        path: 'basic-image-cropper-demo',
         loadComponent: () =>
-          import('../pages/docs/image-cropper/demos/image-cropper-demo').then(
-            (m) => m.ScImageCropperDemo,
+          import('../pages/docs/image-cropper/demos/basic-image-cropper-demo').then(
+            (m) => m.BasicImageCropperDemo,
+          ),
+      },
+      {
+        path: 'aspect-ratio-image-cropper-demo',
+        loadComponent: () =>
+          import('../pages/docs/image-cropper/demos/aspect-ratio-image-cropper-demo').then(
+            (m) => m.AspectRatioImageCropperDemo,
+          ),
+      },
+      {
+        path: 'avatar-image-cropper-demo',
+        loadComponent: () =>
+          import('../pages/docs/image-cropper/demos/avatar-image-cropper-demo').then(
+            (m) => m.AvatarImageCropperDemo,
+          ),
+      },
+      {
+        path: 'upload-image-cropper-demo',
+        loadComponent: () =>
+          import('../pages/docs/image-cropper/demos/upload-image-cropper-demo').then(
+            (m) => m.UploadImageCropperDemo,
+          ),
+      },
+      {
+        path: 'info-image-cropper-demo',
+        loadComponent: () =>
+          import('../pages/docs/image-cropper/demos/info-image-cropper-demo').then(
+            (m) => m.InfoImageCropperDemo,
           ),
       },
     ],
