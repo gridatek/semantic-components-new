@@ -7,8 +7,8 @@ import {
   ScNavbarBrand,
   ScNavbarContent,
   ScNavbarLink,
-  ScNavbarMobileContent,
   ScNavbarMobileLink,
+  ScNavbarMobileTrigger,
   ScThemeToggle,
 } from '@semantic-components/ui';
 
@@ -16,7 +16,6 @@ import {
   ScSheet,
   ScSheetPortal,
   ScSheetProvider,
-  ScSheetTrigger,
 } from '@semantic-components/ui';
 
 @Component({
@@ -29,14 +28,13 @@ import {
     ScNavbarContent,
     ScNavbarActions,
     ScNavbarLink,
-    ScNavbarMobileContent,
     ScNavbarMobileLink,
+    ScNavbarMobileTrigger,
     ScButton,
     ScThemeToggle,
     ScSheetProvider,
     ScSheet,
     ScSheetPortal,
-    ScSheetTrigger,
   ],
   template: `
     <nav
@@ -90,34 +88,32 @@ import {
       <div sc-navbar-actions>
         <button sc-theme-toggle></button>
 
-        <div sc-sheet-provider side="top">
-          <button sc-sheet-trigger>Nav</button>
+        <div sc-sheet-provider side="top" [(open)]="mobileMenuOpen">
+          <button sc-navbar-mobile-trigger></button>
           <div sc-sheet-portal>
             <div sc-sheet>
               <!-- Mobile Menu -->
-              <div sc-navbar-mobile-content>
-                <a
-                  sc-navbar-mobile-link
-                  routerLink="/"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  #mobileHomeRla="routerLinkActive"
-                  [active]="mobileHomeRla.isActive"
-                >
-                  Home
-                </a>
-                <a
-                  sc-navbar-mobile-link
-                  routerLink="/docs/components"
-                  routerLinkActive="active"
-                  #mobileComponentsRla="routerLinkActive"
-                  [active]="mobileComponentsRla.isActive"
-                >
-                  Components
-                </a>
-                <hr class="my-2 border-border" />
-                <button sc-button class="w-full mt-2">Get Started</button>
-              </div>
+              <a
+                sc-navbar-mobile-link
+                routerLink="/"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                #mobileHomeRla="routerLinkActive"
+                [active]="mobileHomeRla.isActive"
+              >
+                Home
+              </a>
+              <a
+                sc-navbar-mobile-link
+                routerLink="/docs/components"
+                routerLinkActive="active"
+                #mobileComponentsRla="routerLinkActive"
+                [active]="mobileComponentsRla.isActive"
+              >
+                Components
+              </a>
+              <hr class="my-2 border-border" />
+              <button sc-button class="w-full mt-2">Get Started</button>
             </div>
           </div>
         </div>
