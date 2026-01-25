@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScComboboxDemoContainer } from './demos/combobox-demo-container';
+import { BasicComboboxDemoContainer } from './demos/basic-combobox-demo-container';
+import { CountriesComboboxDemoContainer } from './demos/countries-combobox-demo-container';
+import { DisabledComboboxDemoContainer } from './demos/disabled-combobox-demo-container';
+import { FormComboboxDemoContainer } from './demos/form-combobox-demo-container';
+import { MultipleComboboxDemoContainer } from './demos/multiple-combobox-demo-container';
 
 @Component({
   selector: 'app-combobox-page',
-  imports: [ScComboboxDemoContainer],
+  imports: [
+    BasicComboboxDemoContainer,
+    DisabledComboboxDemoContainer,
+    MultipleComboboxDemoContainer,
+    CountriesComboboxDemoContainer,
+    FormComboboxDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +25,11 @@ import { ScComboboxDemoContainer } from './demos/combobox-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-combobox-demo-container />
+        <app-basic-combobox-demo-container />
+        <app-disabled-combobox-demo-container />
+        <app-multiple-combobox-demo-container />
+        <app-countries-combobox-demo-container />
+        <app-form-combobox-demo-container />
       </section>
     </div>
   `,

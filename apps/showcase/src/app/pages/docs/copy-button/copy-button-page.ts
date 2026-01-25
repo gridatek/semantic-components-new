@@ -1,9 +1,29 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCopyButtonDemoContainer } from './demos/copy-button-demo-container';
+import { BasicCopyButtonDemoContainer } from './demos/basic-copy-button-demo-container';
+import { VariantsCopyButtonDemoContainer } from './demos/variants-copy-button-demo-container';
+import { SizesCopyButtonDemoContainer } from './demos/sizes-copy-button-demo-container';
+import { WithtextCopyButtonDemoContainer } from './demos/withtext-copy-button-demo-container';
+import { InputCopyButtonDemoContainer } from './demos/input-copy-button-demo-container';
+import { CodeCopyButtonDemoContainer } from './demos/code-copy-button-demo-container';
+import { InlineCopyButtonDemoContainer } from './demos/inline-copy-button-demo-container';
+import { TimeoutCopyButtonDemoContainer } from './demos/timeout-copy-button-demo-container';
+import { DisabledCopyButtonDemoContainer } from './demos/disabled-copy-button-demo-container';
+import { UsecasesCopyButtonDemoContainer } from './demos/usecases-copy-button-demo-container';
 
 @Component({
   selector: 'app-copy-button-page',
-  imports: [ScCopyButtonDemoContainer],
+  imports: [
+    BasicCopyButtonDemoContainer,
+    VariantsCopyButtonDemoContainer,
+    SizesCopyButtonDemoContainer,
+    WithtextCopyButtonDemoContainer,
+    InputCopyButtonDemoContainer,
+    CodeCopyButtonDemoContainer,
+    InlineCopyButtonDemoContainer,
+    TimeoutCopyButtonDemoContainer,
+    DisabledCopyButtonDemoContainer,
+    UsecasesCopyButtonDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +35,16 @@ import { ScCopyButtonDemoContainer } from './demos/copy-button-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-copy-button-demo-container />
+        <app-basic-copy-button-demo-container />
+        <app-variants-copy-button-demo-container />
+        <app-sizes-copy-button-demo-container />
+        <app-withtext-copy-button-demo-container />
+        <app-input-copy-button-demo-container />
+        <app-code-copy-button-demo-container />
+        <app-inline-copy-button-demo-container />
+        <app-timeout-copy-button-demo-container />
+        <app-disabled-copy-button-demo-container />
+        <app-usecases-copy-button-demo-container />
       </section>
     </div>
   `,

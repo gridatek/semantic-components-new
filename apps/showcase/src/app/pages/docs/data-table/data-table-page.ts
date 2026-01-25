@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDataTableDemoContainer } from './demos/data-table-demo-container';
+import { FeaturedDataTableDemoContainer } from './demos/featured-data-table-demo-container';
+import { FilterDataTableDemoContainer } from './demos/filter-data-table-demo-container';
+import { SimpleDataTableDemoContainer } from './demos/simple-data-table-demo-container';
 
 @Component({
   selector: 'app-data-table-page',
-  imports: [ScDataTableDemoContainer],
+  imports: [
+    FeaturedDataTableDemoContainer,
+    SimpleDataTableDemoContainer,
+    FilterDataTableDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +22,9 @@ import { ScDataTableDemoContainer } from './demos/data-table-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-data-table-demo-container />
+        <app-featured-data-table-demo-container />
+        <app-simple-data-table-demo-container />
+        <app-filter-data-table-demo-container />
       </section>
     </div>
   `,

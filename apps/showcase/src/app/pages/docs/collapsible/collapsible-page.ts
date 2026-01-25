@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCollapsibleDemoContainer } from './demos/collapsible-demo-container';
+import { BasicCollapsibleDemoContainer } from './demos/basic-collapsible-demo-container';
+import { DisabledCollapsibleDemoContainer } from './demos/disabled-collapsible-demo-container';
+import { OpenCollapsibleDemoContainer } from './demos/open-collapsible-demo-container';
 
 @Component({
   selector: 'app-collapsible-page',
-  imports: [ScCollapsibleDemoContainer],
+  imports: [
+    BasicCollapsibleDemoContainer,
+    OpenCollapsibleDemoContainer,
+    DisabledCollapsibleDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +21,9 @@ import { ScCollapsibleDemoContainer } from './demos/collapsible-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-collapsible-demo-container />
+        <app-basic-collapsible-demo-container />
+        <app-open-collapsible-demo-container />
+        <app-disabled-collapsible-demo-container />
       </section>
     </div>
   `,

@@ -746,10 +746,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/collapsible',
     children: [
       {
-        path: 'collapsible-demo',
+        path: 'basic-collapsible-demo',
         loadComponent: () =>
-          import('../pages/docs/collapsible/demos/collapsible-demo').then(
-            (m) => m.ScCollapsibleDemo,
+          import('../pages/docs/collapsible/demos/basic-collapsible-demo').then(
+            (m) => m.BasicCollapsibleDemo,
+          ),
+      },
+      {
+        path: 'open-collapsible-demo',
+        loadComponent: () =>
+          import('../pages/docs/collapsible/demos/open-collapsible-demo').then(
+            (m) => m.OpenCollapsibleDemo,
+          ),
+      },
+      {
+        path: 'disabled-collapsible-demo',
+        loadComponent: () =>
+          import('../pages/docs/collapsible/demos/disabled-collapsible-demo').then(
+            (m) => m.DisabledCollapsibleDemo,
           ),
       },
     ],
@@ -758,10 +772,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/color-picker',
     children: [
       {
-        path: 'color-picker-demo',
+        path: 'full-color-picker-demo',
         loadComponent: () =>
-          import('../pages/docs/color-picker/demos/color-picker-demo').then(
-            (m) => m.ScColorPickerDemo,
+          import('../pages/docs/color-picker/demos/full-color-picker-demo').then(
+            (m) => m.FullColorPickerDemo,
+          ),
+      },
+      {
+        path: 'swatches-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/swatches-color-picker-demo').then(
+            (m) => m.SwatchesColorPickerDemo,
+          ),
+      },
+      {
+        path: 'eyedropper-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/eyedropper-color-picker-demo').then(
+            (m) => m.EyedropperColorPickerDemo,
+          ),
+      },
+      {
+        path: 'simple-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/simple-color-picker-demo').then(
+            (m) => m.SimpleColorPickerDemo,
+          ),
+      },
+      {
+        path: 'compact-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/compact-color-picker-demo').then(
+            (m) => m.CompactColorPickerDemo,
+          ),
+      },
+      {
+        path: 'rgb-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/rgb-color-picker-demo').then(
+            (m) => m.RgbColorPickerDemo,
+          ),
+      },
+      {
+        path: 'hsl-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/hsl-color-picker-demo').then(
+            (m) => m.HslColorPickerDemo,
+          ),
+      },
+      {
+        path: 'preview-color-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/color-picker/demos/preview-color-picker-demo').then(
+            (m) => m.PreviewColorPickerDemo,
           ),
       },
     ],
@@ -770,10 +833,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/combobox',
     children: [
       {
-        path: 'combobox-demo',
+        path: 'basic-combobox-demo',
         loadComponent: () =>
-          import('../pages/docs/combobox/demos/combobox-demo').then(
-            (m) => m.ScComboboxDemo,
+          import('../pages/docs/combobox/demos/basic-combobox-demo').then(
+            (m) => m.BasicComboboxDemo,
+          ),
+      },
+      {
+        path: 'disabled-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/disabled-combobox-demo').then(
+            (m) => m.DisabledComboboxDemo,
+          ),
+      },
+      {
+        path: 'multiple-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/multiple-combobox-demo').then(
+            (m) => m.MultipleComboboxDemo,
+          ),
+      },
+      {
+        path: 'countries-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/countries-combobox-demo').then(
+            (m) => m.CountriesComboboxDemo,
+          ),
+      },
+      {
+        path: 'form-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/form-combobox-demo').then(
+            (m) => m.FormComboboxDemo,
           ),
       },
     ],
@@ -818,10 +909,73 @@ export const demosRoutes: Route[] = [
     path: 'demos/copy-button',
     children: [
       {
-        path: 'copy-button-demo',
+        path: 'basic-copy-button-demo',
         loadComponent: () =>
-          import('../pages/docs/copy-button/demos/copy-button-demo').then(
-            (m) => m.ScCopyButtonDemo,
+          import('../pages/docs/copy-button/demos/basic-copy-button-demo').then(
+            (m) => m.BasicCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'variants-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/variants-copy-button-demo').then(
+            (m) => m.VariantsCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'sizes-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/sizes-copy-button-demo').then(
+            (m) => m.SizesCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'withtext-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/withtext-copy-button-demo').then(
+            (m) => m.WithtextCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'input-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/input-copy-button-demo').then(
+            (m) => m.InputCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'code-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/code-copy-button-demo').then(
+            (m) => m.CodeCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'inline-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/inline-copy-button-demo').then(
+            (m) => m.InlineCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'timeout-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/timeout-copy-button-demo').then(
+            (m) => m.TimeoutCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'disabled-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/disabled-copy-button-demo').then(
+            (m) => m.DisabledCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'usecases-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/usecases-copy-button-demo').then(
+            (m) => m.UsecasesCopyButtonDemo,
           ),
       },
     ],
@@ -905,10 +1059,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/data-table',
     children: [
       {
-        path: 'data-table-demo',
+        path: 'featured-data-table-demo',
         loadComponent: () =>
-          import('../pages/docs/data-table/demos/data-table-demo').then(
-            (m) => m.ScDataTableDemo,
+          import('../pages/docs/data-table/demos/featured-data-table-demo').then(
+            (m) => m.FeaturedDataTableDemo,
+          ),
+      },
+      {
+        path: 'simple-data-table-demo',
+        loadComponent: () =>
+          import('../pages/docs/data-table/demos/simple-data-table-demo').then(
+            (m) => m.SimpleDataTableDemo,
+          ),
+      },
+      {
+        path: 'filter-data-table-demo',
+        loadComponent: () =>
+          import('../pages/docs/data-table/demos/filter-data-table-demo').then(
+            (m) => m.FilterDataTableDemo,
           ),
       },
     ],
@@ -1020,10 +1188,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/empty-state',
     children: [
       {
-        path: 'empty-state-demo',
+        path: 'basic-empty-state-demo',
         loadComponent: () =>
-          import('../pages/docs/empty-state/demos/empty-state-demo').then(
-            (m) => m.EmptyStateDemo,
+          import('../pages/docs/empty-state/demos/basic-empty-state-demo').then(
+            (m) => m.BasicEmptyStateDemo,
+          ),
+      },
+      {
+        path: 'actions-empty-state-demo',
+        loadComponent: () =>
+          import('../pages/docs/empty-state/demos/actions-empty-state-demo').then(
+            (m) => m.ActionsEmptyStateDemo,
+          ),
+      },
+      {
+        path: 'sizes-empty-state-demo',
+        loadComponent: () =>
+          import('../pages/docs/empty-state/demos/sizes-empty-state-demo').then(
+            (m) => m.SizesEmptyStateDemo,
+          ),
+      },
+      {
+        path: 'usecases-empty-state-demo',
+        loadComponent: () =>
+          import('../pages/docs/empty-state/demos/usecases-empty-state-demo').then(
+            (m) => m.UsecasesEmptyStateDemo,
           ),
       },
     ],
@@ -1032,10 +1221,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/file-upload',
     children: [
       {
-        path: 'file-upload-demo',
+        path: 'dropzone-file-upload-demo',
         loadComponent: () =>
-          import('../pages/docs/file-upload/demos/file-upload-demo').then(
-            (m) => m.ScFileUploadDemo,
+          import('../pages/docs/file-upload/demos/dropzone-file-upload-demo').then(
+            (m) => m.DropzoneFileUploadDemo,
+          ),
+      },
+      {
+        path: 'image-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/image-file-upload-demo').then(
+            (m) => m.ImageFileUploadDemo,
+          ),
+      },
+      {
+        path: 'button-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/button-file-upload-demo').then(
+            (m) => m.ButtonFileUploadDemo,
+          ),
+      },
+      {
+        path: 'single-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/single-file-upload-demo').then(
+            (m) => m.SingleFileUploadDemo,
+          ),
+      },
+      {
+        path: 'progress-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/progress-file-upload-demo').then(
+            (m) => m.ProgressFileUploadDemo,
           ),
       },
     ],
@@ -1044,10 +1261,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/form',
     children: [
       {
-        path: 'form-demo',
+        path: 'basic-form-demo',
         loadComponent: () =>
-          import('../pages/docs/form/demos/form-demo').then(
-            (m) => m.ScFormDemo,
+          import('../pages/docs/form/demos/basic-form-demo').then(
+            (m) => m.BasicFormDemo,
+          ),
+      },
+      {
+        path: 'profile-form-demo',
+        loadComponent: () =>
+          import('../pages/docs/form/demos/profile-form-demo').then(
+            (m) => m.ProfileFormDemo,
+          ),
+      },
+      {
+        path: 'validation-form-demo',
+        loadComponent: () =>
+          import('../pages/docs/form/demos/validation-form-demo').then(
+            (m) => m.ValidationFormDemo,
           ),
       },
     ],
@@ -1374,10 +1605,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/multi-select',
     children: [
       {
-        path: 'multi-select-demo',
+        path: 'basic-multi-select-demo',
         loadComponent: () =>
-          import('../pages/docs/multi-select/demos/multi-select-demo').then(
-            (m) => m.ScMultiSelectDemo,
+          import('../pages/docs/multi-select/demos/basic-multi-select-demo').then(
+            (m) => m.BasicMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'selectall-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/selectall-multi-select-demo').then(
+            (m) => m.SelectallMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'count-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/count-multi-select-demo').then(
+            (m) => m.CountMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'disabled-options-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/disabled-options-multi-select-demo').then(
+            (m) => m.DisabledOptionsMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'nosearch-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/nosearch-multi-select-demo').then(
+            (m) => m.NosearchMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'disabled-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/disabled-multi-select-demo').then(
+            (m) => m.DisabledMultiSelectDemo,
+          ),
+      },
+      {
+        path: 'form-multi-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/multi-select/demos/form-multi-select-demo').then(
+            (m) => m.FormMultiSelectDemo,
           ),
       },
     ],
@@ -1410,10 +1683,73 @@ export const demosRoutes: Route[] = [
     path: 'demos/number-input',
     children: [
       {
-        path: 'number-input-demo',
+        path: 'basic-number-input-demo',
         loadComponent: () =>
-          import('../pages/docs/number-input/demos/number-input-demo').then(
-            (m) => m.ScNumberInputDemo,
+          import('../pages/docs/number-input/demos/basic-number-input-demo').then(
+            (m) => m.BasicNumberInputDemo,
+          ),
+      },
+      {
+        path: 'minmax-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/minmax-number-input-demo').then(
+            (m) => m.MinmaxNumberInputDemo,
+          ),
+      },
+      {
+        path: 'step-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/step-number-input-demo').then(
+            (m) => m.StepNumberInputDemo,
+          ),
+      },
+      {
+        path: 'decimal-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/decimal-number-input-demo').then(
+            (m) => m.DecimalNumberInputDemo,
+          ),
+      },
+      {
+        path: 'stepper-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/stepper-number-input-demo').then(
+            (m) => m.StepperNumberInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/disabled-number-input-demo').then(
+            (m) => m.DisabledNumberInputDemo,
+          ),
+      },
+      {
+        path: 'sizes-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/sizes-number-input-demo').then(
+            (m) => m.SizesNumberInputDemo,
+          ),
+      },
+      {
+        path: 'quantity-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/quantity-number-input-demo').then(
+            (m) => m.QuantityNumberInputDemo,
+          ),
+      },
+      {
+        path: 'form-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/form-number-input-demo').then(
+            (m) => m.FormNumberInputDemo,
+          ),
+      },
+      {
+        path: 'price-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/price-number-input-demo').then(
+            (m) => m.PriceNumberInputDemo,
           ),
       },
     ],
@@ -2302,10 +2638,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/toast',
     children: [
       {
-        path: 'toast-demo',
+        path: 'basic-toast-demo',
         loadComponent: () =>
-          import('../pages/docs/toast/demos/toast-demo').then(
-            (m) => m.ScToastDemo,
+          import('../pages/docs/toast/demos/basic-toast-demo').then(
+            (m) => m.BasicToastDemo,
+          ),
+      },
+      {
+        path: 'title-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/title-toast-demo').then(
+            (m) => m.TitleToastDemo,
+          ),
+      },
+      {
+        path: 'action-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/action-toast-demo').then(
+            (m) => m.ActionToastDemo,
+          ),
+      },
+      {
+        path: 'destructive-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/destructive-toast-demo').then(
+            (m) => m.DestructiveToastDemo,
+          ),
+      },
+      {
+        path: 'duration-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/duration-toast-demo').then(
+            (m) => m.DurationToastDemo,
           ),
       },
     ],

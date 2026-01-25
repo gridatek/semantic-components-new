@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScFormDemoContainer } from './demos/form-demo-container';
+import { BasicFormDemoContainer } from './demos/basic-form-demo-container';
+import { ProfileFormDemoContainer } from './demos/profile-form-demo-container';
+import { ValidationFormDemoContainer } from './demos/validation-form-demo-container';
 
 @Component({
   selector: 'app-form-page',
-  imports: [ScFormDemoContainer],
+  imports: [
+    BasicFormDemoContainer,
+    ProfileFormDemoContainer,
+    ValidationFormDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +21,9 @@ import { ScFormDemoContainer } from './demos/form-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-form-demo-container />
+        <app-basic-form-demo-container />
+        <app-profile-form-demo-container />
+        <app-validation-form-demo-container />
       </section>
     </div>
   `,

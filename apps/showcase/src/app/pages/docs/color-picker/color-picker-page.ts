@@ -1,9 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScColorPickerDemoContainer } from './demos/color-picker-demo-container';
+import { CompactColorPickerDemoContainer } from './demos/compact-color-picker-demo-container';
+import { EyedropperColorPickerDemoContainer } from './demos/eyedropper-color-picker-demo-container';
+import { FullColorPickerDemoContainer } from './demos/full-color-picker-demo-container';
+import { HslColorPickerDemoContainer } from './demos/hsl-color-picker-demo-container';
+import { PreviewColorPickerDemoContainer } from './demos/preview-color-picker-demo-container';
+import { RgbColorPickerDemoContainer } from './demos/rgb-color-picker-demo-container';
+import { SimpleColorPickerDemoContainer } from './demos/simple-color-picker-demo-container';
+import { SwatchesColorPickerDemoContainer } from './demos/swatches-color-picker-demo-container';
 
 @Component({
   selector: 'app-color-picker-page',
-  imports: [ScColorPickerDemoContainer],
+  imports: [
+    FullColorPickerDemoContainer,
+    SwatchesColorPickerDemoContainer,
+    EyedropperColorPickerDemoContainer,
+    SimpleColorPickerDemoContainer,
+    CompactColorPickerDemoContainer,
+    RgbColorPickerDemoContainer,
+    HslColorPickerDemoContainer,
+    PreviewColorPickerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +31,14 @@ import { ScColorPickerDemoContainer } from './demos/color-picker-demo-container'
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-color-picker-demo-container />
+        <app-full-color-picker-demo-container />
+        <app-swatches-color-picker-demo-container />
+        <app-eyedropper-color-picker-demo-container />
+        <app-simple-color-picker-demo-container />
+        <app-compact-color-picker-demo-container />
+        <app-rgb-color-picker-demo-container />
+        <app-hsl-color-picker-demo-container />
+        <app-preview-color-picker-demo-container />
       </section>
     </div>
   `,
