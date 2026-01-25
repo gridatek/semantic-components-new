@@ -909,10 +909,73 @@ export const demosRoutes: Route[] = [
     path: 'demos/copy-button',
     children: [
       {
-        path: 'copy-button-demo',
+        path: 'basic-copy-button-demo',
         loadComponent: () =>
-          import('../pages/docs/copy-button/demos/copy-button-demo').then(
-            (m) => m.ScCopyButtonDemo,
+          import('../pages/docs/copy-button/demos/basic-copy-button-demo').then(
+            (m) => m.BasicCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'variants-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/variants-copy-button-demo').then(
+            (m) => m.VariantsCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'sizes-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/sizes-copy-button-demo').then(
+            (m) => m.SizesCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'withtext-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/withtext-copy-button-demo').then(
+            (m) => m.WithtextCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'input-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/input-copy-button-demo').then(
+            (m) => m.InputCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'code-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/code-copy-button-demo').then(
+            (m) => m.CodeCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'inline-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/inline-copy-button-demo').then(
+            (m) => m.InlineCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'timeout-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/timeout-copy-button-demo').then(
+            (m) => m.TimeoutCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'disabled-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/disabled-copy-button-demo').then(
+            (m) => m.DisabledCopyButtonDemo,
+          ),
+      },
+      {
+        path: 'usecases-copy-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/copy-button/demos/usecases-copy-button-demo').then(
+            (m) => m.UsecasesCopyButtonDemo,
           ),
       },
     ],
@@ -1620,10 +1683,73 @@ export const demosRoutes: Route[] = [
     path: 'demos/number-input',
     children: [
       {
-        path: 'number-input-demo',
+        path: 'basic-number-input-demo',
         loadComponent: () =>
-          import('../pages/docs/number-input/demos/number-input-demo').then(
-            (m) => m.ScNumberInputDemo,
+          import('../pages/docs/number-input/demos/basic-number-input-demo').then(
+            (m) => m.BasicNumberInputDemo,
+          ),
+      },
+      {
+        path: 'minmax-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/minmax-number-input-demo').then(
+            (m) => m.MinmaxNumberInputDemo,
+          ),
+      },
+      {
+        path: 'step-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/step-number-input-demo').then(
+            (m) => m.StepNumberInputDemo,
+          ),
+      },
+      {
+        path: 'decimal-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/decimal-number-input-demo').then(
+            (m) => m.DecimalNumberInputDemo,
+          ),
+      },
+      {
+        path: 'stepper-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/stepper-number-input-demo').then(
+            (m) => m.StepperNumberInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/disabled-number-input-demo').then(
+            (m) => m.DisabledNumberInputDemo,
+          ),
+      },
+      {
+        path: 'sizes-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/sizes-number-input-demo').then(
+            (m) => m.SizesNumberInputDemo,
+          ),
+      },
+      {
+        path: 'quantity-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/quantity-number-input-demo').then(
+            (m) => m.QuantityNumberInputDemo,
+          ),
+      },
+      {
+        path: 'form-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/form-number-input-demo').then(
+            (m) => m.FormNumberInputDemo,
+          ),
+      },
+      {
+        path: 'price-number-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-input/demos/price-number-input-demo').then(
+            (m) => m.PriceNumberInputDemo,
           ),
       },
     ],
