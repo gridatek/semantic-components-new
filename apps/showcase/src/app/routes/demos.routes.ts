@@ -1198,10 +1198,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/diff-viewer',
     children: [
       {
-        path: 'diff-viewer-demo',
+        path: 'basic-diff-viewer-demo',
         loadComponent: () =>
-          import('../pages/docs/diff-viewer/demos/diff-viewer-demo').then(
-            (m) => m.DiffViewerDemo,
+          import('../pages/docs/diff-viewer/demos/basic-diff-viewer-demo').then(
+            (m) => m.BasicDiffViewerDemo,
+          ),
+      },
+      {
+        path: 'unified-diff-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/diff-viewer/demos/unified-diff-viewer-demo').then(
+            (m) => m.UnifiedDiffViewerDemo,
+          ),
+      },
+      {
+        path: 'json-diff-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/diff-viewer/demos/json-diff-viewer-demo').then(
+            (m) => m.JsonDiffViewerDemo,
+          ),
+      },
+      {
+        path: 'minimal-diff-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/diff-viewer/demos/minimal-diff-viewer-demo').then(
+            (m) => m.MinimalDiffViewerDemo,
+          ),
+      },
+      {
+        path: 'whitespace-diff-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/diff-viewer/demos/whitespace-diff-viewer-demo').then(
+            (m) => m.WhitespaceDiffViewerDemo,
+          ),
+      },
+      {
+        path: 'large-diff-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/diff-viewer/demos/large-diff-viewer-demo').then(
+            (m) => m.LargeDiffViewerDemo,
+          ),
+      },
+      {
+        path: 'identical-diff-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/diff-viewer/demos/identical-diff-viewer-demo').then(
+            (m) => m.IdenticalDiffViewerDemo,
           ),
       },
     ],

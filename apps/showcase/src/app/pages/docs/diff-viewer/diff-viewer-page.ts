@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DiffViewerDemoContainer } from './demos/diff-viewer-demo-container';
+import { BasicDiffViewerDemoContainer } from './demos/basic-diff-viewer-demo-container';
+import { UnifiedDiffViewerDemoContainer } from './demos/unified-diff-viewer-demo-container';
+import { JsonDiffViewerDemoContainer } from './demos/json-diff-viewer-demo-container';
+import { MinimalDiffViewerDemoContainer } from './demos/minimal-diff-viewer-demo-container';
+import { WhitespaceDiffViewerDemoContainer } from './demos/whitespace-diff-viewer-demo-container';
+import { LargeDiffViewerDemoContainer } from './demos/large-diff-viewer-demo-container';
+import { IdenticalDiffViewerDemoContainer } from './demos/identical-diff-viewer-demo-container';
 
 @Component({
   selector: 'app-diff-viewer-page',
-  imports: [DiffViewerDemoContainer],
+  imports: [
+    BasicDiffViewerDemoContainer,
+    UnifiedDiffViewerDemoContainer,
+    JsonDiffViewerDemoContainer,
+    MinimalDiffViewerDemoContainer,
+    WhitespaceDiffViewerDemoContainer,
+    LargeDiffViewerDemoContainer,
+    IdenticalDiffViewerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +29,13 @@ import { DiffViewerDemoContainer } from './demos/diff-viewer-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-diff-viewer-demo-container />
+        <app-basic-diff-viewer-demo-container />
+        <app-unified-diff-viewer-demo-container />
+        <app-json-diff-viewer-demo-container />
+        <app-minimal-diff-viewer-demo-container />
+        <app-whitespace-diff-viewer-demo-container />
+        <app-large-diff-viewer-demo-container />
+        <app-identical-diff-viewer-demo-container />
       </section>
     </div>
   `,
