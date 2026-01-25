@@ -1,0 +1,34 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { RangeSliderDemo } from './range-slider-demo';
+
+@Component({
+  selector: 'app-range-slider-demo-container',
+  imports: [DemoContainer, RangeSliderDemo],
+  template: `
+    <app-demo-container title="Custom Range" [code]="code">
+      <app-range-slider-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RangeSliderDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ScSlider } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-range-slider-demo',
+  imports: [ScSlider],
+  template: \`
+    <div class="w-[60%]">
+      <div sc-slider [(value)]="rangeValue" [min]="0" [max]="50"></div>
+      <p class="mt-2 text-sm text-muted-foreground">Value: {{ rangeValue() }}</p>
+    </div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RangeSliderDemo {
+  readonly rangeValue = signal(25);
+}`;
+}

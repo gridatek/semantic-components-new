@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInputDemoContainer } from './demos/input-demo-container';
+import { BasicInputDemoContainer } from './demos/basic-input-demo-container';
+import { ButtonInputDemoContainer } from './demos/button-input-demo-container';
+import { DisabledInputDemoContainer } from './demos/disabled-input-demo-container';
+import { FileInputDemoContainer } from './demos/file-input-demo-container';
+import { FormInputDemoContainer } from './demos/form-input-demo-container';
+import { LabelInputDemoContainer } from './demos/label-input-demo-container';
+import { TypesInputDemoContainer } from './demos/types-input-demo-container';
 
 @Component({
   selector: 'app-input-page',
-  imports: [ScInputDemoContainer],
+  imports: [
+    BasicInputDemoContainer,
+    LabelInputDemoContainer,
+    TypesInputDemoContainer,
+    FileInputDemoContainer,
+    DisabledInputDemoContainer,
+    ButtonInputDemoContainer,
+    FormInputDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +30,13 @@ import { ScInputDemoContainer } from './demos/input-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-input-demo-container />
+        <app-basic-input-demo-container />
+        <app-label-input-demo-container />
+        <app-types-input-demo-container />
+        <app-file-input-demo-container />
+        <app-disabled-input-demo-container />
+        <app-button-input-demo-container />
+        <app-form-input-demo-container />
       </section>
     </div>
   `,

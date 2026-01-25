@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSliderDemoContainer } from './demos/slider-demo-container';
+import { BasicSliderDemoContainer } from './demos/basic-slider-demo-container';
+import { DisabledSliderDemoContainer } from './demos/disabled-slider-demo-container';
+import { PriceSliderDemoContainer } from './demos/price-slider-demo-container';
+import { RangeSliderDemoContainer } from './demos/range-slider-demo-container';
+import { StepSliderDemoContainer } from './demos/step-slider-demo-container';
+import { TemperatureSliderDemoContainer } from './demos/temperature-slider-demo-container';
+import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container';
 
 @Component({
   selector: 'app-slider-page',
-  imports: [ScSliderDemoContainer],
+  imports: [
+    BasicSliderDemoContainer,
+    RangeSliderDemoContainer,
+    StepSliderDemoContainer,
+    DisabledSliderDemoContainer,
+    VolumeSliderDemoContainer,
+    PriceSliderDemoContainer,
+    TemperatureSliderDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +29,13 @@ import { ScSliderDemoContainer } from './demos/slider-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-slider-demo-container />
+        <app-basic-slider-demo-container />
+        <app-range-slider-demo-container />
+        <app-step-slider-demo-container />
+        <app-disabled-slider-demo-container />
+        <app-volume-slider-demo-container />
+        <app-price-slider-demo-container />
+        <app-temperature-slider-demo-container />
       </section>
     </div>
   `,

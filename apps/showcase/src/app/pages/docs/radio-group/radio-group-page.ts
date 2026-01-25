@@ -1,9 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScRadioGroupDemoContainer } from './demos/radio-group-demo-container';
+import { BasicRadioGroupDemoContainer } from './demos/basic-radio-group-demo-container';
+import { DescriptionsRadioGroupDemoContainer } from './demos/descriptions-radio-group-demo-container';
+import { DisabledRadioGroupDemoContainer } from './demos/disabled-radio-group-demo-container';
+import { HorizontalRadioGroupDemoContainer } from './demos/horizontal-radio-group-demo-container';
+import { FormRadioGroupDemoContainer } from './demos/form-radio-group-demo-container';
 
 @Component({
   selector: 'app-radio-group-page',
-  imports: [ScRadioGroupDemoContainer],
+  imports: [BasicRadioGroupDemoContainer, DescriptionsRadioGroupDemoContainer, DisabledRadioGroupDemoContainer, HorizontalRadioGroupDemoContainer, FormRadioGroupDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +20,11 @@ import { ScRadioGroupDemoContainer } from './demos/radio-group-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-radio-group-demo-container />
+        <app-basic-radio-group-demo-container />
+        <app-descriptions-radio-group-demo-container />
+        <app-disabled-radio-group-demo-container />
+        <app-horizontal-radio-group-demo-container />
+        <app-form-radio-group-demo-container />
       </section>
     </div>
   `,
