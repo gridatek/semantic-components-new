@@ -2191,10 +2191,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/theme-toggle',
     children: [
       {
-        path: 'theme-toggle-demo',
+        path: 'basic-theme-toggle-demo',
         loadComponent: () =>
-          import('../pages/docs/theme-toggle/demos/theme-toggle-demo').then(
-            (m) => m.ScThemeToggleDemo,
+          import('../pages/docs/theme-toggle/demos/basic-theme-toggle-demo').then(
+            (m) => m.BasicThemeToggleDemo,
+          ),
+      },
+      {
+        path: 'variants-theme-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/theme-toggle/demos/variants-theme-toggle-demo').then(
+            (m) => m.VariantsThemeToggleDemo,
+          ),
+      },
+      {
+        path: 'sizes-theme-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/theme-toggle/demos/sizes-theme-toggle-demo').then(
+            (m) => m.SizesThemeToggleDemo,
+          ),
+      },
+      {
+        path: 'theme-select-demo',
+        loadComponent: () =>
+          import('../pages/docs/theme-toggle/demos/theme-select-demo').then(
+            (m) => m.ThemeSelectDemo,
+          ),
+      },
+      {
+        path: 'navigation-theme-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/theme-toggle/demos/navigation-theme-toggle-demo').then(
+            (m) => m.NavigationThemeToggleDemo,
+          ),
+      },
+      {
+        path: 'settings-panel-theme-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/theme-toggle/demos/settings-panel-theme-toggle-demo').then(
+            (m) => m.SettingsPanelThemeToggleDemo,
           ),
       },
     ],

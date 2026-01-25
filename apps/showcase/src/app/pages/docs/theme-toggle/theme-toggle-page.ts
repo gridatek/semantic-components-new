@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScThemeToggleDemoContainer } from './demos/theme-toggle-demo-container';
+import { BasicThemeToggleDemoContainer } from './demos/basic-theme-toggle-demo-container';
+import { NavigationThemeToggleDemoContainer } from './demos/navigation-theme-toggle-demo-container';
+import { SettingsPanelThemeToggleDemoContainer } from './demos/settings-panel-theme-toggle-demo-container';
+import { SizesThemeToggleDemoContainer } from './demos/sizes-theme-toggle-demo-container';
+import { ThemeSelectDemoContainer } from './demos/theme-select-demo-container';
+import { VariantsThemeToggleDemoContainer } from './demos/variants-theme-toggle-demo-container';
 
 @Component({
   selector: 'app-theme-toggle-page',
-  imports: [ScThemeToggleDemoContainer],
+  imports: [
+    BasicThemeToggleDemoContainer,
+    VariantsThemeToggleDemoContainer,
+    SizesThemeToggleDemoContainer,
+    ThemeSelectDemoContainer,
+    NavigationThemeToggleDemoContainer,
+    SettingsPanelThemeToggleDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +28,12 @@ import { ScThemeToggleDemoContainer } from './demos/theme-toggle-demo-container'
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-theme-toggle-demo-container />
+        <app-basic-theme-toggle-demo-container />
+        <app-variants-theme-toggle-demo-container />
+        <app-sizes-theme-toggle-demo-container />
+        <app-theme-select-demo-container />
+        <app-navigation-theme-toggle-demo-container />
+        <app-settings-panel-theme-toggle-demo-container />
       </section>
     </div>
   `,
