@@ -1085,10 +1085,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/date-picker',
     children: [
       {
-        path: 'date-picker-demo',
+        path: 'basic-date-picker-demo',
         loadComponent: () =>
-          import('../pages/docs/date-picker/demos/date-picker-demo').then(
-            (m) => m.ScDatePickerDemo,
+          import('../pages/docs/date-picker/demos/basic-date-picker-demo').then(
+            (m) => m.BasicDatePickerDemo,
+          ),
+      },
+      {
+        path: 'placeholder-date-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-picker/demos/placeholder-date-picker-demo').then(
+            (m) => m.PlaceholderDatePickerDemo,
+          ),
+      },
+      {
+        path: 'range-date-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-picker/demos/range-date-picker-demo').then(
+            (m) => m.RangeDatePickerDemo,
+          ),
+      },
+      {
+        path: 'multiple-date-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-picker/demos/multiple-date-picker-demo').then(
+            (m) => m.MultipleDatePickerDemo,
+          ),
+      },
+      {
+        path: 'constrained-date-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-picker/demos/constrained-date-picker-demo').then(
+            (m) => m.ConstrainedDatePickerDemo,
+          ),
+      },
+      {
+        path: 'form-date-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-picker/demos/form-date-picker-demo').then(
+            (m) => m.FormDatePickerDemo,
           ),
       },
     ],

@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDatePickerDemoContainer } from './demos/date-picker-demo-container';
+import { BasicDatePickerDemoContainer } from './demos/basic-date-picker-demo-container';
+import { PlaceholderDatePickerDemoContainer } from './demos/placeholder-date-picker-demo-container';
+import { RangeDatePickerDemoContainer } from './demos/range-date-picker-demo-container';
+import { MultipleDatePickerDemoContainer } from './demos/multiple-date-picker-demo-container';
+import { ConstrainedDatePickerDemoContainer } from './demos/constrained-date-picker-demo-container';
+import { FormDatePickerDemoContainer } from './demos/form-date-picker-demo-container';
 
 @Component({
   selector: 'app-date-picker-page',
-  imports: [ScDatePickerDemoContainer],
+  imports: [
+    BasicDatePickerDemoContainer,
+    PlaceholderDatePickerDemoContainer,
+    RangeDatePickerDemoContainer,
+    MultipleDatePickerDemoContainer,
+    ConstrainedDatePickerDemoContainer,
+    FormDatePickerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +27,12 @@ import { ScDatePickerDemoContainer } from './demos/date-picker-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-date-picker-demo-container />
+        <app-basic-date-picker-demo-container />
+        <app-placeholder-date-picker-demo-container />
+        <app-range-date-picker-demo-container />
+        <app-multiple-date-picker-demo-container />
+        <app-constrained-date-picker-demo-container />
+        <app-form-date-picker-demo-container />
       </section>
     </div>
   `,

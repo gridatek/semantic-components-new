@@ -1,0 +1,34 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { PlaceholderDatePickerDemo } from './placeholder-date-picker-demo';
+
+@Component({
+  selector: 'app-placeholder-date-picker-demo-container',
+  imports: [DemoContainer, PlaceholderDatePickerDemo],
+  template: `
+    <app-demo-container title="Custom Placeholder" [code]="code">
+      <app-placeholder-date-picker-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PlaceholderDatePickerDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ScDatePicker } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-placeholder-date-picker-demo',
+  imports: [ScDatePicker],
+  template: \`
+    <sc-date-picker
+      [(selected)]="selectedDate"
+      placeholder="Select your birthday"
+    />
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PlaceholderDatePickerDemo {
+  readonly selectedDate = signal<Date | undefined>(undefined);
+}`;
+}
