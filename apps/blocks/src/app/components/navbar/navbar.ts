@@ -7,7 +7,7 @@ import {
   ScNavbarActions,
   ScNavbarLink,
   ScNavbarMobileTrigger,
-  ScNavbarMobileContent,
+  ScNavbarMobilePortal,
   ScNavbarMobileLink,
   ScButton,
 } from '@semantic-components/ui';
@@ -23,7 +23,7 @@ import {
     ScNavbarActions,
     ScNavbarLink,
     ScNavbarMobileTrigger,
-    ScNavbarMobileContent,
+    ScNavbarMobilePortal,
     ScNavbarMobileLink,
     ScButton,
   ],
@@ -80,7 +80,7 @@ import {
       </div>
 
       <!-- Mobile Menu -->
-      <div sc-navbar-mobile-content>
+      <div sc-navbar-mobile-portal>
         <a
           sc-navbar-mobile-link
           routerLink="/"

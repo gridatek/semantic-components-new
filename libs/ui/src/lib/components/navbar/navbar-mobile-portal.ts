@@ -16,7 +16,7 @@ import { cn } from '../../utils';
 import { ScNavbar } from './navbar';
 
 @Component({
-  selector: 'div[sc-navbar-mobile-content]',
+  selector: 'div[sc-navbar-mobile-portal]',
   imports: [OverlayModule],
   template: `
     <ng-template #mobileMenuTemplate>
@@ -33,13 +33,13 @@ import { ScNavbar } from './navbar';
     </ng-template>
   `,
   host: {
-    'data-slot': 'navbar-mobile-content',
+    'data-slot': 'navbar-mobile-portal',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScNavbarMobileContent {
+export class ScNavbarMobilePortal {
   private readonly navbar = inject(ScNavbar);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);

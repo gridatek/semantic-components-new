@@ -7,7 +7,7 @@ import {
   ScNavbarBrand,
   ScNavbarContent,
   ScNavbarLink,
-  ScNavbarMobileContent,
+  ScNavbarMobilePortal,
   ScNavbarMobileLink,
   ScNavbarMobileTrigger,
   ScThemeToggle,
@@ -23,7 +23,7 @@ import {
     ScNavbarContent,
     ScNavbarActions,
     ScNavbarLink,
-    ScNavbarMobileContent,
+    ScNavbarMobilePortal,
     ScNavbarMobileLink,
     ScNavbarMobileTrigger,
     ScButton,
@@ -86,7 +86,7 @@ import {
       </div>
 
       <!-- Mobile Menu -->
-      <div sc-navbar-mobile-content>
+      <div sc-navbar-mobile-portal>
         <a
           sc-navbar-mobile-link
           routerLink="/"
