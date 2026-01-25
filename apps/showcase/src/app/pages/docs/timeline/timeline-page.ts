@@ -1,9 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTimelineDemoContainer } from './demos/timeline-demo-container';
+import { BasicTimelineDemoContainer } from './demos/basic-timeline-demo-container';
+import { StatusTimelineDemoContainer } from './demos/status-timeline-demo-container';
+import { SizesTimelineDemoContainer } from './demos/sizes-timeline-demo-container';
+import { ActivityTimelineDemoContainer } from './demos/activity-timeline-demo-container';
+import { TrackingTimelineDemoContainer } from './demos/tracking-timeline-demo-container';
 
 @Component({
   selector: 'app-timeline-page',
-  imports: [ScTimelineDemoContainer],
+  imports: [BasicTimelineDemoContainer, StatusTimelineDemoContainer, SizesTimelineDemoContainer, ActivityTimelineDemoContainer, TrackingTimelineDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +19,11 @@ import { ScTimelineDemoContainer } from './demos/timeline-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-timeline-demo-container />
+        <app-basic-timeline-demo-container />
+        <app-status-timeline-demo-container />
+        <app-sizes-timeline-demo-container />
+        <app-activity-timeline-demo-container />
+        <app-tracking-timeline-demo-container />
       </section>
     </div>
   `,

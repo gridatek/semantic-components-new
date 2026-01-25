@@ -830,10 +830,73 @@ export const demosRoutes: Route[] = [
     path: 'demos/countdown',
     children: [
       {
-        path: 'countdown-demo',
+        path: 'basic-countdown-demo',
         loadComponent: () =>
-          import('../pages/docs/countdown/demos/countdown-demo').then(
-            (m) => m.ScCountdownDemo,
+          import('../pages/docs/countdown/demos/basic-countdown-demo').then(
+            (m) => m.BasicCountdownDemo,
+          ),
+      },
+      {
+        path: 'compact-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/compact-countdown-demo').then(
+            (m) => m.CompactCountdownDemo,
+          ),
+      },
+      {
+        path: 'cards-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/cards-countdown-demo').then(
+            (m) => m.CardsCountdownDemo,
+          ),
+      },
+      {
+        path: 'separator-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/separator-countdown-demo').then(
+            (m) => m.SeparatorCountdownDemo,
+          ),
+      },
+      {
+        path: 'labels-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/labels-countdown-demo').then(
+            (m) => m.LabelsCountdownDemo,
+          ),
+      },
+      {
+        path: 'nodays-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/nodays-countdown-demo').then(
+            (m) => m.NodaysCountdownDemo,
+          ),
+      },
+      {
+        path: 'simple-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/simple-countdown-demo').then(
+            (m) => m.SimpleCountdownDemo,
+          ),
+      },
+      {
+        path: 'event-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/event-countdown-demo').then(
+            (m) => m.EventCountdownDemo,
+          ),
+      },
+      {
+        path: 'sale-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/sale-countdown-demo').then(
+            (m) => m.SaleCountdownDemo,
+          ),
+      },
+      {
+        path: 'completed-countdown-demo',
+        loadComponent: () =>
+          import('../pages/docs/countdown/demos/completed-countdown-demo').then(
+            (m) => m.CompletedCountdownDemo,
           ),
       },
     ],
@@ -1067,10 +1130,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/input',
     children: [
       {
-        path: 'input-demo',
+        path: 'basic-input-demo',
         loadComponent: () =>
-          import('../pages/docs/input/demos/input-demo').then(
-            (m) => m.ScInputDemo,
+          import('../pages/docs/input/demos/basic-input-demo').then(
+            (m) => m.BasicInputDemo,
+          ),
+      },
+      {
+        path: 'label-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/input/demos/label-input-demo').then(
+            (m) => m.LabelInputDemo,
+          ),
+      },
+      {
+        path: 'types-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/input/demos/types-input-demo').then(
+            (m) => m.TypesInputDemo,
+          ),
+      },
+      {
+        path: 'file-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/input/demos/file-input-demo').then(
+            (m) => m.FileInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/input/demos/disabled-input-demo').then(
+            (m) => m.DisabledInputDemo,
+          ),
+      },
+      {
+        path: 'button-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/input/demos/button-input-demo').then(
+            (m) => m.ButtonInputDemo,
+          ),
+      },
+      {
+        path: 'form-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/input/demos/form-input-demo').then(
+            (m) => m.FormInputDemo,
           ),
       },
     ],
@@ -1278,10 +1383,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/pagination',
     children: [
       {
-        path: 'pagination-demo',
+        path: 'basic-pagination-demo',
         loadComponent: () =>
-          import('../pages/docs/pagination/demos/pagination-demo').then(
-            (m) => m.ScPaginationDemo,
+          import('../pages/docs/pagination/demos/basic-pagination-demo').then(
+            (m) => m.BasicPaginationDemo,
+          ),
+      },
+      {
+        path: 'ellipsis-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/ellipsis-pagination-demo').then(
+            (m) => m.EllipsisPaginationDemo,
+          ),
+      },
+      {
+        path: 'many-pages-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/many-pages-pagination-demo').then(
+            (m) => m.ManyPagesPaginationDemo,
+          ),
+      },
+      {
+        path: 'buttons-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/buttons-pagination-demo').then(
+            (m) => m.ButtonsPaginationDemo,
+          ),
+      },
+      {
+        path: 'first-page-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/first-page-pagination-demo').then(
+            (m) => m.FirstPagePaginationDemo,
+          ),
+      },
+      {
+        path: 'last-page-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/last-page-pagination-demo').then(
+            (m) => m.LastPagePaginationDemo,
           ),
       },
     ],
@@ -1373,10 +1513,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/progress',
     children: [
       {
-        path: 'progress-demo',
+        path: 'basic-progress-demo',
         loadComponent: () =>
-          import('../pages/docs/progress/demos/progress-demo').then(
-            (m) => m.ScProgressDemo,
+          import('../pages/docs/progress/demos/basic-progress-demo').then(
+            (m) => m.BasicProgressDemo,
+          ),
+      },
+      {
+        path: 'values-progress-demo',
+        loadComponent: () =>
+          import('../pages/docs/progress/demos/values-progress-demo').then(
+            (m) => m.ValuesProgressDemo,
+          ),
+      },
+      {
+        path: 'custom-max-progress-demo',
+        loadComponent: () =>
+          import('../pages/docs/progress/demos/custom-max-progress-demo').then(
+            (m) => m.CustomMaxProgressDemo,
+          ),
+      },
+      {
+        path: 'custom-styling-progress-demo',
+        loadComponent: () =>
+          import('../pages/docs/progress/demos/custom-styling-progress-demo').then(
+            (m) => m.CustomStylingProgressDemo,
           ),
       },
     ],
@@ -1397,10 +1558,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/radio-group',
     children: [
       {
-        path: 'radio-group-demo',
+        path: 'basic-radio-group-demo',
         loadComponent: () =>
-          import('../pages/docs/radio-group/demos/radio-group-demo').then(
-            (m) => m.ScRadioGroupDemo,
+          import('../pages/docs/radio-group/demos/basic-radio-group-demo').then(
+            (m) => m.BasicRadioGroupDemo,
+          ),
+      },
+      {
+        path: 'descriptions-radio-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/radio-group/demos/descriptions-radio-group-demo').then(
+            (m) => m.DescriptionsRadioGroupDemo,
+          ),
+      },
+      {
+        path: 'disabled-radio-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/radio-group/demos/disabled-radio-group-demo').then(
+            (m) => m.DisabledRadioGroupDemo,
+          ),
+      },
+      {
+        path: 'horizontal-radio-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/radio-group/demos/horizontal-radio-group-demo').then(
+            (m) => m.HorizontalRadioGroupDemo,
+          ),
+      },
+      {
+        path: 'form-radio-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/radio-group/demos/form-radio-group-demo').then(
+            (m) => m.FormRadioGroupDemo,
           ),
       },
     ],
@@ -1409,10 +1598,73 @@ export const demosRoutes: Route[] = [
     path: 'demos/rating',
     children: [
       {
-        path: 'rating-demo',
+        path: 'basic-rating-demo',
         loadComponent: () =>
-          import('../pages/docs/rating/demos/rating-demo').then(
-            (m) => m.ScRatingDemo,
+          import('../pages/docs/rating/demos/basic-rating-demo').then(
+            (m) => m.BasicRatingDemo,
+          ),
+      },
+      {
+        path: 'sizes-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/sizes-rating-demo').then(
+            (m) => m.SizesRatingDemo,
+          ),
+      },
+      {
+        path: 'colors-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/colors-rating-demo').then(
+            (m) => m.ColorsRatingDemo,
+          ),
+      },
+      {
+        path: 'half-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/half-rating-demo').then(
+            (m) => m.HalfRatingDemo,
+          ),
+      },
+      {
+        path: 'max-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/max-rating-demo').then(
+            (m) => m.MaxRatingDemo,
+          ),
+      },
+      {
+        path: 'readonly-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/readonly-rating-demo').then(
+            (m) => m.ReadonlyRatingDemo,
+          ),
+      },
+      {
+        path: 'disabled-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/disabled-rating-demo').then(
+            (m) => m.DisabledRatingDemo,
+          ),
+      },
+      {
+        path: 'noclear-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/noclear-rating-demo').then(
+            (m) => m.NoclearRatingDemo,
+          ),
+      },
+      {
+        path: 'icons-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/icons-rating-demo').then(
+            (m) => m.IconsRatingDemo,
+          ),
+      },
+      {
+        path: 'review-rating-demo',
+        loadComponent: () =>
+          import('../pages/docs/rating/demos/review-rating-demo').then(
+            (m) => m.ReviewRatingDemo,
           ),
       },
     ],
@@ -1481,10 +1733,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/separator',
     children: [
       {
-        path: 'separator-demo',
+        path: 'basic-separator-demo',
         loadComponent: () =>
-          import('../pages/docs/separator/demos/separator-demo').then(
-            (m) => m.ScSeparatorDemo,
+          import('../pages/docs/separator/demos/basic-separator-demo').then(
+            (m) => m.BasicSeparatorDemo,
+          ),
+      },
+      {
+        path: 'vertical-separator-demo',
+        loadComponent: () =>
+          import('../pages/docs/separator/demos/vertical-separator-demo').then(
+            (m) => m.VerticalSeparatorDemo,
+          ),
+      },
+      {
+        path: 'card-separator-demo',
+        loadComponent: () =>
+          import('../pages/docs/separator/demos/card-separator-demo').then(
+            (m) => m.CardSeparatorDemo,
           ),
       },
     ],
@@ -1550,10 +1816,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/skeleton',
     children: [
       {
-        path: 'skeleton-demo',
+        path: 'basic-skeleton-demo',
         loadComponent: () =>
-          import('../pages/docs/skeleton/demos/skeleton-demo').then(
-            (m) => m.ScSkeletonDemo,
+          import('../pages/docs/skeleton/demos/basic-skeleton-demo').then(
+            (m) => m.BasicSkeletonDemo,
+          ),
+      },
+      {
+        path: 'card-skeleton-demo',
+        loadComponent: () =>
+          import('../pages/docs/skeleton/demos/card-skeleton-demo').then(
+            (m) => m.CardSkeletonDemo,
+          ),
+      },
+      {
+        path: 'article-skeleton-demo',
+        loadComponent: () =>
+          import('../pages/docs/skeleton/demos/article-skeleton-demo').then(
+            (m) => m.ArticleSkeletonDemo,
+          ),
+      },
+      {
+        path: 'list-skeleton-demo',
+        loadComponent: () =>
+          import('../pages/docs/skeleton/demos/list-skeleton-demo').then(
+            (m) => m.ListSkeletonDemo,
+          ),
+      },
+      {
+        path: 'table-skeleton-demo',
+        loadComponent: () =>
+          import('../pages/docs/skeleton/demos/table-skeleton-demo').then(
+            (m) => m.TableSkeletonDemo,
           ),
       },
     ],
@@ -1562,10 +1856,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/slider',
     children: [
       {
-        path: 'slider-demo',
+        path: 'basic-slider-demo',
         loadComponent: () =>
-          import('../pages/docs/slider/demos/slider-demo').then(
-            (m) => m.ScSliderDemo,
+          import('../pages/docs/slider/demos/basic-slider-demo').then(
+            (m) => m.BasicSliderDemo,
+          ),
+      },
+      {
+        path: 'range-slider-demo',
+        loadComponent: () =>
+          import('../pages/docs/slider/demos/range-slider-demo').then(
+            (m) => m.RangeSliderDemo,
+          ),
+      },
+      {
+        path: 'step-slider-demo',
+        loadComponent: () =>
+          import('../pages/docs/slider/demos/step-slider-demo').then(
+            (m) => m.StepSliderDemo,
+          ),
+      },
+      {
+        path: 'disabled-slider-demo',
+        loadComponent: () =>
+          import('../pages/docs/slider/demos/disabled-slider-demo').then(
+            (m) => m.DisabledSliderDemo,
+          ),
+      },
+      {
+        path: 'volume-slider-demo',
+        loadComponent: () =>
+          import('../pages/docs/slider/demos/volume-slider-demo').then(
+            (m) => m.VolumeSliderDemo,
+          ),
+      },
+      {
+        path: 'price-slider-demo',
+        loadComponent: () =>
+          import('../pages/docs/slider/demos/price-slider-demo').then(
+            (m) => m.PriceSliderDemo,
+          ),
+      },
+      {
+        path: 'temperature-slider-demo',
+        loadComponent: () =>
+          import('../pages/docs/slider/demos/temperature-slider-demo').then(
+            (m) => m.TemperatureSliderDemo,
           ),
       },
     ],
@@ -1598,10 +1934,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/spinner',
     children: [
       {
-        path: 'spinner-demo',
+        path: 'default-spinner-demo',
         loadComponent: () =>
-          import('../pages/docs/spinner/demos/spinner-demo').then(
-            (m) => m.ScSpinnerDemo,
+          import('../pages/docs/spinner/demos/default-spinner-demo').then(
+            (m) => m.DefaultSpinnerDemo,
+          ),
+      },
+      {
+        path: 'colors-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/colors-spinner-demo').then(
+            (m) => m.ColorsSpinnerDemo,
+          ),
+      },
+      {
+        path: 'dots-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/dots-spinner-demo').then(
+            (m) => m.DotsSpinnerDemo,
+          ),
+      },
+      {
+        path: 'bars-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/bars-spinner-demo').then(
+            (m) => m.BarsSpinnerDemo,
+          ),
+      },
+      {
+        path: 'ring-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/ring-spinner-demo').then(
+            (m) => m.RingSpinnerDemo,
+          ),
+      },
+      {
+        path: 'variants-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/variants-spinner-demo').then(
+            (m) => m.VariantsSpinnerDemo,
+          ),
+      },
+      {
+        path: 'button-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/button-spinner-demo').then(
+            (m) => m.ButtonSpinnerDemo,
+          ),
+      },
+      {
+        path: 'overlay-spinner-demo',
+        loadComponent: () =>
+          import('../pages/docs/spinner/demos/overlay-spinner-demo').then(
+            (m) => m.OverlaySpinnerDemo,
           ),
       },
     ],
@@ -1646,10 +2031,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/stepper',
     children: [
       {
-        path: 'stepper-demo',
+        path: 'horizontal-stepper-demo',
         loadComponent: () =>
-          import('../pages/docs/stepper/demos/stepper-demo').then(
-            (m) => m.ScStepperDemo,
+          import('../pages/docs/stepper/demos/horizontal-stepper-demo').then(
+            (m) => m.HorizontalStepperDemo,
+          ),
+      },
+      {
+        path: 'vertical-stepper-demo',
+        loadComponent: () =>
+          import('../pages/docs/stepper/demos/vertical-stepper-demo').then(
+            (m) => m.VerticalStepperDemo,
+          ),
+      },
+      {
+        path: 'simple-stepper-demo',
+        loadComponent: () =>
+          import('../pages/docs/stepper/demos/simple-stepper-demo').then(
+            (m) => m.SimpleStepperDemo,
           ),
       },
     ],
@@ -1658,10 +2057,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/switch',
     children: [
       {
-        path: 'switch-demo',
+        path: 'basic-switch-demo',
         loadComponent: () =>
-          import('../pages/docs/switch/demos/switch-demo').then(
-            (m) => m.ScSwitchDemo,
+          import('../pages/docs/switch/demos/basic-switch-demo').then(
+            (m) => m.BasicSwitchDemo,
+          ),
+      },
+      {
+        path: 'state-switch-demo',
+        loadComponent: () =>
+          import('../pages/docs/switch/demos/state-switch-demo').then(
+            (m) => m.StateSwitchDemo,
+          ),
+      },
+      {
+        path: 'disabled-switch-demo',
+        loadComponent: () =>
+          import('../pages/docs/switch/demos/disabled-switch-demo').then(
+            (m) => m.DisabledSwitchDemo,
+          ),
+      },
+      {
+        path: 'form-switch-demo',
+        loadComponent: () =>
+          import('../pages/docs/switch/demos/form-switch-demo').then(
+            (m) => m.FormSwitchDemo,
+          ),
+      },
+      {
+        path: 'description-switch-demo',
+        loadComponent: () =>
+          import('../pages/docs/switch/demos/description-switch-demo').then(
+            (m) => m.DescriptionSwitchDemo,
           ),
       },
     ],
@@ -1670,10 +2097,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/tabs',
     children: [
       {
-        path: 'tabs-demo',
+        path: 'basic-tabs-demo',
         loadComponent: () =>
-          import('../pages/docs/tabs/demos/tabs-demo').then(
-            (m) => m.ScTabsDemo,
+          import('../pages/docs/tabs/demos/basic-tabs-demo').then(
+            (m) => m.BasicTabsDemo,
+          ),
+      },
+      {
+        path: 'disabled-tabs-demo',
+        loadComponent: () =>
+          import('../pages/docs/tabs/demos/disabled-tabs-demo').then(
+            (m) => m.DisabledTabsDemo,
           ),
       },
     ],
@@ -1730,10 +2164,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/timeline',
     children: [
       {
-        path: 'timeline-demo',
+        path: 'basic-timeline-demo',
         loadComponent: () =>
-          import('../pages/docs/timeline/demos/timeline-demo').then(
-            (m) => m.ScTimelineDemo,
+          import('../pages/docs/timeline/demos/basic-timeline-demo').then(
+            (m) => m.BasicTimelineDemo,
+          ),
+      },
+      {
+        path: 'status-timeline-demo',
+        loadComponent: () =>
+          import('../pages/docs/timeline/demos/status-timeline-demo').then(
+            (m) => m.StatusTimelineDemo,
+          ),
+      },
+      {
+        path: 'sizes-timeline-demo',
+        loadComponent: () =>
+          import('../pages/docs/timeline/demos/sizes-timeline-demo').then(
+            (m) => m.SizesTimelineDemo,
+          ),
+      },
+      {
+        path: 'activity-timeline-demo',
+        loadComponent: () =>
+          import('../pages/docs/timeline/demos/activity-timeline-demo').then(
+            (m) => m.ActivityTimelineDemo,
+          ),
+      },
+      {
+        path: 'tracking-timeline-demo',
+        loadComponent: () =>
+          import('../pages/docs/timeline/demos/tracking-timeline-demo').then(
+            (m) => m.TrackingTimelineDemo,
           ),
       },
     ],
@@ -1778,10 +2240,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/toggle-group',
     children: [
       {
-        path: 'toggle-group-demo',
+        path: 'single-toggle-group-demo',
         loadComponent: () =>
-          import('../pages/docs/toggle-group/demos/toggle-group-demo').then(
-            (m) => m.ScToggleGroupDemo,
+          import('../pages/docs/toggle-group/demos/single-toggle-group-demo').then(
+            (m) => m.SingleToggleGroupDemo,
+          ),
+      },
+      {
+        path: 'multiple-toggle-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle-group/demos/multiple-toggle-group-demo').then(
+            (m) => m.MultipleToggleGroupDemo,
+          ),
+      },
+      {
+        path: 'outline-toggle-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle-group/demos/outline-toggle-group-demo').then(
+            (m) => m.OutlineToggleGroupDemo,
+          ),
+      },
+      {
+        path: 'sizes-toggle-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle-group/demos/sizes-toggle-group-demo').then(
+            (m) => m.SizesToggleGroupDemo,
+          ),
+      },
+      {
+        path: 'disabled-toggle-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle-group/demos/disabled-toggle-group-demo').then(
+            (m) => m.DisabledToggleGroupDemo,
           ),
       },
     ],

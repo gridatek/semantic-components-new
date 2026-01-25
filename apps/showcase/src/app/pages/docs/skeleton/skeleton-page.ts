@@ -1,9 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSkeletonDemoContainer } from './demos/skeleton-demo-container';
+import { BasicSkeletonDemoContainer } from './demos/basic-skeleton-demo-container';
+import { CardSkeletonDemoContainer } from './demos/card-skeleton-demo-container';
+import { ArticleSkeletonDemoContainer } from './demos/article-skeleton-demo-container';
+import { ListSkeletonDemoContainer } from './demos/list-skeleton-demo-container';
+import { TableSkeletonDemoContainer } from './demos/table-skeleton-demo-container';
 
 @Component({
   selector: 'app-skeleton-page',
-  imports: [ScSkeletonDemoContainer],
+  imports: [BasicSkeletonDemoContainer, CardSkeletonDemoContainer, ArticleSkeletonDemoContainer, ListSkeletonDemoContainer, TableSkeletonDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +19,11 @@ import { ScSkeletonDemoContainer } from './demos/skeleton-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-skeleton-demo-container />
+        <app-basic-skeleton-demo-container />
+        <app-card-skeleton-demo-container />
+        <app-article-skeleton-demo-container />
+        <app-list-skeleton-demo-container />
+        <app-table-skeleton-demo-container />
       </section>
     </div>
   `,

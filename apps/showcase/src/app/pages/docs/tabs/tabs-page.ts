@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTabsDemoContainer } from './demos/tabs-demo-container';
+import { BasicTabsDemoContainer } from './demos/basic-tabs-demo-container';
+import { DisabledTabsDemoContainer } from './demos/disabled-tabs-demo-container';
 
 @Component({
   selector: 'app-tabs-page',
-  imports: [ScTabsDemoContainer],
+  imports: [BasicTabsDemoContainer, DisabledTabsDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +17,8 @@ import { ScTabsDemoContainer } from './demos/tabs-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-tabs-demo-container />
+        <app-basic-tabs-demo-container />
+        <app-disabled-tabs-demo-container />
       </section>
     </div>
   `,
