@@ -8,9 +8,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'nav[sc-navbar]',
+  hostDirectives: [CdkOverlayOrigin],
   template: `
     <ng-content />
   `,
@@ -24,6 +26,8 @@ import { cn } from '../../utils';
 export class ScNavbar {
   readonly elementRef = inject(ElementRef);
   readonly classInput = input<string>('', { alias: 'class' });
+
+  readonly overlayOrigin = inject(CdkOverlayOrigin);
 
   protected readonly class = computed(() =>
     cn(

@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   input,
   model,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScNavbar } from './navbar';
 
 @Component({
   selector: 'div[sc-navbar-provider]',
@@ -27,4 +29,7 @@ export class ScNavbarProvider {
   readonly open = model<boolean>(false);
 
   protected readonly class = computed(() => cn('', this.classInput()));
+
+  private readonly navbar = contentChild(ScNavbar);
+  readonly origin = computed(() => this.navbar()?.overlayOrigin);
 }

@@ -9,7 +9,6 @@ import {
   input,
   signal,
   TemplateRef,
-  ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
