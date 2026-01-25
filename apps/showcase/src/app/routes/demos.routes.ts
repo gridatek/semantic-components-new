@@ -2361,10 +2361,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/virtual-list',
     children: [
       {
-        path: 'virtual-list-demo',
+        path: 'basic-virtual-list-demo',
         loadComponent: () =>
-          import('../pages/docs/virtual-list/demos/virtual-list-demo').then(
-            (m) => m.VirtualListDemo,
+          import('../pages/docs/virtual-list/demos/basic-virtual-list-demo').then(
+            (m) => m.BasicVirtualListDemo,
+          ),
+      },
+      {
+        path: 'complex-virtual-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/virtual-list/demos/complex-virtual-list-demo').then(
+            (m) => m.ComplexVirtualListDemo,
+          ),
+      },
+      {
+        path: 'scroll-controls-virtual-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/virtual-list/demos/scroll-controls-virtual-list-demo').then(
+            (m) => m.ScrollControlsVirtualListDemo,
+          ),
+      },
+      {
+        path: 'custom-height-virtual-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/virtual-list/demos/custom-height-virtual-list-demo').then(
+            (m) => m.CustomHeightVirtualListDemo,
           ),
       },
     ],

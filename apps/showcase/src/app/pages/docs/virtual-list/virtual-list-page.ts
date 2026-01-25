@@ -1,13 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { VirtualListDemoContainer } from './demos/virtual-list-demo-container';
+import { BasicVirtualListDemoContainer } from './demos/basic-virtual-list-demo-container';
+import { ComplexVirtualListDemoContainer } from './demos/complex-virtual-list-demo-container';
+import { ScrollControlsVirtualListDemoContainer } from './demos/scroll-controls-virtual-list-demo-container';
+import { CustomHeightVirtualListDemoContainer } from './demos/custom-height-virtual-list-demo-container';
 
 @Component({
   selector: 'app-virtual-list-page',
-  imports: [VirtualListDemoContainer],
+  imports: [
+    BasicVirtualListDemoContainer,
+    ComplexVirtualListDemoContainer,
+    ScrollControlsVirtualListDemoContainer,
+    CustomHeightVirtualListDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
-        <h1 class="text-3xl font-bold tracking-tight">VirtualList</h1>
+        <h1 class="text-3xl font-bold tracking-tight">Virtual List</h1>
         <p class="text-muted-foreground">
           Efficiently render large lists by only rendering visible items.
         </p>
@@ -15,7 +23,10 @@ import { VirtualListDemoContainer } from './demos/virtual-list-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-virtual-list-demo-container />
+        <app-basic-virtual-list-demo-container />
+        <app-complex-virtual-list-demo-container />
+        <app-scroll-controls-virtual-list-demo-container />
+        <app-custom-height-virtual-list-demo-container />
       </section>
     </div>
   `,
