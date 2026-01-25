@@ -12,7 +12,7 @@ import {
   LanguageSwitcherSize,
   variantStyles,
   sizeStyles,
-} from './language-toggle';
+} from './styles';
 
 /**
  * Language switcher with flag/label display - a more visual option.
