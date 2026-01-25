@@ -83,7 +83,19 @@ import type { TransferListItem } from './transfer-list-types';
           (click)="moveToTarget()"
           aria-label="Move selected to right"
         >
-          <span [innerHTML]="rightIcon"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
         </button>
         <button
           type="button"
@@ -92,7 +104,19 @@ import type { TransferListItem } from './transfer-list-types';
           (click)="moveToSource()"
           aria-label="Move selected to left"
         >
-          <span [innerHTML]="leftIcon"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
         </button>
         <button
           type="button"
@@ -101,7 +125,20 @@ import type { TransferListItem } from './transfer-list-types';
           (click)="moveAllToTarget()"
           aria-label="Move all to right"
         >
-          <span [innerHTML]="rightAllIcon"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m6 17 5-5-5-5" />
+            <path d="m13 17 5-5-5-5" />
+          </svg>
         </button>
         <button
           type="button"
@@ -110,7 +147,20 @@ import type { TransferListItem } from './transfer-list-types';
           (click)="moveAllToSource()"
           aria-label="Move all to left"
         >
-          <span [innerHTML]="leftAllIcon"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m18 17-5-5 5-5" />
+            <path d="m11 17-5-5 5-5" />
+          </svg>
         </button>
       </div>
 
@@ -199,11 +249,6 @@ export class ScTransferList {
   protected readonly sourceSearch = signal('');
   protected readonly targetSearch = signal('');
 
-  readonly rightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
-  readonly leftIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>`;
-  readonly rightAllIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>`;
-  readonly leftAllIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 17-5-5 5-5"/><path d="m11 17-5-5 5-5"/></svg>`;
-
   protected readonly filteredSourceItems = computed(() => {
     const search = this.sourceSearch().toLowerCase();
     if (!search) return this.sourceItems();
@@ -278,7 +323,7 @@ export class ScTransferList {
   protected readonly buttonClass = computed(() =>
     cn(
       'inline-flex items-center justify-center w-9 h-9',
-      'rounded-md border bg-background',
+      'rounded-md border bg-background text-foreground',
       'hover:bg-accent hover:text-accent-foreground',
       'disabled:opacity-50 disabled:cursor-not-allowed',
       'transition-colors',
