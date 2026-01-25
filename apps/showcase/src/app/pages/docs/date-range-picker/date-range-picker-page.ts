@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDateRangePickerDemoContainer } from './demos/date-range-picker-demo-container';
+import { BasicDateRangePickerDemoContainer } from './demos/basic-date-range-picker-demo-container';
+import { PresetsDateRangePickerDemoContainer } from './demos/presets-date-range-picker-demo-container';
+import { ConstrainedDateRangePickerDemoContainer } from './demos/constrained-date-range-picker-demo-container';
+import { FormatsDateRangePickerDemoContainer } from './demos/formats-date-range-picker-demo-container';
+import { NoClearDateRangePickerDemoContainer } from './demos/no-clear-date-range-picker-demo-container';
+import { DisabledDateRangePickerDemoContainer } from './demos/disabled-date-range-picker-demo-container';
+import { AnalyticsDateRangePickerDemoContainer } from './demos/analytics-date-range-picker-demo-container';
 
 @Component({
   selector: 'app-date-range-picker-page',
-  imports: [ScDateRangePickerDemoContainer],
+  imports: [
+    BasicDateRangePickerDemoContainer,
+    PresetsDateRangePickerDemoContainer,
+    ConstrainedDateRangePickerDemoContainer,
+    FormatsDateRangePickerDemoContainer,
+    NoClearDateRangePickerDemoContainer,
+    DisabledDateRangePickerDemoContainer,
+    AnalyticsDateRangePickerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +30,13 @@ import { ScDateRangePickerDemoContainer } from './demos/date-range-picker-demo-c
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-date-range-picker-demo-container />
+        <app-basic-date-range-picker-demo-container />
+        <app-presets-date-range-picker-demo-container />
+        <app-constrained-date-range-picker-demo-container />
+        <app-formats-date-range-picker-demo-container />
+        <app-no-clear-date-range-picker-demo-container />
+        <app-disabled-date-range-picker-demo-container />
+        <app-analytics-date-range-picker-demo-container />
       </section>
     </div>
   `,

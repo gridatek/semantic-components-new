@@ -1132,10 +1132,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/date-range-picker',
     children: [
       {
-        path: 'date-range-picker-demo',
+        path: 'basic-date-range-picker-demo',
         loadComponent: () =>
-          import('../pages/docs/date-range-picker/demos/date-range-picker-demo').then(
-            (m) => m.ScDateRangePickerDemo,
+          import('../pages/docs/date-range-picker/demos/basic-date-range-picker-demo').then(
+            (m) => m.BasicDateRangePickerDemo,
+          ),
+      },
+      {
+        path: 'presets-date-range-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-range-picker/demos/presets-date-range-picker-demo').then(
+            (m) => m.PresetsDateRangePickerDemo,
+          ),
+      },
+      {
+        path: 'constrained-date-range-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-range-picker/demos/constrained-date-range-picker-demo').then(
+            (m) => m.ConstrainedDateRangePickerDemo,
+          ),
+      },
+      {
+        path: 'formats-date-range-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-range-picker/demos/formats-date-range-picker-demo').then(
+            (m) => m.FormatsDateRangePickerDemo,
+          ),
+      },
+      {
+        path: 'no-clear-date-range-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-range-picker/demos/no-clear-date-range-picker-demo').then(
+            (m) => m.NoClearDateRangePickerDemo,
+          ),
+      },
+      {
+        path: 'disabled-date-range-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-range-picker/demos/disabled-date-range-picker-demo').then(
+            (m) => m.DisabledDateRangePickerDemo,
+          ),
+      },
+      {
+        path: 'analytics-date-range-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/date-range-picker/demos/analytics-date-range-picker-demo').then(
+            (m) => m.AnalyticsDateRangePickerDemo,
           ),
       },
     ],
