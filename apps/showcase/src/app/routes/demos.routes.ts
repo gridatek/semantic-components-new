@@ -2325,10 +2325,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/transfer-list',
     children: [
       {
-        path: 'transfer-list-demo',
+        path: 'basic-transfer-list-demo',
         loadComponent: () =>
-          import('../pages/docs/transfer-list/demos/transfer-list-demo').then(
-            (m) => m.TransferListDemo,
+          import('../pages/docs/transfer-list/demos/basic-transfer-list-demo').then(
+            (m) => m.BasicTransferListDemo,
+          ),
+      },
+      {
+        path: 'no-search-transfer-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/transfer-list/demos/no-search-transfer-list-demo').then(
+            (m) => m.NoSearchTransferListDemo,
           ),
       },
     ],

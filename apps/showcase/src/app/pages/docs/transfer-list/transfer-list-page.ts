@@ -1,19 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TransferListDemoContainer } from './demos/transfer-list-demo-container';
+import { BasicTransferListDemoContainer } from './demos/basic-transfer-list-demo-container';
+import { NoSearchTransferListDemoContainer } from './demos/no-search-transfer-list-demo-container';
 
 @Component({
   selector: 'app-transfer-list-page',
-  imports: [TransferListDemoContainer],
+  imports: [BasicTransferListDemoContainer, NoSearchTransferListDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
-        <h1 class="text-3xl font-bold tracking-tight">TransferList</h1>
-        <p class="text-muted-foreground">A transfer list component.</p>
+        <h1 class="text-3xl font-bold tracking-tight">Transfer List</h1>
+        <p class="text-muted-foreground">
+          Move items between two lists with search and selection controls.
+        </p>
       </div>
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-transfer-list-demo-container />
+        <app-basic-transfer-list-demo-container />
+        <app-no-search-transfer-list-demo-container />
       </section>
     </div>
   `,
