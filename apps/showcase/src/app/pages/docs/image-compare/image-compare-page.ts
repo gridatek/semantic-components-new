@@ -1,9 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScImageCompareDemoContainer } from './demos/image-compare-demo-container';
+import { BasicImageCompareDemoContainer } from './demos/basic-image-compare-demo-container';
+import { LabelsImageCompareDemoContainer } from './demos/labels-image-compare-demo-container';
+import { NoLabelsImageCompareDemoContainer } from './demos/no-labels-image-compare-demo-container';
+import { VerticalImageCompareDemoContainer } from './demos/vertical-image-compare-demo-container';
+import { PositionImageCompareDemoContainer } from './demos/position-image-compare-demo-container';
+import { ControlledImageCompareDemoContainer } from './demos/controlled-image-compare-demo-container';
+import { SquareImageCompareDemoContainer } from './demos/square-image-compare-demo-container';
+import { KeyboardImageCompareDemoContainer } from './demos/keyboard-image-compare-demo-container';
 
 @Component({
   selector: 'app-image-compare-page',
-  imports: [ScImageCompareDemoContainer],
+  imports: [
+    BasicImageCompareDemoContainer,
+    LabelsImageCompareDemoContainer,
+    NoLabelsImageCompareDemoContainer,
+    VerticalImageCompareDemoContainer,
+    PositionImageCompareDemoContainer,
+    ControlledImageCompareDemoContainer,
+    SquareImageCompareDemoContainer,
+    KeyboardImageCompareDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +31,14 @@ import { ScImageCompareDemoContainer } from './demos/image-compare-demo-containe
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-image-compare-demo-container />
+        <app-basic-image-compare-demo-container />
+        <app-labels-image-compare-demo-container />
+        <app-no-labels-image-compare-demo-container />
+        <app-vertical-image-compare-demo-container />
+        <app-position-image-compare-demo-container />
+        <app-controlled-image-compare-demo-container />
+        <app-square-image-compare-demo-container />
+        <app-keyboard-image-compare-demo-container />
       </section>
     </div>
   `,
