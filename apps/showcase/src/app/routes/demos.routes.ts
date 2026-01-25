@@ -746,10 +746,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/collapsible',
     children: [
       {
-        path: 'collapsible-demo',
+        path: 'basic-collapsible-demo',
         loadComponent: () =>
-          import('../pages/docs/collapsible/demos/collapsible-demo').then(
-            (m) => m.ScCollapsibleDemo,
+          import('../pages/docs/collapsible/demos/basic-collapsible-demo').then(
+            (m) => m.BasicCollapsibleDemo,
+          ),
+      },
+      {
+        path: 'open-collapsible-demo',
+        loadComponent: () =>
+          import('../pages/docs/collapsible/demos/open-collapsible-demo').then(
+            (m) => m.OpenCollapsibleDemo,
+          ),
+      },
+      {
+        path: 'disabled-collapsible-demo',
+        loadComponent: () =>
+          import('../pages/docs/collapsible/demos/disabled-collapsible-demo').then(
+            (m) => m.DisabledCollapsibleDemo,
           ),
       },
     ],
@@ -770,10 +784,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/combobox',
     children: [
       {
-        path: 'combobox-demo',
+        path: 'basic-combobox-demo',
         loadComponent: () =>
-          import('../pages/docs/combobox/demos/combobox-demo').then(
-            (m) => m.ScComboboxDemo,
+          import('../pages/docs/combobox/demos/basic-combobox-demo').then(
+            (m) => m.BasicComboboxDemo,
+          ),
+      },
+      {
+        path: 'disabled-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/disabled-combobox-demo').then(
+            (m) => m.DisabledComboboxDemo,
+          ),
+      },
+      {
+        path: 'multiple-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/multiple-combobox-demo').then(
+            (m) => m.MultipleComboboxDemo,
+          ),
+      },
+      {
+        path: 'countries-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/countries-combobox-demo').then(
+            (m) => m.CountriesComboboxDemo,
+          ),
+      },
+      {
+        path: 'form-combobox-demo',
+        loadComponent: () =>
+          import('../pages/docs/combobox/demos/form-combobox-demo').then(
+            (m) => m.FormComboboxDemo,
           ),
       },
     ],
@@ -905,10 +947,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/data-table',
     children: [
       {
-        path: 'data-table-demo',
+        path: 'featured-data-table-demo',
         loadComponent: () =>
-          import('../pages/docs/data-table/demos/data-table-demo').then(
-            (m) => m.ScDataTableDemo,
+          import('../pages/docs/data-table/demos/featured-data-table-demo').then(
+            (m) => m.FeaturedDataTableDemo,
+          ),
+      },
+      {
+        path: 'simple-data-table-demo',
+        loadComponent: () =>
+          import('../pages/docs/data-table/demos/simple-data-table-demo').then(
+            (m) => m.SimpleDataTableDemo,
+          ),
+      },
+      {
+        path: 'filter-data-table-demo',
+        loadComponent: () =>
+          import('../pages/docs/data-table/demos/filter-data-table-demo').then(
+            (m) => m.FilterDataTableDemo,
           ),
       },
     ],
@@ -1044,10 +1100,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/form',
     children: [
       {
-        path: 'form-demo',
+        path: 'basic-form-demo',
         loadComponent: () =>
-          import('../pages/docs/form/demos/form-demo').then(
-            (m) => m.ScFormDemo,
+          import('../pages/docs/form/demos/basic-form-demo').then(
+            (m) => m.BasicFormDemo,
+          ),
+      },
+      {
+        path: 'profile-form-demo',
+        loadComponent: () =>
+          import('../pages/docs/form/demos/profile-form-demo').then(
+            (m) => m.ProfileFormDemo,
+          ),
+      },
+      {
+        path: 'validation-form-demo',
+        loadComponent: () =>
+          import('../pages/docs/form/demos/validation-form-demo').then(
+            (m) => m.ValidationFormDemo,
           ),
       },
     ],
