@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScFileUploadDemoContainer } from './demos/file-upload-demo-container';
+import { ButtonFileUploadDemoContainer } from './demos/button-file-upload-demo-container';
+import { DropzoneFileUploadDemoContainer } from './demos/dropzone-file-upload-demo-container';
+import { ImageFileUploadDemoContainer } from './demos/image-file-upload-demo-container';
+import { ProgressFileUploadDemoContainer } from './demos/progress-file-upload-demo-container';
+import { SingleFileUploadDemoContainer } from './demos/single-file-upload-demo-container';
 
 @Component({
   selector: 'app-file-upload-page',
-  imports: [ScFileUploadDemoContainer],
+  imports: [
+    DropzoneFileUploadDemoContainer,
+    ImageFileUploadDemoContainer,
+    ButtonFileUploadDemoContainer,
+    SingleFileUploadDemoContainer,
+    ProgressFileUploadDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +25,11 @@ import { ScFileUploadDemoContainer } from './demos/file-upload-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-file-upload-demo-container />
+        <app-dropzone-file-upload-demo-container />
+        <app-image-file-upload-demo-container />
+        <app-button-file-upload-demo-container />
+        <app-single-file-upload-demo-container />
+        <app-progress-file-upload-demo-container />
       </section>
     </div>
   `,

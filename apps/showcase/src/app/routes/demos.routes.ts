@@ -1076,10 +1076,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/empty-state',
     children: [
       {
-        path: 'empty-state-demo',
+        path: 'basic-empty-state-demo',
         loadComponent: () =>
-          import('../pages/docs/empty-state/demos/empty-state-demo').then(
-            (m) => m.EmptyStateDemo,
+          import('../pages/docs/empty-state/demos/basic-empty-state-demo').then(
+            (m) => m.BasicEmptyStateDemo,
+          ),
+      },
+      {
+        path: 'actions-empty-state-demo',
+        loadComponent: () =>
+          import('../pages/docs/empty-state/demos/actions-empty-state-demo').then(
+            (m) => m.ActionsEmptyStateDemo,
+          ),
+      },
+      {
+        path: 'sizes-empty-state-demo',
+        loadComponent: () =>
+          import('../pages/docs/empty-state/demos/sizes-empty-state-demo').then(
+            (m) => m.SizesEmptyStateDemo,
+          ),
+      },
+      {
+        path: 'usecases-empty-state-demo',
+        loadComponent: () =>
+          import('../pages/docs/empty-state/demos/usecases-empty-state-demo').then(
+            (m) => m.UsecasesEmptyStateDemo,
           ),
       },
     ],
@@ -1088,10 +1109,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/file-upload',
     children: [
       {
-        path: 'file-upload-demo',
+        path: 'dropzone-file-upload-demo',
         loadComponent: () =>
-          import('../pages/docs/file-upload/demos/file-upload-demo').then(
-            (m) => m.ScFileUploadDemo,
+          import('../pages/docs/file-upload/demos/dropzone-file-upload-demo').then(
+            (m) => m.DropzoneFileUploadDemo,
+          ),
+      },
+      {
+        path: 'image-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/image-file-upload-demo').then(
+            (m) => m.ImageFileUploadDemo,
+          ),
+      },
+      {
+        path: 'button-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/button-file-upload-demo').then(
+            (m) => m.ButtonFileUploadDemo,
+          ),
+      },
+      {
+        path: 'single-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/single-file-upload-demo').then(
+            (m) => m.SingleFileUploadDemo,
+          ),
+      },
+      {
+        path: 'progress-file-upload-demo',
+        loadComponent: () =>
+          import('../pages/docs/file-upload/demos/progress-file-upload-demo').then(
+            (m) => m.ProgressFileUploadDemo,
           ),
       },
     ],
