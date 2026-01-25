@@ -2302,10 +2302,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/toast',
     children: [
       {
-        path: 'toast-demo',
+        path: 'basic-toast-demo',
         loadComponent: () =>
-          import('../pages/docs/toast/demos/toast-demo').then(
-            (m) => m.ScToastDemo,
+          import('../pages/docs/toast/demos/basic-toast-demo').then(
+            (m) => m.BasicToastDemo,
+          ),
+      },
+      {
+        path: 'title-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/title-toast-demo').then(
+            (m) => m.TitleToastDemo,
+          ),
+      },
+      {
+        path: 'action-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/action-toast-demo').then(
+            (m) => m.ActionToastDemo,
+          ),
+      },
+      {
+        path: 'destructive-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/destructive-toast-demo').then(
+            (m) => m.DestructiveToastDemo,
+          ),
+      },
+      {
+        path: 'duration-toast-demo',
+        loadComponent: () =>
+          import('../pages/docs/toast/demos/duration-toast-demo').then(
+            (m) => m.DurationToastDemo,
           ),
       },
     ],

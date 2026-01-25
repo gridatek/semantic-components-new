@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScToastDemoContainer } from './demos/toast-demo-container';
+import { ActionToastDemoContainer } from './demos/action-toast-demo-container';
+import { BasicToastDemoContainer } from './demos/basic-toast-demo-container';
+import { DestructiveToastDemoContainer } from './demos/destructive-toast-demo-container';
+import { DurationToastDemoContainer } from './demos/duration-toast-demo-container';
+import { TitleToastDemoContainer } from './demos/title-toast-demo-container';
 
 @Component({
   selector: 'app-toast-page',
-  imports: [ScToastDemoContainer],
+  imports: [
+    BasicToastDemoContainer,
+    TitleToastDemoContainer,
+    ActionToastDemoContainer,
+    DestructiveToastDemoContainer,
+    DurationToastDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +25,11 @@ import { ScToastDemoContainer } from './demos/toast-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-toast-demo-container />
+        <app-basic-toast-demo-container />
+        <app-title-toast-demo-container />
+        <app-action-toast-demo-container />
+        <app-destructive-toast-demo-container />
+        <app-duration-toast-demo-container />
       </section>
     </div>
   `,
