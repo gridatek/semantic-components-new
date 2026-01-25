@@ -1,9 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScKbdDemoContainer } from './demos/kbd-demo-container';
+import { ArrowKeysKbdDemoContainer } from './demos/arrow-keys-kbd-demo-container';
+import { BasicKbdDemoContainer } from './demos/basic-kbd-demo-container';
+import { ComplexShortcutsKbdDemoContainer } from './demos/complex-shortcuts-kbd-demo-container';
+import { FunctionKeysKbdDemoContainer } from './demos/function-keys-kbd-demo-container';
+import { InlineKbdDemoContainer } from './demos/inline-kbd-demo-container';
+import { ShortcutsKbdDemoContainer } from './demos/shortcuts-kbd-demo-container';
+import { SizesKbdDemoContainer } from './demos/sizes-kbd-demo-container';
+import { VariantsKbdDemoContainer } from './demos/variants-kbd-demo-container';
 
 @Component({
   selector: 'app-kbd-page',
-  imports: [ScKbdDemoContainer],
+  imports: [
+    BasicKbdDemoContainer,
+    ShortcutsKbdDemoContainer,
+    VariantsKbdDemoContainer,
+    SizesKbdDemoContainer,
+    ArrowKeysKbdDemoContainer,
+    FunctionKeysKbdDemoContainer,
+    InlineKbdDemoContainer,
+    ComplexShortcutsKbdDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +31,14 @@ import { ScKbdDemoContainer } from './demos/kbd-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-kbd-demo-container />
+        <app-basic-kbd-demo-container />
+        <app-shortcuts-kbd-demo-container />
+        <app-variants-kbd-demo-container />
+        <app-sizes-kbd-demo-container />
+        <app-arrow-keys-kbd-demo-container />
+        <app-function-keys-kbd-demo-container />
+        <app-inline-kbd-demo-container />
+        <app-complex-shortcuts-kbd-demo-container />
       </section>
     </div>
   `,

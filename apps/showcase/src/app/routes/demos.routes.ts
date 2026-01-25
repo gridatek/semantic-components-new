@@ -1208,9 +1208,60 @@ export const demosRoutes: Route[] = [
     path: 'demos/kbd',
     children: [
       {
-        path: 'kbd-demo',
+        path: 'basic-kbd-demo',
         loadComponent: () =>
-          import('../pages/docs/kbd/demos/kbd-demo').then((m) => m.ScKbdDemo),
+          import('../pages/docs/kbd/demos/basic-kbd-demo').then(
+            (m) => m.BasicKbdDemo,
+          ),
+      },
+      {
+        path: 'shortcuts-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/shortcuts-kbd-demo').then(
+            (m) => m.ShortcutsKbdDemo,
+          ),
+      },
+      {
+        path: 'variants-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/variants-kbd-demo').then(
+            (m) => m.VariantsKbdDemo,
+          ),
+      },
+      {
+        path: 'sizes-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/sizes-kbd-demo').then(
+            (m) => m.SizesKbdDemo,
+          ),
+      },
+      {
+        path: 'arrow-keys-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/arrow-keys-kbd-demo').then(
+            (m) => m.ArrowKeysKbdDemo,
+          ),
+      },
+      {
+        path: 'function-keys-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/function-keys-kbd-demo').then(
+            (m) => m.FunctionKeysKbdDemo,
+          ),
+      },
+      {
+        path: 'inline-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/inline-kbd-demo').then(
+            (m) => m.InlineKbdDemo,
+          ),
+      },
+      {
+        path: 'complex-shortcuts-kbd-demo',
+        loadComponent: () =>
+          import('../pages/docs/kbd/demos/complex-shortcuts-kbd-demo').then(
+            (m) => m.ComplexShortcutsKbdDemo,
+          ),
       },
     ],
   },
