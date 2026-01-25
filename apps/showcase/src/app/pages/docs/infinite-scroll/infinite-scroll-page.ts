@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInfiniteScrollDemoContainer } from './demos/infinite-scroll-demo-container';
+import { BasicInfiniteScrollDemoContainer } from './demos/basic-infinite-scroll-demo-container';
+import { CustomLoaderInfiniteScrollDemoContainer } from './demos/custom-loader-infinite-scroll-demo-container';
+import { EndMessageInfiniteScrollDemoContainer } from './demos/end-message-infinite-scroll-demo-container';
+import { ThresholdInfiniteScrollDemoContainer } from './demos/threshold-infinite-scroll-demo-container';
+import { GridInfiniteScrollDemoContainer } from './demos/grid-infinite-scroll-demo-container';
 
 @Component({
   selector: 'app-infinite-scroll-page',
-  imports: [ScInfiniteScrollDemoContainer],
+  imports: [
+    BasicInfiniteScrollDemoContainer,
+    CustomLoaderInfiniteScrollDemoContainer,
+    EndMessageInfiniteScrollDemoContainer,
+    ThresholdInfiniteScrollDemoContainer,
+    GridInfiniteScrollDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +25,11 @@ import { ScInfiniteScrollDemoContainer } from './demos/infinite-scroll-demo-cont
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-infinite-scroll-demo-container />
+        <app-basic-infinite-scroll-demo-container />
+        <app-custom-loader-infinite-scroll-demo-container />
+        <app-end-message-infinite-scroll-demo-container />
+        <app-threshold-infinite-scroll-demo-container />
+        <app-grid-infinite-scroll-demo-container />
       </section>
     </div>
   `,

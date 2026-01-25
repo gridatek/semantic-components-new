@@ -1545,10 +1545,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/infinite-scroll',
     children: [
       {
-        path: 'infinite-scroll-demo',
+        path: 'basic-infinite-scroll-demo',
         loadComponent: () =>
-          import('../pages/docs/infinite-scroll/demos/infinite-scroll-demo').then(
-            (m) => m.ScInfiniteScrollDemo,
+          import('../pages/docs/infinite-scroll/demos/basic-infinite-scroll-demo').then(
+            (m) => m.BasicInfiniteScrollDemo,
+          ),
+      },
+      {
+        path: 'custom-loader-infinite-scroll-demo',
+        loadComponent: () =>
+          import('../pages/docs/infinite-scroll/demos/custom-loader-infinite-scroll-demo').then(
+            (m) => m.CustomLoaderInfiniteScrollDemo,
+          ),
+      },
+      {
+        path: 'end-message-infinite-scroll-demo',
+        loadComponent: () =>
+          import('../pages/docs/infinite-scroll/demos/end-message-infinite-scroll-demo').then(
+            (m) => m.EndMessageInfiniteScrollDemo,
+          ),
+      },
+      {
+        path: 'threshold-infinite-scroll-demo',
+        loadComponent: () =>
+          import('../pages/docs/infinite-scroll/demos/threshold-infinite-scroll-demo').then(
+            (m) => m.ThresholdInfiniteScrollDemo,
+          ),
+      },
+      {
+        path: 'grid-infinite-scroll-demo',
+        loadComponent: () =>
+          import('../pages/docs/infinite-scroll/demos/grid-infinite-scroll-demo').then(
+            (m) => m.GridInfiniteScrollDemo,
           ),
       },
     ],
