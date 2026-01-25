@@ -6,7 +6,11 @@ import { ComplexVirtualListDemo } from './complex-virtual-list-demo';
   selector: 'app-complex-virtual-list-demo-container',
   imports: [DemoContainer, ComplexVirtualListDemo],
   template: `
-    <app-demo-container title="Complex Items" [code]="code">
+    <app-demo-container
+      title="Complex Items"
+      demoUrl="/demos/virtual-list/complex-virtual-list-demo"
+      [code]="code"
+    >
       <app-complex-virtual-list-demo />
     </app-demo-container>
   `,

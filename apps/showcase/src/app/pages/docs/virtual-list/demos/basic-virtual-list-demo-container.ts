@@ -6,7 +6,11 @@ import { BasicVirtualListDemo } from './basic-virtual-list-demo';
   selector: 'app-basic-virtual-list-demo-container',
   imports: [DemoContainer, BasicVirtualListDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/virtual-list/basic-virtual-list-demo"
+      [code]="code"
+    >
       <app-basic-virtual-list-demo />
     </app-demo-container>
   `,

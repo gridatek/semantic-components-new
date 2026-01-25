@@ -6,7 +6,11 @@ import { ScrollControlsVirtualListDemo } from './scroll-controls-virtual-list-de
   selector: 'app-scroll-controls-virtual-list-demo-container',
   imports: [DemoContainer, ScrollControlsVirtualListDemo],
   template: `
-    <app-demo-container title="Scroll Controls" [code]="code">
+    <app-demo-container
+      title="Scroll Controls"
+      demoUrl="/demos/virtual-list/scroll-controls-virtual-list-demo"
+      [code]="code"
+    >
       <app-scroll-controls-virtual-list-demo />
     </app-demo-container>
   `,

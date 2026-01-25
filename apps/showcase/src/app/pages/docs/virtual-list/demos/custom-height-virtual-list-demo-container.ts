@@ -6,7 +6,11 @@ import { CustomHeightVirtualListDemo } from './custom-height-virtual-list-demo';
   selector: 'app-custom-height-virtual-list-demo-container',
   imports: [DemoContainer, CustomHeightVirtualListDemo],
   template: `
-    <app-demo-container title="Custom Height" [code]="code">
+    <app-demo-container
+      title="Custom Height"
+      demoUrl="/demos/virtual-list/custom-height-virtual-list-demo"
+      [code]="code"
+    >
       <app-custom-height-virtual-list-demo />
     </app-demo-container>
   `,
