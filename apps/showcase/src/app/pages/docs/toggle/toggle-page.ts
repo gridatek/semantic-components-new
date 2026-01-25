@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScToggleDemoContainer } from './demos/toggle-demo-container';
+import { BasicToggleDemoContainer } from './demos/basic-toggle-demo-container';
+import { DisabledToggleDemoContainer } from './demos/disabled-toggle-demo-container';
+import { OutlineToggleDemoContainer } from './demos/outline-toggle-demo-container';
+import { SizesToggleDemoContainer } from './demos/sizes-toggle-demo-container';
+import { ToolbarToggleDemoContainer } from './demos/toolbar-toggle-demo-container';
+import { WithTextToggleDemoContainer } from './demos/with-text-toggle-demo-container';
 
 @Component({
   selector: 'app-toggle-page',
-  imports: [ScToggleDemoContainer],
+  imports: [
+    BasicToggleDemoContainer,
+    OutlineToggleDemoContainer,
+    WithTextToggleDemoContainer,
+    SizesToggleDemoContainer,
+    DisabledToggleDemoContainer,
+    ToolbarToggleDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +27,12 @@ import { ScToggleDemoContainer } from './demos/toggle-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-toggle-demo-container />
+        <app-basic-toggle-demo-container />
+        <app-outline-toggle-demo-container />
+        <app-with-text-toggle-demo-container />
+        <app-sizes-toggle-demo-container />
+        <app-disabled-toggle-demo-container />
+        <app-toolbar-toggle-demo-container />
       </section>
     </div>
   `,

@@ -2228,10 +2228,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/toggle',
     children: [
       {
-        path: 'toggle-demo',
+        path: 'basic-toggle-demo',
         loadComponent: () =>
-          import('../pages/docs/toggle/demos/toggle-demo').then(
-            (m) => m.ScToggleDemo,
+          import('../pages/docs/toggle/demos/basic-toggle-demo').then(
+            (m) => m.BasicToggleDemo,
+          ),
+      },
+      {
+        path: 'outline-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle/demos/outline-toggle-demo').then(
+            (m) => m.OutlineToggleDemo,
+          ),
+      },
+      {
+        path: 'with-text-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle/demos/with-text-toggle-demo').then(
+            (m) => m.WithTextToggleDemo,
+          ),
+      },
+      {
+        path: 'sizes-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle/demos/sizes-toggle-demo').then(
+            (m) => m.SizesToggleDemo,
+          ),
+      },
+      {
+        path: 'disabled-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle/demos/disabled-toggle-demo').then(
+            (m) => m.DisabledToggleDemo,
+          ),
+      },
+      {
+        path: 'toolbar-toggle-demo',
+        loadComponent: () =>
+          import('../pages/docs/toggle/demos/toolbar-toggle-demo').then(
+            (m) => m.ToolbarToggleDemo,
           ),
       },
     ],
