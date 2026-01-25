@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTabs, ScTabPanel, ScTabList } from '@semantic-components/ui';
+import { ScTabs, ScTabPanel, ScTabList, ScTab } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-tabs-demo',
-  imports: [ScTabs, ScTabPanel, ScTabList],
+  imports: [ScTabs, ScTabPanel, ScTabList, ScTab],
   template: `
     <div sc-tabs class="w-[400px]">
       <div
@@ -11,8 +11,8 @@ import { ScTabs, ScTabPanel, ScTabList } from '@semantic-components/ui';
         [selectedTab]="'account'"
         class="grid w-full grid-cols-2"
       >
-        <button sc-tab-trigger value="account">Account</button>
-        <button sc-tab-trigger value="password">Password</button>
+        <button sc-tab value="account">Account</button>
+        <button sc-tab value="password">Password</button>
       </div>
       <div sc-tab-panel value="account">
         <div class="space-y-4 rounded-lg border p-4">
@@ -45,7 +45,7 @@ import { ScTabs, ScTabPanel, ScTabList } from '@semantic-components/ui';
           </button>
         </div>
       </div>
-      <div sc-tabs-content value="password">
+      <div sc-tabs-panel value="password">
         <div class="space-y-4 rounded-lg border p-4">
           <div class="space-y-2">
             <h3 class="text-lg font-medium">Password</h3>
