@@ -4,7 +4,8 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 
 ## Components
 
-- `ScNavbar` - Root nav element with mobile menu state management
+- `ScNavbarProvider` - Root provider that manages state and links navbar with mobile menu
+- `ScNavbar` - Root nav element for the main navigation bar
 - `ScNavbarBrand` - Brand/logo section with focus styles
 - `ScNavbarContent` - Desktop navigation container (hidden on mobile)
 - `ScNavbarActions` - Right-aligned action buttons container
@@ -14,29 +15,42 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 - `ScNavbarMobileMenu` - Mobile menu container with styling (customizable)
 - `ScNavbarMobileLink` - Mobile menu link with auto-close on navigation
 
+## Architecture
+
+The navbar uses a provider pattern similar to the sheet component:
+
+- **Provider**: `ScNavbarProvider` wraps everything and manages state
+- **Navbar**: The actual navigation bar sits inside the provider
+- **Mobile Menu**: The mobile menu portal is a sibling to the navbar (not nested inside)
+- **Components communicate**: All components inject the provider to access shared state
+
+This architecture allows the mobile menu to be positioned independently while maintaining a clean connection to the navbar state.
+
 ## Usage
 
 ### Basic Navbar
 
 ```html
-<nav sc-navbar [(mobileMenuOpen)]="mobileMenuOpen">
-  <!-- Brand -->
-  <a sc-navbar-brand routerLink="/">
-    <span>Brand</span>
-  </a>
+<div sc-navbar-provider>
+  <nav sc-navbar>
+    <!-- Brand -->
+    <a sc-navbar-brand routerLink="/">
+      <span>Brand</span>
+    </a>
 
-  <!-- Desktop Navigation -->
-  <div sc-navbar-content>
-    <a sc-navbar-link routerLink="/home" [active]="true">Home</a>
-    <a sc-navbar-link routerLink="/about">About</a>
-    <a sc-navbar-link routerLink="/contact">Contact</a>
-  </div>
+    <!-- Desktop Navigation -->
+    <div sc-navbar-content>
+      <a sc-navbar-link routerLink="/home" [active]="true">Home</a>
+      <a sc-navbar-link routerLink="/about">About</a>
+      <a sc-navbar-link routerLink="/contact">Contact</a>
+    </div>
 
-  <!-- Actions -->
-  <div sc-navbar-actions>
-    <button sc-navbar-mobile-trigger></button>
-    <button sc-button>Sign In</button>
-  </div>
+    <!-- Actions -->
+    <div sc-navbar-actions>
+      <button sc-navbar-mobile-trigger></button>
+      <button sc-button>Sign In</button>
+    </div>
+  </nav>
 
   <!-- Mobile Menu -->
   <div sc-navbar-mobile-portal>
@@ -46,7 +60,23 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
       <a sc-navbar-mobile-link routerLink="/contact">Contact</a>
     </div>
   </div>
-</nav>
+</div>
+```
+
+## Controlling Mobile Menu State
+
+You can control the mobile menu state using two-way binding on the provider:
+
+```html
+<div sc-navbar-provider [(open)]="mobileMenuOpen">
+  <!-- navbar content -->
+</div>
+```
+
+```typescript
+export class MyComponent {
+  readonly mobileMenuOpen = model(false);
+}
 ```
 
 ## Active State
@@ -76,6 +106,7 @@ The mobile menu automatically:
 - Uses CDK overlay for proper z-index stacking and portal rendering
 - Slides in from the top below the navbar
 - Animates smoothly with CSS transitions
+- State is managed by the provider and shared across all components
 
 ## Custom Styling
 
@@ -104,12 +135,18 @@ The mobile menu container can be styled directly using the `class` input:
 
 ## Inputs
 
+### ScNavbarProvider
+
+| Input   | Type      | Default | Description                           |
+| ------- | --------- | ------- | ------------------------------------- |
+| `class` | `string`  | `''`    | Additional CSS classes                |
+| `open`  | `boolean` | `false` | Two-way binding for mobile menu state |
+
 ### ScNavbar
 
-| Input            | Type      | Default | Description                           |
-| ---------------- | --------- | ------- | ------------------------------------- |
-| `class`          | `string`  | `''`    | Additional CSS classes                |
-| `mobileMenuOpen` | `boolean` | `false` | Two-way binding for mobile menu state |
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
 
 ### ScNavbarMobileMenu
 

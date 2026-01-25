@@ -1,4 +1,5 @@
 export { ScNavbar } from './navbar';
+export { ScNavbarProvider } from './navbar-provider';
 export { ScNavbarBrand } from './navbar-brand';
 export { ScNavbarContent } from './navbar-content';
 export { ScNavbarLink } from './navbar-link';

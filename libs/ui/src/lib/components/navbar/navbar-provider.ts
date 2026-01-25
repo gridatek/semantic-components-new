@@ -2,35 +2,29 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  ElementRef,
-  inject,
   input,
+  model,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'nav[sc-navbar]',
+  selector: 'div[sc-navbar-provider]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'navbar',
+    'data-slot': 'navbar-provider',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScNavbar {
-  readonly elementRef = inject(ElementRef);
+export class ScNavbarProvider {
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() =>
-    cn(
-      'flex items-center justify-between',
-      'w-full px-4 py-3 md:px-6',
-      'bg-background border-b border-border',
-      this.classInput(),
-    ),
-  );
+  /** Whether the mobile menu is open */
+  readonly open = model<boolean>(false);
+
+  protected readonly class = computed(() => cn('', this.classInput()));
 }

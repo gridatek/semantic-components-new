@@ -7,12 +7,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavbar } from './navbar';
+import { ScNavbarProvider } from './navbar-provider';
 
 @Component({
   selector: 'button[sc-navbar-mobile-trigger]',
   template: `
-    @if (navbar.mobileMenuOpen()) {
+    @if (provider.open()) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -47,14 +47,14 @@ import { ScNavbar } from './navbar';
       </svg>
     }
     <span class="sr-only">
-      {{ navbar.mobileMenuOpen() ? 'Close menu' : 'Open menu' }}
+      {{ provider.open() ? 'Close menu' : 'Open menu' }}
     </span>
   `,
   host: {
     'data-slot': 'navbar-mobile-trigger',
     type: 'button',
     '[class]': 'class()',
-    '[attr.aria-expanded]': 'navbar.mobileMenuOpen()',
+    '[attr.aria-expanded]': 'provider.open()',
     '[attr.aria-controls]': '"navbar-mobile-menu"',
     '(click)': 'toggleMenu()',
   },
@@ -62,7 +62,7 @@ import { ScNavbar } from './navbar';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNavbarMobileTrigger {
-  readonly navbar = inject(ScNavbar);
+  readonly provider = inject(ScNavbarProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
@@ -78,6 +78,6 @@ export class ScNavbarMobileTrigger {
   );
 
   toggleMenu(): void {
-    this.navbar.mobileMenuOpen.update((open) => !open);
+    this.provider.open.update((open) => !open);
   }
 }

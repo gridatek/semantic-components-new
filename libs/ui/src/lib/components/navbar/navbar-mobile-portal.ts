@@ -13,7 +13,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavbar } from './navbar';
+import { ScNavbarProvider } from './navbar-provider';
 
 @Component({
   selector: 'div[sc-navbar-mobile-portal]',
@@ -31,7 +31,7 @@ import { ScNavbar } from './navbar';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNavbarMobilePortal {
-  private readonly navbar = inject(ScNavbar);
+  private readonly provider = inject(ScNavbarProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -55,7 +55,7 @@ export class ScNavbarMobilePortal {
     });
 
     effect(() => {
-      if (this.navbar.mobileMenuOpen()) {
+      if (this.provider.open()) {
         this.attachMenu();
       } else {
         this.detachMenu();
@@ -83,6 +83,6 @@ export class ScNavbarMobilePortal {
   }
 
   private closeMenu(): void {
-    this.navbar.mobileMenuOpen.set(false);
+    this.provider.open.set(false);
   }
 }

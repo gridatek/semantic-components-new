@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavbar } from './navbar';
+import { ScNavbarProvider } from './navbar-provider';
 
 @Component({
   selector: 'div[sc-navbar-mobile-menu]',
@@ -26,11 +26,11 @@ import { ScNavbar } from './navbar';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNavbarMobileMenu {
-  private readonly navbar = inject(ScNavbar);
+  private readonly provider = inject(ScNavbarProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() => {
-    const isOpen = this.navbar.mobileMenuOpen();
+    const isOpen = this.provider.open();
 
     return cn(
       'md:hidden',
