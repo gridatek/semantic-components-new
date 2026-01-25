@@ -3,10 +3,14 @@ import {
   Component,
   computed,
   contentChild,
+  inject,
   input,
   model,
   ViewEncapsulation,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { cn } from '../../utils';
 import { ScNavbar } from './navbar';
 
@@ -32,4 +36,16 @@ export class ScNavbarProvider {
 
   private readonly navbar = contentChild(ScNavbar);
   readonly origin = computed(() => this.navbar()?.overlayOrigin);
+
+  private readonly router = inject(Router);
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        filter(() => this.open()),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.open.set(false));
+  }
 }

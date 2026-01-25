@@ -1,18 +1,14 @@
-import { computed, Directive, inject, input } from '@angular/core';
+import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScNavbarProvider } from './navbar-provider';
 
 @Directive({
   selector: 'a[sc-navbar-mobile-link], button[sc-navbar-mobile-link]',
   host: {
     'data-slot': 'navbar-mobile-link',
     '[class]': 'class()',
-    '(click)': 'closeMenu()',
   },
 })
 export class ScNavbarMobileLink {
-  private readonly provider = inject(ScNavbarProvider);
-
   readonly classInput = input<string>('', { alias: 'class' });
   readonly active = input<boolean>(false);
 
@@ -29,8 +25,4 @@ export class ScNavbarMobileLink {
       this.classInput(),
     ),
   );
-
-  closeMenu(): void {
-    this.provider.open.set(false);
-  }
 }
