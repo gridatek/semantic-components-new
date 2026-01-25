@@ -8,6 +8,7 @@ import {
   ScNavbarContent,
   ScNavbarLink,
   ScNavbarMobilePortal,
+  ScNavbarMobileMenu,
   ScNavbarMobileLink,
   ScNavbarMobileTrigger,
   ScThemeToggle,
@@ -24,6 +25,7 @@ import {
     ScNavbarActions,
     ScNavbarLink,
     ScNavbarMobilePortal,
+    ScNavbarMobileMenu,
     ScNavbarMobileLink,
     ScNavbarMobileTrigger,
     ScButton,
@@ -87,27 +89,29 @@ import {
 
       <!-- Mobile Menu -->
       <div sc-navbar-mobile-portal>
-        <a
-          sc-navbar-mobile-link
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          #mobileHomeRla="routerLinkActive"
-          [active]="mobileHomeRla.isActive"
-        >
-          Home
-        </a>
-        <a
-          sc-navbar-mobile-link
-          routerLink="/docs/components"
-          routerLinkActive="active"
-          #mobileComponentsRla="routerLinkActive"
-          [active]="mobileComponentsRla.isActive"
-        >
-          Components
-        </a>
-        <hr class="my-2 border-border" />
-        <button sc-button class="w-full mt-2">Get Started</button>
+        <div sc-navbar-mobile-menu>
+          <a
+            sc-navbar-mobile-link
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            #mobileHomeRla="routerLinkActive"
+            [active]="mobileHomeRla.isActive"
+          >
+            Home
+          </a>
+          <a
+            sc-navbar-mobile-link
+            routerLink="/docs/components"
+            routerLinkActive="active"
+            #mobileComponentsRla="routerLinkActive"
+            [active]="mobileComponentsRla.isActive"
+          >
+            Components
+          </a>
+          <hr class="my-2 border-border" />
+          <button sc-button class="w-full mt-2">Get Started</button>
+        </div>
       </div>
     </nav>
   `,

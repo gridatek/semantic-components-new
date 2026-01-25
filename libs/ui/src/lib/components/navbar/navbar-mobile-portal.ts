@@ -20,16 +20,7 @@ import { ScNavbar } from './navbar';
   imports: [OverlayModule],
   template: `
     <ng-template #mobileMenuTemplate>
-      <div
-        [attr.data-slot]="'navbar-mobile-menu'"
-        id="navbar-mobile-menu"
-        role="navigation"
-        [attr.aria-label]="'Mobile navigation'"
-        [class]="menuClass()"
-        [tabindex]="-1"
-      >
-        <ng-content />
-      </div>
+      <ng-content />
     </ng-template>
   `,
   host: {
@@ -56,22 +47,6 @@ export class ScNavbarMobilePortal {
   });
 
   protected readonly class = computed(() => cn('md:hidden', this.classInput()));
-
-  protected readonly menuClass = computed(() => {
-    const isOpen = this.navbar.mobileMenuOpen();
-
-    return cn(
-      'md:hidden',
-      'fixed inset-x-0 top-[calc(var(--navbar-height,57px))] bottom-0',
-      'z-50',
-      'flex flex-col gap-2 p-6',
-      'bg-background border-t border-border',
-      'transition-all duration-300 ease-in-out',
-      isOpen
-        ? 'opacity-100 translate-y-0 pointer-events-auto'
-        : 'opacity-0 -translate-y-full pointer-events-none',
-    );
-  });
 
   constructor() {
     // Handle Keyboard Close

@@ -10,7 +10,8 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 - `ScNavbarActions` - Right-aligned action buttons container
 - `ScNavbarLink` - Individual nav link with active state support
 - `ScNavbarMobileTrigger` - Hamburger menu button with icon switching
-- `ScNavbarMobilePortal` - Mobile menu portal using CDK overlay (animated slide-in)
+- `ScNavbarMobilePortal` - Mobile menu portal using CDK overlay (handles rendering)
+- `ScNavbarMobileMenu` - Mobile menu container with styling (customizable)
 - `ScNavbarMobileLink` - Mobile menu link with auto-close on navigation
 
 ## Usage
@@ -39,9 +40,11 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 
   <!-- Mobile Menu -->
   <div sc-navbar-mobile-portal>
-    <a sc-navbar-mobile-link routerLink="/home" [active]="true">Home</a>
-    <a sc-navbar-mobile-link routerLink="/about">About</a>
-    <a sc-navbar-mobile-link routerLink="/contact">Contact</a>
+    <div sc-navbar-mobile-menu>
+      <a sc-navbar-mobile-link routerLink="/home" [active]="true">Home</a>
+      <a sc-navbar-mobile-link routerLink="/about">About</a>
+      <a sc-navbar-mobile-link routerLink="/contact">Contact</a>
+    </div>
   </div>
 </nav>
 ```
@@ -87,6 +90,18 @@ All components accept a `class` input for custom styles:
 </nav>
 ```
 
+### Customizing Mobile Menu
+
+The mobile menu container can be styled directly using the `class` input:
+
+```html
+<div sc-navbar-mobile-portal>
+  <div sc-navbar-mobile-menu class="bg-red-500 p-8">
+    <!-- Custom background and padding -->
+  </div>
+</div>
+```
+
 ## Inputs
 
 ### ScNavbar
@@ -95,6 +110,12 @@ All components accept a `class` input for custom styles:
 | ---------------- | --------- | ------- | ------------------------------------- |
 | `class`          | `string`  | `''`    | Additional CSS classes                |
 | `mobileMenuOpen` | `boolean` | `false` | Two-way binding for mobile menu state |
+
+### ScNavbarMobileMenu
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
 
 ### ScNavbarLink / ScNavbarMobileLink
 

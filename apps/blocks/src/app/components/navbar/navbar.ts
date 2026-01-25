@@ -8,6 +8,7 @@ import {
   ScNavbarLink,
   ScNavbarMobileTrigger,
   ScNavbarMobilePortal,
+  ScNavbarMobileMenu,
   ScNavbarMobileLink,
   ScButton,
 } from '@semantic-components/ui';
@@ -24,6 +25,7 @@ import {
     ScNavbarLink,
     ScNavbarMobileTrigger,
     ScNavbarMobilePortal,
+    ScNavbarMobileMenu,
     ScNavbarMobileLink,
     ScButton,
   ],
@@ -81,23 +83,25 @@ import {
 
       <!-- Mobile Menu -->
       <div sc-navbar-mobile-portal>
-        <a
-          sc-navbar-mobile-link
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          #mobileHomeRla="routerLinkActive"
-          [active]="mobileHomeRla.isActive"
-        >
-          Home
-        </a>
-        <a sc-navbar-mobile-link href="#" [active]="false">Products</a>
-        <a sc-navbar-mobile-link href="#" [active]="false">Solutions</a>
-        <a sc-navbar-mobile-link href="#" [active]="false">Pricing</a>
-        <a sc-navbar-mobile-link href="#" [active]="false">About</a>
-        <hr class="my-2 border-border" />
-        <a sc-navbar-mobile-link href="#">Sign In</a>
-        <button sc-button class="w-full mt-2">Get Started</button>
+        <div sc-navbar-mobile-menu>
+          <a
+            sc-navbar-mobile-link
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            #mobileHomeRla="routerLinkActive"
+            [active]="mobileHomeRla.isActive"
+          >
+            Home
+          </a>
+          <a sc-navbar-mobile-link href="#" [active]="false">Products</a>
+          <a sc-navbar-mobile-link href="#" [active]="false">Solutions</a>
+          <a sc-navbar-mobile-link href="#" [active]="false">Pricing</a>
+          <a sc-navbar-mobile-link href="#" [active]="false">About</a>
+          <hr class="my-2 border-border" />
+          <a sc-navbar-mobile-link href="#">Sign In</a>
+          <button sc-button class="w-full mt-2">Get Started</button>
+        </div>
       </div>
     </nav>
   `,
