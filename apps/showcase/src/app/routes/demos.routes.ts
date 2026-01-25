@@ -2337,10 +2337,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/tree-view',
     children: [
       {
-        path: 'tree-view-demo',
+        path: 'file-explorer-tree-view-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/tree-view-demo').then(
-            (m) => m.ScTreeViewDemo,
+          import('../pages/docs/tree-view/demos/file-explorer-tree-view-demo').then(
+            (m) => m.FileExplorerTreeViewDemo,
+          ),
+      },
+      {
+        path: 'navigation-tree-view-demo',
+        loadComponent: () =>
+          import('../pages/docs/tree-view/demos/navigation-tree-view-demo').then(
+            (m) => m.NavigationTreeViewDemo,
+          ),
+      },
+      {
+        path: 'simple-tree-view-demo',
+        loadComponent: () =>
+          import('../pages/docs/tree-view/demos/simple-tree-view-demo').then(
+            (m) => m.SimpleTreeViewDemo,
           ),
       },
     ],
