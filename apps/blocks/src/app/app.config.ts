@@ -2,7 +2,11 @@ import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideRouter, withRouterConfig } from '@angular/router';
+import {
+  provideRouter,
+  withInMemoryScrolling,
+  withRouterConfig,
+} from '@angular/router';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -11,6 +15,9 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       appRoutes,
       withRouterConfig({ onSameUrlNavigation: 'reload' }), // Enable reloading on same URL navigation for mobile menu
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+      }),
     ),
   ],
 };
