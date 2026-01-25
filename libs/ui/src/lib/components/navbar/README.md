@@ -10,9 +10,8 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 - `ScNavbarActions` - Right-aligned action buttons container
 - `ScNavbarLink` - Individual nav link with active state support
 - `ScNavbarMobileTrigger` - Hamburger menu button with icon switching
-- `ScNavbarMobileContent` - Mobile menu drawer (animated slide-in)
+- `ScNavbarMobileContent` - Mobile menu drawer using CDK overlay (animated slide-in)
 - `ScNavbarMobileLink` - Mobile menu link with auto-close on navigation
-- `ScNavbarMobileOverlay` - Backdrop overlay for mobile menu
 
 ## Usage
 
@@ -37,9 +36,6 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
     <button sc-navbar-mobile-trigger></button>
     <button sc-button>Sign In</button>
   </div>
-
-  <!-- Mobile Overlay -->
-  <div sc-navbar-mobile-overlay></div>
 
   <!-- Mobile Menu -->
   <div sc-navbar-mobile-content>
@@ -73,8 +69,10 @@ The mobile menu automatically:
 
 - Shows a hamburger icon when closed and an X icon when open
 - Closes when clicking a mobile link (auto-navigation)
-- Closes when clicking the overlay backdrop
-- Uses the `inert` attribute to prevent focus trapping when closed
+- Closes when pressing the Escape key
+- Uses CDK overlay for proper z-index stacking and portal rendering
+- Slides in from the top below the navbar
+- Animates smoothly with CSS transitions
 
 ## Custom Styling
 

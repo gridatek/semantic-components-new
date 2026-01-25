@@ -9,7 +9,6 @@ import {
   ScNavbarMobileTrigger,
   ScNavbarMobileContent,
   ScNavbarMobileLink,
-  ScNavbarMobileOverlay,
   ScButton,
 } from '@semantic-components/ui';
 
@@ -26,7 +25,6 @@ import {
     ScNavbarMobileTrigger,
     ScNavbarMobileContent,
     ScNavbarMobileLink,
-    ScNavbarMobileOverlay,
     ScButton,
   ],
   template: `
@@ -80,9 +78,6 @@ import {
         </button>
         <button sc-button class="hidden md:inline-flex">Get Started</button>
       </div>
-
-      <!-- Mobile Overlay -->
-      <div sc-navbar-mobile-overlay></div>
 
       <!-- Mobile Menu -->
       <div sc-navbar-mobile-content>
