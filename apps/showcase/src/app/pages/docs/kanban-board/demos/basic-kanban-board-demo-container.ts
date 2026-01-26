@@ -1,4 +1,24 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { BasicKanbanBoardDemo } from './basic-kanban-board-demo';
+
+@Component({
+  selector: 'app-basic-kanban-board-demo-container',
+  imports: [DemoContainer, BasicKanbanBoardDemo],
+  template: `
+    <app-demo-container
+      title="Project Board"
+      demoUrl="/demos/kanban-board/basic-kanban-board-demo"
+      [code]="code"
+    >
+      <app-basic-kanban-board-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class BasicKanbanBoardDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScKanbanBoard,
   type KanbanCard,
@@ -7,43 +27,23 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-kanban-board-demo',
+  selector: 'app-basic-kanban-board-demo',
   imports: [ScKanbanBoard],
-  template: `
-    <div class="space-y-8">
-      <!-- Basic Demo -->
-      <section>
-        <h3 class="text-lg font-medium mb-4">Project Board</h3>
-        <div class="h-[600px] border rounded-lg bg-muted/10">
-          <sc-kanban-board
-            [(columns)]="columns"
-            [(cards)]="cards"
-            (cardMoved)="onCardMoved($event)"
-            (cardAdded)="onCardAdded($event)"
-            (cardDeleted)="onCardDeleted($event)"
-            (columnAdded)="onColumnAdded($event)"
-          />
-        </div>
-      </section>
-
-      <!-- Minimal Demo -->
-      <section>
-        <h3 class="text-lg font-medium mb-4">Minimal (No Add/Delete)</h3>
-        <div class="h-[400px] border rounded-lg bg-muted/10">
-          <sc-kanban-board
-            [(columns)]="minimalColumns"
-            [(cards)]="minimalCards"
-            [showAddCard]="false"
-            [showDeleteCard]="false"
-            [showAddColumn]="false"
-          />
-        </div>
-      </section>
+  template: \`
+    <div class="h-[600px] border rounded-lg bg-muted/10">
+      <sc-kanban-board
+        [(columns)]="columns"
+        [(cards)]="cards"
+        (cardMoved)="onCardMoved($event)"
+        (cardAdded)="onCardAdded($event)"
+        (cardDeleted)="onCardDeleted($event)"
+        (columnAdded)="onColumnAdded($event)"
+      />
     </div>
-  `,
+  \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KanbanBoardDemo {
+export class BasicKanbanBoardDemo {
   readonly columns = signal<KanbanColumn[]>([
     { id: 'backlog', title: 'Backlog', order: 0, color: '#6b7280' },
     { id: 'todo', title: 'To Do', order: 1, color: '#3b82f6' },
@@ -155,19 +155,6 @@ export class KanbanBoardDemo {
     },
   ]);
 
-  readonly minimalColumns = signal<KanbanColumn[]>([
-    { id: 'pending', title: 'Pending', order: 0 },
-    { id: 'approved', title: 'Approved', order: 1 },
-    { id: 'rejected', title: 'Rejected', order: 2 },
-  ]);
-
-  readonly minimalCards = signal<KanbanCard[]>([
-    { id: 'm1', title: 'Request #1001', columnId: 'pending', order: 0 },
-    { id: 'm2', title: 'Request #1002', columnId: 'pending', order: 1 },
-    { id: 'm3', title: 'Request #1003', columnId: 'approved', order: 0 },
-    { id: 'm4', title: 'Request #1004', columnId: 'rejected', order: 0 },
-  ]);
-
   onCardMoved(event: KanbanDragEvent): void {
     console.log('Card moved:', event);
   }
@@ -183,4 +170,5 @@ export class KanbanBoardDemo {
   onColumnAdded(title: string): void {
     console.log('Column added:', title);
   }
+}`;
 }

@@ -1686,10 +1686,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/kanban-board',
     children: [
       {
-        path: 'kanban-board-demo',
+        path: 'basic-kanban-board-demo',
         loadComponent: () =>
-          import('../pages/docs/kanban-board/demos/kanban-board-demo').then(
-            (m) => m.KanbanBoardDemo,
+          import('../pages/docs/kanban-board/demos/basic-kanban-board-demo').then(
+            (m) => m.BasicKanbanBoardDemo,
+          ),
+      },
+      {
+        path: 'minimal-kanban-board-demo',
+        loadComponent: () =>
+          import('../pages/docs/kanban-board/demos/minimal-kanban-board-demo').then(
+            (m) => m.MinimalKanbanBoardDemo,
           ),
       },
     ],

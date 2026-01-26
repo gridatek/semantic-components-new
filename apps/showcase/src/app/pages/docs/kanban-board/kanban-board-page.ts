@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { KanbanBoardDemoContainer } from './demos/kanban-board-demo-container';
+import { BasicKanbanBoardDemoContainer } from './demos/basic-kanban-board-demo-container';
+import { MinimalKanbanBoardDemoContainer } from './demos/minimal-kanban-board-demo-container';
 
 @Component({
   selector: 'app-kanban-board-page',
-  imports: [KanbanBoardDemoContainer],
+  imports: [BasicKanbanBoardDemoContainer, MinimalKanbanBoardDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +17,8 @@ import { KanbanBoardDemoContainer } from './demos/kanban-board-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-kanban-board-demo-container />
+        <app-basic-kanban-board-demo-container />
+        <app-minimal-kanban-board-demo-container />
       </section>
     </div>
   `,
