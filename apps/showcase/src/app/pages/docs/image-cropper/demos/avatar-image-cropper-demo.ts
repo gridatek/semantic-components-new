@@ -9,45 +9,46 @@ import {
   selector: 'app-avatar-image-cropper-demo',
   imports: [ScImageCropper, ScImageCropperControls, ScImageCropperPreview],
   template: `
-    <div class="flex gap-8">
-      <div class="flex-1 space-y-4">
-        <div
-          #cropper="scImageCropper"
-          sc-image-cropper
-          [src]="imageSrc()"
-          [aspectRatio]="1"
-          [containerHeight]="250"
-          class="rounded-lg overflow-hidden border"
-        ></div>
-        <div sc-image-cropper-controls></div>
-      </div>
+    <div
+      #cropper="scImageCropper"
+      sc-image-cropper
+      [src]="imageSrc()"
+      [aspectRatio]="1"
+      [containerHeight]="250"
+      class="rounded-lg overflow-hidden border"
+    >
+      <div class="flex gap-8 mt-4">
+        <div class="flex-1">
+          <div sc-image-cropper-controls></div>
+        </div>
 
-      <div class="space-y-4">
-        <p class="text-sm font-medium">Preview:</p>
-        <div class="space-y-3">
-          <div class="text-xs text-muted-foreground">Large (100x100)</div>
-          <div
-            sc-image-cropper-preview
-            [width]="100"
-            [height]="100"
-            class="rounded-full overflow-hidden"
-          ></div>
+        <div class="space-y-4">
+          <p class="text-sm font-medium">Preview:</p>
+          <div class="space-y-3">
+            <div class="text-xs text-muted-foreground">Large (100x100)</div>
+            <div
+              sc-image-cropper-preview
+              [width]="100"
+              [height]="100"
+              class="rounded-full overflow-hidden"
+            ></div>
 
-          <div class="text-xs text-muted-foreground">Medium (64x64)</div>
-          <div
-            sc-image-cropper-preview
-            [width]="64"
-            [height]="64"
-            class="rounded-full overflow-hidden"
-          ></div>
+            <div class="text-xs text-muted-foreground">Medium (64x64)</div>
+            <div
+              sc-image-cropper-preview
+              [width]="64"
+              [height]="64"
+              class="rounded-full overflow-hidden"
+            ></div>
 
-          <div class="text-xs text-muted-foreground">Small (40x40)</div>
-          <div
-            sc-image-cropper-preview
-            [width]="40"
-            [height]="40"
-            class="rounded-full overflow-hidden"
-          ></div>
+            <div class="text-xs text-muted-foreground">Small (40x40)</div>
+            <div
+              sc-image-cropper-preview
+              [width]="40"
+              [height]="40"
+              class="rounded-full overflow-hidden"
+            ></div>
+          </div>
         </div>
       </div>
     </div>

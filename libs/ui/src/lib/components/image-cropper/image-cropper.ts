@@ -160,6 +160,9 @@ export const SC_IMAGE_CROPPER = new InjectionToken<ScImageCropper>(
 
     <!-- Hidden canvas for cropping -->
     <canvas #canvasEl class="hidden"></canvas>
+
+    <!-- Content projection for controls and other child components -->
+    <ng-content></ng-content>
   `,
   host: {
     'data-slot': 'image-cropper',

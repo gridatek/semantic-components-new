@@ -66,18 +66,18 @@ import {
           [src]="uploadedImageSrc()!"
           [containerHeight]="350"
           class="rounded-lg overflow-hidden border"
-        ></div>
-
-        <div class="flex items-center justify-between">
-          <div sc-image-cropper-controls></div>
-          <div class="flex gap-2">
-            <button
-              type="button"
-              class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-              (click)="cropImage(cropper)"
-            >
-              Crop & Download
-            </button>
+        >
+          <div class="flex items-center justify-between mt-4">
+            <div sc-image-cropper-controls></div>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+                (click)="cropImage(cropper)"
+              >
+                Crop & Download
+              </button>
+            </div>
           </div>
         </div>
       }
