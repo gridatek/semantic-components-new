@@ -5,4 +5,4 @@ export * from './pagination-link';
 export * from './pagination-previous';
 export * from './pagination-next';
 export * from './pagination-ellipsis';
-export type { PaginationItem } from './pagination';
+export type { ScPaginationPageData } from './pagination';

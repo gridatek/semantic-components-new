@@ -9,7 +9,7 @@ Added intelligent automatic page generation to the pagination component. The com
 ### New Type Export
 
 ```typescript
-export type PaginationItem = { type: 'page'; value: number } | { type: 'ellipsis'; value: string };
+export type ScPaginationPageData = { type: 'page'; value: number } | { type: 'ellipsis'; value: string };
 ```
 
 ### New Inputs to ScPagination
@@ -25,7 +25,7 @@ export type PaginationItem = { type: 'page'; value: number } | { type: 'ellipsis
 ### New Computed Signals
 
 - **`totalPages()`** - Automatically calculated from totalItems / pageSize
-- **`pages()`** - Array of PaginationItem for rendering with @for loops
+- **`pages()`** - Array of ScPaginationPageData for rendering with @for loops
 
 ### Export As
 
@@ -168,7 +168,7 @@ Current Page: 5, Total Pages: 10
    - Verbose but flexible
 
 3. **Type Safety**
-   - PaginationItem type ensures correct usage
+   - ScPaginationPageData type ensures correct usage
    - TypeScript catches errors at compile time
 
 ## Comparison
@@ -283,7 +283,7 @@ Result: `[1] [...] [5] [...] [10]`
    - Added exportAs
 
 2. **libs/ui/src/lib/components/pagination/index.ts**
-   - Exported PaginationItem type
+   - Exported ScPaginationPageData type
 
 3. **apps/showcase/src/app/pages/docs/pagination/demos/smart-pagination-demo.ts**
    - New demo showing smart pagination usage
