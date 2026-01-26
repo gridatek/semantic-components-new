@@ -6,7 +6,11 @@ import { EndMessageInfiniteScrollDemo } from './end-message-infinite-scroll-demo
   selector: 'app-end-message-infinite-scroll-demo-container',
   imports: [DemoContainer, EndMessageInfiniteScrollDemo],
   template: `
-    <app-demo-container title="Custom End Message" [code]="code">
+    <app-demo-container
+      title="Custom End Message"
+      demoUrl="/demos/infinite-scroll/end-message-infinite-scroll-demo"
+      [code]="code"
+    >
       <app-end-message-infinite-scroll-demo />
     </app-demo-container>
   `,

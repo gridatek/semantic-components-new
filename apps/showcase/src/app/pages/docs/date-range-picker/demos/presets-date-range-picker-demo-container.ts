@@ -6,7 +6,11 @@ import { PresetsDateRangePickerDemo } from './presets-date-range-picker-demo';
   selector: 'app-presets-date-range-picker-demo-container',
   imports: [DemoContainer, PresetsDateRangePickerDemo],
   template: `
-    <app-demo-container title="With Presets" [code]="code">
+    <app-demo-container
+      title="With Presets"
+      demoUrl="/demos/date-range-picker/presets-date-range-picker-demo"
+      [code]="code"
+    >
       <app-presets-date-range-picker-demo />
     </app-demo-container>
   `,

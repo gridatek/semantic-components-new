@@ -6,7 +6,11 @@ import { BasicInputOtpDemo } from './basic-input-otp-demo';
   selector: 'app-basic-input-otp-demo-container',
   imports: [DemoContainer, BasicInputOtpDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/input-otp/basic-input-otp-demo"
+      [code]="code"
+    >
       <app-basic-input-otp-demo />
     </app-demo-container>
   `,

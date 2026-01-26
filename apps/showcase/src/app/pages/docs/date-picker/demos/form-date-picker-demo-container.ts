@@ -6,7 +6,11 @@ import { FormDatePickerDemo } from './form-date-picker-demo';
   selector: 'app-form-date-picker-demo-container',
   imports: [DemoContainer, FormDatePickerDemo],
   template: `
-    <app-demo-container title="Form Example" [code]="code">
+    <app-demo-container
+      title="Form Example"
+      demoUrl="/demos/date-picker/form-date-picker-demo"
+      [code]="code"
+    >
       <app-form-date-picker-demo />
     </app-demo-container>
   `,

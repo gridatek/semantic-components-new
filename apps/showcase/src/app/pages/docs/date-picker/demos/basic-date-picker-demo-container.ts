@@ -6,7 +6,11 @@ import { BasicDatePickerDemo } from './basic-date-picker-demo';
   selector: 'app-basic-date-picker-demo-container',
   imports: [DemoContainer, BasicDatePickerDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/date-picker/basic-date-picker-demo"
+      [code]="code"
+    >
       <app-basic-date-picker-demo />
     </app-demo-container>
   `,

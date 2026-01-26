@@ -6,7 +6,11 @@ import { LargeDiffViewerDemo } from './large-diff-viewer-demo';
   selector: 'app-large-diff-viewer-demo-container',
   imports: [DemoContainer, LargeDiffViewerDemo],
   template: `
-    <app-demo-container title="Large File" [code]="code">
+    <app-demo-container
+      title="Large File"
+      demoUrl="/demos/diff-viewer/large-diff-viewer-demo"
+      [code]="code"
+    >
       <app-large-diff-viewer-demo />
     </app-demo-container>
   `,

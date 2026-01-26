@@ -6,7 +6,11 @@ import { DotSeparatorInputOtpDemo } from './dot-separator-input-otp-demo';
   selector: 'app-dot-separator-input-otp-demo-container',
   imports: [DemoContainer, DotSeparatorInputOtpDemo],
   template: `
-    <app-demo-container title="With Dot Separator" [code]="code">
+    <app-demo-container
+      title="With Dot Separator"
+      demoUrl="/demos/input-otp/dot-separator-input-otp-demo"
+      [code]="code"
+    >
       <app-dot-separator-input-otp-demo />
     </app-demo-container>
   `,

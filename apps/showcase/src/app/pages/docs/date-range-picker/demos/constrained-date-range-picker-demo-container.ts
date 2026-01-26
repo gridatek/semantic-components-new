@@ -6,7 +6,11 @@ import { ConstrainedDateRangePickerDemo } from './constrained-date-range-picker-
   selector: 'app-constrained-date-range-picker-demo-container',
   imports: [DemoContainer, ConstrainedDateRangePickerDemo],
   template: `
-    <app-demo-container title="With Min/Max Dates" [code]="code">
+    <app-demo-container
+      title="With Min/Max Dates"
+      demoUrl="/demos/date-range-picker/constrained-date-range-picker-demo"
+      [code]="code"
+    >
       <app-constrained-date-range-picker-demo />
     </app-demo-container>
   `,

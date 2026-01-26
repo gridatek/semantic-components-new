@@ -6,7 +6,11 @@ import { SquareImageCompareDemo } from './square-image-compare-demo';
   selector: 'app-square-image-compare-demo-container',
   imports: [DemoContainer, SquareImageCompareDemo],
   template: `
-    <app-demo-container title="Square Images" [code]="code">
+    <app-demo-container
+      title="Square Images"
+      demoUrl="/demos/image-compare/square-image-compare-demo"
+      [code]="code"
+    >
       <app-square-image-compare-demo />
     </app-demo-container>
   `,

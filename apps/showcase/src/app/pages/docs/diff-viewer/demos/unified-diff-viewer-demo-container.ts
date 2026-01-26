@@ -6,7 +6,11 @@ import { UnifiedDiffViewerDemo } from './unified-diff-viewer-demo';
   selector: 'app-unified-diff-viewer-demo-container',
   imports: [DemoContainer, UnifiedDiffViewerDemo],
   template: `
-    <app-demo-container title="Unified View" [code]="code">
+    <app-demo-container
+      title="Unified View"
+      demoUrl="/demos/diff-viewer/unified-diff-viewer-demo"
+      [code]="code"
+    >
       <app-unified-diff-viewer-demo />
     </app-demo-container>
   `,

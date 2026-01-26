@@ -6,7 +6,11 @@ import { JsonDiffViewerDemo } from './json-diff-viewer-demo';
   selector: 'app-json-diff-viewer-demo-container',
   imports: [DemoContainer, JsonDiffViewerDemo],
   template: `
-    <app-demo-container title="JSON Comparison" [code]="code">
+    <app-demo-container
+      title="JSON Comparison"
+      demoUrl="/demos/diff-viewer/json-diff-viewer-demo"
+      [code]="code"
+    >
       <app-json-diff-viewer-demo />
     </app-demo-container>
   `,

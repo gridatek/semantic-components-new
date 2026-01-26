@@ -6,7 +6,11 @@ import { MinimalDiffViewerDemo } from './minimal-diff-viewer-demo';
   selector: 'app-minimal-diff-viewer-demo-container',
   imports: [DemoContainer, MinimalDiffViewerDemo],
   template: `
-    <app-demo-container title="Minimal View" [code]="code">
+    <app-demo-container
+      title="Minimal View"
+      demoUrl="/demos/diff-viewer/minimal-diff-viewer-demo"
+      [code]="code"
+    >
       <app-minimal-diff-viewer-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { VerificationInputOtpDemo } from './verification-input-otp-demo';
   selector: 'app-verification-input-otp-demo-container',
   imports: [DemoContainer, VerificationInputOtpDemo],
   template: `
-    <app-demo-container title="Verification Form" [code]="code">
+    <app-demo-container
+      title="Verification Form"
+      demoUrl="/demos/input-otp/verification-input-otp-demo"
+      [code]="code"
+    >
       <app-verification-input-otp-demo />
     </app-demo-container>
   `,

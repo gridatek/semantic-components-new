@@ -6,7 +6,11 @@ import { MultipleDatePickerDemo } from './multiple-date-picker-demo';
   selector: 'app-multiple-date-picker-demo-container',
   imports: [DemoContainer, MultipleDatePickerDemo],
   template: `
-    <app-demo-container title="Multiple Dates" [code]="code">
+    <app-demo-container
+      title="Multiple Dates"
+      demoUrl="/demos/date-picker/multiple-date-picker-demo"
+      [code]="code"
+    >
       <app-multiple-date-picker-demo />
     </app-demo-container>
   `,

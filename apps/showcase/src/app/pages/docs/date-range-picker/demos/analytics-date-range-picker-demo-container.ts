@@ -6,7 +6,11 @@ import { AnalyticsDateRangePickerDemo } from './analytics-date-range-picker-demo
   selector: 'app-analytics-date-range-picker-demo-container',
   imports: [DemoContainer, AnalyticsDateRangePickerDemo],
   template: `
-    <app-demo-container title="Analytics Example" [code]="code">
+    <app-demo-container
+      title="Analytics Example"
+      demoUrl="/demos/date-range-picker/analytics-date-range-picker-demo"
+      [code]="code"
+    >
       <app-analytics-date-range-picker-demo />
     </app-demo-container>
   `,

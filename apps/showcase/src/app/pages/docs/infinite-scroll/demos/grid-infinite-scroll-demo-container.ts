@@ -6,7 +6,11 @@ import { GridInfiniteScrollDemo } from './grid-infinite-scroll-demo';
   selector: 'app-grid-infinite-scroll-demo-container',
   imports: [DemoContainer, GridInfiniteScrollDemo],
   template: `
-    <app-demo-container title="Card Grid Layout" [code]="code">
+    <app-demo-container
+      title="Card Grid Layout"
+      demoUrl="/demos/infinite-scroll/grid-infinite-scroll-demo"
+      [code]="code"
+    >
       <app-grid-infinite-scroll-demo />
     </app-demo-container>
   `,

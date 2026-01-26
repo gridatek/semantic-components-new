@@ -6,7 +6,11 @@ import { BasicImageCompareDemo } from './basic-image-compare-demo';
   selector: 'app-basic-image-compare-demo-container',
   imports: [DemoContainer, BasicImageCompareDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/image-compare/basic-image-compare-demo"
+      [code]="code"
+    >
       <app-basic-image-compare-demo />
     </app-demo-container>
   `,

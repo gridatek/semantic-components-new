@@ -6,7 +6,11 @@ import { InfoImageCropperDemo } from './info-image-cropper-demo';
   selector: 'app-info-image-cropper-demo-container',
   imports: [DemoContainer, InfoImageCropperDemo],
   template: `
-    <app-demo-container title="Crop Area Info" [code]="code">
+    <app-demo-container
+      title="Crop Area Info"
+      demoUrl="/demos/image-cropper/info-image-cropper-demo"
+      [code]="code"
+    >
       <app-info-image-cropper-demo />
     </app-demo-container>
   `,

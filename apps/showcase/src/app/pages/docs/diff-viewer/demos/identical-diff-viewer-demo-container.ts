@@ -6,7 +6,11 @@ import { IdenticalDiffViewerDemo } from './identical-diff-viewer-demo';
   selector: 'app-identical-diff-viewer-demo-container',
   imports: [DemoContainer, IdenticalDiffViewerDemo],
   template: `
-    <app-demo-container title="Identical Files" [code]="code">
+    <app-demo-container
+      title="Identical Files"
+      demoUrl="/demos/diff-viewer/identical-diff-viewer-demo"
+      [code]="code"
+    >
       <app-identical-diff-viewer-demo />
     </app-demo-container>
   `,

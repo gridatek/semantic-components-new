@@ -6,7 +6,11 @@ import { ThresholdInfiniteScrollDemo } from './threshold-infinite-scroll-demo';
   selector: 'app-threshold-infinite-scroll-demo-container',
   imports: [DemoContainer, ThresholdInfiniteScrollDemo],
   template: `
-    <app-demo-container title="Custom Threshold" [code]="code">
+    <app-demo-container
+      title="Custom Threshold"
+      demoUrl="/demos/infinite-scroll/threshold-infinite-scroll-demo"
+      [code]="code"
+    >
       <app-threshold-infinite-scroll-demo />
     </app-demo-container>
   `,

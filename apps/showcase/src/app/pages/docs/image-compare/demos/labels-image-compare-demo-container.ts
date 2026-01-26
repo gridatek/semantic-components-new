@@ -6,7 +6,11 @@ import { LabelsImageCompareDemo } from './labels-image-compare-demo';
   selector: 'app-labels-image-compare-demo-container',
   imports: [DemoContainer, LabelsImageCompareDemo],
   template: `
-    <app-demo-container title="Custom Labels" [code]="code">
+    <app-demo-container
+      title="Custom Labels"
+      demoUrl="/demos/image-compare/labels-image-compare-demo"
+      [code]="code"
+    >
       <app-labels-image-compare-demo />
     </app-demo-container>
   `,

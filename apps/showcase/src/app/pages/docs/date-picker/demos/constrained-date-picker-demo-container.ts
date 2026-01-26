@@ -6,7 +6,11 @@ import { ConstrainedDatePickerDemo } from './constrained-date-picker-demo';
   selector: 'app-constrained-date-picker-demo-container',
   imports: [DemoContainer, ConstrainedDatePickerDemo],
   template: `
-    <app-demo-container title="With Constraints" [code]="code">
+    <app-demo-container
+      title="With Constraints"
+      demoUrl="/demos/date-picker/constrained-date-picker-demo"
+      [code]="code"
+    >
       <app-constrained-date-picker-demo />
     </app-demo-container>
   `,

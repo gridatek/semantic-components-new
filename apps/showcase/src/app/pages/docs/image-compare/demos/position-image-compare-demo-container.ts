@@ -6,7 +6,11 @@ import { PositionImageCompareDemo } from './position-image-compare-demo';
   selector: 'app-position-image-compare-demo-container',
   imports: [DemoContainer, PositionImageCompareDemo],
   template: `
-    <app-demo-container title="Custom Initial Position" [code]="code">
+    <app-demo-container
+      title="Custom Initial Position"
+      demoUrl="/demos/image-compare/position-image-compare-demo"
+      [code]="code"
+    >
       <app-position-image-compare-demo />
     </app-demo-container>
   `,

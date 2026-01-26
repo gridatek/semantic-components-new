@@ -6,7 +6,11 @@ import { NoLabelsImageCompareDemo } from './no-labels-image-compare-demo';
   selector: 'app-no-labels-image-compare-demo-container',
   imports: [DemoContainer, NoLabelsImageCompareDemo],
   template: `
-    <app-demo-container title="Without Labels" [code]="code">
+    <app-demo-container
+      title="Without Labels"
+      demoUrl="/demos/image-compare/no-labels-image-compare-demo"
+      [code]="code"
+    >
       <app-no-labels-image-compare-demo />
     </app-demo-container>
   `,

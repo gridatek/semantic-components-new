@@ -6,7 +6,11 @@ import { AvatarImageCropperDemo } from './avatar-image-cropper-demo';
   selector: 'app-avatar-image-cropper-demo-container',
   imports: [DemoContainer, AvatarImageCropperDemo],
   template: `
-    <app-demo-container title="Square Crop (Avatar)" [code]="code">
+    <app-demo-container
+      title="Square Crop (Avatar)"
+      demoUrl="/demos/image-cropper/avatar-image-cropper-demo"
+      [code]="code"
+    >
       <app-avatar-image-cropper-demo />
     </app-demo-container>
   `,

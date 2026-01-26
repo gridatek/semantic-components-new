@@ -6,7 +6,11 @@ import { CustomLoaderInfiniteScrollDemo } from './custom-loader-infinite-scroll-
   selector: 'app-custom-loader-infinite-scroll-demo-container',
   imports: [DemoContainer, CustomLoaderInfiniteScrollDemo],
   template: `
-    <app-demo-container title="Custom Loader" [code]="code">
+    <app-demo-container
+      title="Custom Loader"
+      demoUrl="/demos/infinite-scroll/custom-loader-infinite-scroll-demo"
+      [code]="code"
+    >
       <app-custom-loader-infinite-scroll-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { PlaceholderDatePickerDemo } from './placeholder-date-picker-demo';
   selector: 'app-placeholder-date-picker-demo-container',
   imports: [DemoContainer, PlaceholderDatePickerDemo],
   template: `
-    <app-demo-container title="Custom Placeholder" [code]="code">
+    <app-demo-container
+      title="Custom Placeholder"
+      demoUrl="/demos/date-picker/placeholder-date-picker-demo"
+      [code]="code"
+    >
       <app-placeholder-date-picker-demo />
     </app-demo-container>
   `,

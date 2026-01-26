@@ -6,7 +6,11 @@ import { KeyboardImageCompareDemo } from './keyboard-image-compare-demo';
   selector: 'app-keyboard-image-compare-demo-container',
   imports: [DemoContainer, KeyboardImageCompareDemo],
   template: `
-    <app-demo-container title="Keyboard Navigation" [code]="code">
+    <app-demo-container
+      title="Keyboard Navigation"
+      demoUrl="/demos/image-compare/keyboard-image-compare-demo"
+      [code]="code"
+    >
       <app-keyboard-image-compare-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { WhitespaceDiffViewerDemo } from './whitespace-diff-viewer-demo';
   selector: 'app-whitespace-diff-viewer-demo-container',
   imports: [DemoContainer, WhitespaceDiffViewerDemo],
   template: `
-    <app-demo-container title="Ignore Whitespace" [code]="code">
+    <app-demo-container
+      title="Ignore Whitespace"
+      demoUrl="/demos/diff-viewer/whitespace-diff-viewer-demo"
+      [code]="code"
+    >
       <app-whitespace-diff-viewer-demo />
     </app-demo-container>
   `,

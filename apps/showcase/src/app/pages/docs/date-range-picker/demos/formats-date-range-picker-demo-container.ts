@@ -6,7 +6,11 @@ import { FormatsDateRangePickerDemo } from './formats-date-range-picker-demo';
   selector: 'app-formats-date-range-picker-demo-container',
   imports: [DemoContainer, FormatsDateRangePickerDemo],
   template: `
-    <app-demo-container title="Date Formats" [code]="code">
+    <app-demo-container
+      title="Date Formats"
+      demoUrl="/demos/date-range-picker/formats-date-range-picker-demo"
+      [code]="code"
+    >
       <app-formats-date-range-picker-demo />
     </app-demo-container>
   `,

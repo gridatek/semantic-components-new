@@ -6,7 +6,11 @@ import { BasicInfiniteScrollDemo } from './basic-infinite-scroll-demo';
   selector: 'app-basic-infinite-scroll-demo-container',
   imports: [DemoContainer, BasicInfiniteScrollDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/infinite-scroll/basic-infinite-scroll-demo"
+      [code]="code"
+    >
       <app-basic-infinite-scroll-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { NoClearDateRangePickerDemo } from './no-clear-date-range-picker-demo';
   selector: 'app-no-clear-date-range-picker-demo-container',
   imports: [DemoContainer, NoClearDateRangePickerDemo],
   template: `
-    <app-demo-container title="Without Clear Button" [code]="code">
+    <app-demo-container
+      title="Without Clear Button"
+      demoUrl="/demos/date-range-picker/no-clear-date-range-picker-demo"
+      [code]="code"
+    >
       <app-no-clear-date-range-picker-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { UploadImageCropperDemo } from './upload-image-cropper-demo';
   selector: 'app-upload-image-cropper-demo-container',
   imports: [DemoContainer, UploadImageCropperDemo],
   template: `
-    <app-demo-container title="Upload Your Own Image" [code]="code">
+    <app-demo-container
+      title="Upload Your Own Image"
+      demoUrl="/demos/image-cropper/upload-image-cropper-demo"
+      [code]="code"
+    >
       <app-upload-image-cropper-demo />
     </app-demo-container>
   `,

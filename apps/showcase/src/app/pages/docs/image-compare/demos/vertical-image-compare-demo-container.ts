@@ -6,7 +6,11 @@ import { VerticalImageCompareDemo } from './vertical-image-compare-demo';
   selector: 'app-vertical-image-compare-demo-container',
   imports: [DemoContainer, VerticalImageCompareDemo],
   template: `
-    <app-demo-container title="Vertical Orientation" [code]="code">
+    <app-demo-container
+      title="Vertical Orientation"
+      demoUrl="/demos/image-compare/vertical-image-compare-demo"
+      [code]="code"
+    >
       <app-vertical-image-compare-demo />
     </app-demo-container>
   `,

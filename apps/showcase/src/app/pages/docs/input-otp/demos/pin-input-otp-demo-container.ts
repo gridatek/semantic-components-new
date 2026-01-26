@@ -6,7 +6,11 @@ import { PinInputOtpDemo } from './pin-input-otp-demo';
   selector: 'app-pin-input-otp-demo-container',
   imports: [DemoContainer, PinInputOtpDemo],
   template: `
-    <app-demo-container title="4-digit PIN" [code]="code">
+    <app-demo-container
+      title="4-digit PIN"
+      demoUrl="/demos/input-otp/pin-input-otp-demo"
+      [code]="code"
+    >
       <app-pin-input-otp-demo />
     </app-demo-container>
   `,

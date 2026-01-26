@@ -6,7 +6,11 @@ import { ControlledImageCompareDemo } from './controlled-image-compare-demo';
   selector: 'app-controlled-image-compare-demo-container',
   imports: [DemoContainer, ControlledImageCompareDemo],
   template: `
-    <app-demo-container title="Controlled Position" [code]="code">
+    <app-demo-container
+      title="Controlled Position"
+      demoUrl="/demos/image-compare/controlled-image-compare-demo"
+      [code]="code"
+    >
       <app-controlled-image-compare-demo />
     </app-demo-container>
   `,
