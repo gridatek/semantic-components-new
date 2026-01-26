@@ -1,16 +1,25 @@
 # Pagination
 
-Pagination with page navigation, next and previous links.
+Pagination with page navigation, next and previous links. Supports both manual and smart automatic page generation.
 
 ## Components
 
-- `ScPagination` - Navigation container
+- `ScPagination` - Navigation container with optional smart pagination logic
 - `ScPaginationList` - List container (ul)
 - `ScPaginationItem` - List item (li)
 - `ScPaginationLink` - Page number link/button
 - `ScPaginationPrevious` - Previous page link/button
 - `ScPaginationNext` - Next page link/button
 - `ScPaginationEllipsis` - Ellipsis indicator
+
+## Features
+
+- **Manual Mode**: Full control over pagination items (basic usage)
+- **Smart Mode**: Automatic page number and ellipsis generation
+- Automatic calculation of total pages
+- Configurable sibling pages count
+- Optional first/last page display
+- Disabled state support for navigation buttons
 
 ## Usage
 
@@ -84,6 +93,74 @@ Pagination with page navigation, next and previous links.
 </nav>
 ```
 
+## Smart Pagination (Automatic Page Generation)
+
+The pagination component can automatically calculate and generate page numbers with ellipses:
+
+```typescript
+import { Component, signal } from '@angular/core';
+
+@Component({
+  template: `
+    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" [siblingCount]="1" [showEdges]="true">
+      <ul sc-pagination-list>
+        <li sc-pagination-item>
+          <button sc-pagination-previous [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">
+            <svg class="size-4"><!-- icon --></svg>
+            <span>Previous</span>
+          </button>
+        </li>
+
+        @for (page of pagination.pages(); track page.value) {
+          <li sc-pagination-item>
+            @if (page.type === 'ellipsis') {
+              <span sc-pagination-ellipsis>
+                <svg class="size-4"><!-- ellipsis icon --></svg>
+                <span class="sr-only">More pages</span>
+              </span>
+            } @else {
+              <button sc-pagination-link [isActive]="page.value === currentPage()" (click)="goToPage(page.value)">
+                {{ page.value }}
+              </button>
+            }
+          </li>
+        }
+
+        <li sc-pagination-item>
+          <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()" (click)="goToPage(currentPage() + 1)">
+            <span>Next</span>
+            <svg class="size-4"><!-- icon --></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  `,
+})
+export class MyComponent {
+  readonly currentPage = signal(1);
+
+  goToPage(page: number) {
+    this.currentPage.set(page);
+  }
+}
+```
+
+### Smart Pagination Features
+
+- Automatically generates page numbers based on `currentPage`, `pageSize`, and `totalItems`
+- Intelligently places ellipses when there are many pages
+- Exposes `pagination.pages()` array for iteration
+- Exposes `pagination.totalPages()` for total page count
+- Each item in `pages()` has: `{ type: 'page' | 'ellipsis', value: number | string }`
+
+### Configuration Options
+
+- `currentPage` - Current active page number (1-based)
+- `pageSize` - Number of items per page
+- `totalItems` - Total number of items across all pages
+- `siblingCount` - Number of pages to show on each side of current page (default: 1)
+- `showEdges` - Whether to always show first and last pages (default: true)
+
 ## Disabled State
 
 ```html
@@ -102,6 +179,17 @@ Pagination with page navigation, next and previous links.
 ```
 
 ## Inputs
+
+### ScPagination
+
+| Input          | Type      | Default | Description                                          |
+| -------------- | --------- | ------- | ---------------------------------------------------- |
+| `currentPage`  | `number`  | `1`     | Current active page (1-based)                        |
+| `pageSize`     | `number`  | `10`    | Number of items per page                             |
+| `totalItems`   | `number`  | `0`     | Total number of items across all pages               |
+| `siblingCount` | `number`  | `1`     | Number of pages to show on each side of current page |
+| `showEdges`    | `boolean` | `true`  | Whether to always show first and last pages          |
+| `class`        | `string`  | `''`    | Additional CSS classes                               |
 
 ### ScPaginationLink
 
@@ -125,14 +213,6 @@ Pagination with page navigation, next and previous links.
 | ---------- | --------- | ------- | ---------------------- |
 | `disabled` | `boolean` | `false` | Disabled state         |
 | `class`    | `string`  | `''`    | Additional CSS classes |
-
-## Features
-
-- Works with both `<a>` links and `<button>` elements
-- Active state with border styling
-- Hover states on all interactive elements
-- Built-in Previous/Next icons
-- Ellipsis with screen reader text
 
 ## Accessibility
 
