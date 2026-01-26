@@ -92,10 +92,7 @@ import {
           <a sc-pagination-link href="#" [isActive]="true">10</a>
         </li>
         <li sc-pagination-item>
-          <button
-            sc-pagination-next
-            class="pointer-events-none opacity-50"
-          >
+          <button sc-pagination-next disabled>
             <span>Next</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

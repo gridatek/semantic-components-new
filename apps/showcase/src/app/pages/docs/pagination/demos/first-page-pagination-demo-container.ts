@@ -40,10 +40,7 @@ import {
     <nav sc-pagination>
       <ul sc-pagination-list>
         <li sc-pagination-item>
-          <button
-            sc-pagination-previous
-            class="pointer-events-none opacity-50"
-          >
+          <button sc-pagination-previous disabled>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
