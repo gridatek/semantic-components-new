@@ -1,93 +1,26 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ScDock } from '@semantic-components/ui';
-import type { DockItem, DockPosition, DockSize } from '@semantic-components/ui';
+import type { DockItem } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-dock-demo',
+  selector: 'app-basic-dock-demo',
   imports: [ScDock],
   template: `
-    <div class="flex flex-col gap-8">
-      <!-- Basic Dock -->
-      <div class="space-y-3">
-        <h3 class="text-sm font-medium">Basic Dock</h3>
-        <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
-          <sc-dock [items]="basicItems" (itemClick)="onItemClick($event)" />
-        </div>
-      </div>
-
-      <!-- Without Magnification -->
-      <div class="space-y-3">
-        <h3 class="text-sm font-medium">Without Magnification</h3>
-        <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
-          <sc-dock
-            [items]="basicItems"
-            [magnification]="false"
-            (itemClick)="onItemClick($event)"
-          />
-        </div>
-      </div>
-
-      <!-- With Badges -->
-      <div class="space-y-3">
-        <h3 class="text-sm font-medium">With Badges</h3>
-        <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
-          <sc-dock
-            [items]="itemsWithBadges"
-            (itemClick)="onItemClick($event)"
-          />
-        </div>
-      </div>
-
-      <!-- Size Variants -->
-      <div class="space-y-3">
-        <h3 class="text-sm font-medium">Size Variants</h3>
-        <div
-          class="flex flex-col items-center gap-6 rounded-lg border bg-muted/30 p-8"
-        >
-          <div class="text-center">
-            <p class="mb-2 text-xs text-muted-foreground">Small</p>
-            <sc-dock [items]="basicItems" size="sm" />
-          </div>
-          <div class="text-center">
-            <p class="mb-2 text-xs text-muted-foreground">Medium (Default)</p>
-            <sc-dock [items]="basicItems" size="md" />
-          </div>
-          <div class="text-center">
-            <p class="mb-2 text-xs text-muted-foreground">Large</p>
-            <sc-dock [items]="basicItems" size="lg" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Custom Magnification Scale -->
-      <div class="space-y-3">
-        <h3 class="text-sm font-medium">Custom Magnification Scale (2x)</h3>
-        <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
-          <sc-dock
-            [items]="basicItems"
-            [magnificationScale]="2"
-            (itemClick)="onItemClick($event)"
-          />
-        </div>
-      </div>
-
-      <!-- Clicked Item -->
-      @if (clickedItem()) {
-        <div class="rounded-lg border bg-card p-4">
-          <p class="text-sm">
-            Clicked:
-            <span class="font-medium">{{ clickedItem() }}</span>
-          </p>
-        </div>
-      }
+    <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
+      <sc-dock [items]="items" (itemClick)="onItemClick($event)" />
     </div>
+    @if (clickedItem()) {
+      <p class="mt-2 text-sm text-muted-foreground">
+        Clicked: <span class="font-medium">{{ clickedItem() }}</span>
+      </p>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DockDemo {
+export class BasicDockDemo {
   readonly clickedItem = signal<string | null>(null);
 
-  readonly basicItems: DockItem[] = [
+  readonly items: DockItem[] = [
     {
       id: 'finder',
       label: 'Finder',
@@ -118,15 +51,6 @@ export class DockDemo {
       label: 'Settings',
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`,
     },
-  ];
-
-  readonly itemsWithBadges: DockItem[] = [
-    { ...this.basicItems[0] },
-    { ...this.basicItems[1] },
-    { ...this.basicItems[2], badge: 5 },
-    { ...this.basicItems[3], badge: 12 },
-    { ...this.basicItems[4] },
-    { ...this.basicItems[5], badge: '!' },
   ];
 
   onItemClick(item: DockItem): void {

@@ -1252,9 +1252,39 @@ export const demosRoutes: Route[] = [
     path: 'demos/dock',
     children: [
       {
-        path: 'dock-demo',
+        path: 'basic-dock-demo',
         loadComponent: () =>
-          import('../pages/docs/dock/demos/dock-demo').then((m) => m.DockDemo),
+          import('../pages/docs/dock/demos/basic-dock-demo').then(
+            (m) => m.BasicDockDemo,
+          ),
+      },
+      {
+        path: 'no-magnification-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/no-magnification-dock-demo').then(
+            (m) => m.NoMagnificationDockDemo,
+          ),
+      },
+      {
+        path: 'badges-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/badges-dock-demo').then(
+            (m) => m.BadgesDockDemo,
+          ),
+      },
+      {
+        path: 'sizes-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/sizes-dock-demo').then(
+            (m) => m.SizesDockDemo,
+          ),
+      },
+      {
+        path: 'magnification-scale-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/magnification-scale-dock-demo').then(
+            (m) => m.MagnificationScaleDockDemo,
+          ),
       },
     ],
   },
