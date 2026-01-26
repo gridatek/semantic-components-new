@@ -88,19 +88,43 @@ Pagination with page navigation, next and previous links.
 
 ```html
 <!-- Disabled previous (first page) -->
-<button sc-pagination-previous class="pointer-events-none opacity-50"></button>
+<button sc-pagination-previous [disabled]="true">
+  <!-- content -->
+</button>
 
 <!-- Disabled next (last page) -->
-<button sc-pagination-next class="pointer-events-none opacity-50"></button>
+<button sc-pagination-next disabled>
+  <!-- content -->
+</button>
+
+<!-- Disabled link -->
+<button sc-pagination-link [disabled]="true">1</button>
 ```
 
-## ScPaginationLink Inputs
+## Inputs
+
+### ScPaginationLink
 
 | Input      | Type                                  | Default  | Description            |
 | ---------- | ------------------------------------- | -------- | ---------------------- |
 | `isActive` | `boolean`                             | `false`  | Whether page is active |
 | `size`     | `'default' \| 'sm' \| 'lg' \| 'icon'` | `'icon'` | Button size            |
+| `disabled` | `boolean`                             | `false`  | Disabled state         |
 | `class`    | `string`                              | `''`     | Additional CSS classes |
+
+### ScPaginationPrevious
+
+| Input      | Type      | Default | Description            |
+| ---------- | --------- | ------- | ---------------------- |
+| `disabled` | `boolean` | `false` | Disabled state         |
+| `class`    | `string`  | `''`    | Additional CSS classes |
+
+### ScPaginationNext
+
+| Input      | Type      | Default | Description            |
+| ---------- | --------- | ------- | ---------------------- |
+| `disabled` | `boolean` | `false` | Disabled state         |
+| `class`    | `string`  | `''`    | Additional CSS classes |
 
 ## Features
 
@@ -115,5 +139,6 @@ Pagination with page navigation, next and previous links.
 - Uses `role="navigation"` with `aria-label="pagination"`
 - Active page has `aria-current="page"`
 - Previous/Next have `aria-label` for screen readers
+- Disabled state uses `aria-disabled` attribute with automatic styling
 - Ellipsis is `aria-hidden` with `.sr-only` text
 - Focus ring for keyboard navigation
