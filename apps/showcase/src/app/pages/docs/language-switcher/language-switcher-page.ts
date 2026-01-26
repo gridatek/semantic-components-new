@@ -1,9 +1,27 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLanguageSwitcherDemoContainer } from './demos/language-switcher-demo-container';
+import { BasicToggleLanguageSwitcherDemoContainer } from './demos/basic-toggle-language-switcher-demo-container';
+import { ButtonLanguageSwitcherDemoContainer } from './demos/button-language-switcher-demo-container';
+import { EnglishLabelsLanguageSwitcherDemoContainer } from './demos/english-labels-language-switcher-demo-container';
+import { IconOnlyLanguageSwitcherDemoContainer } from './demos/icon-only-language-switcher-demo-container';
+import { NavigationLanguageSwitcherDemoContainer } from './demos/navigation-language-switcher-demo-container';
+import { SelectLanguageSwitcherDemoContainer } from './demos/select-language-switcher-demo-container';
+import { SettingsPanelLanguageSwitcherDemoContainer } from './demos/settings-panel-language-switcher-demo-container';
+import { SizesLanguageSwitcherDemoContainer } from './demos/sizes-language-switcher-demo-container';
+import { VariantsLanguageSwitcherDemoContainer } from './demos/variants-language-switcher-demo-container';
 
 @Component({
   selector: 'app-language-switcher-page',
-  imports: [ScLanguageSwitcherDemoContainer],
+  imports: [
+    BasicToggleLanguageSwitcherDemoContainer,
+    IconOnlyLanguageSwitcherDemoContainer,
+    VariantsLanguageSwitcherDemoContainer,
+    SizesLanguageSwitcherDemoContainer,
+    SelectLanguageSwitcherDemoContainer,
+    EnglishLabelsLanguageSwitcherDemoContainer,
+    ButtonLanguageSwitcherDemoContainer,
+    NavigationLanguageSwitcherDemoContainer,
+    SettingsPanelLanguageSwitcherDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,7 +35,15 @@ import { ScLanguageSwitcherDemoContainer } from './demos/language-switcher-demo-
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-language-switcher-demo-container />
+        <app-basic-toggle-language-switcher-demo-container />
+        <app-icon-only-language-switcher-demo-container />
+        <app-variants-language-switcher-demo-container />
+        <app-sizes-language-switcher-demo-container />
+        <app-select-language-switcher-demo-container />
+        <app-english-labels-language-switcher-demo-container />
+        <app-button-language-switcher-demo-container />
+        <app-navigation-language-switcher-demo-container />
+        <app-settings-panel-language-switcher-demo-container />
       </section>
     </div>
   `,

@@ -1,9 +1,33 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTagInputDemoContainer } from './demos/tag-input-demo-container';
+import { BasicTagInputDemoContainer } from './demos/basic-tag-input-demo-container';
+import { BlurTagInputDemoContainer } from './demos/blur-tag-input-demo-container';
+import { ClearableTagInputDemoContainer } from './demos/clearable-tag-input-demo-container';
+import { DelimitersTagInputDemoContainer } from './demos/delimiters-tag-input-demo-container';
+import { DisabledTagInputDemoContainer } from './demos/disabled-tag-input-demo-container';
+import { DuplicatesTagInputDemoContainer } from './demos/duplicates-tag-input-demo-container';
+import { EmailTagInputDemoContainer } from './demos/email-tag-input-demo-container';
+import { FormFieldTagInputDemoContainer } from './demos/form-field-tag-input-demo-container';
+import { MaxTagsTagInputDemoContainer } from './demos/max-tags-tag-input-demo-container';
+import { OutputTagInputDemoContainer } from './demos/output-tag-input-demo-container';
+import { ValidationTagInputDemoContainer } from './demos/validation-tag-input-demo-container';
+import { VariantsTagInputDemoContainer } from './demos/variants-tag-input-demo-container';
 
 @Component({
   selector: 'app-tag-input-page',
-  imports: [ScTagInputDemoContainer],
+  imports: [
+    BasicTagInputDemoContainer,
+    ClearableTagInputDemoContainer,
+    MaxTagsTagInputDemoContainer,
+    VariantsTagInputDemoContainer,
+    DuplicatesTagInputDemoContainer,
+    DelimitersTagInputDemoContainer,
+    BlurTagInputDemoContainer,
+    DisabledTagInputDemoContainer,
+    ValidationTagInputDemoContainer,
+    FormFieldTagInputDemoContainer,
+    EmailTagInputDemoContainer,
+    OutputTagInputDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +39,18 @@ import { ScTagInputDemoContainer } from './demos/tag-input-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-tag-input-demo-container />
+        <app-basic-tag-input-demo-container />
+        <app-clearable-tag-input-demo-container />
+        <app-max-tags-tag-input-demo-container />
+        <app-variants-tag-input-demo-container />
+        <app-duplicates-tag-input-demo-container />
+        <app-delimiters-tag-input-demo-container />
+        <app-blur-tag-input-demo-container />
+        <app-disabled-tag-input-demo-container />
+        <app-validation-tag-input-demo-container />
+        <app-form-field-tag-input-demo-container />
+        <app-email-tag-input-demo-container />
+        <app-output-tag-input-demo-container />
       </section>
     </div>
   `,

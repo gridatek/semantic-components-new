@@ -1,9 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ConfettiDemoContainer } from './demos/confetti-demo-container';
+import { BasicConfettiDemoContainer } from './demos/basic-confetti-demo-container';
+import { CornerBurstsConfettiDemoContainer } from './demos/corner-bursts-confetti-demo-container';
+import { CustomColorsConfettiDemoContainer } from './demos/custom-colors-confetti-demo-container';
+import { FromElementConfettiDemoContainer } from './demos/from-element-confetti-demo-container';
+import { MultipleBurstsConfettiDemoContainer } from './demos/multiple-bursts-confetti-demo-container';
 
 @Component({
   selector: 'app-confetti-page',
-  imports: [ConfettiDemoContainer],
+  imports: [
+    BasicConfettiDemoContainer,
+    FromElementConfettiDemoContainer,
+    CustomColorsConfettiDemoContainer,
+    MultipleBurstsConfettiDemoContainer,
+    CornerBurstsConfettiDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -13,7 +23,11 @@ import { ConfettiDemoContainer } from './demos/confetti-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-confetti-demo-container />
+        <app-basic-confetti-demo-container />
+        <app-from-element-confetti-demo-container />
+        <app-custom-colors-confetti-demo-container />
+        <app-multiple-bursts-confetti-demo-container />
+        <app-corner-bursts-confetti-demo-container />
       </section>
     </div>
   `,

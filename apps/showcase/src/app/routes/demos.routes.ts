@@ -885,10 +885,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/confetti',
     children: [
       {
-        path: 'confetti-demo',
+        path: 'basic-confetti-demo',
         loadComponent: () =>
-          import('../pages/docs/confetti/demos/confetti-demo').then(
-            (m) => m.ConfettiDemo,
+          import('../pages/docs/confetti/demos/basic-confetti-demo').then(
+            (m) => m.BasicConfettiDemo,
+          ),
+      },
+      {
+        path: 'from-element-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/from-element-confetti-demo').then(
+            (m) => m.FromElementConfettiDemo,
+          ),
+      },
+      {
+        path: 'custom-colors-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/custom-colors-confetti-demo').then(
+            (m) => m.CustomColorsConfettiDemo,
+          ),
+      },
+      {
+        path: 'multiple-bursts-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/multiple-bursts-confetti-demo').then(
+            (m) => m.MultipleBurstsConfettiDemo,
+          ),
+      },
+      {
+        path: 'corner-bursts-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/corner-bursts-confetti-demo').then(
+            (m) => m.CornerBurstsConfettiDemo,
           ),
       },
     ],
@@ -1252,9 +1280,39 @@ export const demosRoutes: Route[] = [
     path: 'demos/dock',
     children: [
       {
-        path: 'dock-demo',
+        path: 'basic-dock-demo',
         loadComponent: () =>
-          import('../pages/docs/dock/demos/dock-demo').then((m) => m.DockDemo),
+          import('../pages/docs/dock/demos/basic-dock-demo').then(
+            (m) => m.BasicDockDemo,
+          ),
+      },
+      {
+        path: 'no-magnification-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/no-magnification-dock-demo').then(
+            (m) => m.NoMagnificationDockDemo,
+          ),
+      },
+      {
+        path: 'badges-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/badges-dock-demo').then(
+            (m) => m.BadgesDockDemo,
+          ),
+      },
+      {
+        path: 'sizes-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/sizes-dock-demo').then(
+            (m) => m.SizesDockDemo,
+          ),
+      },
+      {
+        path: 'magnification-scale-dock-demo',
+        loadComponent: () =>
+          import('../pages/docs/dock/demos/magnification-scale-dock-demo').then(
+            (m) => m.MagnificationScaleDockDemo,
+          ),
       },
     ],
   },
@@ -1488,10 +1546,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/image-annotator',
     children: [
       {
-        path: 'image-annotator-demo',
+        path: 'basic-image-annotator-demo',
         loadComponent: () =>
-          import('../pages/docs/image-annotator/demos/image-annotator-demo').then(
-            (m) => m.ImageAnnotatorDemo,
+          import('../pages/docs/image-annotator/demos/basic-image-annotator-demo').then(
+            (m) => m.BasicImageAnnotatorDemo,
+          ),
+      },
+      {
+        path: 'custom-size-image-annotator-demo',
+        loadComponent: () =>
+          import('../pages/docs/image-annotator/demos/custom-size-image-annotator-demo').then(
+            (m) => m.CustomSizeImageAnnotatorDemo,
           ),
       },
     ],
@@ -1834,10 +1899,66 @@ export const demosRoutes: Route[] = [
     path: 'demos/language-switcher',
     children: [
       {
-        path: 'language-switcher-demo',
+        path: 'basic-toggle-language-switcher-demo',
         loadComponent: () =>
-          import('../pages/docs/language-switcher/demos/language-switcher-demo').then(
-            (m) => m.ScLanguageSwitcherDemo,
+          import('../pages/docs/language-switcher/demos/basic-toggle-language-switcher-demo').then(
+            (m) => m.BasicToggleLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'icon-only-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/icon-only-language-switcher-demo').then(
+            (m) => m.IconOnlyLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'variants-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/variants-language-switcher-demo').then(
+            (m) => m.VariantsLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'sizes-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/sizes-language-switcher-demo').then(
+            (m) => m.SizesLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'select-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/select-language-switcher-demo').then(
+            (m) => m.SelectLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'english-labels-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/english-labels-language-switcher-demo').then(
+            (m) => m.EnglishLabelsLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'button-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/button-language-switcher-demo').then(
+            (m) => m.ButtonLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'navigation-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/navigation-language-switcher-demo').then(
+            (m) => m.NavigationLanguageSwitcherDemo,
+          ),
+      },
+      {
+        path: 'settings-panel-language-switcher-demo',
+        loadComponent: () =>
+          import('../pages/docs/language-switcher/demos/settings-panel-language-switcher-demo').then(
+            (m) => m.SettingsPanelLanguageSwitcherDemo,
           ),
       },
     ],
@@ -2846,10 +2967,87 @@ export const demosRoutes: Route[] = [
     path: 'demos/tag-input',
     children: [
       {
-        path: 'tag-input-demo',
+        path: 'basic-tag-input-demo',
         loadComponent: () =>
-          import('../pages/docs/tag-input/demos/tag-input-demo').then(
-            (m) => m.ScTagInputDemo,
+          import('../pages/docs/tag-input/demos/basic-tag-input-demo').then(
+            (m) => m.BasicTagInputDemo,
+          ),
+      },
+      {
+        path: 'clearable-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/clearable-tag-input-demo').then(
+            (m) => m.ClearableTagInputDemo,
+          ),
+      },
+      {
+        path: 'max-tags-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/max-tags-tag-input-demo').then(
+            (m) => m.MaxTagsTagInputDemo,
+          ),
+      },
+      {
+        path: 'variants-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/variants-tag-input-demo').then(
+            (m) => m.VariantsTagInputDemo,
+          ),
+      },
+      {
+        path: 'duplicates-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/duplicates-tag-input-demo').then(
+            (m) => m.DuplicatesTagInputDemo,
+          ),
+      },
+      {
+        path: 'delimiters-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/delimiters-tag-input-demo').then(
+            (m) => m.DelimitersTagInputDemo,
+          ),
+      },
+      {
+        path: 'blur-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/blur-tag-input-demo').then(
+            (m) => m.BlurTagInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/disabled-tag-input-demo').then(
+            (m) => m.DisabledTagInputDemo,
+          ),
+      },
+      {
+        path: 'validation-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/validation-tag-input-demo').then(
+            (m) => m.ValidationTagInputDemo,
+          ),
+      },
+      {
+        path: 'form-field-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/form-field-tag-input-demo').then(
+            (m) => m.FormFieldTagInputDemo,
+          ),
+      },
+      {
+        path: 'email-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/email-tag-input-demo').then(
+            (m) => m.EmailTagInputDemo,
+          ),
+      },
+      {
+        path: 'output-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/output-tag-input-demo').then(
+            (m) => m.OutputTagInputDemo,
           ),
       },
     ],
@@ -2858,10 +3056,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/textarea',
     children: [
       {
-        path: 'textarea-demo',
+        path: 'basic-textarea-demo',
         loadComponent: () =>
-          import('../pages/docs/textarea/demos/textarea-demo').then(
-            (m) => m.ScTextareaDemo,
+          import('../pages/docs/textarea/demos/basic-textarea-demo').then(
+            (m) => m.BasicTextareaDemo,
+          ),
+      },
+      {
+        path: 'label-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/label-textarea-demo').then(
+            (m) => m.LabelTextareaDemo,
+          ),
+      },
+      {
+        path: 'helper-text-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/helper-text-textarea-demo').then(
+            (m) => m.HelperTextTextareaDemo,
+          ),
+      },
+      {
+        path: 'rows-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/rows-textarea-demo').then(
+            (m) => m.RowsTextareaDemo,
+          ),
+      },
+      {
+        path: 'disabled-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/disabled-textarea-demo').then(
+            (m) => m.DisabledTextareaDemo,
+          ),
+      },
+      {
+        path: 'maxlength-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/maxlength-textarea-demo').then(
+            (m) => m.MaxlengthTextareaDemo,
+          ),
+      },
+      {
+        path: 'form-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/form-textarea-demo').then(
+            (m) => m.FormTextareaDemo,
           ),
       },
     ],
@@ -2917,10 +3157,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/time-picker',
     children: [
       {
-        path: 'time-picker-demo',
+        path: 'format-12h-time-picker-demo',
         loadComponent: () =>
-          import('../pages/docs/time-picker/demos/time-picker-demo').then(
-            (m) => m.ScTimePickerDemo,
+          import('../pages/docs/time-picker/demos/format-12h-time-picker-demo').then(
+            (m) => m.Format12hTimePickerDemo,
+          ),
+      },
+      {
+        path: 'format-24h-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/format-24h-time-picker-demo').then(
+            (m) => m.Format24hTimePickerDemo,
+          ),
+      },
+      {
+        path: 'seconds-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/seconds-time-picker-demo').then(
+            (m) => m.SecondsTimePickerDemo,
+          ),
+      },
+      {
+        path: 'disabled-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/disabled-time-picker-demo').then(
+            (m) => m.DisabledTimePickerDemo,
+          ),
+      },
+      {
+        path: 'clock-hours-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/clock-hours-time-picker-demo').then(
+            (m) => m.ClockHoursTimePickerDemo,
+          ),
+      },
+      {
+        path: 'clock-minutes-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/clock-minutes-time-picker-demo').then(
+            (m) => m.ClockMinutesTimePickerDemo,
+          ),
+      },
+      {
+        path: 'presets-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/presets-time-picker-demo').then(
+            (m) => m.PresetsTimePickerDemo,
           ),
       },
     ],
@@ -2969,10 +3251,108 @@ export const demosRoutes: Route[] = [
     path: 'demos/timezone',
     children: [
       {
-        path: 'timezone-demo',
+        path: 'basic-select-timezone-demo',
         loadComponent: () =>
-          import('../pages/docs/timezone/demos/timezone-demo').then(
-            (m) => m.ScTimezoneDemo,
+          import('../pages/docs/timezone/demos/basic-select-timezone-demo').then(
+            (m) => m.BasicSelectTimezoneDemo,
+          ),
+      },
+      {
+        path: 'no-abbr-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/no-abbr-timezone-demo').then(
+            (m) => m.NoAbbrTimezoneDemo,
+          ),
+      },
+      {
+        path: 'no-offset-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/no-offset-timezone-demo').then(
+            (m) => m.NoOffsetTimezoneDemo,
+          ),
+      },
+      {
+        path: 'display-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/display-timezone-demo').then(
+            (m) => m.DisplayTimezoneDemo,
+          ),
+      },
+      {
+        path: 'display-offset-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/display-offset-timezone-demo').then(
+            (m) => m.DisplayOffsetTimezoneDemo,
+          ),
+      },
+      {
+        path: 'icon-only-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/icon-only-timezone-demo').then(
+            (m) => m.IconOnlyTimezoneDemo,
+          ),
+      },
+      {
+        path: 'variants-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/variants-timezone-demo').then(
+            (m) => m.VariantsTimezoneDemo,
+          ),
+      },
+      {
+        path: 'sizes-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/sizes-timezone-demo').then(
+            (m) => m.SizesTimezoneDemo,
+          ),
+      },
+      {
+        path: 'button-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/button-timezone-demo').then(
+            (m) => m.ButtonTimezoneDemo,
+          ),
+      },
+      {
+        path: 'button-offset-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/button-offset-timezone-demo').then(
+            (m) => m.ButtonOffsetTimezoneDemo,
+          ),
+      },
+      {
+        path: 'badge-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/badge-timezone-demo').then(
+            (m) => m.BadgeTimezoneDemo,
+          ),
+      },
+      {
+        path: 'badge-no-icon-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/badge-no-icon-timezone-demo').then(
+            (m) => m.BadgeNoIconTimezoneDemo,
+          ),
+      },
+      {
+        path: 'navigation-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/navigation-timezone-demo').then(
+            (m) => m.NavigationTimezoneDemo,
+          ),
+      },
+      {
+        path: 'settings-panel-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/settings-panel-timezone-demo').then(
+            (m) => m.SettingsPanelTimezoneDemo,
+          ),
+      },
+      {
+        path: 'current-time-timezone-demo',
+        loadComponent: () =>
+          import('../pages/docs/timezone/demos/current-time-timezone-demo').then(
+            (m) => m.CurrentTimeTimezoneDemo,
           ),
       },
     ],

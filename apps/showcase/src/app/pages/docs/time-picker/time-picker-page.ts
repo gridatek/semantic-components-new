@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTimePickerDemoContainer } from './demos/time-picker-demo-container';
+import { ClockHoursTimePickerDemoContainer } from './demos/clock-hours-time-picker-demo-container';
+import { ClockMinutesTimePickerDemoContainer } from './demos/clock-minutes-time-picker-demo-container';
+import { DisabledTimePickerDemoContainer } from './demos/disabled-time-picker-demo-container';
+import { Format12hTimePickerDemoContainer } from './demos/format-12h-time-picker-demo-container';
+import { Format24hTimePickerDemoContainer } from './demos/format-24h-time-picker-demo-container';
+import { PresetsTimePickerDemoContainer } from './demos/presets-time-picker-demo-container';
+import { SecondsTimePickerDemoContainer } from './demos/seconds-time-picker-demo-container';
 
 @Component({
   selector: 'app-time-picker-page',
-  imports: [ScTimePickerDemoContainer],
+  imports: [
+    Format12hTimePickerDemoContainer,
+    Format24hTimePickerDemoContainer,
+    SecondsTimePickerDemoContainer,
+    DisabledTimePickerDemoContainer,
+    ClockHoursTimePickerDemoContainer,
+    ClockMinutesTimePickerDemoContainer,
+    PresetsTimePickerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +29,13 @@ import { ScTimePickerDemoContainer } from './demos/time-picker-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-time-picker-demo-container />
+        <app-format-12h-time-picker-demo-container />
+        <app-format-24h-time-picker-demo-container />
+        <app-seconds-time-picker-demo-container />
+        <app-disabled-time-picker-demo-container />
+        <app-clock-hours-time-picker-demo-container />
+        <app-clock-minutes-time-picker-demo-container />
+        <app-presets-time-picker-demo-container />
       </section>
     </div>
   `,
