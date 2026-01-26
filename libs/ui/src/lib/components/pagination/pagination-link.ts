@@ -1,4 +1,4 @@
-import { computed, Directive, input } from '@angular/core';
+import { booleanAttribute, computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
@@ -7,12 +7,16 @@ import { cn } from '../../utils';
     'data-slot': 'pagination-link',
     '[class]': 'class()',
     '[attr.aria-current]': 'isActive() ? "page" : null',
+    '[attr.aria-disabled]': 'disabled() || null',
   },
 })
 export class ScPaginationLink {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly isActive = input<boolean>(false);
   readonly size = input<'default' | 'sm' | 'lg' | 'icon'>('icon');
+  readonly disabled = input<boolean, unknown>(false, {
+    transform: booleanAttribute,
+  });
 
   protected readonly class = computed(() => {
     const sizeClasses = {
@@ -25,6 +29,7 @@ export class ScPaginationLink {
     return cn(
       'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       'hover:bg-accent hover:text-accent-foreground',
+      'aria-disabled:pointer-events-none aria-disabled:opacity-50',
       this.isActive() && 'border border-input bg-background',
       sizeClasses[this.size()],
       this.classInput(),
