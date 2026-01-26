@@ -9,16 +9,14 @@ import {
   selector: 'app-aspect-ratio-image-cropper-demo',
   imports: [ScImageCropper, ScImageCropperControls, ScImageCropperAspectRatio],
   template: `
-    <div class="space-y-4">
-      <div
-        #cropper="scImageCropper"
-        sc-image-cropper
-        [src]="imageSrc()"
-        [aspectRatio]="selectedAspectRatio()"
-        [containerHeight]="300"
-        class="rounded-lg overflow-hidden border"
-      ></div>
-
+    <div
+      #cropper="scImageCropper"
+      sc-image-cropper
+      [src]="imageSrc()"
+      [aspectRatio]="selectedAspectRatio()"
+      [containerHeight]="300"
+      class="space-y-4 rounded-lg overflow-hidden border"
+    >
       <div class="flex items-center justify-between">
         <div
           sc-image-cropper-aspect-ratio

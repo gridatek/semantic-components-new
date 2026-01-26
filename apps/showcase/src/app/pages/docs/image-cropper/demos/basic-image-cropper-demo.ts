@@ -10,16 +10,14 @@ import {
   selector: 'app-basic-image-cropper-demo',
   imports: [ScImageCropper, ScImageCropperControls],
   template: `
-    <div class="space-y-4">
-      <div
-        #cropper="scImageCropper"
-        sc-image-cropper
-        [src]="imageSrc()"
-        [(cropArea)]="cropArea"
-        [containerHeight]="300"
-        class="rounded-lg overflow-hidden border"
-      ></div>
-
+    <div
+      #cropper="scImageCropper"
+      sc-image-cropper
+      [src]="imageSrc()"
+      [(cropArea)]="cropArea"
+      [containerHeight]="300"
+      class="space-y-4 rounded-lg overflow-hidden border"
+    >
       <div sc-image-cropper-controls></div>
 
       <div class="flex gap-4">
