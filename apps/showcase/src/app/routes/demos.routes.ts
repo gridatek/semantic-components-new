@@ -1488,10 +1488,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/image-annotator',
     children: [
       {
-        path: 'image-annotator-demo',
+        path: 'basic-image-annotator-demo',
         loadComponent: () =>
-          import('../pages/docs/image-annotator/demos/image-annotator-demo').then(
-            (m) => m.ImageAnnotatorDemo,
+          import('../pages/docs/image-annotator/demos/basic-image-annotator-demo').then(
+            (m) => m.BasicImageAnnotatorDemo,
+          ),
+      },
+      {
+        path: 'custom-size-image-annotator-demo',
+        loadComponent: () =>
+          import('../pages/docs/image-annotator/demos/custom-size-image-annotator-demo').then(
+            (m) => m.CustomSizeImageAnnotatorDemo,
           ),
       },
     ],
