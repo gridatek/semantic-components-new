@@ -2672,10 +2672,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/stat-card',
     children: [
       {
-        path: 'stat-card-demo',
+        path: 'basic-stat-card-demo',
         loadComponent: () =>
-          import('../pages/docs/stat-card/demos/stat-card-demo').then(
-            (m) => m.StatCardDemo,
+          import('../pages/docs/stat-card/demos/basic-stat-card-demo').then(
+            (m) => m.BasicStatCardDemo,
+          ),
+      },
+      {
+        path: 'sizes-stat-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/stat-card/demos/sizes-stat-card-demo').then(
+            (m) => m.SizesStatCardDemo,
+          ),
+      },
+      {
+        path: 'variants-stat-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/stat-card/demos/variants-stat-card-demo').then(
+            (m) => m.VariantsStatCardDemo,
+          ),
+      },
+      {
+        path: 'description-stat-card-demo',
+        loadComponent: () =>
+          import('../pages/docs/stat-card/demos/description-stat-card-demo').then(
+            (m) => m.DescriptionStatCardDemo,
           ),
       },
     ],

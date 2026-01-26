@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { StatCardDemoContainer } from './demos/stat-card-demo-container';
+import { BasicStatCardDemoContainer } from './demos/basic-stat-card-demo-container';
+import { SizesStatCardDemoContainer } from './demos/sizes-stat-card-demo-container';
+import { VariantsStatCardDemoContainer } from './demos/variants-stat-card-demo-container';
+import { DescriptionStatCardDemoContainer } from './demos/description-stat-card-demo-container';
 
 @Component({
   selector: 'app-stat-card-page',
-  imports: [StatCardDemoContainer],
+  imports: [
+    BasicStatCardDemoContainer,
+    SizesStatCardDemoContainer,
+    VariantsStatCardDemoContainer,
+    DescriptionStatCardDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -13,7 +21,10 @@ import { StatCardDemoContainer } from './demos/stat-card-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-stat-card-demo-container />
+        <app-basic-stat-card-demo-container />
+        <app-sizes-stat-card-demo-container />
+        <app-variants-stat-card-demo-container />
+        <app-description-stat-card-demo-container />
       </section>
     </div>
   `,
