@@ -2967,10 +2967,87 @@ export const demosRoutes: Route[] = [
     path: 'demos/tag-input',
     children: [
       {
-        path: 'tag-input-demo',
+        path: 'basic-tag-input-demo',
         loadComponent: () =>
-          import('../pages/docs/tag-input/demos/tag-input-demo').then(
-            (m) => m.ScTagInputDemo,
+          import('../pages/docs/tag-input/demos/basic-tag-input-demo').then(
+            (m) => m.BasicTagInputDemo,
+          ),
+      },
+      {
+        path: 'clearable-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/clearable-tag-input-demo').then(
+            (m) => m.ClearableTagInputDemo,
+          ),
+      },
+      {
+        path: 'max-tags-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/max-tags-tag-input-demo').then(
+            (m) => m.MaxTagsTagInputDemo,
+          ),
+      },
+      {
+        path: 'variants-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/variants-tag-input-demo').then(
+            (m) => m.VariantsTagInputDemo,
+          ),
+      },
+      {
+        path: 'duplicates-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/duplicates-tag-input-demo').then(
+            (m) => m.DuplicatesTagInputDemo,
+          ),
+      },
+      {
+        path: 'delimiters-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/delimiters-tag-input-demo').then(
+            (m) => m.DelimitersTagInputDemo,
+          ),
+      },
+      {
+        path: 'blur-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/blur-tag-input-demo').then(
+            (m) => m.BlurTagInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/disabled-tag-input-demo').then(
+            (m) => m.DisabledTagInputDemo,
+          ),
+      },
+      {
+        path: 'validation-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/validation-tag-input-demo').then(
+            (m) => m.ValidationTagInputDemo,
+          ),
+      },
+      {
+        path: 'form-field-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/form-field-tag-input-demo').then(
+            (m) => m.FormFieldTagInputDemo,
+          ),
+      },
+      {
+        path: 'email-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/email-tag-input-demo').then(
+            (m) => m.EmailTagInputDemo,
+          ),
+      },
+      {
+        path: 'output-tag-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/tag-input/demos/output-tag-input-demo').then(
+            (m) => m.OutputTagInputDemo,
           ),
       },
     ],
