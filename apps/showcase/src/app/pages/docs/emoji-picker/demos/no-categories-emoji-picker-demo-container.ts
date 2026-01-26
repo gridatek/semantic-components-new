@@ -1,0 +1,30 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { NoCategoriesEmojiPickerDemo } from './no-categories-emoji-picker-demo';
+
+@Component({
+  selector: 'app-no-categories-emoji-picker-demo-container',
+  imports: [DemoContainer, NoCategoriesEmojiPickerDemo],
+  template: `
+    <app-demo-container
+      title="Without Category Tabs"
+      demoUrl="/demos/emoji-picker/no-categories-emoji-picker-demo"
+      [code]="code"
+    >
+      <app-no-categories-emoji-picker-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class NoCategoriesEmojiPickerDemoContainer {
+  readonly code = `import { Component } from '@angular/core';
+import { ScEmojiPicker } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-no-categories-emoji-picker-demo',
+  imports: [ScEmojiPicker],
+  template: \` <sc-emoji-picker [showCategories]="false" class="h-72" /> \`,
+})
+export class NoCategoriesEmojiPickerDemo {}`;
+}
