@@ -5,7 +5,7 @@ Pagination with page navigation, next and previous links.
 ## Components
 
 - `ScPagination` - Navigation container
-- `ScPaginationContent` - List container (ul)
+- `ScPaginationList` - List container (ul)
 - `ScPaginationItem` - List item (li)
 - `ScPaginationLink` - Page number link/button
 - `ScPaginationPrevious` - Previous page link/button
@@ -16,7 +16,7 @@ Pagination with page navigation, next and previous links.
 
 ```html
 <nav sc-pagination>
-  <ul sc-pagination-content>
+  <ul sc-pagination-list>
     <li sc-pagination-item>
       <a sc-pagination-previous href="#"></a>
     </li>
@@ -40,7 +40,7 @@ Pagination with page navigation, next and previous links.
 
 ```html
 <nav sc-pagination>
-  <ul sc-pagination-content>
+  <ul sc-pagination-list>
     <li sc-pagination-item>
       <a sc-pagination-previous href="#"></a>
     </li>
@@ -70,7 +70,7 @@ Pagination with page navigation, next and previous links.
 
 ```html
 <nav sc-pagination>
-  <ul sc-pagination-content>
+  <ul sc-pagination-list>
     <li sc-pagination-item>
       <button sc-pagination-previous></button>
     </li>
