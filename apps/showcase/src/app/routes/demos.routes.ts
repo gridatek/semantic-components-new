@@ -885,10 +885,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/confetti',
     children: [
       {
-        path: 'confetti-demo',
+        path: 'basic-confetti-demo',
         loadComponent: () =>
-          import('../pages/docs/confetti/demos/confetti-demo').then(
-            (m) => m.ConfettiDemo,
+          import('../pages/docs/confetti/demos/basic-confetti-demo').then(
+            (m) => m.BasicConfettiDemo,
+          ),
+      },
+      {
+        path: 'from-element-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/from-element-confetti-demo').then(
+            (m) => m.FromElementConfettiDemo,
+          ),
+      },
+      {
+        path: 'custom-colors-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/custom-colors-confetti-demo').then(
+            (m) => m.CustomColorsConfettiDemo,
+          ),
+      },
+      {
+        path: 'multiple-bursts-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/multiple-bursts-confetti-demo').then(
+            (m) => m.MultipleBurstsConfettiDemo,
+          ),
+      },
+      {
+        path: 'corner-bursts-confetti-demo',
+        loadComponent: () =>
+          import('../pages/docs/confetti/demos/corner-bursts-confetti-demo').then(
+            (m) => m.CornerBurstsConfettiDemo,
           ),
       },
     ],
