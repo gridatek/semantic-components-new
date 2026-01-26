@@ -3157,10 +3157,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/time-picker',
     children: [
       {
-        path: 'time-picker-demo',
+        path: 'format-12h-time-picker-demo',
         loadComponent: () =>
-          import('../pages/docs/time-picker/demos/time-picker-demo').then(
-            (m) => m.ScTimePickerDemo,
+          import('../pages/docs/time-picker/demos/format-12h-time-picker-demo').then(
+            (m) => m.Format12hTimePickerDemo,
+          ),
+      },
+      {
+        path: 'format-24h-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/format-24h-time-picker-demo').then(
+            (m) => m.Format24hTimePickerDemo,
+          ),
+      },
+      {
+        path: 'seconds-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/seconds-time-picker-demo').then(
+            (m) => m.SecondsTimePickerDemo,
+          ),
+      },
+      {
+        path: 'disabled-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/disabled-time-picker-demo').then(
+            (m) => m.DisabledTimePickerDemo,
+          ),
+      },
+      {
+        path: 'clock-hours-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/clock-hours-time-picker-demo').then(
+            (m) => m.ClockHoursTimePickerDemo,
+          ),
+      },
+      {
+        path: 'clock-minutes-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/clock-minutes-time-picker-demo').then(
+            (m) => m.ClockMinutesTimePickerDemo,
+          ),
+      },
+      {
+        path: 'presets-time-picker-demo',
+        loadComponent: () =>
+          import('../pages/docs/time-picker/demos/presets-time-picker-demo').then(
+            (m) => m.PresetsTimePickerDemo,
           ),
       },
     ],
