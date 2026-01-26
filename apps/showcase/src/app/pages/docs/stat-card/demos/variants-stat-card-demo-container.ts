@@ -19,34 +19,68 @@ import { VariantsStatCardDemo } from './variants-stat-card-demo';
 })
 export class VariantsStatCardDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScStatCard } from '@semantic-components/ui';
+import {
+  ScStatCard,
+  ScStatCardChange,
+  ScStatCardLabel,
+  ScStatCardValue,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-variants-stat-card-demo',
-  imports: [ScStatCard],
+  imports: [ScStatCard, ScStatCardLabel, ScStatCardValue, ScStatCardChange],
   template: \`
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <sc-stat-card
-        label="Default"
-        value="1,234"
-        variant="default"
-        [change]="12"
-        trend="up"
-      />
-      <sc-stat-card
-        label="Outline"
-        value="5,678"
-        variant="outline"
-        [change]="-5"
-        trend="down"
-      />
-      <sc-stat-card
-        label="Filled"
-        value="9,012"
-        variant="filled"
-        [change]="8"
-        trend="up"
-      />
+      <div sc-stat-card variant="default">
+        <div class="flex items-start justify-between">
+          <div class="space-y-1">
+            <p sc-stat-card-label>Default</p>
+            <p sc-stat-card-value>1,234</p>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center gap-2">
+          <span sc-stat-card-change trend="up">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m18 15-6-6-6 6" />
+            </svg>
+            <span>+12%</span>
+          </span>
+        </div>
+      </div>
+
+      <div sc-stat-card variant="outline">
+        <div class="flex items-start justify-between">
+          <div class="space-y-1">
+            <p sc-stat-card-label>Outline</p>
+            <p sc-stat-card-value>5,678</p>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center gap-2">
+          <span sc-stat-card-change trend="down">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+            <span>-5%</span>
+          </span>
+        </div>
+      </div>
+
+      <div sc-stat-card variant="filled">
+        <div class="flex items-start justify-between">
+          <div class="space-y-1">
+            <p sc-stat-card-label>Filled</p>
+            <p sc-stat-card-value>9,012</p>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center gap-2">
+          <span sc-stat-card-change trend="up">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m18 15-6-6-6 6" />
+            </svg>
+            <span>+8%</span>
+          </span>
+        </div>
+      </div>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
