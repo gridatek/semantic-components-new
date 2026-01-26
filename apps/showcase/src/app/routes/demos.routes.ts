@@ -3056,10 +3056,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/textarea',
     children: [
       {
-        path: 'textarea-demo',
+        path: 'basic-textarea-demo',
         loadComponent: () =>
-          import('../pages/docs/textarea/demos/textarea-demo').then(
-            (m) => m.ScTextareaDemo,
+          import('../pages/docs/textarea/demos/basic-textarea-demo').then(
+            (m) => m.BasicTextareaDemo,
+          ),
+      },
+      {
+        path: 'label-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/label-textarea-demo').then(
+            (m) => m.LabelTextareaDemo,
+          ),
+      },
+      {
+        path: 'helper-text-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/helper-text-textarea-demo').then(
+            (m) => m.HelperTextTextareaDemo,
+          ),
+      },
+      {
+        path: 'rows-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/rows-textarea-demo').then(
+            (m) => m.RowsTextareaDemo,
+          ),
+      },
+      {
+        path: 'disabled-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/disabled-textarea-demo').then(
+            (m) => m.DisabledTextareaDemo,
+          ),
+      },
+      {
+        path: 'maxlength-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/maxlength-textarea-demo').then(
+            (m) => m.MaxlengthTextareaDemo,
+          ),
+      },
+      {
+        path: 'form-textarea-demo',
+        loadComponent: () =>
+          import('../pages/docs/textarea/demos/form-textarea-demo').then(
+            (m) => m.FormTextareaDemo,
           ),
       },
     ],
