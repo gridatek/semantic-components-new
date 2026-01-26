@@ -1,9 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInputOtpDemoContainer } from './demos/input-otp-demo-container';
+import { BasicInputOtpDemoContainer } from './demos/basic-input-otp-demo-container';
+import { SeparatorInputOtpDemoContainer } from './demos/separator-input-otp-demo-container';
+import { PinInputOtpDemoContainer } from './demos/pin-input-otp-demo-container';
+import { DotSeparatorInputOtpDemoContainer } from './demos/dot-separator-input-otp-demo-container';
+import { DisabledInputOtpDemoContainer } from './demos/disabled-input-otp-demo-container';
+import { VerificationInputOtpDemoContainer } from './demos/verification-input-otp-demo-container';
 
 @Component({
   selector: 'app-input-otp-page',
-  imports: [ScInputOtpDemoContainer],
+  imports: [
+    BasicInputOtpDemoContainer,
+    SeparatorInputOtpDemoContainer,
+    PinInputOtpDemoContainer,
+    DotSeparatorInputOtpDemoContainer,
+    DisabledInputOtpDemoContainer,
+    VerificationInputOtpDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +27,12 @@ import { ScInputOtpDemoContainer } from './demos/input-otp-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-input-otp-demo-container />
+        <app-basic-input-otp-demo-container />
+        <app-separator-input-otp-demo-container />
+        <app-pin-input-otp-demo-container />
+        <app-dot-separator-input-otp-demo-container />
+        <app-disabled-input-otp-demo-container />
+        <app-verification-input-otp-demo-container />
       </section>
     </div>
   `,

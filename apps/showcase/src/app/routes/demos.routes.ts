@@ -1639,10 +1639,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/input-otp',
     children: [
       {
-        path: 'input-otp-demo',
+        path: 'basic-input-otp-demo',
         loadComponent: () =>
-          import('../pages/docs/input-otp/demos/input-otp-demo').then(
-            (m) => m.ScInputOtpDemo,
+          import('../pages/docs/input-otp/demos/basic-input-otp-demo').then(
+            (m) => m.BasicInputOtpDemo,
+          ),
+      },
+      {
+        path: 'separator-input-otp-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-otp/demos/separator-input-otp-demo').then(
+            (m) => m.SeparatorInputOtpDemo,
+          ),
+      },
+      {
+        path: 'pin-input-otp-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-otp/demos/pin-input-otp-demo').then(
+            (m) => m.PinInputOtpDemo,
+          ),
+      },
+      {
+        path: 'dot-separator-input-otp-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-otp/demos/dot-separator-input-otp-demo').then(
+            (m) => m.DotSeparatorInputOtpDemo,
+          ),
+      },
+      {
+        path: 'disabled-input-otp-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-otp/demos/disabled-input-otp-demo').then(
+            (m) => m.DisabledInputOtpDemo,
+          ),
+      },
+      {
+        path: 'verification-input-otp-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-otp/demos/verification-input-otp-demo').then(
+            (m) => m.VerificationInputOtpDemo,
           ),
       },
     ],
