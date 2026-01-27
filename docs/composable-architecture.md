@@ -69,13 +69,52 @@ export class ScComponentName {
 
 **Key Points:**
 
-- Use `@Directive` (not `@Component`)
+- Choose `@Directive` or `@Component` based on your needs:
+  - Use `@Directive` when the root only manages state (most common)
+  - Use `@Component` when the root needs its own template/rendering
 - Provide via `InjectionToken` for type-safe injection
 - Use `model()` for two-way binding
 - Use `input()` for configuration
 - Use `output()` for events
 - Use `signal()` for internal state
 - Use `computed()` for derived state
+
+#### Choosing Between @Directive and @Component
+
+**Use `@Directive` when:**
+
+- Root only manages state and doesn't need a template
+- All rendering is done by child components
+- Maximum flexibility in DOM structure
+- **Examples**: NumberField, PasswordField, most form components
+
+**Use `@Component` when:**
+
+- Root needs to render wrapper content or structure
+- Root provides default rendering with content projection
+- Root needs styling or layout that wraps children
+- **Examples**: Accordion (renders button headers), Tabs (renders tab buttons)
+
+**Example with `@Component` root:**
+
+```typescript
+@Component({
+  selector: '[sc-tabs]',
+  template: `
+    <div class="tabs-header" role="tablist">
+      <ng-content select="[sc-tab-trigger]" />
+    </div>
+    <div class="tabs-content">
+      <ng-content select="[sc-tab-content]" />
+    </div>
+  `,
+  providers: [{ provide: SC_TABS, useExisting: ScTabs }],
+})
+export class ScTabs {
+  readonly activeTab = signal<string>('');
+  // ... state management
+}
+```
 
 ### 2. Container Components (Layout)
 
