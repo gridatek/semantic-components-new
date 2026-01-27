@@ -4,7 +4,87 @@ This document tracks the remaining features that need to be implemented for the 
 
 ## Missing Sub-Components
 
-### 1. ScPasswordFieldStrength
+### 1. ScPasswordFieldStrengthBar
+
+A sub-component that displays a single strength bar indicator.
+
+**Selector:** `div[sc-password-field-strength-bar]`
+
+**Purpose:**
+
+- Displays a single strength bar that can be used to build custom strength indicators
+- Allows users to create their own strength layouts
+- Reusable building block
+
+**Inputs:**
+
+- `class` - Additional CSS classes
+- `index` - Bar index (0-3 or 0-4)
+
+**Features:**
+
+- Injects `SC_PASSWORD_FIELD` parent context
+- Automatically computes strength from password value
+- Computes whether this bar should be filled based on index and strength
+- Auto-colors based on strength level:
+  - Strength 0: `bg-red-500`
+  - Strength 1: `bg-orange-500`
+  - Strength 2: `bg-yellow-500`
+  - Strength 3: `bg-lime-500`
+  - Strength 4: `bg-green-500`
+  - Unfilled: `bg-muted`
+- Can be used independently to build custom strength displays
+
+**Implementation Notes:**
+
+```typescript
+protected readonly strength = computed(() => {
+  const password = this.passwordField.value();
+  if (!password) return 0;
+  // Calculate strength (0-4) based on password criteria
+  // See password-input-strength.ts:109-127 for logic
+});
+
+protected readonly class = computed(() => {
+  const strength = this.strength();
+  const index = this.index();
+  const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-500', 'bg-green-500'];
+
+  return cn(
+    'h-1 flex-1 rounded-full transition-colors',
+    index <= strength ? colors[strength] : 'bg-muted',
+    this.classInput(),
+  );
+});
+```
+
+**Example Usage:**
+
+```html
+<div sc-password-field [(value)]="password">
+  <div sc-password-field-group>
+    <input sc-password-field-input />
+    <button sc-password-field-toggle></button>
+  </div>
+
+  <!-- Custom strength bar layout -->
+  <div class="flex gap-2 mt-2">
+    @for (i of [0, 1, 2, 3, 4]; track i) {
+    <div sc-password-field-strength-bar [index]="i"></div>
+    }
+  </div>
+</div>
+```
+
+**Expected Template Structure:**
+
+```html
+<div [class]="class()"></div>
+```
+
+---
+
+### 2. ScPasswordFieldStrength
 
 A sub-component that displays a visual password strength indicator.
 
@@ -50,6 +130,25 @@ See `password-input-strength.ts` lines 109-127 for strength calculation logic.
 
 **Expected Template Structure:**
 
+Option 1 - Using ScPasswordFieldStrengthBar sub-components:
+
+```html
+@if (passwordField.value()) {
+<div class="mt-2 space-y-1">
+  <!-- Strength bars -->
+  <div class="flex gap-1">
+    @for (i of [0, 1, 2, 3]; track i) {
+    <div sc-password-field-strength-bar [index]="i"></div>
+    }
+  </div>
+  <!-- Strength label -->
+  <p [class]="strengthTextClass()">{{ strengthLabel() }}</p>
+</div>
+}
+```
+
+Option 2 - Inline implementation (simpler):
+
 ```html
 @if (passwordField.value()) {
 <div class="mt-2 space-y-1">
@@ -67,7 +166,7 @@ See `password-input-strength.ts` lines 109-127 for strength calculation logic.
 
 ---
 
-### 2. ScPasswordFieldRequirements
+### 3. ScPasswordFieldRequirements
 
 A sub-component that displays a checklist of password requirements.
 
@@ -87,7 +186,7 @@ A sub-component that displays a checklist of password requirements.
 **Requirements Format:**
 
 ```typescript
-interface PasswordRequirement {
+export interface ScPasswordRequirement {
   label: string;
   test: (value: string) => boolean;
 }
@@ -235,6 +334,10 @@ When implementing, create demos for:
 4. **Custom Requirements**
    - Uses custom requirement rules
 
+5. **Custom Strength Bar Layout**
+   - Uses ScPasswordFieldStrengthBar components to build custom strength displays
+   - Demonstrates flexibility of composable approach
+
 ### File Structure
 
 After implementation:
@@ -245,6 +348,7 @@ password-field/
 ├── password-field-group.ts            # Container
 ├── password-field-input.ts            # Input field
 ├── password-field-toggle.ts           # Toggle button
+├── password-field-strength-bar.ts     # ✨ NEW - Single strength bar
 ├── password-field-strength.ts         # ✨ NEW - Strength indicator
 ├── password-field-requirements.ts     # ✨ NEW - Requirements list
 ├── index.ts                           # Exports
@@ -261,8 +365,12 @@ export * from './password-field';
 export * from './password-field-group';
 export * from './password-field-input';
 export * from './password-field-toggle';
+export * from './password-field-strength-bar'; // Add
 export * from './password-field-strength'; // Add
 export * from './password-field-requirements'; // Add
+
+// Export types
+export type { ScPasswordRequirement } from './password-field-requirements';
 ```
 
 And in `libs/ui/src/index.ts`:
@@ -273,10 +381,14 @@ export {
   ScPasswordFieldGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
+  ScPasswordFieldStrengthBar, // Add
   ScPasswordFieldStrength, // Add
   ScPasswordFieldRequirements, // Add
   SC_PASSWORD_FIELD,
 } from './lib/components/password-field';
+
+// Export types
+export type { ScPasswordRequirement } from './lib/components/password-field';
 ```
 
 ---
@@ -287,9 +399,10 @@ Unlike the monolithic `ScPasswordInputStrength` component which bundles everythi
 
 ✅ **Flexibility**: Use strength indicator without requirements, or vice versa
 ✅ **Customization**: Each component can be styled independently
-✅ **Reusability**: Requirements list could work with other inputs
+✅ **Reusability**: Requirements list could work with other inputs, strength bars can be reused
 ✅ **Composition**: Mix with other components (labels, descriptions)
 ✅ **Control**: Place components in any order or layout
+✅ **Granularity**: Build custom strength displays using individual ScPasswordFieldStrengthBar components
 
 **Example - Flexibility in Action:**
 
@@ -326,6 +439,21 @@ Unlike the monolithic `ScPasswordInputStrength` component which bundles everythi
     <ul sc-password-field-requirements></ul>
   </div>
 </div>
+
+<!-- Custom strength bar layout using individual bars -->
+<div sc-password-field [(value)]="password">
+  <div sc-password-field-group>
+    <input sc-password-field-input />
+    <button sc-password-field-toggle></button>
+  </div>
+
+  <!-- Vertical strength bars -->
+  <div class="flex gap-1 mt-2 h-20">
+    @for (i of [0, 1, 2, 3, 4]; track i) {
+    <div sc-password-field-strength-bar [index]="i" class="flex-1"></div>
+    }
+  </div>
+</div>
 ```
 
 ---
@@ -333,9 +461,10 @@ Unlike the monolithic `ScPasswordInputStrength` component which bundles everythi
 ## Next Steps
 
 1. ✅ Create this TODO.md file
-2. ⬜ Implement `ScPasswordFieldStrength` component
-3. ⬜ Implement `ScPasswordFieldRequirements` component
-4. ⬜ Create demos for new components
-5. ⬜ Update README.md with new components
-6. ⬜ Add demo routes
-7. ⬜ Export new components from index files
+2. ⬜ Implement `ScPasswordFieldStrengthBar` component
+3. ⬜ Implement `ScPasswordFieldStrength` component
+4. ⬜ Implement `ScPasswordFieldRequirements` component with `ScPasswordRequirement` type
+5. ⬜ Create demos for new components
+6. ⬜ Update README.md with new components
+7. ⬜ Add demo routes
+8. ⬜ Export new components and types from index files
