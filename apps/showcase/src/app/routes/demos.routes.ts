@@ -2653,10 +2653,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/scroll-area',
     children: [
       {
-        path: 'scroll-area-demo',
+        path: 'vertical-scroll-area-demo',
         loadComponent: () =>
-          import('../pages/docs/scroll-area/demos/scroll-area-demo').then(
-            (m) => m.ScScrollAreaDemo,
+          import('../pages/docs/scroll-area/demos/vertical-scroll-area-demo').then(
+            (m) => m.VerticalScrollAreaDemo,
+          ),
+      },
+      {
+        path: 'horizontal-scroll-area-demo',
+        loadComponent: () =>
+          import('../pages/docs/scroll-area/demos/horizontal-scroll-area-demo').then(
+            (m) => m.HorizontalScrollAreaDemo,
+          ),
+      },
+      {
+        path: 'both-scroll-area-demo',
+        loadComponent: () =>
+          import('../pages/docs/scroll-area/demos/both-scroll-area-demo').then(
+            (m) => m.BothScrollAreaDemo,
           ),
       },
     ],
