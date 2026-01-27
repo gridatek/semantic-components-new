@@ -2254,6 +2254,13 @@ export const demosRoutes: Route[] = [
             (m) => m.LastPagePaginationDemo,
           ),
       },
+      {
+        path: 'page-size-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/page-size-pagination-demo').then(
+            (m) => m.PageSizePaginationDemo,
+          ),
+      },
     ],
   },
   {

@@ -5,15 +5,26 @@ import { ManyPagesPaginationDemoContainer } from './demos/many-pages-pagination-
 import { ButtonsPaginationDemoContainer } from './demos/buttons-pagination-demo-container';
 import { FirstPagePaginationDemoContainer } from './demos/first-page-pagination-demo-container';
 import { LastPagePaginationDemoContainer } from './demos/last-page-pagination-demo-container';
+import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-demo-container';
 
 @Component({
   selector: 'app-pagination-page',
-  imports: [BasicPaginationDemoContainer, EllipsisPaginationDemoContainer, ManyPagesPaginationDemoContainer, ButtonsPaginationDemoContainer, FirstPagePaginationDemoContainer, LastPagePaginationDemoContainer],
+  imports: [
+    BasicPaginationDemoContainer,
+    EllipsisPaginationDemoContainer,
+    ManyPagesPaginationDemoContainer,
+    ButtonsPaginationDemoContainer,
+    FirstPagePaginationDemoContainer,
+    LastPagePaginationDemoContainer,
+    PageSizePaginationDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
         <h1 class="text-3xl font-bold tracking-tight">Pagination</h1>
-        <p class="text-muted-foreground">Pagination with page navigation, next and previous links.</p>
+        <p class="text-muted-foreground">
+          Pagination with page navigation, next and previous links.
+        </p>
       </div>
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
@@ -23,6 +34,7 @@ import { LastPagePaginationDemoContainer } from './demos/last-page-pagination-de
         <app-buttons-pagination-demo-container />
         <app-first-page-pagination-demo-container />
         <app-last-page-pagination-demo-container />
+        <app-page-size-pagination-demo-container />
       </section>
     </div>
   `,

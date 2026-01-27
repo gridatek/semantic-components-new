@@ -25,8 +25,9 @@ export class ScPagination {
   readonly siblingCount = input<number>(1); // Number of pages to show on each side of current page
   readonly showEdges = input<boolean>(true); // Show first and last pages
 
-  // Output event when page changes
+  // Output events
   readonly pageChange = output<number>();
+  readonly pageSizeChange = output<number>();
 
   protected readonly class = computed(() =>
     cn('mx-auto flex w-full justify-center', this.classInput()),
@@ -57,6 +58,20 @@ export class ScPagination {
     const total = this.totalPages();
     if (page >= 1 && page <= total && page !== this.currentPage()) {
       this.pageChange.emit(page);
+    }
+  }
+
+  /**
+   * Change the page size. Called internally by ScPaginationPageSize.
+   * @param newPageSize The new page size
+   */
+  changePageSize(newPageSize: number): void {
+    if (newPageSize > 0 && newPageSize !== this.pageSize()) {
+      this.pageSizeChange.emit(newPageSize);
+      // Reset to page 1 when page size changes
+      if (this.currentPage() !== 1) {
+        this.pageChange.emit(1);
+      }
     }
   }
 

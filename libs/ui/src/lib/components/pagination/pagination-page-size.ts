@@ -1,0 +1,47 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
+import { cn } from '../../utils';
+import { ScPagination } from './pagination';
+
+@Component({
+  selector: 'sc-pagination-page-size',
+  host: {
+    'data-slot': 'pagination-page-size',
+    '[class]': 'class()',
+  },
+  template: `
+    <div class="flex items-center gap-2">
+      <span class="text-sm text-muted-foreground">{{ label() }}</span>
+      <select
+        [value]="pagination.pageSize()"
+        (change)="onPageSizeChange($event)"
+        class="h-8 rounded-md border border-input bg-background px-3 text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        @for (option of pageSizeOptions(); track option) {
+          <option [value]="option">{{ option }}</option>
+        }
+      </select>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ScPaginationPageSize {
+  protected readonly pagination = inject(ScPagination);
+
+  readonly classInput = input<string>('', { alias: 'class' });
+  readonly label = input<string>('Items per page:');
+  readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]);
+
+  protected readonly class = computed(() => cn('', this.classInput()));
+
+  protected onPageSizeChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const newPageSize = parseInt(select.value, 10);
+    this.pagination.changePageSize(newPageSize);
+  }
+}
