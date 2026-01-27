@@ -1,5 +1,12 @@
-import { booleanAttribute, computed, Directive, input } from '@angular/core';
+import {
+  booleanAttribute,
+  computed,
+  Directive,
+  inject,
+  input,
+} from '@angular/core';
 import { cn } from '../../utils';
+import { ScPagination } from './pagination';
 
 @Directive({
   selector: 'a[sc-pagination-link], button[sc-pagination-link]',
@@ -8,10 +15,14 @@ import { cn } from '../../utils';
     '[class]': 'class()',
     '[attr.aria-current]': 'isActive() ? "page" : null',
     '[attr.aria-disabled]': 'disabled() || null',
+    '(click)': 'onClick($event)',
   },
 })
 export class ScPaginationLink {
+  private readonly pagination = inject(ScPagination, { optional: true });
+
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly page = input<number>();
   readonly isActive = input<boolean>(false);
   readonly size = input<'default' | 'sm' | 'lg' | 'icon'>('icon');
   readonly disabled = input<boolean, unknown>(false, {
@@ -35,4 +46,17 @@ export class ScPaginationLink {
       this.classInput(),
     );
   });
+
+  onClick(event: Event): void {
+    if (this.disabled()) {
+      event.preventDefault();
+      return;
+    }
+
+    const pageNum = this.page();
+    if (pageNum !== undefined && this.pagination) {
+      event.preventDefault();
+      this.pagination.goToPage(pageNum);
+    }
+  }
 }

@@ -3,9 +3,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScPagination } from './pagination';
 
 @Component({
   selector: 'a[sc-pagination-previous], button[sc-pagination-previous]',
@@ -14,6 +16,7 @@ import { cn } from '../../utils';
     '[class]': 'class()',
     '[attr.aria-label]': '"Go to previous page"',
     '[attr.aria-disabled]': 'disabled() || null',
+    '(click)': 'onClick($event)',
   },
   template: `
     <ng-content />
@@ -21,6 +24,8 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPaginationPrevious {
+  private readonly pagination = inject(ScPagination, { optional: true });
+
   readonly classInput = input<string>('', { alias: 'class' });
   readonly disabled = input<boolean, unknown>(false, {
     transform: booleanAttribute,
@@ -35,4 +40,17 @@ export class ScPaginationPrevious {
       this.classInput(),
     ),
   );
+
+  onClick(event: Event): void {
+    if (this.disabled()) {
+      event.preventDefault();
+      return;
+    }
+
+    if (this.pagination) {
+      event.preventDefault();
+      const previousPage = this.pagination.currentPage() - 1;
+      this.pagination.goToPage(previousPage);
+    }
+  }
 }

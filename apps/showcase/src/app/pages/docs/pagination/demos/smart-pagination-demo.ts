@@ -39,14 +39,11 @@ import {
         [totalItems]="totalItems()"
         [siblingCount]="1"
         [showEdges]="true"
+        (pageChange)="currentPage.set($event)"
       >
         <ul sc-pagination-list>
           <li sc-pagination-item>
-            <button
-              sc-pagination-previous
-              [disabled]="currentPage() === 1"
-              (click)="goToPage(currentPage() - 1)"
-            >
+            <button sc-pagination-previous [disabled]="currentPage() === 1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -90,8 +87,8 @@ import {
               } @else {
                 <button
                   sc-pagination-link
+                  [page]="page.value"
                   [isActive]="page.value === currentPage()"
-                  (click)="goToPage(page.value)"
                 >
                   {{ page.value }}
                 </button>
@@ -103,7 +100,6 @@ import {
             <button
               sc-pagination-next
               [disabled]="currentPage() === pagination.totalPages()"
-              (click)="goToPage(currentPage() + 1)"
             >
               <span>Next</span>
               <svg
@@ -132,10 +128,4 @@ export class SmartPaginationDemo {
   readonly currentPage = signal(1);
   readonly pageSize = signal(10);
   readonly totalItems = signal(100);
-
-  goToPage(page: number) {
-    if (page >= 1 && page <= Math.ceil(this.totalItems() / this.pageSize())) {
-      this.currentPage.set(page);
-    }
-  }
 }

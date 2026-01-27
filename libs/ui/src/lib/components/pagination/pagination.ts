@@ -1,4 +1,4 @@
-import { computed, Directive, input } from '@angular/core';
+import { computed, Directive, input, output } from '@angular/core';
 import { cn } from '../../utils';
 
 export type ScPaginationPageData =
@@ -25,6 +25,9 @@ export class ScPagination {
   readonly siblingCount = input<number>(1); // Number of pages to show on each side of current page
   readonly showEdges = input<boolean>(true); // Show first and last pages
 
+  // Output event when page changes
+  readonly pageChange = output<number>();
+
   protected readonly class = computed(() =>
     cn('mx-auto flex w-full justify-center', this.classInput()),
   );
@@ -45,6 +48,17 @@ export class ScPagination {
 
     return this.generatePageNumbers(current, total, siblings, edges);
   });
+
+  /**
+   * Trigger a page change. Called internally by child components.
+   * @param page The target page number
+   */
+  goToPage(page: number): void {
+    const total = this.totalPages();
+    if (page >= 1 && page <= total && page !== this.currentPage()) {
+      this.pageChange.emit(page);
+    }
+  }
 
   private generatePageNumbers(
     currentPage: number,
