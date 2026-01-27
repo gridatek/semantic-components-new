@@ -268,6 +268,11 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/number-input/number-input-page'),
       },
       {
+        path: 'number-field',
+        loadComponent: () =>
+          import('../pages/docs/number-field/number-field-page'),
+      },
+      {
         path: 'org-chart',
         loadComponent: () => import('../pages/docs/org-chart/org-chart-page'),
       },

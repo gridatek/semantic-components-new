@@ -55,6 +55,7 @@ export * from './navbar';
 export * from './navigation-menu';
 export * from './notification-center';
 export * from './number-input';
+export * from './number-field';
 export * from './org-chart';
 export * from './pagination';
 export * from './password-input';

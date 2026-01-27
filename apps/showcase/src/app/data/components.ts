@@ -297,6 +297,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'An input for numeric values with controls.',
   },
   {
+    name: 'Number Field',
+    path: 'number-field',
+    description: 'A composable numeric input with scrubbing support.',
+  },
+  {
     name: 'Org Chart',
     path: 'org-chart',
     description: 'Hierarchical organization visualization.',

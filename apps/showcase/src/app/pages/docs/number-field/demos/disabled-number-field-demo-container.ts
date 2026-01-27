@@ -1,0 +1,54 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { DisabledNumberFieldDemo } from './disabled-number-field-demo';
+
+@Component({
+  selector: 'app-disabled-number-field-demo-container',
+  imports: [DemoContainer, DisabledNumberFieldDemo],
+  template: `
+    <app-demo-container title="Disabled" [code]="code">
+      <app-disabled-number-field-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export default class DisabledNumberFieldDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ScNumberField,
+  ScNumberFieldDecrement,
+  ScNumberFieldGroup,
+  ScNumberFieldIncrement,
+  ScNumberFieldInput,
+  ScNumberFieldScrubArea,
+  ScLabel,
+} from '@semantic-components/ui';
+
+@Component({
+  imports: [
+    ScNumberField,
+    ScNumberFieldScrubArea,
+    ScNumberFieldGroup,
+    ScNumberFieldDecrement,
+    ScNumberFieldInput,
+    ScNumberFieldIncrement,
+    ScLabel,
+  ],
+  template: \`
+    <div sc-number-field [value]="42" [disabled]="true">
+      <div sc-number-field-scrub-area>
+        <label sc-label>Locked Value</label>
+      </div>
+
+      <div sc-number-field-group>
+        <button sc-number-field-decrement></button>
+        <input sc-number-field-input />
+        <button sc-number-field-increment></button>
+      </div>
+    </div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DisabledNumberFieldDemo {}`;
+}
