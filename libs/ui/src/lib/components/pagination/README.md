@@ -214,7 +214,10 @@ import { Component, signal } from '@angular/core';
 @Component({
   template: `
     <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [pageSizeOptions]="[10, 25, 50, 100]" (pageChange)="currentPage.set($event)" (pageSizeChange)="pageSize.set($event)">
-      <sc-pagination-page-size label="Items per page:" />
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-muted-foreground">Items per page:</span>
+        <sc-pagination-page-size />
+      </div>
 
       <ul sc-pagination-list>
         <!-- Pagination items here -->
@@ -231,7 +234,9 @@ export class MyComponent {
 
 Key points:
 
-- `ScPaginationPageSize` must be a child of `<nav sc-pagination>`
+- `ScPaginationPageSize` renders only the select element
+- Wrap it with a label or other elements as needed in your template
+- Must be a child of `<nav sc-pagination>` to access pagination context
 - Configure available options via `[pageSizeOptions]` on the parent `ScPagination`
 - Listen to `(pageSizeChange)` to update your page size signal
 - The component automatically resets to page 1 when page size changes
@@ -295,12 +300,11 @@ Key points:
 
 ### ScPaginationPageSize
 
-| Input   | Type     | Default             | Description                                    |
-| ------- | -------- | ------------------- | ---------------------------------------------- |
-| `label` | `string` | `'Items per page:'` | Label text displayed before the select element |
-| `class` | `string` | `''`                | Additional CSS classes                         |
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
 
-**Note**: The page size options are configured via the `pageSizeOptions` input on the parent `ScPagination` component.
+**Note**: This component renders only the select element. The page size options are configured via the `pageSizeOptions` input on the parent `ScPagination` component.
 
 ## Accessibility
 
