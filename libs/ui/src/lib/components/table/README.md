@@ -19,8 +19,8 @@ A responsive table component.
 <table sc-table>
   <thead sc-table-header>
     <tr sc-table-row>
-      <th sc-table-head>Column 1</th>
-      <th sc-table-head>Column 2</th>
+      <th sc-table-header-cell>Column 1</th>
+      <th sc-table-header-cell>Column 2</th>
     </tr>
   </thead>
   <tbody sc-table-body>

@@ -38,10 +38,10 @@ import {
     <table sc-table>
       <thead sc-table-header>
         <tr sc-table-row>
-          <th sc-table-head class="w-[100px]">Invoice</th>
-          <th sc-table-head>Status</th>
-          <th sc-table-head>Method</th>
-          <th sc-table-head class="text-right">Amount</th>
+          <th sc-table-header-cell class="w-[100px]">Invoice</th>
+          <th sc-table-header-cell>Status</th>
+          <th sc-table-header-cell>Method</th>
+          <th sc-table-header-cell class="text-right">Amount</th>
         </tr>
       </thead>
       <tbody sc-table-body>

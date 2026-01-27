@@ -65,9 +65,9 @@ export default class TablePage {
       <caption sc-table-caption>A list of your recent invoices.</caption>
       <thead sc-table-header>
         <tr sc-table-row>
-          <th sc-table-head>Invoice</th>
-          <th sc-table-head>Status</th>
-          <th sc-table-head class="text-right">Amount</th>
+          <th sc-table-header-cell>Invoice</th>
+          <th sc-table-header-cell>Status</th>
+          <th sc-table-header-cell class="text-right">Amount</th>
         </tr>
       </thead>
       <tbody sc-table-body>
@@ -86,5 +86,5 @@ export default class TablePage {
     </table>
   \`,
 })
-export class My {}`;
+export class MyComponent {}`;
 }

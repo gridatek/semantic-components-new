@@ -23,10 +23,10 @@ import {
       <table sc-table>
         <thead sc-table-header>
           <tr sc-table-row>
-            <th sc-table-head>Name</th>
-            <th sc-table-head>Email</th>
-            <th sc-table-head>Role</th>
-            <th sc-table-head class="text-right">Actions</th>
+            <th sc-table-header-cell>Name</th>
+            <th sc-table-header-cell>Email</th>
+            <th sc-table-header-cell>Role</th>
+            <th sc-table-header-cell class="text-right">Actions</th>
           </tr>
         </thead>
         <tbody sc-table-body>
