@@ -10,6 +10,8 @@ Pagination with page navigation, next and previous links. Supports both manual a
 - `ScPaginationLink` - Page number link/button
 - `ScPaginationPrevious` - Previous page link/button
 - `ScPaginationNext` - Next page link/button
+- `ScPaginationFirst` - First page link/button
+- `ScPaginationLast` - Last page link/button
 - `ScPaginationEllipsis` - Ellipsis indicator
 
 ## Features
@@ -175,6 +177,32 @@ export class MyComponent {
 <button sc-pagination-link [disabled]="true">1</button>
 ```
 
+## First and Last Page Navigation
+
+Use `ScPaginationFirst` and `ScPaginationLast` for quick navigation to the first and last pages:
+
+```html
+<nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" (pageChange)="currentPage.set($event)">
+  <ul sc-pagination-list>
+    <li sc-pagination-item>
+      <button sc-pagination-first [disabled]="currentPage() === 1">First</button>
+    </li>
+    <li sc-pagination-item>
+      <button sc-pagination-previous [disabled]="currentPage() === 1">Previous</button>
+    </li>
+
+    <!-- Page numbers here -->
+
+    <li sc-pagination-item>
+      <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()">Next</button>
+    </li>
+    <li sc-pagination-item>
+      <button sc-pagination-last [disabled]="currentPage() === pagination.totalPages()">Last</button>
+    </li>
+  </ul>
+</nav>
+```
+
 ## Inputs & Outputs
 
 ### ScPagination
@@ -216,11 +244,25 @@ export class MyComponent {
 | `disabled` | `boolean` | `false` | Disabled state         |
 | `class`    | `string`  | `''`    | Additional CSS classes |
 
+### ScPaginationFirst
+
+| Input      | Type      | Default | Description            |
+| ---------- | --------- | ------- | ---------------------- |
+| `disabled` | `boolean` | `false` | Disabled state         |
+| `class`    | `string`  | `''`    | Additional CSS classes |
+
+### ScPaginationLast
+
+| Input      | Type      | Default | Description            |
+| ---------- | --------- | ------- | ---------------------- |
+| `disabled` | `boolean` | `false` | Disabled state         |
+| `class`    | `string`  | `''`    | Additional CSS classes |
+
 ## Accessibility
 
 - Uses `role="navigation"` with `aria-label="pagination"`
 - Active page has `aria-current="page"`
-- Previous/Next have `aria-label` for screen readers
+- Previous/Next/First/Last have `aria-label` for screen readers
 - Disabled state uses `aria-disabled` attribute with automatic styling
 - Ellipsis is `aria-hidden` with `.sr-only` text
 - Focus ring for keyboard navigation
