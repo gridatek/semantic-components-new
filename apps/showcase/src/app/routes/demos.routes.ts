@@ -1967,10 +1967,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/lightbox',
     children: [
       {
-        path: 'lightbox-demo',
+        path: 'basic-lightbox-demo',
         loadComponent: () =>
-          import('../pages/docs/lightbox/demos/lightbox-demo').then(
-            (m) => m.ScLightboxDemo,
+          import('../pages/docs/lightbox/demos/basic-lightbox-demo').then(
+            (m) => m.BasicLightboxDemo,
+          ),
+      },
+      {
+        path: 'info-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/info-lightbox-demo').then(
+            (m) => m.InfoLightboxDemo,
+          ),
+      },
+      {
+        path: 'gallery-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/gallery-lightbox-demo').then(
+            (m) => m.GalleryLightboxDemo,
+          ),
+      },
+      {
+        path: 'no-thumbnails-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/no-thumbnails-lightbox-demo').then(
+            (m) => m.NoThumbnailsLightboxDemo,
+          ),
+      },
+      {
+        path: 'no-zoom-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/no-zoom-lightbox-demo').then(
+            (m) => m.NoZoomLightboxDemo,
+          ),
+      },
+      {
+        path: 'no-loop-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/no-loop-lightbox-demo').then(
+            (m) => m.NoLoopLightboxDemo,
+          ),
+      },
+      {
+        path: 'single-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/single-lightbox-demo').then(
+            (m) => m.SingleLightboxDemo,
+          ),
+      },
+      {
+        path: 'keyboard-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/keyboard-lightbox-demo').then(
+            (m) => m.KeyboardLightboxDemo,
           ),
       },
     ],
