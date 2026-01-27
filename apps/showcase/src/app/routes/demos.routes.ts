@@ -2760,10 +2760,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/signature-pad',
     children: [
       {
-        path: 'signature-pad-demo',
+        path: 'basic-signature-pad-demo',
         loadComponent: () =>
-          import('../pages/docs/signature-pad/demos/signature-pad-demo').then(
-            (m) => m.ScSignaturePadDemo,
+          import('../pages/docs/signature-pad/demos/basic-signature-pad-demo').then(
+            (m) => m.BasicSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'colors-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/colors-signature-pad-demo').then(
+            (m) => m.ColorsSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'thick-pen-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/thick-pen-signature-pad-demo').then(
+            (m) => m.ThickPenSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'no-controls-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/no-controls-signature-pad-demo').then(
+            (m) => m.NoControlsSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'disabled-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/disabled-signature-pad-demo').then(
+            (m) => m.DisabledSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'small-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/small-signature-pad-demo').then(
+            (m) => m.SmallSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'preview-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/preview-signature-pad-demo').then(
+            (m) => m.PreviewSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'form-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/form-signature-pad-demo').then(
+            (m) => m.FormSignaturePadDemo,
           ),
       },
     ],
