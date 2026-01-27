@@ -15,18 +15,15 @@ import { ScPagination } from './pagination';
     '[class]': 'class()',
   },
   template: `
-    <div class="flex items-center gap-2">
-      <span class="text-sm text-muted-foreground">{{ label() }}</span>
-      <select
-        [value]="pagination.pageSize()"
-        (change)="onPageSizeChange($event)"
-        class="h-8 rounded-md border border-input bg-background px-3 text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
-        @for (option of pagination.pageSizeOptions(); track option) {
-          <option [value]="option">{{ option }}</option>
-        }
-      </select>
-    </div>
+    <select
+      [value]="pagination.pageSize()"
+      (change)="onPageSizeChange($event)"
+      class="h-8 rounded-md border border-input bg-background px-3 text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      @for (option of pagination.pageSizeOptions(); track option) {
+        <option [value]="option">{{ option }}</option>
+      }
+    </select>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,7 +31,6 @@ export class ScPaginationPageSize {
   protected readonly pagination = inject(ScPagination);
 
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly label = input<string>('Items per page:');
 
   protected readonly class = computed(() => cn('', this.classInput()));
 

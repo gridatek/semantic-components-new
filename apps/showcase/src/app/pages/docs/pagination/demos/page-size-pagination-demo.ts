@@ -37,7 +37,10 @@ import {
         (pageSizeChange)="pageSize.set($event)"
       >
         <div class="flex items-center justify-between">
-          <sc-pagination-page-size label="Items per page:" />
+          <div class="flex items-center gap-2">
+            <span class="text-sm text-muted-foreground">Items per page:</span>
+            <sc-pagination-page-size />
+          </div>
 
           <p class="text-sm text-muted-foreground">
             Page {{ currentPage() }} of {{ pagination.totalPages() }} ({{
