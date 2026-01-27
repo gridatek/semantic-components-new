@@ -8,7 +8,7 @@ import { cn } from '../../utils';
     '[class]': 'class()',
   },
 })
-export class ScTableHead {
+export class ScTableHeaderCell {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

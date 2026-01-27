@@ -44,7 +44,7 @@ export default class TablePage {
   ScTableCaption,
   ScTableCell,
   ScTableFooter,
-  ScTableHead,
+  ScTableHeaderCell,
   ScTableHeader,
   ScTableRow,
 } from '@semantic-components/ui';
@@ -56,7 +56,7 @@ export default class TablePage {
     ScTableCaption,
     ScTableCell,
     ScTableFooter,
-    ScTableHead,
+    ScTableHeaderCell,
     ScTableHeader,
     ScTableRow,
   ],

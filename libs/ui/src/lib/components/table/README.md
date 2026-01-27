@@ -9,7 +9,7 @@ A responsive table component.
 - `ScTableBody` - Table body (tbody)
 - `ScTableFooter` - Table footer (tfoot)
 - `ScTableRow` - Table row (tr)
-- `ScTableHead` - Table header cell (th)
+- `ScTableHeaderCell` - Table header cell (th)
 - `ScTableCell` - Table data cell (td)
 - `ScTableCaption` - Table caption
 
@@ -79,16 +79,16 @@ A responsive table component.
 
 All table components accept a `class` input for additional CSS classes.
 
-| Component        | Default Styling                                                               |
-| ---------------- | ----------------------------------------------------------------------------- |
-| `ScTable`        | `w-full caption-bottom text-sm`                                               |
-| `ScTableHeader`  | `[&_tr]:border-b`                                                             |
-| `ScTableBody`    | `[&_tr:last-child]:border-0`                                                  |
-| `ScTableFooter`  | `border-t bg-muted/50 font-medium [&>tr]:last:border-b-0`                     |
-| `ScTableRow`     | `border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted` |
-| `ScTableHead`    | `h-12 px-4 text-left align-middle font-medium text-muted-foreground`          |
-| `ScTableCell`    | `p-4 align-middle`                                                            |
-| `ScTableCaption` | `mt-4 text-sm text-muted-foreground`                                          |
+| Component           | Default Styling                                                               |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `ScTable`           | `w-full caption-bottom text-sm`                                               |
+| `ScTableHeader`     | `[&_tr]:border-b`                                                             |
+| `ScTableBody`       | `[&_tr:last-child]:border-0`                                                  |
+| `ScTableFooter`     | `border-t bg-muted/50 font-medium [&>tr]:last:border-b-0`                     |
+| `ScTableRow`        | `border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted` |
+| `ScTableHeaderCell` | `h-12 px-4 text-left align-middle font-medium text-muted-foreground`          |
+| `ScTableCell`       | `p-4 align-middle`                                                            |
+| `ScTableCaption`    | `mt-4 text-sm text-muted-foreground`                                          |
 
 ## Features
 

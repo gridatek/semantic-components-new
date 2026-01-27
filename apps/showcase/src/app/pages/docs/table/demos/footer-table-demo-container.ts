@@ -20,7 +20,7 @@ import {
   ScTableBody,
   ScTableCell,
   ScTableFooter,
-  ScTableHead,
+  ScTableHeaderCell,
   ScTableHeader,
   ScTableRow,
 } from '@semantic-components/ui';
@@ -32,7 +32,7 @@ import {
     ScTableBody,
     ScTableCell,
     ScTableFooter,
-    ScTableHead,
+    ScTableHeaderCell,
     ScTableHeader,
     ScTableRow,
   ],
