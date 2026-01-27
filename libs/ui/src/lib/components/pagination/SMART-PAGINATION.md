@@ -41,15 +41,17 @@ The directive now uses `exportAs: 'scPagination'` allowing template reference ac
 
 ### Basic Smart Pagination
 
+The pagination components handle clicks internally. Just listen to the `pageChange` event on the parent nav:
+
 ```typescript
 import { Component, signal } from '@angular/core';
 
 @Component({
   template: `
-    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100">
+    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" (pageChange)="currentPage.set($event)">
       <ul sc-pagination-list>
         <li sc-pagination-item>
-          <button sc-pagination-previous [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">
+          <button sc-pagination-previous [disabled]="currentPage() === 1">
             <svg class="size-4"><!-- icon --></svg>
             <span>Previous</span>
           </button>
@@ -63,7 +65,7 @@ import { Component, signal } from '@angular/core';
                 <span class="sr-only">More pages</span>
               </span>
             } @else {
-              <button sc-pagination-link [isActive]="page.value === currentPage()" (click)="goToPage(page.value)">
+              <button sc-pagination-link [page]="page.value" [isActive]="page.value === currentPage()">
                 {{ page.value }}
               </button>
             }
@@ -71,7 +73,7 @@ import { Component, signal } from '@angular/core';
         }
 
         <li sc-pagination-item>
-          <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()" (click)="goToPage(currentPage() + 1)">
+          <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()">
             <span>Next</span>
             <svg class="size-4"><!-- icon --></svg>
           </button>
@@ -82,10 +84,6 @@ import { Component, signal } from '@angular/core';
 })
 export class MyComponent {
   readonly currentPage = signal(1);
-
-  goToPage(page: number) {
-    this.currentPage.set(page);
-  }
 }
 ```
 
@@ -211,7 +209,7 @@ Current Page: 5, Total Pages: 10
 ### After (Smart)
 
 ```html
-<nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100">
+<nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" (pageChange)="currentPage.set($event)">
   <ul sc-pagination-list>
     <li sc-pagination-item>
       <button sc-pagination-previous [disabled]="currentPage() === 1">...</button>
@@ -222,7 +220,7 @@ Current Page: 5, Total Pages: 10
       @if (page.type === 'ellipsis') {
       <span sc-pagination-ellipsis>...</span>
       } @else {
-      <button sc-pagination-link [isActive]="page.value === currentPage()">{{ page.value }}</button>
+      <button sc-pagination-link [page]="page.value" [isActive]="page.value === currentPage()">{{ page.value }}</button>
       }
     </li>
     }
@@ -241,6 +239,7 @@ Current Page: 5, Total Pages: 10
 - ✅ Clean, declarative code
 - ✅ Reactive to currentPage changes
 - ✅ Still customizable
+- ✅ Internal click handling - single `pageChange` event instead of multiple click handlers
 
 ## Configuration Examples
 

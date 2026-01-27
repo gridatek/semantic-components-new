@@ -20,6 +20,7 @@ Pagination with page navigation, next and previous links. Supports both manual a
 - Configurable sibling pages count
 - Optional first/last page display
 - Disabled state support for navigation buttons
+- **Internal click handling**: Components handle clicks internally, consumers only listen to `pageChange` event
 
 ## Usage
 
@@ -95,17 +96,17 @@ Pagination with page navigation, next and previous links. Supports both manual a
 
 ## Smart Pagination (Automatic Page Generation)
 
-The pagination component can automatically calculate and generate page numbers with ellipses:
+The pagination component can automatically calculate and generate page numbers with ellipses. Components handle clicks internally and emit a single `pageChange` event:
 
 ```typescript
 import { Component, signal } from '@angular/core';
 
 @Component({
   template: `
-    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" [siblingCount]="1" [showEdges]="true">
+    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" [siblingCount]="1" [showEdges]="true" (pageChange)="currentPage.set($event)">
       <ul sc-pagination-list>
         <li sc-pagination-item>
-          <button sc-pagination-previous [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">
+          <button sc-pagination-previous [disabled]="currentPage() === 1">
             <svg class="size-4"><!-- icon --></svg>
             <span>Previous</span>
           </button>
@@ -119,7 +120,7 @@ import { Component, signal } from '@angular/core';
                 <span class="sr-only">More pages</span>
               </span>
             } @else {
-              <button sc-pagination-link [isActive]="page.value === currentPage()" (click)="goToPage(page.value)">
+              <button sc-pagination-link [page]="page.value" [isActive]="page.value === currentPage()">
                 {{ page.value }}
               </button>
             }
@@ -127,7 +128,7 @@ import { Component, signal } from '@angular/core';
         }
 
         <li sc-pagination-item>
-          <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()" (click)="goToPage(currentPage() + 1)">
+          <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()">
             <span>Next</span>
             <svg class="size-4"><!-- icon --></svg>
           </button>
@@ -138,10 +139,6 @@ import { Component, signal } from '@angular/core';
 })
 export class MyComponent {
   readonly currentPage = signal(1);
-
-  goToPage(page: number) {
-    this.currentPage.set(page);
-  }
 }
 ```
 
@@ -178,7 +175,7 @@ export class MyComponent {
 <button sc-pagination-link [disabled]="true">1</button>
 ```
 
-## Inputs
+## Inputs & Outputs
 
 ### ScPagination
 
@@ -191,14 +188,19 @@ export class MyComponent {
 | `showEdges`    | `boolean` | `true`  | Whether to always show first and last pages          |
 | `class`        | `string`  | `''`    | Additional CSS classes                               |
 
+| Output       | Type     | Description                                     |
+| ------------ | -------- | ----------------------------------------------- |
+| `pageChange` | `number` | Emitted when user navigates to a different page |
+
 ### ScPaginationLink
 
-| Input      | Type                                  | Default  | Description            |
-| ---------- | ------------------------------------- | -------- | ---------------------- |
-| `isActive` | `boolean`                             | `false`  | Whether page is active |
-| `size`     | `'default' \| 'sm' \| 'lg' \| 'icon'` | `'icon'` | Button size            |
-| `disabled` | `boolean`                             | `false`  | Disabled state         |
-| `class`    | `string`                              | `''`     | Additional CSS classes |
+| Input      | Type                                  | Default  | Description                      |
+| ---------- | ------------------------------------- | -------- | -------------------------------- |
+| `page`     | `number`                              | -        | Page number this link represents |
+| `isActive` | `boolean`                             | `false`  | Whether page is active           |
+| `size`     | `'default' \| 'sm' \| 'lg' \| 'icon'` | `'icon'` | Button size                      |
+| `disabled` | `boolean`                             | `false`  | Disabled state                   |
+| `class`    | `string`                              | `''`     | Additional CSS classes           |
 
 ### ScPaginationPrevious
 
