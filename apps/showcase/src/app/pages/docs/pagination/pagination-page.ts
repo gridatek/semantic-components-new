@@ -6,6 +6,7 @@ import { ButtonsPaginationDemoContainer } from './demos/buttons-pagination-demo-
 import { FirstPagePaginationDemoContainer } from './demos/first-page-pagination-demo-container';
 import { LastPagePaginationDemoContainer } from './demos/last-page-pagination-demo-container';
 import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-demo-container';
+import { KeyboardNavigationPaginationDemoContainer } from './demos/keyboard-navigation-pagination-demo-container';
 
 @Component({
   selector: 'app-pagination-page',
@@ -17,6 +18,7 @@ import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-de
     FirstPagePaginationDemoContainer,
     LastPagePaginationDemoContainer,
     PageSizePaginationDemoContainer,
+    KeyboardNavigationPaginationDemoContainer,
   ],
   template: `
     <div class="space-y-8">
@@ -35,6 +37,7 @@ import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-de
         <app-first-page-pagination-demo-container />
         <app-last-page-pagination-demo-container />
         <app-page-size-pagination-demo-container />
+        <app-keyboard-navigation-pagination-demo-container />
       </section>
     </div>
   `,

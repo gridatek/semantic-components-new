@@ -2261,6 +2261,13 @@ export const demosRoutes: Route[] = [
             (m) => m.PageSizePaginationDemo,
           ),
       },
+      {
+        path: 'keyboard-navigation-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/keyboard-navigation-pagination-demo').then(
+            (m) => m.KeyboardNavigationPaginationDemo,
+          ),
+      },
     ],
   },
   {
