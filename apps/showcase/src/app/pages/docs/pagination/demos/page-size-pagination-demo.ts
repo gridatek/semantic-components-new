@@ -32,14 +32,12 @@ import {
         [totalItems]="totalItems()"
         [siblingCount]="1"
         [showEdges]="true"
+        [pageSizeOptions]="[10, 25, 50, 100]"
         (pageChange)="currentPage.set($event)"
         (pageSizeChange)="pageSize.set($event)"
       >
         <div class="flex items-center justify-between">
-          <sc-pagination-page-size
-            [pageSizeOptions]="[10, 25, 50, 100]"
-            label="Items per page:"
-          />
+          <sc-pagination-page-size label="Items per page:" />
 
           <p class="text-sm text-muted-foreground">
             Page {{ currentPage() }} of {{ pagination.totalPages() }} ({{

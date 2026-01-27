@@ -13,6 +13,7 @@ Pagination with page navigation, next and previous links. Supports both manual a
 - `ScPaginationFirst` - First page link/button
 - `ScPaginationLast` - Last page link/button
 - `ScPaginationEllipsis` - Ellipsis indicator
+- `ScPaginationPageSize` - Page size selector (select dropdown)
 
 ## Features
 
@@ -203,22 +204,56 @@ Use `ScPaginationFirst` and `ScPaginationLast` for quick navigation to the first
 </nav>
 ```
 
+## Page Size Selector
+
+Use `ScPaginationPageSize` to allow users to change the number of items displayed per page:
+
+```typescript
+import { Component, signal } from '@angular/core';
+
+@Component({
+  template: `
+    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [pageSizeOptions]="[10, 25, 50, 100]" (pageChange)="currentPage.set($event)" (pageSizeChange)="pageSize.set($event)">
+      <sc-pagination-page-size label="Items per page:" />
+
+      <ul sc-pagination-list>
+        <!-- Pagination items here -->
+      </ul>
+    </nav>
+  `,
+})
+export class MyComponent {
+  readonly currentPage = signal(1);
+  readonly pageSize = signal(10);
+  readonly totalItems = signal(250);
+}
+```
+
+Key points:
+
+- `ScPaginationPageSize` must be a child of `<nav sc-pagination>`
+- Configure available options via `[pageSizeOptions]` on the parent `ScPagination`
+- Listen to `(pageSizeChange)` to update your page size signal
+- The component automatically resets to page 1 when page size changes
+
 ## Inputs & Outputs
 
 ### ScPagination
 
-| Input          | Type      | Default | Description                                          |
-| -------------- | --------- | ------- | ---------------------------------------------------- |
-| `currentPage`  | `number`  | `1`     | Current active page (1-based)                        |
-| `pageSize`     | `number`  | `10`    | Number of items per page                             |
-| `totalItems`   | `number`  | `0`     | Total number of items across all pages               |
-| `siblingCount` | `number`  | `1`     | Number of pages to show on each side of current page |
-| `showEdges`    | `boolean` | `true`  | Whether to always show first and last pages          |
-| `class`        | `string`  | `''`    | Additional CSS classes                               |
+| Input             | Type       | Default             | Description                                          |
+| ----------------- | ---------- | ------------------- | ---------------------------------------------------- |
+| `currentPage`     | `number`   | `1`                 | Current active page (1-based)                        |
+| `pageSize`        | `number`   | `10`                | Number of items per page                             |
+| `totalItems`      | `number`   | `0`                 | Total number of items across all pages               |
+| `siblingCount`    | `number`   | `1`                 | Number of pages to show on each side of current page |
+| `showEdges`       | `boolean`  | `true`              | Whether to always show first and last pages          |
+| `pageSizeOptions` | `number[]` | `[10, 25, 50, 100]` | Available page size options for selector             |
+| `class`           | `string`   | `''`                | Additional CSS classes                               |
 
-| Output       | Type     | Description                                     |
-| ------------ | -------- | ----------------------------------------------- |
-| `pageChange` | `number` | Emitted when user navigates to a different page |
+| Output           | Type     | Description                                     |
+| ---------------- | -------- | ----------------------------------------------- |
+| `pageChange`     | `number` | Emitted when user navigates to a different page |
+| `pageSizeChange` | `number` | Emitted when user changes the page size         |
 
 ### ScPaginationLink
 
@@ -257,6 +292,15 @@ Use `ScPaginationFirst` and `ScPaginationLast` for quick navigation to the first
 | ---------- | --------- | ------- | ---------------------- |
 | `disabled` | `boolean` | `false` | Disabled state         |
 | `class`    | `string`  | `''`    | Additional CSS classes |
+
+### ScPaginationPageSize
+
+| Input   | Type     | Default             | Description                                    |
+| ------- | -------- | ------------------- | ---------------------------------------------- |
+| `label` | `string` | `'Items per page:'` | Label text displayed before the select element |
+| `class` | `string` | `''`                | Additional CSS classes                         |
+
+**Note**: The page size options are configured via the `pageSizeOptions` input on the parent `ScPagination` component.
 
 ## Accessibility
 

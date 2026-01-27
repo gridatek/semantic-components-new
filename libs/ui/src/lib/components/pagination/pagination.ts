@@ -24,6 +24,7 @@ export class ScPagination {
   readonly totalItems = input<number>(0);
   readonly siblingCount = input<number>(1); // Number of pages to show on each side of current page
   readonly showEdges = input<boolean>(true); // Show first and last pages
+  readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]); // Available page size options
 
   // Output events
   readonly pageChange = output<number>();
