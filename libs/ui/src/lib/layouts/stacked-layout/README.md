@@ -5,17 +5,17 @@ A generic layout component that provides a stacked structure with slots for navb
 ## Structure
 
 ```
-┌─────────────────────────────────────────────┐
-│ sc-stacked-layout (data-slot="stacked-layout")
-├─────────────────────────────────────────────┤
-│              [scNavbar]                     │
-├─────────────────────────────────────────────┤
-│  <main data-slot="stacked-layout-content">  │
-│         <router-outlet />                   │
-│  </main>                                    │
-├─────────────────────────────────────────────┤
-│              [scFooter]                     │
-└─────────────────────────────────────────────┘
+┌───────────────────────────────────────────────┐
+│ sc-stacked-layout (data-slot="stacked-layout")│
+├───────────────────────────────────────────────┤
+│              [scNavbar]                       │
+├───────────────────────────────────────────────┤
+│  <main data-slot="stacked-layout-content">    │
+│         <router-outlet />                     │
+│  </main>                                      │
+├───────────────────────────────────────────────┤
+│              [scFooter]                       │
+└───────────────────────────────────────────────┘
 ```
 
 ## Usage
