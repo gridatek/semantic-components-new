@@ -322,6 +322,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A password input with visibility toggle.',
   },
   {
+    name: 'Password Field',
+    path: 'password-field',
+    description: 'A composable password input with visibility toggle.',
+  },
+  {
     name: 'Phone Input',
     path: 'phone-input',
     description: 'An input for international phone numbers.',

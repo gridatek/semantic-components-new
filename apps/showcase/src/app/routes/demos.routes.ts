@@ -2299,6 +2299,39 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/password-field',
+    children: [
+      {
+        path: 'basic-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/basic-password-field-demo').then(
+            (m) => m.BasicPasswordFieldDemo,
+          ),
+      },
+      {
+        path: 'show-default-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/show-default-password-field-demo').then(
+            (m) => m.ShowDefaultPasswordFieldDemo,
+          ),
+      },
+      {
+        path: 'disabled-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/disabled-password-field-demo').then(
+            (m) => m.DisabledPasswordFieldDemo,
+          ),
+      },
+      {
+        path: 'new-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/new-password-field-demo').then(
+            (m) => m.NewPasswordFieldDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/pagination',
     children: [
       {

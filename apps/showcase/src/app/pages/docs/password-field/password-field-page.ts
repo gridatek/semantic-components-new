@@ -1,0 +1,78 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ScCodeViewer } from '@semantic-components/ui';
+import BasicPasswordFieldDemoContainer from './demos/basic-password-field-demo-container';
+import ShowDefaultPasswordFieldDemoContainer from './demos/show-default-password-field-demo-container';
+import DisabledPasswordFieldDemoContainer from './demos/disabled-password-field-demo-container';
+import NewPasswordFieldDemoContainer from './demos/new-password-field-demo-container';
+
+@Component({
+  selector: 'app-password-field-page',
+  imports: [
+    ScCodeViewer,
+    BasicPasswordFieldDemoContainer,
+    ShowDefaultPasswordFieldDemoContainer,
+    DisabledPasswordFieldDemoContainer,
+    NewPasswordFieldDemoContainer,
+  ],
+  template: `
+    <div class="space-y-8">
+      <div class="space-y-2">
+        <h1 class="text-3xl font-bold tracking-tight">Password Field</h1>
+        <p class="text-muted-foreground">
+          A composable password input component with visibility toggle.
+        </p>
+      </div>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
+        <sc-code-viewer [code]="usageCode" language="angular-ts" />
+      </section>
+
+      <section class="space-y-8">
+        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <app-basic-password-field-demo-container />
+        <app-show-default-password-field-demo-container />
+        <app-disabled-password-field-demo-container />
+        <app-new-password-field-demo-container />
+      </section>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export default class PasswordFieldPage {
+  readonly usageCode = `import {
+  ScPasswordField,
+  ScPasswordFieldGroup,
+  ScPasswordFieldInput,
+  ScPasswordFieldToggle,
+  ScLabel,
+} from '@semantic-components/ui';
+
+@Component({
+  imports: [
+    ScPasswordField,
+    ScPasswordFieldGroup,
+    ScPasswordFieldInput,
+    ScPasswordFieldToggle,
+    ScLabel,
+  ],
+  template: \`
+    <div class="space-y-2">
+      <label sc-label for="password">Password</label>
+      <div sc-password-field [(value)]="password">
+        <div sc-password-field-group>
+          <input
+            sc-password-field-input
+            id="password"
+            placeholder="Enter password"
+          />
+          <button sc-password-field-toggle></button>
+        </div>
+      </div>
+    </div>
+  \`,
+})
+export class MyComponent {
+  readonly password = signal<string>('');
+}`;
+}

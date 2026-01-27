@@ -286,6 +286,11 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/password-input/password-input-page'),
       },
       {
+        path: 'password-field',
+        loadComponent: () =>
+          import('../pages/docs/password-field/password-field-page'),
+      },
+      {
         path: 'pdf-viewer',
         loadComponent: () => import('../pages/docs/pdf-viewer/pdf-viewer-page'),
       },
