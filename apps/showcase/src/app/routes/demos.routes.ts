@@ -2740,10 +2740,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/sortable-list',
     children: [
       {
-        path: 'sortable-list-demo',
+        path: 'basic-sortable-list-demo',
         loadComponent: () =>
-          import('../pages/docs/sortable-list/demos/sortable-list-demo').then(
-            (m) => m.ScSortableListDemo,
+          import('../pages/docs/sortable-list/demos/basic-sortable-list-demo').then(
+            (m) => m.BasicSortableListDemo,
+          ),
+      },
+      {
+        path: 'handle-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/handle-sortable-list-demo').then(
+            (m) => m.HandleSortableListDemo,
+          ),
+      },
+      {
+        path: 'task-list-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/task-list-sortable-list-demo').then(
+            (m) => m.TaskListSortableListDemo,
+          ),
+      },
+      {
+        path: 'playlist-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/playlist-sortable-list-demo').then(
+            (m) => m.PlaylistSortableListDemo,
+          ),
+      },
+      {
+        path: 'horizontal-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/horizontal-sortable-list-demo').then(
+            (m) => m.HorizontalSortableListDemo,
+          ),
+      },
+      {
+        path: 'kanban-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/kanban-sortable-list-demo').then(
+            (m) => m.KanbanSortableListDemo,
+          ),
+      },
+      {
+        path: 'disabled-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/disabled-sortable-list-demo').then(
+            (m) => m.DisabledSortableListDemo,
           ),
       },
     ],
