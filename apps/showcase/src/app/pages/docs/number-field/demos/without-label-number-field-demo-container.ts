@@ -6,7 +6,11 @@ import { WithoutLabelNumberFieldDemo } from './without-label-number-field-demo';
   selector: 'app-without-label-number-field-demo-container',
   imports: [DemoContainer, WithoutLabelNumberFieldDemo],
   template: `
-    <app-demo-container title="Without Scrub Area" [code]="code">
+    <app-demo-container
+      title="Without Scrub Area"
+      demoUrl="/demos/number-field/without-label-number-field-demo"
+      [code]="code"
+    >
       <app-without-label-number-field-demo />
     </app-demo-container>
   `,

@@ -2247,6 +2247,46 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/number-field',
+    children: [
+      {
+        path: 'basic-number-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-field/demos/basic-number-field-demo').then(
+            (m) => m.BasicNumberFieldDemo,
+          ),
+      },
+      {
+        path: 'scrubbing-number-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-field/demos/scrubbing-number-field-demo').then(
+            (m) => m.ScrubbingNumberFieldDemo,
+          ),
+      },
+      {
+        path: 'price-number-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-field/demos/price-number-field-demo').then(
+            (m) => m.PriceNumberFieldDemo,
+          ),
+      },
+      {
+        path: 'disabled-number-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-field/demos/disabled-number-field-demo').then(
+            (m) => m.DisabledNumberFieldDemo,
+          ),
+      },
+      {
+        path: 'without-label-number-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-field/demos/without-label-number-field-demo').then(
+            (m) => m.WithoutLabelNumberFieldDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/org-chart',
     children: [
       {

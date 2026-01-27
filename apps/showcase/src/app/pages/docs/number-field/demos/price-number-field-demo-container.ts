@@ -6,7 +6,11 @@ import { PriceNumberFieldDemo } from './price-number-field-demo';
   selector: 'app-price-number-field-demo-container',
   imports: [DemoContainer, PriceNumberFieldDemo],
   template: `
-    <app-demo-container title="Price Input" [code]="code">
+    <app-demo-container
+      title="Price Input"
+      demoUrl="/demos/number-field/price-number-field-demo"
+      [code]="code"
+    >
       <app-price-number-field-demo />
     </app-demo-container>
   `,

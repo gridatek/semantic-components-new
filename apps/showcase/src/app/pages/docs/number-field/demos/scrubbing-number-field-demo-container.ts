@@ -6,7 +6,11 @@ import { ScrubbingNumberFieldDemo } from './scrubbing-number-field-demo';
   selector: 'app-scrubbing-number-field-demo-container',
   imports: [DemoContainer, ScrubbingNumberFieldDemo],
   template: `
-    <app-demo-container title="With Scrubbing" [code]="code">
+    <app-demo-container
+      title="With Scrubbing"
+      demoUrl="/demos/number-field/scrubbing-number-field-demo"
+      [code]="code"
+    >
       <app-scrubbing-number-field-demo />
     </app-demo-container>
   `,

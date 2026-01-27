@@ -6,7 +6,11 @@ import { BasicNumberFieldDemo } from './basic-number-field-demo';
   selector: 'app-basic-number-field-demo-container',
   imports: [DemoContainer, BasicNumberFieldDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/number-field/basic-number-field-demo"
+      [code]="code"
+    >
       <app-basic-number-field-demo />
     </app-demo-container>
   `,
