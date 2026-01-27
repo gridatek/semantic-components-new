@@ -2260,10 +2260,87 @@ export const demosRoutes: Route[] = [
     path: 'demos/password-input',
     children: [
       {
-        path: 'password-input-demo',
+        path: 'basic-password-input-demo',
         loadComponent: () =>
-          import('../pages/docs/password-input/demos/password-input-demo').then(
-            (m) => m.ScPasswordInputDemo,
+          import('../pages/docs/password-input/demos/basic-password-input-demo').then(
+            (m) => m.BasicPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'label-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/label-password-input-demo').then(
+            (m) => m.LabelPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/disabled-password-input-demo').then(
+            (m) => m.DisabledPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'visible-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/visible-password-input-demo').then(
+            (m) => m.VisiblePasswordInputDemo,
+          ),
+      },
+      {
+        path: 'strength-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/strength-password-input-demo').then(
+            (m) => m.StrengthPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'strength-bar-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/strength-bar-password-input-demo').then(
+            (m) => m.StrengthBarPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'requirements-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/requirements-password-input-demo').then(
+            (m) => m.RequirementsPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'confirm-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/confirm-password-input-demo').then(
+            (m) => m.ConfirmPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'custom-labels-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/custom-labels-password-input-demo').then(
+            (m) => m.CustomLabelsPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'login-form-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/login-form-password-input-demo').then(
+            (m) => m.LoginFormPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'registration-form-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/registration-form-password-input-demo').then(
+            (m) => m.RegistrationFormPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'widths-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/widths-password-input-demo').then(
+            (m) => m.WidthsPasswordInputDemo,
           ),
       },
     ],
