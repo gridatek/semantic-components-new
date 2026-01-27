@@ -30,11 +30,9 @@ import {
             <span sc-tag-input-tag [tag]="tag" variant="secondary"></span>
           }
           <input sc-tag-input-field />
+          <span sc-tag-input-count class="ml-auto text-xs"></span>
         </div>
-        <div class="flex items-center justify-between">
-          <p class="text-xs text-muted-foreground">Add up to 10 skills</p>
-          <span sc-tag-input-count class="text-xs"></span>
-        </div>
+        <p class="text-xs text-muted-foreground">Add up to 10 skills</p>
       </div>
 
       <div class="space-y-2">
