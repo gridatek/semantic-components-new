@@ -67,14 +67,21 @@ function example() {
 
   getExtension(lang: CodeEditorLanguage): string {
     const extensions: Record<CodeEditorLanguage, string> = {
+      'angular-ts': 'ts',
       javascript: 'js',
       typescript: 'ts',
       html: 'html',
       css: 'css',
       json: 'json',
       python: 'py',
+      bash: 'sh',
+      shell: 'sh',
       sql: 'sql',
       markdown: 'md',
+      yaml: 'yaml',
+      go: 'go',
+      rust: 'rs',
+      java: 'java',
       plaintext: 'txt',
     };
     return extensions[lang] || 'txt';
