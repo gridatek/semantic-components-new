@@ -17,7 +17,7 @@ import { SC_FORM_FIELD } from './form-field';
   host: {
     'data-slot': 'form-label',
     '[class]': 'class()',
-    '[attr.data-error]': 'formField?.showError || null',
+    '[attr.data-error]': 'dataError()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +26,10 @@ export class ScFormLabel {
   readonly formField = inject(SC_FORM_FIELD, { optional: true });
 
   readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly dataError = computed(() =>
+    this.formField?.showError() ? true : null,
+  );
 
   protected readonly class = computed(() =>
     cn(

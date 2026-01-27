@@ -7,13 +7,12 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { cn } from '../../utils';
 import type { TransferListItem } from './transfer-list-types';
 
 @Component({
   selector: 'sc-transfer-list',
-  imports: [FormsModule],
+  imports: [],
   template: `
     <div [class]="containerClass()">
       <!-- Source List -->
@@ -40,8 +39,8 @@ import type { TransferListItem } from './transfer-list-types';
               type="text"
               class="w-full h-8 px-2 text-sm border rounded-md bg-background"
               placeholder="Search..."
-              [ngModel]="sourceSearch()"
-              (ngModelChange)="sourceSearch.set($event)"
+              [value]="sourceSearch()"
+              (input)="sourceSearch.set($any($event.target).value)"
             />
           </div>
         }
@@ -188,8 +187,8 @@ import type { TransferListItem } from './transfer-list-types';
               type="text"
               class="w-full h-8 px-2 text-sm border rounded-md bg-background"
               placeholder="Search..."
-              [ngModel]="targetSearch()"
-              (ngModelChange)="targetSearch.set($event)"
+              [value]="targetSearch()"
+              (input)="targetSearch.set($any($event.target).value)"
             />
           </div>
         }

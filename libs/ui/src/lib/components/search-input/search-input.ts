@@ -10,14 +10,13 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { cn } from '../../utils';
 import type { SearchSuggestion } from './search-input-types';
 import { DEFAULT_SEARCH_OPTIONS } from './search-input-types';
 
 @Component({
   selector: 'sc-search-input',
-  imports: [FormsModule],
+  imports: [],
   template: `
     <div
       [class]="containerClass()"
