@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSidebarDemoContainer } from './demos/sidebar-demo-container';
+import { DefaultSidebarDemoContainer } from './demos/default-sidebar-demo-container';
+import { IconCollapsibleSidebarDemoContainer } from './demos/icon-collapsible-sidebar-demo-container';
 
 @Component({
   selector: 'app-sidebar-page',
-  imports: [ScSidebarDemoContainer],
+  imports: [DefaultSidebarDemoContainer, IconCollapsibleSidebarDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,8 @@ import { ScSidebarDemoContainer } from './demos/sidebar-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-sidebar-demo-container />
+        <app-default-sidebar-demo-container />
+        <app-icon-collapsible-sidebar-demo-container />
       </section>
     </div>
   `,

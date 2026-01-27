@@ -2776,10 +2776,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/sidebar',
     children: [
       {
-        path: 'sidebar-demo',
+        path: 'default-sidebar-demo',
         loadComponent: () =>
-          import('../pages/docs/sidebar/demos/sidebar-demo').then(
-            (m) => m.ScSidebarDemo,
+          import('../pages/docs/sidebar/demos/default-sidebar-demo').then(
+            (m) => m.DefaultSidebarDemo,
+          ),
+      },
+      {
+        path: 'icon-collapsible-sidebar-demo',
+        loadComponent: () =>
+          import('../pages/docs/sidebar/demos/icon-collapsible-sidebar-demo').then(
+            (m) => m.IconCollapsibleSidebarDemo,
           ),
       },
     ],
