@@ -4,103 +4,131 @@ import {
   computed,
   effect,
   ElementRef,
+  inject,
   input,
   model,
   output,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { codeToHtml } from 'shiki';
 import { cn } from '../../utils';
-import {
-  highlightCode,
-  detectLanguage,
-  CodeEditorLanguage,
-} from './syntax-highlighter';
 
-export type { CodeEditorLanguage } from './syntax-highlighter';
+export type CodeEditorLanguage =
+  | 'angular-ts'
+  | 'typescript'
+  | 'javascript'
+  | 'html'
+  | 'css'
+  | 'json'
+  | 'python'
+  | 'bash'
+  | 'shell'
+  | 'markdown'
+  | 'yaml'
+  | 'sql'
+  | 'go'
+  | 'rust'
+  | 'java'
+  | 'plaintext';
 
-export interface CodeEditorTheme {
-  background: string;
-  foreground: string;
-  lineNumbers: string;
-  lineNumbersActive: string;
-  selection: string;
-  cursor: string;
-  activeLine: string;
-  keyword: string;
-  string: string;
-  number: string;
-  comment: string;
-  function: string;
-  operator: string;
-  punctuation: string;
-  property: string;
-  tag: string;
-  attribute: string;
-  selector: string;
-  variable: string;
-  builtin: string;
-}
-
-export const THEMES: Record<string, CodeEditorTheme> = {
-  dark: {
-    background: 'hsl(var(--muted))',
-    foreground: 'hsl(var(--foreground))',
-    lineNumbers: 'hsl(var(--muted-foreground))',
-    lineNumbersActive: 'hsl(var(--foreground))',
-    selection: 'hsl(var(--primary) / 0.3)',
-    cursor: 'hsl(var(--primary))',
-    activeLine: 'hsl(var(--primary) / 0.1)',
-    keyword: '#c586c0',
-    string: '#ce9178',
-    number: '#b5cea8',
-    comment: '#6a9955',
-    function: '#dcdcaa',
-    operator: '#d4d4d4',
-    punctuation: '#d4d4d4',
-    property: '#9cdcfe',
-    tag: '#569cd6',
-    attribute: '#9cdcfe',
-    selector: '#d7ba7d',
-    variable: '#9cdcfe',
-    builtin: '#4ec9b0',
-  },
-  light: {
-    background: 'hsl(var(--muted))',
-    foreground: 'hsl(var(--foreground))',
-    lineNumbers: 'hsl(var(--muted-foreground))',
-    lineNumbersActive: 'hsl(var(--foreground))',
-    selection: 'hsl(var(--primary) / 0.2)',
-    cursor: 'hsl(var(--primary))',
-    activeLine: 'hsl(var(--primary) / 0.05)',
-    keyword: '#af00db',
-    string: '#a31515',
-    number: '#098658',
-    comment: '#008000',
-    function: '#795e26',
-    operator: '#000000',
-    punctuation: '#000000',
-    property: '#001080',
-    tag: '#800000',
-    attribute: '#ff0000',
-    selector: '#800000',
-    variable: '#001080',
-    builtin: '#267f99',
-  },
+const EXTENSION_MAP: Record<string, CodeEditorLanguage> = {
+  js: 'javascript',
+  mjs: 'javascript',
+  cjs: 'javascript',
+  jsx: 'javascript',
+  ts: 'typescript',
+  mts: 'typescript',
+  cts: 'typescript',
+  tsx: 'typescript',
+  html: 'html',
+  htm: 'html',
+  css: 'css',
+  scss: 'css',
+  sass: 'css',
+  less: 'css',
+  json: 'json',
+  py: 'python',
+  pyw: 'python',
+  sh: 'bash',
+  bash: 'bash',
+  zsh: 'shell',
+  sql: 'sql',
+  md: 'markdown',
+  markdown: 'markdown',
+  yaml: 'yaml',
+  yml: 'yaml',
+  go: 'go',
+  rs: 'rust',
+  java: 'java',
+  txt: 'plaintext',
 };
+
+export function detectLanguage(
+  code: string,
+  filename?: string,
+): CodeEditorLanguage {
+  if (filename) {
+    const ext = filename.split('.').pop()?.toLowerCase();
+    if (ext && EXTENSION_MAP[ext]) {
+      return EXTENSION_MAP[ext];
+    }
+  }
+
+  // Try to detect from content
+  if (
+    code.includes('<!DOCTYPE') ||
+    code.includes('<html') ||
+    /<\w+[^>]*>/.test(code)
+  ) {
+    return 'html';
+  }
+  if (/^\s*\{[\s\S]*\}\s*$/.test(code) || /^\s*\[[\s\S]*\]\s*$/.test(code)) {
+    try {
+      JSON.parse(code);
+      return 'json';
+    } catch {
+      // Not JSON
+    }
+  }
+  if (/^(import|export|const|let|var|function|class)\s/.test(code)) {
+    if (
+      /:\s*(string|number|boolean|any|void|never)\b/.test(code) ||
+      /interface\s+\w+/.test(code)
+    ) {
+      return 'typescript';
+    }
+    return 'javascript';
+  }
+  if (
+    /^(def|class|import|from|if __name__)\s/.test(code) ||
+    /:\s*$/.test(code.split('\n')[0])
+  ) {
+    return 'python';
+  }
+  if (/^(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP)\s/i.test(code)) {
+    return 'sql';
+  }
+  if (/^#\s/.test(code) || /^\*\*.*\*\*$/.test(code)) {
+    return 'markdown';
+  }
+  if (/^#!/.test(code)) {
+    return 'bash';
+  }
+
+  return 'plaintext';
+}
 
 @Component({
   selector: 'sc-code-editor',
   template: `
-    <div
-      [class]="containerClass()"
-      [style]="containerStyle()"
-      (click)="focusTextarea()"
-    >
+    <div [class]="containerClass()" (click)="focusTextarea()">
       <!-- Header bar -->
       @if (showHeader()) {
         <div
-          class="flex items-center justify-between px-3 py-2 border-b bg-background/50"
+          class="flex items-center justify-between px-3 py-2 border-b border-border bg-background/50"
         >
           <div class="flex items-center gap-2">
             @if (filename()) {
@@ -157,18 +185,15 @@ export const THEMES: Record<string, CodeEditorTheme> = {
         <!-- Line numbers -->
         @if (showLineNumbers()) {
           <div
-            class="flex-shrink-0 select-none text-right pr-3 pl-3 py-3 border-r"
-            [style.color]="theme().lineNumbers"
+            class="sc-code-editor__line-numbers flex-shrink-0 select-none text-right pr-3 pl-3 py-3 border-r border-border"
             [style.min-width.ch]="lineNumberWidth()"
             aria-hidden="true"
           >
             @for (line of lines(); track $index) {
               <div
-                class="leading-6 text-sm font-mono"
-                [style.color]="
+                class="leading-relaxed text-sm font-mono"
+                [class.sc-code-editor__line-numbers--active]="
                   activeLine() === $index + 1
-                    ? theme().lineNumbersActive
-                    : theme().lineNumbers
                 "
               >
                 {{ $index + 1 }}
@@ -180,11 +205,19 @@ export const THEMES: Record<string, CodeEditorTheme> = {
         <!-- Code area -->
         <div class="relative flex-1 min-w-0">
           <!-- Highlighted code (display layer) -->
-          <pre
-            class="absolute inset-0 p-3 m-0 overflow-hidden pointer-events-none"
-            [style]="preStyle()"
+          <div
+            class="sc-code-editor__content absolute inset-0 overflow-hidden pointer-events-none"
             aria-hidden="true"
-          ><code [innerHTML]="highlightedCode()"></code></pre>
+            [class.sc-code-editor__content--word-wrap]="wordWrap()"
+          >
+            @if (highlightedHtml()) {
+              <div [innerHTML]="highlightedHtml()"></div>
+            } @else {
+              <pre
+                class="m-0 p-3 text-sm leading-relaxed font-mono"
+              ><code>{{ displayCode() }}</code></pre>
+            }
+          </div>
 
           <!-- Textarea (input layer) -->
           <textarea
@@ -215,7 +248,7 @@ export const THEMES: Record<string, CodeEditorTheme> = {
       <!-- Footer with stats -->
       @if (showFooter()) {
         <div
-          class="flex items-center justify-between px-3 py-1.5 border-t text-xs text-muted-foreground bg-background/50"
+          class="flex items-center justify-between px-3 py-1.5 border-t border-border text-xs text-muted-foreground bg-background/50"
         >
           <div class="flex items-center gap-3">
             <span>Ln {{ activeLine() }}, Col {{ activeColumn() }}</span>
@@ -229,51 +262,50 @@ export const THEMES: Record<string, CodeEditorTheme> = {
     </div>
   `,
   styles: `
-    :host {
+    sc-code-editor {
       display: block;
     }
 
-    .token-keyword {
-      color: var(--token-keyword);
+    .sc-code-editor__line-numbers {
+      color: hsl(var(--muted-foreground) / 0.5);
     }
-    .token-string {
-      color: var(--token-string);
+
+    .sc-code-editor__line-numbers--active {
+      color: hsl(var(--foreground));
     }
-    .token-number {
-      color: var(--token-number);
+
+    .sc-code-editor__content pre.shiki {
+      margin: 0;
+      padding: 0.75rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.625;
     }
-    .token-comment {
-      color: var(--token-comment);
-      font-style: italic;
+
+    .sc-code-editor__content pre.shiki,
+    .sc-code-editor__content pre.shiki span {
+      color: var(--shiki-light);
+      background-color: transparent !important;
     }
-    .token-function {
-      color: var(--token-function);
+
+    .dark .sc-code-editor__content pre.shiki,
+    .dark .sc-code-editor__content pre.shiki span {
+      color: var(--shiki-dark);
+      background-color: transparent !important;
     }
-    .token-operator {
-      color: var(--token-operator);
+
+    .sc-code-editor__content pre.shiki code {
+      font-family:
+        ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+        'Liberation Mono', monospace;
     }
-    .token-punctuation {
-      color: var(--token-punctuation);
-    }
-    .token-property {
-      color: var(--token-property);
-    }
-    .token-tag {
-      color: var(--token-tag);
-    }
-    .token-attribute {
-      color: var(--token-attribute);
-    }
-    .token-selector {
-      color: var(--token-selector);
-    }
-    .token-variable {
-      color: var(--token-variable);
-    }
-    .token-builtin {
-      color: var(--token-builtin);
+
+    .sc-code-editor__content--word-wrap pre.shiki {
+      white-space: pre-wrap;
+      word-break: break-all;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCodeEditor {
@@ -282,7 +314,6 @@ export class ScCodeEditor {
 
   // Inputs
   readonly language = input<CodeEditorLanguage>('plaintext');
-  readonly theme = input<CodeEditorTheme>(THEMES['dark']);
   readonly filename = input<string>('');
   readonly placeholder = input<string>('');
   readonly disabled = input(false);
@@ -297,10 +328,9 @@ export class ScCodeEditor {
   readonly maxHeight = input<string>('500px');
   readonly minHeight = input<string>('200px');
   readonly autoDetectLanguage = input(false);
-  readonly highlightActiveLine = input(true);
   readonly ariaLabel = input<string>('');
   readonly ariaDescribedby = input<string>('');
-  readonly class = input<string>('');
+  readonly classInput = input<string>('', { alias: 'class' });
 
   // Outputs
   readonly valueChange = output<string>();
@@ -312,9 +342,11 @@ export class ScCodeEditor {
   readonly activeLine = signal(1);
   readonly activeColumn = signal(1);
   readonly isFocused = signal(false);
+  protected readonly highlightedHtml = signal<SafeHtml | null>(null);
   private scrollTop = 0;
   private scrollLeft = 0;
 
+  private readonly sanitizer = inject(DomSanitizer);
   private readonly textarea =
     viewChild.required<ElementRef<HTMLTextAreaElement>>('textarea');
 
@@ -331,74 +363,39 @@ export class ScCodeEditor {
     return (this.value() || '').length;
   });
 
-  protected readonly highlightedCode = computed(() => {
+  protected readonly displayCode = computed(() => {
     const code = this.value() || '';
-    let lang = this.language();
+    return code.endsWith('\n') ? code : code + '\n';
+  });
 
-    if (this.autoDetectLanguage() && code) {
-      const detected = detectLanguage(code, this.filename());
-      if (detected !== lang) {
-        lang = detected;
-      }
+  protected readonly effectiveLanguage = computed(() => {
+    if (this.autoDetectLanguage() && this.value()) {
+      return detectLanguage(this.value(), this.filename());
     }
-
-    // Ensure the code ends with a newline for proper display
-    const codeToHighlight = code.endsWith('\n') ? code : code + '\n';
-    return highlightCode(codeToHighlight, lang);
+    return this.language();
   });
 
   protected readonly containerClass = computed(() =>
     cn(
-      'border rounded-lg overflow-hidden',
+      'border border-border rounded-lg overflow-hidden bg-muted',
       'focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
       this.disabled() && 'opacity-50 cursor-not-allowed',
-      this.class(),
+      this.classInput(),
     ),
   );
-
-  protected readonly containerStyle = computed(() => {
-    const t = this.theme();
-    return {
-      backgroundColor: t.background,
-      color: t.foreground,
-      '--token-keyword': t.keyword,
-      '--token-string': t.string,
-      '--token-number': t.number,
-      '--token-comment': t.comment,
-      '--token-function': t.function,
-      '--token-operator': t.operator,
-      '--token-punctuation': t.punctuation,
-      '--token-property': t.property,
-      '--token-tag': t.tag,
-      '--token-attribute': t.attribute,
-      '--token-selector': t.selector,
-      '--token-variable': t.variable,
-      '--token-builtin': t.builtin,
-    };
-  });
-
-  protected readonly preStyle = computed(() => ({
-    fontFamily:
-      'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
-    fontSize: '0.875rem',
-    lineHeight: '1.5rem',
-    whiteSpace: this.wordWrap() ? 'pre-wrap' : 'pre',
-    wordBreak: this.wordWrap() ? 'break-all' : 'normal',
-    minHeight: this.minHeight(),
-  }));
 
   protected readonly textareaClass = computed(() =>
     cn(
       'relative w-full p-3 m-0 resize-none',
       'bg-transparent text-transparent caret-current',
       'outline-none border-none',
-      'font-mono text-sm leading-6',
+      'font-mono text-sm leading-relaxed',
       this.disabled() && 'cursor-not-allowed',
     ),
   );
 
   protected readonly textareaStyle = computed(() => ({
-    caretColor: this.theme().cursor,
+    caretColor: 'hsl(var(--primary))',
     minHeight: this.minHeight(),
     whiteSpace: this.wordWrap() ? 'pre-wrap' : 'pre',
     wordBreak: this.wordWrap() ? 'break-all' : 'normal',
@@ -406,12 +403,40 @@ export class ScCodeEditor {
   }));
 
   constructor() {
+    // Effect to trigger Shiki highlighting
+    effect(() => {
+      const code = this.displayCode();
+      const lang = this.effectiveLanguage();
+
+      this.highlight(code, lang);
+    });
+
+    // Effect for language detection notification
     effect(() => {
       if (this.autoDetectLanguage() && this.value()) {
         const detected = detectLanguage(this.value(), this.filename());
         this.languageDetected.emit(detected);
       }
     });
+  }
+
+  private async highlight(
+    code: string,
+    lang: CodeEditorLanguage,
+  ): Promise<void> {
+    try {
+      const html = await codeToHtml(code, {
+        lang,
+        themes: {
+          light: 'github-light',
+          dark: 'github-dark',
+        },
+        defaultColor: false,
+      });
+      this.highlightedHtml.set(this.sanitizer.bypassSecurityTrustHtml(html));
+    } catch {
+      this.highlightedHtml.set(null);
+    }
   }
 
   focusTextarea(): void {
@@ -550,11 +575,11 @@ export class ScCodeEditor {
     this.scrollTop = target.scrollTop;
     this.scrollLeft = target.scrollLeft;
 
-    // Sync scroll with the pre element
-    const pre = target.previousElementSibling as HTMLPreElement;
-    if (pre) {
-      pre.scrollTop = this.scrollTop;
-      pre.scrollLeft = this.scrollLeft;
+    // Sync scroll with the display layer
+    const displayLayer = target.previousElementSibling as HTMLElement;
+    if (displayLayer) {
+      displayLayer.scrollTop = this.scrollTop;
+      displayLayer.scrollLeft = this.scrollLeft;
     }
   }
 
