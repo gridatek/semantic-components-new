@@ -17,7 +17,7 @@ import { SC_FORM_FIELD } from './form-field';
   host: {
     'data-slot': 'form-description',
     '[class]': 'class()',
-    '[id]': 'formField ? formField.name() + "-description" : null',
+    '[id]': 'descriptionId()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +26,10 @@ export class ScFormDescription {
   readonly formField = inject(SC_FORM_FIELD, { optional: true });
 
   readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly descriptionId = computed(() =>
+    this.formField ? `${this.formField.name()}-description` : null,
+  );
 
   protected readonly class = computed(() =>
     cn('text-sm text-muted-foreground', this.classInput()),

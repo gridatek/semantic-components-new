@@ -1,17 +1,16 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { ScCodeEditor, CodeEditorLanguage } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-interactive-code-editor-demo',
-  imports: [ScCodeEditor, FormsModule],
+  imports: [ScCodeEditor],
   template: `
     <div class="flex flex-wrap gap-4 mb-4">
       <div>
         <label class="block text-sm font-medium mb-1">Language</label>
         <select
-          [ngModel]="selectedLanguage()"
-          (ngModelChange)="selectedLanguage.set($event)"
+          [value]="selectedLanguage()"
+          (change)="selectedLanguage.set($any($event.target).value)"
           class="px-3 py-1.5 border rounded-md bg-background"
         >
           <option value="javascript">JavaScript</option>
@@ -29,8 +28,8 @@ import { ScCodeEditor, CodeEditorLanguage } from '@semantic-components/ui';
         <label class="flex items-center gap-2">
           <input
             type="checkbox"
-            [ngModel]="showLineNumbers()"
-            (ngModelChange)="showLineNumbers.set($event)"
+            [checked]="showLineNumbers()"
+            (change)="showLineNumbers.set($any($event.target).checked)"
             class="rounded"
           />
           <span class="text-sm">Line Numbers</span>
@@ -38,8 +37,8 @@ import { ScCodeEditor, CodeEditorLanguage } from '@semantic-components/ui';
         <label class="flex items-center gap-2">
           <input
             type="checkbox"
-            [ngModel]="wordWrapEnabled()"
-            (ngModelChange)="wordWrapEnabled.set($event)"
+            [checked]="wordWrapEnabled()"
+            (change)="wordWrapEnabled.set($any($event.target).checked)"
             class="rounded"
           />
           <span class="text-sm">Word Wrap</span>

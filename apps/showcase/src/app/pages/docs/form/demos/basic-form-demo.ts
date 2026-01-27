@@ -1,63 +1,77 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
-  ScFormField,
-  ScFormItem,
-  ScFormLabel,
-  ScFormControl,
-  ScFormDescription,
-  ScFormMessage,
-} from '@semantic-components/ui';
+  FormField,
+  form,
+  required,
+  email,
+  minLength,
+  submit,
+} from '@angular/forms/signals';
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-form-demo',
-  imports: [
-    ReactiveFormsModule,
-    ScFormField,
-    ScFormItem,
-    ScFormLabel,
-    ScFormControl,
-    ScFormDescription,
-    ScFormMessage,
-    ScButton,
-  ],
+  imports: [FormField, ScButton],
   template: `
-    <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-      class="max-w-sm space-y-6"
-    >
-      <div sc-form-field name="username">
-        <div sc-form-item>
-          <label sc-form-label>Username</label>
-          <input
-            sc-form-control
-            formControlName="username"
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            placeholder="Enter username"
-          />
-          <p sc-form-description>This is your public display name.</p>
-          @if (form.get('username')?.invalid && form.get('username')?.touched) {
-            <p sc-form-message></p>
-          }
-        </div>
+    <form (ngSubmit)="onSubmit()" class="max-w-sm space-y-6">
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          [class.text-destructive]="
+            loginForm.username().invalid() && loginForm.username().touched()
+          "
+        >
+          Username
+        </label>
+        <input
+          [formField]="loginForm.username"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          [class.border-destructive]="
+            loginForm.username().invalid() && loginForm.username().touched()
+          "
+          placeholder="Enter username"
+        />
+        <p class="text-sm text-muted-foreground">
+          This is your public display name.
+        </p>
+        @if (loginForm.username().invalid() && loginForm.username().touched()) {
+          <p class="text-sm font-medium text-destructive" role="alert">
+            @if (hasError(loginForm.username, 'required')) {
+              This field is required
+            } @else if (hasError(loginForm.username, 'minLength')) {
+              Minimum length is 3 characters
+            }
+          </p>
+        }
       </div>
 
-      <div sc-form-field name="email">
-        <div sc-form-item>
-          <label sc-form-label>Email</label>
-          <input
-            sc-form-control
-            formControlName="email"
-            type="email"
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            placeholder="Enter email"
-          />
-          @if (form.get('email')?.invalid && form.get('email')?.touched) {
-            <p sc-form-message></p>
-          }
-        </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          [class.text-destructive]="
+            loginForm.email().invalid() && loginForm.email().touched()
+          "
+        >
+          Email
+        </label>
+        <input
+          [formField]="loginForm.email"
+          type="email"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          [class.border-destructive]="
+            loginForm.email().invalid() && loginForm.email().touched()
+          "
+          placeholder="Enter email"
+        />
+        @if (loginForm.email().invalid() && loginForm.email().touched()) {
+          <p class="text-sm font-medium text-destructive" role="alert">
+            @if (hasError(loginForm.email, 'required')) {
+              This field is required
+            } @else if (hasError(loginForm.email, 'email')) {
+              Please enter a valid email
+            }
+          </p>
+        }
       </div>
 
       <button sc-button type="submit">Submit</button>
@@ -66,18 +80,35 @@ import { ScButton } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicFormDemo {
-  private readonly fb = inject(FormBuilder);
-
-  readonly form = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
+  private readonly formModel = signal({
+    username: '',
+    email: '',
   });
 
-  onSubmit(): void {
-    if (this.form.valid) {
-      console.log('Form submitted:', this.form.value);
-    } else {
-      this.form.markAllAsTouched();
-    }
+  readonly loginForm = form(this.formModel, (path) => {
+    required(path.username);
+    minLength(path.username, 3);
+    required(path.email);
+    email(path.email);
+  });
+
+  hasError(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    field: any,
+    errorKey: string,
+  ): boolean {
+    const errors = field().errors();
+    if (!errors || !Array.isArray(errors)) return false;
+    return errors.some(
+      (e: { rule?: string; name?: string }) =>
+        e.rule === errorKey || e.name === errorKey,
+    );
+  }
+
+  async onSubmit(): Promise<void> {
+    await submit(this.loginForm, async () => {
+      console.log('Form submitted:', this.formModel());
+      return null;
+    });
   }
 }

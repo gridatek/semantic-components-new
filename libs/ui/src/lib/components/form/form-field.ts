@@ -1,5 +1,24 @@
-import { Directive, inject, InjectionToken, input } from '@angular/core';
-import { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { computed, Directive, InjectionToken, input } from '@angular/core';
+
+/**
+ * Represents the field state from Angular Signal Forms.
+ * This interface matches the FieldState returned by calling a form field.
+ */
+export interface SignalFormFieldState {
+  value: () => unknown;
+  invalid: () => boolean;
+  valid: () => boolean;
+  touched: () => boolean;
+  dirty: () => boolean;
+  errors: () => Record<string, unknown> | null;
+}
+
+/**
+ * Represents a Signal Forms field that can be called to get its state.
+ */
+export type SignalFormField = (() => SignalFormFieldState) & {
+  [key: string]: unknown;
+};
 
 // Token for sharing form field state
 export const SC_FORM_FIELD = new InjectionToken<ScFormField>('SC_FORM_FIELD');
@@ -13,55 +32,47 @@ export const SC_FORM_FIELD = new InjectionToken<ScFormField>('SC_FORM_FIELD');
 })
 export class ScFormField {
   readonly name = input.required<string>();
+  readonly field = input<SignalFormField>();
 
-  private readonly form = inject(FormGroupDirective, { optional: true });
-  private readonly ngForm = inject(NgForm, { optional: true });
+  readonly invalid = computed(() => this.field?.()?.().invalid() ?? false);
+  readonly touched = computed(() => this.field?.()?.().touched() ?? false);
+  readonly dirty = computed(() => this.field?.()?.().dirty() ?? false);
+  readonly errors = computed(() => this.field?.()?.().errors() ?? null);
 
-  get control(): AbstractControl | null {
-    const formDir = this.form || this.ngForm;
-    if (!formDir) return null;
-    return formDir.form.get(this.name()) ?? null;
-  }
+  readonly showError = computed(
+    () => this.invalid() && (this.touched() || this.dirty()),
+  );
 
-  get invalid(): boolean {
-    return this.control?.invalid ?? false;
-  }
+  readonly errorMessage = computed(() => {
+    const errors = this.errors();
+    if (!errors) return '';
 
-  get touched(): boolean {
-    return this.control?.touched ?? false;
-  }
-
-  get dirty(): boolean {
-    return this.control?.dirty ?? false;
-  }
-
-  get showError(): boolean {
-    return this.invalid && (this.touched || this.dirty);
-  }
-
-  get errorMessage(): string {
-    const control = this.control;
-    if (!control || !control.errors) return '';
-
-    const errors = control.errors;
     if (errors['required']) return 'This field is required';
     if (errors['email']) return 'Please enter a valid email';
-    if (errors['minlength']) {
-      return `Minimum length is ${errors['minlength'].requiredLength} characters`;
+    if (errors['minLength']) {
+      const minLengthError = errors['minLength'] as { min: number };
+      return `Minimum length is ${minLengthError.min} characters`;
     }
-    if (errors['maxlength']) {
-      return `Maximum length is ${errors['maxlength'].requiredLength} characters`;
+    if (errors['maxLength']) {
+      const maxLengthError = errors['maxLength'] as { max: number };
+      return `Maximum length is ${maxLengthError.max} characters`;
     }
-    if (errors['min']) return `Minimum value is ${errors['min'].min}`;
-    if (errors['max']) return `Maximum value is ${errors['max'].max}`;
+    if (errors['min']) {
+      const minError = errors['min'] as { min: number };
+      return `Minimum value is ${minError.min}`;
+    }
+    if (errors['max']) {
+      const maxError = errors['max'] as { max: number };
+      return `Maximum value is ${maxError.max}`;
+    }
     if (errors['pattern']) return 'Invalid format';
 
     // Return first custom error message if available
     const firstError = Object.keys(errors)[0];
     if (typeof errors[firstError] === 'string') {
-      return errors[firstError];
+      return errors[firstError] as string;
     }
 
     return 'Invalid value';
-  }
+  });
 }
