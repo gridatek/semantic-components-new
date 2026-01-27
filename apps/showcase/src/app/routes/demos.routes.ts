@@ -1967,10 +1967,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/lightbox',
     children: [
       {
-        path: 'lightbox-demo',
+        path: 'basic-lightbox-demo',
         loadComponent: () =>
-          import('../pages/docs/lightbox/demos/lightbox-demo').then(
-            (m) => m.ScLightboxDemo,
+          import('../pages/docs/lightbox/demos/basic-lightbox-demo').then(
+            (m) => m.BasicLightboxDemo,
+          ),
+      },
+      {
+        path: 'info-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/info-lightbox-demo').then(
+            (m) => m.InfoLightboxDemo,
+          ),
+      },
+      {
+        path: 'gallery-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/gallery-lightbox-demo').then(
+            (m) => m.GalleryLightboxDemo,
+          ),
+      },
+      {
+        path: 'no-thumbnails-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/no-thumbnails-lightbox-demo').then(
+            (m) => m.NoThumbnailsLightboxDemo,
+          ),
+      },
+      {
+        path: 'no-zoom-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/no-zoom-lightbox-demo').then(
+            (m) => m.NoZoomLightboxDemo,
+          ),
+      },
+      {
+        path: 'no-loop-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/no-loop-lightbox-demo').then(
+            (m) => m.NoLoopLightboxDemo,
+          ),
+      },
+      {
+        path: 'single-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/single-lightbox-demo').then(
+            (m) => m.SingleLightboxDemo,
+          ),
+      },
+      {
+        path: 'keyboard-lightbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/lightbox/demos/keyboard-lightbox-demo').then(
+            (m) => m.KeyboardLightboxDemo,
           ),
       },
     ],
@@ -2274,10 +2323,87 @@ export const demosRoutes: Route[] = [
     path: 'demos/password-input',
     children: [
       {
-        path: 'password-input-demo',
+        path: 'basic-password-input-demo',
         loadComponent: () =>
-          import('../pages/docs/password-input/demos/password-input-demo').then(
-            (m) => m.ScPasswordInputDemo,
+          import('../pages/docs/password-input/demos/basic-password-input-demo').then(
+            (m) => m.BasicPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'label-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/label-password-input-demo').then(
+            (m) => m.LabelPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/disabled-password-input-demo').then(
+            (m) => m.DisabledPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'visible-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/visible-password-input-demo').then(
+            (m) => m.VisiblePasswordInputDemo,
+          ),
+      },
+      {
+        path: 'strength-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/strength-password-input-demo').then(
+            (m) => m.StrengthPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'strength-bar-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/strength-bar-password-input-demo').then(
+            (m) => m.StrengthBarPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'requirements-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/requirements-password-input-demo').then(
+            (m) => m.RequirementsPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'confirm-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/confirm-password-input-demo').then(
+            (m) => m.ConfirmPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'custom-labels-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/custom-labels-password-input-demo').then(
+            (m) => m.CustomLabelsPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'login-form-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/login-form-password-input-demo').then(
+            (m) => m.LoginFormPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'registration-form-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/registration-form-password-input-demo').then(
+            (m) => m.RegistrationFormPasswordInputDemo,
+          ),
+      },
+      {
+        path: 'widths-password-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-input/demos/widths-password-input-demo').then(
+            (m) => m.WidthsPasswordInputDemo,
           ),
       },
     ],
@@ -2541,10 +2667,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/scroll-area',
     children: [
       {
-        path: 'scroll-area-demo',
+        path: 'vertical-scroll-area-demo',
         loadComponent: () =>
-          import('../pages/docs/scroll-area/demos/scroll-area-demo').then(
-            (m) => m.ScScrollAreaDemo,
+          import('../pages/docs/scroll-area/demos/vertical-scroll-area-demo').then(
+            (m) => m.VerticalScrollAreaDemo,
+          ),
+      },
+      {
+        path: 'horizontal-scroll-area-demo',
+        loadComponent: () =>
+          import('../pages/docs/scroll-area/demos/horizontal-scroll-area-demo').then(
+            (m) => m.HorizontalScrollAreaDemo,
+          ),
+      },
+      {
+        path: 'both-scroll-area-demo',
+        loadComponent: () =>
+          import('../pages/docs/scroll-area/demos/both-scroll-area-demo').then(
+            (m) => m.BothScrollAreaDemo,
           ),
       },
     ],
@@ -2553,10 +2693,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/search-input',
     children: [
       {
-        path: 'search-input-demo',
+        path: 'basic-search-input-demo',
         loadComponent: () =>
-          import('../pages/docs/search-input/demos/search-input-demo').then(
-            (m) => m.SearchInputDemo,
+          import('../pages/docs/search-input/demos/basic-search-input-demo').then(
+            (m) => m.BasicSearchInputDemo,
+          ),
+      },
+      {
+        path: 'loading-search-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/search-input/demos/loading-search-input-demo').then(
+            (m) => m.LoadingSearchInputDemo,
+          ),
+      },
+      {
+        path: 'categories-search-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/search-input/demos/categories-search-input-demo').then(
+            (m) => m.CategoriesSearchInputDemo,
           ),
       },
     ],
@@ -2636,10 +2790,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/sidebar',
     children: [
       {
-        path: 'sidebar-demo',
+        path: 'default-sidebar-demo',
         loadComponent: () =>
-          import('../pages/docs/sidebar/demos/sidebar-demo').then(
-            (m) => m.ScSidebarDemo,
+          import('../pages/docs/sidebar/demos/default-sidebar-demo').then(
+            (m) => m.DefaultSidebarDemo,
+          ),
+      },
+      {
+        path: 'icon-collapsible-sidebar-demo',
+        loadComponent: () =>
+          import('../pages/docs/sidebar/demos/icon-collapsible-sidebar-demo').then(
+            (m) => m.IconCollapsibleSidebarDemo,
           ),
       },
     ],
@@ -2648,10 +2809,59 @@ export const demosRoutes: Route[] = [
     path: 'demos/signature-pad',
     children: [
       {
-        path: 'signature-pad-demo',
+        path: 'basic-signature-pad-demo',
         loadComponent: () =>
-          import('../pages/docs/signature-pad/demos/signature-pad-demo').then(
-            (m) => m.ScSignaturePadDemo,
+          import('../pages/docs/signature-pad/demos/basic-signature-pad-demo').then(
+            (m) => m.BasicSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'colors-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/colors-signature-pad-demo').then(
+            (m) => m.ColorsSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'thick-pen-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/thick-pen-signature-pad-demo').then(
+            (m) => m.ThickPenSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'no-controls-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/no-controls-signature-pad-demo').then(
+            (m) => m.NoControlsSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'disabled-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/disabled-signature-pad-demo').then(
+            (m) => m.DisabledSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'small-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/small-signature-pad-demo').then(
+            (m) => m.SmallSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'preview-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/preview-signature-pad-demo').then(
+            (m) => m.PreviewSignaturePadDemo,
+          ),
+      },
+      {
+        path: 'form-signature-pad-demo',
+        loadComponent: () =>
+          import('../pages/docs/signature-pad/demos/form-signature-pad-demo').then(
+            (m) => m.FormSignaturePadDemo,
           ),
       },
     ],
@@ -2754,10 +2964,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/sortable-list',
     children: [
       {
-        path: 'sortable-list-demo',
+        path: 'basic-sortable-list-demo',
         loadComponent: () =>
-          import('../pages/docs/sortable-list/demos/sortable-list-demo').then(
-            (m) => m.ScSortableListDemo,
+          import('../pages/docs/sortable-list/demos/basic-sortable-list-demo').then(
+            (m) => m.BasicSortableListDemo,
+          ),
+      },
+      {
+        path: 'handle-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/handle-sortable-list-demo').then(
+            (m) => m.HandleSortableListDemo,
+          ),
+      },
+      {
+        path: 'task-list-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/task-list-sortable-list-demo').then(
+            (m) => m.TaskListSortableListDemo,
+          ),
+      },
+      {
+        path: 'playlist-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/playlist-sortable-list-demo').then(
+            (m) => m.PlaylistSortableListDemo,
+          ),
+      },
+      {
+        path: 'horizontal-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/horizontal-sortable-list-demo').then(
+            (m) => m.HorizontalSortableListDemo,
+          ),
+      },
+      {
+        path: 'kanban-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/kanban-sortable-list-demo').then(
+            (m) => m.KanbanSortableListDemo,
+          ),
+      },
+      {
+        path: 'disabled-sortable-list-demo',
+        loadComponent: () =>
+          import('../pages/docs/sortable-list/demos/disabled-sortable-list-demo').then(
+            (m) => m.DisabledSortableListDemo,
           ),
       },
     ],

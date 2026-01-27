@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScScrollAreaDemoContainer } from './demos/scroll-area-demo-container';
+import { VerticalScrollAreaDemoContainer } from './demos/vertical-scroll-area-demo-container';
+import { HorizontalScrollAreaDemoContainer } from './demos/horizontal-scroll-area-demo-container';
+import { BothScrollAreaDemoContainer } from './demos/both-scroll-area-demo-container';
 
 @Component({
   selector: 'app-scroll-area-page',
-  imports: [ScScrollAreaDemoContainer],
+  imports: [
+    VerticalScrollAreaDemoContainer,
+    HorizontalScrollAreaDemoContainer,
+    BothScrollAreaDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +22,9 @@ import { ScScrollAreaDemoContainer } from './demos/scroll-area-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-scroll-area-demo-container />
+        <app-vertical-scroll-area-demo-container />
+        <app-horizontal-scroll-area-demo-container />
+        <app-both-scroll-area-demo-container />
       </section>
     </div>
   `,

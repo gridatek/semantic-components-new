@@ -1,9 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSignaturePadDemoContainer } from './demos/signature-pad-demo-container';
+import { BasicSignaturePadDemoContainer } from './demos/basic-signature-pad-demo-container';
+import { ColorsSignaturePadDemoContainer } from './demos/colors-signature-pad-demo-container';
+import { ThickPenSignaturePadDemoContainer } from './demos/thick-pen-signature-pad-demo-container';
+import { NoControlsSignaturePadDemoContainer } from './demos/no-controls-signature-pad-demo-container';
+import { DisabledSignaturePadDemoContainer } from './demos/disabled-signature-pad-demo-container';
+import { SmallSignaturePadDemoContainer } from './demos/small-signature-pad-demo-container';
+import { PreviewSignaturePadDemoContainer } from './demos/preview-signature-pad-demo-container';
+import { FormSignaturePadDemoContainer } from './demos/form-signature-pad-demo-container';
 
 @Component({
   selector: 'app-signature-pad-page',
-  imports: [ScSignaturePadDemoContainer],
+  imports: [
+    BasicSignaturePadDemoContainer,
+    ColorsSignaturePadDemoContainer,
+    ThickPenSignaturePadDemoContainer,
+    NoControlsSignaturePadDemoContainer,
+    DisabledSignaturePadDemoContainer,
+    SmallSignaturePadDemoContainer,
+    PreviewSignaturePadDemoContainer,
+    FormSignaturePadDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +31,14 @@ import { ScSignaturePadDemoContainer } from './demos/signature-pad-demo-containe
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-signature-pad-demo-container />
+        <app-basic-signature-pad-demo-container />
+        <app-colors-signature-pad-demo-container />
+        <app-thick-pen-signature-pad-demo-container />
+        <app-no-controls-signature-pad-demo-container />
+        <app-disabled-signature-pad-demo-container />
+        <app-small-signature-pad-demo-container />
+        <app-preview-signature-pad-demo-container />
+        <app-form-signature-pad-demo-container />
       </section>
     </div>
   `,

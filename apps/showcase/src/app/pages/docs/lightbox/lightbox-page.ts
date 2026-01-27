@@ -1,9 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLightboxDemoContainer } from './demos/lightbox-demo-container';
+import { BasicLightboxDemoContainer } from './demos/basic-lightbox-demo-container';
+import { InfoLightboxDemoContainer } from './demos/info-lightbox-demo-container';
+import { GalleryLightboxDemoContainer } from './demos/gallery-lightbox-demo-container';
+import { NoThumbnailsLightboxDemoContainer } from './demos/no-thumbnails-lightbox-demo-container';
+import { NoZoomLightboxDemoContainer } from './demos/no-zoom-lightbox-demo-container';
+import { NoLoopLightboxDemoContainer } from './demos/no-loop-lightbox-demo-container';
+import { SingleLightboxDemoContainer } from './demos/single-lightbox-demo-container';
+import { KeyboardLightboxDemoContainer } from './demos/keyboard-lightbox-demo-container';
 
 @Component({
   selector: 'app-lightbox-page',
-  imports: [ScLightboxDemoContainer],
+  imports: [
+    BasicLightboxDemoContainer,
+    InfoLightboxDemoContainer,
+    GalleryLightboxDemoContainer,
+    NoThumbnailsLightboxDemoContainer,
+    NoZoomLightboxDemoContainer,
+    NoLoopLightboxDemoContainer,
+    SingleLightboxDemoContainer,
+    KeyboardLightboxDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +31,14 @@ import { ScLightboxDemoContainer } from './demos/lightbox-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-lightbox-demo-container />
+        <app-basic-lightbox-demo-container />
+        <app-info-lightbox-demo-container />
+        <app-gallery-lightbox-demo-container />
+        <app-no-thumbnails-lightbox-demo-container />
+        <app-no-zoom-lightbox-demo-container />
+        <app-no-loop-lightbox-demo-container />
+        <app-single-lightbox-demo-container />
+        <app-keyboard-lightbox-demo-container />
       </section>
     </div>
   `,

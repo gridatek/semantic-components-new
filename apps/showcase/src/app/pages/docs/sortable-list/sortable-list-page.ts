@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSortableListDemoContainer } from './demos/sortable-list-demo-container';
+import { BasicSortableListDemoContainer } from './demos/basic-sortable-list-demo-container';
+import { HandleSortableListDemoContainer } from './demos/handle-sortable-list-demo-container';
+import { TaskListSortableListDemoContainer } from './demos/task-list-sortable-list-demo-container';
+import { PlaylistSortableListDemoContainer } from './demos/playlist-sortable-list-demo-container';
+import { HorizontalSortableListDemoContainer } from './demos/horizontal-sortable-list-demo-container';
+import { KanbanSortableListDemoContainer } from './demos/kanban-sortable-list-demo-container';
+import { DisabledSortableListDemoContainer } from './demos/disabled-sortable-list-demo-container';
 
 @Component({
   selector: 'app-sortable-list-page',
-  imports: [ScSortableListDemoContainer],
+  imports: [
+    BasicSortableListDemoContainer,
+    HandleSortableListDemoContainer,
+    TaskListSortableListDemoContainer,
+    PlaylistSortableListDemoContainer,
+    HorizontalSortableListDemoContainer,
+    KanbanSortableListDemoContainer,
+    DisabledSortableListDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +29,13 @@ import { ScSortableListDemoContainer } from './demos/sortable-list-demo-containe
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-sortable-list-demo-container />
+        <app-basic-sortable-list-demo-container />
+        <app-handle-sortable-list-demo-container />
+        <app-task-list-sortable-list-demo-container />
+        <app-playlist-sortable-list-demo-container />
+        <app-horizontal-sortable-list-demo-container />
+        <app-kanban-sortable-list-demo-container />
+        <app-disabled-sortable-list-demo-container />
       </section>
     </div>
   `,
