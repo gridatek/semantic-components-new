@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScAccordion,
-  ScAccordionContent,
+  ScAccordionPanel,
   ScAccordionItem,
   ScAccordionTrigger,
 } from '@semantic-components/ui';
@@ -10,7 +10,7 @@ import {
   selector: 'app-multiple-accordion-demo',
   imports: [
     ScAccordion,
-    ScAccordionContent,
+    ScAccordionPanel,
     ScAccordionItem,
     ScAccordionTrigger,
   ],
@@ -23,21 +23,21 @@ import {
     >
       <div sc-accordion-item value="item-a">
         <button sc-accordion-trigger>Can I open multiple items?</button>
-        <div sc-accordion-content>
+        <div sc-accordion-panel>
           Yes! When using type="multiple", you can have multiple accordion items
           open at the same time.
         </div>
       </div>
       <div sc-accordion-item value="item-b">
         <button sc-accordion-trigger>How does it work?</button>
-        <div sc-accordion-content>
+        <div sc-accordion-panel>
           The value is an array of strings representing the currently open
           items. You can bind to it with [(value)].
         </div>
       </div>
       <div sc-accordion-item value="item-c">
         <button sc-accordion-trigger>What about accessibility?</button>
-        <div sc-accordion-content>
+        <div sc-accordion-panel>
           Each item uses proper ARIA attributes including aria-expanded and
           role="region" for the content.
         </div>

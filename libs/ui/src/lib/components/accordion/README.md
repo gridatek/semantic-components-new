@@ -15,7 +15,7 @@ ScAccordion (Root)
     │     │
     │     ├── ScAccordionTrigger (button with chevron)
     │     │
-    │     └── ScAccordionContent (collapsible region)
+    │     └── ScAccordionPanel (collapsible region)
     │
     ├── ScAccordionItem
     └── ...
@@ -28,7 +28,7 @@ ScAccordion (Root)
 | `ScAccordion`        | `div[sc-accordion]`            | Root wrapper with mode and value state |
 | `ScAccordionItem`    | `div[sc-accordion-item]`       | Individual accordion item              |
 | `ScAccordionTrigger` | `button[sc-accordion-trigger]` | Button to toggle item                  |
-| `ScAccordionContent` | `div[sc-accordion-content]`    | Collapsible content region             |
+| `ScAccordionPanel`   | `div[sc-accordion-panel]`      | Collapsible content region             |
 
 ## Inputs
 
@@ -57,11 +57,11 @@ Only one item can be open at a time. Clicking another item closes the current on
 <div sc-accordion [value]="'item-1'">
   <div sc-accordion-item value="item-1">
     <button sc-accordion-trigger>Section 1</button>
-    <div sc-accordion-content>Content for section 1</div>
+    <div sc-accordion-panel>Content for section 1</div>
   </div>
   <div sc-accordion-item value="item-2">
     <button sc-accordion-trigger>Section 2</button>
-    <div sc-accordion-content>Content for section 2</div>
+    <div sc-accordion-panel>Content for section 2</div>
   </div>
 </div>
 ```
@@ -82,15 +82,15 @@ Multiple items can be open simultaneously.
 <div sc-accordion type="multiple" [value]="['item-1', 'item-2']">
   <div sc-accordion-item value="item-1">
     <button sc-accordion-trigger>Section 1</button>
-    <div sc-accordion-content>Content 1</div>
+    <div sc-accordion-panel>Content 1</div>
   </div>
   <div sc-accordion-item value="item-2">
     <button sc-accordion-trigger>Section 2</button>
-    <div sc-accordion-content>Content 2</div>
+    <div sc-accordion-panel>Content 2</div>
   </div>
   <div sc-accordion-item value="item-3">
     <button sc-accordion-trigger>Section 3</button>
-    <div sc-accordion-content>Content 3</div>
+    <div sc-accordion-panel>Content 3</div>
   </div>
 </div>
 ```
@@ -106,7 +106,7 @@ Multiple items can be open simultaneously.
 ```html
 <div sc-accordion-item value="disabled" [disabled]="true">
   <button sc-accordion-trigger>Disabled Section</button>
-  <div sc-accordion-content>Won't be shown</div>
+  <div sc-accordion-panel>Won't be shown</div>
 </div>
 ```
 
