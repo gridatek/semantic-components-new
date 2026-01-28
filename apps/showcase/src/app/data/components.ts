@@ -277,6 +277,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A select component for multiple selections.',
   },
   {
+    name: 'Native Checkbox',
+    path: 'native-checkbox',
+    description: 'A directive for native checkbox inputs with custom styling.',
+  },
+  {
     name: 'Navbar',
     path: 'navbar',
     description: 'A responsive navigation bar with mobile menu support.',
