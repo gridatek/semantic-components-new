@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   ElementRef,
   input,
   model,
   output,
   signal,
+  untracked,
   ViewEncapsulation,
   viewChild,
 } from '@angular/core';
@@ -19,6 +21,7 @@ import { cn } from '../../utils';
     <div [class]="containerClass()">
       <input
         #inputEl
+        [id]="id()"
         [type]="visible() ? 'text' : 'password'"
         [value]="value()"
         [placeholder]="placeholder()"
@@ -86,6 +89,7 @@ import { cn } from '../../utils';
 })
 export class ScPasswordInput {
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly id = input<string>('');
   readonly placeholder = input<string>('');
   readonly disabled = input<boolean>(false);
   readonly readonly = input<boolean>(false);
@@ -100,11 +104,14 @@ export class ScPasswordInput {
 
   private readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
 
-  constructor() {
-    if (this.showByDefault()) {
-      this.visible.set(true);
-    }
-  }
+  private readonly showByDefaultEffect = effect(() => {
+    const showByDefault = this.showByDefault();
+    untracked(() => {
+      if (showByDefault) {
+        this.visible.set(true);
+      }
+    });
+  });
 
   protected readonly containerClass = computed(() =>
     cn('relative', this.classInput()),

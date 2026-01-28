@@ -4,6 +4,9 @@ import BasicPasswordFieldDemoContainer from './demos/basic-password-field-demo-c
 import ShowDefaultPasswordFieldDemoContainer from './demos/show-default-password-field-demo-container';
 import DisabledPasswordFieldDemoContainer from './demos/disabled-password-field-demo-container';
 import NewPasswordFieldDemoContainer from './demos/new-password-field-demo-container';
+import StrengthPasswordFieldDemoContainer from './demos/strength-password-field-demo-container';
+import RequirementsPasswordFieldDemoContainer from './demos/requirements-password-field-demo-container';
+import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-container';
 
 @Component({
   selector: 'app-password-field-page',
@@ -13,6 +16,9 @@ import NewPasswordFieldDemoContainer from './demos/new-password-field-demo-conta
     ShowDefaultPasswordFieldDemoContainer,
     DisabledPasswordFieldDemoContainer,
     NewPasswordFieldDemoContainer,
+    StrengthPasswordFieldDemoContainer,
+    RequirementsPasswordFieldDemoContainer,
+    FullPasswordFieldDemoContainer,
   ],
   template: `
     <div class="space-y-8">
@@ -34,6 +40,9 @@ import NewPasswordFieldDemoContainer from './demos/new-password-field-demo-conta
         <app-show-default-password-field-demo-container />
         <app-disabled-password-field-demo-container />
         <app-new-password-field-demo-container />
+        <app-strength-password-field-demo-container />
+        <app-requirements-password-field-demo-container />
+        <app-full-password-field-demo-container />
       </section>
     </div>
   `,

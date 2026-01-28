@@ -1,10 +1,12 @@
 import {
   Directive,
+  effect,
   InjectionToken,
   input,
   model,
   output,
   signal,
+  untracked,
 } from '@angular/core';
 
 // Token for password field context
@@ -31,11 +33,14 @@ export class ScPasswordField {
 
   readonly visible = signal(false);
 
-  constructor() {
-    if (this.showByDefault()) {
-      this.visible.set(true);
-    }
-  }
+  private readonly showByDefaultEffect = effect(() => {
+    const showByDefault = this.showByDefault();
+    untracked(() => {
+      if (showByDefault) {
+        this.visible.set(true);
+      }
+    });
+  });
 
   toggle(): void {
     this.visible.update((v) => !v);

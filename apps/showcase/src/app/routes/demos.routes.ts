@@ -2329,6 +2329,27 @@ export const demosRoutes: Route[] = [
             (m) => m.NewPasswordFieldDemo,
           ),
       },
+      {
+        path: 'strength-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/strength-password-field-demo').then(
+            (m) => m.StrengthPasswordFieldDemo,
+          ),
+      },
+      {
+        path: 'requirements-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/requirements-password-field-demo').then(
+            (m) => m.RequirementsPasswordFieldDemo,
+          ),
+      },
+      {
+        path: 'full-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/full-password-field-demo').then(
+            (m) => m.FullPasswordFieldDemo,
+          ),
+      },
     ],
   },
   {
