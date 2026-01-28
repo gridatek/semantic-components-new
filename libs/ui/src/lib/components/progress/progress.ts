@@ -3,7 +3,9 @@ import {
   Component,
   computed,
   input,
+  model,
 } from '@angular/core';
+import type { FormValueControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
 
 @Component({
@@ -26,22 +28,23 @@ import { cn } from '../../utils';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScProgress {
+export class ScProgress implements FormValueControl<number | null> {
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly value = input<number | null>(null);
-  readonly max = input<number>(100);
+  readonly value = model<number | null>(null);
+  readonly max = input<number | undefined>(100);
 
   protected readonly percentage = computed(() => {
     const val = this.value();
-    const maxVal = this.max();
+    const maxVal = this.max() ?? 100;
     if (val === null || maxVal === 0) return 0;
     return Math.min(Math.max((val / maxVal) * 100, 0), 100);
   });
 
   protected readonly state = computed(() => {
     const val = this.value();
+    const maxVal = this.max() ?? 100;
     if (val === null) return 'indeterminate';
-    return val >= this.max() ? 'complete' : 'loading';
+    return val >= maxVal ? 'complete' : 'loading';
   });
 
   protected readonly class = computed(() =>

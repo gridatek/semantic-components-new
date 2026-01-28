@@ -5,6 +5,7 @@ import {
   input,
   model,
 } from '@angular/core';
+import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
 
 @Component({
@@ -25,7 +26,7 @@ import { cn } from '../../utils';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSwitch {
+export class ScSwitch implements FormCheckboxControl {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly checked = model<boolean>(false);
   readonly disabled = input<boolean>(false);

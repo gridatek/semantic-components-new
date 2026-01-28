@@ -3,6 +3,7 @@ import { BasicSliderDemoContainer } from './demos/basic-slider-demo-container';
 import { DisabledSliderDemoContainer } from './demos/disabled-slider-demo-container';
 import { PriceSliderDemoContainer } from './demos/price-slider-demo-container';
 import { RangeSliderDemoContainer } from './demos/range-slider-demo-container';
+import { SignalFormsSliderDemoContainer } from './demos/signal-forms-slider-demo-container';
 import { StepSliderDemoContainer } from './demos/step-slider-demo-container';
 import { TemperatureSliderDemoContainer } from './demos/temperature-slider-demo-container';
 import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container';
@@ -17,6 +18,7 @@ import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container'
     VolumeSliderDemoContainer,
     PriceSliderDemoContainer,
     TemperatureSliderDemoContainer,
+    SignalFormsSliderDemoContainer,
   ],
   template: `
     <div class="space-y-8">
@@ -36,6 +38,7 @@ import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container'
         <app-volume-slider-demo-container />
         <app-price-slider-demo-container />
         <app-temperature-slider-demo-container />
+        <app-signal-forms-slider-demo-container />
       </section>
     </div>
   `,

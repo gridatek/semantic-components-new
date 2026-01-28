@@ -27,6 +27,28 @@ A control that allows the user to toggle between checked and not checked.
 </div>
 ```
 
+## With Signal Forms
+
+ScCheckbox implements `FormCheckboxControl` and works seamlessly with Angular Signal Forms:
+
+```typescript
+import { signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { required } from '@angular/forms/signals';
+
+readonly formModel = signal({ acceptTerms: false });
+readonly myForm = form(this.formModel, (schemaPath) => {
+  required(schemaPath.acceptTerms);
+});
+```
+
+```html
+<sc-checkbox [formField]="myForm.acceptTerms" id="terms" />
+<label for="terms">Accept terms and conditions</label>
+```
+
+Note: Add `FormField` to your component's `imports` array to use the `[formField]` directive. When using `[formField]`, you cannot use other property bindings like `[checked]` on the same element.
+
 ## Indeterminate State
 
 ```html

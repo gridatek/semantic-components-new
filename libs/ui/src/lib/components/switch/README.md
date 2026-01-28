@@ -35,6 +35,28 @@ export class MyComponent {
 }
 ```
 
+## With Signal Forms
+
+ScSwitch implements `FormCheckboxControl` and works seamlessly with Angular Signal Forms:
+
+```typescript
+import { signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { required } from '@angular/forms/signals';
+
+readonly formModel = signal({ notifications: true });
+readonly myForm = form(this.formModel, (schemaPath) => {
+  required(schemaPath.notifications);
+});
+```
+
+```html
+<button sc-switch [formField]="myForm.notifications" id="notifications"></button>
+<label for="notifications">Enable notifications</label>
+```
+
+Note: Add `FormField` to your component's `imports` array to use the `[formField]` directive. When using `[formField]`, you cannot use other property bindings like `[checked]` on the same element.
+
 ## Disabled State
 
 ```html

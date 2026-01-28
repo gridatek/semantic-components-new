@@ -1,13 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicSwitchDemoContainer } from './demos/basic-switch-demo-container';
-import { StateSwitchDemoContainer } from './demos/state-switch-demo-container';
+import { DescriptionSwitchDemoContainer } from './demos/description-switch-demo-container';
 import { DisabledSwitchDemoContainer } from './demos/disabled-switch-demo-container';
 import { FormSwitchDemoContainer } from './demos/form-switch-demo-container';
-import { DescriptionSwitchDemoContainer } from './demos/description-switch-demo-container';
+import { SignalFormsSwitchDemoContainer } from './demos/signal-forms-switch-demo-container';
+import { StateSwitchDemoContainer } from './demos/state-switch-demo-container';
 
 @Component({
   selector: 'app-switch-page',
-  imports: [BasicSwitchDemoContainer, StateSwitchDemoContainer, DisabledSwitchDemoContainer, FormSwitchDemoContainer, DescriptionSwitchDemoContainer],
+  imports: [
+    BasicSwitchDemoContainer,
+    StateSwitchDemoContainer,
+    DisabledSwitchDemoContainer,
+    FormSwitchDemoContainer,
+    DescriptionSwitchDemoContainer,
+    SignalFormsSwitchDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -25,6 +33,7 @@ import { DescriptionSwitchDemoContainer } from './demos/description-switch-demo-
         <app-disabled-switch-demo-container />
         <app-form-switch-demo-container />
         <app-description-switch-demo-container />
+        <app-signal-forms-switch-demo-container />
       </section>
     </div>
   `,

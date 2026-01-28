@@ -1,12 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicProgressDemoContainer } from './demos/basic-progress-demo-container';
-import { ValuesProgressDemoContainer } from './demos/values-progress-demo-container';
 import { CustomMaxProgressDemoContainer } from './demos/custom-max-progress-demo-container';
 import { CustomStylingProgressDemoContainer } from './demos/custom-styling-progress-demo-container';
+import { SignalFormsProgressDemoContainer } from './demos/signal-forms-progress-demo-container';
+import { ValuesProgressDemoContainer } from './demos/values-progress-demo-container';
 
 @Component({
   selector: 'app-progress-page',
-  imports: [BasicProgressDemoContainer, ValuesProgressDemoContainer, CustomMaxProgressDemoContainer, CustomStylingProgressDemoContainer],
+  imports: [
+    BasicProgressDemoContainer,
+    ValuesProgressDemoContainer,
+    CustomMaxProgressDemoContainer,
+    CustomStylingProgressDemoContainer,
+    SignalFormsProgressDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -23,6 +30,7 @@ import { CustomStylingProgressDemoContainer } from './demos/custom-styling-progr
         <app-values-progress-demo-container />
         <app-custom-max-progress-demo-container />
         <app-custom-styling-progress-demo-container />
+        <app-signal-forms-progress-demo-container />
       </section>
     </div>
   `,

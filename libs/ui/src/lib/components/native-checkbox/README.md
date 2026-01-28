@@ -46,7 +46,7 @@ readonly checkboxForm = form(this.formModel);
 <label for="newsletter">Subscribe</label>
 ```
 
-Note: Add `FormField` to your component's `imports` array to use the `[formField]` directive.
+Note: Add `FormField` to your component's `imports` array to use the `[formField]` directive. When using `[formField]`, you cannot use other property bindings like `[checked]` on the same element.
 
 ### Indeterminate State
 
@@ -101,7 +101,7 @@ CSS pseudo-classes (`:checked`, `:disabled`, `:focus-visible`) handle visual sta
 | Form Integration     | Two-way via model() | Native form controls   |
 | ARIA                 | Manual attributes   | Native browser support |
 | Checkmark            | SVG in template     | SVG background-image   |
-| Signal Forms         | Manual binding      | ngModel binding        |
+| Signal Forms         | FormCheckboxControl | FormCheckboxControl    |
 | ControlValueAccessor | Not implemented     | Not needed             |
 
 ## Accessibility
