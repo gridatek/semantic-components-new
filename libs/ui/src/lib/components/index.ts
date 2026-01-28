@@ -14,6 +14,7 @@ export * from './calendar';
 export * from './card';
 export * from './chart';
 export * from './checkbox';
+export * from './native-checkbox';
 export * from './code-editor';
 export * from './code-viewer';
 export * from './collapsible';
