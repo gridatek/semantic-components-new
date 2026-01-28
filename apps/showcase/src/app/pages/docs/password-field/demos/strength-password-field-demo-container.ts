@@ -38,20 +38,17 @@ import {
     ScLabel,
   ],
   template: \`
-    <div class="space-y-2">
-      <label sc-label for="password-strength">Password</label>
-      <div sc-password-field [(value)]="password">
-        <div sc-password-field-group>
-          <input
-            sc-password-field-input
-            id="password-strength"
-            placeholder="Enter password"
-            autocomplete="new-password"
-          />
-          <button sc-password-field-toggle></button>
-        </div>
-        <div sc-password-field-strength></div>
+    <div sc-password-field [(value)]="password" class="space-y-2">
+      <label sc-label>Password</label>
+      <div sc-password-field-group>
+        <input
+          sc-password-field-input
+          placeholder="Enter password"
+          autocomplete="new-password"
+        />
+        <button sc-password-field-toggle></button>
       </div>
+      <div sc-password-field-strength></div>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,

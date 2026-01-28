@@ -36,17 +36,11 @@ import {
     ScLabel,
   ],
   template: \`
-    <div class="space-y-2">
-      <label sc-label for="api-key">API Key</label>
-      <div sc-password-field [(value)]="apiKey" [showByDefault]="true">
-        <div sc-password-field-group>
-          <input
-            sc-password-field-input
-            id="api-key"
-            placeholder="sk-..."
-          />
-          <button sc-password-field-toggle></button>
-        </div>
+    <div sc-password-field [(value)]="apiKey" [showByDefault]="true" class="space-y-2">
+      <label sc-label>API Key</label>
+      <div sc-password-field-group>
+        <input sc-password-field-input placeholder="sk-..." />
+        <button sc-password-field-toggle></button>
       </div>
     </div>
   \`,
