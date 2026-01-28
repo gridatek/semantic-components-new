@@ -21,7 +21,7 @@ import { cn } from '../../utils';
   template: `
     <ng-content />
     <svg
-      class="size-4 shrink-0 text-muted-foreground transition-transform duration-200"
+      class="h-4 w-4 shrink-0 transition-transform duration-200 pointer-events-none"
       [class.rotate-180]="trigger.expanded()"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -52,10 +52,9 @@ export class ScAccordionTrigger {
 
   protected readonly class = computed(() =>
     cn(
-      'flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all',
+      'flex w-full flex-1 items-center justify-between py-4 font-medium transition-all text-left',
       'hover:underline',
       '[&[data-state=open]>svg]:rotate-180',
-      'disabled:pointer-events-none disabled:opacity-50',
       this.classInput(),
     ),
   );

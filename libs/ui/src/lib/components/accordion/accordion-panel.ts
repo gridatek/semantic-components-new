@@ -40,8 +40,9 @@ export class ScAccordionPanel {
 
   protected readonly class = computed(() =>
     cn(
-      'overflow-hidden text-sm',
-      this.panel.visible() ? 'animate-accordion-down' : 'animate-accordion-up',
+      'overflow-hidden text-sm transition-all',
+      'data-[state=closed]:animate-accordion-up',
+      'data-[state=open]:animate-accordion-down',
       this.classInput(),
     ),
   );
