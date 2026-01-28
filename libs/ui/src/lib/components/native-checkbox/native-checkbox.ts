@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   computed,
   Directive,
   effect,
@@ -30,14 +31,33 @@ export class ScNativeCheckbox {
   private readonly elementRef = inject(ElementRef<HTMLInputElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly checkedInput = input<boolean | undefined>(undefined, {
+    alias: 'checked',
+  });
   readonly indeterminate = input<boolean>(false);
 
-  protected readonly checked = signal(false);
+  protected readonly internalChecked = signal(false);
 
   constructor() {
     // Set indeterminate state on the native element
     effect(() => {
       this.elementRef.nativeElement.indeterminate = this.indeterminate();
+    });
+
+    // Sync checked state from input to both internal signal and native element
+    effect(() => {
+      const checked = this.checkedInput();
+      if (checked !== undefined) {
+        this.internalChecked.set(checked);
+        this.elementRef.nativeElement.checked = checked;
+      }
+    });
+
+    // Sync initial checked state from native element
+    afterNextRender(() => {
+      if (this.checkedInput() === undefined) {
+        this.internalChecked.set(this.elementRef.nativeElement.checked);
+      }
     });
   }
 
@@ -54,11 +74,11 @@ export class ScNativeCheckbox {
 
   protected readonly backgroundImage = computed(() => {
     if (this.indeterminate()) return indeterminateSvg;
-    if (this.checked()) return checkSvg;
+    if (this.internalChecked()) return checkSvg;
     return 'none';
   });
 
   protected onChange(): void {
-    this.checked.set(this.elementRef.nativeElement.checked);
+    this.internalChecked.set(this.elementRef.nativeElement.checked);
   }
 }
