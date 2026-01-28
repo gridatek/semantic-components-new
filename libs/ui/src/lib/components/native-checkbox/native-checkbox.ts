@@ -1,6 +1,7 @@
 import {
   computed,
   Directive,
+  effect,
   ElementRef,
   inject,
   input,
@@ -32,6 +33,13 @@ export class ScNativeCheckbox {
   readonly indeterminate = input<boolean>(false);
 
   protected readonly checked = signal(false);
+
+  constructor() {
+    // Set indeterminate state on the native element
+    effect(() => {
+      this.elementRef.nativeElement.indeterminate = this.indeterminate();
+    });
+  }
 
   protected readonly class = computed(() =>
     cn(

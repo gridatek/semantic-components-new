@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicNativeCheckboxDemoContainer } from './demos/basic-native-checkbox-demo-container';
+import { IndeterminateNativeCheckboxDemoContainer } from './demos/indeterminate-native-checkbox-demo-container';
 import { SignalFormsNativeCheckboxDemoContainer } from './demos/signal-forms-native-checkbox-demo-container';
 
 @Component({
   selector: 'app-native-checkbox-page',
-  imports: [BasicNativeCheckboxDemoContainer, SignalFormsNativeCheckboxDemoContainer],
+  imports: [
+    BasicNativeCheckboxDemoContainer,
+    IndeterminateNativeCheckboxDemoContainer,
+    SignalFormsNativeCheckboxDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -18,6 +23,7 @@ import { SignalFormsNativeCheckboxDemoContainer } from './demos/signal-forms-nat
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-native-checkbox-demo-container />
+        <app-indeterminate-native-checkbox-demo-container />
         <app-signal-forms-native-checkbox-demo-container />
       </section>
     </div>
