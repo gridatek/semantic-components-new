@@ -34,23 +34,19 @@ Unlike `ScCheckbox` (which is a custom component), `ScNativeCheckbox` is a direc
 ### With Signal Forms
 
 ```typescript
-import { SignalFormBuilder } from 'ng-signal-forms';
+import { signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 
-readonly sfb = new SignalFormBuilder();
-readonly form = this.sfb.group(() => ({
-  newsletter: this.sfb.field(false),
-}));
+readonly formModel = signal({ newsletter: false });
+readonly checkboxForm = form(this.formModel);
 ```
 
 ```html
-<input
-  scNativeCheckbox
-  id="newsletter"
-  [ngModel]="form.controls.newsletter().value()"
-  (ngModelChange)="form.controls.newsletter.set($event)"
-/>
+<input scNativeCheckbox type="checkbox" id="newsletter" [formField]="checkboxForm.newsletter" />
 <label for="newsletter">Subscribe</label>
 ```
+
+Note: Add `FormField` to your component's `imports` array to use the `[formField]` directive.
 
 ### Indeterminate State
 

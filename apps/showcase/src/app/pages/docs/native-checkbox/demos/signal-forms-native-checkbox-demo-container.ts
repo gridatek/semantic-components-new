@@ -18,14 +18,21 @@ import { SignalFormsNativeCheckboxDemo } from './signal-forms-native-checkbox-de
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsNativeCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { required } from '@angular/forms/signals';
 import { ScNativeCheckbox } from '@semantic-components/ui';
-import { SignalFormBuilder, SignalFormsModule, V } from 'ng-signal-forms';
+import { JsonPipe } from '@angular/common';
+
+interface CheckboxFormModel {
+  newsletter: boolean;
+  marketing: boolean;
+  acceptTerms: boolean;
+}
 
 @Component({
   selector: 'app-signal-forms-native-checkbox-demo',
-  imports: [ScNativeCheckbox, SignalFormsModule, FormsModule],
+  imports: [ScNativeCheckbox, JsonPipe, FormField],
   template: \`
     <form>
       <div class="space-y-4">
@@ -33,8 +40,8 @@ import { SignalFormBuilder, SignalFormsModule, V } from 'ng-signal-forms';
           <input
             scNativeCheckbox
             id="newsletter"
-            [ngModel]="form.controls.newsletter().value()"
-            (ngModelChange)="form.controls.newsletter.set($event)"
+            type="checkbox"
+            [formField]="checkboxForm.newsletter"
           />
           <label
             for="newsletter"
@@ -48,8 +55,8 @@ import { SignalFormBuilder, SignalFormsModule, V } from 'ng-signal-forms';
           <input
             scNativeCheckbox
             id="marketing"
-            [ngModel]="form.controls.marketing().value()"
-            (ngModelChange)="form.controls.marketing.set($event)"
+            type="checkbox"
+            [formField]="checkboxForm.marketing"
           />
           <label
             for="marketing"
@@ -63,8 +70,8 @@ import { SignalFormBuilder, SignalFormsModule, V } from 'ng-signal-forms';
           <input
             scNativeCheckbox
             id="terms-signal"
-            [ngModel]="form.controls.acceptTerms().value()"
-            (ngModelChange)="form.controls.acceptTerms.set($event)"
+            type="checkbox"
+            [formField]="checkboxForm.acceptTerms"
           />
           <label
             for="terms-signal"
@@ -77,25 +84,22 @@ import { SignalFormBuilder, SignalFormsModule, V } from 'ng-signal-forms';
 
       <div class="mt-4 p-4 bg-muted rounded-md">
         <p class="text-sm font-medium">Form Values:</p>
-        <pre class="text-xs mt-2">{{ formValues() | json }}</pre>
+        <pre class="text-xs mt-2">{{ formModel() | json }}</pre>
       </div>
     </form>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsNativeCheckboxDemo {
-  private readonly sfb = new SignalFormBuilder();
+  readonly formModel = signal<CheckboxFormModel>({
+    newsletter: false,
+    marketing: false,
+    acceptTerms: false,
+  });
 
-  readonly form = this.sfb.group(() => ({
-    newsletter: this.sfb.field(false, { validators: [V.required()] }),
-    marketing: this.sfb.field(false),
-    acceptTerms: this.sfb.field(false, { validators: [V.required()] }),
-  }));
-
-  readonly formValues = () => ({
-    newsletter: this.form.controls.newsletter().value(),
-    marketing: this.form.controls.marketing().value(),
-    acceptTerms: this.form.controls.acceptTerms().value(),
+  readonly checkboxForm = form(this.formModel, (schemaPath) => {
+    required(schemaPath.newsletter);
+    required(schemaPath.acceptTerms);
   });
 }`;
 }
