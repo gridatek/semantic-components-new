@@ -1,11 +1,41 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
+import {
+  ScAudioPlayer,
+  ScAudioPlayerAudio,
+  ScAudioPlayerCover,
+  ScAudioPlayerInfo,
+  ScAudioPlayerPlayButton,
+  ScAudioPlayerPrevious,
+  ScAudioPlayerNext,
+  AudioTrack,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-compact-audio-player-demo',
-  imports: [ScAudioPlayer],
+  imports: [
+    ScAudioPlayer,
+    ScAudioPlayerAudio,
+    ScAudioPlayerCover,
+    ScAudioPlayerInfo,
+    ScAudioPlayerPlayButton,
+    ScAudioPlayerPrevious,
+    ScAudioPlayerNext,
+  ],
   template: `
-    <sc-audio-player [tracks]="tracks" [variant]="'compact'" class="max-w-lg" />
+    <div
+      sc-audio-player
+      [tracks]="tracks"
+      class="flex items-center gap-4 p-4 bg-card border rounded-lg max-w-lg"
+    >
+      <div sc-audio-player-cover class="size-16"></div>
+      <div sc-audio-player-info class="flex-1 min-w-0"></div>
+      <div class="flex items-center gap-2">
+        <button sc-audio-player-previous></button>
+        <button sc-audio-player-play-button></button>
+        <button sc-audio-player-next></button>
+      </div>
+      <audio sc-audio-player-audio></audio>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

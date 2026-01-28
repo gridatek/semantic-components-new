@@ -1,2 +1,12 @@
-export { ScAudioPlayer, ScAudioPlayerMinimal } from './audio-player';
+export { ScAudioPlayer, SC_AUDIO_PLAYER } from './audio-player';
 export type { AudioTrack } from './audio-player';
+export { ScAudioPlayerAudio } from './audio-player-audio';
+export { ScAudioPlayerCover } from './audio-player-cover';
+export { ScAudioPlayerInfo } from './audio-player-info';
+export { ScAudioPlayerProgress } from './audio-player-progress';
+export { ScAudioPlayerPlayButton } from './audio-player-play-button';
+export { ScAudioPlayerPrevious } from './audio-player-previous';
+export { ScAudioPlayerNext } from './audio-player-next';
+export { ScAudioPlayerShuffle } from './audio-player-shuffle';
+export { ScAudioPlayerRepeat } from './audio-player-repeat';
+export { ScAudioPlayerVolume } from './audio-player-volume';

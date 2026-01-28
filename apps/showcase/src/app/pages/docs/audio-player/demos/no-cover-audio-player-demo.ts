@@ -1,11 +1,59 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
+import {
+  ScAudioPlayer,
+  ScAudioPlayerAudio,
+  ScAudioPlayerInfo,
+  ScAudioPlayerProgress,
+  ScAudioPlayerPlayButton,
+  ScAudioPlayerPrevious,
+  ScAudioPlayerNext,
+  ScAudioPlayerShuffle,
+  ScAudioPlayerRepeat,
+  ScAudioPlayerVolume,
+  AudioTrack,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-cover-audio-player-demo',
-  imports: [ScAudioPlayer],
+  imports: [
+    ScAudioPlayer,
+    ScAudioPlayerAudio,
+    ScAudioPlayerInfo,
+    ScAudioPlayerProgress,
+    ScAudioPlayerPlayButton,
+    ScAudioPlayerPrevious,
+    ScAudioPlayerNext,
+    ScAudioPlayerShuffle,
+    ScAudioPlayerRepeat,
+    ScAudioPlayerVolume,
+  ],
   template: `
-    <sc-audio-player [tracks]="tracks" [showCover]="false" class="max-w-md" />
+    <div
+      sc-audio-player
+      [tracks]="tracks"
+      class="flex flex-col gap-3 p-4 bg-card border rounded-lg max-w-md"
+    >
+      <!-- Track Info -->
+      <div sc-audio-player-info class="text-center"></div>
+
+      <!-- Progress -->
+      <div sc-audio-player-progress></div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-2">
+        <button sc-audio-player-shuffle></button>
+        <button sc-audio-player-previous></button>
+        <button sc-audio-player-play-button></button>
+        <button sc-audio-player-next></button>
+        <button sc-audio-player-repeat></button>
+      </div>
+
+      <!-- Volume -->
+      <div sc-audio-player-volume class="justify-center"></div>
+
+      <!-- Hidden Audio Element -->
+      <audio sc-audio-player-audio></audio>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
