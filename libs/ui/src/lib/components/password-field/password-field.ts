@@ -1,6 +1,7 @@
 import {
   Directive,
   effect,
+  inject,
   InjectionToken,
   input,
   model,
@@ -8,9 +9,14 @@ import {
   signal,
   untracked,
 } from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
 
-// Token for password field context
-export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordField>(
+// Token for password field context - interface to avoid circular dependency
+export interface ScPasswordFieldContext {
+  readonly inputId: string;
+}
+
+export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
   'SC_PASSWORD_FIELD',
 );
 
@@ -24,6 +30,8 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordField>(
   },
 })
 export class ScPasswordField {
+  readonly inputId = inject(_IdGenerator).getId('sc-password-field-');
+
   readonly value = model<string>('');
   readonly disabled = input<boolean>(false);
   readonly showByDefault = input<boolean>(false);
