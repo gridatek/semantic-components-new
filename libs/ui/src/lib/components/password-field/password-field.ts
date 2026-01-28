@@ -4,16 +4,25 @@ import {
   inject,
   InjectionToken,
   input,
+  InputSignal,
   model,
+  ModelSignal,
   output,
   signal,
+  Signal,
   untracked,
+  WritableSignal,
 } from '@angular/core';
 import { _IdGenerator } from '@angular/cdk/a11y';
 
 // Token for password field context - interface to avoid circular dependency
 export interface ScPasswordFieldContext {
   readonly inputId: string;
+  readonly value: ModelSignal<string>;
+  readonly disabled: InputSignal<boolean>;
+  readonly visible: WritableSignal<boolean>;
+  toggle(): void;
+  setValue(value: string): void;
 }
 
 export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
