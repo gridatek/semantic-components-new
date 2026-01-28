@@ -17,17 +17,11 @@ import { ScLabel } from '@semantic-components/ui';
     ScLabel,
   ],
   template: `
-    <div class="space-y-2">
-      <label sc-label for="password">Password</label>
-      <div sc-password-field [(value)]="password">
-        <div sc-password-field-group>
-          <input
-            sc-password-field-input
-            id="password"
-            placeholder="Enter password"
-          />
-          <button sc-password-field-toggle></button>
-        </div>
+    <div sc-password-field [(value)]="password" class="space-y-2">
+      <label sc-label>Password</label>
+      <div sc-password-field-group>
+        <input sc-password-field-input placeholder="Enter password" />
+        <button sc-password-field-toggle></button>
       </div>
     </div>
 
