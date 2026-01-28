@@ -6,12 +6,17 @@ import {
   ElementRef,
   inject,
   input,
+  PLATFORM_ID,
   signal,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { cn } from '../../utils';
 
-const checkSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")`;
-const indeterminateSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' x2='19' y1='12' y2='12'/%3E%3C/svg%3E")`;
+const checkSvgLight = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")`;
+const indeterminateSvgLight = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' x2='19' y1='12' y2='12'/%3E%3C/svg%3E")`;
+
+const checkSvgDark = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")`;
+const indeterminateSvgDark = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' x2='19' y1='12' y2='12'/%3E%3C/svg%3E")`;
 
 @Directive({
   selector: 'input[scNativeCheckbox]',
@@ -29,6 +34,7 @@ const indeterminateSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
 })
 export class ScNativeCheckbox {
   private readonly elementRef = inject(ElementRef<HTMLInputElement>);
+  private readonly platformId = inject(PLATFORM_ID);
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly checkedInput = input<boolean | undefined>(undefined, {
@@ -37,6 +43,7 @@ export class ScNativeCheckbox {
   readonly indeterminate = input<boolean>(false);
 
   protected readonly internalChecked = signal(false);
+  protected readonly isDarkMode = signal(false);
 
   constructor() {
     // Set indeterminate state on the native element
@@ -53,12 +60,32 @@ export class ScNativeCheckbox {
       }
     });
 
-    // Sync initial checked state from native element
-    afterNextRender(() => {
-      if (this.checkedInput() === undefined) {
-        this.internalChecked.set(this.elementRef.nativeElement.checked);
-      }
-    });
+    // Detect dark mode and watch for changes
+    if (isPlatformBrowser(this.platformId)) {
+      afterNextRender(() => {
+        // Initial detection
+        this.updateDarkMode();
+
+        // Watch for class changes on document element
+        const observer = new MutationObserver(() => {
+          this.updateDarkMode();
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+
+        // Sync initial checked state from native element
+        if (this.checkedInput() === undefined) {
+          this.internalChecked.set(this.elementRef.nativeElement.checked);
+        }
+      });
+    }
+  }
+
+  private updateDarkMode(): void {
+    this.isDarkMode.set(document.documentElement.classList.contains('dark'));
   }
 
   protected readonly class = computed(() =>
@@ -73,8 +100,13 @@ export class ScNativeCheckbox {
   );
 
   protected readonly backgroundImage = computed(() => {
-    if (this.indeterminate()) return indeterminateSvg;
-    if (this.internalChecked()) return checkSvg;
+    const isDark = this.isDarkMode();
+    if (this.indeterminate()) {
+      return isDark ? indeterminateSvgDark : indeterminateSvgLight;
+    }
+    if (this.internalChecked()) {
+      return isDark ? checkSvgDark : checkSvgLight;
+    }
     return 'none';
   });
 
