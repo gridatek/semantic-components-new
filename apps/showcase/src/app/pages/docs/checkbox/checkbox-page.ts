@@ -3,6 +3,7 @@ import { BasicCheckboxDemoContainer } from './demos/basic-checkbox-demo-containe
 import { DisabledCheckboxDemoContainer } from './demos/disabled-checkbox-demo-container';
 import { FormCheckboxDemoContainer } from './demos/form-checkbox-demo-container';
 import { IndeterminateCheckboxDemoContainer } from './demos/indeterminate-checkbox-demo-container';
+import { SignalFormsCheckboxDemoContainer } from './demos/signal-forms-checkbox-demo-container';
 import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-checkbox-demo-container';
 
 @Component({
@@ -13,6 +14,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
     DisabledCheckboxDemoContainer,
     IndeterminateCheckboxDemoContainer,
     FormCheckboxDemoContainer,
+    SignalFormsCheckboxDemoContainer,
   ],
   template: `
     <div class="space-y-8">
@@ -31,6 +33,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
         <app-disabled-checkbox-demo-container />
         <app-indeterminate-checkbox-demo-container />
         <app-form-checkbox-demo-container />
+        <app-signal-forms-checkbox-demo-container />
       </section>
     </div>
   `,
