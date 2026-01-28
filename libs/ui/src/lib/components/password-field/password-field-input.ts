@@ -14,6 +14,7 @@ import { SC_PASSWORD_FIELD } from './password-field';
   template: ``,
   host: {
     'data-slot': 'password-field-input',
+    '[id]': 'passwordField.inputId',
     '[type]': 'passwordField.visible() ? "text" : "password"',
     '[class]': 'class()',
     '[value]': 'passwordField.value()',

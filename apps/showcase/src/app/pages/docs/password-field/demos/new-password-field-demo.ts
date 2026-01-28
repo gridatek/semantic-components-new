@@ -18,36 +18,30 @@ import { ScLabel } from '@semantic-components/ui';
   ],
   template: `
     <div class="space-y-4">
-      <div class="space-y-2">
-        <label sc-label for="new-password">New Password</label>
-        <div sc-password-field [(value)]="newPassword">
-          <div sc-password-field-group>
-            <input
-              sc-password-field-input
-              id="new-password"
-              placeholder="Enter new password"
-              autocomplete="new-password"
-            />
-            <button sc-password-field-toggle></button>
-          </div>
+      <div sc-password-field [(value)]="newPassword" class="space-y-2">
+        <label sc-label>New Password</label>
+        <div sc-password-field-group>
+          <input
+            sc-password-field-input
+            placeholder="Enter new password"
+            autocomplete="new-password"
+          />
+          <button sc-password-field-toggle></button>
         </div>
         <p class="text-sm text-muted-foreground">
           Must be at least 8 characters
         </p>
       </div>
 
-      <div class="space-y-2">
-        <label sc-label for="confirm-password">Confirm Password</label>
-        <div sc-password-field [(value)]="confirmPassword">
-          <div sc-password-field-group>
-            <input
-              sc-password-field-input
-              id="confirm-password"
-              placeholder="Confirm new password"
-              autocomplete="new-password"
-            />
-            <button sc-password-field-toggle></button>
-          </div>
+      <div sc-password-field [(value)]="confirmPassword" class="space-y-2">
+        <label sc-label>Confirm Password</label>
+        <div sc-password-field-group>
+          <input
+            sc-password-field-input
+            placeholder="Confirm new password"
+            autocomplete="new-password"
+          />
+          <button sc-password-field-toggle></button>
         </div>
       </div>
     </div>

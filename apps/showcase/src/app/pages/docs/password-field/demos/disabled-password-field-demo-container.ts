@@ -36,13 +36,11 @@ import {
     ScLabel,
   ],
   template: \`
-    <div class="space-y-2">
+    <div sc-password-field [value]="'********'" [disabled]="true" class="space-y-2">
       <label sc-label>Password (Disabled)</label>
-      <div sc-password-field [value]="'********'" [disabled]="true">
-        <div sc-password-field-group>
-          <input sc-password-field-input />
-          <button sc-password-field-toggle></button>
-        </div>
+      <div sc-password-field-group>
+        <input sc-password-field-input />
+        <button sc-password-field-toggle></button>
       </div>
     </div>
   \`,
