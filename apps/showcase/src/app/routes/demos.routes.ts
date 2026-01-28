@@ -2284,6 +2284,13 @@ export const demosRoutes: Route[] = [
             (m) => m.WithoutLabelNumberFieldDemo,
           ),
       },
+      {
+        path: 'signal-forms-number-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/number-field/demos/signal-forms-number-field-demo').then(
+            (m) => m.SignalFormsNumberFieldDemo,
+          ),
+      },
     ],
   },
   {
@@ -2348,6 +2355,13 @@ export const demosRoutes: Route[] = [
         loadComponent: () =>
           import('../pages/docs/password-field/demos/full-password-field-demo').then(
             (m) => m.FullPasswordFieldDemo,
+          ),
+      },
+      {
+        path: 'signal-forms-password-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/password-field/demos/signal-forms-password-field-demo').then(
+            (m) => m.SignalFormsPasswordFieldDemo,
           ),
       },
     ],
