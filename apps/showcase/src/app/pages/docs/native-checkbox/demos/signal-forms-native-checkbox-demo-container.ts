@@ -8,7 +8,7 @@ import { SignalFormsNativeCheckboxDemo } from './signal-forms-native-checkbox-de
   template: `
     <app-demo-container
       title="Signal Forms Integration"
-      demoUrl="/demos/checkbox/signal-forms-native-checkbox-demo"
+      demoUrl="/demos/native-checkbox/signal-forms-native-checkbox-demo"
       [code]="code"
     >
       <app-signal-forms-native-checkbox-demo />

@@ -8,7 +8,7 @@ import { BasicNativeCheckboxDemo } from './basic-native-checkbox-demo';
   template: `
     <app-demo-container
       title="Basic Native Checkbox"
-      demoUrl="/demos/checkbox/basic-native-checkbox-demo"
+      demoUrl="/demos/native-checkbox/basic-native-checkbox-demo"
       [code]="code"
     >
       <app-basic-native-checkbox-demo />

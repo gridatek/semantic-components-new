@@ -1,10 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicCheckboxDemoContainer } from './demos/basic-checkbox-demo-container';
-import { BasicNativeCheckboxDemoContainer } from './demos/basic-native-checkbox-demo-container';
 import { DisabledCheckboxDemoContainer } from './demos/disabled-checkbox-demo-container';
 import { FormCheckboxDemoContainer } from './demos/form-checkbox-demo-container';
 import { IndeterminateCheckboxDemoContainer } from './demos/indeterminate-checkbox-demo-container';
-import { SignalFormsNativeCheckboxDemoContainer } from './demos/signal-forms-native-checkbox-demo-container';
 import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-checkbox-demo-container';
 
 @Component({
@@ -15,8 +13,6 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
     DisabledCheckboxDemoContainer,
     IndeterminateCheckboxDemoContainer,
     FormCheckboxDemoContainer,
-    BasicNativeCheckboxDemoContainer,
-    SignalFormsNativeCheckboxDemoContainer,
   ],
   template: `
     <div class="space-y-8">
@@ -35,16 +31,6 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
         <app-disabled-checkbox-demo-container />
         <app-indeterminate-checkbox-demo-container />
         <app-form-checkbox-demo-container />
-      </section>
-
-      <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Native Checkbox</h2>
-        <p class="text-muted-foreground">
-          A native input checkbox directive that works seamlessly with Angular
-          forms and Signal Forms.
-        </p>
-        <app-basic-native-checkbox-demo-container />
-        <app-signal-forms-native-checkbox-demo-container />
       </section>
     </div>
   `,

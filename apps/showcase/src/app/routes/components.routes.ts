@@ -85,6 +85,11 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/checkbox/checkbox-page'),
       },
       {
+        path: 'native-checkbox',
+        loadComponent: () =>
+          import('../pages/docs/native-checkbox/native-checkbox-page'),
+      },
+      {
         path: 'code-editor',
         loadComponent: () =>
           import('../pages/docs/code-editor/code-editor-page'),
