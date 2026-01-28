@@ -93,7 +93,7 @@ import {
 })
 export class SignalFormsNumberFieldDemo {
   private readonly formModel = signal({
-    quantity: 10 as number | null,
+    quantity: '10',
   });
 
   readonly quantityForm = form(this.formModel, (path) => {
