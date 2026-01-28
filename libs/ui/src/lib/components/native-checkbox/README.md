@@ -64,10 +64,11 @@ Note: Add `FormField` to your component's `imports` array to use the `[formField
 
 ## Inputs
 
-| Input           | Type      | Default | Description                       |
-| --------------- | --------- | ------- | --------------------------------- |
-| `indeterminate` | `boolean` | `false` | Whether checkbox is indeterminate |
-| `class`         | `string`  | `''`    | Additional CSS classes            |
+| Input           | Type      | Default | Description                              |
+| --------------- | --------- | ------- | ---------------------------------------- |
+| `checked`       | `boolean` | -       | Checked state (for programmatic control) |
+| `indeterminate` | `boolean` | `false` | Whether checkbox is indeterminate        |
+| `class`         | `string`  | `''`    | Additional CSS classes                   |
 
 ## Architecture
 
