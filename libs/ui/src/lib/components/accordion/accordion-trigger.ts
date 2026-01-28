@@ -1,3 +1,4 @@
+import { AccordionTrigger } from '@angular/aria/accordion';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,15 +8,21 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAccordionItem } from './accordion-item';
 
 @Component({
   selector: 'button[sc-accordion-trigger]',
+  hostDirectives: [
+    {
+      directive: AccordionTrigger,
+      inputs: ['panelId', 'disabled', 'expanded'],
+      outputs: ['expandedChange'],
+    },
+  ],
   template: `
     <ng-content />
     <svg
       class="size-4 shrink-0 text-muted-foreground transition-transform duration-200"
-      [class.rotate-180]="item.isOpen()"
+      [class.rotate-180]="trigger.expanded()"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -32,19 +39,15 @@ import { ScAccordionItem } from './accordion-item';
   `,
   host: {
     'data-slot': 'accordion-trigger',
-    type: 'button',
-    '[attr.aria-expanded]': 'item.isOpen()',
-    '[attr.data-state]': 'item.isOpen() ? "open" : "closed"',
-    '[attr.data-disabled]': 'item.disabled() || null',
-    '[disabled]': 'item.disabled() || null',
+    '[attr.data-state]': 'trigger.expanded() ? "open" : "closed"',
     '[class]': 'class()',
-    '(click)': 'item.toggle()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAccordionTrigger {
-  readonly item = inject(ScAccordionItem);
+  protected readonly trigger = inject(AccordionTrigger);
+
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

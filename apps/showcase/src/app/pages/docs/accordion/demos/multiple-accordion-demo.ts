@@ -8,36 +8,32 @@ import {
 
 @Component({
   selector: 'app-multiple-accordion-demo',
-  imports: [
-    ScAccordion,
-    ScAccordionPanel,
-    ScAccordionItem,
-    ScAccordionTrigger,
-  ],
+  imports: [ScAccordion, ScAccordionPanel, ScAccordionItem, ScAccordionTrigger],
   template: `
-    <div
-      sc-accordion
-      type="multiple"
-      [value]="['item-a', 'item-b']"
-      class="w-full max-w-md"
-    >
-      <div sc-accordion-item value="item-a">
-        <button sc-accordion-trigger>Can I open multiple items?</button>
-        <div sc-accordion-panel>
-          Yes! When using type="multiple", you can have multiple accordion items
+    <div sc-accordion [multiExpandable]="true" class="w-full max-w-md">
+      <div sc-accordion-item>
+        <button sc-accordion-trigger panelId="item-a" [expanded]="true">
+          Can I open multiple items?
+        </button>
+        <div sc-accordion-panel panelId="item-a">
+          Yes! When using multiExpandable, you can have multiple accordion items
           open at the same time.
         </div>
       </div>
-      <div sc-accordion-item value="item-b">
-        <button sc-accordion-trigger>How does it work?</button>
-        <div sc-accordion-panel>
-          The value is an array of strings representing the currently open
-          items. You can bind to it with [(value)].
+      <div sc-accordion-item>
+        <button sc-accordion-trigger panelId="item-b" [expanded]="true">
+          How does it work?
+        </button>
+        <div sc-accordion-panel panelId="item-b">
+          Each trigger has an expanded input that you can bind to with
+          [(expanded)] for two-way binding.
         </div>
       </div>
-      <div sc-accordion-item value="item-c">
-        <button sc-accordion-trigger>What about accessibility?</button>
-        <div sc-accordion-panel>
+      <div sc-accordion-item>
+        <button sc-accordion-trigger panelId="item-c">
+          What about accessibility?
+        </button>
+        <div sc-accordion-panel panelId="item-c">
           Each item uses proper ARIA attributes including aria-expanded and
           role="region" for the content.
         </div>

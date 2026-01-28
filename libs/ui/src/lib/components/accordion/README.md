@@ -1,21 +1,24 @@
 # Accordion Components
 
-A vertically stacked set of interactive headings that reveal or hide associated content.
+A vertically stacked set of interactive headings that reveal or hide associated content. Built on top of `@angular/aria/accordion` for robust accessibility support.
 
 ## Architecture
 
 ```
-ScAccordion (Root)
-    ├── type: 'single' | 'multiple'
-    ├── collapsible: boolean (single mode only)
-    ├── value: model<string | string[]>
+ScAccordion (Root - uses AccordionGroup)
+    ├── multiExpandable: boolean
+    ├── disabled: boolean
+    ├── wrap: boolean
     │
-    ├── ScAccordionItem (value: string)
-    │     ├── isOpen: computed
+    ├── ScAccordionItem (styling wrapper)
     │     │
-    │     ├── ScAccordionTrigger (button with chevron)
+    │     ├── ScAccordionTrigger (uses AccordionTrigger)
+    │     │     ├── panelId: string (links to panel)
+    │     │     ├── expanded: boolean
+    │     │     └── disabled: boolean
     │     │
-    │     └── ScAccordionPanel (collapsible region)
+    │     └── ScAccordionPanel (uses AccordionPanel)
+    │           └── panelId: string (links to trigger)
     │
     ├── ScAccordionItem
     └── ...
@@ -23,100 +26,114 @@ ScAccordion (Root)
 
 ## Components
 
-| Component            | Selector                       | Description                            |
-| -------------------- | ------------------------------ | -------------------------------------- |
-| `ScAccordion`        | `div[sc-accordion]`            | Root wrapper with mode and value state |
-| `ScAccordionItem`    | `div[sc-accordion-item]`       | Individual accordion item              |
-| `ScAccordionTrigger` | `button[sc-accordion-trigger]` | Button to toggle item                  |
-| `ScAccordionPanel`   | `div[sc-accordion-panel]`      | Collapsible content region             |
+| Component            | Selector                       | Description                                    |
+| -------------------- | ------------------------------ | ---------------------------------------------- |
+| `ScAccordion`        | `div[sc-accordion]`            | Root wrapper using `AccordionGroup`            |
+| `ScAccordionItem`    | `div[sc-accordion-item]`       | Styling wrapper for accordion item             |
+| `ScAccordionTrigger` | `button[sc-accordion-trigger]` | Button to toggle item using `AccordionTrigger` |
+| `ScAccordionPanel`   | `div[sc-accordion-panel]`      | Collapsible content using `AccordionPanel`     |
 
 ## Inputs
 
 ### ScAccordion
 
-| Input         | Type                     | Default    | Description                              |
-| ------------- | ------------------------ | ---------- | ---------------------------------------- |
-| `type`        | `'single' \| 'multiple'` | `'single'` | Single or multiple items open            |
-| `collapsible` | `boolean`                | `false`    | Allow closing all items (single mode)    |
-| `value`       | `string \| string[]`     | `''`       | Currently open item(s), two-way bindable |
+| Input             | Type      | Default | Description                             |
+| ----------------- | --------- | ------- | --------------------------------------- |
+| `multiExpandable` | `boolean` | `false` | Allow multiple items to be open at once |
+| `disabled`        | `boolean` | `false` | Disable all accordion items             |
+| `wrap`            | `boolean` | `false` | Wrap keyboard navigation at ends        |
 
-### ScAccordionItem
+### ScAccordionTrigger
 
-| Input      | Type      | Default      | Description                     |
-| ---------- | --------- | ------------ | ------------------------------- |
-| `value`    | `string`  | **required** | Unique identifier for this item |
-| `disabled` | `boolean` | `false`      | Whether the item is disabled    |
+| Input      | Type      | Default      | Description                              |
+| ---------- | --------- | ------------ | ---------------------------------------- |
+| `panelId`  | `string`  | **required** | Links trigger to its corresponding panel |
+| `expanded` | `boolean` | `false`      | Whether the item is expanded             |
+| `disabled` | `boolean` | `false`      | Whether the trigger is disabled          |
+
+### ScAccordionPanel
+
+| Input     | Type     | Default      | Description                              |
+| --------- | -------- | ------------ | ---------------------------------------- |
+| `panelId` | `string` | **required** | Links panel to its corresponding trigger |
 
 ## Usage
 
-### Single Mode (Default)
+### Basic Usage
 
-Only one item can be open at a time. Clicking another item closes the current one.
+Use `panelId` to link each trigger to its corresponding panel.
 
 ```html
-<div sc-accordion [value]="'item-1'">
-  <div sc-accordion-item value="item-1">
-    <button sc-accordion-trigger>Section 1</button>
-    <div sc-accordion-panel>Content for section 1</div>
+<div sc-accordion>
+  <div sc-accordion-item>
+    <button sc-accordion-trigger panelId="item-1" [expanded]="true">Section 1</button>
+    <div sc-accordion-panel panelId="item-1">Content for section 1</div>
   </div>
-  <div sc-accordion-item value="item-2">
-    <button sc-accordion-trigger>Section 2</button>
-    <div sc-accordion-panel>Content for section 2</div>
+  <div sc-accordion-item>
+    <button sc-accordion-trigger panelId="item-2">Section 2</button>
+    <div sc-accordion-panel panelId="item-2">Content for section 2</div>
   </div>
 </div>
 ```
 
-### Single Mode with Collapsible
+### Multiple Expandable
 
-Allows closing all items by clicking the open item again.
-
-```html
-<div sc-accordion [value]="'item-1'" [collapsible]="true">...</div>
-```
-
-### Multiple Mode
-
-Multiple items can be open simultaneously.
+Allow multiple items to be open simultaneously.
 
 ```html
-<div sc-accordion type="multiple" [value]="['item-1', 'item-2']">
-  <div sc-accordion-item value="item-1">
-    <button sc-accordion-trigger>Section 1</button>
-    <div sc-accordion-panel>Content 1</div>
+<div sc-accordion [multiExpandable]="true">
+  <div sc-accordion-item>
+    <button sc-accordion-trigger panelId="item-1" [expanded]="true">Section 1</button>
+    <div sc-accordion-panel panelId="item-1">Content 1</div>
   </div>
-  <div sc-accordion-item value="item-2">
-    <button sc-accordion-trigger>Section 2</button>
-    <div sc-accordion-panel>Content 2</div>
+  <div sc-accordion-item>
+    <button sc-accordion-trigger panelId="item-2" [expanded]="true">Section 2</button>
+    <div sc-accordion-panel panelId="item-2">Content 2</div>
   </div>
-  <div sc-accordion-item value="item-3">
-    <button sc-accordion-trigger>Section 3</button>
-    <div sc-accordion-panel>Content 3</div>
+  <div sc-accordion-item>
+    <button sc-accordion-trigger panelId="item-3">Section 3</button>
+    <div sc-accordion-panel panelId="item-3">Content 3</div>
   </div>
 </div>
 ```
 
 ### Two-Way Binding
 
+Bind to the `expanded` state of individual triggers.
+
 ```html
-<div sc-accordion [(value)]="openItem">...</div>
+<button sc-accordion-trigger panelId="item-1" [(expanded)]="isOpen">Section 1</button>
 ```
 
 ### Disabled Item
 
+Disable individual triggers.
+
 ```html
-<div sc-accordion-item value="disabled" [disabled]="true">
-  <button sc-accordion-trigger>Disabled Section</button>
-  <div sc-accordion-panel>Won't be shown</div>
+<div sc-accordion-item>
+  <button sc-accordion-trigger panelId="disabled" [disabled]="true">Disabled Section</button>
+  <div sc-accordion-panel panelId="disabled">Won't be shown</div>
 </div>
+```
+
+### Disabled Accordion
+
+Disable the entire accordion.
+
+```html
+<div sc-accordion [disabled]="true">...</div>
 ```
 
 ## Accessibility
 
+Built on `@angular/aria/accordion`, providing:
+
 - Trigger buttons have `aria-expanded` indicating open state
-- Content regions have `role="region"`
-- `data-state` attribute on items and triggers (`open` / `closed`)
-- Disabled items have `data-disabled` and `disabled` attributes
-- Chevron icon rotates to indicate state
+- Trigger buttons have `aria-controls` pointing to their panel
+- Panels have `role="region"` and `aria-labelledby` pointing to their trigger
+- Keyboard navigation with arrow keys between triggers
+- `data-state` attribute on triggers and panels (`open` / `closed`)
+- Disabled items have `disabled` attribute and are skipped in keyboard navigation
 
 ## Styling
 
