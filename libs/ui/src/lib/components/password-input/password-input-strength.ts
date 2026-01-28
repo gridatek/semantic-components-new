@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   input,
   model,
   output,
@@ -38,7 +39,7 @@ import { ScPasswordInput } from './password-input';
 
       @if (showRequirements() && value()) {
         <ul class="mt-2 space-y-1 text-xs">
-          @for (req of requirements; track req.label) {
+          @for (req of requirements(); track req.label) {
             <li [class]="requirementClass(req.test(value()))">
               @if (req.test(value())) {
                 <svg
@@ -89,30 +90,37 @@ export class ScPasswordInputStrength {
   readonly value = model<string>('');
   readonly strengthChange = output<number>();
 
-  readonly requirements = [
-    { label: 'At least 8 characters', test: (v: string) => v.length >= 8 },
-    {
-      label: 'Contains uppercase letter',
-      test: (v: string) => /[A-Z]/.test(v),
-    },
-    {
-      label: 'Contains lowercase letter',
-      test: (v: string) => /[a-z]/.test(v),
-    },
-    { label: 'Contains number', test: (v: string) => /\d/.test(v) },
-    {
-      label: 'Contains special character',
-      test: (v: string) => /[!@#$%^&*(),.?":{}|<>]/.test(v),
-    },
-  ];
+  protected readonly requirements = computed(() => {
+    const min = this.minLength();
+    return [
+      {
+        label: `At least ${min} characters`,
+        test: (v: string) => v.length >= min,
+      },
+      {
+        label: 'Contains uppercase letter',
+        test: (v: string) => /[A-Z]/.test(v),
+      },
+      {
+        label: 'Contains lowercase letter',
+        test: (v: string) => /[a-z]/.test(v),
+      },
+      { label: 'Contains number', test: (v: string) => /\d/.test(v) },
+      {
+        label: 'Contains special character',
+        test: (v: string) => /[!@#$%^&*(),.?":{}|<>]/.test(v),
+      },
+    ];
+  });
 
   protected readonly strength = computed(() => {
     const password = this.value();
+    const min = this.minLength();
     if (!password) return 0;
 
     let score = 0;
-    if (password.length >= 8) score++;
-    if (password.length >= 12) score++;
+    if (password.length >= min) score++;
+    if (password.length >= min + 4) score++;
     if (/[A-Z]/.test(password)) score++;
     if (/[a-z]/.test(password)) score++;
     if (/\d/.test(password)) score++;
@@ -124,6 +132,11 @@ export class ScPasswordInputStrength {
     if (score <= 4) return 2;
     if (score <= 5) return 3;
     return 4;
+  });
+
+  private readonly strengthEmitEffect = effect(() => {
+    const strength = this.strength();
+    this.strengthChange.emit(strength);
   });
 
   protected readonly strengthLabel = computed(() => {

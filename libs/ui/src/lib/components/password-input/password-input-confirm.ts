@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   input,
   model,
   output,
   ViewEncapsulation,
 } from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
 import { cn } from '../../utils';
 import { ScPasswordInput } from './password-input';
 
@@ -16,8 +18,11 @@ import { ScPasswordInput } from './password-input';
   template: `
     <div [class]="containerClass()">
       <div class="space-y-2">
-        <label [class]="labelClass()">{{ passwordLabel() }}</label>
+        <label [for]="passwordInputId" [class]="labelClass()">{{
+          passwordLabel()
+        }}</label>
         <sc-password-input
+          [id]="passwordInputId"
           [(value)]="password"
           [placeholder]="passwordPlaceholder()"
           [disabled]="disabled()"
@@ -27,8 +32,11 @@ import { ScPasswordInput } from './password-input';
       </div>
 
       <div class="space-y-2">
-        <label [class]="labelClass()">{{ confirmLabel() }}</label>
+        <label [for]="confirmInputId" [class]="labelClass()">{{
+          confirmLabel()
+        }}</label>
         <sc-password-input
+          [id]="confirmInputId"
           [(value)]="confirmPassword"
           [placeholder]="confirmPlaceholder()"
           [disabled]="disabled()"
@@ -80,6 +88,14 @@ import { ScPasswordInput } from './password-input';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPasswordInputConfirm {
+  private readonly idGenerator = inject(_IdGenerator);
+  protected readonly passwordInputId = this.idGenerator.getId(
+    'sc-password-confirm-password-',
+  );
+  protected readonly confirmInputId = this.idGenerator.getId(
+    'sc-password-confirm-confirm-',
+  );
+
   readonly classInput = input<string>('', { alias: 'class' });
   readonly disabled = input<boolean>(false);
   readonly passwordLabel = input<string>('Password');
