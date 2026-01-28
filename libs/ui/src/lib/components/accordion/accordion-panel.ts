@@ -1,3 +1,4 @@
+import { AccordionContent, AccordionPanel } from '@angular/aria/accordion';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,34 +8,40 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScAccordionItem } from './accordion-item';
 
 @Component({
   selector: 'div[sc-accordion-panel]',
+  imports: [AccordionContent],
+  hostDirectives: [
+    {
+      directive: AccordionPanel,
+      inputs: ['panelId'],
+    },
+  ],
   template: `
-    @if (item.isOpen()) {
+    <ng-template ngAccordionContent>
       <div [class]="innerClass()">
         <ng-content />
       </div>
-    }
+    </ng-template>
   `,
   host: {
     'data-slot': 'accordion-panel',
-    role: 'region',
-    '[attr.data-state]': 'item.isOpen() ? "open" : "closed"',
+    '[attr.data-state]': 'panel.visible() ? "open" : "closed"',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAccordionPanel {
-  readonly item = inject(ScAccordionItem);
+  protected readonly panel = inject(AccordionPanel);
+
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
     cn(
       'overflow-hidden text-sm',
-      this.item.isOpen() ? 'animate-accordion-down' : 'animate-accordion-up',
+      this.panel.visible() ? 'animate-accordion-down' : 'animate-accordion-up',
       this.classInput(),
     ),
   );
