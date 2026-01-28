@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicCheckboxDemoContainer } from './demos/basic-checkbox-demo-container';
+import { CustomThemeCheckboxDemoContainer } from './demos/custom-theme-checkbox-demo-container';
 import { DisabledCheckboxDemoContainer } from './demos/disabled-checkbox-demo-container';
 import { FormCheckboxDemoContainer } from './demos/form-checkbox-demo-container';
 import { IndeterminateCheckboxDemoContainer } from './demos/indeterminate-checkbox-demo-container';
@@ -15,6 +16,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
     IndeterminateCheckboxDemoContainer,
     FormCheckboxDemoContainer,
     SignalFormsCheckboxDemoContainer,
+    CustomThemeCheckboxDemoContainer,
   ],
   template: `
     <div class="space-y-8">
@@ -34,6 +36,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
         <app-indeterminate-checkbox-demo-container />
         <app-form-checkbox-demo-container />
         <app-signal-forms-checkbox-demo-container />
+        <app-custom-theme-checkbox-demo-container />
       </section>
     </div>
   `,

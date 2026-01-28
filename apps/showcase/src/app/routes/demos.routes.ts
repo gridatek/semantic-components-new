@@ -651,6 +651,13 @@ export const demosRoutes: Route[] = [
             (m) => m.FormCheckboxDemo,
           ),
       },
+      {
+        path: 'custom-theme-checkbox-demo',
+        loadComponent: () =>
+          import('../pages/docs/checkbox/demos/custom-theme-checkbox-demo').then(
+            (m) => m.CustomThemeCheckboxDemo,
+          ),
+      },
     ],
   },
   {

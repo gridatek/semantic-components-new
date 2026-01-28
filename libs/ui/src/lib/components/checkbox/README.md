@@ -62,6 +62,30 @@ Note: Add `FormField` to your component's `imports` array to use the `[formField
 <sc-checkbox [checked]="true" [disabled]="true" />
 ```
 
+## Custom Theme
+
+Customize colors using CSS variables:
+
+```html
+<div style="--primary: oklch(0.6 0.25 280); --primary-foreground: oklch(0.985 0 0);">
+  <sc-checkbox [(checked)]="purple" id="purple" />
+  <label for="purple">Purple checkbox</label>
+</div>
+```
+
+Available CSS variables:
+
+- `--primary` - Border and background color when checked (OKLCH format: `oklch(lightness chroma hue)`)
+- `--primary-foreground` - Checkmark color (OKLCH format: `oklch(lightness chroma hue)`)
+- `--ring` - Focus ring color (OKLCH format: `oklch(lightness chroma hue)`)
+- `--ring-offset-background` - Focus ring offset color
+
+OKLCH format parameters:
+
+- **Lightness**: 0 (black) to 1 (white)
+- **Chroma**: 0 (gray) to ~0.4 (vivid color)
+- **Hue**: 0-360 (color angle)
+
 ## Inputs
 
 | Input           | Type      | Default | Description                       |
