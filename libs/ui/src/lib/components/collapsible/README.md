@@ -1,38 +1,67 @@
-# ScCollapsible Components
+# Collapsible Components
 
-A set of Angular components for creating accessible collapsible sections with shadcn/ui styling.
+An interactive component which expands/collapses a panel. Built on top of `@angular/aria/accordion` for robust accessibility support.
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScCollapsible` to access shared state.
-
 ```
-ScCollapsible (root wrapper - manages open state)
-├── ScCollapsibleTrigger (button that toggles open/closed)
-└── ScCollapsibleContent (content that shows/hides)
+ScCollapsible (Root - uses AccordionGroup)
+    ├── disabled: boolean
+    │
+    ├── ScCollapsibleTrigger (uses AccordionTrigger)
+    │     ├── panelId: string (links to panel)
+    │     ├── expanded: boolean
+    │     └── disabled: boolean
+    │
+    └── ScCollapsiblePanel (uses AccordionPanel)
+          └── panelId: string (links to trigger)
 ```
 
 ## Components
 
-| Component              | Selector                         | Description                     |
-| ---------------------- | -------------------------------- | ------------------------------- |
-| `ScCollapsible`        | `div[sc-collapsible]`            | Root wrapper, manages state     |
-| `ScCollapsibleTrigger` | `button[sc-collapsible-trigger]` | Button that toggles the content |
-| `ScCollapsibleContent` | `div[sc-collapsible-content]`    | Content that expands/collapses  |
+| Component              | Selector                         | Description                                     |
+| ---------------------- | -------------------------------- | ----------------------------------------------- |
+| `ScCollapsible`        | `div[sc-collapsible]`            | Root wrapper using `AccordionGroup`             |
+| `ScCollapsibleTrigger` | `button[sc-collapsible-trigger]` | Button to toggle panel using `AccordionTrigger` |
+| `ScCollapsiblePanel`   | `div[sc-collapsible-panel]`      | Collapsible content using `AccordionPanel`      |
+
+## Inputs
+
+### ScCollapsible
+
+| Input      | Type      | Default | Description             |
+| ---------- | --------- | ------- | ----------------------- |
+| `disabled` | `boolean` | `false` | Disable the collapsible |
+
+### ScCollapsibleTrigger
+
+| Input      | Type      | Default      | Description                              |
+| ---------- | --------- | ------------ | ---------------------------------------- |
+| `panelId`  | `string`  | **required** | Links trigger to its corresponding panel |
+| `expanded` | `boolean` | `false`      | Whether the panel is expanded            |
+| `disabled` | `boolean` | `false`      | Whether the trigger is disabled          |
+
+### ScCollapsiblePanel
+
+| Input     | Type     | Default      | Description                              |
+| --------- | -------- | ------------ | ---------------------------------------- |
+| `panelId` | `string` | **required** | Links panel to its corresponding trigger |
 
 ## Usage
 
 ### Basic Collapsible
 
+Use `panelId` to link the trigger to its corresponding panel.
+
 ```html
 <div sc-collapsible class="w-[350px] space-y-2">
   <div class="flex items-center justify-between">
     <h4 class="text-sm font-semibold">Can I use this?</h4>
-    <button sc-collapsible-trigger>
+    <button sc-collapsible-trigger panelId="faq-1">
       <svg><!-- chevron icon --></svg>
     </button>
   </div>
-  <div sc-collapsible-content>
+  <div sc-collapsible-panel panelId="faq-1">
     <p>Yes. It's free and open source.</p>
   </div>
 </div>
@@ -41,9 +70,9 @@ ScCollapsible (root wrapper - manages open state)
 ### Initially Open
 
 ```html
-<div sc-collapsible [open]="true">
-  <button sc-collapsible-trigger>Toggle</button>
-  <div sc-collapsible-content>This content is visible by default.</div>
+<div sc-collapsible>
+  <button sc-collapsible-trigger panelId="open-demo" [expanded]="true">Toggle</button>
+  <div sc-collapsible-panel panelId="open-demo">This content is visible by default.</div>
 </div>
 ```
 
@@ -51,19 +80,21 @@ ScCollapsible (root wrapper - manages open state)
 
 ```html
 <div sc-collapsible [disabled]="true">
-  <button sc-collapsible-trigger>Toggle (disabled)</button>
-  <div sc-collapsible-content>This cannot be toggled.</div>
+  <button sc-collapsible-trigger panelId="disabled-demo">Toggle (disabled)</button>
+  <div sc-collapsible-panel panelId="disabled-demo">This cannot be toggled.</div>
 </div>
 ```
 
-### Controlled
+### Two-Way Binding
+
+Bind to the `expanded` state of the trigger.
 
 ```typescript
 @Component({
   template: `
-    <div sc-collapsible [(open)]="isOpen">
-      <button sc-collapsible-trigger>Toggle</button>
-      <div sc-collapsible-content>Content</div>
+    <div sc-collapsible>
+      <button sc-collapsible-trigger panelId="controlled" [(expanded)]="isOpen">Toggle</button>
+      <div sc-collapsible-panel panelId="controlled">Content</div>
     </div>
     <button (click)="isOpen.set(!isOpen())">External Toggle</button>
   `,
@@ -76,14 +107,14 @@ export class MyComponent {
 ### With Chevron Animation
 
 ```html
-<div sc-collapsible #collapsible="scCollapsible">
-  <button sc-collapsible-trigger class="flex items-center gap-2">
+<div sc-collapsible>
+  <button sc-collapsible-trigger panelId="chevron-demo" #trigger="scCollapsibleTrigger" class="flex items-center gap-2">
     <span>Toggle</span>
-    <svg class="size-4 transition-transform duration-200" [class.rotate-180]="collapsible.open()">
+    <svg class="size-4 transition-transform duration-200" [class.rotate-180]="trigger.expanded()">
       <path d="m6 9 6 6 6-6" />
     </svg>
   </button>
-  <div sc-collapsible-content>Content here</div>
+  <div sc-collapsible-panel panelId="chevron-demo">Content here</div>
 </div>
 ```
 
@@ -105,39 +136,15 @@ You can use these for CSS styling:
 }
 ```
 
-## How It Works
-
-### State Management
-
-`ScCollapsible` uses a `model` signal for the `open` state:
-
-```typescript
-readonly open = model<boolean>(false);
-
-toggle(): void {
-  if (!this.disabled()) {
-    this.open.update((v) => !v);
-  }
-}
-```
-
-### Content Visibility
-
-`ScCollapsibleContent` conditionally renders content:
-
-```typescript
-template: `
-  @if (collapsible.open()) {
-    <ng-content />
-  }
-`;
-```
-
 ## Accessibility
 
-- `aria-expanded` on trigger reflects open state
-- `aria-disabled` when disabled
-- Trigger is a button for keyboard accessibility
+Built on `@angular/aria/accordion`, providing:
+
+- Trigger button has `aria-expanded` indicating open state
+- Trigger button has `aria-controls` pointing to its panel
+- Panel has `role="region"` and `aria-labelledby` pointing to its trigger
+- `data-state` attribute on trigger and panel (`open` / `closed`)
+- Disabled state is properly communicated via `disabled` attribute
 
 ## Customization
 
@@ -148,7 +155,7 @@ All components accept a `class` input for custom styling:
   <!-- styled container -->
 </div>
 
-<div sc-collapsible-content class="pt-4">
+<div sc-collapsible-panel panelId="styled" class="pt-4">
   <!-- content with padding -->
 </div>
 ```
