@@ -34,20 +34,20 @@ Each demo is a minimal standalone component isolating one behavior.
 
 ```typescript
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScAccordion, ScAccordionContent, ScAccordionItem, ScAccordionTrigger } from '@semantic-components/ui';
+import { ScAccordion, ScAccordionPanel, ScAccordionItem, ScAccordionTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-accordion-demo',
-  imports: [ScAccordion, ScAccordionContent, ScAccordionItem, ScAccordionTrigger],
+  imports: [ScAccordion, ScAccordionPanel, ScAccordionItem, ScAccordionTrigger],
   template: `
     <div sc-accordion [value]="'item-1'" [collapsible]="true" class="w-full max-w-md">
       <div sc-accordion-item value="item-1">
         <button sc-accordion-trigger>Is it accessible?</button>
-        <div sc-accordion-content>Yes. It adheres to the WAI-ARIA design pattern.</div>
+        <div sc-accordion-panel>Yes. It adheres to the WAI-ARIA design pattern.</div>
       </div>
       <div sc-accordion-item value="item-2">
         <button sc-accordion-trigger>Is it styled?</button>
-        <div sc-accordion-content>Yes. It comes with default styles that match the other components' aesthetic.</div>
+        <div sc-accordion-panel>Yes. It comes with default styles that match the other components' aesthetic.</div>
       </div>
     </div>
   `,

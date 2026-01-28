@@ -10,7 +10,7 @@ import { cn } from '../../utils';
 import { ScAccordionItem } from './accordion-item';
 
 @Component({
-  selector: 'div[sc-accordion-content]',
+  selector: 'div[sc-accordion-panel]',
   template: `
     @if (item.isOpen()) {
       <div [class]="innerClass()">
@@ -19,7 +19,7 @@ import { ScAccordionItem } from './accordion-item';
     }
   `,
   host: {
-    'data-slot': 'accordion-content',
+    'data-slot': 'accordion-panel',
     role: 'region',
     '[attr.data-state]': 'item.isOpen() ? "open" : "closed"',
     '[class]': 'class()',
@@ -27,7 +27,7 @@ import { ScAccordionItem } from './accordion-item';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScAccordionContent {
+export class ScAccordionPanel {
   readonly item = inject(ScAccordionItem);
   readonly classInput = input<string>('', { alias: 'class' });
 
