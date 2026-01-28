@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCollapsible,
-  ScCollapsibleContent,
+  ScCollapsiblePanel,
   ScCollapsibleTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-collapsible-demo',
-  imports: [ScCollapsible, ScCollapsibleContent, ScCollapsibleTrigger],
+  imports: [ScCollapsible, ScCollapsiblePanel, ScCollapsibleTrigger],
   template: `
     <div sc-collapsible class="w-[350px] space-y-2">
       <div class="flex items-center justify-between space-x-4 px-4">
@@ -16,6 +16,7 @@ import {
         </h4>
         <button
           sc-collapsible-trigger
+          panelId="collapsible-1"
           class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-input bg-background text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <svg
@@ -42,7 +43,7 @@ import {
       <div class="rounded-md border px-4 py-3 font-mono text-sm">
         &#64;radix-ui/primitives
       </div>
-      <div sc-collapsible-content class="space-y-2">
+      <div sc-collapsible-panel panelId="collapsible-1" class="space-y-2">
         <div class="rounded-md border px-4 py-3 font-mono text-sm">
           &#64;radix-ui/colors
         </div>
