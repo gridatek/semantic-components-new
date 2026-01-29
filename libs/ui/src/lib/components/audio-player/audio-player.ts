@@ -2,15 +2,12 @@ import {
   computed,
   DestroyRef,
   Directive,
-  ElementRef,
   inject,
   input,
   InjectionToken,
   model,
   output,
   signal,
-  viewChild,
-  AfterViewInit,
 } from '@angular/core';
 
 export interface AudioTrack {
@@ -33,9 +30,9 @@ export const SC_AUDIO_PLAYER = new InjectionToken<ScAudioPlayer>(
     'data-slot': 'audio-player',
   },
 })
-export class ScAudioPlayer implements AfterViewInit {
+export class ScAudioPlayer {
   private readonly destroyRef = inject(DestroyRef);
-  readonly audioRef = viewChild.required<ElementRef<HTMLAudioElement>>('audio');
+  private audioElement = signal<HTMLAudioElement | null>(null);
 
   // Inputs
   readonly tracks = input<AudioTrack[]>([]);
@@ -80,19 +77,20 @@ export class ScAudioPlayer implements AfterViewInit {
     return this.tracks().length > 1;
   });
 
-  ngAfterViewInit(): void {
-    const audio = this.audioRef().nativeElement;
-    audio.volume = this.volume();
+  registerAudioElement(element: HTMLAudioElement): void {
+    this.audioElement.set(element);
+    element.volume = this.volume();
 
     if (this.autoplay()) {
-      audio.play().catch(() => {
+      element.play().catch(() => {
         // Autoplay blocked by browser
       });
     }
   }
 
   togglePlay(): void {
-    const audio = this.audioRef().nativeElement;
+    const audio = this.audioElement();
+    if (!audio) return;
     if (this.isPlaying()) {
       audio.pause();
       this.pause.emit();
@@ -126,7 +124,10 @@ export class ScAudioPlayer implements AfterViewInit {
     this.trackChange.emit(tracks[newIndex]);
 
     if (this.isPlaying()) {
-      setTimeout(() => this.audioRef().nativeElement.play(), 0);
+      const audio = this.audioElement();
+      if (audio) {
+        setTimeout(() => audio.play(), 0);
+      }
     }
   }
 
@@ -148,18 +149,23 @@ export class ScAudioPlayer implements AfterViewInit {
     this.trackChange.emit(tracks[newIndex]);
 
     if (this.isPlaying()) {
-      setTimeout(() => this.audioRef().nativeElement.play(), 0);
+      const audio = this.audioElement();
+      if (audio) {
+        setTimeout(() => audio.play(), 0);
+      }
     }
   }
 
   seek(time: number): void {
-    const audio = this.audioRef().nativeElement;
+    const audio = this.audioElement();
+    if (!audio) return;
     audio.currentTime = time;
     this.currentTime.set(time);
   }
 
   toggleMute(): void {
-    const audio = this.audioRef().nativeElement;
+    const audio = this.audioElement();
+    if (!audio) return;
     if (this.isMuted()) {
       audio.volume = this.previousVolume;
       this.volume.set(this.previousVolume);
@@ -184,12 +190,14 @@ export class ScAudioPlayer implements AfterViewInit {
   }
 
   onTimeUpdate(): void {
-    const audio = this.audioRef().nativeElement;
+    const audio = this.audioElement();
+    if (!audio) return;
     this.currentTime.set(audio.currentTime);
   }
 
   onLoadedMetadata(): void {
-    const audio = this.audioRef().nativeElement;
+    const audio = this.audioElement();
+    if (!audio) return;
     this.duration.set(audio.duration);
   }
 
@@ -199,7 +207,10 @@ export class ScAudioPlayer implements AfterViewInit {
     const repeatMode = this.repeat();
     if (repeatMode === 'one') {
       this.seek(0);
-      this.audioRef().nativeElement.play();
+      const audio = this.audioElement();
+      if (audio) {
+        audio.play();
+      }
     } else if (
       repeatMode === 'all' ||
       this.currentIndex() < this.tracks().length - 1
@@ -209,7 +220,8 @@ export class ScAudioPlayer implements AfterViewInit {
   }
 
   setVolume(value: number): void {
-    const audio = this.audioRef().nativeElement;
+    const audio = this.audioElement();
+    if (!audio) return;
     audio.volume = value;
     this.volume.set(value);
     this.isMuted.set(value === 0);

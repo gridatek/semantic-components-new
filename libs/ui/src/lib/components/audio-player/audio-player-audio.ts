@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   inject,
   ViewEncapsulation,
 } from '@angular/core';
@@ -11,7 +12,6 @@ import { SC_AUDIO_PLAYER } from './audio-player';
   template: ``,
   host: {
     'data-slot': 'audio-player-audio',
-    '#audio': '',
     '[src]': 'player.currentTrack()?.src',
     '(timeupdate)': 'player.onTimeUpdate()',
     '(loadedmetadata)': 'player.onLoadedMetadata()',
@@ -24,4 +24,9 @@ import { SC_AUDIO_PLAYER } from './audio-player';
 })
 export class ScAudioPlayerAudio {
   readonly player = inject(SC_AUDIO_PLAYER);
+  private readonly elementRef = inject(ElementRef<HTMLAudioElement>);
+
+  constructor() {
+    this.player.registerAudioElement(this.elementRef.nativeElement);
+  }
 }
