@@ -31,7 +31,7 @@ export class ScPagination {
 
   // Smart pagination inputs
   readonly currentPageInput = input<number>(1, { alias: 'currentPage' });
-  readonly pageSize = input<number>(10);
+  readonly pageSizeInput = input<number>(10, { alias: 'pageSize' });
   readonly totalItems = input<number>(0);
   readonly siblingCount = input<number>(1); // Number of pages to show on each side of current page
   readonly showEdges = input<boolean>(true); // Show first and last pages
@@ -39,6 +39,7 @@ export class ScPagination {
 
   // Internal state
   readonly currentPage = linkedSignal(() => this.currentPageInput());
+  readonly pageSize = linkedSignal(() => this.pageSizeInput());
 
   // Output events
   readonly change = output<ScPaginationChange>();
@@ -83,6 +84,7 @@ export class ScPagination {
   changePageSize(newPageSize: number): void {
     if (newPageSize > 0 && newPageSize !== this.pageSize()) {
       // Reset to page 1 when page size changes
+      this.pageSize.set(newPageSize);
       this.currentPage.set(1);
       this.change.emit({ page: 1, pageSize: newPageSize });
     }
