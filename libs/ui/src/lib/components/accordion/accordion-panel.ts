@@ -26,7 +26,11 @@ import { cn } from '../../utils';
   host: {
     'data-slot': 'accordion-panel',
     '[attr.data-state]': 'panel.visible() ? "open" : "closed"',
+    '[attr.data-open]': 'panel.visible() ? "" : null',
+    '[attr.data-closed]': '!panel.visible() ? "" : null',
     '[class]': 'class()',
+    'animate.enter': 'animate-accordion-down',
+    'animate.leave': 'animate-accordion-up',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,9 +41,6 @@ export class ScAccordionPanel {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn(
-      'data-open:animate-accordion-down data-closed:animate-accordion-up text-sm overflow-hidden',
-      this.classInput(),
-    ),
+    cn('text-sm overflow-hidden', this.classInput()),
   );
 }
