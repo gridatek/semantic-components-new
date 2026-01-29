@@ -27,8 +27,17 @@ export class ScPaginationNext {
   private readonly pagination = inject(ScPagination, { optional: true });
 
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly disabled = input<boolean, unknown>(false, {
+  readonly disabledInput = input<boolean, unknown>(false, {
+    alias: 'disabled',
     transform: booleanAttribute,
+  });
+
+  protected readonly disabled = computed(() => {
+    if (this.disabledInput()) return true;
+    if (this.pagination) {
+      return this.pagination.currentPage() === this.pagination.totalPages();
+    }
+    return false;
   });
 
   protected readonly class = computed(() =>
