@@ -172,6 +172,10 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/empty-state/empty-state-page'),
       },
       {
+        path: 'field',
+        loadComponent: () => import('../pages/docs/field/field-page'),
+      },
+      {
         path: 'file-upload',
         loadComponent: () =>
           import('../pages/docs/file-upload/file-upload-page'),

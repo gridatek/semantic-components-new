@@ -34,6 +34,7 @@ export * from './dock';
 export * from './drawer';
 export * from './emoji-picker';
 export * from './empty-state';
+export * from './field';
 export * from './file-upload';
 export * from './hover-card';
 export * from './image-annotator';

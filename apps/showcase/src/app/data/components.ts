@@ -182,6 +182,12 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'Placeholder for empty content.',
   },
   {
+    name: 'Field',
+    path: 'field',
+    description:
+      'A flexible field composition system for building accessible forms.',
+  },
+  {
     name: 'File Upload',
     path: 'file-upload',
     description: 'A drag-and-drop file upload component.',

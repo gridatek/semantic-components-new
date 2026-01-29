@@ -1458,6 +1458,46 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/field',
+    children: [
+      {
+        path: 'basic-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/field/demos/basic-field-demo').then(
+            (m) => m.BasicFieldDemo,
+          ),
+      },
+      {
+        path: 'horizontal-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/field/demos/horizontal-field-demo').then(
+            (m) => m.HorizontalFieldDemo,
+          ),
+      },
+      {
+        path: 'error-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/field/demos/error-field-demo').then(
+            (m) => m.ErrorFieldDemo,
+          ),
+      },
+      {
+        path: 'fieldset-demo',
+        loadComponent: () =>
+          import('../pages/docs/field/demos/fieldset-demo').then(
+            (m) => m.FieldsetDemo,
+          ),
+      },
+      {
+        path: 'separator-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/field/demos/separator-field-demo').then(
+            (m) => m.SeparatorFieldDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/file-upload',
     children: [
       {
