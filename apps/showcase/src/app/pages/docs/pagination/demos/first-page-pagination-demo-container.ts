@@ -6,7 +6,11 @@ import { FirstPagePaginationDemo } from './first-page-pagination-demo';
   selector: 'app-first-page-pagination-demo-container',
   imports: [DemoContainer, FirstPagePaginationDemo],
   template: `
-    <app-demo-container title="First Page" [code]="code">
+    <app-demo-container
+      title="First Page"
+      [code]="code"
+      demoUrl="/demos/pagination/first-page-pagination-demo"
+    >
       <app-first-page-pagination-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { PageSizePaginationDemo } from './page-size-pagination-demo';
   selector: 'app-page-size-pagination-demo-container',
   imports: [DemoContainer, PageSizePaginationDemo],
   template: `
-    <app-demo-container title="Page Size Selector" [code]="code">
+    <app-demo-container
+      title="Page Size Selector"
+      [code]="code"
+      demoUrl="/demos/pagination/page-size-pagination-demo"
+    >
       <app-page-size-pagination-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { ButtonsPaginationDemo } from './buttons-pagination-demo';
   selector: 'app-buttons-pagination-demo-container',
   imports: [DemoContainer, ButtonsPaginationDemo],
   template: `
-    <app-demo-container title="Buttons" [code]="code">
+    <app-demo-container
+      title="Buttons"
+      [code]="code"
+      demoUrl="/demos/pagination/buttons-pagination-demo"
+    >
       <app-buttons-pagination-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { FirstLastPaginationDemo } from './first-last-pagination-demo';
   selector: 'app-first-last-pagination-demo-container',
   imports: [DemoContainer, FirstLastPaginationDemo],
   template: `
-    <app-demo-container title="With First & Last Buttons" [code]="code">
+    <app-demo-container
+      title="With First & Last Buttons"
+      [code]="code"
+      demoUrl="/demos/pagination/first-last-pagination-demo"
+    >
       <app-first-last-pagination-demo />
     </app-demo-container>
   `,

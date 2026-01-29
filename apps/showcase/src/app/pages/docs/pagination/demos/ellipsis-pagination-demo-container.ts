@@ -6,7 +6,11 @@ import { EllipsisPaginationDemo } from './ellipsis-pagination-demo';
   selector: 'app-ellipsis-pagination-demo-container',
   imports: [DemoContainer, EllipsisPaginationDemo],
   template: `
-    <app-demo-container title="With Ellipsis" [code]="code">
+    <app-demo-container
+      title="With Ellipsis"
+      [code]="code"
+      demoUrl="/demos/pagination/ellipsis-pagination-demo"
+    >
       <app-ellipsis-pagination-demo />
     </app-demo-container>
   `,

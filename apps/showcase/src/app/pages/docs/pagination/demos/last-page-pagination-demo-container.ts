@@ -6,7 +6,11 @@ import { LastPagePaginationDemo } from './last-page-pagination-demo';
   selector: 'app-last-page-pagination-demo-container',
   imports: [DemoContainer, LastPagePaginationDemo],
   template: `
-    <app-demo-container title="Last Page" [code]="code">
+    <app-demo-container
+      title="Last Page"
+      [code]="code"
+      demoUrl="/demos/pagination/last-page-pagination-demo"
+    >
       <app-last-page-pagination-demo />
     </app-demo-container>
   `,

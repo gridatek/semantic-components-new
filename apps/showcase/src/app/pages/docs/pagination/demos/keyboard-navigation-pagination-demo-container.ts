@@ -6,7 +6,11 @@ import { KeyboardNavigationPaginationDemo } from './keyboard-navigation-paginati
   selector: 'app-keyboard-navigation-pagination-demo-container',
   imports: [DemoContainer, KeyboardNavigationPaginationDemo],
   template: `
-    <app-demo-container title="Keyboard Navigation" [code]="code">
+    <app-demo-container
+      title="Keyboard Navigation"
+      [code]="code"
+      demoUrl="/demos/pagination/keyboard-navigation-pagination-demo"
+    >
       <app-keyboard-navigation-pagination-demo />
     </app-demo-container>
   `,

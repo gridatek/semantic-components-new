@@ -6,7 +6,11 @@ import { ManyPagesPaginationDemo } from './many-pages-pagination-demo';
   selector: 'app-many-pages-pagination-demo-container',
   imports: [DemoContainer, ManyPagesPaginationDemo],
   template: `
-    <app-demo-container title="Many Pages" [code]="code">
+    <app-demo-container
+      title="Many Pages"
+      [code]="code"
+      demoUrl="/demos/pagination/many-pages-pagination-demo"
+    >
       <app-many-pages-pagination-demo />
     </app-demo-container>
   `,

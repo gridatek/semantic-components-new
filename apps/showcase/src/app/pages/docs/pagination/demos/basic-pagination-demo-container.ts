@@ -6,7 +6,11 @@ import { BasicPaginationDemo } from './basic-pagination-demo';
   selector: 'app-basic-pagination-demo-container',
   imports: [DemoContainer, BasicPaginationDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      [code]="code"
+      demoUrl="/demos/pagination/basic-pagination-demo"
+    >
       <app-basic-pagination-demo />
     </app-demo-container>
   `,
