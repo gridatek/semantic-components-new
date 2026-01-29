@@ -1,8 +1,11 @@
 import { AccordionContent, AccordionPanel } from '@angular/aria/accordion';
 import {
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
+  ElementRef,
   inject,
   input,
   ViewEncapsulation,
@@ -37,10 +40,28 @@ import { cn } from '../../utils';
 })
 export class ScAccordionPanel {
   protected readonly panel = inject(AccordionPanel);
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
     cn('text-sm overflow-hidden', this.classInput()),
   );
+
+  constructor() {
+    afterNextRender(() => {
+      // Set CSS variable for accordion animations
+      effect(() => {
+        this.panel.visible(); // Track changes
+        const element = this.elementRef.nativeElement;
+
+        // Update height variable before animation starts
+        const height = element.scrollHeight;
+        element.style.setProperty(
+          '--radix-accordion-content-height',
+          `${height}px`,
+        );
+      });
+    });
+  }
 }
