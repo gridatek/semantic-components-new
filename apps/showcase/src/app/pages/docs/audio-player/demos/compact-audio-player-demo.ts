@@ -33,23 +33,30 @@ import {
     <div
       sc-audio-player
       [tracks]="tracks"
-      class="flex items-center gap-4 p-4 bg-card border rounded-lg max-w-lg"
+      class="flex flex-row items-center gap-4 p-4 bg-card border rounded-lg"
     >
+      <!-- Cover -->
       <div sc-audio-player-cover class="size-16"></div>
-      <div class="flex flex-col gap-3 flex-1 min-w-0">
-        <div sc-audio-player-info></div>
-        <div sc-audio-player-progress></div>
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <button sc-audio-player-shuffle></button>
-            <button sc-audio-player-previous></button>
-            <button sc-audio-player-play-button></button>
-            <button sc-audio-player-next></button>
-            <button sc-audio-player-repeat></button>
-          </div>
-          <div sc-audio-player-volume class="max-w-32"></div>
-        </div>
+
+      <!-- Track Info -->
+      <div sc-audio-player-info class="flex-1 min-w-0"></div>
+
+      <!-- Progress -->
+      <div sc-audio-player-progress class="flex-1"></div>
+
+      <!-- Controls -->
+      <div class="flex items-center gap-2">
+        <button sc-audio-player-shuffle></button>
+        <button sc-audio-player-previous></button>
+        <button sc-audio-player-play-button></button>
+        <button sc-audio-player-next></button>
+        <button sc-audio-player-repeat></button>
       </div>
+
+      <!-- Volume -->
+      <div sc-audio-player-volume></div>
+
+      <!-- Hidden Audio Element -->
       <audio sc-audio-player-audio></audio>
     </div>
   `,
