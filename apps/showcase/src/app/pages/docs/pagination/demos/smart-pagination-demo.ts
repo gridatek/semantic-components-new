@@ -8,6 +8,11 @@ import {
   ScPaginationNext,
   ScPaginationPrevious,
 } from '@semantic-components/ui';
+import {
+  SiChevronLeftIcon,
+  SiChevronRightIcon,
+  SiEllipsisIcon,
+} from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-smart-pagination-demo',
@@ -19,6 +24,9 @@ import {
     ScPaginationPrevious,
     ScPaginationNext,
     ScPaginationEllipsis,
+    SiChevronLeftIcon,
+    SiChevronRightIcon,
+    SiEllipsisIcon,
   ],
   template: `
     <div class="space-y-4">
@@ -44,20 +52,7 @@ import {
         <ul sc-pagination-list>
           <li sc-pagination-item>
             <button sc-pagination-previous>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="size-4"
-              >
-                <path d="m15 18-6-6 6-6" />
-              </svg>
+              <svg si-chevron-left-icon class="size-4"></svg>
               <span>Previous</span>
             </button>
           </li>
@@ -66,22 +61,7 @@ import {
             <li sc-pagination-item>
               @if (page.type === 'ellipsis') {
                 <span sc-pagination-ellipsis>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="size-4"
-                  >
-                    <circle cx="12" cy="12" r="1" />
-                    <circle cx="19" cy="12" r="1" />
-                    <circle cx="5" cy="12" r="1" />
-                  </svg>
+                  <svg si-ellipsis-icon class="size-4"></svg>
                   <span class="sr-only">More pages</span>
                 </span>
               } @else {
@@ -95,20 +75,7 @@ import {
           <li sc-pagination-item>
             <button sc-pagination-next>
               <span>Next</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="size-4"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
+              <svg si-chevron-right-icon class="size-4"></svg>
             </button>
           </li>
         </ul>

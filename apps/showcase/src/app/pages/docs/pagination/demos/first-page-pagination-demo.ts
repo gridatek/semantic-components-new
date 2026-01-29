@@ -8,6 +8,11 @@ import {
   ScPaginationNext,
   ScPaginationPrevious,
 } from '@semantic-components/ui';
+import {
+  SiChevronLeftIcon,
+  SiChevronRightIcon,
+  SiEllipsisIcon,
+} from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-first-page-pagination-demo',
@@ -19,6 +24,9 @@ import {
     ScPaginationLink,
     ScPaginationNext,
     ScPaginationPrevious,
+    SiChevronLeftIcon,
+    SiChevronRightIcon,
+    SiEllipsisIcon,
   ],
   template: `
     <nav
