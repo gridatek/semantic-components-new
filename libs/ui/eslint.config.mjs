@@ -25,6 +25,7 @@ export default [
       '@angular-eslint/directive-selector': 'off',
       '@angular-eslint/component-selector': 'off',
       '@angular-eslint/no-input-rename': 'off',
+      '@angular-eslint/no-output-native': 'off',
     },
   },
   {
