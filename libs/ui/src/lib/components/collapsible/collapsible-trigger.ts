@@ -25,6 +25,7 @@ import { cn } from '../../utils';
   host: {
     'data-slot': 'collapsible-trigger',
     '[attr.data-state]': 'trigger.expanded() ? "open" : "closed"',
+    '[disabled]': 'trigger.disabled()',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
