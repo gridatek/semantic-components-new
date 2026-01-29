@@ -12,13 +12,17 @@ import { SC_AUDIO_PLAYER } from './audio-player';
 @Component({
   selector: 'div[sc-audio-player-info]',
   template: `
-    <p class="font-medium truncate">
-      {{ player.currentTrack()?.title || 'Unknown Track' }}
-    </p>
-    @if (player.currentTrack()?.artist) {
-      <p class="text-sm text-muted-foreground truncate">
-        {{ player.currentTrack()?.artist }}
+    @if (player.currentTrack(); as track) {
+      <p class="font-medium truncate">
+        {{ track.title || 'Unknown Track' }}
       </p>
+      @if (track.artist) {
+        <p class="text-sm text-muted-foreground truncate">
+          {{ track.artist }}
+        </p>
+      }
+    } @else {
+      <p class="font-medium truncate">Unknown Track</p>
     }
   `,
   host: {

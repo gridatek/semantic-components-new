@@ -12,12 +12,14 @@ import { SC_AUDIO_PLAYER } from './audio-player';
 @Component({
   selector: 'div[sc-audio-player-cover]',
   template: `
-    @if (player.currentTrack()?.cover) {
-      <img
-        [src]="player.currentTrack()?.cover"
-        [alt]="player.currentTrack()?.title || 'Album cover'"
-        class="size-full object-cover"
-      />
+    @if (player.currentTrack(); as track) {
+      @if (track.cover) {
+        <img
+          [src]="track.cover"
+          [alt]="track.title || 'Album cover'"
+          class="size-full object-cover"
+        />
+      }
     }
   `,
   host: {
