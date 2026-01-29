@@ -7,30 +7,20 @@ import {
   input,
   ViewEncapsulation,
 } from '@angular/core';
+import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
 import { ScNavigationMenuItem } from './navigation-menu-item';
 
 @Component({
   selector: 'button[sc-navigation-menu-trigger]',
+  imports: [SiChevronDownIcon],
   hostDirectives: [CdkOverlayOrigin],
   template: `
     <ng-content />
     <svg
-      class="relative top-px ml-1 size-3 transition-transform duration-200"
-      [class.rotate-180]="menuItem.open()"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
+      si-chevron-down-icon
+      class="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+    ></svg>
   `,
   host: {
     'data-slot': 'navigation-menu-trigger',
@@ -49,12 +39,13 @@ export class ScNavigationMenuTrigger {
 
   protected readonly class = computed(() =>
     cn(
-      'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2',
-      'text-sm font-medium transition-colors',
+      'group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium',
       'hover:bg-accent hover:text-accent-foreground',
-      'focus:bg-accent focus:text-accent-foreground focus:outline-none',
+      'focus:bg-accent focus:text-accent-foreground',
       'disabled:pointer-events-none disabled:opacity-50',
-      'data-[state=open]:bg-accent/50',
+      'data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50',
+      'focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1',
+      '[&_svg]:pointer-events-none',
       this.classInput(),
     ),
   );

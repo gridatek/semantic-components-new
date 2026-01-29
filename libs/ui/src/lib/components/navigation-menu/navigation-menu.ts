@@ -28,7 +28,7 @@ export class ScNavigationMenu {
 
   protected readonly class = computed(() =>
     cn(
-      'relative z-10 flex max-w-max flex-1 items-center justify-center',
+      'group/navigation-menu relative flex max-w-max flex-1 items-center justify-center',
       this.classInput(),
     ),
   );
