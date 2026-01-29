@@ -136,12 +136,12 @@ export class MyComponent {
 
 The `ScCollapsibleContent` component uses Angular's animation system to smoothly expand and collapse content:
 
-- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter`
-- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave`
-- **Height Calculation**: The component automatically sets the `--radix-accordion-content-height` CSS variable to the actual content height, ensuring smooth animations
+- **Opening**: When a panel expands, Angular applies the `animate-collapsible-down` class via `animate.enter`
+- **Closing**: When a panel collapses, Angular applies the `animate-collapsible-up` class via `animate.leave`
+- **Height Calculation**: The component automatically sets the `--radix-collapsible-content-height` CSS variable to the actual content height, ensuring smooth animations
 - **Timing**: Angular handles all animation timing and cleanup automatically
 
-The animations are defined in your Tailwind configuration and create a smooth slide-down/slide-up effect.
+The animations are defined in the `tw-animate-css` package and create a smooth slide-down/slide-up effect.
 
 ## Data Attributes
 
