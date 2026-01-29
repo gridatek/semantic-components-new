@@ -1,0 +1,5 @@
+@layer base {
+  * {
+    interpolate-size: allow-keywords;
+  }
+}
