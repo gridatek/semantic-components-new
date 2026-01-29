@@ -109,11 +109,7 @@ import {
                   <span class="sr-only">More pages</span>
                 </span>
               } @else {
-                <button
-                  sc-pagination-link
-                  [page]="page.value"
-                  [isActive]="page.value === currentPage()"
-                >
+                <button sc-pagination-link [page]="page.value">
                   {{ page.value }}
                 </button>
               }

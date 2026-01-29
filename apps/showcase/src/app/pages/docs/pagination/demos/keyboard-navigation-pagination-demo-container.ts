@@ -158,7 +158,6 @@ import {
                 <button
                   sc-pagination-link
                   [page]="page.value"
-                  [isActive]="page.value === currentPage()"
                   [attr.aria-label]="'Go to page ' + page.value"
                 >
                   {{ page.value }}

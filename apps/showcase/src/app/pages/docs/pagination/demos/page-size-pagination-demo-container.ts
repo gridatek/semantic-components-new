@@ -117,7 +117,6 @@ import {
                 <button
                   sc-pagination-link
                   [page]="page.value"
-                  [isActive]="page.value === currentPage()"
                 >
                   {{ page.value }}
                 </button>

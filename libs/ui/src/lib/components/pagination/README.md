@@ -34,13 +34,13 @@ Pagination with page navigation, next and previous links. Supports both manual a
       <a sc-pagination-previous></a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link>1</a>
+      <a sc-pagination-link [page]="1">1</a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link [isActive]="true">2</a>
+      <a sc-pagination-link [page]="2">2</a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link>3</a>
+      <a sc-pagination-link [page]="3">3</a>
     </li>
     <li sc-pagination-item>
       <a sc-pagination-next></a>
@@ -58,19 +58,19 @@ Pagination with page navigation, next and previous links. Supports both manual a
       <a sc-pagination-previous></a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link>1</a>
+      <a sc-pagination-link [page]="1">1</a>
     </li>
     <li sc-pagination-item>
       <span sc-pagination-ellipsis></span>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link [isActive]="true">5</a>
+      <a sc-pagination-link [page]="5">5</a>
     </li>
     <li sc-pagination-item>
       <span sc-pagination-ellipsis></span>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link>10</a>
+      <a sc-pagination-link [page]="10">10</a>
     </li>
     <li sc-pagination-item>
       <a sc-pagination-next></a>
@@ -88,7 +88,7 @@ Pagination with page navigation, next and previous links. Supports both manual a
       <button sc-pagination-previous></button>
     </li>
     <li sc-pagination-item>
-      <button sc-pagination-link [isActive]="true">1</button>
+      <button sc-pagination-link [page]="1">1</button>
     </li>
     <li sc-pagination-item>
       <button sc-pagination-next></button>
@@ -123,7 +123,7 @@ import { Component, signal } from '@angular/core';
                 <span class="sr-only">More pages</span>
               </span>
             } @else {
-              <button sc-pagination-link [page]="page.value" [isActive]="page.value === currentPage()">
+              <button sc-pagination-link [page]="page.value">
                 {{ page.value }}
               </button>
             }
@@ -267,10 +267,11 @@ Key points:
 | Input      | Type                                  | Default  | Description                      |
 | ---------- | ------------------------------------- | -------- | -------------------------------- |
 | `page`     | `number`                              | -        | Page number this link represents |
-| `isActive` | `boolean`                             | `false`  | Whether page is active           |
 | `size`     | `'default' \| 'sm' \| 'lg' \| 'icon'` | `'icon'` | Button size                      |
 | `disabled` | `boolean`                             | `false`  | Disabled state                   |
 | `class`    | `string`                              | `''`     | Additional CSS classes           |
+
+**Note**: The active state is automatically computed by comparing the `page` input with the parent pagination's `currentPage`.
 
 ### ScPaginationPrevious
 

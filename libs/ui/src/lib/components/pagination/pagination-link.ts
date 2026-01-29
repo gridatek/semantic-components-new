@@ -26,7 +26,6 @@ export class ScPaginationLink {
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly page = input<number>();
-  readonly isActive = input<boolean>(false);
   readonly size = input<'default' | 'sm' | 'lg' | 'icon'>('icon');
   readonly disabled = input<boolean, unknown>(false, {
     transform: booleanAttribute,
@@ -35,6 +34,12 @@ export class ScPaginationLink {
   protected readonly isAnchor = computed(
     () => this.elementRef.nativeElement.tagName === 'A',
   );
+
+  protected readonly isActive = computed(() => {
+    const pageNum = this.page();
+    if (pageNum === undefined || !this.pagination) return false;
+    return pageNum === this.pagination.currentPage();
+  });
 
   protected readonly class = computed(() => {
     const sizeClasses = {

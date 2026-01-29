@@ -93,7 +93,7 @@ import {
           <a sc-pagination-link href="#">9</a>
         </li>
         <li sc-pagination-item>
-          <a sc-pagination-link href="#" [isActive]="true">10</a>
+          <a sc-pagination-link href="#">10</a>
         </li>
         <li sc-pagination-item>
           <button sc-pagination-next disabled>

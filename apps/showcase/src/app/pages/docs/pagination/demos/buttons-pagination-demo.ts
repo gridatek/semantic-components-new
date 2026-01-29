@@ -44,7 +44,7 @@ import {
           <button sc-pagination-link>1</button>
         </li>
         <li sc-pagination-item>
-          <button sc-pagination-link [isActive]="true">2</button>
+          <button sc-pagination-link>2</button>
         </li>
         <li sc-pagination-item>
           <button sc-pagination-link>3</button>
