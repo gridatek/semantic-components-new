@@ -1498,32 +1498,6 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
-    path: 'demos/form',
-    children: [
-      {
-        path: 'basic-form-demo',
-        loadComponent: () =>
-          import('../pages/docs/form/demos/basic-form-demo').then(
-            (m) => m.BasicFormDemo,
-          ),
-      },
-      {
-        path: 'profile-form-demo',
-        loadComponent: () =>
-          import('../pages/docs/form/demos/profile-form-demo').then(
-            (m) => m.ProfileFormDemo,
-          ),
-      },
-      {
-        path: 'validation-form-demo',
-        loadComponent: () =>
-          import('../pages/docs/form/demos/validation-form-demo').then(
-            (m) => m.ValidationFormDemo,
-          ),
-      },
-    ],
-  },
-  {
     path: 'demos/hover-card',
     children: [
       {

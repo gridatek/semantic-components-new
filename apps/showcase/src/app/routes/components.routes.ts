@@ -177,10 +177,6 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/file-upload/file-upload-page'),
       },
       {
-        path: 'form',
-        loadComponent: () => import('../pages/docs/form/form-page'),
-      },
-      {
         path: 'hover-card',
         loadComponent: () => import('../pages/docs/hover-card/hover-card-page'),
       },

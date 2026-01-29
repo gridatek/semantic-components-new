@@ -187,11 +187,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A drag-and-drop file upload component.',
   },
   {
-    name: 'Form',
-    path: 'form',
-    description: 'Building accessible forms with validation.',
-  },
-  {
     name: 'Hover Card',
     path: 'hover-card',
     description: 'A card that appears when hovering over an element.',
