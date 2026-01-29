@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScAudioPlayer,
   ScAudioPlayerAudio,
-  ScAudioPlayerCover,
   ScAudioPlayerInfo,
+  ScAudioPlayerProgress,
   ScAudioPlayerPlayButton,
   ScAudioPlayerPrevious,
   ScAudioPlayerNext,
@@ -15,8 +15,8 @@ import {
   imports: [
     ScAudioPlayer,
     ScAudioPlayerAudio,
-    ScAudioPlayerCover,
     ScAudioPlayerInfo,
+    ScAudioPlayerProgress,
     ScAudioPlayerPlayButton,
     ScAudioPlayerPrevious,
     ScAudioPlayerNext,
@@ -25,13 +25,17 @@ import {
     <div
       sc-audio-player
       [tracks]="tracks"
-      class="flex items-center gap-2 p-2 bg-card border rounded-lg max-w-sm"
+      class="flex flex-col gap-2 p-2 bg-card border rounded-lg max-w-sm"
     >
-      <div sc-audio-player-cover class="size-10"></div>
-      <div sc-audio-player-info class="flex-1 min-w-0"></div>
-      <button sc-audio-player-previous></button>
-      <button sc-audio-player-play-button class="size-10"></button>
-      <button sc-audio-player-next></button>
+      <div class="flex items-center gap-2">
+        <div sc-audio-player-info class="flex-1 min-w-0 text-sm"></div>
+        <div class="flex items-center gap-1">
+          <button sc-audio-player-previous class="size-8"></button>
+          <button sc-audio-player-play-button class="size-8"></button>
+          <button sc-audio-player-next class="size-8"></button>
+        </div>
+      </div>
+      <div sc-audio-player-progress></div>
       <audio sc-audio-player-audio></audio>
     </div>
   `,
