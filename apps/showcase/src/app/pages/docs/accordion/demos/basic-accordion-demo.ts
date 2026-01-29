@@ -17,7 +17,7 @@ import {
     ScAccordionContent,
   ],
   template: `
-    <div sc-accordion class="w-full max-w-md">
+    <div sc-accordion class="w-full max-w-md" [multiExpandable]="false">
       <div sc-accordion-item>
         <button sc-accordion-trigger panelId="item-1" [expanded]="true">
           Is it accessible?
