@@ -90,39 +90,72 @@ export class ScPagination {
       }));
     }
 
+    // For more than 7 pages, always return exactly 7 items
     const pages: ScPaginationPageData[] = [];
 
-    // Always show first page if edges are enabled
-    if (showEdges) {
-      pages.push({ type: 'page', value: 1 });
+    // Pattern: [1, ..., current-1, current, current+1, ..., last]
+    // Total: 7 items
+
+    // First page
+    pages.push({ type: 'page', value: 1 });
+
+    // Calculate the range around current page
+    const maxSiblings = siblingCount;
+    let start = Math.max(2, currentPage - maxSiblings);
+    let end = Math.min(totalPages - 1, currentPage + maxSiblings);
+
+    // Adjust to ensure we show the right number of pages
+    const totalMiddleSlots = 5; // Total slots minus first and last
+    const needLeftEllipsis = start > 2;
+    const needRightEllipsis = end < totalPages - 1;
+
+    // Calculate how many actual page slots we have (excluding ellipsis)
+    let pageSlots = totalMiddleSlots;
+    if (needLeftEllipsis) pageSlots--;
+    if (needRightEllipsis) pageSlots--;
+
+    // Adjust range to fit in available slots
+    if (!needLeftEllipsis && needRightEllipsis) {
+      // Near start: [1, 2, 3, 4, 5, ..., last]
+      end = Math.min(pageSlots + 1, totalPages - 1);
+    } else if (needLeftEllipsis && !needRightEllipsis) {
+      // Near end: [1, ..., n-4, n-3, n-2, n-1, n]
+      start = Math.max(2, totalPages - pageSlots);
+    } else if (needLeftEllipsis && needRightEllipsis) {
+      // Middle: [1, ..., current-1, current, current+1, ..., last]
+      const middlePages = pageSlots; // e.g., 3 pages in the middle
+      const halfPages = Math.floor(middlePages / 2);
+      start = currentPage - halfPages;
+      end = currentPage + (middlePages - halfPages - 1);
+
+      // Adjust if we're too close to edges
+      if (start < 2) {
+        start = 2;
+        end = start + middlePages - 1;
+      }
+      if (end > totalPages - 1) {
+        end = totalPages - 1;
+        start = end - middlePages + 1;
+      }
     }
 
-    // Calculate the range of pages to show around current page
-    const leftSibling = Math.max(currentPage - siblingCount, showEdges ? 2 : 1);
-    const rightSibling = Math.min(
-      currentPage + siblingCount,
-      showEdges ? totalPages - 1 : totalPages,
-    );
-
-    // Add ellipsis after first page if needed
-    if (showEdges && leftSibling > 2) {
+    // Add left ellipsis if needed
+    if (start > 2) {
       pages.push({ type: 'ellipsis', value: 'ellipsis-left' });
     }
 
-    // Add pages around current page
-    for (let i = leftSibling; i <= rightSibling; i++) {
+    // Add middle pages
+    for (let i = start; i <= end; i++) {
       pages.push({ type: 'page', value: i });
     }
 
-    // Add ellipsis before last page if needed
-    if (showEdges && rightSibling < totalPages - 1) {
+    // Add right ellipsis if needed
+    if (end < totalPages - 1) {
       pages.push({ type: 'ellipsis', value: 'ellipsis-right' });
     }
 
-    // Always show last page if edges are enabled
-    if (showEdges) {
-      pages.push({ type: 'page', value: totalPages });
-    }
+    // Last page
+    pages.push({ type: 'page', value: totalPages });
 
     return pages;
   }
