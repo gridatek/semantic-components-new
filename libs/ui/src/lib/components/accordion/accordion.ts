@@ -29,5 +29,7 @@ import { cn } from '../../utils';
 export class ScAccordion {
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() => cn('', this.classInput()));
+  protected readonly class = computed(() =>
+    cn('flex w-full flex-col', this.classInput()),
+  );
 }

@@ -22,5 +22,10 @@ import { cn } from '../../utils';
 export class ScAccordionContent {
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() => cn('pb-4 pt-0', this.classInput()));
+  protected readonly class = computed(() =>
+    cn(
+      'pt-0 pb-2.5 [&_a]:hover:text-foreground h-(--radix-accordion-content-height) [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4',
+      this.classInput(),
+    ),
+  );
 }

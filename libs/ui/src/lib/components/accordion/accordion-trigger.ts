@@ -8,6 +8,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScAccordionDownIcon } from './accordion-down-icon';
+
+import {
+  SiChevronDownIcon,
+  SiChevronUpIcon,
+} from '@semantic-icons/lucide-icons';
+import { ScAccordionUpIcon } from './accordion-up-icon';
 
 @Component({
   selector: 'button[sc-accordion-trigger]',
@@ -20,22 +27,11 @@ import { cn } from '../../utils';
   ],
   template: `
     <ng-content />
-    <svg
-      class="h-4 w-4 shrink-0 transition-transform duration-200 pointer-events-none"
-      [class.rotate-180]="trigger.expanded()"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
+    @if (trigger.expanded()) {
+      <svg si-chevron-down-icon sc-accordion-down-icon></svg>
+    } @else {
+      <svg si-chevron-up-icon sc-accordion-up-icon></svg>
+    }
   `,
   host: {
     'data-slot': 'accordion-trigger',
@@ -44,6 +40,12 @@ import { cn } from '../../utils';
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ScAccordionDownIcon,
+    ScAccordionUpIcon,
+    SiChevronDownIcon,
+    SiChevronUpIcon,
+  ],
 })
 export class ScAccordionTrigger {
   protected readonly trigger = inject(AccordionTrigger);
@@ -52,9 +54,7 @@ export class ScAccordionTrigger {
 
   protected readonly class = computed(() =>
     cn(
-      'flex w-full flex-1 items-center justify-between py-4 font-medium transition-all text-left',
-      'hover:underline',
-      '[&[data-state=open]>svg]:rotate-180',
+      'focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring **:data-[slot=accordion-trigger-icon]:text-muted-foreground rounded-lg py-2.5 text-left text-sm font-medium hover:underline focus-visible:ring-[3px] **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50',
       this.classInput(),
     ),
   );

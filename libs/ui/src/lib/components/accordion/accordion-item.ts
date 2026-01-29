@@ -11,5 +11,7 @@ import { cn } from '../../utils';
 export class ScAccordionItem {
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() => cn('border-b', this.classInput()));
+  protected readonly class = computed(() =>
+    cn('not-last:border-b', this.classInput()),
+  );
 }
