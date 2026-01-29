@@ -76,8 +76,6 @@ import {
         [currentPage]="currentPage()"
         [pageSize]="pageSize()"
         [totalItems]="totalItems()"
-        [siblingCount]="1"
-        [showEdges]="true"
         [pageSizeOptions]="[10, 25, 50, 100]"
         (change)="onPaginationChange($event)"
       >

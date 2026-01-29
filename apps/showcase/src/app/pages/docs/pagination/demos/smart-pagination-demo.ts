@@ -46,8 +46,6 @@ import {
         [currentPage]="currentPage()"
         [pageSize]="pageSize()"
         [totalItems]="totalItems()"
-        [siblingCount]="1"
-        [showEdges]="true"
         (change)="onPaginationChange($event)"
       >
         <ul sc-pagination-list>
