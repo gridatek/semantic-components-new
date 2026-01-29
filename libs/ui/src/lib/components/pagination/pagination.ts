@@ -1,4 +1,10 @@
-import { computed, Directive, input, output } from '@angular/core';
+import {
+  computed,
+  Directive,
+  input,
+  linkedSignal,
+  output,
+} from '@angular/core';
 import { cn } from '../../utils';
 
 export type ScPaginationPage =
@@ -24,12 +30,15 @@ export class ScPagination {
   readonly classInput = input<string>('', { alias: 'class' });
 
   // Smart pagination inputs
-  readonly currentPage = input<number>(1);
+  readonly currentPageInput = input<number>(1, { alias: 'currentPage' });
   readonly pageSize = input<number>(10);
   readonly totalItems = input<number>(0);
   readonly siblingCount = input<number>(1); // Number of pages to show on each side of current page
   readonly showEdges = input<boolean>(true); // Show first and last pages
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]); // Available page size options
+
+  // Internal state
+  readonly currentPage = linkedSignal(() => this.currentPageInput());
 
   // Output events
   readonly change = output<ScPaginationChange>();
@@ -62,6 +71,7 @@ export class ScPagination {
   goToPage(page: number): void {
     const total = this.totalPages();
     if (page >= 1 && page <= total && page !== this.currentPage()) {
+      this.currentPage.set(page);
       this.change.emit({ page, pageSize: this.pageSize() });
     }
   }
@@ -73,6 +83,7 @@ export class ScPagination {
   changePageSize(newPageSize: number): void {
     if (newPageSize > 0 && newPageSize !== this.pageSize()) {
       // Reset to page 1 when page size changes
+      this.currentPage.set(1);
       this.change.emit({ page: 1, pageSize: newPageSize });
     }
   }
