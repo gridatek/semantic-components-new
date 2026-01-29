@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDock, ScDockContainer, ScDockItem } from '@semantic-components/ui';
+import { ScDock, ScDockItems, ScDockItem } from '@semantic-components/ui';
 import type { DockItem } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-magnification-dock-demo',
-  imports: [ScDock, ScDockContainer, ScDockItem],
+  imports: [ScDock, ScDockItems, ScDockItem],
   template: `
     <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
       <nav sc-dock [magnification]="false">
-        <div sc-dock-container>
+        <div sc-dock-items>
           @for (item of items; track item.id) {
             <button sc-dock-item [item]="item"></button>
           }

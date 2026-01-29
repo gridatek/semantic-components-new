@@ -9,7 +9,7 @@ The dock component follows a composable architecture pattern, where functionalit
 ### Components
 
 - **ScDock**: Root directive that manages dock state (hover effects, magnification)
-- **ScDockContainer**: Wrapper component for dock items
+- **ScDockItems**: Wrapper component for dock items
 - **ScDockItem**: Individual dock item button
 - **ScDockBadge**: Optional badge indicator for items
 
@@ -27,7 +27,7 @@ Child components inject `SC_DOCK` to access parent state and methods.
 ## Installation
 
 ```typescript
-import { ScDock, ScDockContainer, ScDockItem, ScDockBadge } from '@/ui/dock';
+import { ScDock, ScDockItems, ScDockItem, ScDockBadge } from '@/ui/dock';
 import type { DockItem, DockPosition, DockSize } from '@/ui/dock';
 ```
 
@@ -37,7 +37,7 @@ import type { DockItem, DockPosition, DockSize } from '@/ui/dock';
 
 ```html
 <nav sc-dock (itemClick)="onItemClick($event)">
-  <div sc-dock-container>
+  <div sc-dock-items>
     @for (item of items; track item.id) {
     <button sc-dock-item [item]="item"></button>
     }
@@ -61,7 +61,7 @@ onItemClick(item: DockItem): void {
 
 ```html
 <nav sc-dock>
-  <div sc-dock-container>
+  <div sc-dock-items>
     @for (item of items; track item.id) {
     <button sc-dock-item [item]="item">
       @if (item.badge !== undefined) {
@@ -84,7 +84,7 @@ items: DockItem[] = [
 
 ```html
 <nav sc-dock [magnification]="false">
-  <div sc-dock-container>
+  <div sc-dock-items>
     @for (item of items; track item.id) {
     <button sc-dock-item [item]="item"></button>
     }
@@ -96,7 +96,7 @@ items: DockItem[] = [
 
 ```html
 <nav sc-dock [magnificationScale]="2">
-  <div sc-dock-container>
+  <div sc-dock-items>
     @for (item of items; track item.id) {
     <button sc-dock-item [item]="item"></button>
     }
@@ -108,7 +108,7 @@ items: DockItem[] = [
 
 ```html
 <nav sc-dock size="sm">
-  <div sc-dock-container>
+  <div sc-dock-items>
     @for (item of items; track item.id) {
     <button sc-dock-item [item]="item"></button>
     }
@@ -138,9 +138,9 @@ items: DockItem[] = [
 | ----------- | ---------- | ---------------------------- |
 | `itemClick` | `DockItem` | Emitted when item is clicked |
 
-### ScDockContainer (Component)
+### ScDockItems (Component)
 
-**Selector**: `div[sc-dock-container]`
+**Selector**: `div[sc-dock-items]`
 
 Container for dock items. Automatically styled based on parent dock configuration.
 

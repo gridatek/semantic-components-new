@@ -10,18 +10,18 @@ import { cn } from '../../utils';
 import { SC_DOCK } from './dock';
 
 @Component({
-  selector: 'div[sc-dock-container]',
+  selector: 'div[sc-dock-items]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'dock-container',
+    'data-slot': 'dock-items',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScDockContainer {
+export class ScDockItems {
   readonly dock = inject(SC_DOCK);
   readonly classInput = input<string>('', { alias: 'class' });
 

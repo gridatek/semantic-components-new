@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDock, ScDockContainer, ScDockItem } from '@semantic-components/ui';
+import { ScDock, ScDockItems, ScDockItem } from '@semantic-components/ui';
 import type { DockItem } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-sizes-dock-demo',
-  imports: [ScDock, ScDockContainer, ScDockItem],
+  imports: [ScDock, ScDockItems, ScDockItem],
   template: `
     <div
       class="flex flex-col items-center gap-6 rounded-lg border bg-muted/30 p-8"
@@ -12,7 +12,7 @@ import type { DockItem } from '@semantic-components/ui';
       <div class="text-center">
         <p class="mb-2 text-xs text-muted-foreground">Small</p>
         <nav sc-dock size="sm">
-          <div sc-dock-container>
+          <div sc-dock-items>
             @for (item of items; track item.id) {
               <button sc-dock-item [item]="item"></button>
             }
@@ -22,7 +22,7 @@ import type { DockItem } from '@semantic-components/ui';
       <div class="text-center">
         <p class="mb-2 text-xs text-muted-foreground">Medium (Default)</p>
         <nav sc-dock size="md">
-          <div sc-dock-container>
+          <div sc-dock-items>
             @for (item of items; track item.id) {
               <button sc-dock-item [item]="item"></button>
             }
@@ -32,7 +32,7 @@ import type { DockItem } from '@semantic-components/ui';
       <div class="text-center">
         <p class="mb-2 text-xs text-muted-foreground">Large</p>
         <nav sc-dock size="lg">
-          <div sc-dock-container>
+          <div sc-dock-items>
             @for (item of items; track item.id) {
               <button sc-dock-item [item]="item"></button>
             }
