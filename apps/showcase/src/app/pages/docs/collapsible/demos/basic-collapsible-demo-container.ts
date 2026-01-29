@@ -29,7 +29,7 @@ import {
     <div sc-collapsible class="w-[350px] space-y-2">
       <div class="flex items-center justify-between space-x-4 px-4">
         <h4 class="text-sm font-semibold">
-          &#64;peduarte starred 3 repositories
+          Angular Project Dependencies
         </h4>
         <button
           sc-collapsible-trigger
@@ -49,24 +49,21 @@ import {
             stroke-linejoin="round"
             aria-hidden="true"
           >
-            <rect width="5" height="5" x="3" y="3" rx="1" />
-            <rect width="5" height="5" x="16" y="3" rx="1" />
-            <rect width="5" height="5" x="3" y="16" rx="1" />
-            <rect width="5" height="5" x="16" y="16" rx="1" />
+            <path d="m6 9 6 6 6-6" />
           </svg>
           <span class="sr-only">Toggle</span>
         </button>
       </div>
       <div class="rounded-md border px-4 py-3 font-mono text-sm">
-        &#64;radix-ui/primitives
+        &#64;angular/core
       </div>
       <div sc-collapsible-panel panelId="collapsible-1">
         <div sc-collapsible-content class="space-y-2">
           <div class="rounded-md border px-4 py-3 font-mono text-sm">
-            &#64;radix-ui/colors
+            &#64;angular/common
           </div>
           <div class="rounded-md border px-4 py-3 font-mono text-sm">
-            &#64;stitches/react
+            &#64;angular/forms
           </div>
         </div>
       </div>
