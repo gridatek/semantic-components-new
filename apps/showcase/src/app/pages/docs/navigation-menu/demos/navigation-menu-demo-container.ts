@@ -23,6 +23,7 @@ import {
   ScNavigationMenuList,
   ScNavigationMenuTrigger,
 } from '@semantic-components/ui';
+import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-navigation-menu-demo',
@@ -33,6 +34,7 @@ import {
     ScNavigationMenuLink,
     ScNavigationMenuList,
     ScNavigationMenuTrigger,
+    SiSparklesIcon,
   ],
   template: \`
     <nav sc-navigation-menu>
@@ -46,28 +48,11 @@ import {
             >
               <li class="row-span-3">
                 <a
+                  sc-navigation-menu-link
                   class="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                   href="#"
                 >
-                  <svg
-                    class="size-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
-                    />
-                    <path d="M5 3v4" />
-                    <path d="M19 17v4" />
-                    <path d="M3 5h4" />
-                    <path d="M17 19h4" />
-                  </svg>
+                  <svg si-sparkles-icon class="size-6"></svg>
                   <div class="mb-2 mt-4 text-lg font-medium">SC Components</div>
                   <p class="text-sm leading-tight text-muted-foreground">
                     Beautiful Angular components built with Tailwind CSS.
@@ -75,10 +60,7 @@ import {
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">
                     Introduction
                   </div>
@@ -90,10 +72,7 @@ import {
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">
                     Installation
                   </div>
@@ -105,10 +84,7 @@ import {
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">Typography</div>
                   <p
                     class="line-clamp-2 text-sm leading-snug text-muted-foreground"
