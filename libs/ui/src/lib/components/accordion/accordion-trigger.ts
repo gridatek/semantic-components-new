@@ -27,11 +27,8 @@ import { ScAccordionUpIcon } from './accordion-up-icon';
   ],
   template: `
     <ng-content />
-    @if (trigger.expanded()) {
-      <svg si-chevron-down-icon sc-accordion-down-icon></svg>
-    } @else {
-      <svg si-chevron-up-icon sc-accordion-up-icon></svg>
-    }
+    <svg si-chevron-down-icon sc-accordion-down-icon></svg>
+    <svg si-chevron-up-icon sc-accordion-up-icon></svg>
   `,
   host: {
     'data-slot': 'accordion-trigger',
