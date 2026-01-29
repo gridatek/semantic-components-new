@@ -84,8 +84,8 @@ export class ScPagination {
   changePageSize(newPageSize: number): void {
     if (newPageSize > 0 && newPageSize !== this.pageSize()) {
       // Reset to page 1 when page size changes
-      this.pageSize.set(newPageSize);
       this.currentPage.set(1);
+      this.pageSize.set(newPageSize);
       this.change.emit({ page: 1, pageSize: newPageSize });
     }
   }
