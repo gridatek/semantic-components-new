@@ -17,11 +17,9 @@ import {
     ScAccordionContent,
   ],
   template: `
-    <div sc-accordion class="w-full max-w-md" [multiExpandable]="false">
+    <div sc-accordion [multiExpandable]="false" class="w-full max-w-md">
       <div sc-accordion-item>
-        <button sc-accordion-trigger panelId="item-1" [expanded]="true">
-          Is it accessible?
-        </button>
+        <button sc-accordion-trigger panelId="item-1">Is it accessible?</button>
         <div sc-accordion-panel panelId="item-1">
           <div sc-accordion-content>
             Yes. It adheres to the WAI-ARIA design pattern.
@@ -32,8 +30,7 @@ import {
         <button sc-accordion-trigger panelId="item-2">Is it styled?</button>
         <div sc-accordion-panel panelId="item-2">
           <div sc-accordion-content>
-            Yes. It comes with default styles that match the other components'
-            aesthetic.
+            Yes. It comes with default styles that match other components.
           </div>
         </div>
       </div>
@@ -41,7 +38,7 @@ import {
         <button sc-accordion-trigger panelId="item-3">Is it animated?</button>
         <div sc-accordion-panel panelId="item-3">
           <div sc-accordion-content>
-            Yes. It's animated by default, but you can disable it if you prefer.
+            Yes. It's animated by default with smooth transitions.
           </div>
         </div>
       </div>

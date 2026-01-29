@@ -49,7 +49,7 @@ ScAccordion (Root - uses AccordionGroup)
 
 | Input             | Type      | Default | Description                             |
 | ----------------- | --------- | ------- | --------------------------------------- |
-| `multiExpandable` | `boolean` | `false` | Allow multiple items to be open at once |
+| `multiExpandable` | `boolean` | `true`  | Allow multiple items to be open at once |
 | `disabled`        | `boolean` | `false` | Disable all accordion items             |
 | `wrap`            | `boolean` | `false` | Wrap keyboard navigation at ends        |
 
@@ -81,10 +81,10 @@ The `ScAccordionContent` component provides default padding (`pb-4 pt-0`) for ac
 
 ### Basic Usage
 
-Use `panelId` to link each trigger to its corresponding panel. By default, only one panel can be open at a time - opening a new panel automatically closes the previously open one.
+Use `panelId` to link each trigger to its corresponding panel. By default, multiple panels can be open at the same time. Set `[multiExpandable]="false"` if you want only one panel open at a time.
 
 ```html
-<div sc-accordion>
+<div sc-accordion [multiExpandable]="false">
   <div sc-accordion-item>
     <button sc-accordion-trigger panelId="item-1">Is it accessible?</button>
     <div sc-accordion-panel panelId="item-1">

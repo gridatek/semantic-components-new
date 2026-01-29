@@ -17,7 +17,7 @@ import {
     ScAccordionContent,
   ],
   template: `
-    <div sc-accordion class="w-full max-w-md">
+    <div sc-accordion [multiExpandable]="false" class="w-full max-w-md">
       <div sc-accordion-item>
         <button sc-accordion-trigger panelId="enabled-1" [expanded]="true">
           Enabled Item
