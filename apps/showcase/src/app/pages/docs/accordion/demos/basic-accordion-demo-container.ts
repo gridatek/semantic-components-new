@@ -9,7 +9,7 @@ import { BasicAccordionDemo } from './basic-accordion-demo';
     <app-demo-container
       title="Basic"
       [code]="code"
-      demoUrl="/docs/accordion/demos/basic"
+      demoUrl="/demos/accordion/basic-accordion-demo"
     >
       <app-basic-accordion-demo />
     </app-demo-container>

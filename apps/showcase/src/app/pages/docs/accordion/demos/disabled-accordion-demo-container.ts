@@ -9,7 +9,7 @@ import { DisabledAccordionDemo } from './disabled-accordion-demo';
     <app-demo-container
       title="Disabled"
       [code]="code"
-      demoUrl="/docs/accordion/demos/disabled"
+      demoUrl="/demos/accordion/disabled-accordion-demo"
     >
       <app-disabled-accordion-demo />
     </app-demo-container>

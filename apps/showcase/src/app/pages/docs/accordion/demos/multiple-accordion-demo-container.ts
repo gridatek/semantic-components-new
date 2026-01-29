@@ -9,7 +9,7 @@ import { MultipleAccordionDemo } from './multiple-accordion-demo';
     <app-demo-container
       title="Multiple"
       [code]="code"
-      demoUrl="/docs/accordion/demos/multiple"
+      demoUrl="/demos/accordion/multiple-accordion-demo"
     >
       <app-multiple-accordion-demo />
     </app-demo-container>
