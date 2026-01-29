@@ -176,28 +176,10 @@ The components use Tailwind CSS with shadcn/ui design tokens:
 
 ## Animation
 
-For smooth animations, add these to your Tailwind config:
+The accordion uses animations from `tw-animate-css`. Make sure you have it imported in your CSS:
 
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
-    },
-  },
-};
+```css
+@import 'tw-animate-css';
 ```
+
+This provides the `animate-accordion-down` and `animate-accordion-up` animations used for smooth expand/collapse transitions.
