@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPagination,
+  ScPaginationEllipsis,
   ScPaginationList,
   ScPaginationItem,
   ScPaginationLink,
@@ -12,6 +13,7 @@ import {
   selector: 'app-buttons-pagination-demo',
   imports: [
     ScPagination,
+    ScPaginationEllipsis,
     ScPaginationList,
     ScPaginationItem,
     ScPaginationLink,
@@ -19,7 +21,14 @@ import {
     ScPaginationPrevious,
   ],
   template: `
-    <nav sc-pagination>
+    <nav
+      sc-pagination
+      #pagination="scPagination"
+      [currentPage]="currentPage()"
+      [totalItems]="30"
+      [pageSize]="10"
+      (pageChange)="currentPage.set($event)"
+    >
       <ul sc-pagination-list>
         <li sc-pagination-item>
           <button sc-pagination-previous>
@@ -40,15 +49,35 @@ import {
             <span>Previous</span>
           </button>
         </li>
-        <li sc-pagination-item>
-          <button sc-pagination-link>1</button>
-        </li>
-        <li sc-pagination-item>
-          <button sc-pagination-link>2</button>
-        </li>
-        <li sc-pagination-item>
-          <button sc-pagination-link>3</button>
-        </li>
+        @for (page of pagination.pages(); track page.value) {
+          <li sc-pagination-item>
+            @if (page.type === 'ellipsis') {
+              <span sc-pagination-ellipsis>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-4"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                  <circle cx="5" cy="12" r="1" />
+                </svg>
+                <span class="sr-only">More pages</span>
+              </span>
+            } @else {
+              <button sc-pagination-link [page]="page.value">
+                {{ page.value }}
+              </button>
+            }
+          </li>
+        }
         <li sc-pagination-item>
           <button sc-pagination-next>
             <span>Next</span>
@@ -73,4 +102,6 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonsPaginationDemo {}
+export class ButtonsPaginationDemo {
+  readonly currentPage = signal(1);
+}
