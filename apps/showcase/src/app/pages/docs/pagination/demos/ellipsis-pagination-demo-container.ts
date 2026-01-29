@@ -60,7 +60,7 @@ import {
       <ul sc-pagination-list>
         <li sc-pagination-item>
           <button sc-pagination-previous>
-            <svg si-chevron-left-icon class="size-4"></svg>
+            <svg si-chevron-left-icon></svg>
             <span>Previous</span>
           </button>
         </li>
@@ -68,7 +68,7 @@ import {
           <li sc-pagination-item>
             @if (page.type === 'ellipsis') {
               <span sc-pagination-ellipsis>
-                <svg si-ellipsis-icon class="size-4"></svg>
+                <svg si-ellipsis-icon></svg>
                 <span class="sr-only">More pages</span>
               </span>
             } @else {
@@ -81,7 +81,7 @@ import {
         <li sc-pagination-item>
           <button sc-pagination-next>
             <span>Next</span>
-            <svg si-chevron-right-icon class="size-4"></svg>
+            <svg si-chevron-right-icon></svg>
           </button>
         </li>
       </ul>

@@ -108,8 +108,7 @@ import {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="size-4"
-              >
+                             >
                 <path d="m11 17-5-5 5-5" />
                 <path d="m18 17-5-5 5-5" />
               </svg>
@@ -122,7 +121,7 @@ import {
               [disabled]="currentPage() === 1"
               aria-label="Go to previous page"
             >
-              <svg si-chevron-left-icon class="size-4"></svg>
+              <svg si-chevron-left-icon></svg>
               <span>Previous</span>
             </button>
           </li>
@@ -131,7 +130,7 @@ import {
             <li sc-pagination-item>
               @if (page.type === 'ellipsis') {
                 <span sc-pagination-ellipsis aria-hidden="true">
-                  <svg si-ellipsis-icon class="size-4"></svg>
+                  <svg si-ellipsis-icon></svg>
                   <span class="sr-only">More pages</span>
                 </span>
               } @else {
@@ -153,7 +152,7 @@ import {
               aria-label="Go to next page"
             >
               <span>Next</span>
-              <svg si-chevron-right-icon class="size-4"></svg>
+              <svg si-chevron-right-icon></svg>
             </button>
           </li>
           <li sc-pagination-item>
@@ -173,8 +172,7 @@ import {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="size-4"
-              >
+                             >
                 <path d="m13 17 5-5-5-5" />
                 <path d="m6 17 5-5-5-5" />
               </svg>
