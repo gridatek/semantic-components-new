@@ -30,7 +30,6 @@ import { cn } from '../../utils';
     'animate.enter': 'animate-accordion-down',
     'animate.leave': 'animate-accordion-up',
     '[style.interpolate-size]': '"allow-keywords"',
-    '[style.--radix-accordion-content-height]': '"auto"',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
