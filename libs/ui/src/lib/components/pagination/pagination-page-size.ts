@@ -20,7 +20,7 @@ import { ScPagination } from './pagination';
       (change)="onPageSizeChange($event)"
       class="h-8 rounded-md border border-input bg-background px-3 text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
-      @for (option of pagination.pageSizeOptions(); track option) {
+      @for (option of pagination.pageSizes(); track option) {
         <option [value]="option">{{ option }}</option>
       }
     </select>

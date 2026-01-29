@@ -1,13 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCollapsible,
+  ScCollapsibleContent,
   ScCollapsiblePanel,
   ScCollapsibleTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-open-collapsible-demo',
-  imports: [ScCollapsible, ScCollapsiblePanel, ScCollapsibleTrigger],
+  imports: [
+    ScCollapsible,
+    ScCollapsibleContent,
+    ScCollapsiblePanel,
+    ScCollapsibleTrigger,
+  ],
   template: `
     <div sc-collapsible class="w-[350px] space-y-2">
       <div class="flex items-center justify-between space-x-4 px-4">
@@ -38,9 +44,11 @@ import {
         </button>
       </div>
       <div sc-collapsible-panel panelId="collapsible-open">
-        <div class="rounded-md border px-4 py-3 text-sm">
-          This collapsible is open by default. You can toggle it closed by
-          clicking the button.
+        <div sc-collapsible-content>
+          <div class="rounded-md border px-4 py-3 text-sm">
+            This collapsible is open by default. You can toggle it closed by
+            clicking the button.
+          </div>
         </div>
       </div>
     </div>

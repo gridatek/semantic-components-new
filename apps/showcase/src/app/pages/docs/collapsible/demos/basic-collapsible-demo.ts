@@ -1,13 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCollapsible,
+  ScCollapsibleContent,
   ScCollapsiblePanel,
   ScCollapsibleTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-collapsible-demo',
-  imports: [ScCollapsible, ScCollapsiblePanel, ScCollapsibleTrigger],
+  imports: [
+    ScCollapsible,
+    ScCollapsibleContent,
+    ScCollapsiblePanel,
+    ScCollapsibleTrigger,
+  ],
   template: `
     <div sc-collapsible class="w-[350px] space-y-2">
       <div class="flex items-center justify-between space-x-4 px-4">
@@ -43,12 +49,14 @@ import {
       <div class="rounded-md border px-4 py-3 font-mono text-sm">
         &#64;radix-ui/primitives
       </div>
-      <div sc-collapsible-panel panelId="collapsible-1" class="space-y-2">
-        <div class="rounded-md border px-4 py-3 font-mono text-sm">
-          &#64;radix-ui/colors
-        </div>
-        <div class="rounded-md border px-4 py-3 font-mono text-sm">
-          &#64;stitches/react
+      <div sc-collapsible-panel panelId="collapsible-1">
+        <div sc-collapsible-content class="space-y-2">
+          <div class="rounded-md border px-4 py-3 font-mono text-sm">
+            &#64;radix-ui/colors
+          </div>
+          <div class="rounded-md border px-4 py-3 font-mono text-sm">
+            &#64;stitches/react
+          </div>
         </div>
       </div>
     </div>

@@ -233,7 +233,7 @@ import { ScPaginationChange } from '@semantic-components/ui';
 
 @Component({
   template: `
-    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [pageSizeOptions]="[10, 25, 50, 100]" (change)="onPaginationChange($event)">
+    <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [pageSizes]="[10, 25, 50, 100]" (change)="onPaginationChange($event)">
       <div class="flex items-center gap-2">
         <span class="text-sm text-muted-foreground">Items per page:</span>
         <sc-pagination-page-size />
@@ -262,7 +262,7 @@ Key points:
 - `ScPaginationPageSize` renders only the select element
 - Wrap it with a label or other elements as needed in your template
 - Must be a child of `<nav sc-pagination>` to access pagination context
-- Configure available options via `[pageSizeOptions]` on the parent `ScPagination`
+- Configure available options via `[pageSizes]` on the parent `ScPagination`
 - Listen to `(change)` to receive both page and pageSize updates
 - The component automatically resets to page 1 when page size changes
 
@@ -270,13 +270,13 @@ Key points:
 
 ### ScPagination
 
-| Input             | Type       | Default             | Description                            |
-| ----------------- | ---------- | ------------------- | -------------------------------------- |
-| `currentPage`     | `number`   | `1`                 | Current active page (1-based)          |
-| `pageSize`        | `number`   | `10`                | Number of items per page               |
-| `totalItems`      | `number`   | `0`                 | Total number of items across all pages |
-| `pageSizeOptions` | `number[]` | `[10, 25, 50, 100]` | Available page size options            |
-| `class`           | `string`   | `''`                | Additional CSS classes                 |
+| Input         | Type       | Default             | Description                            |
+| ------------- | ---------- | ------------------- | -------------------------------------- |
+| `currentPage` | `number`   | `1`                 | Current active page (1-based)          |
+| `pageSize`    | `number`   | `10`                | Number of items per page               |
+| `totalItems`  | `number`   | `0`                 | Total number of items across all pages |
+| `pageSizes`   | `number[]` | `[10, 25, 50, 100]` | Available page size options            |
+| `class`       | `string`   | `''`                | Additional CSS classes                 |
 
 | Output   | Type                 | Description                           |
 | -------- | -------------------- | ------------------------------------- |
@@ -336,7 +336,7 @@ interface ScPaginationChange {
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-**Note**: This component renders only the select element. The page size options are configured via the `pageSizeOptions` input on the parent `ScPagination` component.
+**Note**: This component renders only the select element. The page size options are configured via the `pageSizes` input on the parent `ScPagination` component.
 
 ## Accessibility
 

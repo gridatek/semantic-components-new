@@ -35,7 +35,7 @@ export class ScPagination {
   readonly currentPageInput = input<number>(1, { alias: 'currentPage' });
   readonly pageSizeInput = input<number>(10, { alias: 'pageSize' });
   readonly totalItems = input<number>(0);
-  readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]); // Available page size options
+  readonly pageSizes = input<number[]>([10, 25, 50, 100]); // Available page size options
 
   // Internal state
   readonly currentPage = signal(1);

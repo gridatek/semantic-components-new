@@ -39,7 +39,7 @@ import {
         [currentPage]="currentPage()"
         [pageSize]="pageSize()"
         [totalItems]="totalItems()"
-        [pageSizeOptions]="[10, 25, 50, 100]"
+        [pageSizes]="[10, 25, 50, 100]"
         (change)="onPaginationChange($event)"
       >
         <div class="flex items-center justify-between">

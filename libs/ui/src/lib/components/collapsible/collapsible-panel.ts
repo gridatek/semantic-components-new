@@ -20,9 +20,7 @@ import { cn } from '../../utils';
   ],
   template: `
     <ng-template ngAccordionContent>
-      <div [class]="innerClass()">
-        <ng-content />
-      </div>
+      <ng-content />
     </ng-template>
   `,
   host: {
@@ -39,14 +37,6 @@ export class ScCollapsiblePanel {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn(
-      'overflow-hidden text-sm',
-      this.panel.visible()
-        ? 'opacity-100 animate-in fade-in-0'
-        : 'opacity-0 animate-out fade-out-0',
-      this.classInput(),
-    ),
+    cn('text-sm overflow-hidden', this.classInput()),
   );
-
-  protected readonly innerClass = computed(() => cn(''));
 }

@@ -1,13 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCollapsible,
+  ScCollapsibleContent,
   ScCollapsiblePanel,
   ScCollapsibleTrigger,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-collapsible-demo',
-  imports: [ScCollapsible, ScCollapsiblePanel, ScCollapsibleTrigger],
+  imports: [
+    ScCollapsible,
+    ScCollapsibleContent,
+    ScCollapsiblePanel,
+    ScCollapsibleTrigger,
+  ],
   template: `
     <div sc-collapsible [disabled]="true" class="w-[350px] space-y-2">
       <div class="flex items-center justify-between space-x-4 px-4">
@@ -38,8 +44,10 @@ import {
         </button>
       </div>
       <div sc-collapsible-panel panelId="collapsible-disabled">
-        <div class="rounded-md border px-4 py-3 text-sm">
-          This content is hidden.
+        <div sc-collapsible-content>
+          <div class="rounded-md border px-4 py-3 text-sm">
+            This content is hidden.
+          </div>
         </div>
       </div>
     </div>

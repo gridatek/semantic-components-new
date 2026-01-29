@@ -14,7 +14,10 @@ ScCollapsible (Root - uses AccordionGroup)
     │     └── disabled: boolean
     │
     └── ScCollapsiblePanel (uses AccordionPanel)
-          └── panelId: string (links to trigger)
+          ├── panelId: string (links to trigger)
+          │
+          └── ScCollapsibleContent (animated wrapper)
+                └── [your content here]
 ```
 
 ## Components
@@ -24,6 +27,7 @@ ScCollapsible (Root - uses AccordionGroup)
 | `ScCollapsible`        | `div[sc-collapsible]`            | Root wrapper using `AccordionGroup`             |
 | `ScCollapsibleTrigger` | `button[sc-collapsible-trigger]` | Button to toggle panel using `AccordionTrigger` |
 | `ScCollapsiblePanel`   | `div[sc-collapsible-panel]`      | Collapsible content using `AccordionPanel`      |
+| `ScCollapsibleContent` | `div[sc-collapsible-content]`    | Animated content wrapper                        |
 
 ## Inputs
 
@@ -51,7 +55,7 @@ ScCollapsible (Root - uses AccordionGroup)
 
 ### Basic Collapsible
 
-Use `panelId` to link the trigger to its corresponding panel.
+Use `panelId` to link the trigger to its corresponding panel. Wrap content in `sc-collapsible-content` for smooth animations.
 
 ```html
 <div sc-collapsible class="w-[350px] space-y-2">
@@ -62,7 +66,9 @@ Use `panelId` to link the trigger to its corresponding panel.
     </button>
   </div>
   <div sc-collapsible-panel panelId="faq-1">
-    <p>Yes. It's free and open source.</p>
+    <div sc-collapsible-content>
+      <p>Yes. It's free and open source.</p>
+    </div>
   </div>
 </div>
 ```
@@ -72,7 +78,9 @@ Use `panelId` to link the trigger to its corresponding panel.
 ```html
 <div sc-collapsible>
   <button sc-collapsible-trigger panelId="open-demo" [expanded]="true">Toggle</button>
-  <div sc-collapsible-panel panelId="open-demo">This content is visible by default.</div>
+  <div sc-collapsible-panel panelId="open-demo">
+    <div sc-collapsible-content>This content is visible by default.</div>
+  </div>
 </div>
 ```
 
@@ -81,7 +89,9 @@ Use `panelId` to link the trigger to its corresponding panel.
 ```html
 <div sc-collapsible [disabled]="true">
   <button sc-collapsible-trigger panelId="disabled-demo">Toggle (disabled)</button>
-  <div sc-collapsible-panel panelId="disabled-demo">This cannot be toggled.</div>
+  <div sc-collapsible-panel panelId="disabled-demo">
+    <div sc-collapsible-content>This cannot be toggled.</div>
+  </div>
 </div>
 ```
 
@@ -94,7 +104,9 @@ Bind to the `expanded` state of the trigger.
   template: `
     <div sc-collapsible>
       <button sc-collapsible-trigger panelId="controlled" [(expanded)]="isOpen">Toggle</button>
-      <div sc-collapsible-panel panelId="controlled">Content</div>
+      <div sc-collapsible-panel panelId="controlled">
+        <div sc-collapsible-content>Content</div>
+      </div>
     </div>
     <button (click)="isOpen.set(!isOpen())">External Toggle</button>
   `,
@@ -114,9 +126,22 @@ export class MyComponent {
       <path d="m6 9 6 6 6-6" />
     </svg>
   </button>
-  <div sc-collapsible-panel panelId="chevron-demo">Content here</div>
+  <div sc-collapsible-panel panelId="chevron-demo">
+    <div sc-collapsible-content>Content here</div>
+  </div>
 </div>
 ```
+
+## Animations
+
+The `ScCollapsibleContent` component uses Angular's animation system to smoothly expand and collapse content:
+
+- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter`
+- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave`
+- **Height Calculation**: The component automatically sets the `--radix-accordion-content-height` CSS variable to the actual content height, ensuring smooth animations
+- **Timing**: Angular handles all animation timing and cleanup automatically
+
+The animations are defined in your Tailwind configuration and create a smooth slide-down/slide-up effect.
 
 ## Data Attributes
 
@@ -155,7 +180,9 @@ All components accept a `class` input for custom styling:
   <!-- styled container -->
 </div>
 
-<div sc-collapsible-panel panelId="styled" class="pt-4">
-  <!-- content with padding -->
+<div sc-collapsible-panel panelId="styled">
+  <div sc-collapsible-content class="px-4">
+    <!-- content with custom padding -->
+  </div>
 </div>
 ```
