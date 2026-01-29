@@ -286,11 +286,6 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/pagination/pagination-page'),
       },
       {
-        path: 'password-input',
-        loadComponent: () =>
-          import('../pages/docs/password-input/password-input-page'),
-      },
-      {
         path: 'password-field',
         loadComponent: () =>
           import('../pages/docs/password-field/password-field-page'),

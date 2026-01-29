@@ -59,7 +59,6 @@ export * from './number-input';
 export * from './number-field';
 export * from './org-chart';
 export * from './pagination';
-export * from './password-input';
 export * from './password-field';
 export * from './pdf-viewer';
 export * from './phone-input';

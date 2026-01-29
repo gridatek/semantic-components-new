@@ -322,11 +322,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'Navigation controls for paging through content.',
   },
   {
-    name: 'Password Input',
-    path: 'password-input',
-    description: 'A password input with visibility toggle.',
-  },
-  {
     name: 'Password Field',
     path: 'password-field',
     description: 'A composable password input with visibility toggle.',
