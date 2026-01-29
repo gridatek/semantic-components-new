@@ -1,7 +1,8 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
   computed,
+  Directive,
+  inject,
+  InjectionToken,
   input,
   output,
   signal,
@@ -10,73 +11,42 @@ import { cn } from '../../utils';
 import type { DockItem, DockPosition, DockSize } from './dock-types';
 import { DEFAULT_DOCK_OPTIONS } from './dock-types';
 
-@Component({
-  selector: 'sc-dock',
-  template: `
-    <nav
-      [class]="containerClass()"
-      role="navigation"
-      [attr.aria-label]="ariaLabel()"
-      (mouseleave)="onMouseLeave()"
-    >
-      <div [class]="dockClass()">
-        @for (item of items(); track item.id; let i = $index) {
-          <button
-            type="button"
-            [class]="itemClass(i)"
-            [style.transform]="getItemTransform(i)"
-            [disabled]="item.disabled"
-            [attr.aria-label]="item.label"
-            [title]="item.label"
-            (click)="onItemClick(item)"
-            (mouseenter)="onMouseEnter(i)"
-          >
-            <span
-              class="inline-flex items-center justify-center [&>svg]:w-full [&>svg]:h-full"
-              [innerHTML]="item.icon"
-            ></span>
-            @if (item.badge !== undefined) {
-              <span [class]="badgeClass()">
-                {{ item.badge }}
-              </span>
-            }
-          </button>
-        }
-      </div>
-    </nav>
-  `,
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+export const SC_DOCK = new InjectionToken<ScDock>('SC_DOCK');
+
+@Directive({
+  selector: '[sc-dock]',
+  exportAs: 'scDock',
+  providers: [{ provide: SC_DOCK, useExisting: ScDock }],
+  host: {
+    'data-slot': 'dock',
+    role: 'navigation',
+    '[attr.aria-label]': 'ariaLabel()',
+    '(mouseleave)': 'onMouseLeave()',
+  },
 })
 export class ScDock {
-  readonly items = input<DockItem[]>([]);
   readonly position = input<DockPosition>(DEFAULT_DOCK_OPTIONS.position);
   readonly size = input<DockSize>(DEFAULT_DOCK_OPTIONS.size);
   readonly magnification = input(DEFAULT_DOCK_OPTIONS.magnification);
   readonly magnificationScale = input(DEFAULT_DOCK_OPTIONS.magnificationScale);
   readonly ariaLabel = input('Application dock');
-  readonly class = input<string>('');
 
   readonly itemClick = output<DockItem>();
 
-  protected readonly hoveredIndex = signal<number | null>(null);
+  readonly hoveredIndex = signal<number | null>(null);
+  private itemCount = signal(0);
 
-  protected readonly containerClass = computed(() => {
+  readonly containerClass = computed(() => {
     const pos = this.position();
     return cn(
       'flex items-center justify-center',
       pos === 'bottom' && 'w-full',
       pos === 'left' && 'h-full',
       pos === 'right' && 'h-full',
-      this.class(),
     );
   });
 
-  protected readonly dockClass = computed(() => {
+  readonly dockClass = computed(() => {
     const pos = this.position();
     const size = this.size();
 
@@ -92,34 +62,13 @@ export class ScDock {
     );
   });
 
-  protected itemClass(index: number): string {
-    const size = this.size();
-    const baseSize = this.getBaseSize();
-
-    return cn(
-      'relative flex items-center justify-center',
-      'rounded-xl transition-all duration-150 ease-out',
-      'bg-muted/50 hover:bg-muted',
-      'focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-      'disabled:opacity-50 disabled:cursor-not-allowed',
-      size === 'sm' && 'w-10 h-10 p-2',
-      size === 'md' && 'w-12 h-12 p-2.5',
-      size === 'lg' && 'w-14 h-14 p-3',
-    );
+  registerItem(): number {
+    const index = this.itemCount();
+    this.itemCount.update((c) => c + 1);
+    return index;
   }
 
-  protected badgeClass(): string {
-    return cn(
-      'absolute -top-1 -right-1',
-      'min-w-[18px] h-[18px] px-1',
-      'flex items-center justify-center',
-      'text-[10px] font-medium',
-      'bg-destructive text-destructive-foreground',
-      'rounded-full',
-    );
-  }
-
-  protected getItemTransform(index: number): string {
+  getItemTransform(index: number): string {
     if (!this.magnification()) return '';
 
     const hovered = this.hoveredIndex();
@@ -134,18 +83,6 @@ export class ScDock {
     const factor = 1 + (scale - 1) * (1 - distance / (maxDistance + 1));
 
     return `scale(${factor})`;
-  }
-
-  private getBaseSize(): number {
-    const size = this.size();
-    switch (size) {
-      case 'sm':
-        return 40;
-      case 'md':
-        return 48;
-      case 'lg':
-        return 56;
-    }
   }
 
   onMouseEnter(index: number): void {

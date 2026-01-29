@@ -1,13 +1,28 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScDock } from '@semantic-components/ui';
+import {
+  ScDock,
+  ScDockContainer,
+  ScDockItem,
+  ScDockBadge,
+} from '@semantic-components/ui';
 import type { DockItem } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-badges-dock-demo',
-  imports: [ScDock],
+  imports: [ScDock, ScDockContainer, ScDockItem, ScDockBadge],
   template: `
     <div class="flex justify-center rounded-lg border bg-muted/30 p-8">
-      <sc-dock [items]="items" />
+      <nav sc-dock>
+        <div sc-dock-container>
+          @for (item of items; track item.id) {
+            <button sc-dock-item [item]="item">
+              @if (item.badge !== undefined) {
+                <span sc-dock-badge>{{ item.badge }}</span>
+              }
+            </button>
+          }
+        </div>
+      </nav>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
