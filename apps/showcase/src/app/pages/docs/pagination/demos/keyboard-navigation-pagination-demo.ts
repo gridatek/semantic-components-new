@@ -14,6 +14,8 @@ import {
 import {
   SiChevronLeftIcon,
   SiChevronRightIcon,
+  SiChevronsLeftIcon,
+  SiChevronsRightIcon,
   SiEllipsisIcon,
 } from '@semantic-icons/lucide-icons';
 
@@ -32,6 +34,8 @@ import {
     ScPaginationPageSize,
     SiChevronLeftIcon,
     SiChevronRightIcon,
+    SiChevronsLeftIcon,
+    SiChevronsRightIcon,
     SiEllipsisIcon,
   ],
   template: `
@@ -100,20 +104,7 @@ import {
               [disabled]="currentPage() === 1"
               aria-label="Go to first page"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m11 17-5-5 5-5" />
-                <path d="m18 17-5-5 5-5" />
-              </svg>
+              <svg si-chevrons-left-icon></svg>
               <span>First</span>
             </button>
           </li>
@@ -164,20 +155,7 @@ import {
               aria-label="Go to last page"
             >
               <span>Last</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m13 17 5-5-5-5" />
-                <path d="m6 17 5-5-5-5" />
-              </svg>
+              <svg si-chevrons-right-icon></svg>
             </button>
           </li>
         </ul>
