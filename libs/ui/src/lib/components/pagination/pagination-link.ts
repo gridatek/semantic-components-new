@@ -2,6 +2,7 @@ import {
   booleanAttribute,
   computed,
   Directive,
+  ElementRef,
   inject,
   input,
 } from '@angular/core';
@@ -15,11 +16,13 @@ import { ScPagination } from './pagination';
     '[class]': 'class()',
     '[attr.aria-current]': 'isActive() ? "page" : null',
     '[attr.aria-disabled]': 'disabled() || null',
+    '[attr.href]': 'isAnchor() ? "#" : null',
     '(click)': 'onClick($event)',
   },
 })
 export class ScPaginationLink {
   private readonly pagination = inject(ScPagination, { optional: true });
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly page = input<number>();
@@ -28,6 +31,10 @@ export class ScPaginationLink {
   readonly disabled = input<boolean, unknown>(false, {
     transform: booleanAttribute,
   });
+
+  protected readonly isAnchor = computed(
+    () => this.elementRef.nativeElement.tagName === 'A',
+  );
 
   protected readonly class = computed(() => {
     const sizeClasses = {

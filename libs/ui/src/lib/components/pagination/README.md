@@ -31,19 +31,19 @@ Pagination with page navigation, next and previous links. Supports both manual a
 <nav sc-pagination>
   <ul sc-pagination-list>
     <li sc-pagination-item>
-      <a sc-pagination-previous href="#"></a>
+      <a sc-pagination-previous></a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link href="#">1</a>
+      <a sc-pagination-link>1</a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link href="#" [isActive]="true">2</a>
+      <a sc-pagination-link [isActive]="true">2</a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link href="#">3</a>
+      <a sc-pagination-link>3</a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-next href="#"></a>
+      <a sc-pagination-next></a>
     </li>
   </ul>
 </nav>
@@ -55,25 +55,25 @@ Pagination with page navigation, next and previous links. Supports both manual a
 <nav sc-pagination>
   <ul sc-pagination-list>
     <li sc-pagination-item>
-      <a sc-pagination-previous href="#"></a>
+      <a sc-pagination-previous></a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link href="#">1</a>
-    </li>
-    <li sc-pagination-item>
-      <span sc-pagination-ellipsis></span>
-    </li>
-    <li sc-pagination-item>
-      <a sc-pagination-link href="#" [isActive]="true">5</a>
+      <a sc-pagination-link>1</a>
     </li>
     <li sc-pagination-item>
       <span sc-pagination-ellipsis></span>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-link href="#">10</a>
+      <a sc-pagination-link [isActive]="true">5</a>
     </li>
     <li sc-pagination-item>
-      <a sc-pagination-next href="#"></a>
+      <span sc-pagination-ellipsis></span>
+    </li>
+    <li sc-pagination-item>
+      <a sc-pagination-link>10</a>
+    </li>
+    <li sc-pagination-item>
+      <a sc-pagination-next></a>
     </li>
   </ul>
 </nav>

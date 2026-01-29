@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   inject,
   input,
 } from '@angular/core';
@@ -16,6 +17,7 @@ import { ScPagination } from './pagination';
     '[class]': 'class()',
     '[attr.aria-label]': '"Go to last page"',
     '[attr.aria-disabled]': 'disabled() || null',
+    '[attr.href]': 'isAnchor() ? "#" : null',
     '(click)': 'onClick($event)',
   },
   template: `
@@ -25,6 +27,7 @@ import { ScPagination } from './pagination';
 })
 export class ScPaginationLast {
   private readonly pagination = inject(ScPagination, { optional: true });
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly disabledInput = input<boolean, unknown>(false, {
@@ -39,6 +42,10 @@ export class ScPaginationLast {
     }
     return false;
   });
+
+  protected readonly isAnchor = computed(
+    () => this.elementRef.nativeElement.tagName === 'A',
+  );
 
   protected readonly class = computed(() =>
     cn(
