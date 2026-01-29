@@ -297,11 +297,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'Grouped notification management with filtering.',
   },
   {
-    name: 'Number Input',
-    path: 'number-input',
-    description: 'An input for numeric values with controls.',
-  },
-  {
     name: 'Number Field',
     path: 'number-field',
     description: 'A composable numeric input with scrubbing support.',

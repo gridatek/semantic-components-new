@@ -268,11 +268,6 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/notification-center/notification-center-page'),
       },
       {
-        path: 'number-input',
-        loadComponent: () =>
-          import('../pages/docs/number-input/number-input-page'),
-      },
-      {
         path: 'number-field',
         loadComponent: () =>
           import('../pages/docs/number-field/number-field-page'),
