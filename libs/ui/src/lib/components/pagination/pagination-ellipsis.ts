@@ -22,6 +22,10 @@ export class ScPaginationEllipsis {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('flex size-10 items-center justify-center', this.classInput()),
+    cn(
+      'flex size-10 items-center justify-center',
+      '[&_svg]:size-4',
+      this.classInput(),
+    ),
   );
 }

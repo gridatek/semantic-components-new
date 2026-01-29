@@ -53,6 +53,7 @@ export class ScPaginationLink {
       'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       'hover:bg-accent hover:text-accent-foreground',
       'aria-disabled:pointer-events-none aria-disabled:opacity-50',
+      '[&_svg]:size-4',
       this.isActive() && 'border border-input bg-background',
       sizeClasses[this.size()],
       this.classInput(),
