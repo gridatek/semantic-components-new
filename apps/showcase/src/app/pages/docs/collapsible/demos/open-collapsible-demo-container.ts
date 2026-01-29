@@ -39,7 +39,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
         >
           <svg
             si-chevron-down-icon
-            class="transition-transform duration-200"
+            class="size-4 transition-transform duration-200"
             [class.rotate-180]="trigger.expanded()"
           ></svg>
           <span class="sr-only">Toggle</span>
