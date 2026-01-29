@@ -22,14 +22,7 @@ export default [
   {
     files: ['**/*.ts'],
     rules: {
-      '@angular-eslint/directive-selector': [
-        'error',
-        {
-          type: 'attribute',
-          prefix: 'sc',
-          style: 'camelCase',
-        },
-      ],
+      '@angular-eslint/directive-selector': 'off',
       '@angular-eslint/component-selector': 'off',
       '@angular-eslint/no-input-rename': 'off',
     },
