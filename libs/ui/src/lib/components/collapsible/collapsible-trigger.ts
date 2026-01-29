@@ -34,5 +34,7 @@ export class ScCollapsibleTrigger {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() => cn('', this.classInput()));
+  protected readonly class = computed(() =>
+    cn('[&_svg]:pointer-events-none', this.classInput()),
+  );
 }
