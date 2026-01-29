@@ -52,7 +52,7 @@ import {
 
         <ul sc-pagination-list>
           <li sc-pagination-item>
-            <button sc-pagination-previous [disabled]="currentPage() === 1">
+            <button sc-pagination-previous>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -106,10 +106,7 @@ import {
           }
 
           <li sc-pagination-item>
-            <button
-              sc-pagination-next
-              [disabled]="currentPage() === pagination.totalPages()"
-            >
+            <button sc-pagination-next>
               <span>Next</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

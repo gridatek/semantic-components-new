@@ -109,7 +109,7 @@ import { Component, signal } from '@angular/core';
     <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" [siblingCount]="1" [showEdges]="true" (pageChange)="currentPage.set($event)">
       <ul sc-pagination-list>
         <li sc-pagination-item>
-          <button sc-pagination-previous [disabled]="currentPage() === 1">
+          <button sc-pagination-previous>
             <svg class="size-4"><!-- icon --></svg>
             <span>Previous</span>
           </button>
@@ -131,7 +131,7 @@ import { Component, signal } from '@angular/core';
         }
 
         <li sc-pagination-item>
-          <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()">
+          <button sc-pagination-next>
             <span>Next</span>
             <svg class="size-4"><!-- icon --></svg>
           </button>
@@ -163,14 +163,16 @@ export class MyComponent {
 
 ## Disabled State
 
-```html
-<!-- Disabled previous (first page) -->
-<button sc-pagination-previous [disabled]="true">
-  <!-- content -->
-</button>
+Navigation buttons (Previous, Next, First, Last) automatically disable themselves based on the current page:
 
-<!-- Disabled next (last page) -->
-<button sc-pagination-next disabled>
+- **Previous** and **First**: Auto-disabled when on page 1
+- **Next** and **Last**: Auto-disabled when on the last page
+
+You can also manually disable any button:
+
+```html
+<!-- Manually disabled -->
+<button sc-pagination-previous [disabled]="true">
   <!-- content -->
 </button>
 
@@ -186,19 +188,19 @@ Use `ScPaginationFirst` and `ScPaginationLast` for quick navigation to the first
 <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="10" [totalItems]="100" (pageChange)="currentPage.set($event)">
   <ul sc-pagination-list>
     <li sc-pagination-item>
-      <button sc-pagination-first [disabled]="currentPage() === 1">First</button>
+      <button sc-pagination-first>First</button>
     </li>
     <li sc-pagination-item>
-      <button sc-pagination-previous [disabled]="currentPage() === 1">Previous</button>
+      <button sc-pagination-previous>Previous</button>
     </li>
 
     <!-- Page numbers here -->
 
     <li sc-pagination-item>
-      <button sc-pagination-next [disabled]="currentPage() === pagination.totalPages()">Next</button>
+      <button sc-pagination-next>Next</button>
     </li>
     <li sc-pagination-item>
-      <button sc-pagination-last [disabled]="currentPage() === pagination.totalPages()">Last</button>
+      <button sc-pagination-last>Last</button>
     </li>
   </ul>
 </nav>
