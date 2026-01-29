@@ -29,7 +29,6 @@ import { cn } from '../../utils';
     '[class]': 'class()',
     'animate.enter': 'animate-accordion-down',
     'animate.leave': 'animate-accordion-up',
-    '[style.interpolate-size]': '"allow-keywords"',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
