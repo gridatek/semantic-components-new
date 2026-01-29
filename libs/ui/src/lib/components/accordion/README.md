@@ -2,6 +2,12 @@
 
 A vertically stacked set of interactive headings that reveal or hide associated content. Built on top of `@angular/aria/accordion` for robust accessibility support.
 
+## Import
+
+```typescript
+import { ScAccordion, ScAccordionItem, ScAccordionTrigger, ScAccordionPanel, ScAccordionContent } from '@semantic-components/ui';
+```
+
 ## Architecture
 
 ```
@@ -18,7 +24,10 @@ ScAccordion (Root - uses AccordionGroup)
     │     │     └── disabled: boolean
     │     │
     │     └── ScAccordionPanel (uses AccordionPanel)
-    │           └── panelId: string (links to trigger)
+    │           │
+    │           ├── panelId: string (links to trigger)
+    │           │
+    │           └── ScAccordionContent (padding wrapper)
     │
     ├── ScAccordionItem
     └── ...
@@ -32,6 +41,7 @@ ScAccordion (Root - uses AccordionGroup)
 | `ScAccordionItem`    | `div[sc-accordion-item]`       | Styling wrapper for accordion item             |
 | `ScAccordionTrigger` | `button[sc-accordion-trigger]` | Button to toggle item using `AccordionTrigger` |
 | `ScAccordionPanel`   | `div[sc-accordion-panel]`      | Collapsible content using `AccordionPanel`     |
+| `ScAccordionContent` | `div[sc-accordion-content]`    | Content wrapper with default padding           |
 
 ## Inputs
 
@@ -57,6 +67,14 @@ ScAccordion (Root - uses AccordionGroup)
 | --------- | -------- | ------------ | ---------------------------------------- |
 | `panelId` | `string` | **required** | Links panel to its corresponding trigger |
 
+### ScAccordionContent
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
+The `ScAccordionContent` component provides default padding (`pb-4 pt-0`) for accordion content.
+
 ## Usage
 
 ### Basic Usage
@@ -67,11 +85,15 @@ Use `panelId` to link each trigger to its corresponding panel.
 <div sc-accordion>
   <div sc-accordion-item>
     <button sc-accordion-trigger panelId="item-1" [expanded]="true">Section 1</button>
-    <div sc-accordion-panel panelId="item-1">Content for section 1</div>
+    <div sc-accordion-panel panelId="item-1">
+      <div sc-accordion-content>Content for section 1</div>
+    </div>
   </div>
   <div sc-accordion-item>
     <button sc-accordion-trigger panelId="item-2">Section 2</button>
-    <div sc-accordion-panel panelId="item-2">Content for section 2</div>
+    <div sc-accordion-panel panelId="item-2">
+      <div sc-accordion-content>Content for section 2</div>
+    </div>
   </div>
 </div>
 ```
@@ -84,15 +106,21 @@ Allow multiple items to be open simultaneously.
 <div sc-accordion [multiExpandable]="true">
   <div sc-accordion-item>
     <button sc-accordion-trigger panelId="item-1" [expanded]="true">Section 1</button>
-    <div sc-accordion-panel panelId="item-1">Content 1</div>
+    <div sc-accordion-panel panelId="item-1">
+      <div sc-accordion-content>Content 1</div>
+    </div>
   </div>
   <div sc-accordion-item>
     <button sc-accordion-trigger panelId="item-2" [expanded]="true">Section 2</button>
-    <div sc-accordion-panel panelId="item-2">Content 2</div>
+    <div sc-accordion-panel panelId="item-2">
+      <div sc-accordion-content>Content 2</div>
+    </div>
   </div>
   <div sc-accordion-item>
     <button sc-accordion-trigger panelId="item-3">Section 3</button>
-    <div sc-accordion-panel panelId="item-3">Content 3</div>
+    <div sc-accordion-panel panelId="item-3">
+      <div sc-accordion-content>Content 3</div>
+    </div>
   </div>
 </div>
 ```
@@ -112,7 +140,9 @@ Disable individual triggers.
 ```html
 <div sc-accordion-item>
   <button sc-accordion-trigger panelId="disabled" [disabled]="true">Disabled Section</button>
-  <div sc-accordion-panel panelId="disabled">Won't be shown</div>
+  <div sc-accordion-panel panelId="disabled">
+    <div sc-accordion-content>Won't be shown</div>
+  </div>
 </div>
 ```
 
@@ -142,7 +172,7 @@ The components use Tailwind CSS with shadcn/ui design tokens:
 - Items have `border-b` for visual separation
 - Triggers show underline on hover
 - Chevron rotates 180° when open
-- Content has padding at bottom (`pb-4`)
+- `ScAccordionContent` provides default padding (`pb-4 pt-0`)
 
 ## Animation
 

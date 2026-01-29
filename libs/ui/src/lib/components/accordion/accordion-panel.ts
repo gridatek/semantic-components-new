@@ -20,9 +20,7 @@ import { cn } from '../../utils';
   ],
   template: `
     <ng-template ngAccordionContent>
-      <div [class]="innerClass()">
-        <ng-content />
-      </div>
+      <ng-content />
     </ng-template>
   `,
   host: {
@@ -46,6 +44,4 @@ export class ScAccordionPanel {
       this.classInput(),
     ),
   );
-
-  protected readonly innerClass = computed(() => cn('pb-4 pt-0'));
 }

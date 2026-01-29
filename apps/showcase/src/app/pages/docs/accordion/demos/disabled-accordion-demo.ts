@@ -4,11 +4,18 @@ import {
   ScAccordionPanel,
   ScAccordionItem,
   ScAccordionTrigger,
+  ScAccordionContent,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-accordion-demo',
-  imports: [ScAccordion, ScAccordionPanel, ScAccordionItem, ScAccordionTrigger],
+  imports: [
+    ScAccordion,
+    ScAccordionPanel,
+    ScAccordionItem,
+    ScAccordionTrigger,
+    ScAccordionContent,
+  ],
   template: `
     <div sc-accordion class="w-full max-w-md">
       <div sc-accordion-item>
@@ -16,7 +23,7 @@ import {
           Enabled Item
         </button>
         <div sc-accordion-panel panelId="enabled-1">
-          This item can be toggled normally.
+          <div sc-accordion-content>This item can be toggled normally.</div>
         </div>
       </div>
       <div sc-accordion-item>
@@ -24,7 +31,7 @@ import {
           Disabled Item
         </button>
         <div sc-accordion-panel panelId="disabled-1">
-          This content won't be shown.
+          <div sc-accordion-content>This content won't be shown.</div>
         </div>
       </div>
       <div sc-accordion-item>
@@ -32,7 +39,7 @@ import {
           Another Enabled Item
         </button>
         <div sc-accordion-panel panelId="enabled-2">
-          This item also works normally.
+          <div sc-accordion-content>This item also works normally.</div>
         </div>
       </div>
     </div>
