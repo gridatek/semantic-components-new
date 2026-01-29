@@ -29,8 +29,6 @@ import { cn } from '../../utils';
   host: {
     'data-slot': 'accordion-panel',
     '[attr.data-state]': 'panel.visible() ? "open" : "closed"',
-    '[attr.data-open]': 'panel.visible() ? "" : null',
-    '[attr.data-closed]': '!panel.visible() ? "" : null',
     '[class]': 'class()',
     'animate.enter': 'animate-accordion-down',
     'animate.leave': 'animate-accordion-up',
@@ -50,14 +48,10 @@ export class ScAccordionPanel {
 
   constructor() {
     afterNextRender(() => {
-      // Set CSS variable for accordion animations
       effect(() => {
-        this.panel.visible(); // Track changes
-        const element = this.elementRef.nativeElement;
-
-        // Update height variable before animation starts
-        const height = element.scrollHeight;
-        element.style.setProperty(
+        this.panel.visible();
+        const height = this.elementRef.nativeElement.scrollHeight;
+        this.elementRef.nativeElement.style.setProperty(
           '--radix-accordion-content-height',
           `${height}px`,
         );
