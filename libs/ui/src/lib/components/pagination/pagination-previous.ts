@@ -58,13 +58,13 @@ export class ScPaginationPrevious {
   );
 
   onClick(event: Event): void {
+    event.preventDefault();
+
     if (this.disabled()) {
-      event.preventDefault();
       return;
     }
 
     if (this.pagination) {
-      event.preventDefault();
       const previousPage = this.pagination.currentPage() - 1;
       this.pagination.goToPage(previousPage);
     }

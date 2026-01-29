@@ -58,13 +58,13 @@ export class ScPaginationFirst {
   );
 
   onClick(event: Event): void {
+    event.preventDefault();
+
     if (this.disabled()) {
-      event.preventDefault();
       return;
     }
 
     if (this.pagination) {
-      event.preventDefault();
       this.pagination.goToPage(1);
     }
   }

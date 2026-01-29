@@ -58,13 +58,13 @@ export class ScPaginationLast {
   );
 
   onClick(event: Event): void {
+    event.preventDefault();
+
     if (this.disabled()) {
-      event.preventDefault();
       return;
     }
 
     if (this.pagination) {
-      event.preventDefault();
       const lastPage = this.pagination.totalPages();
       this.pagination.goToPage(lastPage);
     }

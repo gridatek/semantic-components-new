@@ -60,14 +60,14 @@ export class ScPaginationLink {
   });
 
   onClick(event: Event): void {
+    event.preventDefault();
+
     if (this.disabled()) {
-      event.preventDefault();
       return;
     }
 
     const pageNum = this.page();
     if (pageNum !== undefined && this.pagination) {
-      event.preventDefault();
       this.pagination.goToPage(pageNum);
     }
   }
