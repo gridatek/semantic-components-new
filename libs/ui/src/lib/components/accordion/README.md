@@ -61,6 +61,8 @@ ScAccordion (Root - uses AccordionGroup)
 | `expanded` | `boolean` | `false`      | Whether the item is expanded             |
 | `disabled` | `boolean` | `false`      | Whether the trigger is disabled          |
 
+The trigger includes built-in chevron icons that automatically rotate based on the expanded state.
+
 ### ScAccordionPanel
 
 | Input     | Type     | Default      | Description                              |
@@ -79,20 +81,26 @@ The `ScAccordionContent` component provides default padding (`pb-4 pt-0`) for ac
 
 ### Basic Usage
 
-Use `panelId` to link each trigger to its corresponding panel.
+Use `panelId` to link each trigger to its corresponding panel. By default, only one panel can be open at a time - opening a new panel automatically closes the previously open one.
 
 ```html
 <div sc-accordion>
   <div sc-accordion-item>
-    <button sc-accordion-trigger panelId="item-1" [expanded]="true">Section 1</button>
+    <button sc-accordion-trigger panelId="item-1">Is it accessible?</button>
     <div sc-accordion-panel panelId="item-1">
-      <div sc-accordion-content>Content for section 1</div>
+      <div sc-accordion-content>Yes. It adheres to the WAI-ARIA design pattern.</div>
     </div>
   </div>
   <div sc-accordion-item>
-    <button sc-accordion-trigger panelId="item-2">Section 2</button>
+    <button sc-accordion-trigger panelId="item-2">Is it styled?</button>
     <div sc-accordion-panel panelId="item-2">
-      <div sc-accordion-content>Content for section 2</div>
+      <div sc-accordion-content>Yes. It comes with default styles that match other components.</div>
+    </div>
+  </div>
+  <div sc-accordion-item>
+    <button sc-accordion-trigger panelId="item-3">Is it animated?</button>
+    <div sc-accordion-panel panelId="item-3">
+      <div sc-accordion-content>Yes. It's animated by default with smooth transitions.</div>
     </div>
   </div>
 </div>
@@ -154,6 +162,16 @@ Disable the entire accordion.
 <div sc-accordion [disabled]="true">...</div>
 ```
 
+## Features
+
+- **Single or Multiple Expansion**: Control whether one or multiple panels can be open simultaneously
+- **Smooth Animations**: Uses Angular's `animate.enter`/`animate.leave` with `tw-animate-css`
+- **Built-in Icons**: Chevron icons automatically included and animated
+- **Keyboard Navigation**: Full keyboard support with arrow keys
+- **Fully Accessible**: Built on `@angular/aria/accordion` with proper ARIA attributes
+- **Customizable**: All components accept custom classes
+- **Type-Safe**: Full TypeScript support with Angular signals
+
 ## Accessibility
 
 Built on `@angular/aria/accordion`, providing:
@@ -169,17 +187,30 @@ Built on `@angular/aria/accordion`, providing:
 
 The components use Tailwind CSS with shadcn/ui design tokens:
 
-- Items have `border-b` for visual separation
-- Triggers show underline on hover
-- Chevron rotates 180° when open
+- Items have `border-b` for visual separation (via `ScAccordionItem`)
+- Triggers show underline on hover (removed when focused for better UX)
+- Built-in chevron icons automatically switch between down/up states
 - `ScAccordionContent` provides default padding (`pb-4 pt-0`)
+- Focus states use a ring style for keyboard navigation
+- All components support custom classes via the `class` input
 
 ## Animation
 
-The accordion uses animations from `tw-animate-css`. Make sure you have it imported in your CSS:
+The accordion uses Angular's built-in `animate.enter` and `animate.leave` API combined with animations from `tw-animate-css`.
+
+### Setup
+
+Make sure you have `tw-animate-css` imported in your CSS:
 
 ```css
 @import 'tw-animate-css';
 ```
 
-This provides the `animate-accordion-down` and `animate-accordion-up` animations used for smooth expand/collapse transitions.
+### How It Works
+
+- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter`
+- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave`
+- **Height Calculation**: The component automatically sets the `--radix-accordion-content-height` CSS variable to the actual content height, ensuring smooth animations
+- **Timing**: Angular handles all animation timing and cleanup automatically
+
+The animations provide smooth height transitions from `0` to the content height when opening, and back to `0` when closing.
