@@ -1,7 +1,7 @@
 import { computed, Directive, input, output } from '@angular/core';
 import { cn } from '../../utils';
 
-export type ScPaginationPageData =
+export type ScPaginationPage =
   | { type: 'page'; value: number }
   | { type: 'ellipsis'; value: string };
 
@@ -82,7 +82,7 @@ export class ScPagination {
     totalPages: number,
     siblingCount: number,
     showEdges: boolean,
-  ): ScPaginationPageData[] {
+  ): ScPaginationPage[] {
     // If total pages is less than or equal to 7, show all pages
     if (totalPages <= 7) {
       return Array.from({ length: totalPages }, (_, i) => ({
@@ -92,7 +92,7 @@ export class ScPagination {
     }
 
     // For more than 7 pages, always return exactly 7 items
-    const pages: ScPaginationPageData[] = [];
+    const pages: ScPaginationPage[] = [];
 
     // Pattern: [1, ..., current-1, current, current+1, ..., last]
     // Total: 7 items

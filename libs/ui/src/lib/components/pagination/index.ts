@@ -8,4 +8,4 @@ export * from './pagination-first';
 export * from './pagination-last';
 export * from './pagination-ellipsis';
 export * from './pagination-page-size';
-export type { ScPaginationPageData } from './pagination';
+export type { ScPaginationPage } from './pagination';

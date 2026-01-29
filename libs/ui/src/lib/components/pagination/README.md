@@ -151,7 +151,7 @@ export class MyComponent {
 - Intelligently places ellipses when there are many pages
 - Exposes `pagination.pages()` array for iteration
 - Exposes `pagination.totalPages()` for total page count
-- Each item in `pages()` has type `ScPaginationPageData`: `{ type: 'page' | 'ellipsis', value: number | string }`
+- Each item in `pages()` has type `ScPaginationPage`: `{ type: 'page' | 'ellipsis', value: number | string }`
 
 ### Configuration Options
 
