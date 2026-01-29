@@ -27,8 +27,6 @@ import { cn } from '../../utils';
     'data-slot': 'accordion-panel',
     '[attr.data-state]': 'panel.visible() ? "open" : "closed"',
     '[class]': 'class()',
-    'animate.enter': 'animate-accordion-down',
-    'animate.leave': 'animate-accordion-up',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -15,6 +15,8 @@ import { cn } from '../../utils';
   host: {
     'data-slot': 'accordion-content',
     '[class]': 'class()',
+    'animate.enter': 'animate-accordion-down',
+    'animate.leave': 'animate-accordion-up',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
