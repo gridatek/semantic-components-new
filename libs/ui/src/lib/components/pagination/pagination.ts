@@ -47,15 +47,33 @@ export class ScPagination {
   readonly change = output<ScPaginationChange>();
 
   constructor() {
+    console.log('ScPagination constructor called');
+
     // Sync inputs to internal state
     effect(() => {
       const inputPage = this.currentPageInput();
-      untracked(() => this.currentPage.set(inputPage));
+      console.log('Effect: currentPageInput changed to:', inputPage);
+      if (inputPage !== undefined) {
+        untracked(() => {
+          console.log('Setting currentPage signal to:', inputPage);
+          this.currentPage.set(inputPage);
+        });
+      } else {
+        console.log('Skipping undefined currentPage input');
+      }
     });
 
     effect(() => {
       const inputSize = this.pageSizeInput();
-      untracked(() => this.pageSize.set(inputSize));
+      console.log('Effect: pageSizeInput changed to:', inputSize);
+      if (inputSize !== undefined) {
+        untracked(() => {
+          console.log('Setting pageSize signal to:', inputSize);
+          this.pageSize.set(inputSize);
+        });
+      } else {
+        console.log('Skipping undefined pageSize input');
+      }
     });
   }
 
@@ -67,6 +85,11 @@ export class ScPagination {
   readonly totalPages = computed(() => {
     const total = this.totalItems();
     const size = this.pageSize();
+    console.log('totalPages computed:', {
+      total,
+      size,
+      result: Math.ceil(total / size),
+    });
     return Math.ceil(total / size);
   });
 
@@ -86,8 +109,12 @@ export class ScPagination {
    */
   goToPage(page: number): void {
     const total = this.totalPages();
-    if (page >= 1 && page <= total && page !== this.currentPage()) {
+    const current = this.currentPage();
+    console.log('goToPage called:', { page, total, current });
+    if (page >= 1 && page <= total && page !== current) {
+      console.log('Setting currentPage to:', page);
       this.currentPage.set(page);
+      console.log('After set - currentPage:', this.currentPage());
       this.change.emit({ page, pageSize: this.pageSize() });
     }
   }
@@ -97,10 +124,23 @@ export class ScPagination {
    * @param newPageSize The new page size
    */
   changePageSize(newPageSize: number): void {
+    console.log('changePageSize called:', {
+      newPageSize,
+      currentPageSize: this.pageSize(),
+      willUpdate: newPageSize > 0 && newPageSize !== this.pageSize(),
+    });
+
     if (newPageSize > 0 && newPageSize !== this.pageSize()) {
+      console.log('Updating pageSize from', this.pageSize(), 'to', newPageSize);
       // Reset to page 1 when page size changes
       this.currentPage.set(1);
       this.pageSize.set(newPageSize);
+      console.log(
+        'After set - currentPage:',
+        this.currentPage(),
+        'pageSize:',
+        this.pageSize(),
+      );
       this.change.emit({ page: 1, pageSize: newPageSize });
     }
   }
