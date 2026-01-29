@@ -21,6 +21,7 @@ export class ButtonsPaginationDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPagination,
+  ScPaginationChange,
   ScPaginationEllipsis,
   ScPaginationList,
   ScPaginationItem,
@@ -47,7 +48,7 @@ import {
       [currentPage]="currentPage()"
       [totalItems]="30"
       [pageSize]="10"
-      (pageChange)="currentPage.set($event)"
+      (change)="onPaginationChange($event)"
     >
       <ul sc-pagination-list>
         <li sc-pagination-item>
@@ -121,5 +122,9 @@ import {
 })
 export class ButtonsPaginationDemo {
   readonly currentPage = signal(1);
+
+  onPaginationChange(event: ScPaginationChange): void {
+    this.currentPage.set(event.page);
+  }
 }`;
 }

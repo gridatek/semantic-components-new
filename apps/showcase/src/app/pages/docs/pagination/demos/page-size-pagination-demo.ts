@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPagination,
+  ScPaginationChange,
   ScPaginationEllipsis,
   ScPaginationItem,
   ScPaginationLink,
@@ -41,8 +42,7 @@ import {
         [siblingCount]="1"
         [showEdges]="true"
         [pageSizeOptions]="[10, 25, 50, 100]"
-        (pageChange)="currentPage.set($event)"
-        (pageSizeChange)="pageSize.set($event)"
+        (change)="onPaginationChange($event)"
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
@@ -97,4 +97,9 @@ export class PageSizePaginationDemo {
   readonly currentPage = signal(1);
   readonly pageSize = signal(10);
   readonly totalItems = signal(250);
+
+  onPaginationChange(event: ScPaginationChange): void {
+    this.currentPage.set(event.page);
+    this.pageSize.set(event.pageSize);
+  }
 }

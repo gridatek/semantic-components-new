@@ -21,6 +21,7 @@ export class FirstLastPaginationDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPagination,
+  ScPaginationChange,
   ScPaginationEllipsis,
   ScPaginationFirst,
   ScPaginationItem,
@@ -75,7 +76,7 @@ import {
         [totalItems]="totalItems()"
         [siblingCount]="1"
         [showEdges]="true"
-        (pageChange)="currentPage.set($event)"
+        (change)="onPaginationChange($event)"
       >
         <ul sc-pagination-list>
           <li sc-pagination-item>
@@ -128,5 +129,10 @@ export class FirstLastPaginationDemo {
   readonly currentPage = signal(1);
   readonly pageSize = signal(10);
   readonly totalItems = signal(100);
+
+  onPaginationChange(event: ScPaginationChange): void {
+    this.currentPage.set(event.page);
+    this.pageSize.set(event.pageSize);
+  }
 }`;
 }

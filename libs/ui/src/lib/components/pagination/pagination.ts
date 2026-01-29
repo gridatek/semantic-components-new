@@ -5,6 +5,11 @@ export type ScPaginationPageData =
   | { type: 'page'; value: number }
   | { type: 'ellipsis'; value: string };
 
+export interface ScPaginationChange {
+  page: number;
+  pageSize: number;
+}
+
 @Directive({
   selector: 'nav[sc-pagination]',
   exportAs: 'scPagination',
@@ -27,8 +32,7 @@ export class ScPagination {
   readonly pageSizeOptions = input<number[]>([10, 25, 50, 100]); // Available page size options
 
   // Output events
-  readonly pageChange = output<number>();
-  readonly pageSizeChange = output<number>();
+  readonly change = output<ScPaginationChange>();
 
   protected readonly class = computed(() =>
     cn('mx-auto flex w-full justify-center', this.classInput()),
@@ -58,7 +62,7 @@ export class ScPagination {
   goToPage(page: number): void {
     const total = this.totalPages();
     if (page >= 1 && page <= total && page !== this.currentPage()) {
-      this.pageChange.emit(page);
+      this.change.emit({ page, pageSize: this.pageSize() });
     }
   }
 
@@ -68,11 +72,9 @@ export class ScPagination {
    */
   changePageSize(newPageSize: number): void {
     if (newPageSize > 0 && newPageSize !== this.pageSize()) {
-      this.pageSizeChange.emit(newPageSize);
       // Reset to page 1 when page size changes
-      if (this.currentPage() !== 1) {
-        this.pageChange.emit(1);
-      }
+      const newPage = this.currentPage() !== 1 ? 1 : this.currentPage();
+      this.change.emit({ page: newPage, pageSize: newPageSize });
     }
   }
 
