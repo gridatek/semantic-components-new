@@ -117,5 +117,10 @@ export class PageSizePaginationDemo {
   readonly currentPage = signal(1);
   readonly pageSize = signal(10);
   readonly totalItems = signal(250);
+
+  onPaginationChange(event: ScPaginationChange): void {
+    this.currentPage.set(event.page);
+    this.pageSize.set(event.pageSize);
+  }
 }`;
 }
