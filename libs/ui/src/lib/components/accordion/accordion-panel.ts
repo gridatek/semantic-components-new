@@ -7,6 +7,7 @@ import {
   effect,
   ElementRef,
   inject,
+  Injector,
   input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -39,6 +40,7 @@ import { cn } from '../../utils';
 export class ScAccordionPanel {
   protected readonly panel = inject(AccordionPanel);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly injector = inject(Injector);
 
   readonly classInput = input<string>('', { alias: 'class' });
 
@@ -48,14 +50,17 @@ export class ScAccordionPanel {
 
   constructor() {
     afterNextRender(() => {
-      effect(() => {
-        this.panel.visible();
-        const height = this.elementRef.nativeElement.scrollHeight;
-        this.elementRef.nativeElement.style.setProperty(
-          '--radix-accordion-content-height',
-          `${height}px`,
-        );
-      });
+      effect(
+        () => {
+          this.panel.visible();
+          const height = this.elementRef.nativeElement.scrollHeight;
+          this.elementRef.nativeElement.style.setProperty(
+            '--radix-accordion-content-height',
+            `${height}px`,
+          );
+        },
+        { injector: this.injector },
+      );
     });
   }
 }
