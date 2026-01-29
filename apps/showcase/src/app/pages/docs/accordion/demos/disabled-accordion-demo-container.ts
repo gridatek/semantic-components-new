@@ -6,7 +6,11 @@ import { DisabledAccordionDemo } from './disabled-accordion-demo';
   selector: 'app-disabled-accordion-demo-container',
   imports: [DemoContainer, DisabledAccordionDemo],
   template: `
-    <app-demo-container title="Disabled" [code]="code">
+    <app-demo-container
+      title="Disabled"
+      [code]="code"
+      demoUrl="/docs/accordion/demos/disabled"
+    >
       <app-disabled-accordion-demo />
     </app-demo-container>
   `,
@@ -20,6 +24,7 @@ import {
   ScAccordionPanel,
   ScAccordionItem,
   ScAccordionTrigger,
+  ScAccordionContent,
 } from '@semantic-components/ui';
 
 @Component({
@@ -29,25 +34,33 @@ import {
     ScAccordionPanel,
     ScAccordionItem,
     ScAccordionTrigger,
+    ScAccordionContent,
   ],
   template: \`
-    <div
-      sc-accordion
-      [value]="'enabled-1'"
-      [collapsible]="true"
-      class="w-full max-w-md"
-    >
-      <div sc-accordion-item value="enabled-1">
-        <button sc-accordion-trigger>Enabled Item</button>
-        <div sc-accordion-panel>This item can be toggled normally.</div>
+    <div sc-accordion [multiExpandable]="false" class="w-full max-w-md">
+      <div sc-accordion-item>
+        <button sc-accordion-trigger panelId="enabled-1" [expanded]="true">
+          Enabled Item
+        </button>
+        <div sc-accordion-panel panelId="enabled-1">
+          <div sc-accordion-content>This item can be toggled normally.</div>
+        </div>
       </div>
-      <div sc-accordion-item value="disabled-1" [disabled]="true">
-        <button sc-accordion-trigger>Disabled Item</button>
-        <div sc-accordion-panel>This content won't be shown.</div>
+      <div sc-accordion-item>
+        <button sc-accordion-trigger panelId="disabled-1" [disabled]="true">
+          Disabled Item
+        </button>
+        <div sc-accordion-panel panelId="disabled-1">
+          <div sc-accordion-content>This content won't be shown.</div>
+        </div>
       </div>
-      <div sc-accordion-item value="enabled-2">
-        <button sc-accordion-trigger>Another Enabled Item</button>
-        <div sc-accordion-panel>This item also works normally.</div>
+      <div sc-accordion-item>
+        <button sc-accordion-trigger panelId="enabled-2">
+          Another Enabled Item
+        </button>
+        <div sc-accordion-panel panelId="enabled-2">
+          <div sc-accordion-content>This item also works normally.</div>
+        </div>
       </div>
     </div>
   \`,
