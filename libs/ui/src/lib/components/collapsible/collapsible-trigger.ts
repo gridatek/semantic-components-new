@@ -11,6 +11,7 @@ import { cn } from '../../utils';
 
 @Component({
   selector: 'button[sc-collapsible-trigger]',
+  exportAs: 'scCollapsibleTrigger',
   hostDirectives: [
     {
       directive: AccordionTrigger,
@@ -30,7 +31,12 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCollapsibleTrigger {
-  protected readonly trigger = inject(AccordionTrigger);
+  readonly trigger = inject(AccordionTrigger);
+
+  /**
+   * Whether the collapsible is expanded
+   */
+  readonly expanded = this.trigger.expanded;
 
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -5,6 +5,7 @@ import {
   ScCollapsiblePanel,
   ScCollapsibleTrigger,
 } from '@semantic-components/ui';
+import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-disabled-collapsible-demo',
@@ -13,6 +14,7 @@ import {
     ScCollapsibleContent,
     ScCollapsiblePanel,
     ScCollapsibleTrigger,
+    SiChevronDownIcon,
   ],
   template: `
     <div sc-collapsible [disabled]="true" class="w-[350px] space-y-2">
@@ -25,21 +27,7 @@ import {
           panelId="collapsible-disabled"
           class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-input bg-background text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
         >
-          <svg
-            class="size-4"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
+          <svg si-chevron-down-icon></svg>
           <span class="sr-only">Toggle</span>
         </button>
       </div>
