@@ -1,4 +1,5 @@
 import { Component, computed, inject, input } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { ScSheetProvider } from '../sheet/sheet-provider';
 import { ScSheetPortal } from '../sheet/sheet-portal';
 import { ScSheet } from '../sheet/sheet';
@@ -7,15 +8,20 @@ import { ScxSidebarState } from './sidebar-state.service';
 
 @Component({
   selector: 'div[scx-sidebar]',
-  imports: [ScSheetProvider, ScSheetPortal, ScSheet],
+  imports: [ScSheetProvider, ScSheetPortal, ScSheet, NgTemplateOutlet],
   template: `
+    <ng-template #content>
+      <ng-content />
+    </ng-template>
+
     @if (isMobile()) {
       <div sc-sheet-provider [(open)]="state.openMobile" [side]="side()">
         <div sc-sheet-portal>
-          <div sc-sheet class="w-[--sidebar-width-mobile] p-0">
-            <div [class]="innerClass()">
-              <ng-content />
-            </div>
+          <div
+            sc-sheet
+            class="w-[var(--sidebar-width-mobile)] bg-sidebar text-sidebar-foreground p-0 [&>button]:hidden flex h-full flex-col"
+          >
+            <ng-container *ngTemplateOutlet="content" />
           </div>
         </div>
       </div>
@@ -30,7 +36,7 @@ import { ScxSidebarState } from './sidebar-state.service';
         <div [class]="gapClass()"></div>
         <div [class]="containerClass()">
           <div [class]="innerClass()">
-            <ng-content />
+            <ng-container *ngTemplateOutlet="content" />
           </div>
         </div>
       </div>
