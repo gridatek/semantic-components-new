@@ -11,10 +11,16 @@ A collection of accessible, customizable UI components for Angular applications.
 - **OnPush change detection** for optimal performance
 - **TypeScript-first** with strict type safety
 
+### Declarative & Composable
+
+- **Declarative API** using Angular templates and directives
+- **Composable architecture** with slot-based patterns for building complex UIs
+- **Headless components** that separate logic from presentation
+- **Mix and match** components to create custom experiences
+
 ### Comprehensive Component Library
 
 - **70+ production-ready components** including forms, navigation, data display, and feedback
-- **Composable patterns** with slot-based architecture for maximum flexibility
 - **Advanced components** like Data Tables, Charts, Rich Text Editor, Kanban Board, and more
 - **Form components** with validation, field composition, and accessibility built-in
 
