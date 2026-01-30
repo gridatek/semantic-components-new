@@ -8,6 +8,7 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 - `ScNavbar` - Root nav element for the main navigation bar
 - `ScNavbarBrand` - Brand/logo section with focus styles
 - `ScNavbarContent` - Desktop navigation container (hidden on mobile)
+- `ScNavbarGroup` - Groups navbar elements together (e.g., brand + navigation)
 - `ScNavbarActions` - Right-aligned action buttons container
 - `ScNavbarLink` - Individual nav link with active state support
 - `ScNavbarMobileTrigger` - Hamburger menu button with icon switching
@@ -33,16 +34,19 @@ This architecture allows the mobile menu to be positioned independently while ma
 ```html
 <div sc-navbar-provider>
   <nav sc-navbar>
-    <!-- Brand -->
-    <a sc-navbar-brand routerLink="/">
-      <span>Brand</span>
-    </a>
+    <!-- Brand + Navigation Group -->
+    <div sc-navbar-group>
+      <!-- Brand -->
+      <a sc-navbar-brand routerLink="/">
+        <span>Brand</span>
+      </a>
 
-    <!-- Desktop Navigation -->
-    <div sc-navbar-content>
-      <a sc-navbar-link routerLink="/home" [active]="true">Home</a>
-      <a sc-navbar-link routerLink="/about">About</a>
-      <a sc-navbar-link routerLink="/contact">Contact</a>
+      <!-- Desktop Navigation -->
+      <div sc-navbar-content>
+        <a sc-navbar-link routerLink="/home" [active]="true">Home</a>
+        <a sc-navbar-link routerLink="/about">About</a>
+        <a sc-navbar-link routerLink="/contact">Contact</a>
+      </div>
     </div>
 
     <!-- Actions -->
@@ -62,6 +66,8 @@ This architecture allows the mobile menu to be positioned independently while ma
   </div>
 </div>
 ```
+
+**Note:** The navbar uses `justify-between` to space its direct children. Use `sc-navbar-group` to keep related elements (like brand and navigation) together on the left side.
 
 ## Controlling Mobile Menu State
 

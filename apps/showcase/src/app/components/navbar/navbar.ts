@@ -7,6 +7,7 @@ import {
   ScNavbarActions,
   ScNavbarBrand,
   ScNavbarContent,
+  ScNavbarGroup,
   ScNavbarLink,
   ScNavbarMobilePortal,
   ScNavbarMobileMenu,
@@ -30,6 +31,7 @@ import {
     ScNavbarProvider,
     ScNavbarBrand,
     ScNavbarContent,
+    ScNavbarGroup,
     ScNavbarActions,
     ScNavbarLink,
     ScNavbarMobilePortal,
@@ -48,7 +50,7 @@ import {
   template: `
     <div sc-navbar-provider>
       <nav sc-navbar class="sticky top-0 z-50">
-        <div class="flex items-center gap-6">
+        <div sc-navbar-group>
           <!-- Brand -->
           <a sc-navbar-brand href="#">
             <svg
