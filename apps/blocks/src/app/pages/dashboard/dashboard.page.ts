@@ -19,7 +19,7 @@ import {
   ScxSidebarRail,
   ScxSidebarSeparator,
 } from '@semantic-components/ui';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -43,6 +43,7 @@ import { RouterLink } from '@angular/router';
     ScxSidebarRail,
     ScxSidebarSeparator,
     RouterLink,
+    RouterLinkActive,
   ],
   template: `
     <div scx-sidebar-provider class="min-h-screen">
@@ -83,7 +84,13 @@ import { RouterLink } from '@angular/router';
             <div scx-sidebar-group-content>
               <ul scx-sidebar-menu>
                 <li scx-sidebar-menu-item>
-                  <a scx-sidebar-menu-button [isActive]="true">
+                  <a
+                    scx-sidebar-menu-button
+                    routerLink="/dashboard"
+                    routerLinkActive
+                    #dashboardRla="routerLinkActive"
+                    [isActive]="dashboardRla.isActive"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -104,7 +111,13 @@ import { RouterLink } from '@angular/router';
                   </a>
                 </li>
                 <li scx-sidebar-menu-item>
-                  <a scx-sidebar-menu-button>
+                  <a
+                    scx-sidebar-menu-button
+                    routerLink="/users"
+                    routerLinkActive
+                    #usersRla="routerLinkActive"
+                    [isActive]="usersRla.isActive"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -125,7 +138,13 @@ import { RouterLink } from '@angular/router';
                   </a>
                 </li>
                 <li scx-sidebar-menu-item>
-                  <a scx-sidebar-menu-button>
+                  <a
+                    scx-sidebar-menu-button
+                    routerLink="/settings"
+                    routerLinkActive
+                    #settingsRla="routerLinkActive"
+                    [isActive]="settingsRla.isActive"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -177,24 +196,48 @@ import { RouterLink } from '@angular/router';
                   </a>
                   <ul scx-sidebar-menu-sub>
                     <li scx-sidebar-menu-sub-item>
-                      <a scx-sidebar-menu-sub-button>
+                      <a
+                        scx-sidebar-menu-sub-button
+                        routerLink="/projects/overview"
+                        routerLinkActive
+                        #overviewRla="routerLinkActive"
+                        [isActive]="overviewRla.isActive"
+                      >
                         <span>Overview</span>
                       </a>
                     </li>
                     <li scx-sidebar-menu-sub-item>
-                      <a scx-sidebar-menu-sub-button>
+                      <a
+                        scx-sidebar-menu-sub-button
+                        routerLink="/projects/components"
+                        routerLinkActive
+                        #componentsRla="routerLinkActive"
+                        [isActive]="componentsRla.isActive"
+                      >
                         <span>Components</span>
                       </a>
                     </li>
                     <li scx-sidebar-menu-sub-item>
-                      <a scx-sidebar-menu-sub-button [isActive]="true">
+                      <a
+                        scx-sidebar-menu-sub-button
+                        routerLink="/projects/templates"
+                        routerLinkActive
+                        #templatesRla="routerLinkActive"
+                        [isActive]="templatesRla.isActive"
+                      >
                         <span>Templates</span>
                       </a>
                     </li>
                   </ul>
                 </li>
                 <li scx-sidebar-menu-item>
-                  <a scx-sidebar-menu-button>
+                  <a
+                    scx-sidebar-menu-button
+                    routerLink="/projects/sales"
+                    routerLinkActive
+                    #salesRla="routerLinkActive"
+                    [isActive]="salesRla.isActive"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -215,7 +258,13 @@ import { RouterLink } from '@angular/router';
                   </a>
                 </li>
                 <li scx-sidebar-menu-item>
-                  <a scx-sidebar-menu-button>
+                  <a
+                    scx-sidebar-menu-button
+                    routerLink="/projects/travel"
+                    routerLinkActive
+                    #travelRla="routerLinkActive"
+                    [isActive]="travelRla.isActive"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
