@@ -1,5 +1,5 @@
 import { computed, Directive, input } from '@angular/core';
-import { cn } from '../../utils';
+import { cn } from '../../../utils';
 
 @Directive({
   selector: 'a[sc-navbar-link], button[sc-navbar-link]',

@@ -5,7 +5,7 @@ import {
   input,
   ViewEncapsulation,
 } from '@angular/core';
-import { cn } from '../../utils';
+import { cn } from '../../../utils';
 
 @Component({
   selector: 'div[sc-navbar-content]',
