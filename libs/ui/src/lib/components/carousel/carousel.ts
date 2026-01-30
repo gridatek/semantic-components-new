@@ -6,9 +6,9 @@ import {
   input,
   signal,
   ViewEncapsulation,
-  AfterViewInit,
   DestroyRef,
   inject,
+  afterNextRender,
 } from '@angular/core';
 import EmblaCarousel, {
   type EmblaCarouselType,
@@ -38,7 +38,7 @@ export type ScCarouselPlugin = EmblaPluginType;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScCarousel implements AfterViewInit {
+export class ScCarousel {
   private readonly destroyRef = inject(DestroyRef);
 
   readonly classInput = input<string>('', { alias: 'class' });
@@ -55,24 +55,26 @@ export class ScCarousel implements AfterViewInit {
 
   protected readonly class = computed(() => cn('relative', this.classInput()));
 
-  ngAfterViewInit(): void {
-    const viewportEl = this.viewport()?.viewportElement();
-    if (!viewportEl) return;
+  constructor() {
+    afterNextRender(() => {
+      const viewportEl = this.viewport()?.viewportElement();
+      if (!viewportEl) return;
 
-    const opts = {
-      ...this.options(),
-      axis: (this.orientation() === 'horizontal' ? 'x' : 'y') as 'x' | 'y',
-    };
+      const opts = {
+        ...this.options(),
+        axis: (this.orientation() === 'horizontal' ? 'x' : 'y') as 'x' | 'y',
+      };
 
-    this.api = EmblaCarousel(viewportEl, opts, this.plugins());
+      this.api = EmblaCarousel(viewportEl, opts, this.plugins());
 
-    this.updateScrollState();
+      this.updateScrollState();
 
-    this.api.on('select', () => this.updateScrollState());
-    this.api.on('reInit', () => this.updateScrollState());
+      this.api.on('select', () => this.updateScrollState());
+      this.api.on('reInit', () => this.updateScrollState());
 
-    this.destroyRef.onDestroy(() => {
-      this.api?.destroy();
+      this.destroyRef.onDestroy(() => {
+        this.api?.destroy();
+      });
     });
   }
 
