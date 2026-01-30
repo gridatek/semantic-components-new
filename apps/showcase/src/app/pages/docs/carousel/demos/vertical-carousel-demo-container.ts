@@ -36,7 +36,7 @@ import {
   selector: 'app-vertical-carousel-demo',
   imports: [ScCarousel, ScCarouselViewport, ScCarouselTrack, ScCarouselItem, ScCarouselPrevious, ScCarouselNext, SiChevronLeftIcon, SiChevronRightIcon],
   template: \`
-    <div class="mx-auto w-full max-w-xs">
+    <div class="mx-auto flex h-[350px] w-full max-w-xs items-center">
       <div
         sc-carousel
         orientation="vertical"
