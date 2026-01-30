@@ -50,6 +50,41 @@ A comprehensive sidebar component system for Angular applications with collapsib
 - **Two-way Binding** - Model support for open state
 - **CSS Variables** - Customizable widths
 
+## How It Works
+
+The sidebar uses a clever layout technique to push content to the side instead of overlaying it:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ ScxSidebarProvider (flex container)                     │
+│ ┌─────────────────────┬─────────────────────────────┐  │
+│ │  ScxSidebar         │  ScxSidebarInset            │  │
+│ │ ┌─────────────────┐ │  (main content)             │  │
+│ │ │ Gap Div         │ │                             │  │
+│ │ │ • Width: 16rem  │ │  <header>                   │  │
+│ │ │ • No height     │ │    <button>Toggle</button>  │  │
+│ │ │ • Pushes content│ │  </header>                  │  │
+│ │ └─────────────────┘ │                             │  │
+│ │                     │  <main>                     │  │
+│ │ ┌─────────────────┐ │    Your content here        │  │
+│ │ │ Fixed Container │ │                             │  │
+│ │ │ (actual sidebar)│ │                             │  │
+│ │ │ • Position fixed│ │                             │  │
+│ │ │ • Overlays gap  │ │                             │  │
+│ │ └─────────────────┘ │                             │  │
+│ └─────────────────────┴─────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Key Concepts
+
+1. **Gap Div** - An invisible spacer with width but no height that participates in the flex layout, creating space for the sidebar
+2. **Fixed Container** - The actual sidebar content, positioned fixed to overlay the gap
+3. **Flex Layout** - The provider uses flexbox, making the gap and content area sit side-by-side
+4. **Responsive Collapse** - When collapsed, the gap width transitions to 0, allowing content to use full width
+
+This architecture ensures smooth transitions and proper content flow without JavaScript layout calculations.
+
 ## Basic Usage
 
 ```typescript
