@@ -50,6 +50,11 @@ export class ScxSidebarProvider implements OnInit, OnDestroy {
     // Sync model with state
     effect(() => this.state.setOpen(this.open()));
     effect(() => this.open.set(this.state.open()));
+
+    // Save to cookie when state changes
+    effect(() => {
+      this.saveToCookie(this.state.open());
+    });
   }
 
   ngOnInit(): void {
@@ -58,11 +63,6 @@ export class ScxSidebarProvider implements OnInit, OnDestroy {
     if (savedState !== null) {
       this.open.set(savedState);
     }
-
-    // Save to cookie when state changes
-    effect(() => {
-      this.saveToCookie(this.state.open());
-    });
 
     // Setup keyboard shortcut (Cmd/Ctrl + B)
     this.keydownHandler = (event: KeyboardEvent) => {
