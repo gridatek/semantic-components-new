@@ -1,27 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { COMPONENTS } from '../../data/components';
 import {
   ScButton,
   ScNavbar,
-  ScNavbarProvider,
   ScNavbarActions,
   ScNavbarBrand,
-  ScNavbarContent,
   ScNavbarGroup,
-  ScNavbarLink,
-  ScNavbarMobilePortal,
-  ScNavbarMobileMenu,
   ScNavbarMobileLink,
+  ScNavbarMobileMenu,
+  ScNavbarMobilePortal,
   ScNavbarMobileTrigger,
-  ScThemeToggle,
+  ScNavbarProvider,
   ScNavigationMenu,
   ScNavigationMenuContent,
   ScNavigationMenuItem,
   ScNavigationMenuLink,
   ScNavigationMenuList,
   ScNavigationMenuTrigger,
+  ScThemeToggle,
 } from '@semantic-components/ui';
+import { COMPONENTS } from '../../data/components';
 
 @Component({
   selector: 'app-navbar',
@@ -31,10 +29,8 @@ import {
     ScNavbar,
     ScNavbarProvider,
     ScNavbarBrand,
-    ScNavbarContent,
     ScNavbarGroup,
     ScNavbarActions,
-    ScNavbarLink,
     ScNavbarMobilePortal,
     ScNavbarMobileMenu,
     ScNavbarMobileLink,
@@ -88,7 +84,7 @@ import {
                       <li>
                         <a
                           sc-navigation-menu-link
-                          [routerLink]="'/docs/' + component.path"
+                          [routerLink]="'/docs/components/' + component.path"
                         >
                           <div class="text-sm font-medium leading-none">
                             {{ component.name }}
@@ -126,9 +122,9 @@ import {
 
         <!-- Actions -->
         <div sc-navbar-actions>
+          <button sc-button class="hidden md:inline-flex">Get Started</button>
           <button sc-theme-toggle></button>
           <button sc-navbar-mobile-trigger></button>
-          <button sc-button class="hidden md:inline-flex">Get Started</button>
         </div>
       </nav>
 
