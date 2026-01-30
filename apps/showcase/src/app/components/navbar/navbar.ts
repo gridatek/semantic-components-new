@@ -114,7 +114,9 @@ import { COMPONENTS } from '../../data/components';
               </li>
 
               <li sc-navigation-menu-item>
-                <a sc-navigation-menu-link routerLink="/docs">Docs</a>
+                <a sc-navigation-menu-link routerLink="/docs/components">
+                  Docs
+                </a>
               </li>
             </ul>
           </nav>

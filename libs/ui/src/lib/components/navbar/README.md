@@ -7,10 +7,8 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 - `ScNavbarProvider` - Root provider that manages state and links navbar with mobile menu
 - `ScNavbar` - Root nav element for the main navigation bar
 - `ScNavbarBrand` - Brand/logo section with focus styles
-- `ScNavbarContent` - Desktop navigation container (hidden on mobile)
 - `ScNavbarGroup` - Groups navbar elements together (e.g., brand + navigation)
 - `ScNavbarActions` - Right-aligned action buttons container
-- `ScNavbarLink` - Individual nav link with active state support
 - `ScNavbarMobileTrigger` - Hamburger menu button with icon switching
 - `ScNavbarMobilePortal` - Mobile menu portal using CDK overlay (handles rendering)
 - `ScNavbarMobileMenu` - Mobile menu container with styling (customizable)
@@ -31,41 +29,7 @@ This architecture allows the mobile menu to be positioned independently while ma
 
 ### Basic Navbar
 
-```html
-<div sc-navbar-provider>
-  <nav sc-navbar>
-    <!-- Brand + Navigation Group -->
-    <div sc-navbar-group>
-      <!-- Brand -->
-      <a sc-navbar-brand routerLink="/">
-        <span>Brand</span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <div sc-navbar-content>
-        <a sc-navbar-link routerLink="/home" [active]="true">Home</a>
-        <a sc-navbar-link routerLink="/about">About</a>
-        <a sc-navbar-link routerLink="/contact">Contact</a>
-      </div>
-    </div>
-
-    <!-- Actions -->
-    <div sc-navbar-actions>
-      <button sc-navbar-mobile-trigger></button>
-      <button sc-button>Sign In</button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div sc-navbar-mobile-portal>
-    <div sc-navbar-mobile-menu>
-      <a sc-navbar-mobile-link routerLink="/home" [active]="true">Home</a>
-      <a sc-navbar-mobile-link routerLink="/about">About</a>
-      <a sc-navbar-mobile-link routerLink="/contact">Contact</a>
-    </div>
-  </div>
-</div>
-```
+The recommended approach is to use `ScNavigationMenu` for navigation. See the example below.
 
 **Note:** The navbar uses `justify-between` to space its direct children. Use `sc-navbar-group` to keep related elements (like brand and navigation) together on the left side.
 
@@ -142,10 +106,9 @@ export class MyComponent {
 
 ## Active State
 
-Use the `active` input to indicate the current page:
+Use the `active` input to indicate the current page for mobile links:
 
 ```html
-<a sc-navbar-link routerLink="/about" [active]="isAboutPage">About</a>
 <a sc-navbar-mobile-link routerLink="/about" [active]="isAboutPage">About</a>
 ```
 
@@ -154,7 +117,7 @@ Use the `active` input to indicate the current page:
 For automatic active state based on the current route:
 
 ```html
-<a sc-navbar-link routerLink="/about" routerLinkActive="active" #rla="routerLinkActive" [active]="rla.isActive">About</a>
+<a sc-navbar-mobile-link routerLink="/about" routerLinkActive="active" #rla="routerLinkActive" [active]="rla.isActive">About</a>
 ```
 
 ## Mobile Menu Behavior
@@ -176,9 +139,9 @@ All components accept a `class` input for custom styles:
 ```html
 <nav sc-navbar class="sticky top-0 z-50">
   <a sc-navbar-brand class="text-primary">Brand</a>
-  <div sc-navbar-content class="gap-4">
-    <!-- links -->
-  </div>
+  <nav sc-navigation-menu>
+    <!-- navigation menu items -->
+  </nav>
 </nav>
 ```
 
@@ -215,7 +178,7 @@ The mobile menu container can be styled directly using the `class` input:
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-### ScNavbarLink / ScNavbarMobileLink
+### ScNavbarMobileLink
 
 | Input    | Type      | Default | Description                          |
 | -------- | --------- | ------- | ------------------------------------ |
