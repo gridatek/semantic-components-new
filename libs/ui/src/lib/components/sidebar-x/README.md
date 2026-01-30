@@ -57,22 +57,22 @@ The sidebar uses a clever layout technique to push content to the side instead o
 ```
 ┌─────────────────────────────────────────────────────────┐
 │ ScxSidebarProvider (flex container)                     │
-│ ┌─────────────────────┬─────────────────────────────┐  │
-│ │  ScxSidebar         │  ScxSidebarInset            │  │
-│ │ ┌─────────────────┐ │  (main content)             │  │
-│ │ │ Gap Div         │ │                             │  │
-│ │ │ • Width: 16rem  │ │  <header>                   │  │
-│ │ │ • No height     │ │    <button>Toggle</button>  │  │
-│ │ │ • Pushes content│ │  </header>                  │  │
-│ │ └─────────────────┘ │                             │  │
-│ │                     │  <main>                     │  │
-│ │ ┌─────────────────┐ │    Your content here        │  │
-│ │ │ Fixed Container │ │                             │  │
-│ │ │ (actual sidebar)│ │                             │  │
-│ │ │ • Position fixed│ │                             │  │
-│ │ │ • Overlays gap  │ │                             │  │
-│ │ └─────────────────┘ │                             │  │
-│ └─────────────────────┴─────────────────────────────┘  │
+│ ┌─────────────────────┬─────────────────────────────┐   │
+│ │  ScxSidebar         │  ScxSidebarInset            │   │
+│ │ ┌─────────────────┐ │  (main content)             │   │
+│ │ │ Gap Div         │ │                             │   │
+│ │ │ • Width: 16rem  │ │  <header>                   │   │
+│ │ │ • No height     │ │    <button>Toggle</button>  │   │
+│ │ │ • Pushes content│ │  </header>                  │   │
+│ │ └─────────────────┘ │                             │   │
+│ │                     │  <main>                     │   │
+│ │ ┌─────────────────┐ │    Your content here        │   │
+│ │ │ Fixed Container │ │                             │   │
+│ │ │ (actual sidebar)│ │                             │   │
+│ │ │ • Position fixed│ │                             │   │
+│ │ │ • Overlays gap  │ │                             │   │
+│ │ └─────────────────┘ │                             │   │
+│ └─────────────────────┴─────────────────────────────┘   │
 └─────────────────────────────────────────────────────────┘
 ```
 
