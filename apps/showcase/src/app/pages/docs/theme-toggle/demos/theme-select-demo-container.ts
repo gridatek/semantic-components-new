@@ -27,8 +27,8 @@ import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
   template: \`
     <div class="space-y-4">
       <div sc-theme-field class="max-w-xs">
-        <label for="theme-select" class="text-sm font-medium">Theme</label>
-        <select sc-theme-select id="theme-select">
+        <label class="text-sm font-medium">Theme</label>
+        <select sc-theme-select>
           <option value="light">Light</option>
           <option value="dark">Dark</option>
           <option value="system">System</option>

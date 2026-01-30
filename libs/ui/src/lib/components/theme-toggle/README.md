@@ -81,8 +81,8 @@ import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
   imports: [ScThemeField, ScThemeSelect],
   template: `
     <div sc-theme-field>
-      <label for="theme-select" class="text-sm font-medium">Theme</label>
-      <select sc-theme-select id="theme-select">
+      <label class="text-sm font-medium">Theme</label>
+      <select sc-theme-select>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="system">System</option>
@@ -97,8 +97,8 @@ With translations:
 
 ```html
 <div sc-theme-field>
-  <label for="theme-select">Thème</label>
-  <select sc-theme-select id="theme-select">
+  <label>Thème</label>
+  <select sc-theme-select>
     <option value="light">Lumière</option>
     <option value="dark">Sombre</option>
     <option value="system">Système</option>
@@ -106,7 +106,7 @@ With translations:
 </div>
 ```
 
-Without ScThemeField (custom layout):
+Without ScThemeField (custom layout, manual IDs):
 
 ```html
 <div class="custom-layout">
@@ -201,7 +201,7 @@ Consumers must provide the option elements via content projection. The values mu
 
 ### ScThemeField
 
-A container component for theme select with consistent spacing.
+A container component for theme select with consistent spacing and automatic ID management.
 
 **Selector:** `div[sc-theme-field]`
 
@@ -210,6 +210,10 @@ A container component for theme select with consistent spacing.
 | Input   | Type     | Default | Description            |
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
+
+**Behavior:**
+
+Automatically generates a unique ID and applies it to the label's `for` attribute and the select's `id` attribute, ensuring proper accessibility without manual ID management.
 
 ## ScTheme
 
