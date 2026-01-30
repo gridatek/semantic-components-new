@@ -21,7 +21,7 @@ export class DefaultCarouselDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCarousel,
-  ScCarouselContent,
+  ScCarouselTrack,
   ScCarouselItem,
   ScCarouselNext,
   ScCarouselPrevious,
@@ -29,11 +29,11 @@ import {
 
 @Component({
   selector: 'app-default-carousel-demo',
-  imports: [ScCarousel, ScCarouselContent, ScCarouselItem, ScCarouselPrevious, ScCarouselNext],
+  imports: [ScCarousel, ScCarouselTrack, ScCarouselItem, ScCarouselPrevious, ScCarouselNext],
   template: \`
     <div class="mx-auto w-full max-w-xs">
       <div sc-carousel class="w-full">
-        <div sc-carousel-content>
+        <div sc-carousel-track>
           @for (index of items; track index) {
             <div sc-carousel-item>
               <div class="p-1">

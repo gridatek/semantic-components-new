@@ -21,7 +21,7 @@ export class ThirdWidthCarouselDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCarousel,
-  ScCarouselContent,
+  ScCarouselTrack,
   ScCarouselItem,
   ScCarouselNext,
   ScCarouselPrevious,
@@ -29,11 +29,11 @@ import {
 
 @Component({
   selector: 'app-third-width-carousel-demo',
-  imports: [ScCarousel, ScCarouselContent, ScCarouselItem, ScCarouselPrevious, ScCarouselNext],
+  imports: [ScCarousel, ScCarouselTrack, ScCarouselItem, ScCarouselPrevious, ScCarouselNext],
   template: \`
     <div class="mx-auto w-full max-w-lg">
       <div sc-carousel class="w-full">
-        <div sc-carousel-content>
+        <div sc-carousel-track>
           @for (index of items; track index) {
             <div sc-carousel-item class="basis-1/3">
               <div class="p-1">
