@@ -20,26 +20,51 @@ import { SizesThemeToggleDemo } from './sizes-theme-toggle-demo';
 export class SizesThemeToggleDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScThemeToggle } from '@semantic-components/ui';
+import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-sizes-theme-toggle-demo',
-  imports: [ScThemeToggle],
+  imports: [ScThemeToggle, SiSunIcon, SiMoonIcon],
   template: \`
     <div class="flex items-center gap-4">
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="sm"></button>
+        <button sc-theme-toggle variant="outline" size="sm" #toggle1="scThemeToggle">
+          @if (toggle1.isDark()) {
+            <svg si-sun-icon></svg>
+          } @else {
+            <svg si-moon-icon></svg>
+          }
+        </button>
         <span class="text-xs text-muted-foreground">Small</span>
       </div>
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="default"></button>
+        <button sc-theme-toggle variant="outline" size="default" #toggle2="scThemeToggle">
+          @if (toggle2.isDark()) {
+            <svg si-sun-icon></svg>
+          } @else {
+            <svg si-moon-icon></svg>
+          }
+        </button>
         <span class="text-xs text-muted-foreground">Default</span>
       </div>
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="lg"></button>
+        <button sc-theme-toggle variant="outline" size="lg" #toggle3="scThemeToggle">
+          @if (toggle3.isDark()) {
+            <svg si-sun-icon></svg>
+          } @else {
+            <svg si-moon-icon></svg>
+          }
+        </button>
         <span class="text-xs text-muted-foreground">Large</span>
       </div>
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="icon"></button>
+        <button sc-theme-toggle variant="outline" size="icon" #toggle4="scThemeToggle">
+          @if (toggle4.isDark()) {
+            <svg si-sun-icon></svg>
+          } @else {
+            <svg si-moon-icon></svg>
+          }
+        </button>
         <span class="text-xs text-muted-foreground">Icon</span>
       </div>
     </div>

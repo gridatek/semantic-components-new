@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScThemeToggle } from '@semantic-components/ui';
+import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-navigation-theme-toggle-demo',
-  imports: [ScThemeToggle],
+  imports: [ScThemeToggle, SiSunIcon, SiMoonIcon],
   template: `
     <div class="flex items-center justify-between rounded-lg border p-4">
       <div class="space-y-0.5">
@@ -12,7 +13,13 @@ import { ScThemeToggle } from '@semantic-components/ui';
           Customize how the app looks on your device
         </p>
       </div>
-      <button sc-theme-toggle variant="outline"></button>
+      <button sc-theme-toggle variant="outline" #toggle="scThemeToggle">
+        @if (toggle.isDark()) {
+          <svg si-sun-icon></svg>
+        } @else {
+          <svg si-moon-icon></svg>
+        }
+      </button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
