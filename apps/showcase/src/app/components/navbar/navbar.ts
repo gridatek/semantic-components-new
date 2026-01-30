@@ -48,29 +48,29 @@ import {
   template: `
     <div sc-navbar-provider>
       <nav sc-navbar class="sticky top-0 z-50">
-        <!-- Brand -->
-        <a sc-navbar-brand href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-          </svg>
+        <div class="flex items-center gap-6">
+          <!-- Brand -->
+          <a sc-navbar-brand href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+            </svg>
 
-          <span>Semantic Components</span>
-        </a>
+            <span>Semantic Components</span>
+          </a>
 
-        <!-- Desktop Navigation -->
-        <div sc-navbar-content>
-          <nav sc-navigation-menu>
+          <!-- Desktop Navigation -->
+          <nav sc-navigation-menu class="hidden md:flex">
             <ul sc-navigation-menu-list>
               <li sc-navigation-menu-item>
                 <button sc-navigation-menu-trigger>Components</button>
