@@ -69,6 +69,61 @@ This architecture allows the mobile menu to be positioned independently while ma
 
 **Note:** The navbar uses `justify-between` to space its direct children. Use `sc-navbar-group` to keep related elements (like brand and navigation) together on the left side.
 
+### With Navigation Menu
+
+You can integrate `ScNavigationMenu` components for dropdown navigation:
+
+```html
+<div sc-navbar-provider>
+  <nav sc-navbar>
+    <div sc-navbar-group>
+      <a sc-navbar-brand routerLink="/">
+        <span>Brand</span>
+      </a>
+
+      <!-- Navigation Menu with Dropdowns -->
+      <nav sc-navigation-menu class="hidden md:flex">
+        <ul sc-navigation-menu-list>
+          <li sc-navigation-menu-item>
+            <button sc-navigation-menu-trigger>Products</button>
+            <div sc-navigation-menu-content>
+              <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                <li>
+                  <a sc-navigation-menu-link routerLink="/products/web">
+                    <div class="text-sm font-medium leading-none">Web Apps</div>
+                    <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">Build modern web applications</p>
+                  </a>
+                </li>
+                <!-- More items -->
+              </ul>
+            </div>
+          </li>
+
+          <li sc-navigation-menu-item>
+            <a sc-navigation-menu-link routerLink="/docs">Docs</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div sc-navbar-actions>
+      <button sc-button>Get Started</button>
+      <button sc-navbar-mobile-trigger></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div sc-navbar-mobile-portal>
+    <div sc-navbar-mobile-menu>
+      <a sc-navbar-mobile-link routerLink="/products">Products</a>
+      <a sc-navbar-mobile-link routerLink="/docs">Docs</a>
+    </div>
+  </div>
+</div>
+```
+
+**Note:** The navigation menu automatically closes when navigation occurs (via router events).
+
 ## Controlling Mobile Menu State
 
 You can control the mobile menu state using two-way binding on the provider:
