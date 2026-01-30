@@ -117,9 +117,7 @@ Previous slide navigation button. Content must be provided by the user (icon + s
 
 ```html
 <button sc-carousel-previous>
-  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="m15 18-6-6 6-6" />
-  </svg>
+  <svg si-chevron-left-icon></svg>
   <span class="sr-only">Previous slide</span>
 </button>
 ```
@@ -140,9 +138,7 @@ Next slide navigation button. Content must be provided by the user (icon + scree
 
 ```html
 <button sc-carousel-next>
-  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="m9 18 6-6-6-6" />
-  </svg>
+  <svg si-chevron-right-icon></svg>
   <span class="sr-only">Next slide</span>
 </button>
 ```
