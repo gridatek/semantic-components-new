@@ -1,12 +1,16 @@
-import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
   computed,
   contentChild,
+  DestroyRef,
   Directive,
   inject,
   input,
+  OnInit,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { cn } from '../../utils';
 import { ScNavigationMenu } from './navigation-menu';
 import { ScNavigationMenuTrigger } from './navigation-menu-trigger';
@@ -22,8 +26,10 @@ let itemIdCounter = 0;
     '(mouseleave)': 'onMouseLeave()',
   },
 })
-export class ScNavigationMenuItem {
+export class ScNavigationMenuItem implements OnInit {
   readonly navigationMenu = inject(ScNavigationMenu);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
   readonly classInput = input<string>('', { alias: 'class' });
 
   readonly itemId = `nav-item-${++itemIdCounter}`;
@@ -38,6 +44,21 @@ export class ScNavigationMenuItem {
   protected readonly class = computed(() => cn('relative', this.classInput()));
 
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  ngOnInit(): void {
+    // Close the menu when navigation starts
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationStart),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe(() => {
+        this.open.set(false);
+        if (this.navigationMenu.activeItem() === this.itemId) {
+          this.navigationMenu.setActiveItem(null);
+        }
+      });
+  }
 
   onMouseEnter(): void {
     this.cancelHide();
