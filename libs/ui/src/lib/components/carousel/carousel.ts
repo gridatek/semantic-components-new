@@ -6,16 +6,23 @@ import {
   input,
   signal,
   ViewEncapsulation,
+  output,
+  AfterViewInit,
+  DestroyRef,
+  inject,
 } from '@angular/core';
+import EmblaCarousel, {
+  type EmblaCarouselType,
+  EmblaOptionsType,
+  EmblaPluginType,
+} from 'embla-carousel';
 import { cn } from '../../utils';
 import { ScCarouselTrack } from './carousel-track';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
-
-export interface CarouselOptions {
-  align?: 'start' | 'center' | 'end';
-  loop?: boolean;
-}
+export type CarouselApi = EmblaCarouselType;
+export type CarouselOptions = EmblaOptionsType;
+export type CarouselPlugin = EmblaPluginType;
 
 @Component({
   selector: 'div[sc-carousel]',
@@ -32,48 +39,66 @@ export interface CarouselOptions {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScCarousel {
+export class ScCarousel implements AfterViewInit {
+  private readonly destroyRef = inject(DestroyRef);
+
   readonly classInput = input<string>('', { alias: 'class' });
   readonly orientation = input<CarouselOrientation>('horizontal');
   readonly opts = input<CarouselOptions>({});
+  readonly plugins = input<CarouselPlugin[]>([]);
 
-  private readonly content = contentChild(ScCarouselTrack);
+  readonly setApi = output<CarouselApi>();
+
+  private readonly track = contentChild(ScCarouselTrack);
 
   readonly canScrollPrev = signal(false);
   readonly canScrollNext = signal(true);
 
+  private api: CarouselApi | null = null;
+
   protected readonly class = computed(() => cn('relative', this.classInput()));
 
+  ngAfterViewInit(): void {
+    const viewportEl = this.track()?.viewportElement();
+    if (!viewportEl) return;
+
+    const options = {
+      ...this.opts(),
+      axis: (this.orientation() === 'horizontal' ? 'x' : 'y') as 'x' | 'y',
+    };
+
+    this.api = EmblaCarousel(viewportEl, options, this.plugins());
+
+    this.setApi.emit(this.api);
+    this.updateScrollState();
+
+    this.api.on('select', () => this.updateScrollState());
+    this.api.on('reInit', () => this.updateScrollState());
+
+    this.destroyRef.onDestroy(() => {
+      this.api?.destroy();
+    });
+  }
+
   scrollPrev(): void {
-    const content = this.content();
-    if (!content) return;
-    content.scrollPrev();
+    this.api?.scrollPrev();
   }
 
   scrollNext(): void {
-    const content = this.content();
-    if (!content) return;
-    content.scrollNext();
+    this.api?.scrollNext();
   }
 
-  updateScrollState(canPrev: boolean, canNext: boolean): void {
-    this.canScrollPrev.set(canPrev);
-    this.canScrollNext.set(canNext);
+  private updateScrollState(): void {
+    if (!this.api) return;
+    this.canScrollPrev.set(this.api.canScrollPrev());
+    this.canScrollNext.set(this.api.canScrollNext());
   }
 
   protected onKeyDown(event: KeyboardEvent): void {
-    const isHorizontal = this.orientation() === 'horizontal';
-
-    if (isHorizontal && event.key === 'ArrowLeft') {
+    if (event.key === 'ArrowLeft') {
       event.preventDefault();
       this.scrollPrev();
-    } else if (isHorizontal && event.key === 'ArrowRight') {
-      event.preventDefault();
-      this.scrollNext();
-    } else if (!isHorizontal && event.key === 'ArrowUp') {
-      event.preventDefault();
-      this.scrollPrev();
-    } else if (!isHorizontal && event.key === 'ArrowDown') {
+    } else if (event.key === 'ArrowRight') {
       event.preventDefault();
       this.scrollNext();
     }

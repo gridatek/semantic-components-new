@@ -19,7 +19,7 @@ export class ScCarouselItem {
   protected readonly class = computed(() => {
     const isHorizontal = this.carousel.orientation() === 'horizontal';
     return cn(
-      'min-w-0 shrink-0 grow-0 basis-full snap-start',
+      'min-w-0 shrink-0 grow-0 basis-full',
       isHorizontal ? 'pl-4' : 'pt-4',
       this.classInput(),
     );
