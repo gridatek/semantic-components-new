@@ -3,8 +3,8 @@ import { MainLayout } from './layouts/main-layout/main-layout';
 
 export const appRoutes: Route[] = [
   {
-    path: 'sidebar-demo',
-    loadChildren: () => import('./pages/sidebar-demo/sidebar-demo.routes'),
+    path: 'dashboard',
+    loadComponent: () => import('./pages/dashboard/dashboard.page'),
   },
   {
     path: '',

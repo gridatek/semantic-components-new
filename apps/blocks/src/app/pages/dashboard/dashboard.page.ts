@@ -22,7 +22,7 @@ import {
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar-demo',
+  selector: 'app-dashboard',
   imports: [
     ScxSidebarProvider,
     ScxSidebar,
@@ -358,4 +358,4 @@ import { RouterLink } from '@angular/router';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SidebarDemoPage {}
+export default class DashboardPage {}
