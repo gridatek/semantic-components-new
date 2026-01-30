@@ -6,7 +6,6 @@ import {
   input,
   signal,
   ViewEncapsulation,
-  output,
   AfterViewInit,
   DestroyRef,
   inject,
@@ -44,10 +43,8 @@ export class ScCarousel implements AfterViewInit {
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly orientation = input<ScCarouselOrientation>('horizontal');
-  readonly opts = input<ScCarouselOptions>({});
+  readonly options = input<ScCarouselOptions>({});
   readonly plugins = input<ScCarouselPlugin[]>([]);
-
-  readonly setApi = output<ScCarouselApi>();
 
   private readonly viewport = contentChild(ScCarouselViewport);
 
@@ -62,14 +59,13 @@ export class ScCarousel implements AfterViewInit {
     const viewportEl = this.viewport()?.viewportElement();
     if (!viewportEl) return;
 
-    const options = {
-      ...this.opts(),
+    const opts = {
+      ...this.options(),
       axis: (this.orientation() === 'horizontal' ? 'x' : 'y') as 'x' | 'y',
     };
 
-    this.api = EmblaCarousel(viewportEl, options, this.plugins());
+    this.api = EmblaCarousel(viewportEl, opts, this.plugins());
 
-    this.setApi.emit(this.api);
     this.updateScrollState();
 
     this.api.on('select', () => this.updateScrollState());

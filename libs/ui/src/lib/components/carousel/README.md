@@ -57,15 +57,9 @@ Main carousel container that manages state and keyboard navigation.
 | Input         | Type                         | Default        | Description                    |
 | ------------- | ---------------------------- | -------------- | ------------------------------ |
 | `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Scroll direction               |
-| `opts`        | `ScCarouselOptions`          | `{}`           | Embla carousel options         |
+| `options`     | `ScCarouselOptions`          | `{}`           | Embla carousel options         |
 | `plugins`     | `ScCarouselPlugin[]`         | `[]`           | Embla plugins (e.g., autoplay) |
 | `class`       | `string`                     | `''`           | Additional CSS classes         |
-
-**Outputs:**
-
-| Output   | Type            | Description                  |
-| -------- | --------------- | ---------------------------- |
-| `setApi` | `ScCarouselApi` | Emits the Embla API instance |
 
 ### ScCarouselViewport
 
@@ -174,7 +168,7 @@ import { Component } from '@angular/core';
 
 @Component({
   template: `
-    <div sc-carousel [opts]="{ loop: true }" class="w-full max-w-xs">
+    <div sc-carousel [options]="{ loop: true }" class="w-full max-w-xs">
       <div sc-carousel-viewport>
         <div sc-carousel-track>
           @for (i of [1, 2, 3, 4, 5]; track i) {
@@ -232,7 +226,7 @@ export class MyComponent {
 ### Partial Items (Multiple Visible)
 
 ```html
-<div sc-carousel [opts]="{ align: 'start' }" class="w-full max-w-lg">
+<div sc-carousel [options]="{ align: 'start' }" class="w-full max-w-lg">
   <div sc-carousel-viewport>
     <div sc-carousel-track>
       @for (i of items; track i) {
@@ -267,38 +261,6 @@ export class MyComponent {
 </div>
 ```
 
-### Access Embla API
-
-```typescript
-import { Component } from '@angular/core';
-import type { ScCarouselApi } from '@semantic-components/ui';
-
-@Component({
-  template: `
-    <div sc-carousel (setApi)="onSetApi($event)">
-      <div sc-carousel-viewport>
-        <div sc-carousel-track>
-          @for (i of items; track i) {
-            <div sc-carousel-item>{{ i }}</div>
-          }
-        </div>
-      </div>
-    </div>
-    <p>Current slide: {{ current }}</p>
-  `,
-})
-export class MyComponent {
-  current = 0;
-  items = [1, 2, 3, 4, 5];
-
-  onSetApi(api: ScCarouselApi): void {
-    api.on('select', () => {
-      this.current = api.selectedScrollSnap() + 1;
-    });
-  }
-}
-```
-
 ## Features
 
 - **Embla Carousel**: Powered by Embla for smooth, physics-based animations
@@ -310,7 +272,6 @@ export class MyComponent {
 - **Responsive**: Flexible sizing with basis classes
 - **Navigation Buttons**: Prev/next with auto-disable at boundaries
 - **Accessible**: ARIA roles and roledescription
-- **API Access**: Full access to Embla API for advanced control
 
 ## Keyboard Navigation
 
@@ -326,7 +287,7 @@ export class MyComponent {
 
 ## Carousel Options
 
-The `opts` input accepts all [Embla Carousel options](https://www.embla-carousel.com/api/options/):
+The `options` input accepts all [Embla Carousel options](https://www.embla-carousel.com/api/options/):
 
 - `align`: `'start' | 'center' | 'end'` - Slide alignment
 - `loop`: `boolean` - Enable infinite loop
