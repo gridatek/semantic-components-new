@@ -6,14 +6,36 @@ A carousel component built with Embla Carousel, featuring smooth animations, tou
 
 ```html
 <div sc-carousel class="w-full max-w-xs">
-  <div sc-carousel-track>
-    <div sc-carousel-item>Slide 1</div>
-    <div sc-carousel-item>Slide 2</div>
-    <div sc-carousel-item>Slide 3</div>
+  <div sc-carousel-viewport>
+    <div sc-carousel-track>
+      <div sc-carousel-item>Slide 1</div>
+      <div sc-carousel-item>Slide 2</div>
+      <div sc-carousel-item>Slide 3</div>
+    </div>
   </div>
   <button sc-carousel-previous></button>
   <button sc-carousel-next></button>
 </div>
+```
+
+## Architecture
+
+The carousel uses a three-layer structure inspired by Embla Carousel's architecture:
+
+1. **ScCarousel** - The outer container that manages state, API, and keyboard navigation
+2. **ScCarouselViewport** - The overflow container (`overflow-hidden`) that Embla binds to
+3. **ScCarouselTrack** - The flex container that slides within the viewport
+4. **ScCarouselItem** - Individual slides on the track
+
+```
+┌─ ScCarousel (relative positioning, manages state)
+│  ├─ ScCarouselViewport (overflow-hidden, viewport for Embla)
+│  │  └─ ScCarouselTrack (flex container, the sliding track)
+│  │     ├─ ScCarouselItem (slide 1)
+│  │     ├─ ScCarouselItem (slide 2)
+│  │     └─ ScCarouselItem (slide 3)
+│  ├─ ScCarouselPrevious (navigation button)
+│  └─ ScCarouselNext (navigation button)
 ```
 
 ## Components
@@ -39,11 +61,17 @@ Main carousel container that manages state and keyboard navigation.
 | -------- | ------------- | ---------------------------- |
 | `setApi` | `CarouselApi` | Emits the Embla API instance |
 
+### ScCarouselViewport
+
+The overflow container (viewport) that Embla binds to. This provides the visible window for the carousel.
+
+**Selector:** `div[sc-carousel-viewport]`
+
 ### ScCarouselTrack
 
-The Embla viewport that contains and slides carousel items.
+The flex container (track) that moves within the viewport and holds carousel items. This is the element that slides left/right or up/down.
 
-**Selector:** `sc-carousel-track`
+**Selector:** `div[sc-carousel-track]`
 
 **Inputs:**
 
@@ -93,14 +121,16 @@ Next slide navigation button.
 
 ```html
 <div sc-carousel class="w-full max-w-xs">
-  <div sc-carousel-track>
-    @for (i of [1, 2, 3, 4, 5]; track i) {
-    <div sc-carousel-item>
-      <div class="p-1">
-        <div class="flex aspect-square items-center justify-center rounded-lg border">{{ i }}</div>
+  <div sc-carousel-viewport>
+    <div sc-carousel-track>
+      @for (i of [1, 2, 3, 4, 5]; track i) {
+      <div sc-carousel-item>
+        <div class="p-1">
+          <div class="flex aspect-square items-center justify-center rounded-lg border">{{ i }}</div>
+        </div>
       </div>
+      }
     </div>
-    }
   </div>
   <button sc-carousel-previous></button>
   <button sc-carousel-next></button>
@@ -115,10 +145,12 @@ import { Component } from '@angular/core';
 @Component({
   template: `
     <div sc-carousel [opts]="{ loop: true }" class="w-full max-w-xs">
-      <div sc-carousel-track>
-        @for (i of [1, 2, 3, 4, 5]; track i) {
-          <div sc-carousel-item>{{ i }}</div>
-        }
+      <div sc-carousel-viewport>
+        <div sc-carousel-track>
+          @for (i of [1, 2, 3, 4, 5]; track i) {
+            <div sc-carousel-item>{{ i }}</div>
+          }
+        </div>
       </div>
       <button sc-carousel-previous></button>
       <button sc-carousel-next></button>
@@ -137,10 +169,12 @@ import Autoplay from 'embla-carousel-autoplay';
 @Component({
   template: `
     <div sc-carousel [plugins]="plugins" class="w-full max-w-xs">
-      <div sc-carousel-track>
-        @for (i of items; track i) {
-          <div sc-carousel-item>{{ i }}</div>
-        }
+      <div sc-carousel-viewport>
+        <div sc-carousel-track>
+          @for (i of items; track i) {
+            <div sc-carousel-item>{{ i }}</div>
+          }
+        </div>
       </div>
       <button sc-carousel-previous></button>
       <button sc-carousel-next></button>
@@ -157,12 +191,14 @@ export class MyComponent {
 
 ```html
 <div sc-carousel [opts]="{ align: 'start' }" class="w-full max-w-lg">
-  <div sc-carousel-track>
-    @for (i of items; track i) {
-    <div sc-carousel-item class="basis-1/3">
-      <!-- Shows 3 items at a time -->
+  <div sc-carousel-viewport>
+    <div sc-carousel-track>
+      @for (i of items; track i) {
+      <div sc-carousel-item class="basis-1/3">
+        <!-- Shows 3 items at a time -->
+      </div>
+      }
     </div>
-    }
   </div>
 </div>
 ```
@@ -171,10 +207,12 @@ export class MyComponent {
 
 ```html
 <div sc-carousel orientation="vertical" class="w-full max-w-xs">
-  <sc-carousel-track class="h-[200px]">
-    @for (i of items; track i) {
+  <div sc-carousel-viewport class="h-[200px]">
+    <div sc-carousel-track>
+      @for (i of items; track i) {
       <div sc-carousel-item>...</div>
-    }
+      }
+    </div>
   </div>
   <button sc-carousel-previous></button>
   <button sc-carousel-next></button>
@@ -190,10 +228,12 @@ import type { CarouselApi } from './carousel';
 @Component({
   template: `
     <div sc-carousel (setApi)="onSetApi($event)">
-      <div sc-carousel-track>
-        @for (i of items; track i) {
-          <div sc-carousel-item>{{ i }}</div>
-        }
+      <div sc-carousel-viewport>
+        <div sc-carousel-track>
+          @for (i of items; track i) {
+            <div sc-carousel-item>{{ i }}</div>
+          }
+        </div>
       </div>
     </div>
     <p>Current slide: {{ current }}</p>
@@ -226,8 +266,8 @@ export class MyComponent {
 
 ## Keyboard Navigation
 
-- `ArrowLeft` / `ArrowRight`: Navigate horizontal carousel
-- `ArrowUp` / `ArrowDown`: Navigate vertical carousel
+- `ArrowLeft`: Navigate to previous slide
+- `ArrowRight`: Navigate to next slide
 
 ## Accessibility
 

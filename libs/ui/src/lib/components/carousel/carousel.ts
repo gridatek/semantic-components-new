@@ -17,7 +17,7 @@ import EmblaCarousel, {
   EmblaPluginType,
 } from 'embla-carousel';
 import { cn } from '../../utils';
-import { ScCarouselTrack } from './carousel-track';
+import { ScCarouselViewport } from './carousel-viewport';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
 export type CarouselApi = EmblaCarouselType;
@@ -49,7 +49,7 @@ export class ScCarousel implements AfterViewInit {
 
   readonly setApi = output<CarouselApi>();
 
-  private readonly track = contentChild(ScCarouselTrack);
+  private readonly viewport = contentChild(ScCarouselViewport);
 
   readonly canScrollPrev = signal(false);
   readonly canScrollNext = signal(true);
@@ -59,7 +59,7 @@ export class ScCarousel implements AfterViewInit {
   protected readonly class = computed(() => cn('relative', this.classInput()));
 
   ngAfterViewInit(): void {
-    const viewportEl = this.track()?.viewportElement();
+    const viewportEl = this.viewport()?.viewportElement();
     if (!viewportEl) return;
 
     const options = {

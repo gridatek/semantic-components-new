@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCarousel,
+  ScCarouselViewport,
   ScCarouselTrack,
   ScCarouselItem,
   ScCarouselNext,
@@ -11,6 +12,7 @@ import {
   selector: 'app-vertical-carousel-demo',
   imports: [
     ScCarousel,
+    ScCarouselViewport,
     ScCarouselTrack,
     ScCarouselItem,
     ScCarouselPrevious,
@@ -19,18 +21,20 @@ import {
   template: `
     <div class="mx-auto w-full max-w-xs">
       <div sc-carousel orientation="vertical" class="w-full">
-        <div sc-carousel-track class="h-[200px]">
-          @for (index of items; track index) {
-            <div sc-carousel-item>
-              <div class="p-1">
-                <div
-                  class="flex h-full items-center justify-center rounded-lg border bg-card p-6"
-                >
-                  <span class="text-4xl font-semibold">{{ index }}</span>
+        <div sc-carousel-viewport class="h-[200px]">
+          <div sc-carousel-track>
+            @for (index of items; track index) {
+              <div sc-carousel-item>
+                <div class="p-1">
+                  <div
+                    class="flex h-full items-center justify-center rounded-lg border bg-card p-6"
+                  >
+                    <span class="text-4xl font-semibold">{{ index }}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          }
+            }
+          </div>
         </div>
         <button sc-carousel-previous></button>
         <button sc-carousel-next></button>

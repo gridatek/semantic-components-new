@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScCarousel,
+  ScCarouselViewport,
   ScCarouselTrack,
   ScCarouselItem,
   ScCarouselNext,
@@ -11,6 +12,7 @@ import {
   selector: 'app-cards-carousel-demo',
   imports: [
     ScCarousel,
+    ScCarouselViewport,
     ScCarouselTrack,
     ScCarouselItem,
     ScCarouselPrevious,
@@ -19,19 +21,21 @@ import {
   template: `
     <div class="mx-auto w-full max-w-sm">
       <div sc-carousel class="w-full">
-        <div sc-carousel-track>
-          @for (card of cards; track card.title) {
-            <div sc-carousel-item>
-              <div class="p-1">
-                <div class="rounded-lg border bg-card p-6">
-                  <h4 class="font-semibold">{{ card.title }}</h4>
-                  <p class="mt-2 text-sm text-muted-foreground">
-                    {{ card.description }}
-                  </p>
+        <div sc-carousel-viewport>
+          <div sc-carousel-track>
+            @for (card of cards; track card.title) {
+              <div sc-carousel-item>
+                <div class="p-1">
+                  <div class="rounded-lg border bg-card p-6">
+                    <h4 class="font-semibold">{{ card.title }}</h4>
+                    <p class="mt-2 text-sm text-muted-foreground">
+                      {{ card.description }}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          }
+            }
+          </div>
         </div>
         <button sc-carousel-previous></button>
         <button sc-carousel-next></button>
