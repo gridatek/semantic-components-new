@@ -16,8 +16,13 @@ import {
   ScxSidebarGroup,
   ScxSidebarGroupLabel,
   ScxSidebarGroupContent,
+  ScxSidebarGroupAction,
   ScxSidebarRail,
   ScxSidebarSeparator,
+  ScxSidebarInput,
+  ScxSidebarMenuAction,
+  ScxSidebarMenuBadge,
+  ScxSidebarMenuSkeleton,
 } from '@semantic-components/ui';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -40,8 +45,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     ScxSidebarGroup,
     ScxSidebarGroupLabel,
     ScxSidebarGroupContent,
+    ScxSidebarGroupAction,
     ScxSidebarRail,
     ScxSidebarSeparator,
+    ScxSidebarInput,
+    ScxSidebarMenuAction,
+    ScxSidebarMenuBadge,
+    ScxSidebarMenuSkeleton,
     RouterLink,
     RouterLinkActive,
   ],
@@ -76,6 +86,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
               </span>
             </div>
           </div>
+          <input scx-sidebar-input type="search" placeholder="Search..." />
         </div>
 
         <div scx-sidebar-content>
@@ -136,6 +147,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </svg>
                     <span>Users</span>
                   </a>
+                  <div scx-sidebar-menu-badge>12</div>
                 </li>
                 <li scx-sidebar-menu-item>
                   <a
@@ -163,6 +175,23 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </svg>
                     <span>Settings</span>
                   </a>
+                  <button scx-sidebar-menu-action [showOnHover]="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="12" cy="5" r="1" />
+                      <circle cx="12" cy="19" r="1" />
+                    </svg>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -172,6 +201,22 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
           <div scx-sidebar-group>
             <div scx-sidebar-group-label>Projects</div>
+            <button scx-sidebar-group-action>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+            </button>
             <div scx-sidebar-group-content>
               <ul scx-sidebar-menu>
                 <li scx-sidebar-menu-item>
@@ -283,6 +328,25 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </svg>
                     <span>Travel</span>
                   </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div scx-sidebar-separator class="h-px"></div>
+
+          <div scx-sidebar-group>
+            <div scx-sidebar-group-label>Loading Example</div>
+            <div scx-sidebar-group-content>
+              <ul scx-sidebar-menu>
+                <li scx-sidebar-menu-item>
+                  <div scx-sidebar-menu-skeleton [showIcon]="true"></div>
+                </li>
+                <li scx-sidebar-menu-item>
+                  <div scx-sidebar-menu-skeleton [showIcon]="true"></div>
+                </li>
+                <li scx-sidebar-menu-item>
+                  <div scx-sidebar-menu-skeleton></div>
                 </li>
               </ul>
             </div>
