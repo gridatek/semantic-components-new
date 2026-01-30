@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScCarousel } from './carousel';
@@ -20,6 +21,7 @@ import { ScCarousel } from './carousel';
     '[disabled]': '!carousel.canScrollNext()',
     '(click)': 'carousel.scrollNext()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCarouselNext {
