@@ -20,6 +20,7 @@ export class ScSheetClose {
       'hover:opacity-100',
       'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
       'disabled:pointer-events-none',
+      '[&>svg]:size-4',
       this.classInput(),
     ),
   );
