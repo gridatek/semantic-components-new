@@ -20,10 +20,10 @@ A collection of accessible, customizable UI components for Angular applications.
 
 ### Composable
 
-- **Slot-based architecture** for building complex UIs from simple parts
-- **Mix and match** components to create custom experiences
-- **Headless patterns** that separate logic from presentation
-- **Flexible composition** for any use case
+- **Multiple focused components** instead of one monolithic component with many inputs
+- **Slot-based patterns** - Compose UIs by nesting components together
+- **Maximum flexibility** - Build exactly what you need without prop drilling
+- **Single responsibility** - Each component has one clear purpose
 
 ### Comprehensive Component Library
 
