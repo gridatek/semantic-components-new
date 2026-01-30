@@ -6,15 +6,68 @@ A component for switching between light and dark themes with system preference s
 
 ### Basic Toggle Button
 
-```html
-<button sc-theme-toggle></button>
+The theme toggle uses content projection for icons, following the declarative architecture pattern.
+
+```typescript
+import { ScThemeToggle } from '@semantic-components/ui';
+import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
+
+@Component({
+  imports: [ScThemeToggle, SiSunIcon, SiMoonIcon],
+  template: `
+    <button sc-theme-toggle #toggle="scThemeToggle">
+      @if (toggle.isDark()) {
+        <svg si-sun-icon></svg>
+      } @else {
+        <svg si-moon-icon></svg>
+      }
+    </button>
+  `,
+})
+export class MyComponent {}
 ```
 
 ### With Variants
 
 ```html
-<button sc-theme-toggle variant="outline"></button>
-<button sc-theme-toggle variant="ghost"></button>
+<!-- Default variant -->
+<button sc-theme-toggle variant="default" #toggle="scThemeToggle">
+  @if (toggle.isDark()) {
+  <svg si-sun-icon></svg>
+  } @else {
+  <svg si-moon-icon></svg>
+  }
+</button>
+
+<!-- Outline variant -->
+<button sc-theme-toggle variant="outline" #toggle="scThemeToggle">
+  @if (toggle.isDark()) {
+  <svg si-sun-icon></svg>
+  } @else {
+  <svg si-moon-icon></svg>
+  }
+</button>
+
+<!-- Ghost variant -->
+<button sc-theme-toggle variant="ghost" #toggle="scThemeToggle">
+  @if (toggle.isDark()) {
+  <svg si-sun-icon></svg>
+  } @else {
+  <svg si-moon-icon></svg>
+  }
+</button>
+```
+
+### With Sizes
+
+```html
+<button sc-theme-toggle size="sm" #toggle="scThemeToggle">
+  @if (toggle.isDark()) {
+  <svg si-sun-icon></svg>
+  } @else {
+  <svg si-moon-icon></svg>
+  }
+</button>
 ```
 
 ### Theme Select Dropdown
@@ -23,28 +76,28 @@ A component for switching between light and dark themes with system preference s
 <sc-theme-select></sc-theme-select>
 ```
 
-### Using the Service Directly
+### Using ScTheme Directly
 
 ```typescript
-import { ScTheme } from './ui/theme-toggle';
+import { ScTheme } from '@semantic-components/ui';
 
 export class MyComponent {
-  private themeService = inject(ScTheme);
+  private theme = inject(ScTheme);
 
   // Read the current theme
-  currentTheme = this.themeService.theme;
+  currentTheme = this.theme.theme;
 
   // Check if dark mode is active
-  isDark = this.themeService.isDark;
+  isDark = this.theme.isDark;
 
   // Set a specific theme
   setDark() {
-    this.themeService.setTheme('dark');
+    this.theme.setTheme('dark');
   }
 
   // Toggle between light and dark
   toggle() {
-    this.themeService.toggleTheme();
+    this.theme.toggleTheme();
   }
 }
 ```
@@ -53,9 +106,11 @@ export class MyComponent {
 
 ### ScThemeToggle
 
-A button that toggles between light and dark themes.
+A button that toggles between light and dark themes. Uses content projection for icons following the declarative architecture pattern.
 
 **Selector:** `button[sc-theme-toggle]`
+
+**Export As:** `scThemeToggle`
 
 **Inputs:**
 
@@ -69,6 +124,16 @@ A button that toggles between light and dark themes.
 
 **Sizes:** `'default'` | `'sm'` | `'lg'` | `'icon'`
 
+**Public Properties (via template reference):**
+
+| Property | Type              | Description                  |
+| -------- | ----------------- | ---------------------------- |
+| `isDark` | `Signal<boolean>` | Whether dark theme is active |
+
+**Usage:**
+
+Use a template reference variable with `#toggle="scThemeToggle"` to access the `isDark()` signal for conditional icon rendering.
+
 ### ScThemeSelect
 
 A dropdown select for choosing between light, dark, and system themes.
@@ -81,7 +146,7 @@ A dropdown select for choosing between light, dark, and system themes.
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-## Service: ScTheme
+## ScTheme
 
 A singleton service for managing theme state.
 
@@ -99,6 +164,17 @@ A singleton service for managing theme state.
 | ------------- | -------------- | ----------------------------- |
 | `setTheme`    | `theme: Theme` | Set the theme explicitly      |
 | `toggleTheme` | none           | Toggle between light and dark |
+
+## Architecture
+
+This component follows the **declarative architecture** pattern:
+
+- **Content Projection**: Icons are provided by consumers via `<ng-content />`, not embedded in the component
+- **Template References**: Use `#toggle="scThemeToggle"` to access component state in templates
+- **Signal-based State**: The `isDark()` signal drives conditional rendering
+- **No Imperative Methods**: All state changes happen through user interactions, not programmatic calls
+
+This design gives consumers full control over icon presentation while maintaining clean separation of concerns.
 
 ## Accessibility
 
