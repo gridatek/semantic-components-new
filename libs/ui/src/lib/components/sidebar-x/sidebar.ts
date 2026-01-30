@@ -3,12 +3,21 @@ import { NgTemplateOutlet } from '@angular/common';
 import { ScSheetProvider } from '../sheet/sheet-provider';
 import { ScSheetPortal } from '../sheet/sheet-portal';
 import { ScSheet } from '../sheet/sheet';
+import { ScSheetClose } from '../sheet/sheet-close';
+import { SiXIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
 import { ScxSidebarState } from './sidebar-state.service';
 
 @Component({
   selector: 'div[scx-sidebar]',
-  imports: [ScSheetProvider, ScSheetPortal, ScSheet, NgTemplateOutlet],
+  imports: [
+    ScSheetProvider,
+    ScSheetPortal,
+    ScSheet,
+    ScSheetClose,
+    SiXIcon,
+    NgTemplateOutlet,
+  ],
   template: `
     <ng-template #content>
       <ng-content />
@@ -20,8 +29,12 @@ import { ScxSidebarState } from './sidebar-state.service';
         <div sc-sheet-portal>
           <div
             sc-sheet
-            class="bg-sidebar text-sidebar-foreground p-0 [&>button]:hidden flex h-full flex-col"
+            class="bg-sidebar text-sidebar-foreground p-0 flex h-full flex-col"
           >
+            <button sc-sheet-close>
+              <svg si-x-icon></svg>
+              <span class="sr-only">Close</span>
+            </button>
             <ng-container *ngTemplateOutlet="content" />
           </div>
         </div>
