@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { COMPONENTS } from '../../data/components';
 import {
   ScButton,
   ScNavbar,
@@ -80,67 +81,26 @@ import {
                   <ul
                     class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]"
                   >
-                    <li>
-                      <a sc-navigation-menu-link routerLink="/docs/accordion">
-                        <div class="text-sm font-medium leading-none">
-                          Accordion
-                        </div>
-                        <p
-                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    @for (
+                      component of featuredComponents;
+                      track component.path
+                    ) {
+                      <li>
+                        <a
+                          sc-navigation-menu-link
+                          [routerLink]="'/docs/' + component.path"
                         >
-                          Vertically stacked sections of content.
-                        </p>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        sc-navigation-menu-link
-                        routerLink="/docs/alert-dialog"
-                      >
-                        <div class="text-sm font-medium leading-none">
-                          Alert Dialog
-                        </div>
-                        <p
-                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
-                        >
-                          Modal dialog for important messages.
-                        </p>
-                      </a>
-                    </li>
-                    <li>
-                      <a sc-navigation-menu-link routerLink="/docs/button">
-                        <div class="text-sm font-medium leading-none">
-                          Button
-                        </div>
-                        <p
-                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
-                        >
-                          Trigger actions and events.
-                        </p>
-                      </a>
-                    </li>
-                    <li>
-                      <a sc-navigation-menu-link routerLink="/docs/card">
-                        <div class="text-sm font-medium leading-none">Card</div>
-                        <p
-                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
-                        >
-                          Container for related content.
-                        </p>
-                      </a>
-                    </li>
-                    <li>
-                      <a sc-navigation-menu-link routerLink="/docs/dialog">
-                        <div class="text-sm font-medium leading-none">
-                          Dialog
-                        </div>
-                        <p
-                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
-                        >
-                          Modal window for user interaction.
-                        </p>
-                      </a>
-                    </li>
+                          <div class="text-sm font-medium leading-none">
+                            {{ component.name }}
+                          </div>
+                          <p
+                            class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                          >
+                            {{ component.description }}
+                          </p>
+                        </a>
+                      </li>
+                    }
                     <li>
                       <a sc-navigation-menu-link routerLink="/docs/components">
                         <div class="text-sm font-medium leading-none">
@@ -202,4 +162,6 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class Navbar {}
+export default class Navbar {
+  protected readonly featuredComponents = COMPONENTS.slice(0, 5);
+}
