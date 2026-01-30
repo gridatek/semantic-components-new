@@ -13,10 +13,10 @@ A collection of accessible, customizable UI components for Angular applications.
 
 ### Declarative
 
-- **Template-based API** using Angular templates and directives
-- **Intuitive syntax** with Angular's native control flow (@if, @for)
-- **Clear component structure** with semantic selectors
-- **Easy to read and maintain** declarative code
+- **State-driven UI** - Control components through template bindings, not imperative methods
+- **No .open() calls** - Use `[open]="signal()"` instead of `dialog.open()`
+- **Template-based** - Everything lives in your templates, easy to see and understand
+- **Reactive by default** - UI automatically updates with your state
 
 ### Composable
 
