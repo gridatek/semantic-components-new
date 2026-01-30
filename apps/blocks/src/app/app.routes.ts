@@ -10,6 +10,10 @@ export const appRoutes: Route[] = [
         path: '',
         loadComponent: () => import('./pages/home/home'),
       },
+      {
+        path: 'sidebar-demo',
+        loadChildren: () => import('./pages/sidebar-demo/sidebar-demo.routes'),
+      },
     ],
   },
 ];
