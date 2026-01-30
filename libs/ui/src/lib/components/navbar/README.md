@@ -9,7 +9,7 @@ A responsive navigation bar block with mobile menu support. Automatically adapts
 - `ScNavbarBrand` - Brand/logo section with focus styles
 - `ScNavbarGroup` - Groups navbar elements together (e.g., brand + navigation)
 - `ScNavbarActions` - Right-aligned action buttons container
-- `ScNavbarMobileTrigger` - Hamburger menu button with icon switching
+- `ScNavbarMobileTrigger` - Mobile menu toggle button (uses content projection for icons)
 - `ScNavbarMobilePortal` - Mobile menu portal using CDK overlay (handles rendering)
 - `ScNavbarMobileMenu` - Mobile menu container with styling (customizable)
 - `ScNavbarMobileLink` - Mobile menu link with auto-close on navigation
@@ -37,53 +37,78 @@ The recommended approach is to use `ScNavigationMenu` for navigation. See the ex
 
 You can integrate `ScNavigationMenu` components for dropdown navigation:
 
-```html
-<div sc-navbar-provider>
-  <nav sc-navbar>
-    <div sc-navbar-group>
-      <a sc-navbar-brand routerLink="/">
-        <span>Brand</span>
-      </a>
+```typescript
+import { SiMenuIcon, SiXIcon } from '@semantic-icons/lucide-icons';
 
-      <!-- Navigation Menu with Dropdowns -->
-      <nav sc-navigation-menu class="hidden md:flex">
-        <ul sc-navigation-menu-list>
-          <li sc-navigation-menu-item>
-            <button sc-navigation-menu-trigger>Products</button>
-            <div sc-navigation-menu-content>
-              <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                <li>
-                  <a sc-navigation-menu-link routerLink="/products/web">
-                    <div class="text-sm font-medium leading-none">Web Apps</div>
-                    <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">Build modern web applications</p>
-                  </a>
-                </li>
-                <!-- More items -->
-              </ul>
-            </div>
-          </li>
+@Component({
+  imports: [
+    ScNavbar,
+    ScNavbarProvider,
+    ScNavbarMobileTrigger,
+    // ... other imports
+    SiMenuIcon,
+    SiXIcon,
+  ],
+  template: `
+    <div sc-navbar-provider>
+      <nav sc-navbar>
+        <div sc-navbar-group>
+          <a sc-navbar-brand routerLink="/">
+            <span>Brand</span>
+          </a>
 
-          <li sc-navigation-menu-item>
-            <a sc-navigation-menu-link routerLink="/docs">Docs</a>
-          </li>
-        </ul>
+          <!-- Navigation Menu with Dropdowns -->
+          <nav sc-navigation-menu class="hidden md:flex">
+            <ul sc-navigation-menu-list>
+              <li sc-navigation-menu-item>
+                <button sc-navigation-menu-trigger>Products</button>
+                <div sc-navigation-menu-content>
+                  <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    <li>
+                      <a sc-navigation-menu-link routerLink="/products/web">
+                        <div class="text-sm font-medium leading-none">Web Apps</div>
+                        <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Build modern web applications
+                        </p>
+                      </a>
+                    </li>
+                    <!-- More items -->
+                  </ul>
+                </div>
+              </li>
+
+              <li sc-navigation-menu-item>
+                <a sc-navigation-menu-link routerLink="/docs">Docs</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div sc-navbar-actions>
+          <button sc-button>Get Started</button>
+          <button sc-navbar-mobile-trigger #trigger="scNavbarMobileTrigger">
+            @if (trigger.isMobileMenuOpen()) {
+              <svg si-x-icon></svg>
+            } @else {
+              <svg si-menu-icon></svg>
+            }
+            <span class="sr-only">
+              {{ trigger.isMobileMenuOpen() ? 'Close menu' : 'Open menu' }}
+            </span>
+          </button>
+        </div>
       </nav>
-    </div>
 
-    <div sc-navbar-actions>
-      <button sc-button>Get Started</button>
-      <button sc-navbar-mobile-trigger></button>
+      <!-- Mobile Menu -->
+      <div sc-navbar-mobile-portal>
+        <div sc-navbar-mobile-menu>
+          <a sc-navbar-mobile-link routerLink="/products">Products</a>
+          <a sc-navbar-mobile-link routerLink="/docs">Docs</a>
+        </div>
+      </div>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div sc-navbar-mobile-portal>
-    <div sc-navbar-mobile-menu>
-      <a sc-navbar-mobile-link routerLink="/products">Products</a>
-      <a sc-navbar-mobile-link routerLink="/docs">Docs</a>
-    </div>
-  </div>
-</div>
+  `,
+})
 ```
 
 **Note:** The navigation menu automatically closes when navigation occurs (via router events).
@@ -124,13 +149,14 @@ For automatic active state based on the current route:
 
 The mobile menu automatically:
 
-- Shows a hamburger icon when closed and an X icon when open
 - Closes when clicking a mobile link (auto-navigation)
 - Closes when pressing the Escape key
 - Uses CDK overlay for proper z-index stacking and portal rendering
 - Slides in from the top below the navbar
 - Animates smoothly with CSS transitions
 - State is managed by the provider and shared across all components
+
+**Icons**: The mobile trigger uses content projection for icons, allowing consumers to provide their own icons (e.g., hamburger menu when closed, X when open) via the `isMobileMenuOpen()` signal accessible through template references.
 
 ## Custom Styling
 
@@ -177,6 +203,22 @@ The mobile menu container can be styled directly using the `class` input:
 | Input   | Type     | Default | Description            |
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
+
+### ScNavbarMobileTrigger
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
+**Export As:** `scNavbarMobileTrigger`
+
+**Public Properties (via template reference):**
+
+| Property           | Type              | Description                 |
+| ------------------ | ----------------- | --------------------------- |
+| `isMobileMenuOpen` | `Signal<boolean>` | Whether mobile menu is open |
+
+**Usage:** Use a template reference variable with `#trigger="scNavbarMobileTrigger"` to access the `isMobileMenuOpen()` signal for conditional icon rendering.
 
 ### ScNavbarMobileLink
 

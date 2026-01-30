@@ -19,7 +19,12 @@ import {
   ScNavigationMenuTrigger,
   ScThemeToggle,
 } from '@semantic-components/ui';
-import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
+import {
+  SiMenuIcon,
+  SiMoonIcon,
+  SiSunIcon,
+  SiXIcon,
+} from '@semantic-icons/lucide-icons';
 import { COMPONENTS } from '../../data/components';
 
 @Component({
@@ -46,6 +51,8 @@ import { COMPONENTS } from '../../data/components';
     ScNavigationMenuTrigger,
     SiSunIcon,
     SiMoonIcon,
+    SiMenuIcon,
+    SiXIcon,
   ],
   template: `
     <div sc-navbar-provider>
@@ -135,7 +142,16 @@ import { COMPONENTS } from '../../data/components';
               <svg si-moon-icon></svg>
             }
           </button>
-          <button sc-navbar-mobile-trigger></button>
+          <button sc-navbar-mobile-trigger #trigger="scNavbarMobileTrigger">
+            @if (trigger.isMobileMenuOpen()) {
+              <svg si-x-icon></svg>
+            } @else {
+              <svg si-menu-icon></svg>
+            }
+            <span class="sr-only">
+              {{ trigger.isMobileMenuOpen() ? 'Close menu' : 'Open menu' }}
+            </span>
+          </button>
         </div>
       </nav>
 

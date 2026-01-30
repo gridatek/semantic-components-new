@@ -13,6 +13,7 @@ import {
   ScNavbarMobileLink,
   ScButton,
 } from '@semantic-components/ui';
+import { SiMenuIcon, SiXIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -30,6 +31,8 @@ import {
     ScNavbarMobileMenu,
     ScNavbarMobileLink,
     ScButton,
+    SiMenuIcon,
+    SiXIcon,
   ],
   template: `
     <div sc-navbar-provider>
@@ -73,7 +76,16 @@ import {
 
         <!-- Actions -->
         <div sc-navbar-actions>
-          <button sc-navbar-mobile-trigger></button>
+          <button sc-navbar-mobile-trigger #trigger="scNavbarMobileTrigger">
+            @if (trigger.isMobileMenuOpen()) {
+              <svg si-x-icon></svg>
+            } @else {
+              <svg si-menu-icon></svg>
+            }
+            <span class="sr-only">
+              {{ trigger.isMobileMenuOpen() ? 'Close menu' : 'Open menu' }}
+            </span>
+          </button>
           <button sc-button variant="ghost" class="hidden md:inline-flex">
             Sign In
           </button>
