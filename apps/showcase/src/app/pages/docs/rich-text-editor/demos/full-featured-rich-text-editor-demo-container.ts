@@ -6,7 +6,11 @@ import { FullFeaturedRichTextEditorDemo } from './full-featured-rich-text-editor
   selector: 'app-full-featured-rich-text-editor-demo-container',
   imports: [DemoContainer, FullFeaturedRichTextEditorDemo],
   template: `
-    <app-demo-container title="Full Featured Editor" [code]="code">
+    <app-demo-container
+      title="Full Featured Editor"
+      [code]="code"
+      demoUrl="/demos/rich-text-editor/full-featured-rich-text-editor-demo"
+    >
       <app-full-featured-rich-text-editor-demo />
     </app-demo-container>
   `,

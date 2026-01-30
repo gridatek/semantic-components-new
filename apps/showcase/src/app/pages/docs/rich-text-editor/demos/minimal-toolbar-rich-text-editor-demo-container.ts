@@ -6,7 +6,11 @@ import { MinimalToolbarRichTextEditorDemo } from './minimal-toolbar-rich-text-ed
   selector: 'app-minimal-toolbar-rich-text-editor-demo-container',
   imports: [DemoContainer, MinimalToolbarRichTextEditorDemo],
   template: `
-    <app-demo-container title="Minimal Toolbar" [code]="code">
+    <app-demo-container
+      title="Minimal Toolbar"
+      [code]="code"
+      demoUrl="/demos/rich-text-editor/minimal-toolbar-rich-text-editor-demo"
+    >
       <app-minimal-toolbar-rich-text-editor-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { NoCountRichTextEditorDemo } from './no-count-rich-text-editor-demo';
   selector: 'app-no-count-rich-text-editor-demo-container',
   imports: [DemoContainer, NoCountRichTextEditorDemo],
   template: `
-    <app-demo-container title="Without Word Count" [code]="code">
+    <app-demo-container
+      title="Without Word Count"
+      [code]="code"
+      demoUrl="/demos/rich-text-editor/no-count-rich-text-editor-demo"
+    >
       <app-no-count-rich-text-editor-demo />
     </app-demo-container>
   `,

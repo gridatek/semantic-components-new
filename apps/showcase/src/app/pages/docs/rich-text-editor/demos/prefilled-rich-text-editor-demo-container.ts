@@ -6,7 +6,11 @@ import { PrefilledRichTextEditorDemo } from './prefilled-rich-text-editor-demo';
   selector: 'app-prefilled-rich-text-editor-demo-container',
   imports: [DemoContainer, PrefilledRichTextEditorDemo],
   template: `
-    <app-demo-container title="With Initial Content" [code]="code">
+    <app-demo-container
+      title="With Initial Content"
+      [code]="code"
+      demoUrl="/demos/rich-text-editor/prefilled-rich-text-editor-demo"
+    >
       <app-prefilled-rich-text-editor-demo />
     </app-demo-container>
   `,

@@ -6,7 +6,11 @@ import { ReadonlyRichTextEditorDemo } from './readonly-rich-text-editor-demo';
   selector: 'app-readonly-rich-text-editor-demo-container',
   imports: [DemoContainer, ReadonlyRichTextEditorDemo],
   template: `
-    <app-demo-container title="Readonly Mode" [code]="code">
+    <app-demo-container
+      title="Readonly Mode"
+      [code]="code"
+      demoUrl="/demos/rich-text-editor/readonly-rich-text-editor-demo"
+    >
       <app-readonly-rich-text-editor-demo />
     </app-demo-container>
   `,
