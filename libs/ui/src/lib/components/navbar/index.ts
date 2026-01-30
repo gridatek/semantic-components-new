@@ -1,9 +1,7 @@
 export { ScNavbar } from './navbar';
 export { ScNavbarProvider } from './navbar-provider';
 export { ScNavbarBrand } from './navbar-brand';
-export { ScNavbarContent } from './old/navbar-content';
 export { ScNavbarGroup } from './navbar-group';
-export { ScNavbarLink } from './old/navbar-link';
 export { ScNavbarActions } from './navbar-actions';
 export { ScNavbarMobileTrigger } from './navbar-mobile-trigger';
 export { ScNavbarMobilePortal } from './navbar-mobile-portal';
