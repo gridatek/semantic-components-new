@@ -15,7 +15,7 @@ import { ScToastTitle } from './toast-title';
 import { ToastService } from './toast.service';
 
 @Component({
-  selector: 'sc-toaster',
+  selector: 'sc-toast-stack',
   imports: [
     ScToast,
     ScToastTitle,
@@ -66,13 +66,13 @@ import { ToastService } from './toast.service';
     }
   `,
   host: {
-    'data-slot': 'toaster',
+    'data-slot': 'toast-stack',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScToaster {
+export class ScToastStack {
   readonly toastService = inject(ToastService);
   readonly classInput = input<string>('', { alias: 'class' });
 

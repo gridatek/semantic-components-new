@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ScToaster, ToastService } from '@semantic-components/ui';
+import { ScToastStack, ToastService } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-toast-demo',
-  imports: [ScToaster],
+  imports: [ScToastStack],
   template: `
     <button
       class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -12,7 +12,7 @@ import { ScToaster, ToastService } from '@semantic-components/ui';
       Show Toast
     </button>
 
-    <sc-toaster />
+    <sc-toast-stack />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

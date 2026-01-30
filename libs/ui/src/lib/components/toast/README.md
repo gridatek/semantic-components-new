@@ -9,7 +9,7 @@ Unlike other components that use template-based triggers, Toast uses a **service
 ```
 ToastService (Injectable)
     │
-    └── show(config) ──► Creates ToastData ──► Updates signal ──► ScToaster renders
+    └── show(config) ──► Creates ToastData ──► Updates signal ──► ScToastStack renders
                                                                        │
                                                                        ├── ScToast (container)
                                                                        │     ├── ScToastTitle
@@ -24,7 +24,7 @@ ToastService (Injectable)
 
 | Component            | Selector                  | Description                                                  |
 | -------------------- | ------------------------- | ------------------------------------------------------------ |
-| `ScToaster`          | `<sc-toaster>`            | Container that renders all active toasts. Place once in app. |
+| `ScToastStack`       | `<sc-toast-stack>`        | Container that renders all active toasts. Place once in app. |
 | `ScToast`            | `div[sc-toast]`           | Individual toast wrapper with variant styling                |
 | `ScToastTitle`       | `[sc-toast-title]`        | Toast title text                                             |
 | `ScToastDescription` | `[sc-toast-description]`  | Toast description text                                       |
@@ -69,11 +69,11 @@ interface ToastConfig {
 
 ## Usage
 
-### 1. Add ScToaster to your app (once)
+### 1. Add ScToastStack to your app (once)
 
 ```html
 <!-- In your app.component.html or layout -->
-<sc-toaster />
+<sc-toast-stack />
 ```
 
 ### 2. Inject ToastService and show toasts
