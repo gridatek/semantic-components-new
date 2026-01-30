@@ -13,8 +13,18 @@ A carousel component built with Embla Carousel, featuring smooth animations, tou
       <div sc-carousel-item>Slide 3</div>
     </div>
   </div>
-  <button sc-carousel-previous></button>
-  <button sc-carousel-next></button>
+  <button sc-carousel-previous>
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+    <span class="sr-only">Previous slide</span>
+  </button>
+  <button sc-carousel-next>
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+    <span class="sr-only">Next slide</span>
+  </button>
 </div>
 ```
 
@@ -93,7 +103,7 @@ Individual carousel slide.
 
 ### ScCarouselPrevious
 
-Previous slide navigation button.
+Previous slide navigation button. Content must be provided by the user (icon + screen reader text).
 
 **Selector:** `button[sc-carousel-previous]`
 
@@ -103,9 +113,20 @@ Previous slide navigation button.
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
+**Example:**
+
+```html
+<button sc-carousel-previous>
+  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+  <span class="sr-only">Previous slide</span>
+</button>
+```
+
 ### ScCarouselNext
 
-Next slide navigation button.
+Next slide navigation button. Content must be provided by the user (icon + screen reader text).
 
 **Selector:** `button[sc-carousel-next]`
 
@@ -114,6 +135,17 @@ Next slide navigation button.
 | Input   | Type     | Default | Description            |
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
+
+**Example:**
+
+```html
+<button sc-carousel-next>
+  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+  <span class="sr-only">Next slide</span>
+</button>
+```
 
 ## Examples
 
@@ -132,8 +164,18 @@ Next slide navigation button.
       }
     </div>
   </div>
-  <button sc-carousel-previous></button>
-  <button sc-carousel-next></button>
+  <button sc-carousel-previous>
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+    <span class="sr-only">Previous slide</span>
+  </button>
+  <button sc-carousel-next>
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+    <span class="sr-only">Next slide</span>
+  </button>
 </div>
 ```
 
@@ -152,8 +194,18 @@ import { Component } from '@angular/core';
           }
         </div>
       </div>
-      <button sc-carousel-previous></button>
-      <button sc-carousel-next></button>
+      <button sc-carousel-previous>
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+        <span class="sr-only">Previous slide</span>
+      </button>
+      <button sc-carousel-next>
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+        <span class="sr-only">Next slide</span>
+      </button>
     </div>
   `,
 })
@@ -176,8 +228,18 @@ import Autoplay from 'embla-carousel-autoplay';
           }
         </div>
       </div>
-      <button sc-carousel-previous></button>
-      <button sc-carousel-next></button>
+      <button sc-carousel-previous>
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+        <span class="sr-only">Previous slide</span>
+      </button>
+      <button sc-carousel-next>
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+        <span class="sr-only">Next slide</span>
+      </button>
     </div>
   `,
 })
@@ -214,8 +276,18 @@ export class MyComponent {
       }
     </div>
   </div>
-  <button sc-carousel-previous></button>
-  <button sc-carousel-next></button>
+  <button sc-carousel-previous>
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+    <span class="sr-only">Previous slide</span>
+  </button>
+  <button sc-carousel-next>
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+    <span class="sr-only">Next slide</span>
+  </button>
 </div>
 ```
 

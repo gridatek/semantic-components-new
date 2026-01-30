@@ -48,8 +48,18 @@ import {
             }
           </div>
         </div>
-        <button sc-carousel-previous></button>
-        <button sc-carousel-next></button>
+        <button sc-carousel-previous>
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          <span class="sr-only">Previous slide</span>
+        </button>
+        <button sc-carousel-next>
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+          <span class="sr-only">Next slide</span>
+        </button>
       </div>
     </div>
   \`,
