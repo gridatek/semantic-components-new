@@ -1100,20 +1100,6 @@ export const demosRoutes: Route[] = [
             (m) => m.FeaturedDataTableDemo,
           ),
       },
-      {
-        path: 'simple-data-table-demo',
-        loadComponent: () =>
-          import('../pages/docs/data-table/demos/simple-data-table-demo').then(
-            (m) => m.SimpleDataTableDemo,
-          ),
-      },
-      {
-        path: 'filter-data-table-demo',
-        loadComponent: () =>
-          import('../pages/docs/data-table/demos/filter-data-table-demo').then(
-            (m) => m.FilterDataTableDemo,
-          ),
-      },
     ],
   },
   {
