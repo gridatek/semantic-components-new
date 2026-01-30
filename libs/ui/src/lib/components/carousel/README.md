@@ -67,6 +67,12 @@ The overflow container (viewport) that Embla binds to. This provides the visible
 
 **Selector:** `div[sc-carousel-viewport]`
 
+**Inputs:**
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
 ### ScCarouselTrack
 
 The flex container (track) that moves within the viewport and holds carousel items. This is the element that slides left/right or up/down.
@@ -242,11 +248,17 @@ export class MyComponent {
 ### Vertical Orientation
 
 ```html
-<div sc-carousel orientation="vertical" class="w-full max-w-xs">
-  <div sc-carousel-viewport class="h-[200px]">
-    <div sc-carousel-track>
+<div sc-carousel orientation="vertical" [options]="{ align: 'start' }" class="w-full max-w-xs">
+  <div sc-carousel-viewport class="h-[270px]">
+    <div sc-carousel-track class="-mt-1">
       @for (i of items; track i) {
-      <div sc-carousel-item>...</div>
+      <div sc-carousel-item class="basis-1/2 pt-1">
+        <div class="p-1">
+          <div class="flex items-center justify-center rounded-lg border bg-card p-6">
+            <span class="text-3xl font-semibold">{{ i }}</span>
+          </div>
+        </div>
+      </div>
       }
     </div>
   </div>

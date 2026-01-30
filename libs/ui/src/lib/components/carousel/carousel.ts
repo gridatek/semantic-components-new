@@ -49,7 +49,7 @@ export class ScCarousel implements AfterViewInit {
   private readonly viewport = contentChild(ScCarouselViewport);
 
   readonly canScrollPrev = signal(false);
-  readonly canScrollNext = signal(true);
+  readonly canScrollNext = signal(false);
 
   private api: ScCarouselApi | null = null;
 

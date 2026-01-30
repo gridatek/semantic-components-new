@@ -26,16 +26,21 @@ import {
   ],
   template: `
     <div class="mx-auto w-full max-w-xs">
-      <div sc-carousel orientation="vertical" class="w-full">
-        <div sc-carousel-viewport class="h-[200px]">
-          <div sc-carousel-track>
+      <div
+        sc-carousel
+        orientation="vertical"
+        [options]="{ align: 'start' }"
+        class="w-full"
+      >
+        <div sc-carousel-viewport class="h-[270px]">
+          <div sc-carousel-track class="-mt-1">
             @for (index of items; track index) {
-              <div sc-carousel-item>
+              <div sc-carousel-item class="basis-1/2 pt-1">
                 <div class="p-1">
                   <div
-                    class="flex h-full items-center justify-center rounded-lg border bg-card p-6"
+                    class="flex items-center justify-center rounded-lg border bg-card p-6"
                   >
-                    <span class="text-4xl font-semibold">{{ index }}</span>
+                    <span class="text-3xl font-semibold">{{ index }}</span>
                   </div>
                 </div>
               </div>
