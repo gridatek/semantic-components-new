@@ -20,7 +20,7 @@ A collection of accessible, customizable UI components for Angular applications.
 
 ### Composable
 
-- **Multiple focused components** instead of one monolithic component with many inputs
+- **Specialized components** instead of one monolithic component with many inputs
 - **Slot-based patterns** - Compose UIs by nesting components together
 - **Maximum flexibility** - Build exactly what you need without prop drilling
 - **Single responsibility** - Each component has one clear purpose
