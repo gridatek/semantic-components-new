@@ -193,7 +193,15 @@ The sidebar state is automatically saved to a cookie (`sidebar_state`) with a 7-
 
 ## Mobile Behavior
 
-On screens smaller than 768px (md breakpoint), the sidebar automatically switches to a sheet drawer that slides in from the side. The `ScxSidebarTrigger` automatically handles mobile vs desktop toggle logic.
+On screens smaller than 768px (md breakpoint), the sidebar automatically switches to a sheet drawer that slides in from the side using the `ScSheetProvider`, `ScSheetPortal`, and `ScSheet` components. The `ScxSidebarTrigger` automatically handles mobile vs desktop toggle logic.
+
+### Mobile Implementation Details
+
+The mobile view uses the new ScSheet architecture with a provider pattern:
+
+- `ScSheetProvider` manages the open state and side
+- `ScSheetPortal` creates the overlay with backdrop
+- `ScSheet` is the dialog panel with slide animations
 
 ## Accessibility
 

@@ -1,26 +1,21 @@
 import { Component, computed, inject, input } from '@angular/core';
+import { ScSheetProvider } from '../sheet/sheet-provider';
+import { ScSheetPortal } from '../sheet/sheet-portal';
 import { ScSheet } from '../sheet/sheet';
-import { ScSheetContent } from '../sheet/sheet-content';
 import { cn } from '../../utils';
 import { ScxSidebarState } from './sidebar-state.service';
 
 @Component({
   selector: 'div[scx-sidebar]',
-  imports: [ScSheet, ScSheetContent],
+  imports: [ScSheetProvider, ScSheetPortal, ScSheet],
   template: `
     @if (isMobile()) {
-      <div
-        sc-sheet
-        [open]="state.openMobile()"
-        (openChange)="state.setOpenMobile($event)"
-      >
-        <div
-          sc-sheet-content
-          [side]="side()"
-          class="w-[--sidebar-width-mobile] p-0"
-        >
-          <div [class]="innerClass()">
-            <ng-content />
+      <div sc-sheet-provider [(open)]="state.openMobile" [side]="side()">
+        <div sc-sheet-portal>
+          <div sc-sheet class="w-[--sidebar-width-mobile] p-0">
+            <div [class]="innerClass()">
+              <ng-content />
+            </div>
           </div>
         </div>
       </div>

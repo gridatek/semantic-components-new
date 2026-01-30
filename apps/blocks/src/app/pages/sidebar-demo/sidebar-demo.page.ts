@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScxSidebarProvider,
   ScxSidebar,
@@ -356,6 +356,6 @@ import { RouterLink } from '@angular/router';
       </main>
     </div>
   `,
-  changeDetection: 2,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SidebarDemoPage {}
