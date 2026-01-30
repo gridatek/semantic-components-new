@@ -3,33 +3,17 @@ import {
   Component,
   computed,
   DestroyRef,
-  Directive,
   ElementRef,
   inject,
   input,
   output,
-  signal,
   ViewEncapsulation,
   contentChild,
   AfterViewInit,
 } from '@angular/core';
 import { cn } from '../../utils';
-
-@Directive({
-  selector: '[sc-infinite-scroll-loader]',
-  host: {
-    'data-slot': 'infinite-scroll-loader',
-  },
-})
-export class ScInfiniteScrollLoader {}
-
-@Directive({
-  selector: '[sc-infinite-scroll-end]',
-  host: {
-    'data-slot': 'infinite-scroll-end',
-  },
-})
-export class ScInfiniteScrollEnd {}
+import { ScInfiniteScrollLoader } from './infinite-scroll-loader';
+import { ScInfiniteScrollEnd } from './infinite-scroll-end';
 
 @Component({
   selector: 'sc-infinite-scroll',
@@ -208,80 +192,6 @@ export class ScInfiniteScroll implements AfterViewInit {
     const container = this.elementRef.nativeElement.querySelector('div');
     if (container) {
       container.scrollTop = container.scrollHeight;
-    }
-  }
-}
-
-@Component({
-  selector: 'sc-virtual-scroll',
-  exportAs: 'scVirtualScroll',
-  template: `
-    <div #viewport [class]="viewportClass()" (scroll)="onScroll()">
-      <div [style.height.px]="totalHeight()" [style.position]="'relative'">
-        <div [style.transform]="'translateY(' + offsetY() + 'px)'">
-          @for (item of visibleItems(); track trackByFn()(item, $index)) {
-            <div [style.height.px]="itemHeight()">
-              <ng-content />
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-  `,
-  host: {
-    'data-slot': 'virtual-scroll',
-  },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ScVirtualScroll<T> {
-  readonly classInput = input<string>('', { alias: 'class' });
-  readonly items = input<T[]>([]);
-  readonly itemHeight = input<number>(50);
-  readonly overscan = input<number>(3);
-  readonly trackByFn = input<(item: T, index: number) => unknown>((_, i) => i);
-
-  private readonly scrollTop = signal(0);
-  private viewportEl: HTMLElement | null = null;
-
-  protected readonly viewportClass = computed(() =>
-    cn('overflow-auto', this.classInput()),
-  );
-
-  protected readonly totalHeight = computed(
-    () => this.items().length * this.itemHeight(),
-  );
-
-  protected readonly visibleRange = computed(() => {
-    const viewportHeight = this.viewportEl?.clientHeight || 400;
-    const start = Math.floor(this.scrollTop() / this.itemHeight());
-    const visibleCount = Math.ceil(viewportHeight / this.itemHeight());
-    const overscan = this.overscan();
-
-    return {
-      start: Math.max(0, start - overscan),
-      end: Math.min(this.items().length, start + visibleCount + overscan),
-    };
-  });
-
-  protected readonly visibleItems = computed(() => {
-    const { start, end } = this.visibleRange();
-    return this.items().slice(start, end);
-  });
-
-  protected readonly offsetY = computed(() => {
-    return this.visibleRange().start * this.itemHeight();
-  });
-
-  onScroll(): void {
-    if (this.viewportEl) {
-      this.scrollTop.set(this.viewportEl.scrollTop);
-    }
-  }
-
-  scrollToIndex(index: number): void {
-    if (this.viewportEl) {
-      this.viewportEl.scrollTop = index * this.itemHeight();
     }
   }
 }
