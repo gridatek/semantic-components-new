@@ -4,9 +4,6 @@ import { cn } from '../../utils';
 export type KbdVariant = 'default' | 'outline';
 export type KbdSize = 'default' | 'sm' | 'lg';
 
-// ============================================================================
-// Kbd
-// ============================================================================
 @Directive({
   selector: '[sc-kbd]',
   host: {
