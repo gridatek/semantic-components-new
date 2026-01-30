@@ -133,6 +133,12 @@ import { SiMenuIcon, SiXIcon } from '@semantic-icons/lucide-icons';
               <li sc-navigation-menu-item>
                 <a sc-navigation-menu-link href="#">About</a>
               </li>
+
+              <li sc-navigation-menu-item>
+                <a sc-navigation-menu-link routerLink="/sidebar-demo">
+                  Sidebar Demo
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -170,6 +176,15 @@ import { SiMenuIcon, SiXIcon } from '@semantic-icons/lucide-icons';
           <a sc-navbar-mobile-link href="#" [active]="false">Features</a>
           <a sc-navbar-mobile-link href="#" [active]="false">Pricing</a>
           <a sc-navbar-mobile-link href="#" [active]="false">About</a>
+          <a
+            sc-navbar-mobile-link
+            routerLink="/sidebar-demo"
+            routerLinkActive="active"
+            #mobileSidebarRla="routerLinkActive"
+            [active]="mobileSidebarRla.isActive"
+          >
+            Sidebar Demo
+          </a>
           <hr class="my-2 border-border" />
           <button sc-button variant="ghost" class="w-full">Sign In</button>
           <button sc-button class="w-full">Get Started</button>
