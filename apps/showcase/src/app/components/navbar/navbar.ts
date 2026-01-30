@@ -13,6 +13,12 @@ import {
   ScNavbarMobileLink,
   ScNavbarMobileTrigger,
   ScThemeToggle,
+  ScNavigationMenu,
+  ScNavigationMenuContent,
+  ScNavigationMenuItem,
+  ScNavigationMenuLink,
+  ScNavigationMenuList,
+  ScNavigationMenuTrigger,
 } from '@semantic-components/ui';
 
 @Component({
@@ -32,6 +38,12 @@ import {
     ScNavbarMobileTrigger,
     ScButton,
     ScThemeToggle,
+    ScNavigationMenu,
+    ScNavigationMenuContent,
+    ScNavigationMenuItem,
+    ScNavigationMenuLink,
+    ScNavigationMenuList,
+    ScNavigationMenuTrigger,
   ],
   template: `
     <div sc-navbar-provider>
@@ -58,25 +70,96 @@ import {
 
         <!-- Desktop Navigation -->
         <div sc-navbar-content>
-          <a
-            sc-navbar-link
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            #homeRla="routerLinkActive"
-            [active]="homeRla.isActive"
-          >
-            Home
-          </a>
-          <a
-            sc-navbar-link
-            routerLink="/docs/components"
-            routerLinkActive="active"
-            #componentsRla="routerLinkActive"
-            [active]="componentsRla.isActive"
-          >
-            Components
-          </a>
+          <nav sc-navigation-menu>
+            <ul sc-navigation-menu-list>
+              <li sc-navigation-menu-item>
+                <button sc-navigation-menu-trigger>Components</button>
+                <div sc-navigation-menu-content>
+                  <ul
+                    class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]"
+                  >
+                    <li>
+                      <a sc-navigation-menu-link routerLink="/docs/accordion">
+                        <div class="text-sm font-medium leading-none">
+                          Accordion
+                        </div>
+                        <p
+                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                        >
+                          Vertically stacked sections of content.
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        sc-navigation-menu-link
+                        routerLink="/docs/alert-dialog"
+                      >
+                        <div class="text-sm font-medium leading-none">
+                          Alert Dialog
+                        </div>
+                        <p
+                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                        >
+                          Modal dialog for important messages.
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a sc-navigation-menu-link routerLink="/docs/button">
+                        <div class="text-sm font-medium leading-none">
+                          Button
+                        </div>
+                        <p
+                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                        >
+                          Trigger actions and events.
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a sc-navigation-menu-link routerLink="/docs/card">
+                        <div class="text-sm font-medium leading-none">Card</div>
+                        <p
+                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                        >
+                          Container for related content.
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a sc-navigation-menu-link routerLink="/docs/dialog">
+                        <div class="text-sm font-medium leading-none">
+                          Dialog
+                        </div>
+                        <p
+                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                        >
+                          Modal window for user interaction.
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a sc-navigation-menu-link routerLink="/docs/components">
+                        <div class="text-sm font-medium leading-none">
+                          View All
+                        </div>
+                        <p
+                          class="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                        >
+                          See all available components.
+                        </p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li sc-navigation-menu-item>
+                <a sc-navigation-menu-link routerLink="/docs">Docs</a>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <!-- Actions -->
