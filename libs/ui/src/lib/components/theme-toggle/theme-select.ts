@@ -17,9 +17,7 @@ import { ScTheme, Theme } from './theme.service';
     '(change)': 'onThemeChange($event)',
   },
   template: `
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-    <option value="system">System</option>
+    <ng-content />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

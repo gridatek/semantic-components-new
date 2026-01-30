@@ -82,11 +82,28 @@ import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
   template: `
     <div sc-theme-field>
       <label for="theme-select" class="text-sm font-medium">Theme</label>
-      <select sc-theme-select id="theme-select"></select>
+      <select sc-theme-select id="theme-select">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="system">System</option>
+      </select>
     </div>
   `,
 })
 export class MyComponent {}
+```
+
+With translations:
+
+```html
+<div sc-theme-field>
+  <label for="theme-select">Thème</label>
+  <select sc-theme-select id="theme-select">
+    <option value="light">Lumière</option>
+    <option value="dark">Sombre</option>
+    <option value="system">Système</option>
+  </select>
+</div>
 ```
 
 Without ScThemeField (custom layout):
@@ -94,7 +111,11 @@ Without ScThemeField (custom layout):
 ```html
 <div class="custom-layout">
   <label for="my-theme">Choose theme</label>
-  <select sc-theme-select id="my-theme"></select>
+  <select sc-theme-select id="my-theme">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="system">System</option>
+  </select>
 </div>
 ```
 
@@ -158,7 +179,7 @@ Use a template reference variable with `#toggle="scThemeToggle"` to access the `
 
 ### ScThemeSelect
 
-A dropdown select for choosing between light, dark, and system themes. Follows the composable pattern - consumers provide the label and set IDs.
+A dropdown select for choosing between light, dark, and system themes. Follows the composable pattern - consumers provide the label, options, and IDs for full control and i18n support.
 
 **Selector:** `select[sc-theme-select]`
 
@@ -167,6 +188,16 @@ A dropdown select for choosing between light, dark, and system themes. Follows t
 | Input   | Type     | Default | Description            |
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
+
+**Options:**
+
+Consumers must provide the option elements via content projection. The values must be `'light'`, `'dark'`, or `'system'`.
+
+```html
+<option value="light">Light</option>
+<option value="dark">Dark</option>
+<option value="system">System</option>
+```
 
 ### ScThemeField
 
