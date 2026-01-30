@@ -1,3 +1,4 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
   contentChild,
@@ -15,8 +16,6 @@ import { cn } from '../../utils';
 import { ScNavigationMenu } from './navigation-menu';
 import { ScNavigationMenuTrigger } from './navigation-menu-trigger';
 
-let itemIdCounter = 0;
-
 @Directive({
   selector: 'li[sc-navigation-menu-item]',
   host: {
@@ -32,7 +31,7 @@ export class ScNavigationMenuItem implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   readonly classInput = input<string>('', { alias: 'class' });
 
-  readonly itemId = `nav-item-${++itemIdCounter}`;
+  readonly itemId = inject(_IdGenerator).getId('sc-navigation-menu-item-');
 
   /** Whether this item's content is open */
   readonly open = signal<boolean>(false);
