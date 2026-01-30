@@ -26,10 +26,10 @@ A component for switching between light and dark themes with system preference s
 ### Using the Service Directly
 
 ```typescript
-import { ScThemeService } from './ui/theme-toggle';
+import { ScTheme } from './ui/theme-toggle';
 
 export class MyComponent {
-  private themeService = inject(ScThemeService);
+  private themeService = inject(ScTheme);
 
   // Read the current theme
   currentTheme = this.themeService.theme;
@@ -81,7 +81,7 @@ A dropdown select for choosing between light, dark, and system themes.
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-## Service: ScThemeService
+## Service: ScTheme
 
 A singleton service for managing theme state.
 

@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScThemeService, Theme } from './theme.service';
+import { ScTheme, Theme } from './theme.service';
 
 @Component({
   selector: 'sc-theme-select',
@@ -30,7 +30,7 @@ import { ScThemeService, Theme } from './theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScThemeSelect {
-  private readonly themeService = inject(ScThemeService);
+  private readonly themeService = inject(ScTheme);
 
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -19,7 +19,7 @@ import { BasicThemeToggleDemo } from './basic-theme-toggle-demo';
 })
 export class BasicThemeToggleDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ScThemeService, ScThemeToggle } from '@semantic-components/ui';
+import { ScTheme, ScThemeToggle } from '@semantic-components/ui';
 import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
@@ -42,6 +42,6 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicThemeToggleDemo {
-  protected readonly themeService = inject(ScThemeService);
+  protected readonly themeService = inject(ScTheme);
 }`;
 }

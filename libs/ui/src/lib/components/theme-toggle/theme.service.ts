@@ -3,7 +3,7 @@ import { computed, effect, Injectable, signal } from '@angular/core';
 export type Theme = 'light' | 'dark' | 'system';
 
 @Injectable({ providedIn: 'root' })
-export class ScThemeService {
+export class ScTheme {
   private readonly storageKey = 'sc-theme';
   private readonly darkMediaQuery =
     typeof window !== 'undefined'

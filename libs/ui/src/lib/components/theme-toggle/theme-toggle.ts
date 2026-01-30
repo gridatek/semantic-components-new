@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScThemeService, Theme } from './theme.service';
+import { ScTheme, Theme } from './theme.service';
 
 export type ThemeToggleVariant = 'default' | 'outline' | 'ghost';
 export type ThemeToggleSize = 'default' | 'sm' | 'lg' | 'icon';
@@ -42,7 +42,7 @@ const sizeStyles: Record<ThemeToggleSize, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScThemeToggle {
-  private readonly themeService = inject(ScThemeService);
+  private readonly themeService = inject(ScTheme);
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly variant = input<ThemeToggleVariant>('ghost');
