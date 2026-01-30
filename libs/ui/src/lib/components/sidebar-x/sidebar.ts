@@ -19,7 +19,7 @@ import { ScxSidebarState } from './sidebar-state.service';
         <div sc-sheet-portal>
           <div
             sc-sheet
-            class="w-[var(--sidebar-width-mobile)] bg-sidebar text-sidebar-foreground p-0 [&>button]:hidden flex h-full flex-col"
+            class="bg-sidebar text-sidebar-foreground p-0 [&>button]:hidden flex h-full flex-col"
           >
             <ng-container *ngTemplateOutlet="content" />
           </div>
