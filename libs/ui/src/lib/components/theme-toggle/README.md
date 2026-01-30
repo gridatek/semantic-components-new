@@ -72,8 +72,30 @@ export class MyComponent {}
 
 ### Theme Select Dropdown
 
+The theme select follows the composable pattern - consumers provide the label and connect it with IDs.
+
+```typescript
+import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
+
+@Component({
+  imports: [ScThemeField, ScThemeSelect],
+  template: `
+    <div sc-theme-field>
+      <label for="theme-select" class="text-sm font-medium">Theme</label>
+      <select sc-theme-select id="theme-select"></select>
+    </div>
+  `,
+})
+export class MyComponent {}
+```
+
+Without ScThemeField (custom layout):
+
 ```html
-<sc-theme-select></sc-theme-select>
+<div class="custom-layout">
+  <label for="my-theme">Choose theme</label>
+  <select sc-theme-select id="my-theme"></select>
+</div>
 ```
 
 ### Using ScTheme Directly
@@ -136,9 +158,21 @@ Use a template reference variable with `#toggle="scThemeToggle"` to access the `
 
 ### ScThemeSelect
 
-A dropdown select for choosing between light, dark, and system themes.
+A dropdown select for choosing between light, dark, and system themes. Follows the composable pattern - consumers provide the label and set IDs.
 
-**Selector:** `sc-theme-select`
+**Selector:** `select[sc-theme-select]`
+
+**Inputs:**
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
+### ScThemeField
+
+A container component for theme select with consistent spacing.
+
+**Selector:** `div[sc-theme-field]`
 
 **Inputs:**
 

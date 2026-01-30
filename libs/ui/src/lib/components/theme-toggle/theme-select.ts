@@ -9,23 +9,17 @@ import { cn } from '../../utils';
 import { ScTheme, Theme } from './theme.service';
 
 @Component({
-  selector: 'sc-theme-select',
+  selector: 'select[sc-theme-select]',
   host: {
     'data-slot': 'theme-select',
     '[class]': 'class()',
+    '[value]': 'theme()',
+    '(change)': 'onThemeChange($event)',
   },
   template: `
-    <label for="theme-select" class="sr-only">Select theme</label>
-    <select
-      id="theme-select"
-      [value]="theme()"
-      (change)="onThemeChange($event)"
-      class="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-    >
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="system">System</option>
-    </select>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="system">System</option>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -37,7 +31,11 @@ export class ScThemeSelect {
   protected readonly theme = this.themeService.theme;
 
   protected readonly class = computed(() =>
-    cn('inline-block', this.classInput()),
+    cn(
+      'h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      this.classInput(),
+    ),
   );
 
   protected onThemeChange(event: Event): void {

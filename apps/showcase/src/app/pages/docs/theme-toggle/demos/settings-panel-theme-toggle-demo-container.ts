@@ -29,12 +29,12 @@ import { ScThemeSelect } from '@semantic-components/ui';
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div class="space-y-0.5">
-            <label class="text-sm font-medium">Theme</label>
+            <label for="settings-theme" class="text-sm font-medium">Theme</label>
             <p class="text-sm text-muted-foreground">
               Select your preferred theme
             </p>
           </div>
-          <sc-theme-select class="w-32"></sc-theme-select>
+          <select sc-theme-select id="settings-theme" class="w-32"></select>
         </div>
       </div>
     </div>
