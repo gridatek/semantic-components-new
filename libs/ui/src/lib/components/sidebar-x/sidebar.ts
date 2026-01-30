@@ -1,11 +1,13 @@
-import { Component, computed, inject, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { ScSheetProvider } from '../sheet/sheet-provider';
-import { ScSheetPortal } from '../sheet/sheet-portal';
-import { ScSheet } from '../sheet/sheet';
-import { ScSheetClose } from '../sheet/sheet-close';
+import { Component, computed, inject, input } from '@angular/core';
 import { SiXIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
+import {
+  ScSheet,
+  ScSheetClose,
+  ScSheetPortal,
+  ScSheetProvider,
+} from '../sheet';
 import { ScxSidebarState } from './sidebar-state.service';
 
 @Component({
