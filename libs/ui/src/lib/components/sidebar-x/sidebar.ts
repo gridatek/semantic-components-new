@@ -14,6 +14,7 @@ import { ScxSidebarState } from './sidebar-state.service';
       <ng-content />
     </ng-template>
 
+    <!-- Mobile sidebar uses default width from sheet component -->
     @if (isMobile()) {
       <div sc-sheet-provider [(open)]="state.openMobile" [side]="side()">
         <div sc-sheet-portal>

@@ -194,10 +194,12 @@ The sidebar uses CSS variables that can be customized:
 ```css
 :root {
   --sidebar-width: 16rem;
-  --sidebar-width-mobile: 18rem;
+  --sidebar-width-mobile: 18rem; /* Available but not currently used */
   --sidebar-width-icon: 3rem;
 }
 ```
+
+**Note:** The mobile sidebar currently uses the default width from the Sheet component. The `--sidebar-width-mobile` variable is available for future customization if needed.
 
 ### Props
 
@@ -238,6 +240,8 @@ The mobile view uses the new ScSheet architecture with a provider pattern:
 - `ScSheetPortal` creates the overlay with backdrop
 - `ScSheet` is the dialog panel with slide animations
 
+**Mobile Width:** The mobile sidebar uses the default width provided by the Sheet component rather than a custom width. This ensures consistency with other sheet-based UI elements and provides a responsive width that adapts to different device sizes.
+
 ## Accessibility
 
 - All interactive elements are keyboard accessible
@@ -247,4 +251,4 @@ The mobile view uses the new ScSheet architecture with a provider pattern:
 
 ## Demo
 
-See a comprehensive demo at `/sidebar-demo` in the blocks application.
+See a comprehensive demo at `/dashboard` in the blocks application.
