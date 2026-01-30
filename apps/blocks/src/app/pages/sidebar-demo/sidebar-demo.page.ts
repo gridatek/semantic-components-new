@@ -263,7 +263,7 @@ import { RouterLink } from '@angular/router';
             <div class="grid flex-1 text-left text-sm leading-tight">
               <span class="truncate font-semibold">John Doe</span>
               <span class="truncate text-xs text-sidebar-foreground/70">
-                john@example.com
+                john example.com
               </span>
             </div>
           </div>
