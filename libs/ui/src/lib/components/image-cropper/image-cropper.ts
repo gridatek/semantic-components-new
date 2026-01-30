@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -172,7 +172,7 @@ export const SC_IMAGE_CROPPER = new InjectionToken<ScImageCropper>(
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScImageCropper implements AfterViewInit, OnDestroy {
+export class ScImageCropper implements OnDestroy {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly src = input.required<string>();
   readonly aspectRatio = input<number | null>(null); // null = free, 1 = square, 16/9, etc.
@@ -230,13 +230,15 @@ export class ScImageCropper implements AfterViewInit, OnDestroy {
   private readonly boundTouchMove = this.onTouchMove.bind(this);
   private readonly boundTouchEnd = this.onTouchEnd.bind(this);
 
-  ngAfterViewInit(): void {
-    document.addEventListener('mousemove', this.boundMouseMove);
-    document.addEventListener('mouseup', this.boundMouseUp);
-    document.addEventListener('touchmove', this.boundTouchMove, {
-      passive: false,
+  constructor() {
+    afterNextRender(() => {
+      document.addEventListener('mousemove', this.boundMouseMove);
+      document.addEventListener('mouseup', this.boundMouseUp);
+      document.addEventListener('touchmove', this.boundTouchMove, {
+        passive: false,
+      });
+      document.addEventListener('touchend', this.boundTouchEnd);
     });
-    document.addEventListener('touchend', this.boundTouchEnd);
   }
 
   ngOnDestroy(): void {

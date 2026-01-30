@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -136,7 +136,7 @@ import type {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScImageAnnotator implements AfterViewInit {
+export class ScImageAnnotator {
   readonly imageCanvasRef =
     viewChild<ElementRef<HTMLCanvasElement>>('imageCanvas');
   readonly annotationCanvasRef =
@@ -215,8 +215,10 @@ export class ScImageAnnotator implements AfterViewInit {
     cn('border rounded-lg overflow-hidden bg-background', this.class()),
   );
 
-  ngAfterViewInit(): void {
-    this.loadImage();
+  constructor() {
+    afterNextRender(() => {
+      this.loadImage();
+    });
   }
 
   private loadImage(): void {

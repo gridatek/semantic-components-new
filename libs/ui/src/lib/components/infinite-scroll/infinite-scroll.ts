@@ -9,7 +9,7 @@ import {
   output,
   ViewEncapsulation,
   contentChild,
-  AfterViewInit,
+  afterNextRender,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScInfiniteScrollLoader } from './infinite-scroll-loader';
@@ -71,7 +71,7 @@ import { ScInfiniteScrollEnd } from './infinite-scroll-end';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScInfiniteScroll implements AfterViewInit {
+export class ScInfiniteScroll {
   private readonly destroyRef = inject(DestroyRef);
   private readonly elementRef = inject(ElementRef);
 
@@ -102,11 +102,13 @@ export class ScInfiniteScroll implements AfterViewInit {
 
   protected readonly endContainerClass = computed(() => cn(''));
 
-  ngAfterViewInit(): void {
-    this.setupIntersectionObserver();
+  constructor() {
+    afterNextRender(() => {
+      this.setupIntersectionObserver();
 
-    this.destroyRef.onDestroy(() => {
-      this.cleanup();
+      this.destroyRef.onDestroy(() => {
+        this.cleanup();
+      });
     });
   }
 

@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -59,7 +59,7 @@ import type { VirtualListItem, VirtualListRange } from './virtual-list-types';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScVirtualList<T> implements AfterViewInit {
+export class ScVirtualList<T> {
   private readonly destroyRef = inject(DestroyRef);
 
   readonly containerRef = viewChild<ElementRef<HTMLDivElement>>('container');
@@ -131,9 +131,11 @@ export class ScVirtualList<T> implements AfterViewInit {
     cn('overflow-auto', this.class()),
   );
 
-  ngAfterViewInit(): void {
-    // Initial range emit
-    this.emitRange();
+  constructor() {
+    afterNextRender(() => {
+      // Initial range emit
+      this.emitRange();
+    });
   }
 
   onScroll(): void {

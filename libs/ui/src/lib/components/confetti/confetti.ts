@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -35,7 +35,7 @@ import { DEFAULT_CONFETTI_OPTIONS } from './confetti-types';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScConfetti implements AfterViewInit {
+export class ScConfetti {
   private readonly destroyRef = inject(DestroyRef);
   readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
 
@@ -51,9 +51,11 @@ export class ScConfetti implements AfterViewInit {
   private animationId: number | null = null;
   private ctx: CanvasRenderingContext2D | null = null;
 
-  ngAfterViewInit(): void {
-    this.updateCanvasSize();
-    this.setupResizeHandler();
+  constructor() {
+    afterNextRender(() => {
+      this.updateCanvasSize();
+      this.setupResizeHandler();
+    });
   }
 
   private updateCanvasSize(): void {

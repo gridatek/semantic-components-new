@@ -8,7 +8,7 @@ import {
   output,
   signal,
   viewChild,
-  AfterViewInit,
+  afterNextRender,
   DestroyRef,
   inject,
 } from '@angular/core';
@@ -631,7 +631,7 @@ const DEFAULT_TOOLBAR: ToolbarConfig = {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScRichTextEditor implements AfterViewInit {
+export class ScRichTextEditor {
   private readonly destroyRef = inject(DestroyRef);
 
   // Two-way binding for HTML content
@@ -701,20 +701,22 @@ export class ScRichTextEditor implements AfterViewInit {
     ),
   );
 
-  ngAfterViewInit(): void {
-    const editorEl = this.editor().nativeElement;
+  constructor() {
+    afterNextRender(() => {
+      const editorEl = this.editor().nativeElement;
 
-    // Set initial content
-    if (this.value()) {
-      editorEl.innerHTML = this.value();
-    }
+      // Set initial content
+      if (this.value()) {
+        editorEl.innerHTML = this.value();
+      }
 
-    // Make non-editable if disabled/readonly
-    if (this.disabled() || this.readonly()) {
-      editorEl.contentEditable = 'false';
-    }
+      // Make non-editable if disabled/readonly
+      if (this.disabled() || this.readonly()) {
+        editorEl.contentEditable = 'false';
+      }
 
-    this.isInitialized = true;
+      this.isInitialized = true;
+    });
   }
 
   protected toolbarButtonClass(active: boolean): string {

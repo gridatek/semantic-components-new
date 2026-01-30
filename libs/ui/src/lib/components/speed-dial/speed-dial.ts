@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -83,7 +83,7 @@ import type {
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSpeedDial implements AfterViewInit {
+export class ScSpeedDial {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
@@ -174,6 +174,12 @@ export class ScSpeedDial implements AfterViewInit {
     return sizes[this.size()];
   }
 
+  constructor() {
+    afterNextRender(() => {
+      this.setupOutsideClickHandler();
+    });
+  }
+
   toggle(): void {
     this.open.update((v) => !v);
     this.openChange.emit(this.open());
@@ -195,10 +201,6 @@ export class ScSpeedDial implements AfterViewInit {
 
   onEscape(): void {
     this.close();
-  }
-
-  ngAfterViewInit(): void {
-    this.setupOutsideClickHandler();
   }
 
   private setupOutsideClickHandler(): void {

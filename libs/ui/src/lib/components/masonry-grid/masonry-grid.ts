@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -44,7 +44,7 @@ export type MasonryLayoutMode = 'columns' | 'absolute';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScMasonryGrid implements AfterViewInit {
+export class ScMasonryGrid {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
   private resizeObserver: ResizeObserver | null = null;
@@ -84,15 +84,15 @@ export class ScMasonryGrid implements AfterViewInit {
       '--masonry-gap',
       `${this.gap()}px`,
     );
-  }
 
-  ngAfterViewInit(): void {
-    this.observeResize();
-    this.updateContainerWidth();
+    afterNextRender(() => {
+      this.observeResize();
+      this.updateContainerWidth();
 
-    if (this.layoutMode() === 'absolute') {
-      this.calculateLayout();
-    }
+      if (this.layoutMode() === 'absolute') {
+        this.calculateLayout();
+      }
+    });
   }
 
   private observeResize(): void {

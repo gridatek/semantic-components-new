@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -68,7 +68,7 @@ import { COMPONENTS } from '../../data/components';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ComponentsLayout implements AfterViewInit {
+export class ComponentsLayout {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   protected readonly tocService = inject(TocService);
@@ -78,17 +78,19 @@ export class ComponentsLayout implements AfterViewInit {
 
   readonly components = COMPONENTS;
 
-  ngAfterViewInit(): void {
-    this.extractTocHeadings();
+  constructor() {
+    afterNextRender(() => {
+      this.extractTocHeadings();
 
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe(() => {
-        setTimeout(() => this.extractTocHeadings(), 100);
-      });
+      this.router.events
+        .pipe(
+          filter((event) => event instanceof NavigationEnd),
+          takeUntilDestroyed(this.destroyRef),
+        )
+        .subscribe(() => {
+          setTimeout(() => this.extractTocHeadings(), 100);
+        });
+    });
   }
 
   private extractTocHeadings(): void {

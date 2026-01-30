@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -90,7 +90,7 @@ import type {
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSplitButton implements AfterViewInit {
+export class ScSplitButton {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
@@ -195,8 +195,10 @@ export class ScSplitButton implements AfterViewInit {
     return sizes[this.size()];
   }
 
-  ngAfterViewInit(): void {
-    this.setupOutsideClickHandler();
+  constructor() {
+    afterNextRender(() => {
+      this.setupOutsideClickHandler();
+    });
   }
 
   private setupOutsideClickHandler(): void {

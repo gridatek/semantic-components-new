@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -22,7 +22,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScMasonryItem implements AfterViewInit {
+export class ScMasonryItem {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
   private resizeObserver: ResizeObserver | null = null;
@@ -31,8 +31,10 @@ export class ScMasonryItem implements AfterViewInit {
 
   readonly sizeChange = output<{ width: number; height: number }>();
 
-  ngAfterViewInit(): void {
-    this.observeSize();
+  constructor() {
+    afterNextRender(() => {
+      this.observeSize();
+    });
   }
 
   private observeSize(): void {

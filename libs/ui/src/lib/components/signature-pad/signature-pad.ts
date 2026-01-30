@@ -10,7 +10,7 @@ import {
   output,
   signal,
   viewChild,
-  AfterViewInit,
+  afterNextRender,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -92,7 +92,7 @@ export interface SignatureLine {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSignaturePad implements AfterViewInit {
+export class ScSignaturePad {
   private readonly destroyRef = inject(DestroyRef);
   private readonly canvasRef =
     viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
@@ -149,14 +149,14 @@ export class ScSignaturePad implements AfterViewInit {
   );
 
   constructor() {
+    afterNextRender(() => {
+      this.redraw();
+    });
+
     // Redraw on any state change
     this.destroyRef.onDestroy(() => {
       // Cleanup if needed
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.redraw();
   }
 
   private getContext(): CanvasRenderingContext2D | null {
