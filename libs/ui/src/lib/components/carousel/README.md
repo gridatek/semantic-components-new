@@ -6,7 +6,7 @@ A carousel with motion and swipe built using CSS scroll snap.
 
 ```html
 <div sc-carousel class="w-full max-w-xs">
-  <div sc-carousel-content>
+  <div sc-carousel-track>
     <div sc-carousel-item>Slide 1</div>
     <div sc-carousel-item>Slide 2</div>
     <div sc-carousel-item>Slide 3</div>
@@ -31,11 +31,11 @@ Main carousel container that manages state and keyboard navigation.
 | `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Scroll direction       |
 | `class`       | `string`                     | `''`           | Additional CSS classes |
 
-### ScCarouselContent
+### ScCarouselTrack
 
-Scrollable container for carousel items.
+The scrollable track that contains and slides carousel items.
 
-**Selector:** `div[sc-carousel-content]`
+**Selector:** `div[sc-carousel-track]`
 
 **Inputs:**
 
@@ -85,7 +85,7 @@ Next slide navigation button.
 
 ```html
 <div sc-carousel class="w-full max-w-xs">
-  <div sc-carousel-content>
+  <div sc-carousel-track>
     @for (i of [1, 2, 3, 4, 5]; track i) {
     <div sc-carousel-item>
       <div class="p-1">
@@ -103,7 +103,7 @@ Next slide navigation button.
 
 ```html
 <div sc-carousel class="w-full max-w-lg">
-  <div sc-carousel-content>
+  <div sc-carousel-track>
     @for (i of items; track i) {
     <div sc-carousel-item class="basis-1/3">
       <!-- Shows 3 items at a time -->
@@ -117,7 +117,7 @@ Next slide navigation button.
 
 ```html
 <div sc-carousel orientation="vertical" class="w-full max-w-xs">
-  <div sc-carousel-content class="h-[200px]">
+  <div sc-carousel-track class="h-[200px]">
     @for (i of items; track i) {
     <div sc-carousel-item>...</div>
     }

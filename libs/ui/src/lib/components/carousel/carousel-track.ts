@@ -3,14 +3,14 @@ import { cn } from '../../utils';
 import { ScCarousel } from './carousel';
 
 @Directive({
-  selector: 'div[sc-carousel-content]',
+  selector: 'div[sc-carousel-track]',
   host: {
-    'data-slot': 'carousel-content',
+    'data-slot': 'carousel-track',
     '[class]': 'class()',
     '(scroll)': 'onScroll()',
   },
 })
-export class ScCarouselContent {
+export class ScCarouselTrack {
   private readonly carousel = inject(ScCarousel);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 

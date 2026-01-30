@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScCarouselContent } from './carousel-content';
+import { ScCarouselTrack } from './carousel-track';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
 
@@ -37,7 +37,7 @@ export class ScCarousel {
   readonly orientation = input<CarouselOrientation>('horizontal');
   readonly opts = input<CarouselOptions>({});
 
-  private readonly content = contentChild(ScCarouselContent);
+  private readonly content = contentChild(ScCarouselTrack);
 
   readonly canScrollPrev = signal(false);
   readonly canScrollNext = signal(true);
