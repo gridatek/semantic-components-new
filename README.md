@@ -11,12 +11,19 @@ A collection of accessible, customizable UI components for Angular applications.
 - **OnPush change detection** for optimal performance
 - **TypeScript-first** with strict type safety
 
-### Declarative & Composable
+### Declarative
 
-- **Declarative API** using Angular templates and directives
-- **Composable architecture** with slot-based patterns for building complex UIs
-- **Headless components** that separate logic from presentation
+- **Template-based API** using Angular templates and directives
+- **Intuitive syntax** with Angular's native control flow (@if, @for)
+- **Clear component structure** with semantic selectors
+- **Easy to read and maintain** declarative code
+
+### Composable
+
+- **Slot-based architecture** for building complex UIs from simple parts
 - **Mix and match** components to create custom experiences
+- **Headless patterns** that separate logic from presentation
+- **Flexible composition** for any use case
 
 ### Comprehensive Component Library
 
