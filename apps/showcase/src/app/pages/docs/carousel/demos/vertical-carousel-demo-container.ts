@@ -43,8 +43,8 @@ import {
         [options]="{ align: 'start' }"
         class="w-full"
       >
-        <div sc-carousel-viewport class="h-[270px]">
-          <div sc-carousel-track class="-mt-1">
+        <div sc-carousel-viewport>
+          <div sc-carousel-track class="-mt-1 h-[270px]">
             @for (index of items; track index) {
               <div sc-carousel-item class="basis-1/2 pt-1">
                 <div class="p-1">

@@ -249,8 +249,8 @@ export class MyComponent {
 
 ```html
 <div sc-carousel orientation="vertical" [options]="{ align: 'start' }" class="w-full max-w-xs">
-  <div sc-carousel-viewport class="h-[270px]">
-    <div sc-carousel-track class="-mt-1">
+  <div sc-carousel-viewport>
+    <div sc-carousel-track class="-mt-1 h-[270px]">
       @for (i of items; track i) {
       <div sc-carousel-item class="basis-1/2 pt-1">
         <div class="p-1">
