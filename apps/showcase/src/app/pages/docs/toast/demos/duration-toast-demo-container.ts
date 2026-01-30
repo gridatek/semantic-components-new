@@ -15,7 +15,7 @@ import { DurationToastDemo } from './duration-toast-demo';
 })
 export class DurationToastDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ScToastStack, ToastService } from '@semantic-components/ui';
+import { ScToastStack, ScToaster } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-duration-toast-demo',
@@ -33,7 +33,7 @@ import { ScToastStack, ToastService } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DurationToastDemo {
-  private readonly toastService = inject(ToastService);
+  private readonly toastService = inject(ScToaster);
 
   showToast(): void {
     this.toastService.show({

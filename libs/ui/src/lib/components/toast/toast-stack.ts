@@ -12,7 +12,7 @@ import { ScToastAction } from './toast-action';
 import { ScToastClose } from './toast-close';
 import { ScToastDescription } from './toast-description';
 import { ScToastTitle } from './toast-title';
-import { ToastService } from './toast.service';
+import { ScToaster } from './toast.service';
 
 @Component({
   selector: 'sc-toast-stack',
@@ -73,7 +73,7 @@ import { ToastService } from './toast.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScToastStack {
-  readonly toastService = inject(ToastService);
+  readonly toastService = inject(ScToaster);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

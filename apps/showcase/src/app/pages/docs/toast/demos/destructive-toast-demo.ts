@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ScToastStack, ToastService } from '@semantic-components/ui';
+import { ScToastStack, ScToaster } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-destructive-toast-demo',
@@ -17,7 +17,7 @@ import { ScToastStack, ToastService } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DestructiveToastDemo {
-  private readonly toastService = inject(ToastService);
+  private readonly toastService = inject(ScToaster);
 
   showToast(): void {
     this.toastService.show({

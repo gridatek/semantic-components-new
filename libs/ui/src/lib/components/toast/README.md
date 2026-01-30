@@ -7,7 +7,7 @@ A succinct message that is displayed temporarily to provide feedback.
 Unlike other components that use template-based triggers, Toast uses a **service-based architecture**:
 
 ```
-ToastService (Injectable)
+ScToaster (Injectable)
     │
     └── show(config) ──► Creates ToastData ──► Updates signal ──► ScToastStack renders
                                                                        │
@@ -33,11 +33,11 @@ ToastService (Injectable)
 
 ## Service
 
-### ToastService
+### ScToaster
 
 ```typescript
 @Injectable({ providedIn: 'root' })
-class ToastService {
+class ScToaster {
   // Signal containing all active toasts
   readonly toasts: Signal<ToastData[]>;
 
@@ -76,17 +76,17 @@ interface ToastConfig {
 <sc-toast-stack />
 ```
 
-### 2. Inject ToastService and show toasts
+### 2. Inject ScToaster and show toasts
 
 ```typescript
 import { Component, inject } from '@angular/core';
-import { ToastService } from './ui/toast';
+import { ScToaster } from './ui/toast';
 
 @Component({
   // ...
 })
 export class MyComponent {
-  private readonly toast = inject(ToastService);
+  private readonly toast = inject(ScToaster);
 
   showSuccess(): void {
     this.toast.show({

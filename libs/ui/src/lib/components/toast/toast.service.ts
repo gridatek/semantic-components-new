@@ -4,7 +4,7 @@ import { ToastConfig, ToastData } from './toast.types';
 @Injectable({
   providedIn: 'root',
 })
-export class ToastService {
+export class ScToaster {
   private readonly _toasts = signal<ToastData[]>([]);
   readonly toasts = this._toasts.asReadonly();
 
