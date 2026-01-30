@@ -1,9 +1,9 @@
 export { ScCarousel } from './carousel';
 export type {
-  CarouselOrientation,
-  CarouselOptions,
-  CarouselApi,
-  CarouselPlugin,
+  ScCarouselOrientation,
+  ScCarouselOptions,
+  ScCarouselApi,
+  ScCarouselPlugin,
 } from './carousel';
 export { ScCarouselViewport } from './carousel-viewport';
 export { ScCarouselTrack } from './carousel-track';

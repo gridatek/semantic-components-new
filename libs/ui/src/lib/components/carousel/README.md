@@ -51,15 +51,15 @@ Main carousel container that manages state and keyboard navigation.
 | Input         | Type                         | Default        | Description                    |
 | ------------- | ---------------------------- | -------------- | ------------------------------ |
 | `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Scroll direction               |
-| `opts`        | `CarouselOptions`            | `{}`           | Embla carousel options         |
-| `plugins`     | `CarouselPlugin[]`           | `[]`           | Embla plugins (e.g., autoplay) |
+| `opts`        | `ScCarouselOptions`          | `{}`           | Embla carousel options         |
+| `plugins`     | `ScCarouselPlugin[]`         | `[]`           | Embla plugins (e.g., autoplay) |
 | `class`       | `string`                     | `''`           | Additional CSS classes         |
 
 **Outputs:**
 
-| Output   | Type          | Description                  |
-| -------- | ------------- | ---------------------------- |
-| `setApi` | `CarouselApi` | Emits the Embla API instance |
+| Output   | Type            | Description                  |
+| -------- | --------------- | ---------------------------- |
+| `setApi` | `ScCarouselApi` | Emits the Embla API instance |
 
 ### ScCarouselViewport
 
@@ -223,7 +223,7 @@ export class MyComponent {
 
 ```typescript
 import { Component } from '@angular/core';
-import type { CarouselApi } from './carousel';
+import type { ScCarouselApi } from '@semantic-components/ui';
 
 @Component({
   template: `
@@ -243,7 +243,7 @@ export class MyComponent {
   current = 0;
   items = [1, 2, 3, 4, 5];
 
-  onSetApi(api: CarouselApi): void {
+  onSetApi(api: ScCarouselApi): void {
     api.on('select', () => {
       this.current = api.selectedScrollSnap() + 1;
     });

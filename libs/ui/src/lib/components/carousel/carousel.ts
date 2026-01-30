@@ -19,10 +19,10 @@ import EmblaCarousel, {
 import { cn } from '../../utils';
 import { ScCarouselViewport } from './carousel-viewport';
 
-export type CarouselOrientation = 'horizontal' | 'vertical';
-export type CarouselApi = EmblaCarouselType;
-export type CarouselOptions = EmblaOptionsType;
-export type CarouselPlugin = EmblaPluginType;
+export type ScCarouselOrientation = 'horizontal' | 'vertical';
+export type ScCarouselApi = EmblaCarouselType;
+export type ScCarouselOptions = EmblaOptionsType;
+export type ScCarouselPlugin = EmblaPluginType;
 
 @Component({
   selector: 'div[sc-carousel]',
@@ -43,18 +43,18 @@ export class ScCarousel implements AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
 
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly orientation = input<CarouselOrientation>('horizontal');
-  readonly opts = input<CarouselOptions>({});
-  readonly plugins = input<CarouselPlugin[]>([]);
+  readonly orientation = input<ScCarouselOrientation>('horizontal');
+  readonly opts = input<ScCarouselOptions>({});
+  readonly plugins = input<ScCarouselPlugin[]>([]);
 
-  readonly setApi = output<CarouselApi>();
+  readonly setApi = output<ScCarouselApi>();
 
   private readonly viewport = contentChild(ScCarouselViewport);
 
   readonly canScrollPrev = signal(false);
   readonly canScrollNext = signal(true);
 
-  private api: CarouselApi | null = null;
+  private api: ScCarouselApi | null = null;
 
   protected readonly class = computed(() => cn('relative', this.classInput()));
 
