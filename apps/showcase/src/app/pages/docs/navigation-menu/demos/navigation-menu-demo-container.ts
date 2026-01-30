@@ -105,10 +105,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
               class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]"
             >
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">
                     Alert Dialog
                   </div>
@@ -121,10 +118,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">Hover Card</div>
                   <p
                     class="line-clamp-2 text-sm leading-snug text-muted-foreground"
@@ -134,10 +128,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">Progress</div>
                   <p
                     class="line-clamp-2 text-sm leading-snug text-muted-foreground"
@@ -147,10 +138,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">
                     Scroll Area
                   </div>
@@ -162,10 +150,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">Tabs</div>
                   <p
                     class="line-clamp-2 text-sm leading-snug text-muted-foreground"
@@ -175,10 +160,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
                 </a>
               </li>
               <li>
-                <a
-                  class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="#"
-                >
+                <a sc-navigation-menu-link href="#">
                   <div class="text-sm font-medium leading-none">Tooltip</div>
                   <p
                     class="line-clamp-2 text-sm leading-snug text-muted-foreground"
