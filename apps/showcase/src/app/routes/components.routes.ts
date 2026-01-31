@@ -167,6 +167,10 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/emoji-picker/emoji-picker-page'),
       },
       {
+        path: 'editor',
+        loadComponent: () => import('../pages/docs/editor/editor-page'),
+      },
+      {
         path: 'empty-state',
         loadComponent: () =>
           import('../pages/docs/empty-state/empty-state-page'),

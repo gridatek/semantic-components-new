@@ -1411,6 +1411,60 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/editor',
+    children: [
+      {
+        path: 'basic-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/basic-editor-demo').then(
+            (m) => m.BasicEditorDemo,
+          ),
+      },
+      {
+        path: 'prefilled-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/prefilled-editor-demo').then(
+            (m) => m.PrefilledEditorDemo,
+          ),
+      },
+      {
+        path: 'minimal-toolbar-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/minimal-toolbar-editor-demo').then(
+            (m) => m.MinimalToolbarEditorDemo,
+          ),
+      },
+      {
+        path: 'no-count-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/no-count-editor-demo').then(
+            (m) => m.NoCountEditorDemo,
+          ),
+      },
+      {
+        path: 'readonly-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/readonly-editor-demo').then(
+            (m) => m.ReadonlyEditorDemo,
+          ),
+      },
+      {
+        path: 'custom-height-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/custom-height-editor-demo').then(
+            (m) => m.CustomHeightEditorDemo,
+          ),
+      },
+      {
+        path: 'full-featured-editor-demo',
+        loadComponent: () =>
+          import('../pages/docs/editor/demos/full-featured-editor-demo').then(
+            (m) => m.FullFeaturedEditorDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/empty-state',
     children: [
       {
