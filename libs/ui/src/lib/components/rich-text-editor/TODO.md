@@ -138,7 +138,123 @@ readonly class = input<string>('');
 </div>
 ```
 
-#### 1.4 Create Individual Toolbar Button Components
+#### 1.4 Create ScRichTextEditorToolbarGroup
+
+**File**: `rich-text-editor-toolbar-group.ts`
+
+- Selector: `div[sc-rich-text-editor-toolbar-group]`
+- Use `<ng-content />` for grouping related toolbar buttons
+- Provides consistent spacing and layout for button groups
+- No injection token needed (pure presentational component)
+
+**Inputs**:
+
+```typescript
+readonly class = input<string>('');
+```
+
+**Template**:
+
+```html
+<div [class]="class()">
+  <ng-content />
+</div>
+```
+
+**Default CSS classes**:
+
+```typescript
+protected readonly class = computed(() =>
+  cn('flex items-center gap-1', this.classInput())
+);
+```
+
+#### 1.5 Create ScRichTextEditorHeader
+
+**File**: `rich-text-editor-header.ts`
+
+- Selector: `div[sc-rich-text-editor-header]`
+- Use `<ng-content />` for custom header content
+- Optional container for titles, labels, or custom controls above toolbar/content
+- No injection token needed (pure presentational component)
+
+**Inputs**:
+
+```typescript
+readonly class = input<string>('');
+```
+
+**Template**:
+
+```html
+<div [class]="class()">
+  <ng-content />
+</div>
+```
+
+**Default CSS classes**:
+
+```typescript
+protected readonly class = computed(() =>
+  cn('px-4 py-3 border-b bg-muted/30', this.classInput())
+);
+```
+
+**Example usage**:
+
+```html
+<div sc-rich-text-editor>
+  <div sc-rich-text-editor-header>
+    <h3 class="text-sm font-medium">Document Title</h3>
+  </div>
+  <div sc-rich-text-editor-toolbar>...</div>
+  <div sc-rich-text-editor-content [(value)]="content"></div>
+</div>
+```
+
+#### 1.6 Create ScRichTextEditorFooter
+
+**File**: `rich-text-editor-footer.ts`
+
+- Selector: `div[sc-rich-text-editor-footer]`
+- Use `<ng-content />` for custom footer content
+- Container for metadata, validation messages, or actions below the editor
+- No injection token needed (pure presentational component)
+
+**Inputs**:
+
+```typescript
+readonly class = input<string>('');
+```
+
+**Template**:
+
+```html
+<div [class]="class()">
+  <ng-content />
+</div>
+```
+
+**Default CSS classes**:
+
+```typescript
+protected readonly class = computed(() =>
+  cn('px-3 py-1.5 border-t text-xs text-muted-foreground bg-muted/30', this.classInput())
+);
+```
+
+**Example usage**:
+
+```html
+<div sc-rich-text-editor>
+  <div sc-rich-text-editor-content [(value)]="content"></div>
+  <div sc-rich-text-editor-footer>
+    <div sc-rich-text-editor-count></div>
+  </div>
+</div>
+```
+
+#### 1.7 Create Individual Toolbar Button Components
 
 Create separate components for each toolbar action:
 
@@ -172,7 +288,7 @@ Create separate components for each toolbar action:
 - `ScRichTextEditorHorizontalRuleButton` - horizontal rule
 - `ScRichTextEditorClearFormattingButton` - remove formatting
 
-#### 1.5 Create ScRichTextEditorHeadingSelect
+#### 1.8 Create ScRichTextEditorHeadingSelect
 
 **File**: `rich-text-editor-heading-select.ts`
 
@@ -195,7 +311,7 @@ Create separate components for each toolbar action:
 </select>
 ```
 
-#### 1.6 Create ScRichTextEditorSeparator
+#### 1.9 Create ScRichTextEditorSeparator
 
 **File**: `rich-text-editor-separator.ts`
 
@@ -209,7 +325,7 @@ Create separate components for each toolbar action:
 <div class="w-px h-6 bg-border mx-1"></div>
 ```
 
-#### 1.7 Create ScRichTextEditorCount
+#### 1.10 Create ScRichTextEditorCount
 
 **File**: `rich-text-editor-count.ts`
 
@@ -217,6 +333,7 @@ Create separate components for each toolbar action:
 - Inject parent editor
 - Compute word/character counts from editor content
 - Display statistics
+- Typically used within `ScRichTextEditorFooter`
 
 **Template**:
 
@@ -224,6 +341,25 @@ Create separate components for each toolbar action:
 <div [class]="class()">
   <span>{{ wordCount() }} words</span>
   <span>{{ charCount() }} characters</span>
+</div>
+```
+
+**Default CSS classes**:
+
+```typescript
+protected readonly class = computed(() =>
+  cn('flex items-center justify-end gap-4', this.classInput())
+);
+```
+
+**Example usage**:
+
+```html
+<div sc-rich-text-editor>
+  <div sc-rich-text-editor-content [(value)]="content"></div>
+  <div sc-rich-text-editor-footer>
+    <div sc-rich-text-editor-count></div>
+  </div>
 </div>
 ```
 
@@ -283,6 +419,9 @@ export const RICH_TEXT_EDITOR_TOKEN = new InjectionToken<RichTextEditorContext>(
 export { ScRichTextEditor } from './rich-text-editor';
 export { ScRichTextEditorContent } from './rich-text-editor-content';
 export { ScRichTextEditorToolbar } from './rich-text-editor-toolbar';
+export { ScRichTextEditorToolbarGroup } from './rich-text-editor-toolbar-group';
+export { ScRichTextEditorHeader } from './rich-text-editor-header';
+export { ScRichTextEditorFooter } from './rich-text-editor-footer';
 
 // Toolbar buttons
 export { ScRichTextEditorBoldButton } from './rich-text-editor-bold-button';
@@ -325,32 +464,38 @@ Show new composable architecture with examples:
 ```html
 <div sc-rich-text-editor>
   <div sc-rich-text-editor-toolbar>
-    <button sc-rich-text-editor-undo>
-      <svg si-undo-icon></svg>
-      <span class="sr-only">Undo</span>
-    </button>
-    <button sc-rich-text-editor-redo>
-      <svg si-redo-icon></svg>
-      <span class="sr-only">Redo</span>
-    </button>
+    <div sc-rich-text-editor-toolbar-group>
+      <button sc-rich-text-editor-undo>
+        <svg si-undo-icon></svg>
+        <span class="sr-only">Undo</span>
+      </button>
+      <button sc-rich-text-editor-redo>
+        <svg si-redo-icon></svg>
+        <span class="sr-only">Redo</span>
+      </button>
+    </div>
 
     <div sc-rich-text-editor-separator></div>
 
-    <button sc-rich-text-editor-bold>
-      <svg si-bold-icon></svg>
-      <span class="sr-only">Bold</span>
-    </button>
-    <button sc-rich-text-editor-italic>
-      <svg si-italic-icon></svg>
-      <span class="sr-only">Italic</span>
-    </button>
+    <div sc-rich-text-editor-toolbar-group>
+      <button sc-rich-text-editor-bold>
+        <svg si-bold-icon></svg>
+        <span class="sr-only">Bold</span>
+      </button>
+      <button sc-rich-text-editor-italic>
+        <svg si-italic-icon></svg>
+        <span class="sr-only">Italic</span>
+      </button>
+    </div>
 
     <!-- More buttons... -->
   </div>
 
   <div sc-rich-text-editor-content [(value)]="content" placeholder="Start typing..."></div>
 
-  <div sc-rich-text-editor-count></div>
+  <div sc-rich-text-editor-footer>
+    <div sc-rich-text-editor-count></div>
+  </div>
 </div>
 ```
 
@@ -385,6 +530,36 @@ Show new composable architecture with examples:
 </div>
 ```
 
+**With Header and Footer Example**:
+
+```html
+<div sc-rich-text-editor>
+  <div sc-rich-text-editor-header>
+    <h3 class="text-sm font-medium">Document Title</h3>
+    <p class="text-xs text-muted-foreground">Last edited 2 minutes ago</p>
+  </div>
+
+  <div sc-rich-text-editor-toolbar>
+    <div sc-rich-text-editor-toolbar-group>
+      <button sc-rich-text-editor-bold>
+        <svg si-bold-icon></svg>
+        <span class="sr-only">Bold</span>
+      </button>
+      <button sc-rich-text-editor-italic>
+        <svg si-italic-icon></svg>
+        <span class="sr-only">Italic</span>
+      </button>
+    </div>
+  </div>
+
+  <div sc-rich-text-editor-content [(value)]="content" placeholder="Start typing..."></div>
+
+  <div sc-rich-text-editor-footer>
+    <div sc-rich-text-editor-count></div>
+  </div>
+</div>
+```
+
 #### 5.2 Document Architecture
 
 Add architecture section explaining the composable structure:
@@ -395,12 +570,15 @@ Add architecture section explaining the composable structure:
 The rich text editor uses a multi-component composable structure:
 
 1. **ScRichTextEditor** - Root container managing state and providing context
-2. **ScRichTextEditorToolbar** - Toolbar container for formatting buttons
-3. **ScRichTextEditorContent** - The contenteditable area
-4. **Toolbar Buttons** - Individual button components for each action
-5. **ScRichTextEditorHeadingSelect** - Dropdown for heading levels
-6. **ScRichTextEditorSeparator** - Visual separator for toolbar groups
-7. **ScRichTextEditorCount** - Word and character count display
+2. **ScRichTextEditorHeader** - Optional header for titles or custom controls
+3. **ScRichTextEditorToolbar** - Toolbar container for formatting buttons
+4. **ScRichTextEditorToolbarGroup** - Groups related toolbar buttons together
+5. **ScRichTextEditorContent** - The contenteditable area
+6. **ScRichTextEditorFooter** - Optional footer for metadata or actions
+7. **Toolbar Buttons** - Individual button components for each action
+8. **ScRichTextEditorHeadingSelect** - Dropdown for heading levels
+9. **ScRichTextEditorSeparator** - Visual separator for toolbar groups
+10. **ScRichTextEditorCount** - Word and character count display
 
 Components communicate via an injection token, allowing complete customization
 while maintaining state synchronization.
@@ -423,6 +601,10 @@ Show user-defined toolbar with only selected buttons.
 #### 6.4 Create Readonly Demo
 
 Show readonly mode for displaying formatted content.
+
+#### 6.5 Create Header and Footer Demo
+
+Show editor with custom header (title, metadata) and footer (character count, validation messages).
 
 ### Phase 7: Migration Guide
 
@@ -506,6 +688,9 @@ clearContent() {
 - [ ] Refactor `ScRichTextEditor` to be composable root
 - [ ] Create `ScRichTextEditorContent` component
 - [ ] Create `ScRichTextEditorToolbar` component
+- [ ] Create `ScRichTextEditorToolbarGroup` component
+- [ ] Create `ScRichTextEditorHeader` component
+- [ ] Create `ScRichTextEditorFooter` component
 
 ### Toolbar Buttons (17 components)
 - [ ] `ScRichTextEditorBoldButton`
