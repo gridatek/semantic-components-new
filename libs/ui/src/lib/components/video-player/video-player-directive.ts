@@ -1,10 +1,4 @@
-import {
-  Directive,
-  InjectionToken,
-  signal,
-  computed,
-  ElementRef,
-} from '@angular/core';
+import { computed, Directive, InjectionToken, signal } from '@angular/core';
 
 export const SC_VIDEO_PLAYER = new InjectionToken<ScVideoPlayer>(
   'SC_VIDEO_PLAYER',
