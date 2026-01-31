@@ -252,14 +252,16 @@ Built on Tiptap, these features can be easily added in the future:
 
 ## Styling
 
-The editor uses Tailwind CSS with CSS variables for theming. All styles respect the current theme (light/dark mode).
+The editor uses Tailwind CSS with CSS variables for theming. All styles respect the current theme (light/dark mode) and use OKLCH color format.
 
 **CSS Variables Used**:
 
-- `--border` - Border color
+- `--border` - Border color (blockquote, hr)
 - `--muted` - Muted background (code, pre)
 - `--muted-foreground` - Muted text (placeholder, blockquote)
 - `--primary` - Primary color (links)
+
+Colors are defined in OKLCH format and automatically adapt to light/dark themes.
 
 **Customization**:
 
