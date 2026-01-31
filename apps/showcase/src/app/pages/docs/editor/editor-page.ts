@@ -23,8 +23,8 @@ import { FullFeaturedEditorDemoContainer } from './demos/full-featured-editor-de
       <div class="space-y-2">
         <h1 class="text-3xl font-bold tracking-tight">Editor</h1>
         <p class="text-muted-foreground">
-          Composable WYSIWYG editor with customizable toolbar, keyboard
-          shortcuts, and HTML output.
+          Composable WYSIWYG editor powered by Tiptap, with customizable
+          toolbar, keyboard shortcuts, and HTML output.
         </p>
       </div>
 

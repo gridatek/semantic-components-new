@@ -10,6 +10,7 @@ import {
   afterNextRender,
   DestroyRef,
   ElementRef,
+  effect,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_EDITOR, ScEditor } from './editor';
@@ -19,18 +20,10 @@ import { SC_EDITOR, ScEditor } from './editor';
   template: ``, // Empty - host element is the content div
   host: {
     'data-slot': 'editor-content',
-    contenteditable: 'true',
     '[class]': 'class()',
     '[style.min-height]': 'minHeight()',
     '[style.max-height]': 'maxHeight()',
-    '[attr.placeholder]': 'placeholder()',
     '[attr.aria-label]': 'ariaLabel()',
-    '(input)': 'onInput($event)',
-    '(keydown)': 'onKeydown($event)',
-    '(focus)': 'onFocus()',
-    '(blur)': 'onBlur()',
-    '(mouseup)': 'editor.updateToolbarState()',
-    '(keyup)': 'editor.updateToolbarState()',
   },
   styles: `
     :host {
@@ -39,13 +32,24 @@ import { SC_EDITOR, ScEditor } from './editor';
       overflow-y: auto;
     }
 
-    :host:empty:before {
-      content: attr(placeholder);
-      color: hsl(var(--muted-foreground));
-      pointer-events: none;
+    /* Tiptap editor wrapper */
+    :host :global(.ProseMirror) {
+      outline: none;
+      min-height: inherit;
+      max-height: inherit;
     }
 
-    :host blockquote {
+    /* Placeholder handling */
+    :host :global(.ProseMirror p.is-editor-empty:first-child::before) {
+      content: attr(data-placeholder);
+      float: left;
+      color: hsl(var(--muted-foreground));
+      pointer-events: none;
+      height: 0;
+    }
+
+    /* Content styles */
+    :host :global(.ProseMirror) blockquote {
       border-left: 4px solid hsl(var(--border));
       padding-left: 1rem;
       margin-left: 0;
@@ -53,7 +57,7 @@ import { SC_EDITOR, ScEditor } from './editor';
       color: hsl(var(--muted-foreground));
     }
 
-    :host code {
+    :host :global(.ProseMirror) code {
       background: hsl(var(--muted));
       padding: 0.125rem 0.375rem;
       border-radius: 0.25rem;
@@ -62,7 +66,7 @@ import { SC_EDITOR, ScEditor } from './editor';
       font-size: 0.875em;
     }
 
-    :host pre {
+    :host :global(.ProseMirror) pre {
       background: hsl(var(--muted));
       padding: 1rem;
       border-radius: 0.5rem;
@@ -72,49 +76,49 @@ import { SC_EDITOR, ScEditor } from './editor';
       font-size: 0.875em;
     }
 
-    :host a {
+    :host :global(.ProseMirror) a {
       color: hsl(var(--primary));
       text-decoration: underline;
     }
 
-    :host hr {
+    :host :global(.ProseMirror) hr {
       border: none;
       border-top: 1px solid hsl(var(--border));
       margin: 1rem 0;
     }
 
-    :host h1 {
+    :host :global(.ProseMirror) h1 {
       font-size: 2rem;
       font-weight: 700;
       margin: 1rem 0 0.5rem;
     }
-    :host h2 {
+    :host :global(.ProseMirror) h2 {
       font-size: 1.5rem;
       font-weight: 600;
       margin: 1rem 0 0.5rem;
     }
-    :host h3 {
+    :host :global(.ProseMirror) h3 {
       font-size: 1.25rem;
       font-weight: 600;
       margin: 0.75rem 0 0.5rem;
     }
-    :host h4 {
+    :host :global(.ProseMirror) h4 {
       font-size: 1.125rem;
       font-weight: 600;
       margin: 0.75rem 0 0.5rem;
     }
 
-    :host ul,
-    :host ol {
+    :host :global(.ProseMirror) ul,
+    :host :global(.ProseMirror) ol {
       padding-left: 1.5rem;
       margin: 0.5rem 0;
     }
 
-    :host li {
+    :host :global(.ProseMirror) li {
       margin: 0.25rem 0;
     }
 
-    :host p {
+    :host :global(.ProseMirror) p {
       margin: 0.5rem 0;
     }
   `,
@@ -151,87 +155,52 @@ export class ScEditorContent {
     afterNextRender(() => {
       const element = this.elementRef.nativeElement;
 
-      // Register this element with the editor
-      this.editor.contentElement.set(element);
+      // Initialize Tiptap editor through parent directive
+      this.editor.initializeEditor(element, this.value(), this.placeholder());
 
-      // Set initial content
-      if (this.value()) {
-        element.innerHTML = this.value();
-      }
+      // Watch for external value changes
+      effect(() => {
+        const newValue = this.value();
+        const editorInstance = this.editor.editorInstance();
+        if (!editorInstance) return;
 
-      // Make non-editable if disabled/readonly
-      if (this.editor.disabled() || this.editor.readonly()) {
-        element.contentEditable = 'false';
+        const currentValue = editorInstance.getHTML();
+
+        if (newValue !== currentValue) {
+          editorInstance.commands.setContent(newValue);
+        }
+      });
+
+      // Watch for editor content changes
+      const editorInstance = this.editor.editorInstance();
+      if (editorInstance) {
+        editorInstance.on('update', ({ editor }) => {
+          const html = editor.getHTML();
+          // Clean up empty content
+          const cleaned = html === '<p></p>' ? '' : html;
+
+          if (cleaned !== this.value()) {
+            this.value.set(cleaned);
+          }
+        });
+
+        // Handle focus events
+        editorInstance.on('focus', () => {
+          this.isFocused.set(true);
+          this.focus.emit();
+        });
+
+        editorInstance.on('blur', () => {
+          this.isFocused.set(false);
+          this.blur.emit();
+        });
       }
 
       this.isInitialized = true;
     });
-  }
 
-  protected onInput(event: Event): void {
-    this.updateValue();
-  }
-
-  protected onKeydown(event: KeyboardEvent): void {
-    if (this.editor.disabled() || this.editor.readonly()) {
-      event.preventDefault();
-      return;
-    }
-
-    // Handle keyboard shortcuts
-    if (event.ctrlKey || event.metaKey) {
-      switch (event.key.toLowerCase()) {
-        case 'b':
-          event.preventDefault();
-          this.editor.execCommand('bold');
-          break;
-        case 'i':
-          event.preventDefault();
-          this.editor.execCommand('italic');
-          break;
-        case 'u':
-          event.preventDefault();
-          this.editor.execCommand('underline');
-          break;
-        case 'z':
-          if (event.shiftKey) {
-            event.preventDefault();
-            this.editor.execCommand('redo');
-          } else {
-            event.preventDefault();
-            this.editor.execCommand('undo');
-          }
-          break;
-        case 'y':
-          event.preventDefault();
-          this.editor.execCommand('redo');
-          break;
-      }
-    }
-  }
-
-  protected onFocus(): void {
-    this.isFocused.set(true);
-    this.focus.emit();
-    this.editor.updateToolbarState();
-  }
-
-  protected onBlur(): void {
-    this.isFocused.set(false);
-    this.blur.emit();
-    this.updateValue();
-  }
-
-  private updateValue(): void {
-    if (!this.isInitialized) return;
-
-    const element = this.elementRef.nativeElement;
-    const html = element.innerHTML;
-    // Clean up empty content
-    const cleaned = html === '<br>' || html === '<div><br></div>' ? '' : html;
-
-    if (cleaned !== this.value()) {
-      this.value.set(cleaned);
-    }
+    this.destroyRef.onDestroy(() => {
+      this.editor.destroyEditor();
+    });
   }
 }
