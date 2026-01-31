@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_SIGNATURE_PAD } from './signature-pad-directive';
+import { SC_SIGNATURE_PAD } from './signature-pad';
 
 @Component({
   selector: 'button[sc-signature-pad-undo]',

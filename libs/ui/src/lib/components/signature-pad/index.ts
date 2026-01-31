@@ -1,5 +1,5 @@
 // Composable components
-export * from './signature-pad-directive';
+export * from './signature-pad';
 export * from './signature-pad-canvas';
 export * from './signature-pad-controls';
 export * from './signature-pad-undo-button';

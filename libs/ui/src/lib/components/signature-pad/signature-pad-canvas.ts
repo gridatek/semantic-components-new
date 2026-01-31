@@ -13,7 +13,7 @@ import {
   effect,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_SIGNATURE_PAD, SignaturePoint } from './signature-pad-directive';
+import { SC_SIGNATURE_PAD, SignaturePoint } from './signature-pad';
 
 @Component({
   selector: 'canvas[sc-signature-pad-canvas]',
