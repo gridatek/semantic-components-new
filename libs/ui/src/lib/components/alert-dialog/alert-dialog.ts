@@ -9,8 +9,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScAlertDialogProvider } from './alert-dialog-provider';
-
-let alertDialogIdCounter = 0;
+import { _IdGenerator } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'div[sc-alert-dialog]',
@@ -35,7 +34,8 @@ export class ScAlertDialog {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  readonly dialogId = `sc-alert-dialog-${++alertDialogIdCounter}`;
+  readonly dialogId = inject(_IdGenerator).getId('sc-alert-dialog-');
+
   readonly titleId = `${this.dialogId}-title`;
   readonly descriptionId = `${this.dialogId}-description`;
 

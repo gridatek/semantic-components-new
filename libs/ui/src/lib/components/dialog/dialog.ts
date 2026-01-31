@@ -9,8 +9,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScDialogProvider } from './dialog-provider';
-
-let dialogIdCounter = 0;
+import { _IdGenerator } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'div[sc-dialog]',
@@ -35,7 +34,8 @@ export class ScDialog {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  readonly dialogId = `sc-dialog-${++dialogIdCounter}`;
+  readonly dialogId = inject(_IdGenerator).getId('sc-dialog-');
+
   readonly titleId = `${this.dialogId}-title`;
   readonly descriptionId = `${this.dialogId}-description`;
 
