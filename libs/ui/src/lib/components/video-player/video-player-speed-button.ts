@@ -28,8 +28,7 @@ import { SC_VIDEO_PLAYER } from './video-player-directive';
           <button
             type="button"
             (click)="setSpeed(speed)"
-            class="w-full px-4 py-1 text-sm text-white hover:bg-white/20 text-left"
-            [class.bg-white/10]="player.playbackRate() === speed"
+            [class]="getSpeedItemClass(speed)"
           >
             {{ speed }}x
           </button>
@@ -58,6 +57,13 @@ export class ScVideoPlayerSpeedButton {
       'focus:outline-none focus:ring-2 focus:ring-white/50',
     ),
   );
+
+  protected getSpeedItemClass(speed: number): string {
+    return cn(
+      'w-full px-4 py-1 text-sm text-white hover:bg-white/20 text-left',
+      this.player.playbackRate() === speed && 'bg-white/10',
+    );
+  }
 
   protected setSpeed(speed: number): void {
     this.player.setPlaybackRate(speed);
