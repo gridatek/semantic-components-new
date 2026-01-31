@@ -6,14 +6,14 @@ import {
   computed,
 } from '@angular/core';
 
-export interface SignaturePoint {
+export interface ScSignaturePoint {
   x: number;
   y: number;
   pressure?: number;
 }
 
-export interface SignatureLine {
-  points: SignaturePoint[];
+export interface ScSignatureLine {
+  points: ScSignaturePoint[];
   color: string;
   width: number;
 }
@@ -40,9 +40,9 @@ export class ScSignaturePad {
   readonly penWidth = signal<number>(2);
 
   // Internal state
-  readonly lines = signal<SignatureLine[]>([]);
+  readonly lines = signal<ScSignatureLine[]>([]);
   readonly isDrawing = signal(false);
-  readonly currentLine = signal<SignaturePoint[]>([]);
+  readonly currentLine = signal<ScSignaturePoint[]>([]);
   readonly canvasElement = signal<HTMLCanvasElement | null>(null);
 
   // Computed state
@@ -50,7 +50,7 @@ export class ScSignaturePad {
   readonly isEmpty = computed(() => this.lines().length === 0);
 
   // Add a line to the signature
-  addLine(line: SignatureLine): void {
+  addLine(line: ScSignatureLine): void {
     this.lines.update((lines) => [...lines, line]);
   }
 

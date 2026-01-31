@@ -13,7 +13,7 @@ import {
   effect,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_SIGNATURE_PAD, SignaturePoint } from './signature-pad';
+import { SC_SIGNATURE_PAD, ScSignaturePoint } from './signature-pad';
 
 @Component({
   selector: 'canvas[sc-signature-pad-canvas]',
@@ -76,7 +76,7 @@ export class ScSignaturePadCanvas {
     });
   }
 
-  private getCanvasPoint(clientX: number, clientY: number): SignaturePoint {
+  private getCanvasPoint(clientX: number, clientY: number): ScSignaturePoint {
     const canvas = this.elementRef.nativeElement;
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
@@ -143,7 +143,7 @@ export class ScSignaturePadCanvas {
     this.drawLine();
   }
 
-  private drawPoint(point: SignaturePoint): void {
+  private drawPoint(point: ScSignaturePoint): void {
     const ctx = this.signaturePad.getContext();
     if (!ctx) return;
 
@@ -171,7 +171,7 @@ export class ScSignaturePadCanvas {
   }
 
   private drawFullLine(line: {
-    points: SignaturePoint[];
+    points: ScSignaturePoint[];
     color: string;
     width: number;
   }): void {
