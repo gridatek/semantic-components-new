@@ -20,7 +20,7 @@ import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
     SiTrash2Icon,
   ],
   template: `
-    <div sc-signature-pad [penWidth]="1.5" class="relative inline-block">
+    <div sc-signature-pad class="relative inline-block">
       <canvas sc-signature-pad-canvas [width]="300" [height]="100"></canvas>
 
       <div sc-signature-pad-controls>

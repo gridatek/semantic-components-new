@@ -69,6 +69,14 @@ export class MyComponent {
 - **Selector**: `button[sc-signature-pad-clear]`
 - **Auto-disabled**: When signature is empty
 
+**`ScSignaturePadPen` (Component)**
+
+- Pen customization controls for color and width
+- **Selector**: `div[sc-signature-pad-pen]`
+- **Inputs**: `colors` (array of color strings), `widths` (array of width numbers)
+- **Default colors**: `['#000000', '#1d4ed8', '#dc2626', '#16a34a']`
+- **Default widths**: `[1, 2, 3, 5]`
+
 ### Flexible Examples
 
 #### Custom Button Layout
@@ -121,16 +129,33 @@ export class MyComponent {
 </div>
 ```
 
-#### Custom Pen Colors
+#### With Pen Customization
 
 ```html
-<div sc-signature-pad [penColor]="selectedColor()">
-  <canvas sc-signature-pad-canvas></canvas>
+<div sc-signature-pad class="space-y-3">
+  <!-- Pen controls -->
+  <div sc-signature-pad-pen></div>
 
-  <div class="flex gap-2">
-    <button (click)="selectedColor.set('#000000')">Black</button>
-    <button (click)="selectedColor.set('#1d4ed8')">Blue</button>
-    <button (click)="selectedColor.set('#dc2626')">Red</button>
+  <!-- Canvas -->
+  <div class="relative inline-block">
+    <canvas sc-signature-pad-canvas></canvas>
+
+    <div sc-signature-pad-controls>
+      <button sc-signature-pad-undo>Undo</button>
+      <button sc-signature-pad-clear>Clear</button>
+    </div>
+  </div>
+</div>
+```
+
+#### Custom Pen Options
+
+```html
+<div sc-signature-pad class="space-y-3">
+  <div sc-signature-pad-pen [colors]="['#000000', '#1d4ed8', '#dc2626']" [widths]="[2, 4, 6, 8]"></div>
+
+  <div class="relative inline-block">
+    <canvas sc-signature-pad-canvas></canvas>
   </div>
 </div>
 ```

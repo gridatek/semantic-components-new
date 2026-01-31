@@ -33,9 +33,11 @@ export const SC_SIGNATURE_PAD = new InjectionToken<ScSignaturePad>(
 })
 export class ScSignaturePad {
   readonly disabled = input<boolean>(false);
-  readonly penColor = input<string>('#000000');
-  readonly penWidth = input<number>(2);
   readonly backgroundColor = input<string>('#ffffff');
+
+  // Pen settings (writable signals for customization)
+  readonly penColor = signal<string>('#000000');
+  readonly penWidth = signal<number>(2);
 
   // Internal state
   readonly lines = signal<SignatureLine[]>([]);
