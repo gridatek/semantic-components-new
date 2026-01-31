@@ -69,13 +69,25 @@ export class MyComponent {
 - **Selector**: `button[sc-signature-pad-clear]`
 - **Auto-disabled**: When signature is empty
 
-**`ScSignaturePadPen` (Component)**
+**`ScSignaturePadToolbar` (Component)**
 
-- Pen customization controls for color and width
-- **Selector**: `div[sc-signature-pad-pen]`
-- **Inputs**: `colors` (array of color strings), `widths` (array of width numbers)
-- **Default colors**: `['#000000', '#1d4ed8', '#dc2626', '#16a34a']`
-- **Default widths**: `[1, 2, 3, 5]`
+- Optional container for toolbar items (uses `<ng-content>`)
+- **Selector**: `div[sc-signature-pad-toolbar]`
+- **Default styling**: Flex row with gap
+
+**`ScSignaturePadColorButton` (Component)**
+
+- Button to select pen color
+- **Selector**: `button[sc-signature-pad-color]`
+- **Inputs**: `color` (required, hex color string)
+- **Auto-active**: When color matches current pen color
+
+**`ScSignaturePadWidthButton` (Component)**
+
+- Button to select pen width
+- **Selector**: `button[sc-signature-pad-width]`
+- **Inputs**: `width` (required, number in pixels)
+- **Auto-active**: When width matches current pen width
 
 ### Flexible Examples
 
@@ -129,17 +141,20 @@ export class MyComponent {
 </div>
 ```
 
-#### With Pen Customization
+#### With Color Selection
 
 ```html
 <div sc-signature-pad class="space-y-3">
-  <!-- Pen controls -->
-  <div sc-signature-pad-pen></div>
+  <!-- Color toolbar -->
+  <div sc-signature-pad-toolbar>
+    <button sc-signature-pad-color [color]="'#000000'"></button>
+    <button sc-signature-pad-color [color]="'#1d4ed8'"></button>
+    <button sc-signature-pad-color [color]="'#dc2626'"></button>
+  </div>
 
   <!-- Canvas -->
   <div class="relative inline-block">
     <canvas sc-signature-pad-canvas></canvas>
-
     <div sc-signature-pad-controls>
       <button sc-signature-pad-undo>Undo</button>
       <button sc-signature-pad-clear>Clear</button>
@@ -148,15 +163,36 @@ export class MyComponent {
 </div>
 ```
 
-#### Custom Pen Options
+#### With Width Selection
 
 ```html
 <div sc-signature-pad class="space-y-3">
-  <div sc-signature-pad-pen [colors]="['#000000', '#1d4ed8', '#dc2626']" [widths]="[2, 4, 6, 8]"></div>
+  <div sc-signature-pad-toolbar>
+    <button sc-signature-pad-width [width]="2"></button>
+    <button sc-signature-pad-width [width]="4"></button>
+    <button sc-signature-pad-width [width]="6"></button>
+  </div>
 
   <div class="relative inline-block">
     <canvas sc-signature-pad-canvas></canvas>
   </div>
+</div>
+```
+
+#### Combined Toolbar
+
+```html
+<div sc-signature-pad-toolbar>
+  <!-- Colors -->
+  <button sc-signature-pad-color [color]="'#000000'"></button>
+  <button sc-signature-pad-color [color]="'#1d4ed8'"></button>
+
+  <!-- Separator (optional) -->
+  <div class="w-px h-6 bg-border"></div>
+
+  <!-- Widths -->
+  <button sc-signature-pad-width [width]="2"></button>
+  <button sc-signature-pad-width [width]="4"></button>
 </div>
 ```
 

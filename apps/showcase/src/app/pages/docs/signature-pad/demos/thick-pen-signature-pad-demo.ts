@@ -5,7 +5,8 @@ import {
   ScSignaturePadControls,
   ScSignaturePadUndoButton,
   ScSignaturePadClearButton,
-  ScSignaturePadPen,
+  ScSignaturePadToolbar,
+  ScSignaturePadWidthButton,
 } from '@semantic-components/ui';
 import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
 
@@ -17,17 +18,19 @@ import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
     ScSignaturePadControls,
     ScSignaturePadUndoButton,
     ScSignaturePadClearButton,
-    ScSignaturePadPen,
+    ScSignaturePadToolbar,
+    ScSignaturePadWidthButton,
     SiUndoIcon,
     SiTrash2Icon,
   ],
   template: `
     <div sc-signature-pad class="space-y-3">
-      <div
-        sc-signature-pad-pen
-        [widths]="[2, 4, 6, 8]"
-        [colors]="['#000000']"
-      ></div>
+      <div sc-signature-pad-toolbar>
+        <button sc-signature-pad-width [width]="2"></button>
+        <button sc-signature-pad-width [width]="4"></button>
+        <button sc-signature-pad-width [width]="6"></button>
+        <button sc-signature-pad-width [width]="8"></button>
+      </div>
 
       <div class="relative inline-block">
         <canvas sc-signature-pad-canvas [width]="400" [height]="200"></canvas>
