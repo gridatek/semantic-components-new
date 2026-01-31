@@ -28,7 +28,10 @@ export class ScEditorLinkButton {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('p-1.5 rounded hover:bg-accent disabled:opacity-50', this.classInput()),
+    cn(
+      'p-1.5 rounded hover:bg-accent disabled:opacity-50 [&_svg]:size-4',
+      this.classInput(),
+    ),
   );
 
   onClick(): void {

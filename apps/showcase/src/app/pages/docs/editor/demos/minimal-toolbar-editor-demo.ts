@@ -30,11 +30,11 @@ import { SiBoldIcon, SiItalicIcon } from '@semantic-icons/lucide-icons';
       <div sc-editor-toolbar>
         <div sc-editor-toolbar-group>
           <button sc-editor-bold>
-            <svg si-bold-icon class="size-4"></svg>
+            <svg si-bold-icon></svg>
             <span class="sr-only">Bold</span>
           </button>
           <button sc-editor-italic>
-            <svg si-italic-icon class="size-4"></svg>
+            <svg si-italic-icon></svg>
             <span class="sr-only">Italic</span>
           </button>
         </div>

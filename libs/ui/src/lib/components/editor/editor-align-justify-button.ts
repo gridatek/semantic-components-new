@@ -30,7 +30,7 @@ export class ScEditorAlignJustifyButton {
 
   protected readonly class = computed(() =>
     cn(
-      'p-1.5 rounded hover:bg-accent disabled:opacity-50',
+      'p-1.5 rounded hover:bg-accent disabled:opacity-50 [&_svg]:size-4',
       this.editor.alignment() === 'justify' &&
         'bg-accent text-accent-foreground',
       this.classInput(),
