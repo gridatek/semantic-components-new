@@ -13,13 +13,13 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 
-export interface VideoSource {
+export interface ScVideoSource {
   src: string;
   type?: string;
   label?: string;
 }
 
-export interface VideoTrack {
+export interface ScVideoTrack {
   src: string;
   kind: 'subtitles' | 'captions' | 'descriptions' | 'chapters' | 'metadata';
   srclang: string;
@@ -396,8 +396,8 @@ export class ScVideoPlayer {
 
   // Inputs
   readonly src = input<string>('');
-  readonly sources = input<VideoSource[]>([]);
-  readonly tracks = input<VideoTrack[]>([]);
+  readonly sources = input<ScVideoSource[]>([]);
+  readonly tracks = input<ScVideoTrack[]>([]);
   readonly poster = input<string>('');
   readonly autoplay = input<boolean>(false);
   readonly loop = input<boolean>(false);

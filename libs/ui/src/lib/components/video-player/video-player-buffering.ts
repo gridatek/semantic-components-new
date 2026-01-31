@@ -1,0 +1,33 @@
+import {
+  Component,
+  ChangeDetectionStrategy,
+  computed,
+  input,
+  inject,
+} from '@angular/core';
+import { cn } from '../../utils';
+import { SC_VIDEO_PLAYER } from './video-player-directive';
+
+@Component({
+  selector: 'div[sc-video-player-buffering]',
+  template: `
+    @if (player.isBuffering()) {
+      <ng-content />
+    }
+  `,
+  host: {
+    '[class]': 'class()',
+  },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ScVideoPlayerBuffering {
+  protected readonly player = inject(SC_VIDEO_PLAYER);
+  readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly class = computed(() =>
+    cn(
+      'absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none',
+      this.classInput(),
+    ),
+  );
+}
