@@ -1,7 +1,7 @@
 import { computed, Directive, input, signal } from '@angular/core';
 import { cn } from '../../utils';
 
-export type AvatarImageStatus = 'idle' | 'loading' | 'loaded' | 'error';
+export type ScAvatarImageStatus = 'idle' | 'loading' | 'loaded' | 'error';
 
 @Directive({
   selector: 'span[sc-avatar]',
@@ -14,7 +14,7 @@ export class ScAvatar {
   readonly classInput = input<string>('', { alias: 'class' });
 
   /** Internal state for image loading */
-  readonly imageStatus = signal<AvatarImageStatus>('idle');
+  readonly imageStatus = signal<ScAvatarImageStatus>('idle');
 
   protected readonly class = computed(() =>
     cn(
