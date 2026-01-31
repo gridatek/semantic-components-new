@@ -10,6 +10,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { cn } from '../../utils';
 import { ScPdfViewerToolbar } from './pdf-viewer-toolbar';
 import {
@@ -121,7 +122,7 @@ import {
           >
             <object
               #pdfObject
-              [data]="pdfUrl()"
+              [data]="safePdfUrl()"
               type="application/pdf"
               class="w-full h-full"
               [style.min-height]="'100%'"
@@ -131,7 +132,7 @@ import {
               <!-- Fallback for browsers that don't support object -->
               <iframe
                 #pdfIframe
-                [src]="pdfUrl()"
+                [src]="safePdfUrl()"
                 class="w-full h-full border-0"
                 [title]="title() || 'PDF Document'"
                 (load)="onLoad()"
@@ -193,6 +194,7 @@ import {
 })
 export class ScPdfViewer {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly sanitizer = inject(DomSanitizer);
   private readonly containerRef =
     viewChild<ElementRef<HTMLDivElement>>('container');
 
@@ -224,7 +226,7 @@ export class ScPdfViewer {
     ),
   );
 
-  protected readonly pdfUrl = computed(() => {
+  protected readonly safePdfUrl = computed<SafeResourceUrl | ''>(() => {
     const source = this.src();
     if (!source) return '';
 
@@ -248,7 +250,8 @@ export class ScPdfViewer {
     const paramString = params.toString();
     const separator = source.includes('?') ? '&' : '#';
 
-    return paramString ? `${source}${separator}${paramString}` : source;
+    const url = paramString ? `${source}${separator}${paramString}` : source;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   });
 
   constructor() {
