@@ -52,7 +52,11 @@ export class ScEditor {
     const editor = new Editor({
       element,
       extensions: [
-        StarterKit,
+        StarterKit.configure({
+          // Disable Link and Underline from StarterKit since we configure them separately
+          link: false,
+          underline: false,
+        }),
         Link.configure({
           openOnClick: false,
           HTMLAttributes: {
