@@ -26,10 +26,30 @@ import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
   template: `
     <div sc-signature-pad class="space-y-3">
       <div sc-signature-pad-toolbar>
-        <button sc-signature-pad-pen-width [width]="2"></button>
-        <button sc-signature-pad-pen-width [width]="4"></button>
-        <button sc-signature-pad-pen-width [width]="6"></button>
-        <button sc-signature-pad-pen-width [width]="8"></button>
+        <button sc-signature-pad-pen-width [width]="2">
+          <span
+            class="w-4 rounded-full bg-foreground transition-all"
+            style="height: 2px"
+          ></span>
+        </button>
+        <button sc-signature-pad-pen-width [width]="4">
+          <span
+            class="w-4 rounded-full bg-foreground transition-all"
+            style="height: 4px"
+          ></span>
+        </button>
+        <button sc-signature-pad-pen-width [width]="6">
+          <span
+            class="w-4 rounded-full bg-foreground transition-all"
+            style="height: 6px"
+          ></span>
+        </button>
+        <button sc-signature-pad-pen-width [width]="8">
+          <span
+            class="w-4 rounded-full bg-foreground transition-all"
+            style="height: 8px"
+          ></span>
+        </button>
       </div>
 
       <div class="relative inline-block">

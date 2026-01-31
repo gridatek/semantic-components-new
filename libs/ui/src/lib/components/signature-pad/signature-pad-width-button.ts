@@ -10,9 +10,7 @@ import { cn } from '../../utils';
 
 @Component({
   selector: 'button[sc-signature-pad-pen-width]',
-  template: `
-    <span [class]="lineClass()" [style.height.px]="width()"></span>
-  `,
+  template: '<ng-content />',
   host: {
     type: 'button',
     '[class]': 'class()',
@@ -40,13 +38,6 @@ export class ScSignaturePadWidthButton {
       'disabled:pointer-events-none disabled:opacity-50',
       'data-[active]:border-primary data-[active]:bg-primary/10',
       this.classInput(),
-    ),
-  );
-
-  protected readonly lineClass = computed(() =>
-    cn(
-      'w-4 rounded-full bg-foreground transition-all',
-      this.isActive() ? 'opacity-100' : 'opacity-60',
     ),
   );
 

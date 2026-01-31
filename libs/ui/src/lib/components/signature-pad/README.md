@@ -147,9 +147,15 @@ export class MyComponent {
 <div sc-signature-pad class="space-y-3">
   <!-- Color toolbar -->
   <div sc-signature-pad-toolbar>
-    <button sc-signature-pad-pen-color [color]="'#000000'"></button>
-    <button sc-signature-pad-pen-color [color]="'#1d4ed8'"></button>
-    <button sc-signature-pad-pen-color [color]="'#dc2626'"></button>
+    <button sc-signature-pad-pen-color [color]="'#000000'">
+      <span class="size-4 rounded-full border" style="background: #000000"></span>
+    </button>
+    <button sc-signature-pad-pen-color [color]="'#1d4ed8'">
+      <span class="size-4 rounded-full border" style="background: #1d4ed8"></span>
+    </button>
+    <button sc-signature-pad-pen-color [color]="'#dc2626'">
+      <span class="size-4 rounded-full border" style="background: #dc2626"></span>
+    </button>
   </div>
 
   <!-- Canvas -->
@@ -168,9 +174,15 @@ export class MyComponent {
 ```html
 <div sc-signature-pad class="space-y-3">
   <div sc-signature-pad-toolbar>
-    <button sc-signature-pad-pen-width [width]="2"></button>
-    <button sc-signature-pad-pen-width [width]="4"></button>
-    <button sc-signature-pad-pen-width [width]="6"></button>
+    <button sc-signature-pad-pen-width [width]="2">
+      <span class="w-4 rounded-full bg-foreground" style="height: 2px"></span>
+    </button>
+    <button sc-signature-pad-pen-width [width]="4">
+      <span class="w-4 rounded-full bg-foreground" style="height: 4px"></span>
+    </button>
+    <button sc-signature-pad-pen-width [width]="6">
+      <span class="w-4 rounded-full bg-foreground" style="height: 6px"></span>
+    </button>
   </div>
 
   <div class="relative inline-block">
@@ -184,15 +196,23 @@ export class MyComponent {
 ```html
 <div sc-signature-pad-toolbar>
   <!-- Colors -->
-  <button sc-signature-pad-pen-color [color]="'#000000'"></button>
-  <button sc-signature-pad-pen-color [color]="'#1d4ed8'"></button>
+  <button sc-signature-pad-pen-color [color]="'#000000'">
+    <span class="size-4 rounded-full border" style="background: #000000"></span>
+  </button>
+  <button sc-signature-pad-pen-color [color]="'#1d4ed8'">
+    <span class="size-4 rounded-full border" style="background: #1d4ed8"></span>
+  </button>
 
   <!-- Separator (optional) -->
   <div class="w-px h-6 bg-border"></div>
 
   <!-- Widths -->
-  <button sc-signature-pad-pen-width [width]="2"></button>
-  <button sc-signature-pad-pen-width [width]="4"></button>
+  <button sc-signature-pad-pen-width [width]="2">
+    <span class="w-4 rounded-full bg-foreground" style="height: 2px"></span>
+  </button>
+  <button sc-signature-pad-pen-width [width]="4">
+    <span class="w-4 rounded-full bg-foreground" style="height: 4px"></span>
+  </button>
 </div>
 ```
 

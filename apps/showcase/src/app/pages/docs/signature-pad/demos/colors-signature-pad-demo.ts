@@ -27,10 +27,31 @@ import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
   template: `
     <div sc-signature-pad class="space-y-3">
       <div sc-signature-pad-toolbar>
-        <button sc-signature-pad-pen-color [color]="'#000000'"></button>
-        <button sc-signature-pad-pen-color [color]="'#1d4ed8'"></button>
-        <button sc-signature-pad-pen-color [color]="'#dc2626'"></button>
-        <button sc-signature-pad-pen-color [color]="'#16a34a'"></button>
+        <button sc-signature-pad-pen-color [color]="'#000000'">
+          <span
+            class="size-4 rounded-full border border-border transition-transform data-[active]:scale-110"
+            [attr.data-active]="'#000000'"
+            style="background-color: #000000"
+          ></span>
+        </button>
+        <button sc-signature-pad-pen-color [color]="'#1d4ed8'">
+          <span
+            class="size-4 rounded-full border border-border transition-transform"
+            style="background-color: #1d4ed8"
+          ></span>
+        </button>
+        <button sc-signature-pad-pen-color [color]="'#dc2626'">
+          <span
+            class="size-4 rounded-full border border-border transition-transform"
+            style="background-color: #dc2626"
+          ></span>
+        </button>
+        <button sc-signature-pad-pen-color [color]="'#16a34a'">
+          <span
+            class="size-4 rounded-full border border-border transition-transform"
+            style="background-color: #16a34a"
+          ></span>
+        </button>
       </div>
 
       <div class="relative inline-block">

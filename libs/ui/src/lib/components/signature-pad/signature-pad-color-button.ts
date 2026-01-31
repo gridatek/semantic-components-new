@@ -10,9 +10,7 @@ import { cn } from '../../utils';
 
 @Component({
   selector: 'button[sc-signature-pad-pen-color]',
-  template: `
-    <span [class]="dotClass()" [style.background-color]="color()"></span>
-  `,
+  template: '<ng-content />',
   host: {
     type: 'button',
     '[class]': 'class()',
@@ -40,13 +38,6 @@ export class ScSignaturePadColorButton {
       'disabled:pointer-events-none disabled:opacity-50',
       'data-[active]:border-primary data-[active]:bg-primary/10',
       this.classInput(),
-    ),
-  );
-
-  protected readonly dotClass = computed(() =>
-    cn(
-      'size-4 rounded-full border border-border transition-transform',
-      this.isActive() ? 'scale-110' : 'scale-100',
     ),
   );
 
