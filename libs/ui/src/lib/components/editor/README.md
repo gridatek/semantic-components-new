@@ -2,6 +2,26 @@
 
 Composable WYSIWYG editor built with [Tiptap](https://tiptap.dev/), a headless rich-text editor framework powered by ProseMirror.
 
+## Installation
+
+The editor component requires Tiptap packages as peer dependencies. Install them alongside `@semantic-components/ui`:
+
+```bash
+npm install @semantic-components/ui \
+  @tiptap/core \
+  @tiptap/starter-kit \
+  @tiptap/extension-link \
+  @tiptap/extension-underline \
+  @tiptap/extension-text-align \
+  @tiptap/extension-placeholder
+```
+
+Or if you already have `@semantic-components/ui` installed:
+
+```bash
+npm install @tiptap/core @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-underline @tiptap/extension-text-align @tiptap/extension-placeholder
+```
+
 ## Features
 
 - **Rich Text Editing**: Bold, italic, underline, strikethrough, headings, lists, blockquotes, code, links, and more
