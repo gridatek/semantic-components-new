@@ -15,6 +15,13 @@ export interface DateRange {
   to: Date | undefined;
 }
 
+interface DayInfo {
+  date: Date;
+  isToday: boolean;
+  isOutsideMonth: boolean;
+  disabled: boolean;
+}
+
 @Component({
   selector: 'sc-calendar',
   host: {
@@ -390,11 +397,4 @@ export class ScCalendar {
       }
     }
   }
-}
-
-interface DayInfo {
-  date: Date;
-  isToday: boolean;
-  isOutsideMonth: boolean;
-  disabled: boolean;
 }
