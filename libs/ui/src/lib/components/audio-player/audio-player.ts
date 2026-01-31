@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 
-export interface AudioTrack {
+export interface ScAudioTrack {
   src: string;
   title?: string;
   artist?: string;
@@ -35,7 +35,7 @@ export class ScAudioPlayer {
   private audioElement = signal<HTMLAudioElement | null>(null);
 
   // Inputs
-  readonly tracks = input<AudioTrack[]>([]);
+  readonly tracks = input<ScAudioTrack[]>([]);
   readonly autoplay = input<boolean>(false);
 
   // Models
@@ -45,7 +45,7 @@ export class ScAudioPlayer {
   readonly repeat = model<'none' | 'one' | 'all'>('none');
 
   // Outputs
-  readonly trackChange = output<AudioTrack>();
+  readonly trackChange = output<ScAudioTrack>();
   readonly play = output<void>();
   readonly pause = output<void>();
   readonly ended = output<void>();

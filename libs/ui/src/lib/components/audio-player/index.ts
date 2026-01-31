@@ -1,5 +1,5 @@
 export { ScAudioPlayer, SC_AUDIO_PLAYER } from './audio-player';
-export type { AudioTrack } from './audio-player';
+export type { ScAudioTrack } from './audio-player';
 export { ScAudioPlayerAudio } from './audio-player-audio';
 export { ScAudioPlayerCover } from './audio-player-cover';
 export { ScAudioPlayerInfo } from './audio-player-info';

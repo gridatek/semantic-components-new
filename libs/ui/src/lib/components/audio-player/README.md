@@ -38,10 +38,10 @@ ScAudioPlayer (Root - State Management)
 
 ## API
 
-### AudioTrack
+### ScAudioTrack
 
 ```typescript
-interface AudioTrack {
+interface ScAudioTrack {
   src: string;
   title?: string;
   artist?: string;
@@ -52,10 +52,10 @@ interface AudioTrack {
 
 ### ScAudioPlayer
 
-| Input      | Type           | Default | Description           |
-| ---------- | -------------- | ------- | --------------------- |
-| `tracks`   | `AudioTrack[]` | `[]`    | Array of audio tracks |
-| `autoplay` | `boolean`      | `false` | Auto-play on load     |
+| Input      | Type             | Default | Description           |
+| ---------- | ---------------- | ------- | --------------------- |
+| `tracks`   | `ScAudioTrack[]` | `[]`    | Array of audio tracks |
+| `autoplay` | `boolean`        | `false` | Auto-play on load     |
 
 | Model          | Type                       | Default  | Description         |
 | -------------- | -------------------------- | -------- | ------------------- |
@@ -64,19 +64,19 @@ interface AudioTrack {
 | `shuffle`      | `boolean`                  | `false`  | Shuffle mode        |
 | `repeat`       | `'none' \| 'one' \| 'all'` | `'none'` | Repeat mode         |
 
-| Output        | Type         | Description                |
-| ------------- | ------------ | -------------------------- |
-| `trackChange` | `AudioTrack` | Emits when track changes   |
-| `play`        | `void`       | Emits when playback starts |
-| `pause`       | `void`       | Emits when playback pauses |
-| `ended`       | `void`       | Emits when track ends      |
+| Output        | Type           | Description                |
+| ------------- | -------------- | -------------------------- |
+| `trackChange` | `ScAudioTrack` | Emits when track changes   |
+| `play`        | `void`         | Emits when playback starts |
+| `pause`       | `void`         | Emits when playback pauses |
+| `ended`       | `void`         | Emits when track ends      |
 
 ## Usage
 
 ### Basic Usage
 
 ```typescript
-readonly tracks: AudioTrack[] = [
+readonly tracks: ScAudioTrack[] = [
   {
     src: '/audio/song1.mp3',
     title: 'Song Title',

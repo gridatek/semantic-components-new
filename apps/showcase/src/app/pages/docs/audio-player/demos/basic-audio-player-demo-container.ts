@@ -19,7 +19,7 @@ import { BasicAudioPlayerDemo } from './basic-audio-player-demo';
 })
 export class BasicAudioPlayerDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
+import { ScAudioPlayer, ScAudioTrack } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-audio-player-demo',
@@ -30,7 +30,7 @@ import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAudioPlayerDemo {
-  readonly tracks: AudioTrack[] = [
+  readonly tracks: ScAudioTrack[] = [
     {
       src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
       title: 'SoundHelix Song 1',

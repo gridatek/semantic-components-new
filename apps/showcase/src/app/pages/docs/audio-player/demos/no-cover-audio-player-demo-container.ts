@@ -19,7 +19,7 @@ import { NoCoverAudioPlayerDemo } from './no-cover-audio-player-demo';
 })
 export class NoCoverAudioPlayerDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
+import { ScAudioPlayer, ScAudioTrack } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-cover-audio-player-demo',
@@ -34,7 +34,7 @@ import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoCoverAudioPlayerDemo {
-  readonly tracks: AudioTrack[] = [
+  readonly tracks: ScAudioTrack[] = [
     {
       src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
       title: 'SoundHelix Song 1',

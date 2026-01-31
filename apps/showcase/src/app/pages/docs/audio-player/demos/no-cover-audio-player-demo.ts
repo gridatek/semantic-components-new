@@ -10,7 +10,7 @@ import {
   ScAudioPlayerShuffle,
   ScAudioPlayerRepeat,
   ScAudioPlayerVolume,
-  AudioTrack,
+  ScAudioTrack,
 } from '@semantic-components/ui';
 
 @Component({
@@ -58,7 +58,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoCoverAudioPlayerDemo {
-  readonly tracks: AudioTrack[] = [
+  readonly tracks: ScAudioTrack[] = [
     {
       src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
       title: 'SoundHelix Song 1',

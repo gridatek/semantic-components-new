@@ -19,7 +19,7 @@ import { ControlledAudioPlayerDemo } from './controlled-audio-player-demo';
 })
 export class ControlledAudioPlayerDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScAudioPlayer, AudioTrack } from '@semantic-components/ui';
+import { ScAudioPlayer, ScAudioTrack } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-controlled-audio-player-demo',
@@ -49,7 +49,7 @@ export class ControlledAudioPlayerDemo {
   readonly shuffle = signal(false);
   readonly repeat = signal<'none' | 'one' | 'all'>('none');
 
-  readonly tracks: AudioTrack[] = [
+  readonly tracks: ScAudioTrack[] = [
     {
       src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
       title: 'SoundHelix Song 1',
@@ -70,7 +70,7 @@ export class ControlledAudioPlayerDemo {
     },
   ];
 
-  onTrackChange(track: AudioTrack): void {
+  onTrackChange(track: ScAudioTrack): void {
     console.log('Track changed:', track.title);
   }
 }`;

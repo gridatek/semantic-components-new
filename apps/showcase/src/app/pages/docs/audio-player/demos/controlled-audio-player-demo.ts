@@ -11,7 +11,7 @@ import {
   ScAudioPlayerShuffle,
   ScAudioPlayerRepeat,
   ScAudioPlayerVolume,
-  AudioTrack,
+  ScAudioTrack,
 } from '@semantic-components/ui';
 
 @Component({
@@ -82,7 +82,7 @@ export class ControlledAudioPlayerDemo {
   readonly shuffle = signal(false);
   readonly repeat = signal<'none' | 'one' | 'all'>('none');
 
-  readonly tracks: AudioTrack[] = [
+  readonly tracks: ScAudioTrack[] = [
     {
       src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
       title: 'SoundHelix Song 1',
@@ -103,7 +103,7 @@ export class ControlledAudioPlayerDemo {
     },
   ];
 
-  onTrackChange(track: AudioTrack): void {
+  onTrackChange(track: ScAudioTrack): void {
     console.log('Track changed:', track.title);
   }
 }

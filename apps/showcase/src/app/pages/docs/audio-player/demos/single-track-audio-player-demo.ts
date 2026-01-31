@@ -10,7 +10,7 @@ import {
   ScAudioPlayerNext,
   ScAudioPlayerRepeat,
   ScAudioPlayerVolume,
-  AudioTrack,
+  ScAudioTrack,
 } from '@semantic-components/ui';
 
 @Component({
@@ -63,7 +63,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleTrackAudioPlayerDemo {
-  readonly track: AudioTrack = {
+  readonly track: ScAudioTrack = {
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
     title: 'Ambient Soundscape',
     artist: 'Audio Artist',
