@@ -8,6 +8,8 @@ import {
   ScEditorItalicButton,
   ScEditorFooter,
   ScEditorCount,
+  ScEditorWordCount,
+  ScEditorCharCount,
 } from '@semantic-components/ui';
 import { SiBoldIcon, SiItalicIcon } from '@semantic-icons/lucide-icons';
 
@@ -22,6 +24,8 @@ import { SiBoldIcon, SiItalicIcon } from '@semantic-icons/lucide-icons';
     ScEditorItalicButton,
     ScEditorFooter,
     ScEditorCount,
+    ScEditorWordCount,
+    ScEditorCharCount,
     SiBoldIcon,
     SiItalicIcon,
   ],
@@ -47,7 +51,10 @@ import { SiBoldIcon, SiItalicIcon } from '@semantic-icons/lucide-icons';
       ></div>
 
       <div sc-editor-footer>
-        <div sc-editor-count></div>
+        <div sc-editor-count>
+          <span sc-editor-word-count></span>
+          <span sc-editor-char-count></span>
+        </div>
       </div>
     </div>
   `,

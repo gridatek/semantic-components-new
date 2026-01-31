@@ -62,11 +62,11 @@ This is an acceptable trade-off for the significant improvements in reliability,
 
 ```typescript
 import { Component, signal } from '@angular/core';
-import { ScEditor, ScEditorContent, ScEditorToolbar, ScEditorToolbarGroup, ScEditorBoldButton, ScEditorItalicButton, ScEditorUnderlineButton, ScEditorFooter, ScEditorCount } from '@semantic-components/ui';
+import { ScEditor, ScEditorContent, ScEditorToolbar, ScEditorToolbarGroup, ScEditorBoldButton, ScEditorItalicButton, ScEditorUnderlineButton, ScEditorFooter, ScEditorCount, ScEditorWordCount, ScEditorCharCount } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-example',
-  imports: [ScEditor, ScEditorContent, ScEditorToolbar, ScEditorToolbarGroup, ScEditorBoldButton, ScEditorItalicButton, ScEditorUnderlineButton, ScEditorFooter, ScEditorCount],
+  imports: [ScEditor, ScEditorContent, ScEditorToolbar, ScEditorToolbarGroup, ScEditorBoldButton, ScEditorItalicButton, ScEditorUnderlineButton, ScEditorFooter, ScEditorCount, ScEditorWordCount, ScEditorCharCount],
   template: `
     <div sc-editor class="border rounded-lg overflow-hidden">
       <div sc-editor-toolbar>
@@ -80,7 +80,10 @@ import { ScEditor, ScEditorContent, ScEditorToolbar, ScEditorToolbarGroup, ScEdi
       <div sc-editor-content [(value)]="content" placeholder="Start typing..."></div>
 
       <div sc-editor-footer>
-        <div sc-editor-count></div>
+        <div sc-editor-count>
+          <span sc-editor-word-count></span>
+          <span sc-editor-char-count></span>
+        </div>
       </div>
     </div>
   `,
@@ -176,7 +179,9 @@ All toolbar buttons inject `SC_EDITOR` and call the appropriate commands.
 
 **Utilities**:
 
-- `ScEditorCount` - Display word and character count
+- `ScEditorCount` - Container for count components (uses `<ng-content>`, allows custom layout)
+- `ScEditorWordCount` - Display word count (e.g., "42 words")
+- `ScEditorCharCount` - Display character count (e.g., "256 characters")
 - `ScEditorHeadingSelect` - Dropdown to select heading level
 
 ## Keyboard Shortcuts
@@ -274,6 +279,23 @@ Colors are defined in OKLCH format and automatically adapt to light/dark themes.
 
 <!-- Remove default padding -->
 <div sc-editor-content class="p-0"></div>
+
+<!-- Use individual count components for custom layouts -->
+<div sc-editor-footer>
+  <span sc-editor-word-count class="text-sm text-muted-foreground"></span>
+  <span class="mx-2">•</span>
+  <span sc-editor-char-count class="text-sm text-muted-foreground"></span>
+</div>
+
+<!-- Show only word count -->
+<div sc-editor-footer>
+  <span sc-editor-word-count></span>
+</div>
+
+<!-- Show only character count -->
+<div sc-editor-footer>
+  <span sc-editor-char-count></span>
+</div>
 ```
 
 Default classes applied: `block outline-none overflow-y-auto min-h-[150px] max-h-[400px] p-4 prose prose-sm max-w-none dark:prose-invert`

@@ -25,6 +25,8 @@ import {
   ScEditorClearFormattingButton,
   ScEditorFooter,
   ScEditorCount,
+  ScEditorWordCount,
+  ScEditorCharCount,
 } from '@semantic-components/ui';
 import {
   SiBoldIcon,
@@ -74,6 +76,8 @@ import {
     ScEditorClearFormattingButton,
     ScEditorFooter,
     ScEditorCount,
+    ScEditorWordCount,
+    ScEditorCharCount,
     SiBoldIcon,
     SiItalicIcon,
     SiUnderlineIcon,
@@ -205,7 +209,10 @@ import {
       <div sc-editor-content [(value)]="content" minHeight="250px"></div>
 
       <div sc-editor-footer>
-        <div sc-editor-count></div>
+        <div sc-editor-count>
+          <span sc-editor-word-count></span>
+          <span sc-editor-char-count></span>
+        </div>
       </div>
     </div>
     <div class="mt-4 flex gap-4">

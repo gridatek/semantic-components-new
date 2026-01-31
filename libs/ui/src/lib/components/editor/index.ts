@@ -41,3 +41,5 @@ export * from './editor-clear-formatting-button';
 // Utility components
 export * from './editor-heading-select';
 export * from './editor-count';
+export * from './editor-word-count';
+export * from './editor-char-count';

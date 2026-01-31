@@ -37,7 +37,10 @@ export class MinimalToolbarEditorDemoContainer {
   ></div>
 
   <div sc-editor-footer>
-    <div sc-editor-count></div>
+    <div sc-editor-count>
+    <span sc-editor-word-count></span>
+    <span sc-editor-char-count></span>
+  </div>
   </div>
 </div>`;
 }
