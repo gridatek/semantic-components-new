@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScAudioPlayer,
-  ScAudioPlayerAudio,
   ScAudioPlayerCover,
   ScAudioPlayerInfo,
   ScAudioPlayerProgress,
@@ -27,7 +26,6 @@ import {
   selector: 'app-podcast-audio-player-demo',
   imports: [
     ScAudioPlayer,
-    ScAudioPlayerAudio,
     ScAudioPlayerCover,
     ScAudioPlayerInfo,
     ScAudioPlayerProgress,
@@ -93,9 +91,6 @@ import {
 
       <!-- Volume -->
       <div sc-audio-player-volume class="justify-center"></div>
-
-      <!-- Hidden Audio Element -->
-      <audio sc-audio-player-audio></audio>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

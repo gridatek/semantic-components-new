@@ -1,14 +1,17 @@
 import {
   computed,
   DestroyRef,
-  Directive,
+  Component,
   inject,
   input,
   InjectionToken,
   model,
   output,
   signal,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
+import { ScAudioPlayerAudio } from './audio-player-audio';
 
 export interface ScAudioTrack {
   src: string;
@@ -22,13 +25,20 @@ export const SC_AUDIO_PLAYER = new InjectionToken<ScAudioPlayer>(
   'SC_AUDIO_PLAYER',
 );
 
-@Directive({
+@Component({
   selector: '[sc-audio-player]',
+  imports: [ScAudioPlayerAudio],
+  template: `
+    <ng-content />
+    <audio sc-audio-player-audio class="hidden"></audio>
+  `,
   exportAs: 'scAudioPlayer',
   providers: [{ provide: SC_AUDIO_PLAYER, useExisting: ScAudioPlayer }],
   host: {
     'data-slot': 'audio-player',
   },
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAudioPlayer {
   private readonly destroyRef = inject(DestroyRef);

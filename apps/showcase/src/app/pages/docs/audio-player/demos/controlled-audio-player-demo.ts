@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScAudioPlayer,
-  ScAudioPlayerAudio,
   ScAudioPlayerCover,
   ScAudioPlayerInfo,
   ScAudioPlayerProgress,
@@ -27,7 +26,6 @@ import {
   selector: 'app-controlled-audio-player-demo',
   imports: [
     ScAudioPlayer,
-    ScAudioPlayerAudio,
     ScAudioPlayerCover,
     ScAudioPlayerInfo,
     ScAudioPlayerProgress,
@@ -98,9 +96,6 @@ import {
 
       <!-- Volume -->
       <div sc-audio-player-volume class="justify-center"></div>
-
-      <!-- Hidden Audio Element -->
-      <audio sc-audio-player-audio></audio>
     </div>
     <div class="text-sm text-muted-foreground space-y-1 mt-3">
       <p>Current track: {{ currentIndex() + 1 }}</p>

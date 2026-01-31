@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScAudioPlayer,
-  ScAudioPlayerAudio,
   ScAudioPlayerInfo,
   ScAudioPlayerProgress,
   ScAudioPlayerPlayButton,
@@ -20,7 +19,6 @@ import {
   selector: 'app-minimal-audio-player-demo',
   imports: [
     ScAudioPlayer,
-    ScAudioPlayerAudio,
     ScAudioPlayerInfo,
     ScAudioPlayerProgress,
     ScAudioPlayerPlayButton,
@@ -57,7 +55,6 @@ import {
         </div>
       </div>
       <div sc-audio-player-progress></div>
-      <audio sc-audio-player-audio></audio>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
