@@ -172,7 +172,7 @@ export class ScSplitButton {
       outline:
         'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
       destructive:
-        'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        'bg-destructive/10 hover:bg-destructive/20 dark:bg-destructive/20 text-destructive dark:hover:bg-destructive/30',
     };
     return variants[this.variant()];
   }
