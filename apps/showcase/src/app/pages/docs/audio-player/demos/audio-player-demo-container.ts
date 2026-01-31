@@ -7,7 +7,7 @@ import { AudioPlayerDemo } from './audio-player-demo';
   imports: [DemoContainer, AudioPlayerDemo],
   template: `
     <app-demo-container
-      title="Basic Audio Player"
+      title="Demo Audio Player"
       demoUrl="/demos/audio-player/audio-player-demo"
       [code]="code"
     >
