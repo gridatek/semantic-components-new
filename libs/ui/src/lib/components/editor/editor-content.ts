@@ -53,24 +53,24 @@ export class ScEditorContent {
   );
 
   constructor() {
+    // Watch for external value changes (must be in constructor for injection context)
+    effect(() => {
+      const newValue = this.value();
+      const editorInstance = this.editor.editorInstance();
+      if (!editorInstance || !this.isInitialized) return;
+
+      const currentValue = editorInstance.getHTML();
+
+      if (newValue !== currentValue) {
+        editorInstance.commands.setContent(newValue);
+      }
+    });
+
     afterNextRender(() => {
       const element = this.elementRef.nativeElement;
 
       // Initialize Tiptap editor through parent directive
       this.editor.initializeEditor(element, this.value(), this.placeholder());
-
-      // Watch for external value changes
-      effect(() => {
-        const newValue = this.value();
-        const editorInstance = this.editor.editorInstance();
-        if (!editorInstance) return;
-
-        const currentValue = editorInstance.getHTML();
-
-        if (newValue !== currentValue) {
-          editorInstance.commands.setContent(newValue);
-        }
-      });
 
       // Watch for editor content changes
       const editorInstance = this.editor.editorInstance();
