@@ -1,22 +1,25 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ToastConfig, ToastData } from './toast.types';
+import { _IdGenerator } from '@angular/cdk/a11y';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScToaster {
-  private readonly _toasts = signal<ToastData[]>([]);
-  readonly toasts = this._toasts.asReadonly();
+  private readonly toastsSignal = signal<ToastData[]>([]);
+  readonly toasts = this.toastsSignal.asReadonly();
 
   private readonly defaultDuration = 5000;
-  private toastCounter = 0;
   private timeouts = new Map<string, ReturnType<typeof setTimeout>>();
+
+  private readonly idGenerator = inject(_IdGenerator);
 
   /**
    * Show a new toast notification
    */
   show(config: ToastConfig): string {
-    const id = `toast-${++this.toastCounter}`;
+    const id = this.idGenerator.getId('sc-toast-');
+
     const toast: ToastData = {
       id,
       title: config.title,
@@ -26,7 +29,7 @@ export class ScToaster {
       duration: config.duration ?? this.defaultDuration,
     };
 
-    this._toasts.update((toasts) => [...toasts, toast]);
+    this.toastsSignal.update((toasts) => [...toasts, toast]);
 
     // Auto-dismiss after duration (if duration > 0)
     if (toast.duration && toast.duration > 0) {
@@ -50,7 +53,7 @@ export class ScToaster {
       this.timeouts.delete(id);
     }
 
-    this._toasts.update((toasts) => toasts.filter((t) => t.id !== id));
+    this.toastsSignal.update((toasts) => toasts.filter((t) => t.id !== id));
   }
 
   /**
@@ -59,6 +62,6 @@ export class ScToaster {
   dismissAll(): void {
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
     this.timeouts.clear();
-    this._toasts.set([]);
+    this.toastsSignal.set([]);
   }
 }

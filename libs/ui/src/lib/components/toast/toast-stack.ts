@@ -12,7 +12,7 @@ import { ScToastAction } from './toast-action';
 import { ScToastClose } from './toast-close';
 import { ScToastDescription } from './toast-description';
 import { ScToastTitle } from './toast-title';
-import { ScToaster } from './toast.service';
+import { ScToaster } from './toaster';
 
 @Component({
   selector: 'sc-toast-stack',
