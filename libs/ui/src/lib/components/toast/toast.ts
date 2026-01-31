@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ToastVariant } from './toast.types';
+import { ScToastVariant } from './toast.types';
 
 @Component({
   selector: 'div[sc-toast]',
@@ -28,7 +28,7 @@ import { ToastVariant } from './toast.types';
 })
 export class ScToast {
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly variant = input<ToastVariant>('default');
+  readonly variant = input<ScToastVariant>('default');
 
   /** Emitted when pointer enters the toast (pause auto-dismiss) */
   readonly pointerEnter = output<void>();
@@ -46,7 +46,7 @@ export class ScToast {
   );
 
   private readonly variantClass = computed(() => {
-    const variantClasses: Record<ToastVariant, string> = {
+    const variantClasses: Record<ScToastVariant, string> = {
       default: 'border bg-background text-foreground',
       destructive:
         'destructive group border-destructive bg-destructive text-destructive-foreground',

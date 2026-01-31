@@ -1,10 +1,10 @@
-export type ToastVariant = 'default' | 'destructive';
+export type ScToastVariant = 'default' | 'destructive';
 
-export interface ToastData {
+export interface ScToastData {
   id: string;
   title?: string;
   description?: string;
-  variant?: ToastVariant;
+  variant?: ScToastVariant;
   action?: {
     label: string;
     onClick: () => void;
@@ -12,10 +12,10 @@ export interface ToastData {
   duration?: number;
 }
 
-export interface ToastConfig {
+export interface ScToastConfig {
   title?: string;
   description?: string;
-  variant?: ToastVariant;
+  variant?: ScToastVariant;
   action?: {
     label: string;
     onClick: () => void;

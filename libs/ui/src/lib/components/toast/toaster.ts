@@ -1,12 +1,12 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { ToastConfig, ToastData } from './toast.types';
+import { ScToastConfig, ScToastData } from './toast.types';
 import { _IdGenerator } from '@angular/cdk/a11y';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ScToaster {
-  private readonly toastsSignal = signal<ToastData[]>([]);
+  private readonly toastsSignal = signal<ScToastData[]>([]);
   readonly toasts = this.toastsSignal.asReadonly();
 
   private readonly defaultDuration = 5000;
@@ -17,10 +17,10 @@ export class ScToaster {
   /**
    * Show a new toast notification
    */
-  show(config: ToastConfig): string {
+  show(config: ScToastConfig): string {
     const id = this.idGenerator.getId('sc-toast-');
 
-    const toast: ToastData = {
+    const toast: ScToastData = {
       id,
       title: config.title,
       description: config.description,
