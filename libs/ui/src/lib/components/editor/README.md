@@ -135,9 +135,8 @@ Content area where text editing happens.
 
 - `value: string` - Two-way bindable HTML content (use with `[(value)]`)
 - `placeholder: string` - Placeholder text (default: "Start typing...")
-- `minHeight: string` - Minimum height (default: "150px")
-- `maxHeight: string` - Maximum height (default: "400px")
 - `ariaLabel: string` - ARIA label (default: "Rich text editor")
+- `class: string` - Additional CSS classes (use Tailwind utilities for sizing, e.g., `min-h-[300px] max-h-[500px]`)
 
 **Outputs**:
 
@@ -265,8 +264,17 @@ The editor uses Tailwind CSS with CSS variables for theming. All styles respect 
 **Customization**:
 
 ```html
+<!-- Custom font and text size -->
 <div sc-editor-content class="font-serif text-lg"></div>
+
+<!-- Custom height constraints -->
+<div sc-editor-content class="min-h-[300px] max-h-[600px]"></div>
+
+<!-- Remove default padding -->
+<div sc-editor-content class="p-0"></div>
 ```
+
+Default classes applied: `block outline-none overflow-y-auto min-h-[150px] max-h-[400px] p-4 prose prose-sm max-w-none dark:prose-invert`
 
 ## Accessibility
 

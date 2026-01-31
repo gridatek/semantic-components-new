@@ -22,8 +22,6 @@ import { SC_EDITOR } from './editor';
   host: {
     'data-slot': 'editor-content',
     '[class]': 'class()',
-    '[style.min-height]': 'minHeight()',
-    '[style.max-height]': 'maxHeight()',
     '[attr.aria-label]': 'ariaLabel()',
   },
   encapsulation: ViewEncapsulation.None,
@@ -36,8 +34,6 @@ export class ScEditorContent {
 
   readonly value = model<string>('');
   readonly placeholder = input<string>('Start typing...');
-  readonly minHeight = input<string>('150px');
-  readonly maxHeight = input<string>('400px');
   readonly ariaLabel = input<string>('Rich text editor');
   readonly classInput = input<string>('', { alias: 'class' });
 
@@ -49,7 +45,7 @@ export class ScEditorContent {
 
   protected readonly class = computed(() =>
     cn(
-      'block outline-none overflow-y-auto p-4 prose prose-sm max-w-none dark:prose-invert',
+      'block outline-none overflow-y-auto min-h-[150px] max-h-[400px] p-4 prose prose-sm max-w-none dark:prose-invert',
       this.editor.disabled() && 'pointer-events-none opacity-50',
       this.editor.readonly() && 'cursor-default',
       this.classInput(),

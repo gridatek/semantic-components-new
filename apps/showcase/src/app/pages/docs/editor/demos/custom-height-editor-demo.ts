@@ -77,8 +77,7 @@ import {
       <div
         sc-editor-content
         [(value)]="content"
-        minHeight="300px"
-        maxHeight="500px"
+        class="min-h-[300px] max-h-[500px]"
         placeholder="This editor has a taller minimum height..."
       ></div>
 
