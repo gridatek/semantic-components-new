@@ -1,18 +1,17 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  computed,
-  input,
-  output,
-  inject,
+  Component,
+  DestroyRef,
   ElementRef,
   afterNextRender,
-  effect,
-  DestroyRef,
+  computed,
+  inject,
+  input,
+  output,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_VIDEO_PLAYER } from './video-player-directive';
-import type { ScVideoSource, ScVideoTrack } from './video-player';
+import { SC_VIDEO_PLAYER } from './video-player';
+import type { ScVideoSource, ScVideoTrack } from './video-player-types';
 
 @Component({
   selector: 'video[sc-video-player-video]',

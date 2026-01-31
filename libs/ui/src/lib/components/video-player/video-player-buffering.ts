@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_VIDEO_PLAYER } from './video-player-directive';
+import { SC_VIDEO_PLAYER } from './video-player';
 
 @Component({
   selector: 'div[sc-video-player-buffering]',
