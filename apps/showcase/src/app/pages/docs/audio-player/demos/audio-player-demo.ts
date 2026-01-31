@@ -23,7 +23,7 @@ import {
 } from '@semantic-icons/lucide-icons';
 
 @Component({
-  selector: 'app-keyboard-audio-player-demo',
+  selector: 'app-audio-player-demo',
   imports: [
     ScAudioPlayer,
     ScAudioPlayerCover,
@@ -44,20 +44,6 @@ import {
     SiShuffleIcon,
   ],
   template: `
-    <ul
-      class="text-sm space-y-1 list-disc list-inside text-muted-foreground mb-3"
-    >
-      <li>
-        <kbd class="px-1 py-0.5 bg-muted rounded text-xs">←</kbd>
-        /
-        <kbd class="px-1 py-0.5 bg-muted rounded text-xs">→</kbd>
-        - Seek 5 seconds
-      </li>
-      <li>
-        <kbd class="px-1 py-0.5 bg-muted rounded text-xs">Shift</kbd>
-        + Arrow - Seek 10 seconds
-      </li>
-    </ul>
     <div
       sc-audio-player
       #player="scAudioPlayer"
@@ -109,7 +95,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KeyboardAudioPlayerDemo {
+export class AudioPlayerDemo {
   readonly tracks: ScAudioTrack[] = [
     {
       src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
