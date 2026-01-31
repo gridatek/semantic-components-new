@@ -2389,10 +2389,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/pdf-viewer',
     children: [
       {
-        path: 'pdf-viewer-demo',
+        path: 'basic-pdf-viewer-demo',
         loadComponent: () =>
-          import('../pages/docs/pdf-viewer/demos/pdf-viewer-demo').then(
-            (m) => m.PdfViewerDemo,
+          import('../pages/docs/pdf-viewer/demos/basic-pdf-viewer-demo').then(
+            (m) => m.BasicPdfViewerDemo,
+          ),
+      },
+      {
+        path: 'minimal-pdf-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/pdf-viewer/demos/minimal-pdf-viewer-demo').then(
+            (m) => m.MinimalPdfViewerDemo,
+          ),
+      },
+      {
+        path: 'custom-toolbar-pdf-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/pdf-viewer/demos/custom-toolbar-pdf-viewer-demo').then(
+            (m) => m.CustomToolbarPdfViewerDemo,
+          ),
+      },
+      {
+        path: 'interactive-pdf-viewer-demo',
+        loadComponent: () =>
+          import('../pages/docs/pdf-viewer/demos/interactive-pdf-viewer-demo').then(
+            (m) => m.InteractivePdfViewerDemo,
           ),
       },
     ],

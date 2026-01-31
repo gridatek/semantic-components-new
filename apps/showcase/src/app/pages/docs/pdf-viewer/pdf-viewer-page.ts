@@ -1,9 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PdfViewerDemoContainer } from './demos/pdf-viewer-demo-container';
+import { BasicPdfViewerDemoContainer } from './demos/basic-pdf-viewer-demo-container';
+import { MinimalPdfViewerDemoContainer } from './demos/minimal-pdf-viewer-demo-container';
+import { CustomToolbarPdfViewerDemoContainer } from './demos/custom-toolbar-pdf-viewer-demo-container';
+import { InteractivePdfViewerDemoContainer } from './demos/interactive-pdf-viewer-demo-container';
 
 @Component({
   selector: 'app-pdf-viewer-page',
-  imports: [PdfViewerDemoContainer],
+  imports: [
+    BasicPdfViewerDemoContainer,
+    MinimalPdfViewerDemoContainer,
+    CustomToolbarPdfViewerDemoContainer,
+    InteractivePdfViewerDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +24,10 @@ import { PdfViewerDemoContainer } from './demos/pdf-viewer-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-pdf-viewer-demo-container />
+        <app-basic-pdf-viewer-demo-container />
+        <app-minimal-pdf-viewer-demo-container />
+        <app-custom-toolbar-pdf-viewer-demo-container />
+        <app-interactive-pdf-viewer-demo-container />
       </section>
     </div>
   `,
