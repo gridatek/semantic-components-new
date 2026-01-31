@@ -30,6 +30,7 @@ export class ScVideoPlayerPlayButton {
       'size-8 rounded flex items-center justify-center',
       'text-white hover:bg-white/20 transition-colors',
       'focus:outline-none focus:ring-2 focus:ring-white/50',
+      '[&_svg]:size-5',
       this.classInput(),
     ),
   );

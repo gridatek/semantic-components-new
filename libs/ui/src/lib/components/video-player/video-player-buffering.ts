@@ -29,6 +29,7 @@ export class ScVideoPlayerBuffering {
   protected readonly class = computed(() =>
     cn(
       'absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none',
+      '[&_svg]:size-12 [&_svg]:text-white [&_svg]:animate-spin',
       this.classInput(),
     ),
   );

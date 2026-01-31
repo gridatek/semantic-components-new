@@ -28,6 +28,7 @@ export class ScVideoPlayerBigPlayButton {
   protected readonly class = computed(() =>
     cn(
       'absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group',
+      '[&_svg]:size-5',
       this.classInput(),
     ),
   );
