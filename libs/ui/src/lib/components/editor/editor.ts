@@ -1,9 +1,7 @@
 import { Directive, InjectionToken, input, signal } from '@angular/core';
 import { Editor } from '@tiptap/core';
-import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
 import TextAlign from '@tiptap/extension-text-align';
-import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 
 export type ScEditorAlignment = 'left' | 'center' | 'right' | 'justify';
@@ -53,18 +51,14 @@ export class ScEditor {
       element,
       extensions: [
         StarterKit.configure({
-          // Disable Link and Underline from StarterKit since we configure them separately
-          link: false,
-          underline: false,
-        }),
-        Link.configure({
-          openOnClick: false,
-          HTMLAttributes: {
-            target: '_blank',
-            rel: 'noopener noreferrer',
+          link: {
+            openOnClick: false,
+            HTMLAttributes: {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
           },
         }),
-        Underline,
         TextAlign.configure({
           types: ['heading', 'paragraph'],
         }),

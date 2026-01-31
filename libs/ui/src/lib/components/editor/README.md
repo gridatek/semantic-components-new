@@ -10,8 +10,6 @@ The editor component requires Tiptap packages as peer dependencies. Install them
 npm install @semantic-components/ui \
   @tiptap/core \
   @tiptap/starter-kit \
-  @tiptap/extension-link \
-  @tiptap/extension-underline \
   @tiptap/extension-text-align \
   @tiptap/extension-placeholder
 ```
@@ -19,8 +17,10 @@ npm install @semantic-components/ui \
 Or if you already have `@semantic-components/ui` installed:
 
 ```bash
-npm install @tiptap/core @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-underline @tiptap/extension-text-align @tiptap/extension-placeholder
+npm install @tiptap/core @tiptap/starter-kit @tiptap/extension-text-align @tiptap/extension-placeholder
 ```
+
+**Note**: Link and Underline extensions are included in `@tiptap/starter-kit` v3, so no need to install them separately.
 
 ## Features
 
@@ -45,9 +45,8 @@ The editor is powered by [Tiptap](https://tiptap.dev/), a headless rich-text edi
 
 The editor comes pre-configured with these Tiptap extensions:
 
-- **StarterKit**: Bold, Italic, Strike, Code, Heading, Lists, Blockquote, History, HardBreak, Paragraph, Text
-- **Link**: Link insertion and editing with configurable attributes
-- **Underline**: Underline formatting (not included in StarterKit)
+- **StarterKit**: Bold, Italic, Strike, Underline, Code, Heading, Lists, Blockquote, History, HardBreak, Paragraph, Text, Link
+  - Link configured with: `openOnClick: false`, `target="_blank"`, `rel="noopener noreferrer"`
 - **TextAlign**: Text alignment (left, center, right, justify)
 - **Placeholder**: Customizable placeholder text
 
