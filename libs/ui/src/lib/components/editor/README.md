@@ -280,21 +280,53 @@ Colors are defined in OKLCH format and automatically adapt to light/dark themes.
 <!-- Remove default padding -->
 <div sc-editor-content class="p-0"></div>
 
-<!-- Use individual count components for custom layouts -->
+<!-- Default: Both counts with standard layout -->
 <div sc-editor-footer>
-  <span sc-editor-word-count class="text-sm text-muted-foreground"></span>
-  <span class="mx-2">•</span>
-  <span sc-editor-char-count class="text-sm text-muted-foreground"></span>
+  <div sc-editor-count>
+    <span sc-editor-word-count></span>
+    <span sc-editor-char-count></span>
+  </div>
 </div>
 
-<!-- Show only word count -->
+<!-- Only word count -->
 <div sc-editor-footer>
-  <span sc-editor-word-count></span>
+  <div sc-editor-count>
+    <span sc-editor-word-count></span>
+  </div>
 </div>
 
-<!-- Show only character count -->
+<!-- Only character count -->
 <div sc-editor-footer>
-  <span sc-editor-char-count></span>
+  <div sc-editor-count>
+    <span sc-editor-char-count></span>
+  </div>
+</div>
+
+<!-- Custom separator and styling -->
+<div sc-editor-footer>
+  <div sc-editor-count>
+    <span sc-editor-word-count class="text-blue-600"></span>
+    <span class="text-muted-foreground">•</span>
+    <span sc-editor-char-count class="text-green-600"></span>
+  </div>
+</div>
+
+<!-- Footer with additional content -->
+<div sc-editor-footer>
+  <button class="text-sm text-primary hover:underline">Save draft</button>
+  <div sc-editor-count>
+    <span sc-editor-word-count></span>
+    <span sc-editor-char-count></span>
+  </div>
+</div>
+
+<!-- Without using ScEditorCount container -->
+<div sc-editor-footer class="justify-between">
+  <div class="flex gap-2">
+    <span sc-editor-word-count class="text-xs"></span>
+    <span sc-editor-char-count class="text-xs"></span>
+  </div>
+  <button>Submit</button>
 </div>
 ```
 
