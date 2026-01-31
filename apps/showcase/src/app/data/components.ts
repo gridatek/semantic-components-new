@@ -177,6 +177,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A picker for selecting emojis.',
   },
   {
+    name: 'Editor',
+    path: 'editor',
+    description: 'Composable WYSIWYG editor with customizable toolbar.',
+  },
+  {
     name: 'Empty State',
     path: 'empty-state',
     description: 'Placeholder for empty content.',
