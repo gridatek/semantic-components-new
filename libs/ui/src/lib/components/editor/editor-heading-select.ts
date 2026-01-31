@@ -4,6 +4,7 @@ import {
   computed,
   input,
   inject,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_EDITOR, ScEditorHeading } from './editor';
@@ -26,6 +27,7 @@ import { SC_EDITOR, ScEditorHeading } from './editor';
     '[value]': 'editor.currentHeading()',
     '(change)': 'onChange($event)',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorHeadingSelect {

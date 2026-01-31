@@ -4,6 +4,7 @@ import {
   computed,
   input,
   inject,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_EDITOR } from './editor';
@@ -18,6 +19,7 @@ import { SC_EDITOR } from './editor';
     'data-slot': 'editor-count',
     '[class]': 'class()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorCount {

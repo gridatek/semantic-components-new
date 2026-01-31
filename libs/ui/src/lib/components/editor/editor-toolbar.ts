@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -17,6 +18,7 @@ import { cn } from '../../utils';
     '[attr.aria-label]': '"Text formatting"',
     '[class]': 'class()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorToolbar {

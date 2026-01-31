@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -13,6 +14,7 @@ import { cn } from '../../utils';
     'data-slot': 'editor-separator',
     '[class]': 'class()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorSeparator {

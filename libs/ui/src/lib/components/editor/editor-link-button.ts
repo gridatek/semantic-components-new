@@ -4,6 +4,7 @@ import {
   computed,
   input,
   inject,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_EDITOR } from './editor';
@@ -21,6 +22,7 @@ import { SC_EDITOR } from './editor';
     '[attr.title]': '"Insert link (Ctrl+K)"',
     '(click)': 'onClick()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorLinkButton {

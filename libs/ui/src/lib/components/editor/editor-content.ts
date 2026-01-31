@@ -1,19 +1,20 @@
 import {
-  Component,
+  afterNextRender,
   ChangeDetectionStrategy,
+  Component,
   computed,
+  DestroyRef,
+  effect,
+  ElementRef,
+  inject,
   input,
   model,
   output,
-  inject,
   signal,
-  afterNextRender,
-  DestroyRef,
-  ElementRef,
-  effect,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_EDITOR, ScEditor } from './editor';
+import { SC_EDITOR } from './editor';
 
 @Component({
   selector: 'div[sc-editor-content]',
@@ -122,6 +123,7 @@ import { SC_EDITOR, ScEditor } from './editor';
       margin: 0.5rem 0;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorContent {

@@ -4,6 +4,7 @@ import {
   computed,
   input,
   inject,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_EDITOR } from './editor';
@@ -22,6 +23,7 @@ import { SC_EDITOR } from './editor';
     '[attr.title]': '"Justify"',
     '(click)': 'onClick()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEditorAlignJustifyButton {
