@@ -2657,60 +2657,6 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
-    path: 'demos/rich-text-editor',
-    children: [
-      {
-        path: 'basic-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/basic-rich-text-editor-demo').then(
-            (m) => m.BasicRichTextEditorDemo,
-          ),
-      },
-      {
-        path: 'prefilled-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/prefilled-rich-text-editor-demo').then(
-            (m) => m.PrefilledRichTextEditorDemo,
-          ),
-      },
-      {
-        path: 'minimal-toolbar-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/minimal-toolbar-rich-text-editor-demo').then(
-            (m) => m.MinimalToolbarRichTextEditorDemo,
-          ),
-      },
-      {
-        path: 'no-count-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/no-count-rich-text-editor-demo').then(
-            (m) => m.NoCountRichTextEditorDemo,
-          ),
-      },
-      {
-        path: 'readonly-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/readonly-rich-text-editor-demo').then(
-            (m) => m.ReadonlyRichTextEditorDemo,
-          ),
-      },
-      {
-        path: 'custom-height-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/custom-height-rich-text-editor-demo').then(
-            (m) => m.CustomHeightRichTextEditorDemo,
-          ),
-      },
-      {
-        path: 'full-featured-rich-text-editor-demo',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/demos/full-featured-rich-text-editor-demo').then(
-            (m) => m.FullFeaturedRichTextEditorDemo,
-          ),
-      },
-    ],
-  },
-  {
     path: 'demos/scroll-area',
     children: [
       {

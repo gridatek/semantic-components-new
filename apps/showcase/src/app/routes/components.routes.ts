@@ -324,11 +324,6 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/resizable/resizable-page'),
       },
       {
-        path: 'rich-text-editor',
-        loadComponent: () =>
-          import('../pages/docs/rich-text-editor/rich-text-editor-page'),
-      },
-      {
         path: 'scroll-area',
         loadComponent: () =>
           import('../pages/docs/scroll-area/scroll-area-page'),

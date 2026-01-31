@@ -363,11 +363,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A component that can be resized by dragging.',
   },
   {
-    name: 'Rich Text Editor',
-    path: 'rich-text-editor',
-    description: 'A WYSIWYG text editor.',
-  },
-  {
     name: 'Scroll Area',
     path: 'scroll-area',
     description: 'A custom scrollable area with styled scrollbars.',
