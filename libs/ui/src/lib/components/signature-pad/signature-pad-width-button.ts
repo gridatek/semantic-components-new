@@ -9,7 +9,7 @@ import { SC_SIGNATURE_PAD } from './signature-pad';
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'button[sc-signature-pad-width]',
+  selector: 'button[sc-signature-pad-pen-width]',
   template: `
     <span [class]="lineClass()" [style.height.px]="width()"></span>
   `,

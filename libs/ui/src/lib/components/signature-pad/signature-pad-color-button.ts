@@ -9,7 +9,7 @@ import { SC_SIGNATURE_PAD } from './signature-pad';
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'button[sc-signature-pad-color]',
+  selector: 'button[sc-signature-pad-pen-color]',
   template: `
     <span [class]="dotClass()" [style.background-color]="color()"></span>
   `,

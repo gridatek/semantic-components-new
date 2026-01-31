@@ -78,14 +78,14 @@ export class MyComponent {
 **`ScSignaturePadColorButton` (Component)**
 
 - Button to select pen color
-- **Selector**: `button[sc-signature-pad-color]`
+- **Selector**: `button[sc-signature-pad-pen-color]`
 - **Inputs**: `color` (required, hex color string)
 - **Auto-active**: When color matches current pen color
 
 **`ScSignaturePadWidthButton` (Component)**
 
 - Button to select pen width
-- **Selector**: `button[sc-signature-pad-width]`
+- **Selector**: `button[sc-signature-pad-pen-width]`
 - **Inputs**: `width` (required, number in pixels)
 - **Auto-active**: When width matches current pen width
 
@@ -147,9 +147,9 @@ export class MyComponent {
 <div sc-signature-pad class="space-y-3">
   <!-- Color toolbar -->
   <div sc-signature-pad-toolbar>
-    <button sc-signature-pad-color [color]="'#000000'"></button>
-    <button sc-signature-pad-color [color]="'#1d4ed8'"></button>
-    <button sc-signature-pad-color [color]="'#dc2626'"></button>
+    <button sc-signature-pad-pen-color [color]="'#000000'"></button>
+    <button sc-signature-pad-pen-color [color]="'#1d4ed8'"></button>
+    <button sc-signature-pad-pen-color [color]="'#dc2626'"></button>
   </div>
 
   <!-- Canvas -->
@@ -168,9 +168,9 @@ export class MyComponent {
 ```html
 <div sc-signature-pad class="space-y-3">
   <div sc-signature-pad-toolbar>
-    <button sc-signature-pad-width [width]="2"></button>
-    <button sc-signature-pad-width [width]="4"></button>
-    <button sc-signature-pad-width [width]="6"></button>
+    <button sc-signature-pad-pen-width [width]="2"></button>
+    <button sc-signature-pad-pen-width [width]="4"></button>
+    <button sc-signature-pad-pen-width [width]="6"></button>
   </div>
 
   <div class="relative inline-block">
@@ -184,15 +184,15 @@ export class MyComponent {
 ```html
 <div sc-signature-pad-toolbar>
   <!-- Colors -->
-  <button sc-signature-pad-color [color]="'#000000'"></button>
-  <button sc-signature-pad-color [color]="'#1d4ed8'"></button>
+  <button sc-signature-pad-pen-color [color]="'#000000'"></button>
+  <button sc-signature-pad-pen-color [color]="'#1d4ed8'"></button>
 
   <!-- Separator (optional) -->
   <div class="w-px h-6 bg-border"></div>
 
   <!-- Widths -->
-  <button sc-signature-pad-width [width]="2"></button>
-  <button sc-signature-pad-width [width]="4"></button>
+  <button sc-signature-pad-pen-width [width]="2"></button>
+  <button sc-signature-pad-pen-width [width]="4"></button>
 </div>
 ```
 
