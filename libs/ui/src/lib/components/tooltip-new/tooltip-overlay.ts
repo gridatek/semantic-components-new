@@ -9,13 +9,13 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 
-export interface TooltipData {
+export interface ScTooltipData {
   content: string;
   tooltipClass: string;
   tooltipId: string;
 }
 
-export const TOOLTIP_DATA = new InjectionToken<TooltipData>('TOOLTIP_DATA');
+export const SC_TOOLTIP_DATA = new InjectionToken<ScTooltipData>('SC_TOOLTIP_DATA');
 
 @Component({
   selector: 'sc-tooltip-overlay',
@@ -40,5 +40,5 @@ export class ScTooltipOverlay {
     )
   );
 
-  constructor(@Inject(TOOLTIP_DATA) public data: TooltipData) {}
+  constructor(@Inject(SC_TOOLTIP_DATA) public data: ScTooltipData) {}
 }

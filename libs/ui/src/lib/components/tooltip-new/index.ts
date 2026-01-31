@@ -1,2 +1,2 @@
 export { ScTooltip } from './tooltip.directive';
-export { TooltipService, TooltipPosition } from './tooltip.service';
+export { ScTooltipService, ScTooltipPosition } from './tooltip.service';

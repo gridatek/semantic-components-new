@@ -11,11 +11,11 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ScTooltipOverlay, TOOLTIP_DATA } from './tooltip-overlay';
+import { ScTooltipOverlay, SC_TOOLTIP_DATA } from './tooltip-overlay';
 
-export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
+export type ScTooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
-const positionMap: Record<TooltipPosition, ConnectedPosition[]> = {
+const positionMap: Record<ScTooltipPosition, ConnectedPosition[]> = {
   top: [
     {
       originX: 'center',
@@ -82,14 +82,14 @@ const positionMap: Record<TooltipPosition, ConnectedPosition[]> = {
   ],
 };
 
-export interface TooltipConfig {
+export interface ScTooltipConfig {
   content: string;
-  position: TooltipPosition;
+  position: ScTooltipPosition;
   tooltipClass: string;
 }
 
 @Injectable({ providedIn: 'root' })
-export class TooltipService {
+export class ScTooltipService {
   private readonly overlay = inject(Overlay);
   private readonly injector = inject(Injector);
   private readonly document = inject(DOCUMENT);
@@ -113,7 +113,7 @@ export class TooltipService {
 
   show(
     elementRef: ElementRef,
-    config: TooltipConfig,
+    config: ScTooltipConfig,
     tooltipId: string
   ): void {
     // Close any existing tooltip first (singleton behavior)
@@ -138,7 +138,7 @@ export class TooltipService {
     const tooltipInjector = Injector.create({
       providers: [
         {
-          provide: TOOLTIP_DATA,
+          provide: SC_TOOLTIP_DATA,
           useValue: {
             content: config.content,
             tooltipClass: config.tooltipClass,

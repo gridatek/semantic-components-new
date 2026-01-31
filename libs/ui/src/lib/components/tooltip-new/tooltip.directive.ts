@@ -8,7 +8,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { TooltipPosition, TooltipService } from './tooltip.service';
+import { ScTooltipPosition, ScTooltipService } from './tooltip.service';
 
 let tooltipIdCounter = 0;
 
@@ -23,7 +23,7 @@ let tooltipIdCounter = 0;
   },
 })
 export class ScTooltip implements OnInit {
-  private readonly tooltipService = inject(TooltipService);
+  private readonly tooltipService = inject(ScTooltipService);
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
 
@@ -31,7 +31,7 @@ export class ScTooltip implements OnInit {
   readonly content = input.required<string>({ alias: 'scTooltip' });
 
   /** Position of the tooltip relative to the trigger element */
-  readonly position = input<TooltipPosition>('top', { alias: 'tooltipPosition' });
+  readonly position = input<ScTooltipPosition>('top', { alias: 'tooltipPosition' });
 
   /** Delay before showing the tooltip in milliseconds */
   readonly showDelay = input<number>(200, { alias: 'tooltipDelay' });
