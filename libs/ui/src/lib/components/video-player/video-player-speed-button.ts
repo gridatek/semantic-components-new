@@ -5,6 +5,7 @@ import {
   input,
   inject,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_VIDEO_PLAYER } from './video-player';
@@ -39,6 +40,7 @@ import { SC_VIDEO_PLAYER } from './video-player';
   host: {
     '[class]': 'class()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScVideoPlayerSpeedButton {

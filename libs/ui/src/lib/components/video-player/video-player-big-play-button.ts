@@ -4,6 +4,7 @@ import {
   computed,
   input,
   inject,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_VIDEO_PLAYER } from './video-player';
@@ -17,6 +18,7 @@ import { SC_VIDEO_PLAYER } from './video-player';
     'aria-label': 'Play video',
     '(click)': 'player.play()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScVideoPlayerBigPlayButton {

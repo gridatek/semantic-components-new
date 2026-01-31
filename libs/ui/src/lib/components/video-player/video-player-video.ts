@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  ViewEncapsulation,
   afterNextRender,
   computed,
   inject,
@@ -48,6 +49,7 @@ import type { ScVideoSource, ScVideoTrack } from './video-player-types';
     '(canplay)': 'player.isBuffering.set(false)',
     '(volumechange)': 'onVolumeChange()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScVideoPlayerVideo {

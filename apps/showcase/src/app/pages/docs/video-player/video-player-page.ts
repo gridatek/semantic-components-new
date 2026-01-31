@@ -1,13 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BasicVideoPlayerDemoContainer } from './demos/basic-video-player-demo-container';
-import { MultipleSourcesVideoPlayerDemoContainer } from './demos/multiple-sources-video-player-demo-container';
-import { MinimalControlsVideoPlayerDemoContainer } from './demos/minimal-controls-video-player-demo-container';
-import { AutoplayVideoPlayerDemoContainer } from './demos/autoplay-video-player-demo-container';
-import { LoopVideoPlayerDemoContainer } from './demos/loop-video-player-demo-container';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { AspectRatioVideoPlayerDemoContainer } from './demos/aspect-ratio-video-player-demo-container';
+import { AutoplayVideoPlayerDemoContainer } from './demos/autoplay-video-player-demo-container';
+import { BasicVideoPlayerDemoContainer } from './demos/basic-video-player-demo-container';
 import { ControlledVideoPlayerDemoContainer } from './demos/controlled-video-player-demo-container';
-import { NoOverlayVideoPlayerDemoContainer } from './demos/no-overlay-video-player-demo-container';
 import { KeyboardShortcutsVideoPlayerDemoContainer } from './demos/keyboard-shortcuts-video-player-demo-container';
+import { LoopVideoPlayerDemoContainer } from './demos/loop-video-player-demo-container';
+import { MinimalControlsVideoPlayerDemoContainer } from './demos/minimal-controls-video-player-demo-container';
+import { MultipleSourcesVideoPlayerDemoContainer } from './demos/multiple-sources-video-player-demo-container';
+import { NoOverlayVideoPlayerDemoContainer } from './demos/no-overlay-video-player-demo-container';
 
 @Component({
   selector: 'app-video-player-page',
@@ -46,6 +50,7 @@ import { KeyboardShortcutsVideoPlayerDemoContainer } from './demos/keyboard-shor
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class VideoPlayerPage {}
