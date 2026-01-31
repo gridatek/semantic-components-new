@@ -2052,10 +2052,31 @@ export const demosRoutes: Route[] = [
     path: 'demos/masonry-grid',
     children: [
       {
-        path: 'masonry-grid-demo',
+        path: 'basic-masonry-grid-demo',
         loadComponent: () =>
-          import('../pages/docs/masonry-grid/demos/masonry-grid-demo').then(
-            (m) => m.MasonryGridDemo,
+          import('../pages/docs/masonry-grid/demos/basic-masonry-grid-demo').then(
+            (m) => m.BasicMasonryGridDemo,
+          ),
+      },
+      {
+        path: 'image-gallery-masonry-grid-demo',
+        loadComponent: () =>
+          import('../pages/docs/masonry-grid/demos/image-gallery-masonry-grid-demo').then(
+            (m) => m.ImageGalleryMasonryGridDemo,
+          ),
+      },
+      {
+        path: 'breakpoints-masonry-grid-demo',
+        loadComponent: () =>
+          import('../pages/docs/masonry-grid/demos/breakpoints-masonry-grid-demo').then(
+            (m) => m.BreakpointsMasonryGridDemo,
+          ),
+      },
+      {
+        path: 'cards-masonry-grid-demo',
+        loadComponent: () =>
+          import('../pages/docs/masonry-grid/demos/cards-masonry-grid-demo').then(
+            (m) => m.CardsMasonryGridDemo,
           ),
       },
     ],
