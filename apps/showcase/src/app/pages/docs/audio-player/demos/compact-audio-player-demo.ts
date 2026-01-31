@@ -13,6 +13,15 @@ import {
   ScAudioPlayerVolume,
   ScAudioTrack,
 } from '@semantic-components/ui';
+import {
+  SiPlayIcon,
+  SiPauseIcon,
+  SiSkipBackIcon,
+  SiSkipForwardIcon,
+  SiRepeatIcon,
+  SiRepeat1Icon,
+  SiShuffleIcon,
+} from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-compact-audio-player-demo',
@@ -28,10 +37,18 @@ import {
     ScAudioPlayerShuffle,
     ScAudioPlayerRepeat,
     ScAudioPlayerVolume,
+    SiPlayIcon,
+    SiPauseIcon,
+    SiSkipBackIcon,
+    SiSkipForwardIcon,
+    SiRepeatIcon,
+    SiRepeat1Icon,
+    SiShuffleIcon,
   ],
   template: `
     <div
       sc-audio-player
+      #player="scAudioPlayer"
       [tracks]="tracks"
       class="flex flex-row items-center gap-4 p-4 bg-card border rounded-lg"
     >
@@ -46,11 +63,29 @@ import {
 
       <!-- Controls -->
       <div class="flex items-center gap-2">
-        <button sc-audio-player-shuffle></button>
-        <button sc-audio-player-previous></button>
-        <button sc-audio-player-play-button></button>
-        <button sc-audio-player-next></button>
-        <button sc-audio-player-repeat></button>
+        <button sc-audio-player-shuffle>
+          <svg si-shuffle-icon></svg>
+        </button>
+        <button sc-audio-player-previous>
+          <svg si-skip-back-icon></svg>
+        </button>
+        <button sc-audio-player-play-button>
+          @if (player.isPlaying()) {
+            <svg si-pause-icon></svg>
+          } @else {
+            <svg si-play-icon></svg>
+          }
+        </button>
+        <button sc-audio-player-next>
+          <svg si-skip-forward-icon></svg>
+        </button>
+        <button sc-audio-player-repeat>
+          @if (player.repeat() === 'one') {
+            <svg si-repeat-1-icon></svg>
+          } @else {
+            <svg si-repeat-icon></svg>
+          }
+        </button>
       </div>
 
       <!-- Volume -->

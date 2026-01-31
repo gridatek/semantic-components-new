@@ -11,19 +11,7 @@ import { SC_AUDIO_PLAYER } from './audio-player';
 
 @Component({
   selector: 'button[sc-audio-player-previous]',
-  template: `
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      class="size-5 pointer-events-none"
-    >
-      <polygon points="19 20 9 12 19 4 19 20" fill="currentColor" />
-      <line x1="5" x2="5" y1="19" y2="5" />
-    </svg>
-  `,
+  template: '<ng-content />',
   host: {
     'data-slot': 'audio-player-previous',
     type: 'button',
@@ -45,6 +33,7 @@ export class ScAudioPlayerPrevious {
       'hover:bg-accent transition-colors',
       'focus:outline-none focus:ring-2 focus:ring-ring',
       'disabled:opacity-50 disabled:cursor-not-allowed',
+      '[&_svg]:size-5',
       this.classInput(),
     ),
   );

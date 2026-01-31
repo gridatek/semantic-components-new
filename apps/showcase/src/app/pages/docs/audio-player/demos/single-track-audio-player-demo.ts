@@ -12,6 +12,14 @@ import {
   ScAudioPlayerVolume,
   ScAudioTrack,
 } from '@semantic-components/ui';
+import {
+  SiPlayIcon,
+  SiPauseIcon,
+  SiSkipBackIcon,
+  SiSkipForwardIcon,
+  SiRepeatIcon,
+  SiRepeat1Icon,
+} from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-single-track-audio-player-demo',
@@ -26,10 +34,17 @@ import {
     ScAudioPlayerNext,
     ScAudioPlayerRepeat,
     ScAudioPlayerVolume,
+    SiPlayIcon,
+    SiPauseIcon,
+    SiSkipBackIcon,
+    SiSkipForwardIcon,
+    SiRepeatIcon,
+    SiRepeat1Icon,
   ],
   template: `
     <div
       sc-audio-player
+      #player="scAudioPlayer"
       [tracks]="[track]"
       class="flex flex-col gap-3 p-4 bg-card border rounded-lg max-w-md"
     >
@@ -47,10 +62,26 @@ import {
 
       <!-- Controls (no shuffle for single track) -->
       <div class="flex items-center justify-center gap-2">
-        <button sc-audio-player-previous></button>
-        <button sc-audio-player-play-button></button>
-        <button sc-audio-player-next></button>
-        <button sc-audio-player-repeat></button>
+        <button sc-audio-player-previous>
+          <svg si-skip-back-icon></svg>
+        </button>
+        <button sc-audio-player-play-button>
+          @if (player.isPlaying()) {
+            <svg si-pause-icon></svg>
+          } @else {
+            <svg si-play-icon></svg>
+          }
+        </button>
+        <button sc-audio-player-next>
+          <svg si-skip-forward-icon></svg>
+        </button>
+        <button sc-audio-player-repeat>
+          @if (player.repeat() === 'one') {
+            <svg si-repeat-1-icon></svg>
+          } @else {
+            <svg si-repeat-icon></svg>
+          }
+        </button>
       </div>
 
       <!-- Volume -->

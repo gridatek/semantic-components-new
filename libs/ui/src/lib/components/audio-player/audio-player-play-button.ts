@@ -11,28 +11,7 @@ import { SC_AUDIO_PLAYER } from './audio-player';
 
 @Component({
   selector: 'button[sc-audio-player-play-button]',
-  template: `
-    @if (player.isPlaying()) {
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-6 pointer-events-none"
-      >
-        <rect x="6" y="4" width="4" height="16" rx="1" />
-        <rect x="14" y="4" width="4" height="16" rx="1" />
-      </svg>
-    } @else {
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-6 pointer-events-none"
-      >
-        <polygon points="6 3 20 12 6 21 6 3" />
-      </svg>
-    }
-  `,
+  template: '<ng-content />',
   host: {
     'data-slot': 'audio-player-play-button',
     type: 'button',
@@ -53,6 +32,7 @@ export class ScAudioPlayerPlayButton {
       'flex items-center justify-center',
       'hover:bg-primary/90 transition-colors',
       'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+      '[&_svg]:size-6',
       this.classInput(),
     ),
   );
