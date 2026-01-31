@@ -1,9 +1,24 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScSignaturePad } from '@semantic-components/ui';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ScSignaturePad,
+  ScSignaturePadCanvas,
+  ScSignaturePadControls,
+  ScSignaturePadUndoButton,
+  ScSignaturePadClearButton,
+} from '@semantic-components/ui';
+import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-form-signature-pad-demo',
-  imports: [ScSignaturePad],
+  imports: [
+    ScSignaturePad,
+    ScSignaturePadCanvas,
+    ScSignaturePadControls,
+    ScSignaturePadUndoButton,
+    ScSignaturePadClearButton,
+    SiUndoIcon,
+    SiTrash2Icon,
+  ],
   template: `
     <div class="space-y-4">
       <div>
@@ -16,15 +31,25 @@ import { ScSignaturePad } from '@semantic-components/ui';
       </div>
       <div>
         <label class="block text-sm font-medium mb-1">Signature</label>
-        <sc-signature-pad
-          [width]="400"
-          [height]="150"
-          [(isEmpty)]="signatureIsEmpty"
-        />
-        @if (signatureIsEmpty()) {
-          <p class="text-sm text-muted-foreground mt-1">
-            Please sign above
-          </p>
+        <div
+          sc-signature-pad
+          #pad="scSignaturePad"
+          class="relative inline-block"
+        >
+          <canvas sc-signature-pad-canvas [width]="400" [height]="150"></canvas>
+
+          <div sc-signature-pad-controls>
+            <button sc-signature-pad-undo>
+              <svg si-undo-icon class="size-4"></svg>
+            </button>
+            <button sc-signature-pad-clear>
+              <svg si-trash-2-icon class="size-4"></svg>
+            </button>
+          </div>
+        </div>
+
+        @if (pad.isEmpty()) {
+          <p class="text-sm text-muted-foreground mt-1">Please sign above</p>
         } @else {
           <p class="text-sm text-green-600 mt-1">Signature captured</p>
         }
@@ -33,6 +58,4 @@ import { ScSignaturePad } from '@semantic-components/ui';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormSignaturePadDemo {
-  readonly signatureIsEmpty = signal<boolean>(true);
-}
+export class FormSignaturePadDemo {}

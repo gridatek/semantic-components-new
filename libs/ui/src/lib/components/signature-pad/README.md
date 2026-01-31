@@ -2,7 +2,7 @@
 
 Canvas-based signature capture component with touch and mouse support.
 
-## Composable Architecture (Recommended)
+## Composable Architecture
 
 The signature pad uses a **composable architecture** that gives you full control over layout and functionality.
 
@@ -134,50 +134,6 @@ export class MyComponent {
   </div>
 </div>
 ```
-
----
-
-## Legacy API (Monolithic Component)
-
-For backward compatibility, the monolithic component is still available as `ScSignaturePadLegacy`:
-
-```html
-<sc-signature-pad [width]="400" [height]="200" (signatureChange)="onSignatureChange($event)" />
-```
-
-### ScSignaturePadLegacy API
-
-| Input             | Type      | Default           | Description             |
-| ----------------- | --------- | ----------------- | ----------------------- |
-| `width`           | `number`  | `400`             | Canvas width in pixels  |
-| `height`          | `number`  | `200`             | Canvas height in pixels |
-| `penColor`        | `string`  | `'#000000'`       | Pen stroke color        |
-| `penWidth`        | `number`  | `2`               | Pen stroke width        |
-| `backgroundColor` | `string`  | `'#ffffff'`       | Canvas background color |
-| `showControls`    | `boolean` | `true`            | Show undo/clear buttons |
-| `disabled`        | `boolean` | `false`           | Disable drawing         |
-| `ariaLabel`       | `string`  | `'Signature pad'` | Accessibility label     |
-| `class`           | `string`  | -                 | Additional CSS classes  |
-
-| Model     | Type      | Default | Description              |
-| --------- | --------- | ------- | ------------------------ |
-| `isEmpty` | `boolean` | `true`  | Whether the pad is empty |
-
-| Output            | Type     | Description                           |
-| ----------------- | -------- | ------------------------------------- |
-| `signatureChange` | `string` | Emits data URL when signature changes |
-| `strokeEnd`       | `void`   | Emits when a stroke is completed      |
-
-### Methods (Legacy)
-
-| Method        | Parameters                        | Returns  | Description          |
-| ------------- | --------------------------------- | -------- | -------------------- |
-| `clear()`     | -                                 | `void`   | Clear the signature  |
-| `undo()`      | -                                 | `void`   | Undo the last stroke |
-| `toDataURL()` | `type?: string, quality?: number` | `string` | Export as data URL   |
-| `toBlob()`    | `callback, type?, quality?`       | `void`   | Export as Blob       |
-
----
 
 ## Features
 

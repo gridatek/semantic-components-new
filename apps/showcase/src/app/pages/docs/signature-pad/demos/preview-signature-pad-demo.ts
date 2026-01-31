@@ -1,16 +1,44 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScSignaturePad } from '@semantic-components/ui';
+import {
+  ScSignaturePad,
+  ScSignaturePadCanvas,
+  ScSignaturePadControls,
+  ScSignaturePadUndoButton,
+  ScSignaturePadClearButton,
+} from '@semantic-components/ui';
+import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-preview-signature-pad-demo',
-  imports: [ScSignaturePad],
+  imports: [
+    ScSignaturePad,
+    ScSignaturePadCanvas,
+    ScSignaturePadControls,
+    ScSignaturePadUndoButton,
+    ScSignaturePadClearButton,
+    SiUndoIcon,
+    SiTrash2Icon,
+  ],
   template: `
     <div class="space-y-4">
-      <sc-signature-pad
-        [width]="400"
-        [height]="200"
-        (signatureChange)="previewSignature.set($event)"
-      />
+      <div sc-signature-pad class="relative inline-block">
+        <canvas
+          sc-signature-pad-canvas
+          [width]="400"
+          [height]="200"
+          (signatureChange)="previewSignature.set($event)"
+        ></canvas>
+
+        <div sc-signature-pad-controls>
+          <button sc-signature-pad-undo>
+            <svg si-undo-icon class="size-4"></svg>
+          </button>
+          <button sc-signature-pad-clear>
+            <svg si-trash-2-icon class="size-4"></svg>
+          </button>
+        </div>
+      </div>
+
       @if (previewSignature()) {
         <div>
           <p class="text-sm font-medium mb-2">Preview:</p>
