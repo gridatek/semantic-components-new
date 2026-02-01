@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   contentChild,
+  effect,
   input,
   signal,
   ViewEncapsulation,
@@ -40,8 +41,11 @@ export class ScHoverCardProvider {
   /** Delay before hiding hover card (ms) */
   readonly closeDelay = input<number>(300);
 
-  /** Whether the hover card is open */
+  /** Whether the hover card is logically open (controls animation state) */
   readonly open = signal<boolean>(false);
+
+  /** Whether the overlay should be physically open (stays true during close animation) */
+  readonly overlayOpen = signal<boolean>(false);
 
   private readonly triggerChild = contentChild(ScHoverCardTrigger);
 
@@ -51,12 +55,27 @@ export class ScHoverCardProvider {
     cn('relative inline-block', this.classInput()),
   );
 
+  constructor() {
+    // When opening, open overlay immediately
+    effect(() => {
+      if (this.open()) {
+        this.overlayOpen.set(true);
+      }
+    });
+  }
+
   show(): void {
     this.open.set(true);
   }
 
   hide(): void {
     this.open.set(false);
+    // overlayOpen will be set to false by onAnimationComplete
+  }
+
+  /** Called by hover-card when close animation completes */
+  onAnimationComplete(): void {
+    this.overlayOpen.set(false);
   }
 
   /** Cancel pending hide timeout on the trigger */

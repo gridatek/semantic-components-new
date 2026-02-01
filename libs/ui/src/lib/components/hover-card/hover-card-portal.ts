@@ -111,7 +111,7 @@ const positionMap: Record<PositionKey, ConnectedPosition> = {
       <ng-template
         cdkConnectedOverlay
         [cdkConnectedOverlayOrigin]="origin"
-        [cdkConnectedOverlayOpen]="hoverCardProvider.open()"
+        [cdkConnectedOverlayOpen]="hoverCardProvider.overlayOpen()"
         [cdkConnectedOverlayPositions]="[position()]"
       >
         <ng-content />
