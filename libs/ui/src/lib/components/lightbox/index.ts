@@ -1,2 +1,4 @@
-export { ScLightbox, ScLightboxTrigger, ScLightboxGallery } from './lightbox';
-export type { LightboxImage } from './lightbox';
+export * from './lightbox.types';
+export * from './lightbox-trigger';
+export * from './lightbox-gallery';
+export * from './lightbox';
