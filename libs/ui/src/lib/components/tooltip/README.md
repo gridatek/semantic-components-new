@@ -58,17 +58,20 @@ Available positions: `top` (default), `right`, `bottom`, `left`
 ## Accessibility
 
 - The tooltip has `role="tooltip"` for screen readers
+- The tooltip uses `aria-live="polite"` and `aria-atomic="true"` for dynamic content announcements
 - The trigger element has `aria-describedby` pointing to the tooltip when visible
 - Supports keyboard navigation (shows on focus, hides on blur)
 - Pressing `Escape` dismisses the tooltip
+- Unique IDs are generated using Angular CDK's `_IdGenerator` for proper ARIA references
 
 ## Behavior
 
-- **Singleton**: Only one tooltip is visible at a time globally
-- **Smart Positioning**: Automatically flips to the opposite side if there's not enough space
+- **Singleton**: Only one tooltip is visible at a time globally (managed by `ScTooltipManager`)
+- **Smart Positioning**: Automatically flips to the opposite side if there's not enough space using CDK Overlay
 - **Hover Support**: Shows on mouseenter, hides on mouseleave
 - **Focus Support**: Shows on focus, hides on blur
 - **Escape to Close**: Pressing Escape dismisses the tooltip
+- **Smooth Animations**: Fade in/out with zoom effects - see [ANIMATIONS.md](./ANIMATIONS.md) for details
 
 ## When to Use
 
@@ -85,3 +88,13 @@ Use **Hovercard** instead for:
 - Images or avatars
 - Interactive elements (buttons, links)
 - Complex formatted content
+
+## Architecture
+
+The tooltip consists of three main parts:
+
+- **`ScTooltip`** (directive) - Attaches to trigger elements, handles user interactions
+- **`ScTooltipManager`** (service) - Manages overlay lifecycle, ensures singleton behavior
+- **`ScTooltipOverlay`** (component) - The visual tooltip overlay with content and styling
+
+See [ANIMATIONS.md](./ANIMATIONS.md) for details on how animations work.
