@@ -9,11 +9,6 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 
-import {
-  SiChevronDownIcon,
-  SiChevronUpIcon,
-} from '@semantic-icons/lucide-icons';
-
 @Component({
   selector: 'button[sc-accordion-trigger]',
   hostDirectives: [
@@ -25,16 +20,6 @@ import {
   ],
   template: `
     <ng-content />
-    <svg
-      si-chevron-down-icon
-      data-slot="accordion-trigger-icon"
-      class="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
-    ></svg>
-    <svg
-      si-chevron-up-icon
-      data-slot="accordion-trigger-icon"
-      class="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
-    ></svg>
   `,
   host: {
     'data-slot': 'accordion-trigger',
@@ -44,7 +29,7 @@ import {
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [SiChevronDownIcon, SiChevronUpIcon],
+  imports: [],
 })
 export class ScAccordionTrigger {
   protected readonly trigger = inject(AccordionTrigger);

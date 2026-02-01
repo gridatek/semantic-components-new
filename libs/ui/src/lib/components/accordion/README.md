@@ -1,11 +1,7 @@
-# Accordion Components
-
-A vertically stacked set of interactive headings that reveal or hide associated content. Built on top of `@angular/aria/accordion` for robust accessibility support.
-
 ## Import
 
 ```typescript
-import { ScAccordion, ScAccordionItem, ScAccordionHeader, ScAccordionTrigger, ScAccordionPanel, ScAccordionContent, ScAccordionContent2 } from '@semantic-components/ui';
+import { ScAccordion, ScAccordionItem, ScAccordionHeader, ScAccordionTrigger, ScAccordionPanel, ScAccordionContent, ScAccordionContent2, ScAccordionTriggerIcon } from '@semantic-components/ui';
 ```
 
 ## Architecture
@@ -23,6 +19,7 @@ ScAccordion (Root - uses AccordionGroup)
     │     │            ├── panelId: string (links to panel)
     │     │            ├── expanded: boolean
     │     │            └── disabled: boolean
+    │     │            └── svg[sc-accordion-trigger-icon] (optional icon)
     │     │
     │     └── ScAccordionPanel (uses AccordionPanel)
     │           │
@@ -37,15 +34,16 @@ ScAccordion (Root - uses AccordionGroup)
 
 ## Components
 
-| Component             | Selector                       | Description                                    |
-| --------------------- | ------------------------------ | ---------------------------------------------- |
-| `ScAccordion`         | `div[sc-accordion]`            | Root wrapper using `AccordionGroup`            |
-| `ScAccordionItem`     | `div[sc-accordion-item]`       | Styling wrapper for accordion item             |
-| `ScAccordionHeader`   | `div[sc-accordion-header]`     | Flex container for trigger                     |
-| `ScAccordionTrigger`  | `button[sc-accordion-trigger]` | Button to toggle item using `AccordionTrigger` |
-| `ScAccordionPanel`    | `div[sc-accordion-panel]`      | Collapsible content using `AccordionPanel`     |
-| `ScAccordionContent`  | `div[sc-accordion-content]`    | Content wrapper with default padding           |
-| `ScAccordionContent2` | `div[sc-accordion-content-2]`  | Another content wrapper with default padding   |
+| Component                | Selector                         | Description                                    |
+| ------------------------ | -------------------------------- | ---------------------------------------------- |
+| `ScAccordion`            | `div[sc-accordion]`              | Root wrapper using `AccordionGroup`            |
+| `ScAccordionItem`        | `div[sc-accordion-item]`         | Styling wrapper for accordion item             |
+| `ScAccordionHeader`      | `div[sc-accordion-header]`       | Flex container for trigger                     |
+| `ScAccordionTrigger`     | `button[sc-accordion-trigger]`   | Button to toggle item using `AccordionTrigger` |
+| `ScAccordionPanel`       | `div[sc-accordion-panel]`        | Collapsible content using `AccordionPanel`     |
+| `ScAccordionContent`     | `div[sc-accordion-content]`      | Content wrapper with default padding           |
+| `ScAccordionContent2`    | `div[sc-accordion-content-2]`    | Another content wrapper with default padding   |
+| `ScAccordionTriggerIcon` | `svg[sc-accordion-trigger-icon]` | Directive to flip an SVG icon                  |
 
 ## Inputs
 
@@ -71,7 +69,7 @@ ScAccordion (Root - uses AccordionGroup)
 | `expanded` | `boolean` | `false`      | Whether the item is expanded             |
 | `disabled` | `boolean` | `false`      | Whether the trigger is disabled          |
 
-The trigger includes built-in chevron icons that automatically rotate based on the expanded state.
+The trigger is a button that toggles the expanded state of an accordion panel.
 
 ### ScAccordionPanel
 
@@ -95,6 +93,14 @@ The `ScAccordionContent` component provides default padding (`pb-4 pt-0`) for ac
 
 The `ScAccordionContent2` component provides default padding (`pb-4 pt-0`) for accordion content.
 
+### ScAccordionTriggerIcon
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
+The `ScAccordionTriggerIcon` directive applies rotation to an SVG icon based on the expanded state of the accordion trigger.
+
 ## Usage
 
 ### Basic Usage
@@ -105,7 +111,10 @@ Use `panelId` to link each trigger to its corresponding panel. By default, multi
 <div sc-accordion [multiExpandable]="false">
   <div sc-accordion-item>
     <div sc-accordion-header>
-      <button sc-accordion-trigger panelId="item-1">Is it accessible?</button>
+      <button sc-accordion-trigger panelId="item-1">
+        Is it accessible?
+        <div sc-accordion-trigger-icon></div>
+      </button>
     </div>
     <div sc-accordion-panel panelId="item-1">
       <div sc-accordion-content>Yes. It adheres to the WAI-ARIA design pattern.</div>
@@ -113,7 +122,10 @@ Use `panelId` to link each trigger to its corresponding panel. By default, multi
   </div>
   <div sc-accordion-item>
     <div sc-accordion-header>
-      <button sc-accordion-trigger panelId="item-2">Is it styled?</button>
+      <button sc-accordion-trigger panelId="item-2">
+        Is it styled?
+        <div sc-accordion-trigger-icon></div>
+      </button>
     </div>
     <div sc-accordion-panel panelId="item-2">
       <div sc-accordion-content>Yes. It comes with default styles that match other components.</div>
@@ -121,7 +133,10 @@ Use `panelId` to link each trigger to its corresponding panel. By default, multi
   </div>
   <div sc-accordion-item>
     <div sc-accordion-header>
-      <button sc-accordion-trigger panelId="item-3">Is it animated?</button>
+      <button sc-accordion-trigger panelId="item-3">
+        Is it animated?
+        <div sc-accordion-trigger-icon></div>
+      </button>
     </div>
     <div sc-accordion-panel panelId="item-3">
       <div sc-accordion-content>Yes. It's animated by default with smooth transitions.</div>
@@ -138,7 +153,10 @@ Allow multiple items to be open simultaneously.
 <div sc-accordion [multiExpandable]="true">
   <div sc-accordion-item>
     <div sc-accordion-header>
-      <button sc-accordion-trigger panelId="item-1" [expanded]="true">Section 1</button>
+      <button sc-accordion-trigger panelId="item-1" [expanded]="true">
+        Section 1
+        <div sc-accordion-trigger-icon></div>
+      </button>
     </div>
     <div sc-accordion-panel panelId="item-1">
       <div sc-accordion-content>Content 1</div>
@@ -146,7 +164,10 @@ Allow multiple items to be open simultaneously.
   </div>
   <div sc-accordion-item>
     <div sc-accordion-header>
-      <button sc-accordion-trigger panelId="item-2" [expanded]="true">Section 2</button>
+      <button sc-accordion-trigger panelId="item-2" [expanded]="true">
+        Section 2
+        <div sc-accordion-trigger-icon></div>
+      </button>
     </div>
     <div sc-accordion-panel panelId="item-2">
       <div sc-accordion-content>Content 2</div>
@@ -154,7 +175,10 @@ Allow multiple items to be open simultaneously.
   </div>
   <div sc-accordion-item>
     <div sc-accordion-header>
-      <button sc-accordion-trigger panelId="item-3">Section 3</button>
+      <button sc-accordion-trigger panelId="item-3">
+        Section 3
+        <div sc-accordion-trigger-icon></div>
+      </button>
     </div>
     <div sc-accordion-panel panelId="item-3">
       <div sc-accordion-content>Content 3</div>
@@ -178,7 +202,10 @@ Disable individual triggers.
 ```html
 <div sc-accordion-item>
   <div sc-accordion-header>
-    <button sc-accordion-trigger panelId="disabled" [disabled]="true">Disabled Section</button>
+    <button sc-accordion-trigger panelId="disabled" [disabled]="true">
+      Disabled Section
+      <div sc-accordion-trigger-icon></div>
+    </button>
   </div>
   <div sc-accordion-panel panelId="disabled">
     <div sc-accordion-content>Won't be shown</div>
@@ -198,7 +225,6 @@ Disable the entire accordion.
 
 - **Single or Multiple Expansion**: Control whether one or multiple panels can be open simultaneously
 - **Smooth Animations**: Uses Angular's `animate.enter`/`animate.leave` with `tw-animate-css`
-- **Built-in Icons**: Chevron icons automatically included and animated
 - **Keyboard Navigation**: Full keyboard support with arrow keys
 - **Fully Accessible**: Built on `@angular/aria/accordion` with proper ARIA attributes
 - **Customizable**: All components accept custom classes
