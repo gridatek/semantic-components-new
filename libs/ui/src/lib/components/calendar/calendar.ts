@@ -9,6 +9,7 @@ import {
 import { cn } from '../../utils';
 
 export type CalendarMode = 'single' | 'multiple' | 'range';
+export type CalendarViewMode = 'day' | 'month' | 'year';
 
 export interface DateRange {
   from: Date | undefined;
@@ -20,6 +21,20 @@ interface DayInfo {
   isToday: boolean;
   isOutsideMonth: boolean;
   disabled: boolean;
+}
+
+interface MonthInfo {
+  label: string;
+  value: number;
+  isCurrentMonth: boolean;
+  isSelected: boolean;
+}
+
+interface YearInfo {
+  label: string;
+  value: number;
+  isCurrentYear: boolean;
+  isSelected: boolean;
 }
 
 @Component({
@@ -37,8 +52,8 @@ interface DayInfo {
         <button
           type="button"
           class="absolute left-1 inline-flex size-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity"
-          (click)="previousMonth()"
-          [attr.aria-label]="'Go to previous month'"
+          (click)="handlePrevious()"
+          [attr.aria-label]="previousAriaLabel()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,14 +70,20 @@ interface DayInfo {
             <path d="m15 18-6-6 6-6" />
           </svg>
         </button>
-        <div class="text-sm font-medium">
+        <button
+          type="button"
+          class="text-sm font-medium hover:text-primary transition-colors px-3 py-1 rounded-md hover:bg-accent"
+          (click)="handleHeaderClick()"
+          [attr.aria-label]="headerAriaLabel()"
+          [attr.aria-expanded]="viewMode() !== 'day'"
+        >
           {{ monthYearLabel() }}
-        </div>
+        </button>
         <button
           type="button"
           class="absolute right-1 inline-flex size-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity"
-          (click)="nextMonth()"
-          [attr.aria-label]="'Go to next month'"
+          (click)="handleNext()"
+          [attr.aria-label]="nextAriaLabel()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,56 +102,107 @@ interface DayInfo {
         </button>
       </div>
 
-      <!-- Calendar grid -->
-      <table class="w-full border-collapse" role="grid">
-        <thead>
-          <tr class="flex">
-            @for (day of weekDays; track day) {
-              <th
-                scope="col"
-                class="w-9 rounded-md text-[0.8rem] font-normal text-muted-foreground"
-              >
-                {{ day }}
-              </th>
-            }
-          </tr>
-        </thead>
-        <tbody>
-          @for (week of weeks(); track $index) {
-            <tr class="mt-2 flex w-full">
-              @for (day of week; track day?.date?.getTime() ?? $index) {
-                <td
-                  class="relative p-0 text-center text-sm"
-                  [attr.aria-selected]="day && isSelected(day.date)"
-                  role="gridcell"
-                >
-                  @if (day) {
-                    <button
-                      type="button"
-                      [class]="getDayClass(day)"
-                      [disabled]="day.disabled"
-                      [attr.aria-label]="day.date.toDateString()"
-                      [attr.data-today]="day.isToday || null"
-                      [attr.data-selected]="isSelected(day.date) || null"
-                      [attr.data-outside]="day.isOutsideMonth || null"
-                      [attr.data-disabled]="day.disabled || null"
-                      [attr.data-range-start]="isRangeStart(day.date) || null"
-                      [attr.data-range-end]="isRangeEnd(day.date) || null"
-                      [attr.data-range-middle]="isRangeMiddle(day.date) || null"
-                      (click)="selectDate(day.date)"
-                      (keydown)="onKeyDown($event, day.date)"
+      <!-- View content -->
+      @switch (viewMode()) {
+        @case ('day') {
+          <!-- Calendar grid -->
+          <table class="w-full border-collapse" role="grid">
+            <thead>
+              <tr class="flex">
+                @for (day of weekDays; track day) {
+                  <th
+                    scope="col"
+                    class="w-9 rounded-md text-[0.8rem] font-normal text-muted-foreground"
+                  >
+                    {{ day }}
+                  </th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+              @for (week of weeks(); track $index) {
+                <tr class="mt-2 flex w-full">
+                  @for (day of week; track day?.date?.getTime() ?? $index) {
+                    <td
+                      class="relative p-0 text-center text-sm"
+                      [attr.aria-selected]="day && isSelected(day.date)"
+                      role="gridcell"
                     >
-                      {{ day.date.getDate() }}
-                    </button>
-                  } @else {
-                    <span class="size-9"></span>
+                      @if (day) {
+                        <button
+                          type="button"
+                          [class]="getDayClass(day)"
+                          [disabled]="day.disabled"
+                          [attr.aria-label]="day.date.toDateString()"
+                          [attr.data-today]="day.isToday || null"
+                          [attr.data-selected]="isSelected(day.date) || null"
+                          [attr.data-outside]="day.isOutsideMonth || null"
+                          [attr.data-disabled]="day.disabled || null"
+                          [attr.data-range-start]="
+                            isRangeStart(day.date) || null
+                          "
+                          [attr.data-range-end]="isRangeEnd(day.date) || null"
+                          [attr.data-range-middle]="
+                            isRangeMiddle(day.date) || null
+                          "
+                          (click)="selectDate(day.date)"
+                          (keydown)="onKeyDown($event, day.date)"
+                        >
+                          {{ day.date.getDate() }}
+                        </button>
+                      } @else {
+                        <span class="size-9"></span>
+                      }
+                    </td>
                   }
-                </td>
+                </tr>
               }
-            </tr>
-          }
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        }
+        @case ('month') {
+          <!-- Month grid -->
+          <div
+            role="grid"
+            aria-label="Select month"
+            class="grid grid-cols-3 gap-2"
+          >
+            @for (month of months(); track month.value) {
+              <button
+                type="button"
+                role="gridcell"
+                [class]="getMonthButtonClass(month)"
+                (click)="selectMonth(month.value)"
+                [attr.aria-current]="month.isCurrentMonth ? 'date' : null"
+                [attr.aria-label]="month.label"
+              >
+                {{ month.label }}
+              </button>
+            }
+          </div>
+        }
+        @case ('year') {
+          <!-- Year grid -->
+          <div
+            role="grid"
+            aria-label="Select year"
+            class="grid grid-cols-3 gap-2"
+          >
+            @for (year of years(); track year.value) {
+              <button
+                type="button"
+                role="gridcell"
+                [class]="getYearButtonClass(year)"
+                (click)="selectYear(year.value)"
+                [attr.aria-current]="year.isCurrentYear ? 'date' : null"
+                [attr.aria-label]="year.label"
+              >
+                {{ year.label }}
+              </button>
+            }
+          </div>
+        }
+      }
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -152,12 +224,71 @@ export class ScCalendar {
   readonly weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
   private readonly viewDate = signal(new Date());
+  protected readonly viewMode = signal<CalendarViewMode>('day');
+  protected readonly decadeStart = signal<number>(
+    Math.floor(new Date().getFullYear() / 12) * 12,
+  );
 
   protected readonly class = computed(() => cn('p-3', this.classInput()));
 
   protected readonly monthYearLabel = computed(() => {
     const date = this.viewDate();
+    const mode = this.viewMode();
+
+    if (mode === 'year') {
+      const start = this.decadeStart();
+      return `${start} - ${start + 11}`;
+    }
+
+    if (mode === 'month') {
+      return date.getFullYear().toString();
+    }
+
     return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  });
+
+  protected readonly months = computed((): MonthInfo[] => {
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    const currentMonth = this.viewDate().getMonth();
+    const year = this.viewDate().getFullYear();
+    const today = new Date();
+
+    return monthNames.map((name, index) => ({
+      label: name,
+      value: index,
+      isCurrentMonth:
+        index === today.getMonth() && year === today.getFullYear(),
+      isSelected: index === currentMonth,
+    }));
+  });
+
+  protected readonly years = computed((): YearInfo[] => {
+    const decadeStart = this.decadeStart();
+    const currentYear = new Date().getFullYear();
+    const selectedYear = this.viewDate().getFullYear();
+
+    return Array.from({ length: 12 }, (_, i) => {
+      const year = decadeStart + i;
+      return {
+        label: year.toString(),
+        value: year,
+        isCurrentYear: year === currentYear,
+        isSelected: year === selectedYear,
+      };
+    });
   });
 
   protected readonly weeks = computed(() => {
@@ -304,6 +435,61 @@ export class ScCalendar {
     );
   }
 
+  protected getMonthButtonClass(month: MonthInfo): string {
+    return cn(
+      'inline-flex h-10 items-center justify-center rounded-md text-sm font-normal',
+      'ring-offset-background transition-colors',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+      'hover:bg-accent hover:text-accent-foreground',
+      month.isCurrentMonth &&
+        !month.isSelected &&
+        'bg-accent text-accent-foreground',
+      month.isSelected &&
+        'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
+    );
+  }
+
+  protected getYearButtonClass(year: YearInfo): string {
+    return cn(
+      'inline-flex h-10 items-center justify-center rounded-md text-sm font-normal',
+      'ring-offset-background transition-colors',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+      'hover:bg-accent hover:text-accent-foreground',
+      year.isCurrentYear &&
+        !year.isSelected &&
+        'bg-accent text-accent-foreground',
+      year.isSelected &&
+        'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
+    );
+  }
+
+  protected previousAriaLabel(): string {
+    const mode = this.viewMode();
+    return mode === 'day'
+      ? 'Go to previous month'
+      : mode === 'month'
+        ? 'Go to previous year'
+        : 'Go to previous decade';
+  }
+
+  protected nextAriaLabel(): string {
+    const mode = this.viewMode();
+    return mode === 'day'
+      ? 'Go to next month'
+      : mode === 'month'
+        ? 'Go to next year'
+        : 'Go to next decade';
+  }
+
+  protected headerAriaLabel(): string {
+    const mode = this.viewMode();
+    return mode === 'day'
+      ? 'Switch to month view'
+      : mode === 'month'
+        ? 'Switch to year view'
+        : 'Year view - select a year';
+  }
+
   protected selectDate(date: Date): void {
     const mode = this.mode();
 
@@ -333,6 +519,33 @@ export class ScCalendar {
     }
   }
 
+  // Header click - drill down through views
+  protected handleHeaderClick(): void {
+    const current = this.viewMode();
+    if (current === 'day') {
+      this.viewMode.set('month');
+    } else if (current === 'month') {
+      this.viewMode.set('year');
+      const currentYear = this.viewDate().getFullYear();
+      this.decadeStart.set(Math.floor(currentYear / 12) * 12);
+    }
+  }
+
+  // Context-aware previous/next
+  protected handlePrevious(): void {
+    const mode = this.viewMode();
+    if (mode === 'day') this.previousMonth();
+    else if (mode === 'month') this.previousYear();
+    else this.previousDecade();
+  }
+
+  protected handleNext(): void {
+    const mode = this.viewMode();
+    if (mode === 'day') this.nextMonth();
+    else if (mode === 'month') this.nextYear();
+    else this.nextDecade();
+  }
+
   protected previousMonth(): void {
     const current = this.viewDate();
     this.viewDate.set(
@@ -347,53 +560,101 @@ export class ScCalendar {
     );
   }
 
-  protected onKeyDown(event: KeyboardEvent, date: Date): void {
+  protected previousYear(): void {
     const current = this.viewDate();
-    let newDate: Date | null = null;
+    this.viewDate.set(
+      new Date(current.getFullYear() - 1, current.getMonth(), 1),
+    );
+  }
 
-    switch (event.key) {
-      case 'ArrowLeft':
-        newDate = new Date(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDate() - 1,
-        );
-        break;
-      case 'ArrowRight':
-        newDate = new Date(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDate() + 1,
-        );
-        break;
-      case 'ArrowUp':
-        newDate = new Date(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDate() - 7,
-        );
-        break;
-      case 'ArrowDown':
-        newDate = new Date(
-          date.getFullYear(),
-          date.getMonth(),
-          date.getDate() + 7,
-        );
-        break;
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        this.selectDate(date);
-        return;
+  protected nextYear(): void {
+    const current = this.viewDate();
+    this.viewDate.set(
+      new Date(current.getFullYear() + 1, current.getMonth(), 1),
+    );
+  }
+
+  protected previousDecade(): void {
+    this.decadeStart.update((start) => start - 12);
+  }
+
+  protected nextDecade(): void {
+    this.decadeStart.update((start) => start + 12);
+  }
+
+  // Selection handlers - return to previous view
+  protected selectMonth(month: number): void {
+    const current = this.viewDate();
+    this.viewDate.set(new Date(current.getFullYear(), month, 1));
+    this.viewMode.set('day');
+  }
+
+  protected selectYear(year: number): void {
+    const current = this.viewDate();
+    this.viewDate.set(new Date(year, current.getMonth(), 1));
+    this.viewMode.set('month');
+  }
+
+  protected onKeyDown(event: KeyboardEvent, date: Date): void {
+    const mode = this.viewMode();
+
+    // Handle Escape - return to previous view
+    if (event.key === 'Escape' && mode !== 'day') {
+      event.preventDefault();
+      if (mode === 'year') this.viewMode.set('month');
+      else if (mode === 'month') this.viewMode.set('day');
+      return;
     }
 
-    if (newDate) {
-      event.preventDefault();
-      // Update view if navigating to different month
-      if (newDate.getMonth() !== current.getMonth()) {
-        this.viewDate.set(
-          new Date(newDate.getFullYear(), newDate.getMonth(), 1),
-        );
+    // Day view keyboard navigation
+    if (mode === 'day') {
+      const current = this.viewDate();
+      let newDate: Date | null = null;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          newDate = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate() - 1,
+          );
+          break;
+        case 'ArrowRight':
+          newDate = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate() + 1,
+          );
+          break;
+        case 'ArrowUp':
+          newDate = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate() - 7,
+          );
+          break;
+        case 'ArrowDown':
+          newDate = new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate() + 7,
+          );
+          break;
+        case 'Enter':
+        case ' ':
+          event.preventDefault();
+          this.selectDate(date);
+          return;
+      }
+
+      if (newDate) {
+        event.preventDefault();
+        // Update view if navigating to different month
+        if (newDate.getMonth() !== current.getMonth()) {
+          this.viewDate.set(
+            new Date(newDate.getFullYear(), newDate.getMonth(), 1),
+          );
+        }
       }
     }
   }
