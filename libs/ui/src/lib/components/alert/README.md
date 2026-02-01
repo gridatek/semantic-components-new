@@ -7,6 +7,7 @@ Displays a callout for important information.
 - `ScAlert` - Container with variant styling and icon support
 - `ScAlertTitle` - Bold title text
 - `ScAlertDescription` - Description text
+- `ScAlertAction` - Action button or link
 
 ## Usage
 
@@ -15,6 +16,7 @@ Displays a callout for important information.
   <svg class="size-4"><!-- icon --></svg>
   <h5 sc-alert-title>Heads up!</h5>
   <div sc-alert-description>You can add components using the cli.</div>
+  <button sc-alert-action>Action</button>
 </div>
 ```
 
@@ -26,6 +28,7 @@ Displays a callout for important information.
 <div sc-alert>
   <h5 sc-alert-title>Note</h5>
   <div sc-alert-description>This is an informational alert.</div>
+  <button sc-alert-action>Action</button>
 </div>
 ```
 
@@ -35,6 +38,7 @@ Displays a callout for important information.
 <div sc-alert variant="destructive">
   <h5 sc-alert-title>Error</h5>
   <div sc-alert-description>Your session has expired.</div>
+  <button sc-alert-action>Action</button>
 </div>
 ```
 
@@ -47,6 +51,7 @@ Icons are automatically positioned using CSS selectors:
   <svg class="size-4"><!-- icon --></svg>
   <h5 sc-alert-title>Title</h5>
   <div sc-alert-description>Description with icon offset.</div>
+  <button sc-alert-action>Action</button>
 </div>
 ```
 
@@ -59,12 +64,14 @@ Use the `class` input for custom styling:
 <div sc-alert class="border-green-500/50 text-green-600 [&>svg]:text-green-600">
   <h5 sc-alert-title>Success!</h5>
   <div sc-alert-description>Changes saved.</div>
+  <button sc-alert-action>Action</button>
 </div>
 
 <!-- Warning -->
 <div sc-alert class="border-yellow-500/50 text-yellow-600 [&>svg]:text-yellow-600">
   <h5 sc-alert-title>Warning</h5>
   <div sc-alert-description>Account expiring soon.</div>
+  <button sc-alert-action>Action</button>
 </div>
 ```
 
@@ -87,6 +94,12 @@ Use the `class` input for custom styling:
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
+## ScAlertAction Inputs
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
 ## Styling
 
 The alert uses CSS selectors to position icons:
@@ -101,3 +114,4 @@ The alert uses CSS selectors to position icons:
 - Semantic heading structure with alert title
 - Sufficient color contrast for both variants
 - Icons are decorative (content is in title/description)
+- Action is a `button` or `a` element for keyboard accessibility.
