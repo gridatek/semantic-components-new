@@ -1,3 +1,4 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,13 +7,11 @@ import {
   ElementRef,
   inject,
   input,
-  output,
   signal,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScAlertDialogProvider } from './alert-dialog-provider';
-import { _IdGenerator } from '@angular/cdk/a11y';
 
 type ScAlertDialogState = 'open' | 'closed';
 
@@ -41,7 +40,6 @@ export class ScAlertDialog {
   readonly alertDialogProvider = inject(ScAlertDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
   readonly state = signal<ScAlertDialogState>('closed');
-  readonly animationComplete = output<void>();
 
   readonly dialogId = inject(_IdGenerator).getId('sc-alert-dialog-');
 
@@ -78,7 +76,6 @@ export class ScAlertDialog {
       this.state() === 'closed' &&
       event.target === this.elementRef.nativeElement
     ) {
-      this.animationComplete.emit();
       this.alertDialogProvider.onAnimationComplete();
     }
   }
