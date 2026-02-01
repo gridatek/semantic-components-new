@@ -118,7 +118,7 @@ const positionMap: Record<
   template: `
     @if (origin(); as origin) {
       <ng-template
-        [cdkConnectedOverlayOpen]="popover.open()"
+        [cdkConnectedOverlayOpen]="popover.overlayOpen()"
         [cdkConnectedOverlay]="{ origin, usePopover: 'inline' }"
         [cdkConnectedOverlayPositions]="[position()]"
         (overlayOutsideClick)="closePopover()"
@@ -149,11 +149,11 @@ export class ScPopoverPortal {
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
-  closePopover(): void {
+  protected closePopover(): void {
     this.popover.open.set(false);
   }
 
-  onKeydown(event: KeyboardEvent): void {
+  protected onKeydown(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       this.popover.open.set(false);
     }
