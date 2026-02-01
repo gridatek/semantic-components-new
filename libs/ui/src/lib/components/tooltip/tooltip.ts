@@ -8,7 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { _IdGenerator } from '@angular/cdk/a11y';
-import { ScTooltipPosition, ScTooltipService } from './tooltip.service';
+import { ScTooltipManager, ScTooltipPosition } from './tooltip-manager';
 
 @Directive({
   selector: '[scTooltip]',
@@ -21,7 +21,7 @@ import { ScTooltipPosition, ScTooltipService } from './tooltip.service';
   },
 })
 export class ScTooltip {
-  private readonly tooltipService = inject(ScTooltipService);
+  private readonly tooltipManager = inject(ScTooltipManager);
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
   private readonly idGenerator = inject(_IdGenerator);
@@ -116,7 +116,7 @@ export class ScTooltip {
       return;
     }
 
-    this.tooltipService.show(
+    this.tooltipManager.show(
       this.elementRef,
       {
         content: this.content(),
@@ -129,8 +129,8 @@ export class ScTooltip {
   }
 
   private hide(): void {
-    if (this.tooltipService.isTooltipVisible(this.tooltipId)) {
-      this.tooltipService.hide();
+    if (this.tooltipManager.isTooltipVisible(this.tooltipId)) {
+      this.tooltipManager.hide();
     }
     this.isVisible.set(false);
   }

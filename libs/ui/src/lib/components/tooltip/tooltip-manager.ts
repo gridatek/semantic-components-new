@@ -90,7 +90,7 @@ export interface ScTooltipConfig {
 }
 
 @Injectable({ providedIn: 'root' })
-export class ScTooltipService {
+export class ScTooltipManager {
   private readonly overlay = inject(Overlay);
   private readonly injector = inject(Injector);
   private readonly document = inject(DOCUMENT);
@@ -182,7 +182,7 @@ export class ScTooltipService {
       this.tooltipRef = null;
       this.currentTooltipId = null;
       this.hideTimeout = null;
-    }, ScTooltipService.ANIMATION_DURATION);
+    }, ScTooltipManager.ANIMATION_DURATION);
   }
 
   isTooltipVisible(tooltipId: string): boolean {

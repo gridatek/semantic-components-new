@@ -1,3 +1,3 @@
 export { ScTooltip } from './tooltip';
-export { ScTooltipService } from './tooltip.service';
-export type { ScTooltipPosition } from './tooltip.service';
+export { ScTooltipManager } from './tooltip-manager';
+export type { ScTooltipPosition } from './tooltip-manager';
