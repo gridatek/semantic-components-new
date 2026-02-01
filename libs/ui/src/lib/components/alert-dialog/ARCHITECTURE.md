@@ -180,7 +180,7 @@ protected readonly class = computed(() =>
 2. ScBackdrop receives `open` input
 3. Sets `data-state` based on `open` value
 4. Tailwind applies appropriate animation classes
-5. `animationend` event fires (optional tracking)
+5. Animation plays (no event tracking needed)
 
 **Why Separate Component?**
 
@@ -246,8 +246,7 @@ User clicks cancel/action:
 ├─ t=300ms: Dialog animation completes
 │  └─ onAnimationEnd(event) fires
 │     └─ if (state === 'closed' && target === element):
-│        ├─ animationComplete.emit()  ← For external listeners
-│        └─ provider.onAnimationComplete()  ← Critical call!
+│        └─ provider.onAnimationComplete()  ← Triggers cleanup
 │
 ├─ provider.onAnimationComplete():
 │  └─ if (!open()):  ← Double-check we're still closing
@@ -352,12 +351,11 @@ constructor() {
 
 ```typescript
 protected onAnimationEnd(event: AnimationEvent): void {
-  // Only emit when close animation completes
+  // Only trigger cleanup when close animation completes
   if (
     this.state() === 'closed' &&
     event.target === this.elementRef.nativeElement
   ) {
-    this.animationComplete.emit();  // External listeners
     this.alertDialogProvider.onAnimationComplete();  // Cleanup
   }
 }
@@ -367,6 +365,12 @@ protected onAnimationEnd(event: AnimationEvent): void {
 
 - `animationend` bubbles from child elements
 - We only care about the dialog's own animation
+
+**No Output Event:**
+
+- No `animationComplete` output needed
+- Direct communication with provider is simpler
+- Keeps the API minimal
 - Child elements might have their own animations
 
 ### Provider Component
