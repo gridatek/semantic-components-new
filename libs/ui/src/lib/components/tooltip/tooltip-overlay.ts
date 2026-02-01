@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  Inject,
+  inject,
   InjectionToken,
   signal,
   ViewEncapsulation,
@@ -19,7 +19,7 @@ export const SC_TOOLTIP_DATA = new InjectionToken<ScTooltipData>(
   'SC_TOOLTIP_DATA',
 );
 
-type TooltipState = 'open' | 'closed';
+type ScTooltipState = 'open' | 'closed';
 
 @Component({
   selector: 'sc-tooltip-overlay',
@@ -39,7 +39,8 @@ type TooltipState = 'open' | 'closed';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTooltipOverlay {
-  readonly state = signal<TooltipState>('open');
+  readonly data = inject(SC_TOOLTIP_DATA);
+  readonly state = signal<ScTooltipState>('open');
 
   protected readonly hostClass = computed(() =>
     cn(
@@ -48,8 +49,6 @@ export class ScTooltipOverlay {
       this.data.tooltipClass,
     ),
   );
-
-  constructor(@Inject(SC_TOOLTIP_DATA) public data: ScTooltipData) {}
 
   close(): void {
     this.state.set('closed');

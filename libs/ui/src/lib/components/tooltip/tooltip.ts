@@ -7,9 +7,8 @@ import {
   input,
   signal,
 } from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
 import { ScTooltipPosition, ScTooltipService } from './tooltip.service';
-
-let tooltipIdCounter = 0;
 
 @Directive({
   selector: '[scTooltip]',
@@ -25,6 +24,7 @@ export class ScTooltip {
   private readonly tooltipService = inject(ScTooltipService);
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly idGenerator = inject(_IdGenerator);
 
   /** The tooltip text content */
   readonly content = input.required<string>({ alias: 'scTooltip' });
@@ -46,7 +46,7 @@ export class ScTooltip {
   /** Custom CSS class for the tooltip */
   readonly tooltipClass = input<string>('', { alias: 'tooltipClass' });
 
-  private readonly tooltipId = `sc-tooltip-${++tooltipIdCounter}`;
+  private readonly tooltipId = this.idGenerator.getId('sc-tooltip-');
   private showTimeout: ReturnType<typeof setTimeout> | null = null;
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
   private readonly isVisible = signal(false);
