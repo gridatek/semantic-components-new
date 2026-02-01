@@ -2,7 +2,7 @@
 
 ## Overview
 
-The alert-dialog component uses a two-signal architecture pattern to ensure smooth, complete animations before DOM cleanup. This document focuses on how animations are coordinated across the dialog content and backdrop.
+The alert-dialog component uses a multi-signal architecture pattern to ensure smooth, complete animations before DOM cleanup. This document focuses on how animations are coordinated across the dialog content and backdrop using a signal counter to track completion of both animations.
 
 ## Component Structure
 
@@ -23,9 +23,9 @@ ScAlertDialogProvider (Root State Manager)
 Plus: ScAlertDialogTrigger (Opens dialog)
 ```
 
-## The Two-Signal Pattern
+## The Multi-Signal Pattern
 
-The core of the animation architecture is the separation of **logical state** from **physical state**.
+The core of the animation architecture is the separation of **logical state** from **physical state**, with a **coordination signal** to track animation completions.
 
 ### Signal 1: `open` (Logical State)
 
@@ -58,6 +58,22 @@ readonly overlayOpen = signal<boolean>(false);
 - Stays `true` during close animations (critical!)
 - Only becomes `false` after animations complete
 - Ensures animations can play before DOM removal
+
+### Signal 3: `animationsCompleted` (Animation Coordination)
+
+**Purpose:** Tracks completion of multiple animations
+
+```typescript
+// In ScAlertDialogProvider (private)
+private readonly animationsCompleted = signal<number>(0);
+```
+
+**Responsibilities:**
+
+- Counts completed animations during close sequence
+- Target count: 2 (dialog + backdrop)
+- Resets to 0 when opening (for next cycle)
+- Triggers overlay closure when target reached
 
 ### Why Both Are Needed
 
@@ -110,7 +126,7 @@ if (open()) {
    - Reusable component from `components/backdrop`
    - Fade effect via Tailwind animate classes
    - Positioned with `-z-10` (behind dialog)
-   - Completion detected via `animationend` event (optional)
+   - Emits `animationComplete` output when close animation finishes
 
 3. **Dialog Content Animation** (300ms)
    - Zoom + Fade effects
@@ -176,11 +192,13 @@ protected readonly class = computed(() =>
 
 **Animation Flow:**
 
-1. Portal renders: `<div sc-backdrop [open]="provider.open()"></div>`
+1. Portal renders: `<div sc-backdrop [open]="provider.open()" (animationComplete)="..."></div>`
 2. ScBackdrop receives `open` input
 3. Sets `data-state` based on `open` value
 4. Tailwind applies appropriate animation classes
-5. Animation plays (no event tracking needed)
+5. Animation plays for 300ms
+6. On `animationend`, emits `animationComplete` output
+7. Portal forwards event to provider for coordination
 
 **Why Separate Component?**
 
@@ -219,7 +237,7 @@ User clicks trigger:
 └─ t=300ms: Animations complete, dialog visible
 ```
 
-### Closing Sequence (The Complex Part!)
+### Closing Sequence (Coordinated Completion)
 
 ```
 User clicks cancel/action:
@@ -234,52 +252,89 @@ User clicks cancel/action:
 │  │        ├─ zoom-out-95
 │  │        └─ duration-300
 │  │
-│  └─ Portal backdrop effect (triggered by open):
-│     └─ backdrop.classList.add('sc-backdrop-hiding')
-│        └─ Backdrop fade: opacity 1 → 0 (300ms)
+│  └─ Backdrop receives [open]="false" input:
+│     └─ state.set('closed')  ← Triggers backdrop animation
+│        └─ data-state="closed" → Backdrop fade-out (300ms)
 │
 ├─ IMPORTANT: overlayOpen is STILL true!
 │  └─ DOM remains mounted so animations can play
+│  └─ animationsCompleted = 0 (waiting for both)
 │
 ├─ t=0-300ms: Both animations play simultaneously
 │
-├─ t=300ms: Dialog animation completes
+├─ t=~300ms: Dialog animation completes
 │  └─ onAnimationEnd(event) fires
 │     └─ if (state === 'closed' && target === element):
-│        └─ provider.onAnimationComplete()  ← Triggers cleanup
+│        └─ provider.onDialogAnimationComplete()
+│           └─ animationsCompleted.update(n => n + 1)  ← Count = 1
 │
-├─ provider.onAnimationComplete():
-│  └─ if (!open()):  ← Double-check we're still closing
-│     └─ setTimeout(300ms)  ← Wait for backdrop to finish
+├─ t=~300ms: Backdrop animation completes
+│  └─ backdrop emits (animationComplete)
+│     └─ portal.onBackdropAnimationComplete()
+│        └─ provider.onBackdropAnimationComplete()
+│           └─ animationsCompleted.update(n => n + 1)  ← Count = 2
 │
-├─ t=300-600ms: Waiting for backdrop animation
-│  └─ Backdrop continues fading (might already be done)
+├─ Effect detects: animationsCompleted === 2 && !open()
+│  └─ overlayOpen.set(false)  ← Cleanup triggered!
+│  └─ animationsCompleted.set(0)  ← Reset for next cycle
 │
-├─ t=600ms: setTimeout completes
-│  └─ overlayOpen.set(false)  ← Finally!
-│
-└─ t=600ms: Portal effect (triggered by overlayOpen):
-   └─ overlayRef.detach()  ← DOM removed cleanly
+└─ t=~300ms: Portal effect (triggered by overlayOpen):
+   └─ overlayRef.detach()  ← DOM removed cleanly after BOTH complete
 ```
 
-## Why 300ms + 300ms = 600ms?
+## Why Track Both Animations?
 
-**Question:** Why wait 600ms total when both animations are 300ms?
+**Question:** Why coordinate two separate animations instead of using a single timer?
 
-**Answer:** Conservative timing ensures all animations complete:
+**Answer:** Explicit animation tracking is more robust and event-driven:
 
-1. **Dialog animation**: 300ms (detected via event)
-2. **Safety buffer**: 300ms (via setTimeout)
-   - Ensures backdrop has enough time
-   - Accounts for any timing variations
-   - Better to wait slightly longer than cut off early
+### The Problem with Single Timers
 
-**Could we optimize?**
+```typescript
+// ❌ Old approach - assumes both animations finish together
+onDialogAnimationComplete(): void {
+  setTimeout(() => {
+    this.overlayOpen.set(false);
+  }, 300); // Hope backdrop finishes too!
+}
+```
 
-- Yes, we could detect backdrop animation end
-- But `setTimeout` is simpler and reliable
-- 300ms extra is imperceptible to users
-- Simplicity > micro-optimization
+**Issues:**
+
+- Assumes backdrop takes exactly 300ms
+- Browser rendering variations can cause timing differences
+- Backdrop might take 305ms, getting cut off at 300ms
+- No way to know if backdrop actually completed
+- Might wait longer than necessary if backdrop finishes early
+
+### The Solution: Signal Counter Pattern
+
+```typescript
+// ✅ New approach - explicitly track both completions
+private readonly animationsCompleted = signal<number>(0);
+
+onDialogAnimationComplete(): void {
+  this.animationsCompleted.update(n => n + 1); // Count = 1
+}
+
+onBackdropAnimationComplete(): void {
+  this.animationsCompleted.update(n => n + 1); // Count = 2
+}
+
+effect(() => {
+  if (this.animationsCompleted() === 2 && !this.open()) {
+    this.overlayOpen.set(false); // Both confirmed complete!
+  }
+});
+```
+
+**Benefits:**
+
+1. **Event-driven**: Waits for actual completion, not estimated time
+2. **Robust**: Handles browser timing variations (300ms vs 305ms)
+3. **Accurate**: Both animations explicitly signal completion
+4. **Extensible**: Easy to add more animations (just increase target count)
+5. **No race conditions**: Counter resets on open for clean cycles
 
 ## State Synchronization
 
@@ -292,9 +347,22 @@ constructor() {
     if (this.open()) {
       // Opening: Mount DOM immediately
       this.overlayOpen.set(true);
+      // Reset counter for next close cycle
+      this.animationsCompleted.set(0);
     }
     // Note: When closing, overlayOpen stays true!
-    // It will be set to false by onAnimationComplete()
+    // It will be set to false by the coordination effect below
+  });
+
+  // Effect 2: Close overlay when both animations complete
+  effect(() => {
+    const completed = this.animationsCompleted();
+    if (completed === 2 && !this.open()) {
+      // Both animations confirmed complete
+      this.overlayOpen.set(false);
+      // Reset for next cycle
+      this.animationsCompleted.set(0);
+    }
   });
 }
 ```
@@ -320,7 +388,7 @@ constructor() {
 
 ```typescript
 constructor() {
-  // Effect 1: Control overlay attachment based on overlayOpen
+  // Effect: Control overlay attachment based on overlayOpen
   effect(() => {
     if (this.alertDialogProvider.overlayOpen()) {
       this.attachDialog();
@@ -328,22 +396,16 @@ constructor() {
       this.detachDialog();
     }
   });
-
-  // Effect 2: Control backdrop animation based on open
-  effect(() => {
-    const backdrop = this.overlayRef.backdropElement;
-    if (backdrop) {
-      if (this.alertDialogProvider.open()) {
-        // Opening: Remove hiding class
-        backdrop.classList.remove('sc-backdrop-hiding');
-      } else {
-        // Closing: Add hiding class (triggers fade)
-        backdrop.classList.add('sc-backdrop-hiding');
-      }
-    }
-  });
 }
 ```
+
+**Backdrop Coordination:**
+
+The portal doesn't need an effect for backdrop animation coordination. Instead, it:
+
+1. **Binds backdrop input**: `[open]="alertDialogProvider.open()"` - Backdrop manages its own animation state
+2. **Listens to completion**: `(animationComplete)="onBackdropAnimationComplete()"` - Forwards event to provider
+3. **Keeps components decoupled**: Backdrop remains reusable, portal acts as coordinator
 
 ## Animation Completion Handling
 
@@ -356,7 +418,7 @@ protected onAnimationEnd(event: AnimationEvent): void {
     this.state() === 'closed' &&
     event.target === this.elementRef.nativeElement
   ) {
-    this.alertDialogProvider.onAnimationComplete();  // Cleanup
+    this.alertDialogProvider.onDialogAnimationComplete();
   }
 }
 ```
@@ -365,40 +427,70 @@ protected onAnimationEnd(event: AnimationEvent): void {
 
 - `animationend` bubbles from child elements
 - We only care about the dialog's own animation
+- Prevents false triggers from child element animations
 
-**No Output Event:**
+### Portal Component
 
-- No `animationComplete` output needed
-- Direct communication with provider is simpler
-- Keeps the API minimal
-- Child elements might have their own animations
+```typescript
+// Template
+<div
+  sc-backdrop
+  [open]="alertDialogProvider.open()"
+  (animationComplete)="onBackdropAnimationComplete()"></div>
+
+// Component
+protected onBackdropAnimationComplete(): void {
+  this.alertDialogProvider.onBackdropAnimationComplete();
+}
+```
+
+**Why forward the event?**
+
+- Backdrop is a reusable component with its own animation events
+- Portal acts as coordinator between backdrop and provider
+- Keeps backdrop decoupled from alert-dialog specifics
+- Method must be `protected` (not `private`) for template access
 
 ### Provider Component
 
 ```typescript
-onAnimationComplete(): void {
-  // Only close the overlay if we're not supposed to be open
+/**
+ * Called by dialog when its close animation completes
+ */
+onDialogAnimationComplete(): void {
   if (!this.open()) {
-    // Wait 300ms for backdrop fade animation to complete
-    setTimeout(() => {
-      // Double-check we're still closing (user might have re-opened)
-      if (!this.open()) {
-        this.overlayOpen.set(false);
-      }
-    }, 300);
+    this.animationsCompleted.update(n => n + 1);
+  }
+}
+
+/**
+ * Called by portal when backdrop close animation completes
+ */
+onBackdropAnimationComplete(): void {
+  if (!this.open()) {
+    this.animationsCompleted.update(n => n + 1);
   }
 }
 ```
 
-**Why double-check `open()`?**
+**Why check `!this.open()` before incrementing?**
 
-- User might have reopened dialog during animation
-- Prevents race condition where we'd close a newly-opened dialog
-- Example: User clicks cancel, then immediately clicks open again
+- User might have reopened dialog during close animation
+- Prevents counter from incrementing during new open cycle
+- Guards against race conditions
+- Example: User clicks cancel (close starts), then immediately clicks trigger again (reopens)
+- Without this check, the counter would incorrectly increment for the new cycle
 
-## Comparison: Before vs After
+**Why use `update()` instead of `set()`?**
 
-### Old Approach (Timer-Based)
+- Increment is relative to current value
+- Safe if multiple updates happen
+- Immutable update pattern
+- Consistent with Angular signals best practices
+
+## Comparison: Evolution of Animation Coordination
+
+### Approach 1: Single Timer (Original)
 
 ```typescript
 // ❌ Problems:
@@ -423,50 +515,77 @@ private async detachDialogWithAnimation() {
 4. Not coordinated with dialog state
 5. No way to cancel if reopened
 
-### New Approach (Event-Driven + Coordinated)
+### Approach 2: Event + Timer Hybrid (Previous)
 
 ```typescript
-// ✅ Benefits:
+// ⚠️ Better, but still has timing assumptions:
+onAnimationComplete(): void {
+  if (!this.open()) {
+    // Wait for dialog, then wait another 300ms for backdrop
+    setTimeout(() => {
+      if (!this.open()) {
+        this.overlayOpen.set(false);
+      }
+    }, 300);
+  }
+}
+```
+
+**Issues:**
+
+1. Dialog event-driven ✅
+2. Backdrop still timer-based ⚠️
+3. Assumes backdrop takes exactly 300ms
+4. Might wait too long or cut off early
+5. No explicit confirmation from backdrop
+
+### Approach 3: Signal Counter (Current)
+
+```typescript
+// ✅ Both animations explicitly tracked:
+private readonly animationsCompleted = signal<number>(0);
+
 constructor() {
-  // Respond to state changes
+  // Effect 1: Open and reset
   effect(() => {
-    if (overlayOpen()) {
-      attachDialog();
-    } else {
-      detachDialog();
+    if (this.open()) {
+      this.overlayOpen.set(true);
+      this.animationsCompleted.set(0);
     }
   });
 
-  // Coordinate backdrop with logical state
+  // Effect 2: Close when both complete
   effect(() => {
-    if (open()) {
-      backdrop.classList.remove('sc-backdrop-hiding');
-    } else {
-      backdrop.classList.add('sc-backdrop-hiding');
+    if (this.animationsCompleted() === 2 && !this.open()) {
+      this.overlayOpen.set(false);
+      this.animationsCompleted.set(0);
     }
   });
 }
 
-// Dialog detects its own animation completion
-onAnimationEnd(event) {
-  provider.onAnimationComplete();
+// Both animations signal completion
+onDialogAnimationComplete(): void {
+  if (!this.open()) {
+    this.animationsCompleted.update(n => n + 1);
+  }
 }
 
-// Provider waits for all animations
-onAnimationComplete() {
-  setTimeout(() => {
-    overlayOpen.set(false);  // Safe cleanup
-  }, 300);
+onBackdropAnimationComplete(): void {
+  if (!this.open()) {
+    this.animationsCompleted.update(n => n + 1);
+  }
 }
 ```
 
 **Improvements:**
 
-1. Event-driven animation detection
-2. Coordinated timing between content and backdrop
-3. Can handle variable animation durations
-4. State changes trigger updates automatically
-5. Can cancel/restart cleanly
+1. ✅ Both animations event-driven
+2. ✅ No timing assumptions
+3. ✅ Handles browser rendering variations
+4. ✅ Explicit completion signals
+5. ✅ Extensible (easy to add more animations)
+6. ✅ Signal-based reactivity
+7. ✅ Clean cycle management
 
 ## Key Design Decisions
 
@@ -481,38 +600,41 @@ onAnimationComplete() {
 - Animations need time to complete before DOM removal
 - Clean separation makes flow easier to understand
 
-### 2. Event + Timer Hybrid
+### 2. Signal Counter Pattern
 
-**Decision:** Use `animationend` for dialog + `setTimeout` for backdrop
-
-**Why:**
-
-- Dialog: Event is precise, no polling needed
-- Backdrop: CDK doesn't expose backdrop animation events
-- `setTimeout` is simple and reliable for backdrop
-- Hybrid approach balances precision and simplicity
-
-### 3. Conservative Timing
-
-**Decision:** Wait full 300ms even after dialog animation completes
+**Decision:** Use signal counter to track multiple animation completions
 
 **Why:**
 
-- Ensures backdrop has plenty of time
-- Accounts for browser rendering variations
-- 300ms is imperceptible to users
-- Simpler than detecting backdrop animation end
+- Both animations explicitly signal completion
+- No timing assumptions or hardcoded delays
+- Reactive: effect triggers when counter reaches target
+- Extensible: easy to add more animations (increase target)
+- Debuggable: counter value visible in Angular DevTools
 
-### 4. Double-Check Pattern
+### 3. Event-Driven Completion
 
-**Decision:** Check `open()` state before closing overlay
+**Decision:** Both dialog and backdrop emit completion events
 
 **Why:**
 
-- Prevents race conditions
+- Precise: no guessing when animations finish
+- Robust: handles browser timing variations
+- Decoupled: backdrop component remains reusable
+- Portal coordinates events to provider
+- No arbitrary timeouts or magic numbers
+
+### 4. Guard Pattern for Counter Increments
+
+**Decision:** Check `!open()` before incrementing animation counter
+
+**Why:**
+
+- Prevents counter increments during new open cycle
 - User might reopen during close animation
-- Effect might trigger multiple times
-- Safety over performance
+- Without guard, counter would increment incorrectly for new cycle
+- Example: Close starts → dialog completes → user reopens → backdrop completes would incorrectly increment counter for new open
+- Effect checks both counter AND `!open()` for safety
 
 ### 5. Effect-Based Reactivity
 
@@ -674,15 +796,17 @@ describe('AlertDialog Animations', () => {
 
 The alert-dialog animation architecture achieves smooth, reliable animations through:
 
-1. **Two-signal pattern:** Separates intent from DOM lifecycle
-2. **Hybrid timing:** Events for dialog, timer for backdrop
-3. **Coordinated cleanup:** Waits for all animations before detach
+1. **Two-signal pattern:** Separates intent (`open`) from DOM lifecycle (`overlayOpen`)
+2. **Signal counter coordination:** Tracks completion of multiple animations (`animationsCompleted`)
+3. **Event-driven completion:** Both dialog and backdrop explicitly signal when done
 4. **Reactive updates:** Effects respond to state changes automatically
-5. **Conservative timing:** Ensures animations complete fully
+5. **Robust timing:** No assumptions, handles browser variations
 
-This architecture is more complex than a simple timer, but provides:
+This architecture provides:
 
-- Reliable animation completion
-- Clean state management
-- Extensibility for future features
-- Better user experience
+- ✅ Reliable animation completion detection
+- ✅ Clean separation of concerns
+- ✅ Extensibility (easy to add more animations)
+- ✅ No race conditions or timing assumptions
+- ✅ Debuggable signal-based state
+- ✅ Better user experience (smooth, never cut off)
