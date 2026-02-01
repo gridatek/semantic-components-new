@@ -17,8 +17,9 @@ import { DelayTooltipDemoContainer } from './demos/delay-tooltip-demo-container'
       <div class="space-y-2">
         <h1 class="text-3xl font-bold tracking-tight">Tooltip</h1>
         <p class="text-muted-foreground">
-          A popup that displays information related to an element when the
-          element receives keyboard focus or the mouse hovers over it.
+          A simple directive-based tooltip for displaying text hints on hover or
+          focus. For rich content with HTML, images, or interactive elements,
+          use Hovercard instead.
         </p>
       </div>
 

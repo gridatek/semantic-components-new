@@ -1,183 +1,87 @@
-# ScTooltip Components
+# Tooltip
 
-A set of Angular components for creating accessible tooltips with shadcn/ui styling.
-
-## Architecture
-
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScTooltipProvider` to access shared state. Positioning is handled via CDK Overlay.
-
-```
-ScTooltipProvider (root wrapper - manages open state, side, delay)
-├── ScTooltipTrigger (directive on element that triggers tooltip on hover/focus)
-└── ScTooltipPortal (overlay portal for positioning)
-    └── ScTooltip (tooltip content with role="tooltip")
-```
-
-## Components
-
-| Component           | Selector                   | Type      | Description                                 |
-| ------------------- | -------------------------- | --------- | ------------------------------------------- |
-| `ScTooltipProvider` | `div[sc-tooltip-provider]` | Component | Root wrapper, manages state and positioning |
-| `ScTooltipTrigger`  | `[sc-tooltip-trigger]`     | Directive | Element that shows tooltip on hover/focus   |
-| `ScTooltipPortal`   | `div[sc-tooltip-portal]`   | Component | CDK overlay portal for tooltip positioning  |
-| `ScTooltip`         | `div[sc-tooltip]`          | Component | Tooltip content panel with animation        |
+A simple directive-based tooltip for displaying text hints on hover or focus.
 
 ## Usage
 
-### Basic Tooltip
+### Basic Usage
 
 ```html
-<div sc-tooltip-provider>
-  <button sc-tooltip-trigger>Hover me</button>
-  <div sc-tooltip-portal><div sc-tooltip>Add to library</div></div>
-</div>
+<button scTooltip="Save changes">Save</button>
 ```
 
-### Different Sides
+### With Position
 
 ```html
-<!-- Top (default) -->
-<div sc-tooltip-provider side="top">
-  <button sc-tooltip-trigger>Top</button>
-  <div sc-tooltip-portal><div sc-tooltip>Tooltip on top</div></div>
-</div>
-
-<!-- Bottom -->
-<div sc-tooltip-provider side="bottom">
-  <button sc-tooltip-trigger>Bottom</button>
-  <div sc-tooltip-portal><div sc-tooltip>Tooltip on bottom</div></div>
-</div>
-
-<!-- Left -->
-<div sc-tooltip-provider side="left">
-  <button sc-tooltip-trigger>Left</button>
-  <div sc-tooltip-portal><div sc-tooltip>Tooltip on left</div></div>
-</div>
-
-<!-- Right -->
-<div sc-tooltip-provider side="right">
-  <button sc-tooltip-trigger>Right</button>
-  <div sc-tooltip-portal><div sc-tooltip>Tooltip on right</div></div>
-</div>
+<button scTooltip="Save changes" tooltipPosition="right">Save</button>
 ```
 
-### Custom Delay
+Available positions: `top` (default), `right`, `bottom`, `left`
+
+### With Custom Delay
 
 ```html
-<!-- 500ms delay -->
-<div sc-tooltip-provider [delayDuration]="500">
-  <button sc-tooltip-trigger>Slow tooltip</button>
-  <div sc-tooltip-portal><div sc-tooltip>This appears after 500ms</div></div>
-</div>
-
-<!-- No delay (instant) -->
-<div sc-tooltip-provider [delayDuration]="0">
-  <button sc-tooltip-trigger>Instant tooltip</button>
-  <div sc-tooltip-portal><div sc-tooltip>This appears instantly</div></div>
-</div>
+<button scTooltip="Save changes" [tooltipDelay]="500">Save</button>
 ```
 
-### Icon Button with Tooltip
+### With Hide Delay
 
 ```html
-<div sc-tooltip-provider>
-  <button sc-tooltip-trigger class="icon-button">
-    <svg><!-- icon --></svg>
-    <span class="sr-only">Add item</span>
-  </button>
-  <div sc-tooltip-portal><div sc-tooltip>Add item</div></div>
-</div>
+<button scTooltip="Save changes" [tooltipHideDelay]="200">Save</button>
 ```
 
-### On Any Element
-
-The trigger can be applied to any element, not just buttons:
+### Disabled State
 
 ```html
-<div sc-tooltip-provider>
-  <span sc-tooltip-trigger class="underline cursor-help">What is this?</span>
-  <div sc-tooltip-portal><div sc-tooltip>This is an explanation</div></div>
-</div>
+<button scTooltip="Save changes" [tooltipDisabled]="isDisabled">Save</button>
 ```
 
-## Trigger Events
+### Custom Styling
 
-| Event        | Action       |
-| ------------ | ------------ |
-| `mouseenter` | Show tooltip |
-| `mouseleave` | Hide tooltip |
-| `focus`      | Show tooltip |
-| `blur`       | Hide tooltip |
-
-## Side Options
-
-| Side     | Description                     |
-| -------- | ------------------------------- |
-| `top`    | Appears above trigger (default) |
-| `bottom` | Appears below trigger           |
-| `left`   | Appears to the left             |
-| `right`  | Appears to the right            |
-
-## How It Works
-
-### State Management
-
-`ScTooltipProvider` uses a signal for the `open` state:
-
-```typescript
-readonly open = signal<boolean>(false);
-
-show(): void {
-  this.open.set(true);
-}
-
-hide(): void {
-  this.open.set(false);
-}
+```html
+<button scTooltip="Save changes" tooltipClass="my-custom-tooltip">Save</button>
 ```
 
-### Delay Handling
+## API Reference
 
-`ScTooltipTrigger` schedules showing after the delay:
+### Inputs
 
-```typescript
-private scheduleShow(): void {
-  this.cancelShow();
-  this.showTimeout = setTimeout(() => {
-    this.tooltip.show();
-  }, this.tooltip.delayDuration());
-}
-```
-
-### Hover Persistence
-
-The tooltip stays open when hovering over the content itself:
-
-```typescript
-// In ScTooltip
-onMouseEnter(): void {
-  this.tooltip.show();
-}
-
-onMouseLeave(): void {
-  this.tooltip.hide();
-}
-```
-
-### Positioning
-
-`ScTooltipPortal` uses CDK Connected Overlay to position the tooltip relative to the trigger based on the configured `side`.
+| Input              | Alias       | Type                                     | Default | Description                                     |
+| ------------------ | ----------- | ---------------------------------------- | ------- | ----------------------------------------------- |
+| `scTooltip`        | -           | `string`                                 | -       | The tooltip text content (required)             |
+| `tooltipPosition`  | `position`  | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'` | Position of the tooltip relative to the trigger |
+| `tooltipDelay`     | `showDelay` | `number`                                 | `200`   | Delay before showing the tooltip (ms)           |
+| `tooltipHideDelay` | `hideDelay` | `number`                                 | `0`     | Delay before hiding the tooltip (ms)            |
+| `tooltipDisabled`  | `disabled`  | `boolean`                                | `false` | Whether the tooltip is disabled                 |
+| `tooltipClass`     | `class`     | `string`                                 | `''`    | Custom CSS class for the tooltip                |
 
 ## Accessibility
 
-- `role="tooltip"` on the `ScTooltip` content
-- Tooltip appears on keyboard focus (not just hover)
-- Screen readers announce tooltip content
+- The tooltip has `role="tooltip"` for screen readers
+- The trigger element has `aria-describedby` pointing to the tooltip when visible
+- Supports keyboard navigation (shows on focus, hides on blur)
+- Pressing `Escape` dismisses the tooltip
 
-## Customization
+## Behavior
 
-All components accept a `class` input for custom styling:
+- **Singleton**: Only one tooltip is visible at a time globally
+- **Smart Positioning**: Automatically flips to the opposite side if there's not enough space
+- **Hover Support**: Shows on mouseenter, hides on mouseleave
+- **Focus Support**: Shows on focus, hides on blur
+- **Escape to Close**: Pressing Escape dismisses the tooltip
 
-```html
-<div sc-tooltip-portal><div sc-tooltip class="bg-destructive text-destructive-foreground">Warning: This action cannot be undone</div></div>
-```
+## When to Use
+
+Use **Tooltip** for:
+
+- Simple text hints
+- Icon button labels
+- Abbreviation explanations
+- Quick help text
+
+Use **Hovercard** instead for:
+
+- Rich content with HTML
+- Images or avatars
+- Interactive elements (buttons, links)
+- Complex formatted content
