@@ -85,20 +85,23 @@ close(): void {
 }
 ```
 
-**Step 4**: Wait for animation to complete
+**Step 4**: Listen for animation completion
 
 ```typescript
-// ScTooltipManager.hide()
-this.hideTimeout = setTimeout(() => {
-  if (this.overlayRef) {
-    this.overlayRef.dispose();
-    this.overlayRef = null;
+// ScTooltip component listens to animationend event
+protected onAnimationEnd(event: AnimationEvent): void {
+  if (this.state() === 'closed' && event.target === this.elementRef.nativeElement) {
+    this.animationComplete.emit(); // Notify manager
   }
-  this.tooltipRef = null;
-}, ScTooltipManager.ANIMATION_DURATION);
+}
+
+// ScTooltipManager subscribes to animation complete
+this.animationSubscription = this.tooltipRef.instance.animationComplete.subscribe(() => {
+  this.disposeTooltip(); // Dispose after animation
+});
 ```
 
-The default animation duration is **200ms**.
+The animation completes automatically based on CSS animation duration (~200ms).
 
 ## CSS Classes
 
@@ -161,31 +164,29 @@ All animations are pure CSS, which:
 - Respects user's reduced motion preferences
 - Easier to customize with Tailwind classes
 
-### 3. Predictable Timing
+### 3. Event-Driven Disposal
 
-The service knows exactly when to dispose the overlay (after `ANIMATION_DURATION`), preventing:
+The service listens to actual animation completion events, preventing:
 
 - Memory leaks from undisposed overlays
 - Visual glitches from early disposal
-- Stacking issues with rapid show/hide
+- Timing mismatches between CSS and JavaScript
+- Issues with custom animation durations
 
 ## Customizing Animations
 
 ### Change Animation Duration
 
-Update both the service constant and your CSS:
-
-```typescript
-// tooltip-manager.ts
-private static readonly ANIMATION_DURATION = 300; // ms
-```
+Update your CSS animation duration:
 
 ```css
-/* Ensure your CSS animations match */
-.animate-in {
-  animation-duration: 300ms;
+/* Change animation duration in your custom classes */
+.my-custom-tooltip {
+  animation-duration: 300ms !important;
 }
 ```
+
+The manager automatically waits for the `animationend` event, so no timing constants need updating.
 
 ### Custom Animation Classes
 
@@ -217,7 +218,7 @@ protected readonly hostClass = computed(() =>
 );
 ```
 
-And set `ANIMATION_DURATION` to `0` in the service.
+The component will still emit `animationComplete` even without animations.
 
 ## Accessibility
 
@@ -242,18 +243,16 @@ To debug animation issues:
    }
    ```
 
-2. **Verify Timing**
+2. **Verify Animation Events**
 
    ```typescript
-   // Add logging in ScTooltipManager
-   hide(): void {
-     console.log('Hide started at:', Date.now());
-     this.tooltipRef.instance.close();
-
-     this.hideTimeout = setTimeout(() => {
-       console.log('Dispose after:', ScTooltipManager.ANIMATION_DURATION);
-       this.overlayRef?.dispose();
-     }, ScTooltipManager.ANIMATION_DURATION);
+   // Add logging in ScTooltip
+   protected onAnimationEnd(event: AnimationEvent): void {
+     console.log('Animation ended:', event.animationName, 'State:', this.state());
+     if (this.state() === 'closed' && event.target === this.elementRef.nativeElement) {
+       console.log('Emitting animationComplete');
+       this.animationComplete.emit();
+     }
    }
    ```
 

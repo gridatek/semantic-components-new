@@ -8,6 +8,7 @@ import {
   inject,
   Injectable,
   Injector,
+  OutputRefSubscription,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent } from 'rxjs';
@@ -99,9 +100,7 @@ export class ScTooltipManager {
   private overlayRef: OverlayRef | null = null;
   private tooltipRef: ComponentRef<ScTooltip> | null = null;
   private currentTooltipId: string | null = null;
-  private hideTimeout: ReturnType<typeof setTimeout> | null = null;
-
-  private static readonly ANIMATION_DURATION = 200; // Match animation duration in ms
+  private animationSubscription: OutputRefSubscription | null = null;
 
   constructor() {
     this.setupEscapeListener();
@@ -157,32 +156,36 @@ export class ScTooltipManager {
     const portal = new ComponentPortal(ScTooltip, null, tooltipInjector);
 
     this.tooltipRef = this.overlayRef.attach(portal);
+
+    // Subscribe to animation completion
+    this.animationSubscription =
+      this.tooltipRef.instance.animationComplete.subscribe(() => {
+        this.disposeTooltip();
+      });
   }
 
   hide(): void {
-    if (!this.overlayRef || !this.tooltipRef) {
+    if (!this.tooltipRef) {
       return;
     }
 
-    // Clear any pending hide timeout
-    if (this.hideTimeout) {
-      clearTimeout(this.hideTimeout);
-      this.hideTimeout = null;
+    // Trigger close animation (will dispose via animationComplete)
+    this.tooltipRef.instance.close();
+  }
+
+  private disposeTooltip(): void {
+    if (this.animationSubscription) {
+      this.animationSubscription.unsubscribe();
+      this.animationSubscription = null;
     }
 
-    // Trigger close animation
-    this.tooltipRef.instance.close();
+    if (this.overlayRef) {
+      this.overlayRef.dispose();
+      this.overlayRef = null;
+    }
 
-    // Wait for animation to complete before disposing
-    this.hideTimeout = setTimeout(() => {
-      if (this.overlayRef) {
-        this.overlayRef.dispose();
-        this.overlayRef = null;
-      }
-      this.tooltipRef = null;
-      this.currentTooltipId = null;
-      this.hideTimeout = null;
-    }, ScTooltipManager.ANIMATION_DURATION);
+    this.tooltipRef = null;
+    this.currentTooltipId = null;
   }
 
   isTooltipVisible(tooltipId: string): boolean {

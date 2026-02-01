@@ -2,8 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   inject,
   InjectionToken,
+  output,
   signal,
   ViewEncapsulation,
 } from '@angular/core';
@@ -34,13 +36,17 @@ type ScTooltipState = 'open' | 'closed';
     '[id]': 'data.tooltipId',
     '[class]': 'hostClass()',
     '[attr.data-state]': 'state()',
+    '(animationend)': 'onAnimationEnd($event)',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTooltip {
+  private readonly elementRef = inject(ElementRef);
+
   readonly data = inject(SC_TOOLTIP_DATA);
   readonly state = signal<ScTooltipState>('open');
+  readonly animationComplete = output<void>();
 
   protected readonly hostClass = computed(() =>
     cn(
@@ -49,6 +55,16 @@ export class ScTooltip {
       this.data.tooltipClass,
     ),
   );
+
+  protected onAnimationEnd(event: AnimationEvent): void {
+    // Only emit when close animation completes
+    if (
+      this.state() === 'closed' &&
+      event.target === this.elementRef.nativeElement
+    ) {
+      this.animationComplete.emit();
+    }
+  }
 
   close(): void {
     this.state.set('closed');
