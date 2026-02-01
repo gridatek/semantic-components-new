@@ -1,182 +1,254 @@
-# Sidebar
+# Sidebar Component (scx)
 
-A composable, themeable and customizable sidebar component.
+A comprehensive sidebar component system for Angular applications with collapsible states, mobile responsiveness, keyboard shortcuts, and state persistence.
 
-## Usage
+## Components
+
+### Core Components
+
+- `ScxSidebarProvider` - Root provider component with state management
+- `ScxSidebar` - Main sidebar container
+- `ScxSidebarTrigger` - Toggle button
+- `ScxSidebarRail` - Resize handle for collapsing/expanding
+- `ScxSidebarInset` - Main content wrapper
+
+### Layout Components
+
+- `ScxSidebarHeader` - Header section
+- `ScxSidebarFooter` - Footer section
+- `ScxSidebarContent` - Scrollable content area
+- `ScxSidebarSeparator` - Visual separator
+- `ScxSidebarInput` - Styled input for search
+
+### Menu Components
+
+- `ScxSidebarMenu` - Menu list container (ul)
+- `ScxSidebarMenuItem` - Menu list item (li)
+- `ScxSidebarMenuButton` - Menu button/link (works with both button and a elements)
+- `ScxSidebarMenuAction` - Action button on menu items
+- `ScxSidebarMenuBadge` - Badge/counter display
+- `ScxSidebarMenuSkeleton` - Loading skeleton
+- `ScxSidebarMenuSub` - Submenu container (ul)
+- `ScxSidebarMenuSubItem` - Submenu item (li)
+- `ScxSidebarMenuSubButton` - Submenu button/link
+
+### Group Components
+
+- `ScxSidebarGroup` - Group container
+- `ScxSidebarGroupLabel` - Group header/label
+- `ScxSidebarGroupAction` - Action button for groups
+- `ScxSidebarGroupContent` - Group content wrapper
+
+## Features
+
+- **Reactive State Management** - Built with Angular signals
+- **Keyboard Shortcuts** - Cmd/Ctrl + B to toggle sidebar
+- **Cookie Persistence** - State persists across page refreshes (7 days)
+- **Mobile Responsive** - Sheet drawer on mobile devices
+- **Multiple Variants** - sidebar, floating, inset
+- **Collapsible Modes** - offcanvas, icon, none
+- **Two-way Binding** - Model support for open state
+- **CSS Variables** - Customizable widths
+
+## How It Works
+
+The sidebar uses a clever layout technique to push content to the side instead of overlaying it:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ ScxSidebarProvider (flex container)                     │
+│ ┌─────────────────────┬─────────────────────────────┐   │
+│ │  ScxSidebar         │  ScxSidebarInset            │   │
+│ │ ┌─────────────────┐ │  (main content)             │   │
+│ │ │ Gap Div         │ │                             │   │
+│ │ │ • Width: 16rem  │ │  <header>                   │   │
+│ │ │ • No height     │ │    <button>Toggle</button>  │   │
+│ │ │ • Pushes content│ │  </header>                  │   │
+│ │ └─────────────────┘ │                             │   │
+│ │                     │  <main>                     │   │
+│ │ ┌─────────────────┐ │    Your content here        │   │
+│ │ │ Fixed Container │ │                             │   │
+│ │ │ (actual sidebar)│ │                             │   │
+│ │ │ • Position fixed│ │                             │   │
+│ │ │ • Overlays gap  │ │                             │   │
+│ │ └─────────────────┘ │                             │   │
+│ └─────────────────────┴─────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Key Concepts
+
+1. **Gap Div** - An invisible spacer with width but no height that participates in the flex layout, creating space for the sidebar
+2. **Fixed Container** - The actual sidebar content, positioned fixed to overlay the gap
+3. **Flex Layout** - The provider uses flexbox, making the gap and content area sit side-by-side
+4. **Responsive Collapse** - When collapsed, the gap width transitions to 0, allowing content to use full width
+
+This architecture ensures smooth transitions and proper content flow without JavaScript layout calculations.
+
+## Basic Usage
+
+```typescript
+import { ScxSidebarProvider, ScxSidebar, ScxSidebarTrigger, ScxSidebarHeader, ScxSidebarContent, ScxSidebarFooter, ScxSidebarMenu, ScxSidebarMenuItem, ScxSidebarMenuButton, ScxSidebarInset } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-layout',
+  imports: [
+    ScxSidebarProvider,
+    ScxSidebar,
+    // ... other imports
+  ],
+  template: `
+    <div scx-sidebar-provider>
+      <div scx-sidebar>
+        <div scx-sidebar-header>
+          <h2>My App</h2>
+        </div>
+
+        <div scx-sidebar-content>
+          <ul scx-sidebar-menu>
+            <li scx-sidebar-menu-item>
+              <a scx-sidebar-menu-button routerLink="/dashboard">Dashboard</a>
+            </li>
+          </ul>
+        </div>
+
+        <div scx-sidebar-footer>User Info</div>
+      </div>
+
+      <main scx-sidebar-inset>
+        <header>
+          <button scx-sidebar-trigger>Toggle</button>
+        </header>
+        <router-outlet />
+      </main>
+    </div>
+  `,
+})
+export class AppLayout {}
+```
+
+## Advanced Usage
+
+### With Submenu
 
 ```html
-<div sc-sidebar-provider>
-  <aside sc-sidebar>
-    <div sc-sidebar-header>Header</div>
-    <div sc-sidebar-content>
-      <div sc-sidebar-group>
-        <div sc-sidebar-group-label>Menu</div>
-        <ul sc-sidebar-menu>
-          <li sc-sidebar-menu-item>
-            <button sc-sidebar-menu-button [isActive]="true">
-              <svg><!-- icon --></svg>
-              <span>Home</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div sc-sidebar-footer>Footer</div>
-  </aside>
-  <div sc-sidebar-inset>
-    <header>
-      <button sc-sidebar-trigger></button>
-    </header>
-    <main>Content</main>
+<ul scx-sidebar-menu>
+  <li scx-sidebar-menu-item>
+    <a scx-sidebar-menu-button>Projects</a>
+    <ul scx-sidebar-menu-sub>
+      <li scx-sidebar-menu-sub-item>
+        <a scx-sidebar-menu-sub-button routerLink="/projects/1">Project 1</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+```
+
+### With Groups
+
+```html
+<div scx-sidebar-group>
+  <div scx-sidebar-group-label>Navigation</div>
+  <div scx-sidebar-group-content>
+    <ul scx-sidebar-menu>
+      <!-- menu items -->
+    </ul>
   </div>
 </div>
 ```
 
-## Components
-
-### ScSidebarProvider
-
-Root component that provides sidebar state to all children.
-
-**Selector:** `div[sc-sidebar-provider]`
-
-### ScSidebarState
-
-Injectable service for sidebar state management.
-
-**Methods:**
-
-- `toggle()`: Toggle sidebar open/closed
-- `setOpen(value: boolean)`: Set open state
-
-### ScSidebar
-
-Main sidebar container.
-
-**Selector:** `aside[sc-sidebar]`
-
-**Inputs:**
-
-| Input         | Type                                 | Default       | Description        |
-| ------------- | ------------------------------------ | ------------- | ------------------ |
-| `side`        | `'left' \| 'right'`                  | `'left'`      | Sidebar position   |
-| `variant`     | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'`   | Visual variant     |
-| `collapsible` | `'offcanvas' \| 'icon' \| 'none'`    | `'offcanvas'` | Collapse behavior  |
-| `class`       | `string`                             | `''`          | Additional classes |
-
-### ScSidebarHeader
-
-Header section of the sidebar.
-
-**Selector:** `div[sc-sidebar-header]`
-
-### ScSidebarContent
-
-Scrollable content area.
-
-**Selector:** `div[sc-sidebar-content]`
-
-### ScSidebarFooter
-
-Footer section of the sidebar.
-
-**Selector:** `div[sc-sidebar-footer]`
-
-### ScSidebarGroup
-
-Group container for menu items.
-
-**Selector:** `div[sc-sidebar-group]`
-
-### ScSidebarGroupLabel
-
-Label for a sidebar group.
-
-**Selector:** `div[sc-sidebar-group-label]`
-
-### ScSidebarMenu
-
-Menu container (ul element).
-
-**Selector:** `ul[sc-sidebar-menu]`
-
-### ScSidebarMenuItem
-
-Menu item container (li element).
-
-**Selector:** `li[sc-sidebar-menu-item]`
-
-### ScSidebarMenuButton
-
-Clickable menu button.
-
-**Selector:** `button[sc-sidebar-menu-button], a[sc-sidebar-menu-button]`
-
-**Inputs:**
-
-| Input      | Type                        | Default     | Description        |
-| ---------- | --------------------------- | ----------- | ------------------ |
-| `isActive` | `boolean`                   | `false`     | Active state       |
-| `size`     | `'default' \| 'sm' \| 'lg'` | `'default'` | Button size        |
-| `class`    | `string`                    | `''`        | Additional classes |
-
-### ScSidebarTrigger
-
-Toggle button for sidebar.
-
-**Selector:** `button[sc-sidebar-trigger]`
-
-### ScSidebarInset
-
-Main content area next to sidebar.
-
-**Selector:** `div[sc-sidebar-inset]`
-
-### ScSidebarSeparator
-
-Visual separator line.
-
-**Selector:** `[sc-sidebar-separator]`
-
-## Examples
-
-### Icon Collapsible
+### Variants
 
 ```html
-<div sc-sidebar-provider>
-  <aside sc-sidebar collapsible="icon">
-    <!-- When collapsed, only icons visible -->
-  </aside>
+<!-- Default sidebar -->
+<div scx-sidebar variant="sidebar" collapsible="icon">
+  <!-- Floating sidebar -->
+  <div scx-sidebar variant="floating" collapsible="icon">
+    <!-- Inset sidebar -->
+    <div scx-sidebar variant="inset" collapsible="icon"></div>
+  </div>
 </div>
 ```
 
-### Floating Variant
+### Two-way Binding
 
-```html
-<aside sc-sidebar variant="floating">
-  <!-- Sidebar with rounded corners and shadow -->
-</aside>
+```typescript
+@Component({
+  template: `
+    <div scx-sidebar-provider [(open)]="sidebarOpen">
+      <!-- sidebar content -->
+    </div>
+  `,
+})
+export class MyComponent {
+  sidebarOpen = signal(true);
+}
 ```
 
-### Right Side
+## Configuration
 
-```html
-<aside sc-sidebar side="right">
-  <!-- Sidebar on the right -->
-</aside>
+### CSS Variables
+
+The sidebar uses CSS variables that can be customized:
+
+```css
+:root {
+  --sidebar-width: 16rem;
+  --sidebar-width-mobile: 18rem; /* Available but not currently used */
+  --sidebar-width-icon: 3rem;
+}
 ```
 
-## Features
+**Note:** The mobile sidebar currently uses the default width from the Sheet component. The `--sidebar-width-mobile` variable is available for future customization if needed.
 
-- **Collapsible Modes**: offcanvas, icon-only, or non-collapsible
-- **Variants**: Standard, floating, or inset
-- **State Management**: Injectable service for programmatic control
-- **Responsive**: Hidden on mobile, visible on desktop
-- **Composable**: Mix and match components as needed
+### Props
 
-## CSS Variables
+#### ScxSidebar
 
-The sidebar uses these CSS variables:
+- `side` - 'left' | 'right' (default: 'left')
+- `variant` - 'sidebar' | 'floating' | 'inset' (default: 'sidebar')
+- `collapsible` - 'offcanvas' | 'icon' | 'none' (default: 'offcanvas')
 
-- `--sidebar-width`: Width when expanded (default: 16rem)
-- `--sidebar-width-icon`: Width when collapsed to icons (default: 3rem)
+#### ScxSidebarMenuButton
+
+- `size` - 'default' | 'sm' | 'lg' (default: 'default')
+- `isActive` - boolean (default: false)
+- `tooltip` - string (optional)
+
+#### ScxSidebarMenuSubButton
+
+- `size` - 'sm' | 'md' (default: 'md')
+- `isActive` - boolean (default: false)
+
+## Keyboard Shortcuts
+
+- `Cmd + B` (Mac) / `Ctrl + B` (Windows) - Toggle sidebar
+
+## State Persistence
+
+The sidebar state is automatically saved to a cookie (`sidebar_state`) with a 7-day expiration. The state will be restored when the page is refreshed.
+
+## Mobile Behavior
+
+On screens smaller than 768px (md breakpoint), the sidebar automatically switches to a sheet drawer that slides in from the side using the `ScSheetProvider`, `ScSheetPortal`, and `ScSheet` components. The `ScxSidebarTrigger` automatically handles mobile vs desktop toggle logic.
+
+### Mobile Implementation Details
+
+The mobile view uses the new ScSheet architecture with a provider pattern:
+
+- `ScSheetProvider` manages the open state and side
+- `ScSheetPortal` creates the overlay with backdrop
+- `ScSheet` is the dialog panel with slide animations
+
+**Mobile Width:** The mobile sidebar uses the default width provided by the Sheet component rather than a custom width. This ensures consistency with other sheet-based UI elements and provides a responsive width that adapts to different device sizes.
+
+## Accessibility
+
+- All interactive elements are keyboard accessible
+- Proper ARIA attributes are applied
+- Focus management is handled automatically
+- Screen reader support included
+
+## Demo
+
+See a comprehensive demo at `/dashboard` in the blocks application.

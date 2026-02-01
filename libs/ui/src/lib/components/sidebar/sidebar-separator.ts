@@ -1,17 +1,21 @@
-import { computed, Directive, input } from '@angular/core';
+import { Directive, computed, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: '[sc-sidebar-separator]',
+  selector: 'div[scx-sidebar-separator]',
   host: {
     'data-slot': 'sidebar-separator',
     '[class]': 'class()',
   },
 })
-export class ScSidebarSeparator {
+export class ScxSidebarSeparator {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('mx-2 w-auto bg-sidebar-border h-px', this.classInput()),
+    cn(
+      'mx-2 w-auto bg-sidebar-border',
+      'group-data-[collapsible=icon]:mx-2',
+      this.classInput(),
+    ),
   );
 }

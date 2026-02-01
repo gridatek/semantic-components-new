@@ -74,7 +74,6 @@ export * from './select';
 export * from './separator';
 export * from './sheet';
 export * from './sidebar';
-export * from './sidebar-x';
 export * from './signature-pad';
 export * from './skeleton';
 export * from './slider';

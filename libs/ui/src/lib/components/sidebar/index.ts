@@ -1,19 +1,24 @@
-export { ScSidebarState } from './sidebar-state';
-export { ScSidebarProvider } from './sidebar-provider';
-export { ScSidebar } from './sidebar';
-export { ScSidebarHeader } from './sidebar-header';
-export { ScSidebarContent } from './sidebar-content';
-export { ScSidebarFooter } from './sidebar-footer';
-export { ScSidebarGroup } from './sidebar-group';
-export { ScSidebarGroupLabel } from './sidebar-group-label';
-export { ScSidebarMenu } from './sidebar-menu';
-export { ScSidebarMenuItem } from './sidebar-menu-item';
-export { ScSidebarMenuButton } from './sidebar-menu-button';
-export { ScSidebarTrigger } from './sidebar-trigger';
-export { ScSidebarInset } from './sidebar-inset';
-export { ScSidebarSeparator } from './sidebar-separator';
-export type {
-  SidebarSide,
-  SidebarVariant,
-  SidebarCollapsible,
-} from './sidebar-types';
+export { ScxSidebarProvider } from './sidebar-provider';
+export { ScxSidebar } from './sidebar';
+export { ScxSidebarTrigger } from './sidebar-trigger';
+export { ScxSidebarRail } from './sidebar-rail';
+export { ScxSidebarInset } from './sidebar-inset';
+export { ScxSidebarHeader } from './sidebar-header';
+export { ScxSidebarFooter } from './sidebar-footer';
+export { ScxSidebarContent } from './sidebar-content';
+export { ScxSidebarSeparator } from './sidebar-separator';
+export { ScxSidebarInput } from './sidebar-input';
+export { ScxSidebarGroup } from './sidebar-group';
+export { ScxSidebarGroupLabel } from './sidebar-group-label';
+export { ScxSidebarGroupAction } from './sidebar-group-action';
+export { ScxSidebarGroupContent } from './sidebar-group-content';
+export { ScxSidebarMenu } from './sidebar-menu';
+export { ScxSidebarMenuItem } from './sidebar-menu-item';
+export { ScxSidebarMenuButton } from './sidebar-menu-button';
+export { ScxSidebarMenuAction } from './sidebar-menu-action';
+export { ScxSidebarMenuBadge } from './sidebar-menu-badge';
+export { ScxSidebarMenuSkeleton } from './sidebar-menu-skeleton';
+export { ScxSidebarMenuSub } from './sidebar-menu-sub';
+export { ScxSidebarMenuSubItem } from './sidebar-menu-sub-item';
+export { ScxSidebarMenuSubButton } from './sidebar-menu-sub-button';
+export { ScxSidebarState } from './sidebar-state.service';

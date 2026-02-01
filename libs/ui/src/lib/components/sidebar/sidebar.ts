@@ -1,78 +1,113 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-  ViewEncapsulation,
-} from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, computed, inject, input } from '@angular/core';
+import { SiXIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
-import { ScSidebarState } from './sidebar-state';
 import {
-  SidebarCollapsible,
-  SidebarSide,
-  SidebarVariant,
-} from './sidebar-types';
+  ScSheet,
+  ScSheetClose,
+  ScSheetPortal,
+  ScSheetProvider,
+} from '../sheet';
+import { ScxSidebarState } from './sidebar-state.service';
 
 @Component({
-  selector: 'aside[sc-sidebar]',
+  selector: 'div[scx-sidebar]',
+  imports: [
+    ScSheetProvider,
+    ScSheetPortal,
+    ScSheet,
+    ScSheetClose,
+    SiXIcon,
+    NgTemplateOutlet,
+  ],
   template: `
-    <div [class]="innerClass()">
+    <ng-template #content>
       <ng-content />
-    </div>
+    </ng-template>
+
+    <!-- Mobile sidebar uses default width from sheet component -->
+    @if (isMobile()) {
+      <div sc-sheet-provider [(open)]="state.openMobile" [side]="side()">
+        <div sc-sheet-portal>
+          <div
+            sc-sheet
+            class="bg-sidebar text-sidebar-foreground p-0 flex h-full flex-col"
+          >
+            <button sc-sheet-close>
+              <svg si-x-icon></svg>
+              <span class="sr-only">Close</span>
+            </button>
+            <ng-container *ngTemplateOutlet="content" />
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div
+        class="group peer hidden md:block text-sidebar-foreground"
+        [attr.data-state]="state.state()"
+        [attr.data-collapsible]="
+          state.state() === 'collapsed' ? collapsible() : ''
+        "
+      >
+        <div [class]="gapClass()"></div>
+        <div [class]="containerClass()">
+          <div [class]="innerClass()">
+            <ng-container *ngTemplateOutlet="content" />
+          </div>
+        </div>
+      </div>
+    }
   `,
   host: {
     'data-slot': 'sidebar',
-    '[class]': 'class()',
-    '[attr.data-state]': 'state.open() ? "expanded" : "collapsed"',
-    '[attr.data-collapsible]': 'collapsible()',
+    '[attr.data-state]': 'state.state()',
     '[attr.data-variant]': 'variant()',
     '[attr.data-side]': 'side()',
+    '[attr.data-collapsible]': 'collapsible()',
   },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSidebar {
-  readonly state = inject(ScSidebarState);
+export class ScxSidebar {
+  readonly state = inject(ScxSidebarState);
 
-  readonly classInput = input<string>('', { alias: 'class' });
-  readonly side = input<SidebarSide>('left');
-  readonly variant = input<SidebarVariant>('sidebar');
-  readonly collapsible = input<SidebarCollapsible>('offcanvas');
+  readonly side = input<'left' | 'right'>('left');
+  readonly variant = input<'sidebar' | 'floating' | 'inset'>('sidebar');
+  readonly collapsible = input<'offcanvas' | 'icon' | 'none'>('offcanvas');
 
-  protected readonly class = computed(() => {
-    const collapsible = this.collapsible();
+  protected readonly isMobile = computed(() => this.state.isMobile());
+
+  protected readonly gapClass = computed(() => {
     const side = this.side();
     const variant = this.variant();
 
-    if (collapsible === 'none') {
-      return cn(
-        'flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground',
-        this.classInput(),
-      );
-    }
-
     return cn(
-      'group peer hidden md:block text-sidebar-foreground',
-      'transition-[width] duration-200 ease-linear',
-      'group-data-[state=collapsed]/sidebar-wrapper:w-[--sidebar-width-icon]',
+      'relative w-[var(--sidebar-width)] bg-transparent transition-[width] duration-200 ease-linear',
+      'group-data-[collapsible=offcanvas]:w-0',
+      'group-data-[side=right]:rotate-180',
       variant === 'floating' || variant === 'inset'
-        ? 'w-[calc(var(--sidebar-width)+theme(spacing.4))]'
-        : 'w-[--sidebar-width]',
-      side === 'left'
-        ? 'group-data-[collapsible=offcanvas]:left-0'
-        : 'group-data-[collapsible=offcanvas]:right-0',
-      this.classInput(),
+        ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
+        : 'group-data-[collapsible=icon]:w-[var(--sidebar-width-icon)]',
     );
   });
 
-  protected readonly innerClass = computed(() => {
+  protected readonly containerClass = computed(() => {
+    const side = this.side();
     const variant = this.variant();
 
     return cn(
-      'flex h-full w-full flex-col bg-sidebar',
-      'group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow',
-      variant === 'inset' && 'bg-transparent',
+      'fixed inset-y-0 z-10 hidden h-svh w-[var(--sidebar-width)] transition-[left,right,width] duration-200 ease-linear md:flex',
+      side === 'left'
+        ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
+        : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
+      variant === 'floating' || variant === 'inset'
+        ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
+        : 'group-data-[collapsible=icon]:w-[var(--sidebar-width-icon)] group-data-[side=left]:border-r group-data-[side=right]:border-l',
     );
   });
+
+  protected readonly innerClass = computed(() =>
+    cn(
+      'flex h-full w-full flex-col bg-sidebar',
+      'group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1 group-data-[variant=floating]:ring-sidebar-border',
+    ),
+  );
 }
