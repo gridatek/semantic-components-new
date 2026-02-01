@@ -22,7 +22,11 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
   template: `
     <ng-template #dialogTemplate>
       <!-- Visual backdrop (behind transparent CDK backdrop) -->
-      <div sc-backdrop [open]="alertDialogProvider.open()"></div>
+      <div
+        sc-backdrop
+        [open]="alertDialogProvider.open()"
+        (animationComplete)="onBackdropAnimationComplete()"
+      ></div>
       <ng-content />
     </ng-template>
   `,
@@ -81,5 +85,13 @@ export class ScAlertDialogPortal {
     if (this.overlayRef.hasAttached()) {
       this.overlayRef.detach();
     }
+  }
+
+  /**
+   * Called when backdrop close animation completes
+   * Forwards to provider for coordination
+   */
+  protected onBackdropAnimationComplete(): void {
+    this.alertDialogProvider.onBackdropAnimationComplete();
   }
 }

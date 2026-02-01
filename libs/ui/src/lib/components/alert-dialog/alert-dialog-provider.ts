@@ -40,6 +40,12 @@ export class ScAlertDialogProvider {
    */
   readonly overlayOpen = signal<boolean>(false);
 
+  /**
+   * Tracks how many animations have completed during close sequence
+   * Target: 2 (dialog + backdrop)
+   */
+  private readonly animationsCompleted = signal<number>(0);
+
   protected readonly class = computed(() => cn('relative', this.classInput()));
 
   constructor() {
@@ -48,23 +54,39 @@ export class ScAlertDialogProvider {
       if (this.open()) {
         // Opening: Mount DOM immediately so animation can start
         this.overlayOpen.set(true);
+        // Reset counter when opening for next close cycle
+        this.animationsCompleted.set(0);
       }
       // Note: When closing (open = false), overlayOpen stays true
-      // until animation completes (handled by onAnimationComplete)
+      // until both animations complete (handled by animation completion methods)
+    });
+
+    // Close overlay when both animations complete
+    effect(() => {
+      const completed = this.animationsCompleted();
+      if (completed === 2 && !this.open()) {
+        this.overlayOpen.set(false);
+        // Reset for next cycle
+        this.animationsCompleted.set(0);
+      }
     });
   }
 
   /**
-   * Called by alert-dialog when close animation completes
-   * Both dialog and backdrop are in the same portal with synchronized animations (300ms)
-   * When dialog animation completes, we can safely detach the overlay
+   * Called by dialog when its close animation completes
    */
-  onAnimationComplete(): void {
-    // Only close the overlay if we're not supposed to be open
+  onDialogAnimationComplete(): void {
     if (!this.open()) {
-      // No setTimeout needed - both animations complete together
-      // Overlay detachment removes both dialog and backdrop cleanly
-      this.overlayOpen.set(false);
+      this.animationsCompleted.update((n) => n + 1);
+    }
+  }
+
+  /**
+   * Called by portal when backdrop close animation completes
+   */
+  onBackdropAnimationComplete(): void {
+    if (!this.open()) {
+      this.animationsCompleted.update((n) => n + 1);
     }
   }
 }

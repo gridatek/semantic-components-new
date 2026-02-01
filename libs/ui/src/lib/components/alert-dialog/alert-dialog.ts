@@ -71,12 +71,12 @@ export class ScAlertDialog {
   }
 
   protected onAnimationEnd(event: AnimationEvent): void {
-    // Only emit when close animation completes
+    // Only trigger cleanup when close animation completes
     if (
       this.state() === 'closed' &&
       event.target === this.elementRef.nativeElement
     ) {
-      this.alertDialogProvider.onAnimationComplete();
+      this.alertDialogProvider.onDialogAnimationComplete();
     }
   }
 }
