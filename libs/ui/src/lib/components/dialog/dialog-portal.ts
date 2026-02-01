@@ -13,14 +13,20 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScBackdrop } from '../backdrop';
 import { ScDialogProvider } from './dialog-provider';
-import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'div[sc-dialog-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, ScBackdrop],
   template: `
     <ng-template #dialogTemplate>
+      <!-- Visual backdrop (behind transparent CDK backdrop) -->
+      <div
+        sc-backdrop
+        [open]="dialogProvider.open()"
+        (animationComplete)="onBackdropAnimationComplete()"
+      ></div>
       <ng-content />
     </ng-template>
   `,
@@ -32,7 +38,7 @@ import { firstValueFrom, timer } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScDialogPortal {
-  private readonly dialogProvider = inject(ScDialogProvider);
+  readonly dialogProvider = inject(ScDialogProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -48,7 +54,7 @@ export class ScDialogPortal {
       .centerHorizontally()
       .centerVertically(),
     hasBackdrop: true,
-    backdropClass: 'sc-backdrop',
+    backdropClass: 'cdk-overlay-transparent-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
@@ -61,11 +67,12 @@ export class ScDialogPortal {
       if (event.key === 'Escape') this.closeDialog();
     });
 
+    // Use overlayOpen instead of open to delay DOM removal until animation completes
     effect(() => {
-      if (this.dialogProvider.open()) {
+      if (this.dialogProvider.overlayOpen()) {
         this.attachDialog();
       } else {
-        this.detachDialogWithAnimation();
+        this.detachDialog();
       }
     });
   }
@@ -80,21 +87,21 @@ export class ScDialogPortal {
     }
   }
 
-  private async detachDialogWithAnimation() {
+  private detachDialog(): void {
     if (this.overlayRef.hasAttached()) {
-      const backdrop = this.overlayRef.backdropElement;
-
-      // Start the fade out
-      backdrop?.classList.add('sc-backdrop-hiding');
-
-      // Wait for the CSS transition (300ms)
-      await firstValueFrom(timer(300));
-
       this.overlayRef.detach();
     }
   }
 
   private closeDialog(): void {
     this.dialogProvider.open.set(false);
+  }
+
+  /**
+   * Called when backdrop close animation completes
+   * Forwards to provider for coordination
+   */
+  protected onBackdropAnimationComplete(): void {
+    this.dialogProvider.onBackdropAnimationComplete();
   }
 }

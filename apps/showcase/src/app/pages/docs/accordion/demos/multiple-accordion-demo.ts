@@ -5,7 +5,11 @@ import {
   ScAccordionItem,
   ScAccordionTrigger,
   ScAccordionContent,
+  ScAccordionContent2,
+  ScAccordionHeader,
+  ScAccordionTriggerIcon,
 } from '@semantic-components/ui';
+import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-multiple-accordion-demo',
@@ -15,39 +19,58 @@ import {
     ScAccordionItem,
     ScAccordionTrigger,
     ScAccordionContent,
+    ScAccordionContent2,
+    ScAccordionHeader,
+    SiChevronDownIcon,
+    ScAccordionTriggerIcon,
   ],
   template: `
     <div sc-accordion [multiExpandable]="true" class="w-full max-w-md">
       <div sc-accordion-item>
-        <button sc-accordion-trigger panelId="item-a" [expanded]="true">
-          Can I open multiple items?
-        </button>
+        <div sc-accordion-header>
+          <button sc-accordion-trigger panelId="item-a" [expanded]="true">
+            Can I open multiple items?
+            <svg si-chevron-down-icon sc-accordion-trigger-icon></svg>
+          </button>
+        </div>
         <div sc-accordion-panel panelId="item-a">
           <div sc-accordion-content>
-            Yes! When using multiExpandable, you can have multiple accordion
-            items open at the same time.
+            <div sc-accordion-content-2>
+              Yes! When using multiExpandable, you can have multiple accordion
+              items open at the same time.
+            </div>
           </div>
         </div>
       </div>
       <div sc-accordion-item>
-        <button sc-accordion-trigger panelId="item-b" [expanded]="true">
-          How does it work?
-        </button>
+        <div sc-accordion-header>
+          <button sc-accordion-trigger panelId="item-b" [expanded]="true">
+            How does it work?
+            <svg si-chevron-down-icon sc-accordion-trigger-icon></svg>
+          </button>
+        </div>
         <div sc-accordion-panel panelId="item-b">
           <div sc-accordion-content>
-            Each trigger has an expanded input that you can bind to with
-            [(expanded)] for two-way binding.
+            <div sc-accordion-content-2>
+              Each trigger has an expanded input that you can bind to with
+              [(expanded)] for two-way binding.
+            </div>
           </div>
         </div>
       </div>
       <div sc-accordion-item>
-        <button sc-accordion-trigger panelId="item-c">
-          What about accessibility?
-        </button>
+        <div sc-accordion-header>
+          <button sc-accordion-trigger panelId="item-c">
+            What about accessibility?
+            <svg si-chevron-down-icon sc-accordion-trigger-icon></svg>
+          </button>
+        </div>
         <div sc-accordion-panel panelId="item-c">
           <div sc-accordion-content>
-            Each item uses proper ARIA attributes including aria-expanded and
-            role="region" for the content.
+            <div sc-accordion-content-2>
+              Each item uses proper ARIA attributes including aria-expanded and
+              role="region" for the content.
+            </div>
           </div>
         </div>
       </div>
