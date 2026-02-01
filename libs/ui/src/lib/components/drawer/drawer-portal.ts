@@ -13,14 +13,20 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScBackdrop } from '../backdrop';
 import { ScDrawerProvider } from './drawer-provider';
-import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'div[sc-drawer-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, ScBackdrop],
   template: `
     <ng-template #drawerTemplate>
+      <!-- Visual backdrop (behind transparent CDK backdrop) -->
+      <div
+        sc-backdrop
+        [open]="drawer.open()"
+        (animationComplete)="onBackdropAnimationComplete()"
+      ></div>
       <ng-content />
     </ng-template>
   `,
@@ -44,7 +50,7 @@ export class ScDrawerPortal {
   private overlayRef = this.overlay.create({
     positionStrategy: this.overlay.position().global(),
     hasBackdrop: true,
-    backdropClass: 'sc-backdrop',
+    backdropClass: 'cdk-overlay-transparent-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
@@ -57,11 +63,12 @@ export class ScDrawerPortal {
       if (event.key === 'Escape') this.closeDrawer();
     });
 
+    // Use overlayOpen instead of open to delay DOM removal until animation completes
     effect(() => {
-      if (this.drawer.open()) {
+      if (this.drawer.overlayOpen()) {
         this.attachDrawer();
       } else {
-        this.detachDrawerWithAnimation();
+        this.detachDrawer();
       }
     });
   }
@@ -76,21 +83,21 @@ export class ScDrawerPortal {
     }
   }
 
-  private async detachDrawerWithAnimation() {
+  private detachDrawer(): void {
     if (this.overlayRef.hasAttached()) {
-      const backdrop = this.overlayRef.backdropElement;
-
-      // Start the fade out
-      backdrop?.classList.add('sc-backdrop-hiding');
-
-      // Wait for the CSS transition (300ms)
-      await firstValueFrom(timer(300));
-
       this.overlayRef.detach();
     }
   }
 
   private closeDrawer(): void {
     this.drawer.open.set(false);
+  }
+
+  /**
+   * Called when backdrop close animation completes
+   * Forwards to provider for coordination
+   */
+  protected onBackdropAnimationComplete(): void {
+    this.drawer.onBackdropAnimationComplete();
   }
 }

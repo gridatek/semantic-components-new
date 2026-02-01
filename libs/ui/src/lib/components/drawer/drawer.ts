@@ -1,6 +1,16 @@
-import { computed, Directive, inject, input } from '@angular/core';
+import {
+  computed,
+  Directive,
+  effect,
+  ElementRef,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { cn } from '../../utils';
 import { DrawerDirection, ScDrawerProvider } from './drawer-provider';
+
+type ScDrawerState = 'open' | 'closed';
 
 const directionBaseClasses: Record<DrawerDirection, string> = {
   top: 'inset-x-0 top-0 border-b rounded-b-[10px]',
@@ -9,18 +19,11 @@ const directionBaseClasses: Record<DrawerDirection, string> = {
   left: 'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
 };
 
-const directionOpenClasses: Record<DrawerDirection, string> = {
-  top: 'translate-y-0',
-  right: 'translate-x-0',
-  bottom: 'translate-y-0',
-  left: 'translate-x-0',
-};
-
-const directionClosedClasses: Record<DrawerDirection, string> = {
-  top: '-translate-y-full',
-  right: 'translate-x-full',
-  bottom: 'translate-y-full',
-  left: '-translate-x-full',
+const directionAnimationClasses: Record<DrawerDirection, string> = {
+  top: 'slide-in-from-top data-[state=closed]:slide-out-to-top',
+  right: 'slide-in-from-right data-[state=closed]:slide-out-to-right',
+  bottom: 'slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
+  left: 'slide-in-from-left data-[state=closed]:slide-out-to-left',
 };
 
 @Directive({
@@ -29,25 +32,46 @@ const directionClosedClasses: Record<DrawerDirection, string> = {
     'data-slot': 'drawer',
     role: 'dialog',
     'aria-modal': 'true',
-    '[attr.data-state]': 'drawer.open() ? "open" : "closed"',
+    '[attr.data-state]': 'state()',
     '[class]': 'class()',
+    '(animationend)': 'onAnimationEnd($event)',
   },
 })
 export class ScDrawer {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly drawer = inject(ScDrawerProvider);
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly state = signal<ScDrawerState>('closed');
 
   protected readonly class = computed(() => {
     const direction = this.drawer.direction();
-    const isOpen = this.drawer.open();
 
     return cn(
       'fixed z-50 flex flex-col bg-background',
       directionBaseClasses[direction],
-      isOpen
-        ? `${directionOpenClasses[direction]} transition-transform duration-300 ease-out`
-        : `${directionClosedClasses[direction]} transition-transform duration-300 ease-in`,
+      'animate-in fade-in-0 duration-300',
+      directionAnimationClasses[direction],
+      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:duration-300',
       this.classInput(),
     );
   });
+
+  constructor() {
+    // Sync state with provider's open signal
+    effect(() => {
+      const isOpen = this.drawer.open();
+      this.state.set(isOpen ? 'open' : 'closed');
+    });
+  }
+
+  protected onAnimationEnd(event: AnimationEvent): void {
+    // Only trigger cleanup when close animation completes
+    if (
+      this.state() === 'closed' &&
+      event.target === this.elementRef.nativeElement
+    ) {
+      this.drawer.onDrawerAnimationComplete();
+    }
+  }
 }
