@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  inject,
   input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -25,18 +24,13 @@ import { cn } from '../../utils';
   `,
   host: {
     'data-slot': 'accordion-panel',
-    '[attr.data-state]': 'panel.visible() ? "open" : "closed"',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAccordionPanel {
-  protected readonly panel = inject(AccordionPanel);
-
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() =>
-    cn('text-sm overflow-hidden', this.classInput()),
-  );
+  protected readonly class = computed(() => cn('', this.classInput()));
 }
