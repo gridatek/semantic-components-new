@@ -6,6 +6,7 @@ export * from './aspect-ratio';
 export * from './audio-player';
 export * from './avatar';
 export * from './avatar-group';
+export * from './backdrop';
 export * from './badge';
 export * from './barcode-scanner';
 export * from './breadcrumb';

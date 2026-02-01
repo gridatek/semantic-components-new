@@ -56,18 +56,15 @@ export class ScAlertDialogProvider {
 
   /**
    * Called by alert-dialog when close animation completes
-   * This is when we actually remove the content from DOM
-   * Waits 300ms to allow backdrop animation to complete
+   * Both dialog and backdrop are in the same portal with synchronized animations (300ms)
+   * When dialog animation completes, we can safely detach the overlay
    */
   onAnimationComplete(): void {
     // Only close the overlay if we're not supposed to be open
     if (!this.open()) {
-      // Wait 300ms for backdrop fade animation to complete
-      setTimeout(() => {
-        if (!this.open()) {
-          this.overlayOpen.set(false);
-        }
-      }, 300);
+      // No setTimeout needed - both animations complete together
+      // Overlay detachment removes both dialog and backdrop cleanly
+      this.overlayOpen.set(false);
     }
   }
 }

@@ -13,13 +13,16 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScBackdrop } from '../backdrop';
 import { ScAlertDialogProvider } from './alert-dialog-provider';
 
 @Component({
   selector: 'div[sc-alert-dialog-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, ScBackdrop],
   template: `
     <ng-template #dialogTemplate>
+      <!-- Visual backdrop (behind transparent CDK backdrop) -->
+      <div sc-backdrop [open]="alertDialogProvider.open()"></div>
       <ng-content />
     </ng-template>
   `,
@@ -31,7 +34,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAlertDialogPortal {
-  private readonly alertDialogProvider = inject(ScAlertDialogProvider);
+  readonly alertDialogProvider = inject(ScAlertDialogProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -47,11 +50,9 @@ export class ScAlertDialogPortal {
       .centerHorizontally()
       .centerVertically(),
     hasBackdrop: true,
-    backdropClass: 'sc-backdrop',
+    backdropClass: 'cdk-overlay-transparent-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
-
-  private backdropAnimationTimeout: ReturnType<typeof setTimeout> | null = null;
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
@@ -62,24 +63,6 @@ export class ScAlertDialogPortal {
         this.attachDialog();
       } else {
         this.detachDialog();
-      }
-    });
-
-    // Sync backdrop animation with open state (not overlayOpen)
-    effect(() => {
-      const backdrop = this.overlayRef.backdropElement;
-      if (backdrop) {
-        if (this.alertDialogProvider.open()) {
-          // Opening: Remove hiding class and cancel any pending timeout
-          backdrop.classList.remove('sc-backdrop-hiding');
-          if (this.backdropAnimationTimeout) {
-            clearTimeout(this.backdropAnimationTimeout);
-            this.backdropAnimationTimeout = null;
-          }
-        } else {
-          // Closing: Add hiding class and wait 300ms for backdrop animation
-          backdrop.classList.add('sc-backdrop-hiding');
-        }
       }
     });
   }
