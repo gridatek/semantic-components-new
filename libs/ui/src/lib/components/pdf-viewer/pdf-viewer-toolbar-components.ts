@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_PDF_VIEWER } from './pdf-viewer-root';
-import { ZOOM_LEVELS, type PdfZoomLevel } from './pdf-viewer-types';
+import { ZOOM_LEVELS } from './pdf-viewer-types';
 
 // Toolbar Container
 @Component({
