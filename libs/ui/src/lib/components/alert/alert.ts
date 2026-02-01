@@ -1,13 +1,24 @@
 import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export type AlertVariant = 'default' | 'destructive';
+const alertVariants = cva(
+  "grid gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4 w-full relative group/alert",
+  {
+    variants: {
+      variant: {
+        default: 'bg-card text-card-foreground',
+        destructive:
+          'text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
 
-const variantClasses: Record<AlertVariant, string> = {
-  default: 'bg-background text-foreground',
-  destructive:
-    'border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive',
-};
+export type ScAlertVariants = VariantProps<typeof alertVariants>;
 
 @Directive({
   selector: '[sc-alert]',
@@ -19,15 +30,10 @@ const variantClasses: Record<AlertVariant, string> = {
 })
 export class ScAlert {
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly variant = input<AlertVariant>('default');
+  readonly variant = input<ScAlertVariants['variant']>('default');
 
   protected readonly class = computed(() =>
-    cn(
-      'relative w-full rounded-lg border p-4',
-      '[&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
-      variantClasses[this.variant()],
-      this.classInput(),
-    ),
+    cn(alertVariants({ variant: this.variant() }), this.classInput()),
   );
 }
 
