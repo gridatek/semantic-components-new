@@ -12,15 +12,21 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { firstValueFrom, timer } from 'rxjs';
 import { cn } from '../../utils';
+import { ScBackdrop } from '../backdrop';
 import { ScSheetProvider } from './sheet-provider';
 
 @Component({
   selector: 'div[sc-sheet-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, ScBackdrop],
   template: `
     <ng-template #sheetTemplate>
+      <!-- Visual backdrop (behind transparent CDK backdrop) -->
+      <div
+        sc-backdrop
+        [open]="sheetProvider.open()"
+        (animationComplete)="onBackdropAnimationComplete()"
+      ></div>
       <ng-content />
     </ng-template>
   `,
@@ -32,7 +38,7 @@ import { ScSheetProvider } from './sheet-provider';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSheetPortal {
-  private readonly sheetProvider = inject(ScSheetProvider);
+  readonly sheetProvider = inject(ScSheetProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
@@ -44,7 +50,7 @@ export class ScSheetPortal {
   private overlayRef = this.overlay.create({
     positionStrategy: this.overlay.position().global(),
     hasBackdrop: true,
-    backdropClass: 'sc-backdrop',
+    backdropClass: 'cdk-overlay-transparent-backdrop',
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
@@ -57,11 +63,12 @@ export class ScSheetPortal {
       if (event.key === 'Escape') this.closeSheet();
     });
 
+    // Use overlayOpen instead of open to delay DOM removal until animation completes
     effect(() => {
-      if (this.sheetProvider.open()) {
+      if (this.sheetProvider.overlayOpen()) {
         this.attachSheet();
       } else {
-        this.detachSheetWithAnimation();
+        this.detachSheet();
       }
     });
   }
@@ -76,21 +83,21 @@ export class ScSheetPortal {
     }
   }
 
-  private async detachSheetWithAnimation() {
+  private detachSheet(): void {
     if (this.overlayRef.hasAttached()) {
-      const backdrop = this.overlayRef.backdropElement;
-
-      // Start the fade out
-      backdrop?.classList.add('sc-backdrop-hiding');
-
-      // Wait for the CSS transition (300ms)
-      await firstValueFrom(timer(300));
-
       this.overlayRef.detach();
     }
   }
 
   private closeSheet(): void {
     this.sheetProvider.open.set(false);
+  }
+
+  /**
+   * Called when backdrop close animation completes
+   * Forwards to provider for coordination
+   */
+  protected onBackdropAnimationComplete(): void {
+    this.sheetProvider.onBackdropAnimationComplete();
   }
 }

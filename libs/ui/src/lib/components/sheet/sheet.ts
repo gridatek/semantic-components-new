@@ -1,15 +1,19 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   ElementRef,
   inject,
   input,
+  signal,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScSheetProvider, SheetSide } from './sheet-provider';
-import { _IdGenerator } from '@angular/cdk/a11y';
+
+type ScSheetState = 'open' | 'closed';
 
 const sidePositionClasses: Record<SheetSide, string> = {
   top: 'inset-x-0 top-0 border-b',
@@ -18,18 +22,11 @@ const sidePositionClasses: Record<SheetSide, string> = {
   left: 'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
 };
 
-const sideOpenClasses: Record<SheetSide, string> = {
-  top: 'translate-y-0',
-  right: 'translate-x-0',
-  bottom: 'translate-y-0',
-  left: 'translate-x-0',
-};
-
-const sideClosedClasses: Record<SheetSide, string> = {
-  top: '-translate-y-full',
-  right: 'translate-x-full',
-  bottom: 'translate-y-full',
-  left: '-translate-x-full',
+const sideAnimationClasses: Record<SheetSide, string> = {
+  top: 'slide-in-from-top data-[state=closed]:slide-out-to-top',
+  right: 'slide-in-from-right data-[state=closed]:slide-out-to-right',
+  bottom: 'slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
+  left: 'slide-in-from-left data-[state=closed]:slide-out-to-left',
 };
 
 @Component({
@@ -43,17 +40,20 @@ const sideClosedClasses: Record<SheetSide, string> = {
     'aria-modal': 'true',
     '[attr.aria-labelledby]': 'titleId',
     '[attr.aria-describedby]': 'descriptionId',
+    '[attr.data-state]': 'state()',
     '[class]': 'class()',
     '[tabindex]': '-1',
+    '(animationend)': 'onAnimationEnd($event)',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSheet {
-  private readonly sheetProvider = inject(ScSheetProvider);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
+  readonly sheetProvider = inject(ScSheetProvider);
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly state = signal<ScSheetState>('closed');
 
   readonly sheetId = inject(_IdGenerator).getId('sc-sheet-');
   readonly titleId = `${this.sheetId}-title`;
@@ -61,19 +61,36 @@ export class ScSheet {
 
   protected readonly class = computed(() => {
     const side = this.sheetProvider.side();
-    const isOpen = this.sheetProvider.open();
 
     return cn(
-      'bg-background fixed z-50 flex flex-col gap-4 p-6 shadow-lg transition-transform duration-300 ease-in-out',
+      'bg-background fixed z-50 flex flex-col gap-4 p-6 shadow-lg',
       sidePositionClasses[side],
-      isOpen ? sideOpenClasses[side] : sideClosedClasses[side],
+      'animate-in fade-in-0 duration-300',
+      sideAnimationClasses[side],
+      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:duration-300',
       this.classInput(),
     );
   });
 
   constructor() {
+    // Sync state with provider's open signal
+    effect(() => {
+      const isOpen = this.sheetProvider.open();
+      this.state.set(isOpen ? 'open' : 'closed');
+    });
+
     setTimeout(() => {
       this.elementRef.nativeElement.focus();
     });
+  }
+
+  protected onAnimationEnd(event: AnimationEvent): void {
+    // Only trigger cleanup when close animation completes
+    if (
+      this.state() === 'closed' &&
+      event.target === this.elementRef.nativeElement
+    ) {
+      this.sheetProvider.onSheetAnimationComplete();
+    }
   }
 }
