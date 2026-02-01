@@ -2773,25 +2773,6 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
-    path: 'demos/sidebar',
-    children: [
-      {
-        path: 'default-sidebar-demo',
-        loadComponent: () =>
-          import('../pages/docs/sidebar/demos/default-sidebar-demo').then(
-            (m) => m.DefaultSidebarDemo,
-          ),
-      },
-      {
-        path: 'icon-collapsible-sidebar-demo',
-        loadComponent: () =>
-          import('../pages/docs/sidebar/demos/icon-collapsible-sidebar-demo').then(
-            (m) => m.IconCollapsibleSidebarDemo,
-          ),
-      },
-    ],
-  },
-  {
     path: 'demos/signature-pad',
     children: [
       {
