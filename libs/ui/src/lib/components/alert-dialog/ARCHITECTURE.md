@@ -9,7 +9,8 @@ The alert-dialog component uses a two-signal architecture pattern to ensure smoo
 ```
 ScAlertDialogProvider (Root State Manager)
 └── ScAlertDialogPortal (CDK Overlay Manager)
-    ├── CDK Backdrop (Managed by Angular CDK)
+    ├── CDK Backdrop (Transparent - click blocking only)
+    ├── ScBackdrop (Visual backdrop with animations)
     └── ScAlertDialog (Dialog Content)
         ├── ScAlertDialogHeader
         │   ├── ScAlertDialogMedia (Optional)
@@ -98,21 +99,32 @@ if (open()) {
 
 ## Animation Architecture
 
-### Three Animation Layers
+### Three Layers (Separated by Concern)
 
-1. **Dialog Content Animation** (300ms)
+1. **CDK Backdrop** (Transparent - No Animation)
+   - Class: `cdk-overlay-transparent-backdrop`
+   - Purpose: Click blocking and scroll prevention
+   - Functional layer only, no visual styling
+
+2. **ScBackdrop Component** (300ms fade animation)
+   - Reusable component from `components/backdrop`
+   - Fade effect via Tailwind animate classes
+   - Positioned with `-z-10` (behind dialog)
+   - Completion detected via `animationend` event (optional)
+
+3. **Dialog Content Animation** (300ms)
    - Zoom + Fade effects
    - Managed by Tailwind animate classes
-   - Completion detected via `animationend` event
+   - Completion detected via `animationend` event (triggers cleanup)
 
-2. **Backdrop Animation** (300ms)
-   - Fade effect
-   - Managed by CSS classes on CDK backdrop
-   - Timed with `setTimeout(300)`
+### Synchronization
 
-3. **Synchronization Layer**
-   - Ensures both complete before DOM cleanup
-   - Coordinates timing between content and backdrop
+Both ScBackdrop and Dialog animations:
+
+- Start simultaneously when `open` changes
+- Use same duration (300ms)
+- Respond to same `data-state` attribute
+- Inside same portal template (removed together)
 
 ### Dialog Content Animations
 
@@ -144,35 +156,38 @@ protected readonly class = computed(() =>
 4. Animation plays for 300ms
 5. `animationend` event fires
 
-### Backdrop Animations
+### ScBackdrop Component Animations
 
-Managed via CSS in `cdk.css`:
+Managed via ScBackdrop component from `components/backdrop`:
 
-```css
-/* Base state - hidden */
-.sc-backdrop {
-  @apply bg-black/10;
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
-}
-
-/* Entrance - CDK automatically adds this class */
-.cdk-overlay-backdrop-showing.sc-backdrop {
-  opacity: 1;
-}
-
-/* Exit - manually added by portal */
-.sc-backdrop-hiding {
-  opacity: 0 !important;
-}
+```typescript
+// In backdrop.ts
+protected readonly class = computed(() =>
+  cn(
+    'fixed inset-0 -z-10 bg-black/10',
+    'supports-backdrop-filter:backdrop-blur-xs',
+    'animate-in fade-in-0 duration-300',
+    'data-[state=closed]:animate-out',
+    'data-[state=closed]:fade-out-0',
+    'data-[state=closed]:duration-300',
+  ),
+);
 ```
 
 **Animation Flow:**
 
-1. Portal detects `open()` becomes `false`
-2. Adds `.sc-backdrop-hiding` class to backdrop element
-3. CSS transition triggers (300ms fade to opacity: 0)
-4. No event detection needed - timed with `setTimeout`
+1. Portal renders: `<div sc-backdrop [open]="provider.open()"></div>`
+2. ScBackdrop receives `open` input
+3. Sets `data-state` based on `open` value
+4. Tailwind applies appropriate animation classes
+5. `animationend` event fires (optional tracking)
+
+**Why Separate Component?**
+
+- Reusable across dialog, drawer, sheet, etc.
+- Consistent animation pattern
+- Single responsibility (visual layer only)
+- CDK backdrop handles functionality separately
 
 ## Complete Animation Timeline
 
