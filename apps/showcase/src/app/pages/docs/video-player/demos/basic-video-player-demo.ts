@@ -28,7 +28,7 @@ import {
 } from '@semantic-icons/lucide-icons';
 
 @Component({
-  selector: 'app-basic-video-player-demo',
+  selector: 'app-video-player-demo',
   imports: [
     ScVideoPlayer,
     ScVideoPlayerVideo,
@@ -152,7 +152,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicVideoPlayerDemo {
+export class VideoPlayerDemo {
   readonly sampleVideo =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   readonly samplePoster = 'https://picsum.photos/1280/720?random=1';

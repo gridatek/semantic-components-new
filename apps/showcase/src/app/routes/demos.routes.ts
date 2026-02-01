@@ -3847,63 +3847,7 @@ export const demosRoutes: Route[] = [
         path: 'basic-video-player-demo',
         loadComponent: () =>
           import('../pages/docs/video-player/demos/basic-video-player-demo').then(
-            (m) => m.BasicVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'multiple-sources-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/multiple-sources-video-player-demo').then(
-            (m) => m.MultipleSourcesVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'minimal-controls-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/minimal-controls-video-player-demo').then(
-            (m) => m.MinimalControlsVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'autoplay-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/autoplay-video-player-demo').then(
-            (m) => m.AutoplayVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'loop-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/loop-video-player-demo').then(
-            (m) => m.LoopVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'aspect-ratio-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/aspect-ratio-video-player-demo').then(
-            (m) => m.AspectRatioVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'controlled-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/controlled-video-player-demo').then(
-            (m) => m.ControlledVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'no-overlay-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/no-overlay-video-player-demo').then(
-            (m) => m.NoOverlayVideoPlayerDemo,
-          ),
-      },
-      {
-        path: 'keyboard-shortcuts-video-player-demo',
-        loadComponent: () =>
-          import('../pages/docs/video-player/demos/keyboard-shortcuts-video-player-demo').then(
-            (m) => m.KeyboardShortcutsVideoPlayerDemo,
+            (m) => m.VideoPlayerDemo,
           ),
       },
     ],

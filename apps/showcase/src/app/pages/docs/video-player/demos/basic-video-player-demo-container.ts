@@ -1,28 +1,28 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { BasicVideoPlayerDemo } from './basic-video-player-demo';
+import { VideoPlayerDemo } from './basic-video-player-demo';
 
 @Component({
-  selector: 'app-basic-video-player-demo-container',
-  imports: [DemoContainer, BasicVideoPlayerDemo],
+  selector: 'app-video-player-demo-container',
+  imports: [DemoContainer, VideoPlayerDemo],
   template: `
     <app-demo-container
-      title="Basic"
+      title="Demo Video Player"
       demoUrl="/demos/video-player/basic-video-player-demo"
       [code]="code"
     >
-      <app-basic-video-player-demo />
+      <app-video-player-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicVideoPlayerDemoContainer {
+export class VideoPlayerDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScVideoPlayer } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-basic-video-player-demo',
+  selector: 'app-video-player-demo',
   imports: [ScVideoPlayer],
   template: \`
     <sc-video-player
@@ -33,7 +33,7 @@ import { ScVideoPlayer } from '@semantic-components/ui';
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicVideoPlayerDemo {
+export class VideoPlayerDemo {
   readonly sampleVideo =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   readonly samplePoster = 'https://picsum.photos/1280/720?random=1';
