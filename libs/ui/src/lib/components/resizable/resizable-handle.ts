@@ -2,96 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  contentChildren,
-  Directive,
   ElementRef,
   inject,
   input,
-  signal,
 } from '@angular/core';
 import { cn } from '../../utils';
-
-export type ResizableDirection = 'horizontal' | 'vertical';
-
-@Directive({
-  selector: '[sc-resizable-panel-group]',
-  host: {
-    'data-slot': 'resizable-panel-group',
-    'data-panel-group': '',
-    '[class]': 'class()',
-    '[attr.data-direction]': 'direction()',
-  },
-})
-export class ScResizablePanelGroup {
-  readonly classInput = input<string>('', { alias: 'class' });
-  readonly direction = input<ResizableDirection>('horizontal');
-
-  private readonly panels = contentChildren(ScResizablePanel, {
-    descendants: true,
-  });
-  private readonly handles = contentChildren(ScResizableHandle, {
-    descendants: true,
-  });
-
-  protected readonly class = computed(() =>
-    cn('flex size-full data-[direction=vertical]:flex-col', this.classInput()),
-  );
-
-  getPanels() {
-    return this.panels();
-  }
-
-  getHandles() {
-    return this.handles();
-  }
-}
-
-@Directive({
-  selector: '[sc-resizable-panel]',
-  host: {
-    'data-slot': 'resizable-panel',
-    'data-panel': '',
-    '[class]': 'class()',
-    '[style.flex-grow]': 'size()',
-    '[style.flex-shrink]': '1',
-    '[style.flex-basis]': '"0%"',
-    '[style.min-width]':
-      'group.direction() === "horizontal" ? minSizePx() : undefined',
-    '[style.min-height]':
-      'group.direction() === "vertical" ? minSizePx() : undefined',
-    '[style.max-width]':
-      'group.direction() === "horizontal" ? maxSizePx() : undefined',
-    '[style.max-height]':
-      'group.direction() === "vertical" ? maxSizePx() : undefined',
-  },
-})
-export class ScResizablePanel {
-  readonly group = inject(ScResizablePanelGroup);
-
-  readonly classInput = input<string>('', { alias: 'class' });
-  readonly defaultSize = input<number>(50);
-  readonly minSize = input<number>(10);
-  readonly maxSize = input<number>(90);
-
-  readonly size = signal<number>(this.defaultSize());
-
-  protected readonly class = computed(() =>
-    cn('overflow-hidden', this.classInput()),
-  );
-
-  protected readonly minSizePx = computed(() => `${this.minSize()}%`);
-  protected readonly maxSizePx = computed(() => `${this.maxSize()}%`);
-
-  constructor() {
-    // Initialize size from defaultSize
-    this.size.set(this.defaultSize());
-  }
-
-  setSize(newSize: number): void {
-    const clamped = Math.max(this.minSize(), Math.min(this.maxSize(), newSize));
-    this.size.set(clamped);
-  }
-}
+import { ScResizablePanelGroup } from './resizable-panel-group';
 
 @Component({
   selector: '[sc-resizable-handle]',
