@@ -12,6 +12,12 @@ export class ScAlertDialogHeader {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('flex flex-col gap-2 text-center sm:text-left', this.classInput()),
+    cn(
+      'grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center',
+      'has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4',
+      'sm:place-items-start sm:text-left',
+      'sm:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr]',
+      this.classInput(),
+    ),
   );
 }

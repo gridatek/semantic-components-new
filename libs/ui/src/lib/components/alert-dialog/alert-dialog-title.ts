@@ -15,6 +15,6 @@ export class ScAlertDialogTitle {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('text-lg font-semibold', this.classInput()),
+    cn('text-base font-medium', this.classInput()),
   );
 }

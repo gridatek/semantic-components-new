@@ -6,5 +6,6 @@ export { ScAlertDialogHeader } from './alert-dialog-header';
 export { ScAlertDialogTitle } from './alert-dialog-title';
 export { ScAlertDialogDescription } from './alert-dialog-description';
 export { ScAlertDialogFooter } from './alert-dialog-footer';
+export { ScAlertDialogMedia } from './alert-dialog-media';
 export { ScAlertDialogCancel } from './alert-dialog-cancel';
 export { ScAlertDialogAction } from './alert-dialog-action';

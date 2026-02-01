@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScAlertDialogProvider } from './alert-dialog-provider';
-import { firstValueFrom, timer } from 'rxjs';
 
 @Component({
   selector: 'div[sc-alert-dialog-portal]',
@@ -52,14 +51,35 @@ export class ScAlertDialogPortal {
     scrollStrategy: this.overlay.scrollStrategies.block(),
   });
 
+  private backdropAnimationTimeout: ReturnType<typeof setTimeout> | null = null;
+
   protected readonly class = computed(() => cn('', this.classInput()));
 
   constructor() {
+    // Use overlayOpen instead of open to delay DOM removal until animation completes
     effect(() => {
-      if (this.alertDialogProvider.open()) {
+      if (this.alertDialogProvider.overlayOpen()) {
         this.attachDialog();
       } else {
-        this.detachDialogWithAnimation();
+        this.detachDialog();
+      }
+    });
+
+    // Sync backdrop animation with open state (not overlayOpen)
+    effect(() => {
+      const backdrop = this.overlayRef.backdropElement;
+      if (backdrop) {
+        if (this.alertDialogProvider.open()) {
+          // Opening: Remove hiding class and cancel any pending timeout
+          backdrop.classList.remove('sc-backdrop-hiding');
+          if (this.backdropAnimationTimeout) {
+            clearTimeout(this.backdropAnimationTimeout);
+            this.backdropAnimationTimeout = null;
+          }
+        } else {
+          // Closing: Add hiding class and wait 300ms for backdrop animation
+          backdrop.classList.add('sc-backdrop-hiding');
+        }
       }
     });
   }
@@ -74,16 +94,8 @@ export class ScAlertDialogPortal {
     }
   }
 
-  private async detachDialogWithAnimation() {
+  private detachDialog(): void {
     if (this.overlayRef.hasAttached()) {
-      const backdrop = this.overlayRef.backdropElement;
-
-      // Start the fade out
-      backdrop?.classList.add('sc-backdrop-hiding');
-
-      // Wait for the CSS transition (300ms)
-      await firstValueFrom(timer(300));
-
       this.overlayRef.detach();
     }
   }

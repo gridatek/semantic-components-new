@@ -1,10 +1,16 @@
 /* 1. Define the base state of the backdrop */
 .sc-backdrop {
-  @apply bg-black/80 backdrop-blur-sm;
+  @apply bg-black/10;
 
   /* Initial state for the entrance transition */
   opacity: 0;
   transition: opacity 300ms ease-in-out;
+}
+
+@supports (backdrop-filter: blur(0)) {
+  .sc-backdrop {
+    backdrop-filter: blur(2px);
+  }
 }
 
 /* 2. The "Entrance" state (Applied automatically by Angular CDK) */
