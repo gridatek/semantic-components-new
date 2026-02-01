@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { VideoPlayerDemoContainer } from './demos/basic-video-player-demo-container';
+import { VideoPlayerDemoContainer } from './demos/video-player-demo-container';
 
 @Component({
   selector: 'app-video-player-page',

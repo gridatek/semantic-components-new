@@ -3846,7 +3846,7 @@ export const demosRoutes: Route[] = [
       {
         path: 'basic-video-player-demo',
         loadComponent: () =>
-          import('../pages/docs/video-player/demos/basic-video-player-demo').then(
+          import('../pages/docs/video-player/demos/video-player-demo').then(
             (m) => m.VideoPlayerDemo,
           ),
       },

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { VideoPlayerDemo } from './basic-video-player-demo';
+import { VideoPlayerDemo } from './video-player-demo';
 
 @Component({
   selector: 'app-video-player-demo-container',
