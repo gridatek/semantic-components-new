@@ -7,13 +7,13 @@ A simple directive-based tooltip for displaying text hints on hover or focus.
 ### Basic Usage
 
 ```html
-<button scTooltip="Save changes">Save</button>
+<button scTooltipTrigger="Save changes">Save</button>
 ```
 
 ### With Position
 
 ```html
-<button scTooltip="Save changes" tooltipPosition="right">Save</button>
+<button scTooltipTrigger="Save changes" tooltipPosition="right">Save</button>
 ```
 
 Available positions: `top` (default), `right`, `bottom`, `left`
@@ -21,25 +21,25 @@ Available positions: `top` (default), `right`, `bottom`, `left`
 ### With Custom Delay
 
 ```html
-<button scTooltip="Save changes" [tooltipDelay]="500">Save</button>
+<button scTooltipTrigger="Save changes" [tooltipDelay]="500">Save</button>
 ```
 
 ### With Hide Delay
 
 ```html
-<button scTooltip="Save changes" [tooltipHideDelay]="200">Save</button>
+<button scTooltipTrigger="Save changes" [tooltipHideDelay]="200">Save</button>
 ```
 
 ### Disabled State
 
 ```html
-<button scTooltip="Save changes" [tooltipDisabled]="isDisabled">Save</button>
+<button scTooltipTrigger="Save changes" [tooltipDisabled]="isDisabled">Save</button>
 ```
 
 ### Custom Styling
 
 ```html
-<button scTooltip="Save changes" tooltipClass="my-custom-tooltip">Save</button>
+<button scTooltipTrigger="Save changes" tooltipClass="my-custom-tooltip">Save</button>
 ```
 
 ## API Reference
@@ -48,7 +48,7 @@ Available positions: `top` (default), `right`, `bottom`, `left`
 
 | Input              | Alias       | Type                                     | Default | Description                                     |
 | ------------------ | ----------- | ---------------------------------------- | ------- | ----------------------------------------------- |
-| `scTooltip`        | -           | `string`                                 | -       | The tooltip text content (required)             |
+| `scTooltipTrigger` | -           | `string`                                 | -       | The tooltip text content (required)             |
 | `tooltipPosition`  | `position`  | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'` | Position of the tooltip relative to the trigger |
 | `tooltipDelay`     | `showDelay` | `number`                                 | `200`   | Delay before showing the tooltip (ms)           |
 | `tooltipHideDelay` | `hideDelay` | `number`                                 | `0`     | Delay before hiding the tooltip (ms)            |
@@ -93,8 +93,8 @@ Use **Hovercard** instead for:
 
 The tooltip consists of three main parts:
 
-- **`ScTooltip`** (directive) - Attaches to trigger elements, handles user interactions
+- **`ScTooltipTrigger`** (directive) - Attaches to trigger elements, handles user interactions (used via `[scTooltipTrigger]` attribute)
 - **`ScTooltipManager`** (service) - Manages overlay lifecycle, ensures singleton behavior
-- **`ScTooltipOverlay`** (component) - The visual tooltip overlay with content and styling
+- **`ScTooltip`** (component) - The visual tooltip component with content and styling
 
 See [ANIMATIONS.md](./ANIMATIONS.md) for details on how animations work.

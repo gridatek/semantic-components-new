@@ -12,7 +12,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ScTooltipOverlay, SC_TOOLTIP_DATA } from './tooltip-overlay';
+import { ScTooltip, SC_TOOLTIP_DATA } from './tooltip';
 
 export type ScTooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
@@ -97,7 +97,7 @@ export class ScTooltipManager {
   private readonly destroyRef = inject(DestroyRef);
 
   private overlayRef: OverlayRef | null = null;
-  private tooltipRef: ComponentRef<ScTooltipOverlay> | null = null;
+  private tooltipRef: ComponentRef<ScTooltip> | null = null;
   private currentTooltipId: string | null = null;
   private hideTimeout: ReturnType<typeof setTimeout> | null = null;
 
@@ -154,7 +154,7 @@ export class ScTooltipManager {
       parent: this.injector,
     });
 
-    const portal = new ComponentPortal(ScTooltipOverlay, null, tooltipInjector);
+    const portal = new ComponentPortal(ScTooltip, null, tooltipInjector);
 
     this.tooltipRef = this.overlayRef.attach(portal);
   }

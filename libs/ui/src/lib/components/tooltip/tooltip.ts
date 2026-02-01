@@ -1,148 +1,56 @@
 import {
-  DestroyRef,
-  Directive,
-  effect,
-  ElementRef,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
   inject,
-  input,
+  InjectionToken,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
-import { _IdGenerator } from '@angular/cdk/a11y';
-import { ScTooltipManager, ScTooltipPosition } from './tooltip-manager';
+import { cn } from '../../utils';
 
-@Directive({
-  selector: '[scTooltip]',
+export interface ScTooltipData {
+  content: string;
+  tooltipClass: string;
+  tooltipId: string;
+}
+
+export const SC_TOOLTIP_DATA = new InjectionToken<ScTooltipData>(
+  'SC_TOOLTIP_DATA',
+);
+
+type ScTooltipState = 'open' | 'closed';
+
+@Component({
+  selector: 'sc-tooltip',
+  template: `
+    {{ data.content }}
+  `,
   host: {
-    '(mouseenter)': 'onMouseEnter()',
-    '(mouseleave)': 'onMouseLeave()',
-    '(focus)': 'onFocus()',
-    '(blur)': 'onBlur()',
-    '[attr.aria-describedby]': 'ariaDescribedBy()',
+    'data-slot': 'tooltip',
+    role: 'tooltip',
+    'aria-live': 'polite',
+    'aria-atomic': 'true',
+    '[id]': 'data.tooltipId',
+    '[class]': 'hostClass()',
+    '[attr.data-state]': 'state()',
   },
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTooltip {
-  private readonly tooltipManager = inject(ScTooltipManager);
-  private readonly elementRef = inject(ElementRef);
-  private readonly destroyRef = inject(DestroyRef);
-  private readonly idGenerator = inject(_IdGenerator);
+  readonly data = inject(SC_TOOLTIP_DATA);
+  readonly state = signal<ScTooltipState>('open');
 
-  /** The tooltip text content */
-  readonly content = input.required<string>({ alias: 'scTooltip' });
+  protected readonly hostClass = computed(() =>
+    cn(
+      'bg-primary text-primary-foreground z-50 rounded-md px-3 py-1.5 text-xs max-w-xs',
+      'animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+      this.data.tooltipClass,
+    ),
+  );
 
-  /** Position of the tooltip relative to the trigger element */
-  readonly position = input<ScTooltipPosition>('top', {
-    alias: 'tooltipPosition',
-  });
-
-  /** Delay before showing the tooltip in milliseconds */
-  readonly showDelay = input<number>(200, { alias: 'tooltipDelay' });
-
-  /** Delay before hiding the tooltip in milliseconds */
-  readonly hideDelay = input<number>(0, { alias: 'tooltipHideDelay' });
-
-  /** Whether the tooltip is disabled */
-  readonly disabled = input<boolean>(false, { alias: 'tooltipDisabled' });
-
-  /** Custom CSS class for the tooltip */
-  readonly tooltipClass = input<string>('', { alias: 'tooltipClass' });
-
-  private readonly tooltipId = this.idGenerator.getId('sc-tooltip-');
-  private showTimeout: ReturnType<typeof setTimeout> | null = null;
-  private hideTimeout: ReturnType<typeof setTimeout> | null = null;
-  private readonly isVisible = signal(false);
-
-  protected readonly ariaDescribedBy = () =>
-    this.isVisible() ? this.tooltipId : null;
-
-  constructor() {
-    // Effect to hide tooltip when content becomes empty
-    effect(() => {
-      if (!this.content() && this.isVisible()) {
-        this.hide();
-      }
-    });
-
-    // Cleanup on destroy
-    this.destroyRef.onDestroy(() => {
-      this.cancelTimers();
-      this.hide();
-    });
-  }
-
-  protected onMouseEnter(): void {
-    this.scheduleShow();
-  }
-
-  protected onMouseLeave(): void {
-    this.scheduleHide();
-  }
-
-  protected onFocus(): void {
-    this.scheduleShow();
-  }
-
-  protected onBlur(): void {
-    this.scheduleHide();
-  }
-
-  private scheduleShow(): void {
-    if (this.disabled() || !this.content()) {
-      return;
-    }
-
-    this.cancelTimers();
-
-    const delay = this.showDelay();
-    if (delay > 0) {
-      this.showTimeout = setTimeout(() => this.show(), delay);
-    } else {
-      this.show();
-    }
-  }
-
-  private scheduleHide(): void {
-    this.cancelTimers();
-
-    const delay = this.hideDelay();
-    if (delay > 0) {
-      this.hideTimeout = setTimeout(() => this.hide(), delay);
-    } else {
-      this.hide();
-    }
-  }
-
-  private show(): void {
-    if (this.disabled() || !this.content()) {
-      return;
-    }
-
-    this.tooltipManager.show(
-      this.elementRef,
-      {
-        content: this.content(),
-        position: this.position(),
-        tooltipClass: this.tooltipClass(),
-      },
-      this.tooltipId,
-    );
-    this.isVisible.set(true);
-  }
-
-  private hide(): void {
-    if (this.tooltipManager.isTooltipVisible(this.tooltipId)) {
-      this.tooltipManager.hide();
-    }
-    this.isVisible.set(false);
-  }
-
-  private cancelTimers(): void {
-    if (this.showTimeout) {
-      clearTimeout(this.showTimeout);
-      this.showTimeout = null;
-    }
-    if (this.hideTimeout) {
-      clearTimeout(this.hideTimeout);
-      this.hideTimeout = null;
-    }
+  close(): void {
+    this.state.set('closed');
   }
 }

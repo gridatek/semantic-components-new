@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltip } from '@semantic-components/ui';
+import { ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-icon-button-tooltip-demo',
-  imports: [ScTooltip],
+  imports: [ScTooltipTrigger],
   template: `
     <button
-      scTooltip="Add item"
+      scTooltipTrigger="Add item"
       class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border border-input bg-background text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <svg

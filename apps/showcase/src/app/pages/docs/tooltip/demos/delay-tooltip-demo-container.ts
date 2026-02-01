@@ -19,28 +19,28 @@ import { DelayTooltipDemo } from './delay-tooltip-demo';
 })
 export class DelayTooltipDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTooltip } from '@semantic-components/ui';
+import { ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-delay-tooltip-demo',
-  imports: [ScTooltip],
+  imports: [ScTooltipTrigger],
   template: \`
     <div class="flex flex-wrap items-center gap-4">
       <button
-        scTooltip="Instant tooltip (no delay)"
+        scTooltipTrigger="Instant tooltip (no delay)"
         [tooltipDelay]="0"
         class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         No delay
       </button>
       <button
-        scTooltip="Default delay (200ms)"
+        scTooltipTrigger="Default delay (200ms)"
         class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         Default (200ms)
       </button>
       <button
-        scTooltip="Slow tooltip (500ms)"
+        scTooltipTrigger="Slow tooltip (500ms)"
         [tooltipDelay]="500"
         class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >

@@ -16,7 +16,7 @@ The tooltip overlay has two states:
 type ScTooltipState = 'open' | 'closed';
 ```
 
-The state is managed by a signal in `ScTooltipOverlay`:
+The state is managed by a signal in `ScTooltip`:
 
 ```typescript
 readonly state = signal<ScTooltipState>('open');
@@ -70,7 +70,7 @@ this.tooltipRef.instance.close();
 **Step 2**: Overlay component sets state to 'closed'
 
 ```typescript
-// ScTooltipOverlay.close()
+// ScTooltip.close()
 close(): void {
   this.state.set('closed');
 }
@@ -203,7 +203,7 @@ Use the `tooltipClass` input to add custom animations:
 
 ### Disable Animations
 
-Remove animation classes from `ScTooltipOverlay.hostClass`:
+Remove animation classes from `ScTooltip.hostClass`:
 
 ```typescript
 protected readonly hostClass = computed(() =>
@@ -234,7 +234,7 @@ To debug animation issues:
 1. **Check State Transitions**
 
    ```typescript
-   // Add logging in ScTooltipOverlay
+   // Add logging in ScTooltip
    close(): void {
      console.log('Tooltip closing, state:', this.state());
      this.state.set('closed');
