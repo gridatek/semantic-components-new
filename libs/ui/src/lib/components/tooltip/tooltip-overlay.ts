@@ -15,30 +15,43 @@ export interface ScTooltipData {
   tooltipId: string;
 }
 
-export const SC_TOOLTIP_DATA = new InjectionToken<ScTooltipData>('SC_TOOLTIP_DATA');
+export const SC_TOOLTIP_DATA = new InjectionToken<ScTooltipData>(
+  'SC_TOOLTIP_DATA',
+);
+
+type TooltipState = 'open' | 'closed';
 
 @Component({
   selector: 'sc-tooltip-overlay',
-  template: `{{ data.content }}`,
+  template: `
+    {{ data.content }}
+  `,
   host: {
     'data-slot': 'tooltip-overlay',
     role: 'tooltip',
+    'aria-live': 'polite',
+    'aria-atomic': 'true',
     '[id]': 'data.tooltipId',
     '[class]': 'hostClass()',
+    '[attr.data-state]': 'state()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTooltipOverlay {
-  readonly visible = signal(false);
+  readonly state = signal<TooltipState>('open');
 
   protected readonly hostClass = computed(() =>
     cn(
       'bg-primary text-primary-foreground z-50 rounded-md px-3 py-1.5 text-xs max-w-xs',
       'animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-      this.data.tooltipClass
-    )
+      this.data.tooltipClass,
+    ),
   );
 
   constructor(@Inject(SC_TOOLTIP_DATA) public data: ScTooltipData) {}
+
+  close(): void {
+    this.state.set('closed');
+  }
 }

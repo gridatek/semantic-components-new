@@ -5,7 +5,6 @@ import {
   ElementRef,
   inject,
   input,
-  OnInit,
   signal,
 } from '@angular/core';
 import { ScTooltipPosition, ScTooltipService } from './tooltip.service';
@@ -22,7 +21,7 @@ let tooltipIdCounter = 0;
     '[attr.aria-describedby]': 'ariaDescribedBy()',
   },
 })
-export class ScTooltip implements OnInit {
+export class ScTooltip {
   private readonly tooltipService = inject(ScTooltipService);
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
@@ -31,7 +30,9 @@ export class ScTooltip implements OnInit {
   readonly content = input.required<string>({ alias: 'scTooltip' });
 
   /** Position of the tooltip relative to the trigger element */
-  readonly position = input<ScTooltipPosition>('top', { alias: 'tooltipPosition' });
+  readonly position = input<ScTooltipPosition>('top', {
+    alias: 'tooltipPosition',
+  });
 
   /** Delay before showing the tooltip in milliseconds */
   readonly showDelay = input<number>(200, { alias: 'tooltipDelay' });
@@ -54,19 +55,17 @@ export class ScTooltip implements OnInit {
     this.isVisible() ? this.tooltipId : null;
 
   constructor() {
-    // Cleanup on destroy
-    this.destroyRef.onDestroy(() => {
-      this.cancelTimers();
-      this.hide();
-    });
-  }
-
-  ngOnInit(): void {
     // Effect to hide tooltip when content becomes empty
     effect(() => {
       if (!this.content() && this.isVisible()) {
         this.hide();
       }
+    });
+
+    // Cleanup on destroy
+    this.destroyRef.onDestroy(() => {
+      this.cancelTimers();
+      this.hide();
     });
   }
 
@@ -124,7 +123,7 @@ export class ScTooltip implements OnInit {
         position: this.position(),
         tooltipClass: this.tooltipClass(),
       },
-      this.tooltipId
+      this.tooltipId,
     );
     this.isVisible.set(true);
   }
