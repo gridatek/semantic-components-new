@@ -37,6 +37,7 @@ export class ScCarouselPrevious {
       'border border-input bg-background',
       'hover:bg-accent hover:text-accent-foreground',
       'disabled:pointer-events-none disabled:opacity-50',
+      '[&_svg]:size-4',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       isHorizontal
         ? 'top-1/2 -left-12 -translate-y-1/2'
