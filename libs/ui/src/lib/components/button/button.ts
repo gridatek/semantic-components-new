@@ -46,19 +46,12 @@ export type ScButtonVariants = VariantProps<typeof buttonVariants>;
   host: {
     'data-slot': 'button',
     '[class]': 'class()',
-    '[attr.href]': 'isAnchor() ? "#" : null',
   },
 })
 export class ScButton {
-  private readonly elementRef = inject(ElementRef<HTMLElement>);
-
   readonly classInput = input<string>('', { alias: 'class' });
   readonly variant = input<ScButtonVariants['variant']>('default');
   readonly size = input<ScButtonVariants['size']>('default');
-
-  protected readonly isAnchor = computed(
-    () => this.elementRef.nativeElement.tagName === 'A',
-  );
 
   protected readonly class = computed(() =>
     cn(
