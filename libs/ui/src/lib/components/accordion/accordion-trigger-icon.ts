@@ -5,6 +5,7 @@ import { cn } from '../../utils';
 @Directive({
   selector: 'svg[sc-accordion-trigger-icon]',
   host: {
+    'data-slot': 'accordion-trigger-icon',
     '[class]': 'class()',
   },
 })
