@@ -2,13 +2,13 @@ import { Directive, computed, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: 'button[scx-sidebar-group-action]',
+  selector: 'button[sc-sidebar-group-action]',
   host: {
     'data-slot': 'sidebar-group-action',
     '[class]': 'class()',
   },
 })
-export class ScxSidebarGroupAction {
+export class ScSidebarGroupAction {
   readonly classInput = input<string>('', { alias: 'class' });
 
   readonly asChild = input<boolean>(false);

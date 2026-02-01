@@ -7,8 +7,7 @@ const sizeStyles: Record<'sm' | 'md', string> = {
 };
 
 @Directive({
-  selector:
-    'a[scx-sidebar-menu-sub-button], button[scx-sidebar-menu-sub-button]',
+  selector: 'a[sc-sidebar-menu-sub-button], button[sc-sidebar-menu-sub-button]',
   host: {
     'data-slot': 'sidebar-menu-sub-button',
     '[class]': 'class()',
@@ -16,7 +15,7 @@ const sizeStyles: Record<'sm' | 'md', string> = {
     '[attr.data-size]': 'size()',
   },
 })
-export class ScxSidebarMenuSubButton {
+export class ScSidebarMenuSubButton {
   readonly classInput = input<string>('', { alias: 'class' });
 
   readonly size = input<'sm' | 'md'>('md');

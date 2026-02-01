@@ -6,38 +6,38 @@ A comprehensive sidebar component system for Angular applications with collapsib
 
 ### Core Components
 
-- `ScxSidebarProvider` - Root provider component with state management
-- `ScxSidebar` - Main sidebar container
-- `ScxSidebarTrigger` - Toggle button
-- `ScxSidebarRail` - Resize handle for collapsing/expanding
-- `ScxSidebarInset` - Main content wrapper
+- `ScSidebarProvider` - Root provider component with state management
+- `ScSidebar` - Main sidebar container
+- `ScSidebarTrigger` - Toggle button
+- `ScSidebarRail` - Resize handle for collapsing/expanding
+- `ScSidebarInset` - Main content wrapper
 
 ### Layout Components
 
-- `ScxSidebarHeader` - Header section
-- `ScxSidebarFooter` - Footer section
-- `ScxSidebarContent` - Scrollable content area
-- `ScxSidebarSeparator` - Visual separator
-- `ScxSidebarInput` - Styled input for search
+- `ScSidebarHeader` - Header section
+- `ScSidebarFooter` - Footer section
+- `ScSidebarContent` - Scrollable content area
+- `ScSidebarSeparator` - Visual separator
+- `ScSidebarInput` - Styled input for search
 
 ### Menu Components
 
-- `ScxSidebarMenu` - Menu list container (ul)
-- `ScxSidebarMenuItem` - Menu list item (li)
-- `ScxSidebarMenuButton` - Menu button/link (works with both button and a elements)
-- `ScxSidebarMenuAction` - Action button on menu items
-- `ScxSidebarMenuBadge` - Badge/counter display
-- `ScxSidebarMenuSkeleton` - Loading skeleton
-- `ScxSidebarMenuSub` - Submenu container (ul)
-- `ScxSidebarMenuSubItem` - Submenu item (li)
-- `ScxSidebarMenuSubButton` - Submenu button/link
+- `ScSidebarMenu` - Menu list container (ul)
+- `ScSidebarMenuItem` - Menu list item (li)
+- `ScSidebarMenuButton` - Menu button/link (works with both button and a elements)
+- `ScSidebarMenuAction` - Action button on menu items
+- `ScSidebarMenuBadge` - Badge/counter display
+- `ScSidebarMenuSkeleton` - Loading skeleton
+- `ScSidebarMenuSub` - Submenu container (ul)
+- `ScSidebarMenuSubItem` - Submenu item (li)
+- `ScSidebarMenuSubButton` - Submenu button/link
 
 ### Group Components
 
-- `ScxSidebarGroup` - Group container
-- `ScxSidebarGroupLabel` - Group header/label
-- `ScxSidebarGroupAction` - Action button for groups
-- `ScxSidebarGroupContent` - Group content wrapper
+- `ScSidebarGroup` - Group container
+- `ScSidebarGroupLabel` - Group header/label
+- `ScSidebarGroupAction` - Action button for groups
+- `ScSidebarGroupContent` - Group content wrapper
 
 ## Features
 
@@ -56,9 +56,9 @@ The sidebar uses a clever layout technique to push content to the side instead o
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│ ScxSidebarProvider (flex container)                     │
+│ ScSidebarProvider (flex container)                     │
 │ ┌─────────────────────┬─────────────────────────────┐   │
-│ │  ScxSidebar         │  ScxSidebarInset            │   │
+│ │  ScSidebar         │  ScSidebarInset            │   │
 │ │ ┌─────────────────┐ │  (main content)             │   │
 │ │ │ Gap Div         │ │                             │   │
 │ │ │ • Width: 16rem  │ │  <header>                   │   │
@@ -88,36 +88,36 @@ This architecture ensures smooth transitions and proper content flow without Jav
 ## Basic Usage
 
 ```typescript
-import { ScxSidebarProvider, ScxSidebar, ScxSidebarTrigger, ScxSidebarHeader, ScxSidebarContent, ScxSidebarFooter, ScxSidebarMenu, ScxSidebarMenuItem, ScxSidebarMenuButton, ScxSidebarInset } from '@semantic-components/ui';
+import { ScSidebarProvider, ScSidebar, ScSidebarTrigger, ScSidebarHeader, ScSidebarContent, ScSidebarFooter, ScSidebarMenu, ScSidebarMenuItem, ScSidebarMenuButton, ScSidebarInset } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-layout',
   imports: [
-    ScxSidebarProvider,
-    ScxSidebar,
+    ScSidebarProvider,
+    ScSidebar,
     // ... other imports
   ],
   template: `
-    <div scx-sidebar-provider>
-      <div scx-sidebar>
-        <div scx-sidebar-header>
+    <div sc-sidebar-provider>
+      <div sc-sidebar>
+        <div sc-sidebar-header>
           <h2>My App</h2>
         </div>
 
-        <div scx-sidebar-content>
-          <ul scx-sidebar-menu>
-            <li scx-sidebar-menu-item>
-              <a scx-sidebar-menu-button routerLink="/dashboard">Dashboard</a>
+        <div sc-sidebar-content>
+          <ul sc-sidebar-menu>
+            <li sc-sidebar-menu-item>
+              <a sc-sidebar-menu-button routerLink="/dashboard">Dashboard</a>
             </li>
           </ul>
         </div>
 
-        <div scx-sidebar-footer>User Info</div>
+        <div sc-sidebar-footer>User Info</div>
       </div>
 
-      <main scx-sidebar-inset>
+      <main sc-sidebar-inset>
         <header>
-          <button scx-sidebar-trigger>Toggle</button>
+          <button sc-sidebar-trigger>Toggle</button>
         </header>
         <router-outlet />
       </main>
@@ -132,12 +132,12 @@ export class AppLayout {}
 ### With Submenu
 
 ```html
-<ul scx-sidebar-menu>
-  <li scx-sidebar-menu-item>
-    <a scx-sidebar-menu-button>Projects</a>
-    <ul scx-sidebar-menu-sub>
-      <li scx-sidebar-menu-sub-item>
-        <a scx-sidebar-menu-sub-button routerLink="/projects/1">Project 1</a>
+<ul sc-sidebar-menu>
+  <li sc-sidebar-menu-item>
+    <a sc-sidebar-menu-button>Projects</a>
+    <ul sc-sidebar-menu-sub>
+      <li sc-sidebar-menu-sub-item>
+        <a sc-sidebar-menu-sub-button routerLink="/projects/1">Project 1</a>
       </li>
     </ul>
   </li>
@@ -147,10 +147,10 @@ export class AppLayout {}
 ### With Groups
 
 ```html
-<div scx-sidebar-group>
-  <div scx-sidebar-group-label>Navigation</div>
-  <div scx-sidebar-group-content>
-    <ul scx-sidebar-menu>
+<div sc-sidebar-group>
+  <div sc-sidebar-group-label>Navigation</div>
+  <div sc-sidebar-group-content>
+    <ul sc-sidebar-menu>
       <!-- menu items -->
     </ul>
   </div>
@@ -161,11 +161,11 @@ export class AppLayout {}
 
 ```html
 <!-- Default sidebar -->
-<div scx-sidebar variant="sidebar" collapsible="icon">
+<div sc-sidebar variant="sidebar" collapsible="icon">
   <!-- Floating sidebar -->
-  <div scx-sidebar variant="floating" collapsible="icon">
+  <div sc-sidebar variant="floating" collapsible="icon">
     <!-- Inset sidebar -->
-    <div scx-sidebar variant="inset" collapsible="icon"></div>
+    <div sc-sidebar variant="inset" collapsible="icon"></div>
   </div>
 </div>
 ```
@@ -175,7 +175,7 @@ export class AppLayout {}
 ```typescript
 @Component({
   template: `
-    <div scx-sidebar-provider [(open)]="sidebarOpen">
+    <div sc-sidebar-provider [(open)]="sidebarOpen">
       <!-- sidebar content -->
     </div>
   `,
@@ -203,19 +203,19 @@ The sidebar uses CSS variables that can be customized:
 
 ### Props
 
-#### ScxSidebar
+#### ScSidebar
 
 - `side` - 'left' | 'right' (default: 'left')
 - `variant` - 'sidebar' | 'floating' | 'inset' (default: 'sidebar')
 - `collapsible` - 'offcanvas' | 'icon' | 'none' (default: 'offcanvas')
 
-#### ScxSidebarMenuButton
+#### ScSidebarMenuButton
 
 - `size` - 'default' | 'sm' | 'lg' (default: 'default')
 - `isActive` - boolean (default: false)
 - `tooltip` - string (optional)
 
-#### ScxSidebarMenuSubButton
+#### ScSidebarMenuSubButton
 
 - `size` - 'sm' | 'md' (default: 'md')
 - `isActive` - boolean (default: false)
@@ -230,7 +230,7 @@ The sidebar state is automatically saved to a cookie (`sidebar_state`) with a 7-
 
 ## Mobile Behavior
 
-On screens smaller than 768px (md breakpoint), the sidebar automatically switches to a sheet drawer that slides in from the side using the `ScSheetProvider`, `ScSheetPortal`, and `ScSheet` components. The `ScxSidebarTrigger` automatically handles mobile vs desktop toggle logic.
+On screens smaller than 768px (md breakpoint), the sidebar automatically switches to a sheet drawer that slides in from the side using the `ScSheetProvider`, `ScSheetPortal`, and `ScSheet` components. The `ScSidebarTrigger` automatically handles mobile vs desktop toggle logic.
 
 ### Mobile Implementation Details
 

@@ -8,10 +8,10 @@ import {
   ScSheetPortal,
   ScSheetProvider,
 } from '../sheet';
-import { ScxSidebarState } from './sidebar-state.service';
+import { ScSidebarState } from './sidebar-state.service';
 
 @Component({
-  selector: 'div[scx-sidebar]',
+  selector: 'div[sc-sidebar]',
   imports: [
     ScSheetProvider,
     ScSheetPortal,
@@ -66,8 +66,8 @@ import { ScxSidebarState } from './sidebar-state.service';
     '[attr.data-collapsible]': 'collapsible()',
   },
 })
-export class ScxSidebar {
-  readonly state = inject(ScxSidebarState);
+export class ScSidebar {
+  readonly state = inject(ScSidebarState);
 
   readonly side = input<'left' | 'right'>('left');
   readonly variant = input<'sidebar' | 'floating' | 'inset'>('sidebar');

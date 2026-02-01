@@ -2,13 +2,13 @@ import { Directive, computed, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: 'div[scx-sidebar-header]',
+  selector: 'div[sc-sidebar-header]',
   host: {
     'data-slot': 'sidebar-header',
     '[class]': 'class()',
   },
 })
-export class ScxSidebarHeader {
+export class ScSidebarHeader {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

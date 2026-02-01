@@ -1,17 +1,17 @@
 import { Directive, computed, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScxSidebarState } from './sidebar-state.service';
+import { ScSidebarState } from './sidebar-state.service';
 
 @Directive({
-  selector: 'button[scx-sidebar-trigger]',
+  selector: 'button[sc-sidebar-trigger]',
   host: {
     'data-slot': 'sidebar-trigger',
     '[class]': 'class()',
     '(click)': 'onClick($event)',
   },
 })
-export class ScxSidebarTrigger {
-  readonly state = inject(ScxSidebarState);
+export class ScSidebarTrigger {
+  readonly state = inject(ScSidebarState);
 
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -1,64 +1,64 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ScxSidebarProvider,
-  ScxSidebar,
-  ScxSidebarTrigger,
-  ScxSidebarHeader,
-  ScxSidebarContent,
-  ScxSidebarFooter,
-  ScxSidebarMenu,
-  ScxSidebarMenuItem,
-  ScxSidebarMenuButton,
-  ScxSidebarMenuSub,
-  ScxSidebarMenuSubItem,
-  ScxSidebarMenuSubButton,
-  ScxSidebarInset,
-  ScxSidebarGroup,
-  ScxSidebarGroupLabel,
-  ScxSidebarGroupContent,
-  ScxSidebarGroupAction,
-  ScxSidebarRail,
-  ScxSidebarSeparator,
-  ScxSidebarInput,
-  ScxSidebarMenuAction,
-  ScxSidebarMenuBadge,
-  ScxSidebarMenuSkeleton,
+  ScSidebarProvider,
+  ScSidebar,
+  ScSidebarTrigger,
+  ScSidebarHeader,
+  ScSidebarContent,
+  ScSidebarFooter,
+  ScSidebarMenu,
+  ScSidebarMenuItem,
+  ScSidebarMenuButton,
+  ScSidebarMenuSub,
+  ScSidebarMenuSubItem,
+  ScSidebarMenuSubButton,
+  ScSidebarInset,
+  ScSidebarGroup,
+  ScSidebarGroupLabel,
+  ScSidebarGroupContent,
+  ScSidebarGroupAction,
+  ScSidebarRail,
+  ScSidebarSeparator,
+  ScSidebarInput,
+  ScSidebarMenuAction,
+  ScSidebarMenuBadge,
+  ScSidebarMenuSkeleton,
 } from '@semantic-components/ui';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
-    ScxSidebarProvider,
-    ScxSidebar,
-    ScxSidebarTrigger,
-    ScxSidebarHeader,
-    ScxSidebarContent,
-    ScxSidebarFooter,
-    ScxSidebarMenu,
-    ScxSidebarMenuItem,
-    ScxSidebarMenuButton,
-    ScxSidebarMenuSub,
-    ScxSidebarMenuSubItem,
-    ScxSidebarMenuSubButton,
-    ScxSidebarInset,
-    ScxSidebarGroup,
-    ScxSidebarGroupLabel,
-    ScxSidebarGroupContent,
-    ScxSidebarGroupAction,
-    ScxSidebarRail,
-    ScxSidebarSeparator,
-    ScxSidebarInput,
-    ScxSidebarMenuAction,
-    ScxSidebarMenuBadge,
-    ScxSidebarMenuSkeleton,
+    ScSidebarProvider,
+    ScSidebar,
+    ScSidebarTrigger,
+    ScSidebarHeader,
+    ScSidebarContent,
+    ScSidebarFooter,
+    ScSidebarMenu,
+    ScSidebarMenuItem,
+    ScSidebarMenuButton,
+    ScSidebarMenuSub,
+    ScSidebarMenuSubItem,
+    ScSidebarMenuSubButton,
+    ScSidebarInset,
+    ScSidebarGroup,
+    ScSidebarGroupLabel,
+    ScSidebarGroupContent,
+    ScSidebarGroupAction,
+    ScSidebarRail,
+    ScSidebarSeparator,
+    ScSidebarInput,
+    ScSidebarMenuAction,
+    ScSidebarMenuBadge,
+    ScSidebarMenuSkeleton,
     RouterLink,
     RouterLinkActive,
   ],
   template: `
-    <div scx-sidebar-provider class="min-h-screen">
-      <div scx-sidebar side="left" variant="sidebar" collapsible="icon">
-        <div scx-sidebar-header>
+    <div sc-sidebar-provider class="min-h-screen">
+      <div sc-sidebar side="left" variant="sidebar" collapsible="icon">
+        <div sc-sidebar-header>
           <div class="flex items-center gap-2 px-2 py-1">
             <div
               class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
@@ -86,17 +86,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
               </span>
             </div>
           </div>
-          <input scx-sidebar-input type="search" placeholder="Search..." />
+          <input sc-sidebar-input type="search" placeholder="Search..." />
         </div>
 
-        <div scx-sidebar-content>
-          <div scx-sidebar-group>
-            <div scx-sidebar-group-label>Platform</div>
-            <div scx-sidebar-group-content>
-              <ul scx-sidebar-menu>
-                <li scx-sidebar-menu-item>
+        <div sc-sidebar-content>
+          <div sc-sidebar-group>
+            <div sc-sidebar-group-label>Platform</div>
+            <div sc-sidebar-group-content>
+              <ul sc-sidebar-menu>
+                <li sc-sidebar-menu-item>
                   <a
-                    scx-sidebar-menu-button
+                    sc-sidebar-menu-button
                     routerLink="/dashboard"
                     routerLinkActive
                     #dashboardRla="routerLinkActive"
@@ -121,9 +121,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     <span>Dashboard</span>
                   </a>
                 </li>
-                <li scx-sidebar-menu-item>
+                <li sc-sidebar-menu-item>
                   <a
-                    scx-sidebar-menu-button
+                    sc-sidebar-menu-button
                     routerLink="/users"
                     routerLinkActive
                     #usersRla="routerLinkActive"
@@ -147,11 +147,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </svg>
                     <span>Users</span>
                   </a>
-                  <div scx-sidebar-menu-badge>12</div>
+                  <div sc-sidebar-menu-badge>12</div>
                 </li>
-                <li scx-sidebar-menu-item>
+                <li sc-sidebar-menu-item>
                   <a
-                    scx-sidebar-menu-button
+                    sc-sidebar-menu-button
                     routerLink="/settings"
                     routerLinkActive
                     #settingsRla="routerLinkActive"
@@ -175,7 +175,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </svg>
                     <span>Settings</span>
                   </a>
-                  <button scx-sidebar-menu-action [showOnHover]="true">
+                  <button sc-sidebar-menu-action [showOnHover]="true">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -197,11 +197,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </div>
           </div>
 
-          <div scx-sidebar-separator class="h-px"></div>
+          <div sc-sidebar-separator class="h-px"></div>
 
-          <div scx-sidebar-group>
-            <div scx-sidebar-group-label>Projects</div>
-            <button scx-sidebar-group-action>
+          <div sc-sidebar-group>
+            <div sc-sidebar-group-label>Projects</div>
+            <button sc-sidebar-group-action>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -217,10 +217,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                 <path d="M12 5v14" />
               </svg>
             </button>
-            <div scx-sidebar-group-content>
-              <ul scx-sidebar-menu>
-                <li scx-sidebar-menu-item>
-                  <a scx-sidebar-menu-button>
+            <div sc-sidebar-group-content>
+              <ul sc-sidebar-menu>
+                <li sc-sidebar-menu-item>
+                  <a sc-sidebar-menu-button>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -239,10 +239,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </svg>
                     <span>Design Engineering</span>
                   </a>
-                  <ul scx-sidebar-menu-sub>
-                    <li scx-sidebar-menu-sub-item>
+                  <ul sc-sidebar-menu-sub>
+                    <li sc-sidebar-menu-sub-item>
                       <a
-                        scx-sidebar-menu-sub-button
+                        sc-sidebar-menu-sub-button
                         routerLink="/projects/overview"
                         routerLinkActive
                         #overviewRla="routerLinkActive"
@@ -251,9 +251,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                         <span>Overview</span>
                       </a>
                     </li>
-                    <li scx-sidebar-menu-sub-item>
+                    <li sc-sidebar-menu-sub-item>
                       <a
-                        scx-sidebar-menu-sub-button
+                        sc-sidebar-menu-sub-button
                         routerLink="/projects/components"
                         routerLinkActive
                         #componentsRla="routerLinkActive"
@@ -262,9 +262,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                         <span>Components</span>
                       </a>
                     </li>
-                    <li scx-sidebar-menu-sub-item>
+                    <li sc-sidebar-menu-sub-item>
                       <a
-                        scx-sidebar-menu-sub-button
+                        sc-sidebar-menu-sub-button
                         routerLink="/projects/templates"
                         routerLinkActive
                         #templatesRla="routerLinkActive"
@@ -275,9 +275,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     </li>
                   </ul>
                 </li>
-                <li scx-sidebar-menu-item>
+                <li sc-sidebar-menu-item>
                   <a
-                    scx-sidebar-menu-button
+                    sc-sidebar-menu-button
                     routerLink="/projects/sales"
                     routerLinkActive
                     #salesRla="routerLinkActive"
@@ -302,9 +302,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                     <span>Sales & Marketing</span>
                   </a>
                 </li>
-                <li scx-sidebar-menu-item>
+                <li sc-sidebar-menu-item>
                   <a
-                    scx-sidebar-menu-button
+                    sc-sidebar-menu-button
                     routerLink="/projects/travel"
                     routerLinkActive
                     #travelRla="routerLinkActive"
@@ -333,27 +333,27 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </div>
           </div>
 
-          <div scx-sidebar-separator class="h-px"></div>
+          <div sc-sidebar-separator class="h-px"></div>
 
-          <div scx-sidebar-group>
-            <div scx-sidebar-group-label>Loading Example</div>
-            <div scx-sidebar-group-content>
-              <ul scx-sidebar-menu>
-                <li scx-sidebar-menu-item>
-                  <div scx-sidebar-menu-skeleton [showIcon]="true"></div>
+          <div sc-sidebar-group>
+            <div sc-sidebar-group-label>Loading Example</div>
+            <div sc-sidebar-group-content>
+              <ul sc-sidebar-menu>
+                <li sc-sidebar-menu-item>
+                  <div sc-sidebar-menu-skeleton [showIcon]="true"></div>
                 </li>
-                <li scx-sidebar-menu-item>
-                  <div scx-sidebar-menu-skeleton [showIcon]="true"></div>
+                <li sc-sidebar-menu-item>
+                  <div sc-sidebar-menu-skeleton [showIcon]="true"></div>
                 </li>
-                <li scx-sidebar-menu-item>
-                  <div scx-sidebar-menu-skeleton></div>
+                <li sc-sidebar-menu-item>
+                  <div sc-sidebar-menu-skeleton></div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div scx-sidebar-footer>
+        <div sc-sidebar-footer>
           <div class="flex items-center gap-2 px-2 py-1">
             <div
               class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-accent text-sidebar-accent-foreground"
@@ -382,13 +382,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           </div>
         </div>
 
-        <button scx-sidebar-rail></button>
+        <button sc-sidebar-rail></button>
       </div>
 
-      <main scx-sidebar-inset>
+      <main sc-sidebar-inset>
         <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <button
-            scx-sidebar-trigger
+            sc-sidebar-trigger
             class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9"
           >
             <svg

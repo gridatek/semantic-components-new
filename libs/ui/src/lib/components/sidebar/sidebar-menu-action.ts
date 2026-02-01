@@ -2,14 +2,14 @@ import { Directive, computed, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: 'button[scx-sidebar-menu-action]',
+  selector: 'button[sc-sidebar-menu-action]',
   host: {
     'data-slot': 'sidebar-menu-action',
     'data-sidebar': 'menu-action',
     '[class]': 'class()',
   },
 })
-export class ScxSidebarMenuAction {
+export class ScSidebarMenuAction {
   readonly classInput = input<string>('', { alias: 'class' });
 
   readonly asChild = input<boolean>(false);

@@ -1,7 +1,7 @@
 import { Injectable, computed, signal } from '@angular/core';
 
 @Injectable()
-export class ScxSidebarState {
+export class ScSidebarState {
   // Signals for reactive state
   readonly open = signal(true);
   readonly openMobile = signal(false);

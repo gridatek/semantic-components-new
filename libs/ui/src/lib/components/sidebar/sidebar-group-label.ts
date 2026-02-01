@@ -2,13 +2,13 @@ import { Directive, computed, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: 'div[scx-sidebar-group-label]',
+  selector: 'div[sc-sidebar-group-label]',
   host: {
     'data-slot': 'sidebar-group-label',
     '[class]': 'class()',
   },
 })
-export class ScxSidebarGroupLabel {
+export class ScSidebarGroupLabel {
   readonly classInput = input<string>('', { alias: 'class' });
 
   readonly asChild = input<boolean>(false);

@@ -1,9 +1,9 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { ScxSidebarState } from './sidebar-state.service';
+import { ScSidebarState } from './sidebar-state.service';
 
 @Component({
-  selector: 'button[scx-sidebar-rail]',
+  selector: 'button[sc-sidebar-rail]',
   template: '',
   host: {
     'data-slot': 'sidebar-rail',
@@ -13,8 +13,8 @@ import { ScxSidebarState } from './sidebar-state.service';
     title: 'Toggle Sidebar',
   },
 })
-export class ScxSidebarRail {
-  readonly state = inject(ScxSidebarState);
+export class ScSidebarRail {
+  readonly state = inject(ScSidebarState);
 
   readonly classInput = input<string>('', { alias: 'class' });
 

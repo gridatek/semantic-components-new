@@ -9,7 +9,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScxSidebarState } from './sidebar-state.service';
+import { ScSidebarState } from './sidebar-state.service';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
@@ -17,9 +17,9 @@ const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 const MOBILE_BREAKPOINT = 768;
 
 @Component({
-  selector: 'div[scx-sidebar-provider]',
+  selector: 'div[sc-sidebar-provider]',
   template: '<ng-content />',
-  providers: [ScxSidebarState],
+  providers: [ScSidebarState],
   host: {
     'data-slot': 'sidebar-wrapper',
     '[class]': 'class()',
@@ -28,8 +28,8 @@ const MOBILE_BREAKPOINT = 768;
     '[style.--sidebar-width-icon]': '"3rem"',
   },
 })
-export class ScxSidebarProvider implements OnInit, OnDestroy {
-  readonly state = inject(ScxSidebarState);
+export class ScSidebarProvider implements OnInit, OnDestroy {
+  readonly state = inject(ScSidebarState);
 
   readonly classInput = input<string>('', { alias: 'class' });
 
