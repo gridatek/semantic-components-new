@@ -14,18 +14,21 @@ import { DefaultAlertDemo } from './default-alert-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DefaultAlertDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAlert,
   ScAlertDescription,
   ScAlertTitle,
-  ScAlertAction,
 } from '@semantic-components/ui';
 import { SiAlertCircleIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-default-alert-demo',
-  imports: [ScAlert, ScAlertDescription, ScAlertTitle, ScAlertAction, SiAlertCircleIcon],
+  imports: [ScAlert, ScAlertDescription, ScAlertTitle, SiAlertCircleIcon],
   template: \`
     <div sc-alert>
       <svg si-alert-circle-icon></svg>
@@ -33,9 +36,9 @@ import { SiAlertCircleIcon } from '@semantic-icons/lucide-icons';
       <div sc-alert-description>
         You can add components to your app using the cli.
       </div>
-      <button sc-alert-action>Action</button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DefaultAlertDemo {}`;
