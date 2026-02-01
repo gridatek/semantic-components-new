@@ -41,7 +41,7 @@ export class ScBackdrop {
 
   protected readonly class = computed(() =>
     cn(
-      'fixed inset-0 -z-10 bg-black/10',
+      'fixed inset-0 -z-10 bg-black/10 pointer-events-none',
       'supports-backdrop-filter:backdrop-blur-xs',
       'animate-in fade-in-0 duration-300',
       'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:duration-300',
