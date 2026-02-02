@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeViewer } from '@semantic-components/ui';
+import {
+  ScCodeViewer,
+  ScCodeViewerContent,
+  ScCodeViewerHeader,
+  ScCodeViewerLabel,
+  ScCopyButton,
+} from '@semantic-components/ui';
 import BasicNumberFieldDemoContainer from './demos/basic-number-field-demo-container';
 import ScrubbingNumberFieldDemoContainer from './demos/scrubbing-number-field-demo-container';
 import PriceNumberFieldDemoContainer from './demos/price-number-field-demo-container';
@@ -10,6 +16,10 @@ import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-f
   selector: 'app-number-field-page',
   imports: [
     ScCodeViewer,
+    ScCodeViewerHeader,
+    ScCodeViewerLabel,
+    ScCodeViewerContent,
+    ScCopyButton,
     BasicNumberFieldDemoContainer,
     ScrubbingNumberFieldDemoContainer,
     PriceNumberFieldDemoContainer,
@@ -28,7 +38,17 @@ import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-f
 
       <section class="space-y-4">
         <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
-        <sc-code-viewer [code]="usageCode" language="angular-ts" />
+        <div sc-code-viewer>
+          <div sc-code-viewer-header>
+            <span sc-code-viewer-label>angular-ts</span>
+            <button sc-copy-button [value]="usageCode"></button>
+          </div>
+          <div
+            sc-code-viewer-content
+            [code]="usageCode"
+            language="angular-ts"
+          ></div>
+        </div>
       </section>
 
       <section class="space-y-8">

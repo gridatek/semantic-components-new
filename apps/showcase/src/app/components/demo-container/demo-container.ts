@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import {
-  CodeViewerLanguage,
   ScCodeViewer,
+  ScCodeViewerContent,
+  ScCodeViewerHeader,
+  ScCodeViewerLabel,
+  ScCodeViewerLanguage,
+  ScCopyButton,
   ScTab,
   ScTabList,
   ScTabPanel,
@@ -10,7 +14,17 @@ import {
 
 @Component({
   selector: 'app-demo-container',
-  imports: [ScTabs, ScTabList, ScTab, ScTabPanel, ScCodeViewer],
+  imports: [
+    ScTabs,
+    ScTabList,
+    ScTab,
+    ScTabPanel,
+    ScCodeViewer,
+    ScCodeViewerHeader,
+    ScCodeViewerLabel,
+    ScCodeViewerContent,
+    ScCopyButton,
+  ],
   template: `
     <div class="space-y-4">
       @if (title()) {
@@ -63,11 +77,18 @@ import {
         </div>
 
         <div sc-tab-panel value="code">
-          <sc-code-viewer
-            [code]="code()"
-            [language]="language()"
-            [showLineNumbers]="true"
-          />
+          <div sc-code-viewer>
+            <div sc-code-viewer-header>
+              <span sc-code-viewer-label>{{ language() }}</span>
+              <button sc-copy-button [value]="code()"></button>
+            </div>
+            <div
+              sc-code-viewer-content
+              [code]="code()"
+              [language]="language()"
+              [showLineNumbers]="true"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
@@ -82,5 +103,5 @@ export class DemoContainer {
   readonly description = input<string>('');
   readonly demoUrl = input<string>('');
   readonly code = input.required<string>();
-  readonly language = input<CodeViewerLanguage>('angular-ts');
+  readonly language = input<ScCodeViewerLanguage>('angular-ts');
 }

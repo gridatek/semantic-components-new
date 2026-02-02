@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeViewer } from '@semantic-components/ui';
+import {
+  ScCodeViewer,
+  ScCodeViewerContent,
+  ScCodeViewerHeader,
+  ScCodeViewerLabel,
+  ScCopyButton,
+} from '@semantic-components/ui';
 import BasicTableDemoContainer from './demos/basic-table-demo-container';
 import CaptionTableDemoContainer from './demos/caption-table-demo-container';
 import FooterTableDemoContainer from './demos/footer-table-demo-container';
@@ -9,6 +15,10 @@ import UsersTableDemoContainer from './demos/users-table-demo-container';
   selector: 'app-table-page',
   imports: [
     ScCodeViewer,
+    ScCodeViewerHeader,
+    ScCodeViewerLabel,
+    ScCodeViewerContent,
+    ScCopyButton,
     BasicTableDemoContainer,
     CaptionTableDemoContainer,
     FooterTableDemoContainer,
@@ -23,7 +33,17 @@ import UsersTableDemoContainer from './demos/users-table-demo-container';
 
       <section class="space-y-4">
         <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
-        <sc-code-viewer [code]="usageCode" language="angular-ts" />
+        <div sc-code-viewer>
+          <div sc-code-viewer-header>
+            <span sc-code-viewer-label>angular-ts</span>
+            <button sc-copy-button [value]="usageCode"></button>
+          </div>
+          <div
+            sc-code-viewer-content
+            [code]="usageCode"
+            language="angular-ts"
+          ></div>
+        </div>
       </section>
 
       <section class="space-y-8">

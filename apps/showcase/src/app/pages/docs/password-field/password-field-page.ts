@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeViewer } from '@semantic-components/ui';
+import {
+  ScCodeViewer,
+  ScCodeViewerContent,
+  ScCodeViewerHeader,
+  ScCodeViewerLabel,
+  ScCopyButton,
+} from '@semantic-components/ui';
 import BasicPasswordFieldDemoContainer from './demos/basic-password-field-demo-container';
 import ShowDefaultPasswordFieldDemoContainer from './demos/show-default-password-field-demo-container';
 import DisabledPasswordFieldDemoContainer from './demos/disabled-password-field-demo-container';
@@ -12,6 +18,10 @@ import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-con
   selector: 'app-password-field-page',
   imports: [
     ScCodeViewer,
+    ScCodeViewerHeader,
+    ScCodeViewerLabel,
+    ScCodeViewerContent,
+    ScCopyButton,
     BasicPasswordFieldDemoContainer,
     ShowDefaultPasswordFieldDemoContainer,
     DisabledPasswordFieldDemoContainer,
@@ -31,7 +41,17 @@ import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-con
 
       <section class="space-y-4">
         <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
-        <sc-code-viewer [code]="usageCode" language="angular-ts" />
+        <div sc-code-viewer>
+          <div sc-code-viewer-header>
+            <span sc-code-viewer-label>angular-ts</span>
+            <button sc-copy-button [value]="usageCode"></button>
+          </div>
+          <div
+            sc-code-viewer-content
+            [code]="usageCode"
+            language="angular-ts"
+          ></div>
+        </div>
       </section>
 
       <section class="space-y-8">
