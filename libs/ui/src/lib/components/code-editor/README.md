@@ -92,8 +92,6 @@ Copy button that shows a checkmark on successful copy for 2 seconds.
 | `tabSize`            | `number`               | `2`           | Number of spaces per tab          |
 | `insertSpaces`       | `boolean`              | `true`        | Insert spaces instead of tabs     |
 | `wordWrap`           | `boolean`              | `false`       | Enable word wrapping              |
-| `maxHeight`          | `string`               | `'500px'`     | Max height with overflow scroll   |
-| `minHeight`          | `string`               | `'200px'`     | Minimum height of editor          |
 | `autoDetectLanguage` | `boolean`              | `false`       | Auto-detect language from content |
 | `ariaLabel`          | `string`               | `''`          | Accessibility label               |
 | `ariaDescribedby`    | `string`               | `''`          | Accessibility description ID      |
@@ -182,7 +180,7 @@ Copy button that shows a checkmark on successful copy for 2 seconds.
 
 ```html
 <div sc-code-editor>
-  <div sc-code-editor-content [(value)]="longCode" language="markdown" [wordWrap]="true" maxHeight="400px"></div>
+  <div sc-code-editor-content [(value)]="longCode" language="markdown" [wordWrap]="true" class="max-h-[400px]"></div>
 </div>
 ```
 
@@ -355,7 +353,7 @@ greet('World');`);
     <button sc-code-editor-copy-button [code]="code()"></button>
   </div>
 
-  <div sc-code-editor-content [(value)]="code" [language]="language()" [filename]="filename()" [showLineNumbers]="true" [tabSize]="2" [insertSpaces]="true" maxHeight="600px" minHeight="300px"></div>
+  <div sc-code-editor-content [(value)]="code" [language]="language()" [filename]="filename()" [showLineNumbers]="true" [tabSize]="2" [insertSpaces]="true" class="max-h-[600px] min-h-[300px]"></div>
 
   <div sc-code-editor-footer>
     <div class="flex items-center gap-3">

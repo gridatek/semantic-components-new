@@ -44,7 +44,6 @@ export type ScCodeViewerLanguage =
   host: {
     'data-slot': 'code-viewer-content',
     '[class]': 'wrapperClass()',
-    '[style.max-height]': 'maxHeight()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,7 +52,6 @@ export class ScCodeViewerContent {
   readonly code = input.required<string>();
   readonly language = input<ScCodeViewerLanguage>('plaintext');
   readonly showLineNumbers = input(false);
-  readonly maxHeight = input<string>('');
   readonly classInput = input<string>('', { alias: 'class' });
 
   private readonly sanitizer = inject(DomSanitizer);
