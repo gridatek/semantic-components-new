@@ -24,6 +24,7 @@ interface YearInfo {
   template: `
     <table
       ngGrid
+      tabindex="0"
       aria-label="Select year"
       class="w-full border-collapse"
       colWrap="continuous"

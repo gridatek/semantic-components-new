@@ -24,6 +24,7 @@ interface MonthInfo {
   template: `
     <table
       ngGrid
+      tabindex="0"
       aria-label="Select month"
       class="w-full border-collapse"
       colWrap="continuous"

@@ -24,6 +24,7 @@ interface DayInfo {
   template: `
     <table
       ngGrid
+      tabindex="0"
       class="w-full border-collapse"
       colWrap="continuous"
       rowWrap="nowrap"
