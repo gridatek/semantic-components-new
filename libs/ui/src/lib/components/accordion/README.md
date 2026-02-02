@@ -61,6 +61,8 @@ ScAccordion (Root - uses AccordionGroup)
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
+The `ScAccordionHeader` component is a flex container that wraps the `ScAccordionTrigger`. It provides the layout structure for the accordion header.
+
 ### ScAccordionTrigger
 
 | Input      | Type      | Default      | Description                              |
@@ -91,7 +93,7 @@ The `ScAccordionContent` component handles animations and overflow. It should wr
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-The `ScAccordionContent2` component provides content styling including padding (`pt-0 pb-2.5`), link styles (underlined, hover effects), and paragraph spacing. Must be nested inside `ScAccordionContent`.
+The `ScAccordionContent2` component provides content styling including padding (`pt-0 pb-2.5`), height animation support (`h-(--radix-accordion-content-height)`), link styles (underlined, hover effects), and paragraph spacing. Must be nested inside `ScAccordionContent`.
 
 ### ScAccordionTriggerIcon
 
@@ -263,9 +265,9 @@ The components use Tailwind CSS with shadcn/ui design tokens:
 
 - Items have `border-b` for visual separation (via `ScAccordionItem`)
 - Triggers show underline on hover (removed when focused for better UX)
-- Built-in chevron icons automatically switch between down/up states
+- Built-in chevron icons automatically rotate 180° based on expanded state
 - `ScAccordionContent` provides animation wrapper with `text-sm` and `overflow-hidden`
-- `ScAccordionContent2` provides content styling with padding (`pt-0 pb-2.5`), link underlines, and paragraph spacing
+- `ScAccordionContent2` provides content styling with padding (`pt-0 pb-2.5`), height animation (`h-(--radix-accordion-content-height)`), link underlines, and paragraph spacing
 - Focus states use a ring style for keyboard navigation
 - All components support custom classes via the `class` input
 

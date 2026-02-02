@@ -24,7 +24,7 @@ export class ScAccordionContent2 {
 
   protected readonly class = computed(() =>
     cn(
-      'pt-0 pb-2.5 [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4',
+      'pt-0 pb-2.5 h-(--radix-accordion-content-height) [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4',
       this.classInput(),
     ),
   );
