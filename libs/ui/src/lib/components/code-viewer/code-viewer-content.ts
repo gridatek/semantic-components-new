@@ -41,53 +41,6 @@ export type ScCodeViewerLanguage =
       ><code>{{ code() }}</code></pre>
     }
   `,
-  styles: `
-    .sc-code-viewer-content pre.shiki {
-      margin: 0;
-      padding: 1rem;
-      overflow-x: auto;
-      font-size: 0.875rem;
-      line-height: 1.625;
-    }
-
-    .sc-code-viewer-content pre.shiki,
-    .sc-code-viewer-content pre.shiki span {
-      color: var(--shiki-light);
-      background-color: var(--shiki-light-bg);
-    }
-
-    .dark .sc-code-viewer-content pre.shiki,
-    .dark .sc-code-viewer-content pre.shiki span {
-      color: var(--shiki-dark);
-      background-color: var(--shiki-dark-bg);
-    }
-
-    .sc-code-viewer-content pre.shiki code {
-      font-family:
-        ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
-        'Liberation Mono', monospace;
-    }
-
-    .sc-code-viewer-content--line-numbers pre.shiki code {
-      counter-reset: line;
-    }
-
-    .sc-code-viewer-content--line-numbers pre.shiki code .line {
-      display: inline-block;
-      width: 100%;
-    }
-
-    .sc-code-viewer-content--line-numbers pre.shiki code .line::before {
-      counter-increment: line;
-      content: counter(line);
-      display: inline-block;
-      width: 2rem;
-      margin-right: 1rem;
-      text-align: right;
-      color: hsl(var(--muted-foreground) / 0.5);
-      user-select: none;
-    }
-  `,
   host: {
     'data-slot': 'code-viewer-content',
     '[class]': 'wrapperClass()',
