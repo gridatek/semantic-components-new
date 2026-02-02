@@ -4,7 +4,10 @@ import {
   computed,
   input,
   output,
+  viewChildren,
+  signal,
 } from '@angular/core';
+import { Grid, GridRow, GridCell, GridCellWidget } from '@angular/aria/grid';
 import { cn } from '../../utils';
 
 interface DayInfo {
@@ -12,12 +15,22 @@ interface DayInfo {
   isToday: boolean;
   isOutsideMonth: boolean;
   disabled: boolean;
+  selected: ReturnType<typeof signal<boolean>>;
 }
 
 @Component({
   selector: 'sc-calendar-day-view',
+  imports: [Grid, GridRow, GridCell, GridCellWidget],
   template: `
-    <table class="w-full border-collapse" role="grid">
+    <table
+      ngGrid
+      class="w-full border-collapse"
+      colWrap="continuous"
+      rowWrap="nowrap"
+      [enableSelection]="mode() !== 'multiple'"
+      selectionMode="explicit"
+      (keydown)="handleKeyDown($event)"
+    >
       <thead>
         <tr class="flex">
           @for (day of weekDays(); track day) {
@@ -32,18 +45,19 @@ interface DayInfo {
       </thead>
       <tbody>
         @for (week of weeks(); track $index) {
-          <tr class="mt-2 flex w-full">
+          <tr ngGridRow class="mt-2 flex w-full">
             @for (day of week; track day?.date?.getTime() ?? $index) {
-              <td
-                class="relative p-0 text-center text-sm"
-                [attr.aria-selected]="day && isSelected(day.date)"
-                role="gridcell"
-              >
-                @if (day) {
+              @if (day) {
+                <td
+                  ngGridCell
+                  class="relative p-0 text-center text-sm"
+                  [disabled]="day.disabled || day.isOutsideMonth"
+                  [(selected)]="day.selected"
+                >
                   <button
+                    ngGridCellWidget
                     type="button"
                     [class]="getDayClass(day)"
-                    [disabled]="day.disabled"
                     [attr.aria-label]="day.date.toDateString()"
                     [attr.data-today]="day.isToday || null"
                     [attr.data-selected]="isSelected(day.date) || null"
@@ -52,17 +66,21 @@ interface DayInfo {
                     [attr.data-range-start]="isRangeStart(day.date) || null"
                     [attr.data-range-end]="isRangeEnd(day.date) || null"
                     [attr.data-range-middle]="isRangeMiddle(day.date) || null"
-                    (click)="dateSelected.emit(day.date)"
-                    (keydown)="
-                      dateKeydown.emit({ event: $event, date: day.date })
-                    "
+                    [attr.data-day]="day.date.getDate()"
+                    (click)="handleDateClick(day.date)"
                   >
                     {{ day.date.getDate() }}
                   </button>
-                } @else {
+                </td>
+              } @else {
+                <td
+                  ngGridCell
+                  class="relative p-0 text-center text-sm"
+                  disabled
+                >
                   <span class="size-9"></span>
-                }
-              </td>
+                </td>
+              }
             }
           </tr>
         }
@@ -72,6 +90,8 @@ interface DayInfo {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCalendarDayView {
+  private readonly _dayButtons = viewChildren(GridCellWidget);
+
   readonly viewDate = input.required<Date>();
   readonly mode = input.required<'single' | 'multiple' | 'range'>();
   readonly selected = input<Date | undefined>(undefined);
@@ -88,7 +108,8 @@ export class ScCalendarDayView {
   readonly maxDate = input<Date | undefined>(undefined);
 
   readonly dateSelected = output<Date>();
-  readonly dateKeydown = output<{ event: KeyboardEvent; date: Date }>();
+  readonly monthScrollUp = output<void>();
+  readonly monthScrollDown = output<void>();
 
   readonly weekDays = input(['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']);
 
@@ -147,6 +168,7 @@ export class ScCalendarDayView {
       isToday,
       isOutsideMonth,
       disabled,
+      selected: signal(this.isSelected(date)),
     };
   }
 
@@ -233,6 +255,53 @@ export class ScCalendarDayView {
       isRangeMiddleDay && 'bg-accent text-accent-foreground rounded-none',
       day.isOutsideMonth && 'text-muted-foreground opacity-50',
       day.disabled && 'text-muted-foreground opacity-50',
+    );
+  }
+
+  protected handleDateClick(date: Date): void {
+    this.dateSelected.emit(date);
+  }
+
+  protected handleKeyDown(event: KeyboardEvent): void {
+    const day = Number((event.target as Element).getAttribute('data-day'));
+    if (!day) return;
+
+    const viewDate = this.viewDate();
+    const daysInMonth = new Date(
+      viewDate.getFullYear(),
+      viewDate.getMonth() + 1,
+      0,
+    ).getDate();
+
+    // Only handle edge cases where we need to scroll to prev/next month
+    if (day > 7 && day <= daysInMonth - 7) return;
+
+    const arrowLeft = event.key === 'ArrowLeft';
+    const arrowRight = event.key === 'ArrowRight';
+    const arrowUp = event.key === 'ArrowUp';
+    const arrowDown = event.key === 'ArrowDown';
+
+    if ((day === 1 && arrowLeft) || (day <= 7 && arrowUp)) {
+      this.scrollUp();
+    }
+
+    if (
+      (day === daysInMonth && arrowRight) ||
+      (day > daysInMonth - 7 && arrowDown)
+    ) {
+      this.scrollDown();
+    }
+  }
+
+  private scrollDown(): void {
+    this.monthScrollDown.emit();
+    setTimeout(() => this._dayButtons()[0]?.element.focus());
+  }
+
+  private scrollUp(): void {
+    this.monthScrollUp.emit();
+    setTimeout(() =>
+      this._dayButtons()[this._dayButtons().length - 1]?.element.focus(),
     );
   }
 }

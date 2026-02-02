@@ -62,7 +62,8 @@ export interface DateRange {
             [maxDate]="maxDate()"
             [weekDays]="weekDays"
             (dateSelected)="selectDate($event)"
-            (dateKeydown)="onKeyDown($event.event, $event.date)"
+            (monthScrollUp)="previousMonth()"
+            (monthScrollDown)="nextMonth()"
           />
         }
         @case ('month') {
@@ -262,69 +263,5 @@ export class ScCalendar {
     const current = this.viewDate();
     this.viewDate.set(new Date(year, current.getMonth(), 1));
     this.viewMode.set('month');
-  }
-
-  protected onKeyDown(event: KeyboardEvent, date: Date): void {
-    const mode = this.viewMode();
-
-    // Handle Escape - return to previous view
-    if (event.key === 'Escape' && mode !== 'day') {
-      event.preventDefault();
-      if (mode === 'year') this.viewMode.set('month');
-      else if (mode === 'month') this.viewMode.set('day');
-      return;
-    }
-
-    // Day view keyboard navigation
-    if (mode === 'day') {
-      const current = this.viewDate();
-      let newDate: Date | null = null;
-
-      switch (event.key) {
-        case 'ArrowLeft':
-          newDate = new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate() - 1,
-          );
-          break;
-        case 'ArrowRight':
-          newDate = new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate() + 1,
-          );
-          break;
-        case 'ArrowUp':
-          newDate = new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate() - 7,
-          );
-          break;
-        case 'ArrowDown':
-          newDate = new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate() + 7,
-          );
-          break;
-        case 'Enter':
-        case ' ':
-          event.preventDefault();
-          this.selectDate(date);
-          return;
-      }
-
-      if (newDate) {
-        event.preventDefault();
-        // Update view if navigating to different month
-        if (newDate.getMonth() !== current.getMonth()) {
-          this.viewDate.set(
-            new Date(newDate.getFullYear(), newDate.getMonth(), 1),
-          );
-        }
-      }
-    }
   }
 }
