@@ -26,12 +26,10 @@ export { ScPdfViewerSpacer } from './pdf-viewer-spacer';
 export { ScPdfViewerContent } from './pdf-viewer-content';
 
 // State components
-export {
-  ScPdfViewerLoading,
-  ScPdfViewerError,
-  ScPdfViewerEmpty,
-  ScPdfViewerRetry,
-} from './pdf-viewer-states';
+export { ScPdfViewerLoading } from './pdf-viewer-loading';
+export { ScPdfViewerError } from './pdf-viewer-error';
+export { ScPdfViewerEmpty } from './pdf-viewer-empty';
+export { ScPdfViewerRetry } from './pdf-viewer-retry';
 
 // Types
 export { DEFAULT_TOOLBAR_CONFIG, ZOOM_LEVELS } from './pdf-viewer-types';
