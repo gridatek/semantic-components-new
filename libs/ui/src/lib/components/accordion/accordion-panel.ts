@@ -19,7 +19,13 @@ import { cn } from '../../utils';
   ],
   template: `
     <ng-template ngAccordionContent>
-      <ng-content />
+      <div
+        class="text-sm overflow-hidden"
+        animate.enter="animate-accordion-down"
+        animate.leave="animate-accordion-up"
+      >
+        <ng-content />
+      </div>
     </ng-template>
   `,
   host: {
