@@ -95,6 +95,11 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/code-editor/code-editor-page'),
       },
       {
+        path: 'code-viewer',
+        loadComponent: () =>
+          import('../pages/docs/code-viewer/code-viewer-page'),
+      },
+      {
         path: 'collapsible',
         loadComponent: () =>
           import('../pages/docs/collapsible/collapsible-page'),

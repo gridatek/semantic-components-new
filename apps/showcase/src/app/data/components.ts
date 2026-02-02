@@ -96,6 +96,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A syntax-highlighted code editor.',
   },
   {
+    name: 'Code Viewer',
+    path: 'code-viewer',
+    description: 'Display syntax-highlighted code with copy functionality.',
+  },
+  {
     name: 'Collapsible',
     path: 'collapsible',
     description: 'An interactive component that expands and collapses.',
