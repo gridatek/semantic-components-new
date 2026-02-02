@@ -1,3 +1,4 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   Directive,
   effect,
@@ -9,11 +10,9 @@ import {
   ModelSignal,
   output,
   signal,
-  Signal,
   untracked,
   WritableSignal,
 } from '@angular/core';
-import { _IdGenerator } from '@angular/cdk/a11y';
 
 // Token for password field context - interface to avoid circular dependency
 export interface ScPasswordFieldContext {
