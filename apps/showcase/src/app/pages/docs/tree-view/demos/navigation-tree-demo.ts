@@ -7,7 +7,12 @@ import {
   ScTreeItemGroup,
   ScTreeItemIcon,
 } from '@semantic-components/ui';
-import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
+import {
+  SiChevronRightIcon,
+  SiHomeIcon,
+  SiBookOpenIcon,
+  SiSettingsIcon,
+} from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-navigation-tree-demo',
@@ -19,6 +24,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
     ScTreeItemGroup,
     ScTreeItemIcon,
     SiChevronRightIcon,
+    SiHomeIcon,
+    SiBookOpenIcon,
+    SiSettingsIcon,
   ],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
@@ -31,19 +39,7 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
         >
           <button sc-tree-item-trigger>
             <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
-            <svg
-              sc-tree-item-icon
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
+            <svg sc-tree-item-icon si-home-icon></svg>
             <span>Getting Started</span>
           </button>
           <ul sc-tree-item-group>
@@ -70,20 +66,7 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
         <li sc-tree-item [parent]="tree.tree" value="components">
           <button sc-tree-item-trigger>
             <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
-            <svg
-              sc-tree-item-icon
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
-              />
-            </svg>
+            <svg sc-tree-item-icon si-book-open-icon></svg>
             <span>Components</span>
           </button>
           <ul sc-tree-item-group>
@@ -110,21 +93,7 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
         <li sc-tree-item [parent]="tree.tree" value="api-reference">
           <button sc-tree-item-trigger>
             <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
-            <svg
-              sc-tree-item-icon
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="3" />
-              <path
-                d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5-4.24 4.24m-6.52 6.52L1.5 19.5m17-1-4.24-4.24m-6.52-6.52L1.5 3.5"
-              />
-            </svg>
+            <svg sc-tree-item-icon si-settings-icon></svg>
             <span>API Reference</span>
           </button>
           <ul sc-tree-item-group>

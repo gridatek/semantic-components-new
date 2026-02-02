@@ -2,12 +2,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScTree,
   ScTreeItem,
-  ScTreeItemTrigger,
-  ScTreeItemTriggerIcon,
   ScTreeItemGroup,
   ScTreeItemIcon,
+  ScTreeItemTrigger,
+  ScTreeItemTriggerIcon,
 } from '@semantic-components/ui';
-import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
+import {
+  SiChevronRightIcon,
+  SiFileIcon,
+  SiFolderIcon,
+} from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-file-explorer-tree-demo',
@@ -19,6 +23,8 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
     ScTreeItemGroup,
     ScTreeItemIcon,
     SiChevronRightIcon,
+    SiFolderIcon,
+    SiFileIcon,
   ],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
@@ -26,21 +32,7 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
         <li sc-tree-item [parent]="tree.tree" value="src" [expanded]="true">
           <button sc-tree-item-trigger>
             <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
-            <svg
-              sc-tree-item-icon
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-blue-500"
-            >
-              <path
-                d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
-              />
-            </svg>
+            <svg sc-tree-item-icon si-folder-icon class="text-blue-500"></svg>
             <span>src</span>
           </button>
           <ul sc-tree-item-group>
@@ -49,19 +41,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                 <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <svg
                   sc-tree-item-icon
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  si-folder-icon
                   class="text-blue-500"
-                >
-                  <path
-                    d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
-                  />
-                </svg>
+                ></svg>
                 <span>app</span>
               </button>
               <ul sc-tree-item-group>
@@ -70,19 +52,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                     <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                     <svg
                       sc-tree-item-icon
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      si-folder-icon
                       class="text-blue-500"
-                    >
-                      <path
-                        d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
-                      />
-                    </svg>
+                    ></svg>
                     <span>components</span>
                   </button>
                   <ul sc-tree-item-group>
@@ -94,20 +66,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                         ></svg>
                         <svg
                           sc-tree-item-icon
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          si-file-icon
                           class="text-green-500"
-                        >
-                          <path
-                            d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                          />
-                          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                        </svg>
+                        ></svg>
                         <span>button.ts</span>
                       </button>
                     </li>
@@ -119,20 +80,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                         ></svg>
                         <svg
                           sc-tree-item-icon
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          si-file-icon
                           class="text-green-500"
-                        >
-                          <path
-                            d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                          />
-                          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                        </svg>
+                        ></svg>
                         <span>input.ts</span>
                       </button>
                     </li>
@@ -143,20 +93,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                     <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                     <svg
                       sc-tree-item-icon
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      si-file-icon
                       class="text-green-500"
-                    >
-                      <path
-                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                      />
-                      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                    </svg>
+                    ></svg>
                     <span>app.ts</span>
                   </button>
                 </li>
@@ -165,20 +104,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                     <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                     <svg
                       sc-tree-item-icon
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      si-file-icon
                       class="text-green-500"
-                    >
-                      <path
-                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-                      />
-                      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                    </svg>
+                    ></svg>
                     <span>app.routes.ts</span>
                   </button>
                 </li>
@@ -189,19 +117,9 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
                 <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <svg
                   sc-tree-item-icon
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  si-folder-icon
                   class="text-blue-500"
-                >
-                  <path
-                    d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
-                  />
-                </svg>
+                ></svg>
                 <span>assets</span>
               </button>
               <ul sc-tree-item-group>
