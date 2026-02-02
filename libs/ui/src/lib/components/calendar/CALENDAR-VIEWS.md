@@ -2,7 +2,7 @@
 
 ## Overview
 
-The calendar component now supports three view modes that allow users to navigate through years, months, and days using an inline grid interface (similar to iOS date pickers).
+The calendar component supports three view modes with full **Angular ARIA Grid** integration, providing accessible navigation through years, months, and days using an inline grid interface. All views use semantic `<table>` elements for proper accessibility and screen reader support.
 
 ## Three View Modes
 
@@ -142,25 +142,41 @@ Goal: Jump to March 1995
 
 ## Keyboard Navigation
 
+All views use **Angular ARIA Grid** for full keyboard accessibility.
+
 ### Day View
 
-- **Arrow Keys**: Navigate between dates
-  - Left/Right: Previous/Next day
-  - Up/Down: Previous/Next week (±7 days)
+- **Arrow Keys**: Navigate between dates (handled by Angular ARIA Grid)
+  - ⬅️ Left/➡️ Right: Previous/Next day
+  - ⬆️ Up/⬇️ Down: Previous/Next week (±7 days)
 - **Enter/Space**: Select the focused date
-- **Escape**: (no action in day view)
+- **Auto-scroll**: Navigating past month edges automatically scrolls to previous/next month
+- **Focus Management**: Focus is maintained on the corresponding day after month change
 
-### Month View (Future Enhancement)
+### Month View
 
-- **Escape**: Go back to Day View
-- **Arrow Keys**: Navigate between months
-- **Enter/Space**: Select the focused month
+- **Arrow Keys**: Navigate between months (handled by Angular ARIA Grid)
+  - ⬅️ Left/➡️ Right: Previous/Next month
+  - ⬆️ Up/⬇️ Down: Previous/Next row of months
+- **Enter/Space**: Select the focused month and return to Day View
+- **Auto-scroll**: Navigating past January (left/up) or December (right/down) scrolls to previous/next year
+- **Focus Management**: Focus moves to first/last month of new year
 
-### Year View (Future Enhancement)
+### Year View
 
-- **Escape**: Go back to Month View
-- **Arrow Keys**: Navigate between years
-- **Enter/Space**: Select the focused year
+- **Arrow Keys**: Navigate between years (handled by Angular ARIA Grid)
+  - ⬅️ Left/➡️ Right: Previous/Next year
+  - ⬆️ Up/⬇️ Down: Previous/Next row of years
+- **Enter/Space**: Select the focused year and go to Month View
+- **Auto-scroll**: Navigating past decade edges automatically scrolls to previous/next decade (12 years)
+- **Focus Management**: Focus moves to first/last year of new decade
+
+### Grid Navigation Features
+
+- **Continuous Column Wrap**: Arrow keys wrap around columns continuously
+- **Row Navigation**: Arrow keys navigate between rows
+- **Selection State**: Visual and ARIA feedback for selected items
+- **Disabled State**: Proper handling of disabled dates/cells
 
 ---
 
@@ -180,9 +196,20 @@ Each view mode highlights relevant items:
 
 ## Accessibility
 
+### Angular ARIA Grid Integration
+
+The component uses **Angular ARIA Grid** (`@angular/aria/grid`) for full accessibility compliance:
+
+- **Semantic HTML**: All views use `<table>` elements with proper `<thead>`, `<tbody>`, `<tr>`, `<td>` structure
+- **ARIA Directives**:
+  - `ngGrid` on `<table>` for grid container
+  - `ngGridRow` on `<tr>` for grid rows
+  - `ngGridCell` on `<td>` for grid cells with selection state
+  - `ngGridCellWidget` on `<button>` for interactive elements
+
 ### ARIA Labels
 
-The component provides context-aware ARIA labels:
+Context-aware ARIA labels for all interactive elements:
 
 - **Header button**:
   - Day view: "Switch to month view"
@@ -199,16 +226,63 @@ The component provides context-aware ARIA labels:
   - Month view: "Go to next year"
   - Year view: "Go to next decade"
 
+- **Grid cells**:
+  - Day view: Full date string (e.g., "Mon Jan 15 2025")
+  - Month view: Month name (e.g., "January")
+  - Year view: Year number (e.g., "2025")
+
 ### ARIA Attributes
 
-- `role="grid"` on all calendar grids
-- `role="gridcell"` on all date/month/year buttons
+Automatically managed by Angular ARIA Grid:
+
+- `role="grid"` on all calendar tables
+- `role="row"` on all table rows
+- `role="gridcell"` on all table cells
+- `aria-selected="true/false"` on selected cells
+- `aria-disabled="true"` on disabled cells
 - `aria-current="date"` on today's date/current month/current year
-- `aria-expanded` on header button (true when not in day view)
+- `aria-expanded` on header button
+- `aria-label` on all interactive elements
+
+### Screen Reader Support
+
+- **Grid Navigation Announcements**: Screen readers announce current position in grid
+- **Selection State**: Selected items are announced with aria-selected
+- **Current Date/Month/Year**: Marked with aria-current="date"
+- **Cell Content**: Each cell has descriptive aria-label
 
 ---
 
 ## Technical Details
+
+### Component Architecture
+
+The calendar is split into focused, reusable components:
+
+- **`calendar.ts`** - Main orchestrator component
+  - Manages view mode switching
+  - Handles navigation between views
+  - Coordinates date selection
+
+- **`calendar-header.ts`** - Navigation header
+  - Clickable month/year label
+  - Previous/Next buttons with Lucide icons
+  - Context-aware ARIA labels
+
+- **`calendar-day-view.ts`** - Day grid (7×5-6 table)
+  - Angular ARIA Grid integration
+  - Date selection logic
+  - Auto-scroll to prev/next month
+
+- **`calendar-month-view.ts`** - Month grid (3×4 table)
+  - Angular ARIA Grid integration
+  - Month selection
+  - Auto-scroll to prev/next year
+
+- **`calendar-year-view.ts`** - Year grid (3×4 table)
+  - Angular ARIA Grid integration
+  - Year selection
+  - Auto-scroll to prev/next decade
 
 ### State Management
 
@@ -220,13 +294,50 @@ viewDate: Signal<Date>; // Currently displayed month/year
 decadeStart: Signal<number>; // Starting year for year view
 ```
 
+### Angular ARIA Grid
+
+Each view uses Angular ARIA Grid directives:
+
+```typescript
+// Grid configuration
+ngGrid; // Applied to <table>
+ngGridRow; // Applied to <tr>
+ngGridCell; // Applied to <td> with [(selected)] binding
+ngGridCellWidget; // Applied to <button>
+```
+
+**Configuration:**
+
+- `colWrap="continuous"` - Continuous column wrapping
+- `rowWrap="continuous/nowrap"` - Row wrapping behavior
+- `enableSelection="true"` - Enable cell selection
+- `selectionMode="explicit"` - Explicit selection mode
+
 ### Computed Grids
 
-Each view mode has a computed grid:
+Each view mode has computed grids with selection state:
 
-- **Day View**: `weeks()` - 2D array of day objects
-- **Month View**: `months()` - Array of 12 month objects
-- **Year View**: `years()` - Array of 12 year objects
+- **Day View**:
+  - `weeks()` - 2D array of day objects with `selected` signal
+  - Each day has: date, isToday, isOutsideMonth, disabled, selected
+
+- **Month View**:
+  - `months()` - Array of 12 month objects with `selected` signal
+  - `monthRows()` - Grouped into 4 rows of 3 months
+  - Each month has: label, value, isCurrentMonth, isSelected, selected
+
+- **Year View**:
+  - `years()` - Array of 12 year objects with `selected` signal
+  - `yearRows()` - Grouped into 4 rows of 3 years
+  - Each year has: label, value, isCurrentYear, isSelected, selected
+
+### Focus Management
+
+All views use `viewChildren(GridCellWidget)` for focus management:
+
+- Track all grid cell widgets
+- Programmatically focus cells after navigation
+- Maintain focus when scrolling to adjacent periods
 
 ---
 
@@ -291,15 +402,42 @@ Before finalizing the navigation pattern, consider:
 
 ## Summary
 
-The calendar now supports three view modes with inline grids:
+The calendar supports three view modes with **Angular ARIA Grid** integration:
 
-- ✅ Click header to navigate between views
-- ✅ Context-aware previous/next buttons
-- ✅ Visual feedback for current/selected items
-- ✅ Full accessibility support
-- ✅ Keyboard navigation (partial)
+### Features
 
-**Current Flow**: Day → Month → Year (zoom out pattern)
-**Alternative Flow**: Day → Year → Month (drill down pattern)
+- ✅ **Angular ARIA Grid** - Full accessibility with official Angular directive
+- ✅ **Semantic HTML** - All views use `<table>` elements
+- ✅ **Keyboard Navigation** - Complete arrow key support with auto-scrolling
+- ✅ **Focus Management** - Programmatic focus control with viewChildren
+- ✅ **Selection State** - Signal-based selection with two-way binding
+- ✅ **Screen Reader Support** - Proper ARIA roles and labels
+- ✅ **Context-Aware Navigation** - Smart previous/next buttons
+- ✅ **Visual Feedback** - Current and selected items highlighted
+- ✅ **Touch-Friendly** - Full-width buttons in month/year views
 
-Read this document and let me know if the current flow works for your use case or if you'd prefer the alternative navigation pattern!
+### Component Structure
+
+- 🎯 **Main Component** - `calendar.ts` (orchestrator)
+- 📅 **Day View** - `calendar-day-view.ts` (7×5-6 table)
+- 📆 **Month View** - `calendar-month-view.ts` (3×4 table)
+- 🗓️ **Year View** - `calendar-year-view.ts` (3×4 table)
+- 🔝 **Header** - `calendar-header.ts` (navigation with Lucide icons)
+
+### Navigation Flow
+
+**Current**: Day → Month → Year (zoom out pattern)
+
+**Keyboard Shortcuts:**
+
+- ⬅️➡️⬆️⬇️ Navigate within current view
+- ↩️ Enter/Space to select
+- 🔄 Auto-scroll at edges to adjacent periods
+
+### Standards Compliance
+
+- ✅ **WCAG AA** - Meets accessibility standards
+- ✅ **ARIA 1.2** - Uses official Angular ARIA Grid
+- ✅ **Semantic HTML** - Proper table markup
+- ✅ **Keyboard Accessible** - Full keyboard support
+- ✅ **Screen Reader Tested** - Works with NVDA/JAWS
