@@ -4,7 +4,9 @@ import {
   computed,
   input,
   output,
+  signal,
 } from '@angular/core';
+import { Grid, GridRow, GridCell, GridCellWidget } from '@angular/aria/grid';
 import { cn } from '../../utils';
 
 interface YearInfo {
@@ -12,23 +14,47 @@ interface YearInfo {
   value: number;
   isCurrentYear: boolean;
   isSelected: boolean;
+  selected: ReturnType<typeof signal<boolean>>;
 }
 
 @Component({
   selector: 'sc-calendar-year-view',
+  imports: [Grid, GridRow, GridCell, GridCellWidget],
   template: `
-    <div role="grid" aria-label="Select year" class="grid grid-cols-3 gap-2">
-      @for (year of years(); track year.value) {
-        <button
-          type="button"
-          role="gridcell"
-          [class]="getYearButtonClass(year)"
-          (click)="yearSelected.emit(year.value)"
-          [attr.aria-current]="year.isCurrentYear ? 'date' : null"
-          [attr.aria-label]="year.label"
-        >
-          {{ year.label }}
-        </button>
+    <div
+      ngGrid
+      aria-label="Select year"
+      class="grid grid-cols-3 gap-2"
+      colWrap="continuous"
+      rowWrap="continuous"
+      [enableSelection]="true"
+      selectionMode="explicit"
+    >
+      @for (year of years(); track year.value; let row = $index) {
+        @if (row % 3 === 0) {
+          <div ngGridRow class="contents">
+            @for (
+              y of [years()[row], years()[row + 1], years()[row + 2]];
+              track y?.value
+            ) {
+              @if (y) {
+                <div ngGridCell class="contents" [(selected)]="y.selected">
+                  <button
+                    ngGridCellWidget
+                    type="button"
+                    [class]="getYearButtonClass(y)"
+                    (click)="handleYearClick(y.value)"
+                    (keydown)="handleKeyDown($event, y.value)"
+                    [attr.aria-current]="y.isCurrentYear ? 'date' : null"
+                    [attr.aria-label]="y.label"
+                  >
+                    {{ y.label }}
+                  </button>
+                </div>
+              }
+            }
+          </div>
+        }
       }
     </div>
   `,
@@ -51,6 +77,7 @@ export class ScCalendarYearView {
         value: year,
         isCurrentYear: year === currentYear,
         isSelected: year === selectedYear,
+        selected: signal(year === selectedYear),
       };
     });
   });
@@ -67,5 +94,16 @@ export class ScCalendarYearView {
       year.isSelected &&
         'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
     );
+  }
+
+  protected handleYearClick(year: number): void {
+    this.yearSelected.emit(year);
+  }
+
+  protected handleKeyDown(event: KeyboardEvent, year: number): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.yearSelected.emit(year);
+    }
   }
 }

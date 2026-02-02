@@ -4,7 +4,9 @@ import {
   computed,
   input,
   output,
+  signal,
 } from '@angular/core';
+import { Grid, GridRow, GridCell, GridCellWidget } from '@angular/aria/grid';
 import { cn } from '../../utils';
 
 interface MonthInfo {
@@ -12,23 +14,47 @@ interface MonthInfo {
   value: number;
   isCurrentMonth: boolean;
   isSelected: boolean;
+  selected: ReturnType<typeof signal<boolean>>;
 }
 
 @Component({
   selector: 'sc-calendar-month-view',
+  imports: [Grid, GridRow, GridCell, GridCellWidget],
   template: `
-    <div role="grid" aria-label="Select month" class="grid grid-cols-3 gap-2">
-      @for (month of months(); track month.value) {
-        <button
-          type="button"
-          role="gridcell"
-          [class]="getMonthButtonClass(month)"
-          (click)="monthSelected.emit(month.value)"
-          [attr.aria-current]="month.isCurrentMonth ? 'date' : null"
-          [attr.aria-label]="month.label"
-        >
-          {{ month.label }}
-        </button>
+    <div
+      ngGrid
+      aria-label="Select month"
+      class="grid grid-cols-3 gap-2"
+      colWrap="continuous"
+      rowWrap="continuous"
+      [enableSelection]="true"
+      selectionMode="explicit"
+    >
+      @for (month of months(); track month.value; let row = $index) {
+        @if (row % 3 === 0) {
+          <div ngGridRow class="contents">
+            @for (
+              m of [months()[row], months()[row + 1], months()[row + 2]];
+              track m?.value
+            ) {
+              @if (m) {
+                <div ngGridCell class="contents" [(selected)]="m.selected">
+                  <button
+                    ngGridCellWidget
+                    type="button"
+                    [class]="getMonthButtonClass(m)"
+                    (click)="handleMonthClick(m.value)"
+                    (keydown)="handleKeyDown($event, m.value)"
+                    [attr.aria-current]="m.isCurrentMonth ? 'date' : null"
+                    [attr.aria-label]="m.label"
+                  >
+                    {{ m.label }}
+                  </button>
+                </div>
+              }
+            }
+          </div>
+        }
       }
     </div>
   `,
@@ -64,6 +90,7 @@ export class ScCalendarMonthView {
       isCurrentMonth:
         index === today.getMonth() && year === today.getFullYear(),
       isSelected: index === currentMonth,
+      selected: signal(index === currentMonth),
     }));
   });
 
@@ -79,5 +106,16 @@ export class ScCalendarMonthView {
       month.isSelected &&
         'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
     );
+  }
+
+  protected handleMonthClick(month: number): void {
+    this.monthSelected.emit(month);
+  }
+
+  protected handleKeyDown(event: KeyboardEvent, month: number): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.monthSelected.emit(month);
+    }
   }
 }
