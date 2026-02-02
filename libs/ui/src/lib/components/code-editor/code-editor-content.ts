@@ -188,11 +188,11 @@ export function detectLanguage(
   `,
   styles: `
     .sc-code-editor-content__line-numbers {
-      color: hsl(var(--muted-foreground) / 0.5);
+      color: oklch(from var(--muted-foreground) l c h / 0.5);
     }
 
     .sc-code-editor-content__line-numbers--active {
-      color: hsl(var(--foreground));
+      color: var(--foreground);
     }
 
     /* Transparent background for editor overlay effect */
