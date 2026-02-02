@@ -22,7 +22,7 @@ import { ScPdfViewer } from '@semantic-components/ui';
   template: \`
     <div class="h-[400px]">
       <sc-pdf-viewer
-        src="https://www.w3.org/WAI/WCAG21/Techniques/pdf/img/table-word.pdf"
+        src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
         [showToolbar]="false"
         class="h-full"
       />

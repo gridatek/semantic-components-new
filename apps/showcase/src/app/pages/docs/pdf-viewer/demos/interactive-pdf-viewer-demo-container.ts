@@ -65,13 +65,13 @@ export class InteractivePdfViewerDemo {
   pdfUrl = '';
 
   readonly currentPdf = signal(
-    'https://www.w3.org/WAI/WCAG21/Techniques/pdf/img/table-word.pdf',
+    'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf',
   );
 
   readonly samplePdfs = [
     {
       name: 'W3C Sample',
-      url: 'https://www.w3.org/WAI/WCAG21/Techniques/pdf/img/table-word.pdf',
+      url: 'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf',
     },
     {
       name: 'PDF.js Sample',

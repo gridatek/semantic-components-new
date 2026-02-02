@@ -22,7 +22,7 @@ import {
     <div class="h-[400px]">
       <div
         sc-pdf-viewer
-        src="https://www.w3.org/WAI/WCAG21/Techniques/pdf/img/table-word.pdf"
+        src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
       >
         <div sc-pdf-viewer-container class="h-full">
           <div sc-pdf-viewer-content>
