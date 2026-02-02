@@ -13,21 +13,22 @@ ScCollapsible (Root - uses AccordionGroup)
     │     ├── expanded: boolean
     │     └── disabled: boolean
     │
-    └── ScCollapsiblePanel (uses AccordionPanel)
+    └── ScCollapsiblePanel (uses AccordionPanel + animation wrapper)
           ├── panelId: string (links to trigger)
+          ├── animate.enter / animate.leave (on internal div)
           │
-          └── ScCollapsibleContent (animated wrapper)
+          └── ScCollapsibleContent (content styling wrapper)
                 └── [your content here]
 ```
 
 ## Components
 
-| Component              | Selector                         | Description                                     |
-| ---------------------- | -------------------------------- | ----------------------------------------------- |
-| `ScCollapsible`        | `div[sc-collapsible]`            | Root wrapper using `AccordionGroup`             |
-| `ScCollapsibleTrigger` | `button[sc-collapsible-trigger]` | Button to toggle panel using `AccordionTrigger` |
-| `ScCollapsiblePanel`   | `div[sc-collapsible-panel]`      | Collapsible content using `AccordionPanel`      |
-| `ScCollapsibleContent` | `div[sc-collapsible-content]`    | Animated content wrapper                        |
+| Component              | Selector                         | Description                                             |
+| ---------------------- | -------------------------------- | ------------------------------------------------------- |
+| `ScCollapsible`        | `div[sc-collapsible]`            | Root wrapper using `AccordionGroup`                     |
+| `ScCollapsibleTrigger` | `button[sc-collapsible-trigger]` | Button to toggle panel using `AccordionTrigger`         |
+| `ScCollapsiblePanel`   | `div[sc-collapsible-panel]`      | Collapsible panel with animation using `AccordionPanel` |
+| `ScCollapsibleContent` | `div[sc-collapsible-content]`    | Content styling wrapper with padding                    |
 
 ## Inputs
 
@@ -50,6 +51,8 @@ ScCollapsible (Root - uses AccordionGroup)
 | Input     | Type     | Default      | Description                              |
 | --------- | -------- | ------------ | ---------------------------------------- |
 | `panelId` | `string` | **required** | Links panel to its corresponding trigger |
+
+The `ScCollapsiblePanel` component wraps collapsible content using `AccordionPanel` from Angular ARIA. It includes an internal animated div wrapper with `overflow-hidden` class and Angular's `animate.enter`/`animate.leave` directives for smooth expand/collapse transitions.
 
 ## Usage
 
@@ -134,14 +137,14 @@ export class MyComponent {
 
 ## Animations
 
-The `ScCollapsibleContent` component uses Angular's animation system to smoothly expand and collapse content:
+The collapsible uses Angular's animation system through an internal div wrapper within the `ScCollapsiblePanel` component:
 
-- **Opening**: When a panel expands, Angular applies the `animate-collapsible-down` class via `animate.enter`
-- **Closing**: When a panel collapses, Angular applies the `animate-collapsible-up` class via `animate.leave`
+- **Opening**: When a panel expands, Angular applies the `animate-collapsible-down` class via `animate.enter` on the internal animated div
+- **Closing**: When a panel collapses, Angular applies the `animate-collapsible-up` class via `animate.leave` on the internal animated div
 - **Height Calculation**: The component automatically sets the `--radix-collapsible-content-height` CSS variable to the actual content height, ensuring smooth animations
 - **Timing**: Angular handles all animation timing and cleanup automatically
 
-The animations are defined in the `tw-animate-css` package and create a smooth slide-down/slide-up effect.
+The animations are defined in the `tw-animate-css` package and create a smooth slide-down/slide-up effect. The `overflow-hidden` class on the animated wrapper ensures content is properly clipped during the transition.
 
 ## Data Attributes
 

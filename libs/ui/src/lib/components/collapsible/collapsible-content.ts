@@ -15,8 +15,6 @@ import { cn } from '../../utils';
   host: {
     'data-slot': 'collapsible-content',
     '[class]': 'class()',
-    'animate.enter': 'animate-collapsible-down',
-    'animate.leave': 'animate-collapsible-up',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
