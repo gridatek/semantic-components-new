@@ -99,7 +99,7 @@ export class ScCalendarYearView {
 
   protected getYearButtonClass(year: YearInfo): string {
     return cn(
-      'inline-flex h-10 items-center justify-center rounded-md text-sm font-normal',
+      'inline-flex w-full h-10 items-center justify-center rounded-md text-sm font-normal',
       'ring-offset-background transition-colors',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
       'hover:bg-accent hover:text-accent-foreground',
