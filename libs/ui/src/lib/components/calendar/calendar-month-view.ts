@@ -22,44 +22,43 @@ interface MonthInfo {
   selector: 'sc-calendar-month-view',
   imports: [Grid, GridRow, GridCell, GridCellWidget],
   template: `
-    <div
+    <table
       ngGrid
       aria-label="Select month"
-      class="grid grid-cols-3 gap-2"
+      class="w-full border-collapse"
       colWrap="continuous"
       rowWrap="continuous"
       [enableSelection]="true"
       selectionMode="explicit"
       (keydown)="handleGridKeyDown($event)"
     >
-      @for (month of months(); track month.value; let row = $index) {
-        @if (row % 3 === 0) {
-          <div ngGridRow class="contents">
-            @for (
-              m of [months()[row], months()[row + 1], months()[row + 2]];
-              track m?.value
-            ) {
-              @if (m) {
-                <div ngGridCell class="contents" [(selected)]="m.selected">
-                  <button
-                    ngGridCellWidget
-                    type="button"
-                    [class]="getMonthButtonClass(m)"
-                    (click)="handleMonthClick(m.value)"
-                    (keydown)="handleKeyDown($event, m.value)"
-                    [attr.aria-current]="m.isCurrentMonth ? 'date' : null"
-                    [attr.aria-label]="m.label"
-                    [attr.data-month]="m.value"
-                  >
-                    {{ m.label }}
-                  </button>
-                </div>
-              }
+      <tbody>
+        @for (row of monthRows(); track $index) {
+          <tr ngGridRow>
+            @for (month of row; track month.value) {
+              <td
+                ngGridCell
+                class="p-1 text-center"
+                [(selected)]="month.selected"
+              >
+                <button
+                  ngGridCellWidget
+                  type="button"
+                  [class]="getMonthButtonClass(month)"
+                  (click)="handleMonthClick(month.value)"
+                  (keydown)="handleKeyDown($event, month.value)"
+                  [attr.aria-current]="month.isCurrentMonth ? 'date' : null"
+                  [attr.aria-label]="month.label"
+                  [attr.data-month]="month.value"
+                >
+                  {{ month.label }}
+                </button>
+              </td>
             }
-          </div>
+          </tr>
         }
-      }
-    </div>
+      </tbody>
+    </table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -99,6 +98,15 @@ export class ScCalendarMonthView {
       isSelected: index === currentMonth,
       selected: signal(index === currentMonth),
     }));
+  });
+
+  protected readonly monthRows = computed((): MonthInfo[][] => {
+    const months = this.months();
+    const rows: MonthInfo[][] = [];
+    for (let i = 0; i < months.length; i += 3) {
+      rows.push(months.slice(i, i + 3));
+    }
+    return rows;
   });
 
   protected getMonthButtonClass(month: MonthInfo): string {

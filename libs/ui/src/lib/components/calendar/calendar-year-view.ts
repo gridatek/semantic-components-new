@@ -22,44 +22,43 @@ interface YearInfo {
   selector: 'sc-calendar-year-view',
   imports: [Grid, GridRow, GridCell, GridCellWidget],
   template: `
-    <div
+    <table
       ngGrid
       aria-label="Select year"
-      class="grid grid-cols-3 gap-2"
+      class="w-full border-collapse"
       colWrap="continuous"
       rowWrap="continuous"
       [enableSelection]="true"
       selectionMode="explicit"
       (keydown)="handleGridKeyDown($event)"
     >
-      @for (year of years(); track year.value; let row = $index) {
-        @if (row % 3 === 0) {
-          <div ngGridRow class="contents">
-            @for (
-              y of [years()[row], years()[row + 1], years()[row + 2]];
-              track y?.value
-            ) {
-              @if (y) {
-                <div ngGridCell class="contents" [(selected)]="y.selected">
-                  <button
-                    ngGridCellWidget
-                    type="button"
-                    [class]="getYearButtonClass(y)"
-                    (click)="handleYearClick(y.value)"
-                    (keydown)="handleKeyDown($event, y.value)"
-                    [attr.aria-current]="y.isCurrentYear ? 'date' : null"
-                    [attr.aria-label]="y.label"
-                    [attr.data-year]="y.value"
-                  >
-                    {{ y.label }}
-                  </button>
-                </div>
-              }
+      <tbody>
+        @for (row of yearRows(); track $index) {
+          <tr ngGridRow>
+            @for (year of row; track year.value) {
+              <td
+                ngGridCell
+                class="p-1 text-center"
+                [(selected)]="year.selected"
+              >
+                <button
+                  ngGridCellWidget
+                  type="button"
+                  [class]="getYearButtonClass(year)"
+                  (click)="handleYearClick(year.value)"
+                  (keydown)="handleKeyDown($event, year.value)"
+                  [attr.aria-current]="year.isCurrentYear ? 'date' : null"
+                  [attr.aria-label]="year.label"
+                  [attr.data-year]="year.value"
+                >
+                  {{ year.label }}
+                </button>
+              </td>
             }
-          </div>
+          </tr>
         }
-      }
-    </div>
+      </tbody>
+    </table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -87,6 +86,15 @@ export class ScCalendarYearView {
         selected: signal(year === selectedYear),
       };
     });
+  });
+
+  protected readonly yearRows = computed((): YearInfo[][] => {
+    const years = this.years();
+    const rows: YearInfo[][] = [];
+    for (let i = 0; i < years.length; i += 3) {
+      rows.push(years.slice(i, i + 3));
+    }
+    return rows;
   });
 
   protected getYearButtonClass(year: YearInfo): string {
