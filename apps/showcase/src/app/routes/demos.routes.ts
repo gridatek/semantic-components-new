@@ -3818,24 +3818,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/tree-view',
     children: [
       {
-        path: 'file-explorer-tree-view-demo',
+        path: 'file-explorer-tree-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/file-explorer-tree-view-demo').then(
-            (m) => m.FileExplorerTreeViewDemo,
+          import('../pages/docs/tree-view/demos/file-explorer-tree-demo').then(
+            (m) => m.FileExplorerTreeDemo,
           ),
       },
       {
-        path: 'navigation-tree-view-demo',
+        path: 'navigation-tree-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/navigation-tree-view-demo').then(
-            (m) => m.NavigationTreeViewDemo,
+          import('../pages/docs/tree-view/demos/navigation-tree-demo').then(
+            (m) => m.NavigationTreeDemo,
           ),
       },
       {
-        path: 'simple-tree-view-demo',
+        path: 'simple-tree-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/simple-tree-view-demo').then(
-            (m) => m.SimpleTreeViewDemo,
+          import('../pages/docs/tree-view/demos/simple-tree-demo').then(
+            (m) => m.SimpleTreeDemo,
           ),
       },
     ],

@@ -8,7 +8,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-file-explorer-tree-view-demo',
+  selector: 'app-file-explorer-tree-demo',
   imports: [
     ScTree,
     ScTreeItem,
@@ -237,4 +237,4 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FileExplorerTreeViewDemo {}
+export class FileExplorerTreeDemo {}

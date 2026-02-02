@@ -7,7 +7,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-simple-tree-view-demo',
+  selector: 'app-simple-tree-demo',
   imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemContent],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
@@ -42,4 +42,4 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SimpleTreeViewDemo {}
+export class SimpleTreeDemo {}

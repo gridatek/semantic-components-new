@@ -1,23 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { FileExplorerTreeViewDemo } from './file-explorer-tree-view-demo';
+import { FileExplorerTreeDemo } from './file-explorer-tree-demo';
 
 @Component({
-  selector: 'app-file-explorer-tree-view-demo-container',
-  imports: [DemoContainer, FileExplorerTreeViewDemo],
+  selector: 'app-file-explorer-tree-demo-container',
+  imports: [DemoContainer, FileExplorerTreeDemo],
   template: `
     <app-demo-container
       title="File Explorer"
-      demoUrl="/demos/tree-view/file-explorer-tree-view-demo"
+      demoUrl="/demos/tree-view/file-explorer-tree-demo"
       [code]="code"
     >
-      <app-file-explorer-tree-view-demo />
+      <app-file-explorer-tree-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FileExplorerTreeViewDemoContainer {
+export class FileExplorerTreeDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScTree,
@@ -28,7 +28,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-file-explorer-tree-view-demo',
+  selector: 'app-file-explorer-tree-demo',
   imports: [
     ScTree,
     ScTreeItem,
@@ -55,5 +55,5 @@ import {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FileExplorerTreeViewDemo {}`;
+export class FileExplorerTreeDemo {}`;
 }

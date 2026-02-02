@@ -1,4 +1,24 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { NavigationTreeDemo } from './navigation-tree-demo';
+
+@Component({
+  selector: 'app-navigation-tree-demo-container',
+  imports: [DemoContainer, NavigationTreeDemo],
+  template: `
+    <app-demo-container
+      title="Navigation"
+      demoUrl="/demos/tree-view/navigation-tree-demo"
+      [code]="code"
+    >
+      <app-navigation-tree-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class NavigationTreeDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScTree,
   ScTreeItem,
@@ -8,7 +28,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-navigation-tree-view-demo',
+  selector: 'app-navigation-tree-demo',
   imports: [
     ScTree,
     ScTreeItem,
@@ -16,7 +36,7 @@ import {
     ScTreeItemContent,
     ScTreeItemIcon,
   ],
-  template: `
+  template: \`
     <div class="max-w-sm rounded-lg border p-4">
       <div sc-tree>
         <div sc-tree-item [hasChildren]="true" [expanded]="true">
@@ -108,7 +128,8 @@ import {
         </div>
       </div>
     </div>
-  `,
+  \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavigationTreeViewDemo {}
+export class NavigationTreeDemo {}`;
+}

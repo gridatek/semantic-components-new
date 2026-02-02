@@ -459,7 +459,7 @@ export const componentsRoutes: Route[] = [
       },
       {
         path: 'tree-view',
-        loadComponent: () => import('../pages/docs/tree-view/tree-view-page'),
+        loadComponent: () => import('../pages/docs/tree-view/tree-page'),
       },
       {
         path: 'video-player',

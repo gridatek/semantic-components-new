@@ -1,23 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
-import { SimpleTreeViewDemo } from './simple-tree-view-demo';
+import { SimpleTreeDemo } from './simple-tree-demo';
 
 @Component({
-  selector: 'app-simple-tree-view-demo-container',
-  imports: [DemoContainer, SimpleTreeViewDemo],
+  selector: 'app-simple-tree-demo-container',
+  imports: [DemoContainer, SimpleTreeDemo],
   template: `
     <app-demo-container
       title="Simple"
-      demoUrl="/demos/tree-view/simple-tree-view-demo"
+      demoUrl="/demos/tree-view/simple-tree-demo"
       [code]="code"
     >
-      <app-simple-tree-view-demo />
+      <app-simple-tree-demo />
     </app-demo-container>
   `,
   host: { class: 'block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SimpleTreeViewDemoContainer {
+export class SimpleTreeDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScTree,
@@ -27,7 +27,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
-  selector: 'app-simple-tree-view-demo',
+  selector: 'app-simple-tree-demo',
   imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemContent],
   template: \`
     <div class="max-w-sm rounded-lg border p-4">
@@ -62,5 +62,5 @@ import {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SimpleTreeViewDemo {}`;
+export class SimpleTreeDemo {}`;
 }
