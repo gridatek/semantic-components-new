@@ -62,7 +62,6 @@ Label for displaying filename or language with muted foreground styling.
 | `code`            | `string`               | **required**  | The source code to display       |
 | `language`        | `ScCodeViewerLanguage` | `'plaintext'` | Language for syntax highlighting |
 | `showLineNumbers` | `boolean`              | `false`       | Whether to show line numbers     |
-| `maxHeight`       | `string`               | `''`          | Max height with overflow scroll  |
 | `class`           | `string`               | `''`          | Additional CSS classes           |
 
 The content component with Shiki syntax highlighting.

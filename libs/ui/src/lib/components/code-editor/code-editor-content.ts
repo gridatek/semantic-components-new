@@ -278,7 +278,7 @@ export class ScCodeEditorContent {
   });
 
   protected readonly wrapperClass = computed(() =>
-    cn('relative flex overflow-auto', this.classInput()),
+    cn('relative flex overflow-hidden', this.classInput()),
   );
 
   protected readonly textareaClass = computed(() =>
