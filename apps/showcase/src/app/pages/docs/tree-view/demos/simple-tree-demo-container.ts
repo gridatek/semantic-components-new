@@ -23,18 +23,18 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
-  ScTreeItemContent,
+  ScTreeItemGroup,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-simple-tree-demo',
-  imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemContent],
+  imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemGroup],
   template: \`
     <div class="max-w-sm rounded-lg border p-4">
       <div sc-tree>
         <div sc-tree-item [hasChildren]="true" [expanded]="true">
           <div sc-tree-item-trigger>Fruits</div>
-          <div sc-tree-item-content>
+          <div sc-tree-item-group>
             <div sc-tree-item>
               <div sc-tree-item-trigger>Apple</div>
             </div>
@@ -48,7 +48,7 @@ import {
         </div>
         <div sc-tree-item [hasChildren]="true">
           <div sc-tree-item-trigger>Vegetables</div>
-          <div sc-tree-item-content>
+          <div sc-tree-item-group>
             <div sc-tree-item>
               <div sc-tree-item-trigger>Carrot</div>
             </div>

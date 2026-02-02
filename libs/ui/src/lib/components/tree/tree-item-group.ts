@@ -11,7 +11,7 @@ import { cn } from '../../utils';
 import { SC_TREE_ITEM } from './tree-item';
 
 @Component({
-  selector: 'ul[sc-tree-item-content]',
+  selector: 'ul[sc-tree-item-group]',
   imports: [TreeItemGroup],
   template: `
     <ng-template ngTreeItemGroup [ownedBy]="item.treeItem">
@@ -19,14 +19,14 @@ import { SC_TREE_ITEM } from './tree-item';
     </ng-template>
   `,
   host: {
-    'data-slot': 'tree-item-content',
+    'data-slot': 'tree-item-group',
     role: 'group',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScTreeItemContent {
+export class ScTreeItemGroup {
   readonly item = inject(SC_TREE_ITEM);
   readonly classInput = input<string>('', { alias: 'class' });
 

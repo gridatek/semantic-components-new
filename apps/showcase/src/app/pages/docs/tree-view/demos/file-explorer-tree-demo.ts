@@ -3,7 +3,7 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
-  ScTreeItemContent,
+  ScTreeItemGroup,
   ScTreeItemIcon,
 } from '@semantic-components/ui';
 
@@ -13,7 +13,7 @@ import {
     ScTree,
     ScTreeItem,
     ScTreeItemTrigger,
-    ScTreeItemContent,
+    ScTreeItemGroup,
     ScTreeItemIcon,
   ],
   template: `
@@ -38,7 +38,7 @@ import {
             </svg>
             <span>src</span>
           </button>
-          <ul sc-tree-item-content>
+          <ul sc-tree-item-group>
             <li sc-tree-item [parent]="tree.tree" value="app" [expanded]="true">
               <button sc-tree-item-trigger>
                 <svg
@@ -58,7 +58,7 @@ import {
                 </svg>
                 <span>app</span>
               </button>
-              <ul sc-tree-item-content>
+              <ul sc-tree-item-group>
                 <li sc-tree-item [parent]="tree.tree" value="components">
                   <button sc-tree-item-trigger>
                     <svg
@@ -78,7 +78,7 @@ import {
                     </svg>
                     <span>components</span>
                   </button>
-                  <ul sc-tree-item-content>
+                  <ul sc-tree-item-group>
                     <li sc-tree-item [parent]="tree.tree" value="button.ts">
                       <button sc-tree-item-trigger>
                         <svg
@@ -186,7 +186,7 @@ import {
                 </svg>
                 <span>assets</span>
               </button>
-              <ul sc-tree-item-content>
+              <ul sc-tree-item-group>
                 <li sc-tree-item [parent]="tree.tree" value="logo.png">
                   <button sc-tree-item-trigger>
                     <svg

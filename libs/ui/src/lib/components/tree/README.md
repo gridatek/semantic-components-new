@@ -20,7 +20,7 @@ A hierarchical collapsible tree for displaying nested data. Built with Angular A
       <svg sc-tree-item-icon><!-- folder icon --></svg>
       <span>Folder</span>
     </button>
-    <ul sc-tree-item-content>
+    <ul sc-tree-item-group>
       <li sc-tree-item [parent]="tree.tree" value="file">
         <button sc-tree-item-trigger>
           <svg sc-tree-item-icon><!-- file icon --></svg>
@@ -56,7 +56,7 @@ To create a tree:
 
 4. **Wrap nested children** (no additional bindings needed):
    ```html
-   <ul sc-tree-item-content>
+   <ul sc-tree-item-group>
      <!-- Child items here -->
    </ul>
    ```
@@ -65,7 +65,7 @@ To create a tree:
 
 - All items use `[parent]="tree.tree"` regardless of nesting depth
 - Each item needs a unique `value` attribute
-- `sc-tree-item-content` automatically connects to its parent item
+- `sc-tree-item-group` automatically connects to its parent item
 - The component handles all ARIA attributes and accessibility
 
 ## Components
@@ -107,7 +107,7 @@ Individual tree item that can have children. Uses Angular ARIA's `TreeItem` dire
 **Properties:**
 
 - `level`: Computed nesting level (0 for root items)
-- `hasChildren`: Computed based on presence of `sc-tree-item-content`
+- `hasChildren`: Computed based on presence of `sc-tree-item-group`
 - `treeItem`: Access to Angular ARIA's TreeItem instance
   - `treeItem.expanded()`: Signal for expanded state
   - `treeItem.selected()`: Signal for selected state
@@ -125,11 +125,11 @@ Automatically includes:
 - Proper indentation based on nesting level
 - Full keyboard navigation support via Angular ARIA
 
-### ScTreeItemContent
+### ScTreeItemGroup
 
 Container for nested child items. Uses Angular ARIA's `TreeItemGroup` directive internally.
 
-**Selector:** `ul[sc-tree-item-content]`
+**Selector:** `ul[sc-tree-item-group]`
 
 **Inputs:**
 
@@ -158,7 +158,7 @@ Optional icon slot for tree items.
       </svg>
       <span>src</span>
     </button>
-    <ul sc-tree-item-content>
+    <ul sc-tree-item-group>
       <li sc-tree-item [parent]="tree.tree" value="app" [expanded]="true">
         <button sc-tree-item-trigger>
           <svg sc-tree-item-icon class="text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -166,7 +166,7 @@ Optional icon slot for tree items.
           </svg>
           <span>app</span>
         </button>
-        <ul sc-tree-item-content>
+        <ul sc-tree-item-group>
           <li sc-tree-item [parent]="tree.tree" value="main">
             <button sc-tree-item-trigger>
               <svg sc-tree-item-icon class="text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -198,7 +198,7 @@ Optional icon slot for tree items.
 <ul sc-tree #tree="scTree">
   <li sc-tree-item [parent]="tree.tree" value="getting-started" [expanded]="true">
     <button sc-tree-item-trigger>Getting Started</button>
-    <ul sc-tree-item-content>
+    <ul sc-tree-item-group>
       <li sc-tree-item [parent]="tree.tree" value="intro">
         <button sc-tree-item-trigger>Introduction</button>
       </li>
@@ -212,7 +212,7 @@ Optional icon slot for tree items.
   </li>
   <li sc-tree-item [parent]="tree.tree" value="components">
     <button sc-tree-item-trigger>Components</button>
-    <ul sc-tree-item-content>
+    <ul sc-tree-item-group>
       <li sc-tree-item [parent]="tree.tree" value="button">
         <button sc-tree-item-trigger>Button</button>
       </li>
@@ -230,7 +230,7 @@ Optional icon slot for tree items.
 <ul sc-tree #tree="scTree">
   <li sc-tree-item [parent]="tree.tree" value="fruits">
     <button sc-tree-item-trigger>Fruits</button>
-    <ul sc-tree-item-content>
+    <ul sc-tree-item-group>
       <li sc-tree-item [parent]="tree.tree" value="apple">
         <button sc-tree-item-trigger>Apple</button>
       </li>
@@ -241,7 +241,7 @@ Optional icon slot for tree items.
   </li>
   <li sc-tree-item [parent]="tree.tree" value="vegetables">
     <button sc-tree-item-trigger>Vegetables</button>
-    <ul sc-tree-item-content>
+    <ul sc-tree-item-group>
       <li sc-tree-item [parent]="tree.tree" value="carrot">
         <button sc-tree-item-trigger>Carrot</button>
       </li>
@@ -256,12 +256,12 @@ Access the Angular ARIA `TreeItem` instance to programmatically control expansio
 
 ```typescript
 @Component({
-  imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemContent],
+  imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemGroup],
   template: `
     <ul sc-tree #tree="scTree">
       <li sc-tree-item [parent]="tree.tree" value="item" #item="scTreeItem">
         <button sc-tree-item-trigger>Item (Expanded: {{ item.treeItem.expanded() }})</button>
-        <ul sc-tree-item-content>
+        <ul sc-tree-item-group>
           <li sc-tree-item [parent]="tree.tree" value="child">
             <button sc-tree-item-trigger>Child</button>
           </li>
@@ -291,7 +291,7 @@ export class MyTreeItemComponent {
 This tree component uses a **simplified API** compared to traditional hierarchical implementations:
 
 - **Single parent reference**: All items use `[parent]="tree.tree"`, not nested group references
-- **Automatic relationships**: `sc-tree-item-content` automatically connects to its parent item internally
+- **Automatic relationships**: `sc-tree-item-group` automatically connects to its parent item internally
 - **No manual wiring**: No need for `[ownedBy]` bindings or complex template reference chains
 
 This design prioritizes developer experience while maintaining full Angular ARIA accessibility features.

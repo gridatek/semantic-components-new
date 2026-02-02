@@ -23,7 +23,7 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
-  ScTreeItemContent,
+  ScTreeItemGroup,
   ScTreeItemIcon,
 } from '@semantic-components/ui';
 
@@ -33,7 +33,7 @@ import {
     ScTree,
     ScTreeItem,
     ScTreeItemTrigger,
-    ScTreeItemContent,
+    ScTreeItemGroup,
     ScTreeItemIcon,
   ],
   template: \`
@@ -56,7 +56,7 @@ import {
             </svg>
             <span>Getting Started</span>
           </div>
-          <div sc-tree-item-content>
+          <div sc-tree-item-group>
             <div sc-tree-item>
               <div sc-tree-item-trigger>Introduction</div>
             </div>
@@ -86,7 +86,7 @@ import {
             </svg>
             <span>Components</span>
           </div>
-          <div sc-tree-item-content>
+          <div sc-tree-item-group>
             <div sc-tree-item>
               <div sc-tree-item-trigger>Button</div>
             </div>
@@ -117,7 +117,7 @@ import {
             </svg>
             <span>API Reference</span>
           </div>
-          <div sc-tree-item-content>
+          <div sc-tree-item-group>
             <div sc-tree-item>
               <div sc-tree-item-trigger>Overview</div>
             </div>

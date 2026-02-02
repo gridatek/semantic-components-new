@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { TreeItem } from '@angular/aria/tree';
 import { cn } from '../../utils';
-import { ScTreeItemContent } from './tree-item-content';
+import { ScTreeItemGroup } from './tree-item-group';
 
 // Token for tree item context
 export const SC_TREE_ITEM = new InjectionToken<ScTreeItem>('SC_TREE_ITEM');
@@ -42,7 +42,7 @@ export class ScTreeItem {
   });
 
   readonly treeItem = inject(TreeItem);
-  readonly groupContent = contentChild(ScTreeItemContent);
+  readonly groupContent = contentChild(ScTreeItemGroup);
 
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -23,7 +23,7 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
-  ScTreeItemContent,
+  ScTreeItemGroup,
   ScTreeItemIcon,
 } from '@semantic-components/ui';
 
@@ -33,7 +33,7 @@ import {
     ScTree,
     ScTreeItem,
     ScTreeItemTrigger,
-    ScTreeItemContent,
+    ScTreeItemGroup,
     ScTreeItemIcon,
   ],
   template: \`
@@ -46,7 +46,7 @@ import {
             </svg>
             <span>src</span>
           </div>
-          <div sc-tree-item-content>
+          <div sc-tree-item-group>
             <!-- Nested folders and files... -->
           </div>
         </div>
