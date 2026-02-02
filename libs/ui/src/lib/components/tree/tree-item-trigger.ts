@@ -39,7 +39,7 @@ import { SC_TREE_ITEM } from './tree-item';
     type: 'button',
     '[class]': 'class()',
     '[style.padding-left]': 'paddingLeft()',
-    '(click)': 'onClick()',
+    '(click)': 'onClick($event)',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,9 +65,7 @@ export class ScTreeItemTrigger {
     return `${level * 12 + 8}px`;
   });
 
-  protected onClick(): void {
-    if (this.item.hasChildren()) {
-      this.item.treeItem.expanded.update((v) => !v);
-    }
+  protected onClick(event: MouseEvent): void {
+    event.preventDefault();
   }
 }
