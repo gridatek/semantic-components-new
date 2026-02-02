@@ -148,9 +148,9 @@ export function detectLanguage(
     <div class="relative min-w-0 flex-1">
       <!-- Highlighted code (display layer) -->
       <div
-        class="sc-code-editor-content__display pointer-events-none absolute inset-0 overflow-hidden"
+        class="pointer-events-none absolute inset-0 overflow-hidden"
+        [class.word-wrap-enabled]="wordWrap()"
         aria-hidden="true"
-        [class.sc-code-editor-content__display--word-wrap]="wordWrap()"
       >
         @if (highlightedHtml()) {
           <div [innerHTML]="highlightedHtml()"></div>
@@ -195,33 +195,14 @@ export function detectLanguage(
       color: hsl(var(--foreground));
     }
 
-    .sc-code-editor-content__display pre.shiki {
-      margin: 0;
-      padding: 0.75rem;
-      overflow-x: auto;
-      font-size: 0.875rem;
-      line-height: 1.625;
-    }
-
-    .sc-code-editor-content__display pre.shiki,
-    .sc-code-editor-content__display pre.shiki span {
-      color: var(--shiki-light);
+    /* Transparent background for editor overlay effect */
+    [sc-code-editor-content] pre.shiki,
+    [sc-code-editor-content] pre.shiki span {
       background-color: transparent !important;
     }
 
-    .dark .sc-code-editor-content__display pre.shiki,
-    .dark .sc-code-editor-content__display pre.shiki span {
-      color: var(--shiki-dark);
-      background-color: transparent !important;
-    }
-
-    .sc-code-editor-content__display pre.shiki code {
-      font-family:
-        ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
-        'Liberation Mono', monospace;
-    }
-
-    .sc-code-editor-content__display--word-wrap pre.shiki {
+    /* Word wrap support */
+    [sc-code-editor-content] .word-wrap-enabled pre.shiki {
       white-space: pre-wrap;
       word-break: break-all;
     }
