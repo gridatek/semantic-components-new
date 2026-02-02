@@ -10,6 +10,7 @@ import { cn } from '../../utils';
 import { ScCalendarDayView } from './calendar-day-view';
 import { ScCalendarMonthView } from './calendar-month-view';
 import { ScCalendarYearView } from './calendar-year-view';
+import { ScCalendarHeader } from './calendar-header';
 
 export type CalendarMode = 'single' | 'multiple' | 'range';
 export type CalendarViewMode = 'day' | 'month' | 'year';
@@ -21,7 +22,12 @@ export interface DateRange {
 
 @Component({
   selector: 'sc-calendar',
-  imports: [ScCalendarDayView, ScCalendarMonthView, ScCalendarYearView],
+  imports: [
+    ScCalendarDayView,
+    ScCalendarMonthView,
+    ScCalendarYearView,
+    ScCalendarHeader,
+  ],
   host: {
     'data-slot': 'calendar',
     '[class]': 'class()',
@@ -31,59 +37,16 @@ export interface DateRange {
   template: `
     <div class="flex flex-col gap-4">
       <!-- Header with navigation -->
-      <div class="relative flex items-center justify-center pt-1">
-        <button
-          type="button"
-          class="absolute left-1 inline-flex size-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity"
-          (click)="handlePrevious()"
-          [attr.aria-label]="previousAriaLabel()"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
-          >
-            <path d="m15 18-6-6 6-6" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          class="text-sm font-medium hover:text-primary transition-colors px-3 py-1 rounded-md hover:bg-accent"
-          (click)="handleHeaderClick()"
-          [attr.aria-label]="headerAriaLabel()"
-          [attr.aria-expanded]="viewMode() !== 'day'"
-        >
-          {{ monthYearLabel() }}
-        </button>
-        <button
-          type="button"
-          class="absolute right-1 inline-flex size-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity"
-          (click)="handleNext()"
-          [attr.aria-label]="nextAriaLabel()"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        </button>
-      </div>
+      <sc-calendar-header
+        [label]="monthYearLabel()"
+        [previousLabel]="previousAriaLabel()"
+        [nextLabel]="nextAriaLabel()"
+        [headerLabel]="headerAriaLabel()"
+        [expanded]="viewMode() !== 'day'"
+        (previous)="handlePrevious()"
+        (next)="handleNext()"
+        (headerClick)="handleHeaderClick()"
+      />
 
       <!-- View content -->
       @switch (viewMode()) {
