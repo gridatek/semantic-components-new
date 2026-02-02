@@ -1,8 +1,5 @@
-export {
-  SC_TREE_ITEM,
-  ScTree,
-  ScTreeItem,
-  ScTreeItemTrigger,
-  ScTreeItemContent,
-  ScTreeItemIcon,
-} from './tree-view';
+export * from './tree';
+export * from './tree-item-trigger';
+export * from './tree-item';
+export * from './tree-item-icon';
+export * from './tree-item-content';
