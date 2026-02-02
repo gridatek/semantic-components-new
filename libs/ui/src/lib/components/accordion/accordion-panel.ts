@@ -25,8 +25,6 @@ import { cn } from '../../utils';
   host: {
     'data-slot': 'accordion-panel',
     '[class]': 'class()',
-    'animate.enter': 'animate-accordion-down',
-    'animate.leave': 'animate-accordion-up',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +32,5 @@ import { cn } from '../../utils';
 export class ScAccordionPanel {
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() =>
-    cn('text-sm overflow-hidden', this.classInput()),
-  );
+  protected readonly class = computed(() => cn('', this.classInput()));
 }
