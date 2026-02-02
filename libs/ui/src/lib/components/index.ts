@@ -98,7 +98,7 @@ export * from './toggle-group';
 export * from './tooltip';
 export * from './tour-guide';
 export * from './transfer-list';
-export * from './tree-view';
+export * from './tree';
 export * from './video-player';
 export * from './virtual-list';
 export * from './split-button';

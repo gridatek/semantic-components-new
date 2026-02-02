@@ -1,4 +1,4 @@
-# Tree View
+# Tree
 
 A hierarchical collapsible tree for displaying nested data.
 
