@@ -23,25 +23,25 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
       <ul sc-tree #tree="scTree">
         <li sc-tree-item [parent]="tree.tree" value="fruits" [expanded]="true">
           <button sc-tree-item-trigger>
-            <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+            <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
             <span>Fruits</span>
           </button>
           <ul sc-tree-item-group>
             <li sc-tree-item [parent]="tree.tree" value="apple">
               <button sc-tree-item-trigger>
-                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <span>Apple</span>
               </button>
             </li>
             <li sc-tree-item [parent]="tree.tree" value="banana">
               <button sc-tree-item-trigger>
-                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <span>Banana</span>
               </button>
             </li>
             <li sc-tree-item [parent]="tree.tree" value="orange">
               <button sc-tree-item-trigger>
-                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <span>Orange</span>
               </button>
             </li>
@@ -49,19 +49,19 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
         </li>
         <li sc-tree-item [parent]="tree.tree" value="vegetables">
           <button sc-tree-item-trigger>
-            <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+            <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
             <span>Vegetables</span>
           </button>
           <ul sc-tree-item-group>
             <li sc-tree-item [parent]="tree.tree" value="carrot">
               <button sc-tree-item-trigger>
-                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <span>Carrot</span>
               </button>
             </li>
             <li sc-tree-item [parent]="tree.tree" value="broccoli">
               <button sc-tree-item-trigger>
-                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon></svg>
                 <span>Broccoli</span>
               </button>
             </li>
