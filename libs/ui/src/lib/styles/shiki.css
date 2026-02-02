@@ -1,4 +1,6 @@
-.sc-code-viewer-content pre.shiki {
+/* Shiki syntax highlighting styles - generic and reusable */
+
+pre.shiki {
   margin: 0;
   padding: 1rem;
   overflow-x: auto;
@@ -6,34 +8,35 @@
   line-height: 1.625;
 }
 
-.sc-code-viewer-content pre.shiki,
-.sc-code-viewer-content pre.shiki span {
+pre.shiki,
+pre.shiki span {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }
 
-.dark .sc-code-viewer-content pre.shiki,
-.dark .sc-code-viewer-content pre.shiki span {
+.dark pre.shiki,
+.dark pre.shiki span {
   color: var(--shiki-dark);
   background-color: var(--shiki-dark-bg);
 }
 
-.sc-code-viewer-content pre.shiki code {
+pre.shiki code {
   font-family:
     ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono',
     monospace;
 }
 
-.sc-code-viewer-content--line-numbers pre.shiki code {
+/* Line numbers support */
+.shiki-line-numbers pre.shiki code {
   counter-reset: line;
 }
 
-.sc-code-viewer-content--line-numbers pre.shiki code .line {
+.shiki-line-numbers pre.shiki code .line {
   display: inline-block;
   width: 100%;
 }
 
-.sc-code-viewer-content--line-numbers pre.shiki code .line::before {
+.shiki-line-numbers pre.shiki code .line::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;

@@ -65,10 +65,7 @@ export class ScCodeViewerContent {
   );
 
   protected readonly contentClass = computed(() =>
-    cn(
-      'sc-code-viewer-content',
-      this.showLineNumbers() && 'sc-code-viewer-content--line-numbers',
-    ),
+    cn(this.showLineNumbers() && 'shiki-line-numbers'),
   );
 
   constructor() {
