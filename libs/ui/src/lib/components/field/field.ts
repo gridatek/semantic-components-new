@@ -1,10 +1,4 @@
-import {
-  computed,
-  Directive,
-  InjectionToken,
-  input,
-  signal,
-} from '@angular/core';
+import { computed, Directive, InjectionToken, input } from '@angular/core';
 import { cn } from '../../utils';
 
 export type ScFieldOrientation = 'vertical' | 'horizontal' | 'responsive';
