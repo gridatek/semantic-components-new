@@ -71,6 +71,8 @@ export interface DateRange {
             [year]="viewDate().getFullYear()"
             [selectedMonth]="viewDate().getMonth()"
             (monthSelected)="selectMonth($event)"
+            (yearScrollUp)="previousYear()"
+            (yearScrollDown)="nextYear()"
           />
         }
         @case ('year') {
@@ -78,6 +80,8 @@ export interface DateRange {
             [decadeStart]="decadeStart()"
             [selectedYear]="viewDate().getFullYear()"
             (yearSelected)="selectYear($event)"
+            (decadeScrollUp)="previousDecade()"
+            (decadeScrollDown)="nextDecade()"
           />
         }
       }

@@ -5,6 +5,7 @@ import {
   input,
   output,
   signal,
+  viewChildren,
 } from '@angular/core';
 import { Grid, GridRow, GridCell, GridCellWidget } from '@angular/aria/grid';
 import { cn } from '../../utils';
@@ -29,6 +30,7 @@ interface YearInfo {
       rowWrap="continuous"
       [enableSelection]="true"
       selectionMode="explicit"
+      (keydown)="handleGridKeyDown($event)"
     >
       @for (year of years(); track year.value; let row = $index) {
         @if (row % 3 === 0) {
@@ -47,6 +49,7 @@ interface YearInfo {
                     (keydown)="handleKeyDown($event, y.value)"
                     [attr.aria-current]="y.isCurrentYear ? 'date' : null"
                     [attr.aria-label]="y.label"
+                    [attr.data-year]="y.value"
                   >
                     {{ y.label }}
                   </button>
@@ -61,9 +64,13 @@ interface YearInfo {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCalendarYearView {
+  private readonly _yearButtons = viewChildren(GridCellWidget);
+
   readonly decadeStart = input.required<number>();
   readonly selectedYear = input.required<number>();
   readonly yearSelected = output<number>();
+  readonly decadeScrollUp = output<void>();
+  readonly decadeScrollDown = output<void>();
 
   protected readonly years = computed((): YearInfo[] => {
     const decadeStart = this.decadeStart();
@@ -105,5 +112,45 @@ export class ScCalendarYearView {
       event.preventDefault();
       this.yearSelected.emit(year);
     }
+  }
+
+  protected handleGridKeyDown(event: KeyboardEvent): void {
+    const yearAttr = (event.target as Element).getAttribute('data-year');
+    if (!yearAttr) return;
+
+    const year = Number(yearAttr);
+    const decadeStart = this.decadeStart();
+    const decadeEnd = decadeStart + 11;
+
+    // Only handle edge cases where we need to scroll to prev/next decade
+    const yearIndex = year - decadeStart;
+    if (yearIndex > 2 && yearIndex < 9) return; // Middle years, let grid handle it
+
+    const arrowLeft = event.key === 'ArrowLeft';
+    const arrowRight = event.key === 'ArrowRight';
+    const arrowUp = event.key === 'ArrowUp';
+    const arrowDown = event.key === 'ArrowDown';
+
+    // First row (first 3 years) + arrow up, or first year + arrow left
+    if ((year === decadeStart && arrowLeft) || (yearIndex <= 2 && arrowUp)) {
+      this.scrollUp();
+    }
+
+    // Last row (last 3 years) + arrow down, or last year + arrow right
+    if ((year === decadeEnd && arrowRight) || (yearIndex >= 9 && arrowDown)) {
+      this.scrollDown();
+    }
+  }
+
+  private scrollDown(): void {
+    this.decadeScrollDown.emit();
+    setTimeout(() => this._yearButtons()[0]?.element.focus());
+  }
+
+  private scrollUp(): void {
+    this.decadeScrollUp.emit();
+    setTimeout(() =>
+      this._yearButtons()[this._yearButtons().length - 1]?.element.focus(),
+    );
   }
 }
