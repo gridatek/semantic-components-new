@@ -21,11 +21,12 @@ ScAccordion (Root - uses AccordionGroup)
     │     │            └── disabled: boolean
     │     │            └── svg[sc-accordion-trigger-icon] (optional icon)
     │     │
-    │     └── ScAccordionPanel (uses AccordionPanel)
+    │     └── ScAccordionPanel (uses AccordionPanel + animation wrapper)
     │           │
     │           ├── panelId: string (links to trigger)
+    │           ├── animate.enter / animate.leave (on internal div)
     │           │
-    │           └── ScAccordionContent (animation + content styling wrapper)
+    │           └── ScAccordionContent (content styling wrapper)
     │
     ├── ScAccordionItem
     └── ...
@@ -33,15 +34,15 @@ ScAccordion (Root - uses AccordionGroup)
 
 ## Components
 
-| Component                | Selector                         | Description                                          |
-| ------------------------ | -------------------------------- | ---------------------------------------------------- |
-| `ScAccordion`            | `div[sc-accordion]`              | Root wrapper using `AccordionGroup`                  |
-| `ScAccordionItem`        | `div[sc-accordion-item]`         | Styling wrapper for accordion item                   |
-| `ScAccordionHeader`      | `div[sc-accordion-header]`       | Flex container for trigger                           |
-| `ScAccordionTrigger`     | `button[sc-accordion-trigger]`   | Button to toggle item using `AccordionTrigger`       |
-| `ScAccordionPanel`       | `div[sc-accordion-panel]`        | Collapsible panel using `AccordionPanel`             |
-| `ScAccordionContent`     | `div[sc-accordion-content]`      | Animated content wrapper with styling and typography |
-| `ScAccordionTriggerIcon` | `svg[sc-accordion-trigger-icon]` | Directive to flip an SVG icon                        |
+| Component                | Selector                         | Description                                             |
+| ------------------------ | -------------------------------- | ------------------------------------------------------- |
+| `ScAccordion`            | `div[sc-accordion]`              | Root wrapper using `AccordionGroup`                     |
+| `ScAccordionItem`        | `div[sc-accordion-item]`         | Styling wrapper for accordion item                      |
+| `ScAccordionHeader`      | `div[sc-accordion-header]`       | Flex container for trigger                              |
+| `ScAccordionTrigger`     | `button[sc-accordion-trigger]`   | Button to toggle item using `AccordionTrigger`          |
+| `ScAccordionPanel`       | `div[sc-accordion-panel]`        | Collapsible panel with animation using `AccordionPanel` |
+| `ScAccordionContent`     | `div[sc-accordion-content]`      | Content styling wrapper with padding and typography     |
+| `ScAccordionTriggerIcon` | `svg[sc-accordion-trigger-icon]` | Directive to flip an SVG icon                           |
 
 ## Inputs
 
@@ -77,7 +78,7 @@ The trigger is a button that toggles the expanded state of an accordion panel.
 | --------- | -------- | ------------ | ---------------------------------------- |
 | `panelId` | `string` | **required** | Links panel to its corresponding trigger |
 
-The `ScAccordionPanel` component wraps collapsible content using `AccordionPanel` from Angular ARIA.
+The `ScAccordionPanel` component wraps collapsible content using `AccordionPanel` from Angular ARIA. It includes an internal animated div wrapper with `text-sm overflow-hidden` classes and Angular's `animate.enter`/`animate.leave` directives for smooth expand/collapse transitions.
 
 ### ScAccordionContent
 
@@ -85,7 +86,7 @@ The `ScAccordionPanel` component wraps collapsible content using `AccordionPanel
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-The `ScAccordionContent` component handles animations and provides content styling. It includes `text-sm overflow-hidden` for animation behavior, padding (`pt-0 pb-2.5`), link styles (underlined, hover effects), and paragraph spacing. Uses Angular's `animate.enter`/`animate.leave` for smooth transitions. Must be nested inside `ScAccordionPanel`.
+The `ScAccordionContent` component provides content styling including padding (`pt-0 pb-2.5`), link styles (underlined with hover effects), and paragraph spacing. Must be nested inside `ScAccordionPanel`.
 
 ### ScAccordionTriggerIcon
 
@@ -242,13 +243,14 @@ The components use Tailwind CSS with shadcn/ui design tokens:
 - Items have `border-b` for visual separation (via `ScAccordionItem`)
 - Triggers show underline on hover (removed when focused for better UX)
 - Built-in chevron icons automatically rotate 180° based on expanded state
-- `ScAccordionContent` provides animation wrapper with `text-sm overflow-hidden` and content styling with padding (`pt-0 pb-2.5`), link underlines, and paragraph spacing
+- `ScAccordionPanel` includes an internal animated wrapper with `text-sm overflow-hidden` for smooth transitions
+- `ScAccordionContent` provides content styling with padding (`pt-0 pb-2.5`), link underlines, and paragraph spacing
 - Focus states use a ring style for keyboard navigation
 - All components support custom classes via the `class` input
 
 ## Animation
 
-The accordion uses Angular's built-in `animate.enter` and `animate.leave` API combined with animations from `tw-animate-css`. Animation is handled by the `ScAccordionContent` component.
+The accordion uses Angular's built-in `animate.enter` and `animate.leave` API combined with animations from `tw-animate-css`. Animation is handled by an internal div wrapper within the `ScAccordionPanel` component.
 
 ### Setup
 
@@ -260,8 +262,8 @@ Make sure you have `tw-animate-css` imported in your CSS:
 
 ### How It Works
 
-- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter` on `ScAccordionContent`
-- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave` on `ScAccordionContent`
+- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter` on the internal animated div within `ScAccordionPanel`
+- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave` on the internal animated div
 - **Timing**: Angular handles all animation timing and cleanup automatically
 
-The animations provide smooth height transitions from `0` to the content height when opening, and back to `0` when closing.
+The animations provide smooth height transitions from `0` to the content height when opening, and back to `0` when closing. The `overflow-hidden` class on the animated wrapper ensures content is properly clipped during the transition.
