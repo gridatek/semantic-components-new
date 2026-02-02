@@ -17,7 +17,9 @@ export class ScTreeItemTriggerIcon {
     cn(
       'size-4 shrink-0 transition-transform duration-200 pointer-events-none',
       this.item.treeItem.expanded() && 'rotate-90',
-      !this.item.hasChildren() && 'hidden',
+      // Use 'invisible' instead of 'hidden' to preserve space and maintain consistent alignment
+      // across all tree items, regardless of whether they have children
+      !this.item.hasChildren() && 'invisible',
       this.classInput(),
     ),
   );
