@@ -23,9 +23,11 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
+  ScTreeItemTriggerIcon,
   ScTreeItemGroup,
   ScTreeItemIcon,
 } from '@semantic-components/ui';
+import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-file-explorer-tree-demo',
@@ -33,8 +35,10 @@ import {
     ScTree,
     ScTreeItem,
     ScTreeItemTrigger,
+    ScTreeItemTriggerIcon,
     ScTreeItemGroup,
     ScTreeItemIcon,
+    SiChevronRightIcon,
   ],
   template: \`
     <div class="max-w-sm rounded-lg border p-4">

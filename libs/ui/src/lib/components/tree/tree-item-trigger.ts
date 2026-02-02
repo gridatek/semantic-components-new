@@ -12,26 +12,6 @@ import { SC_TREE_ITEM } from './tree-item';
 @Component({
   selector: 'button[sc-tree-item-trigger], a[sc-tree-item-trigger]',
   template: `
-    @if (item.hasChildren()) {
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="size-4 shrink-0 transition-transform duration-200"
-        [class.rotate-90]="item.treeItem.expanded()"
-        aria-hidden="true"
-      >
-        <path d="m9 18 6-6-6-6" />
-      </svg>
-    } @else {
-      <span class="size-4 shrink-0" aria-hidden="true"></span>
-    }
     <ng-content />
   `,
   host: {

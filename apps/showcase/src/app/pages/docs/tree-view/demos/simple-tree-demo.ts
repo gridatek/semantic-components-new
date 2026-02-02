@@ -3,37 +3,67 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
+  ScTreeItemTriggerIcon,
   ScTreeItemGroup,
 } from '@semantic-components/ui';
+import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-simple-tree-demo',
-  imports: [ScTree, ScTreeItem, ScTreeItemTrigger, ScTreeItemGroup],
+  imports: [
+    ScTree,
+    ScTreeItem,
+    ScTreeItemTrigger,
+    ScTreeItemTriggerIcon,
+    ScTreeItemGroup,
+    SiChevronRightIcon,
+  ],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
       <ul sc-tree #tree="scTree">
         <li sc-tree-item [parent]="tree.tree" value="fruits" [expanded]="true">
-          <button sc-tree-item-trigger>Fruits</button>
+          <button sc-tree-item-trigger>
+            <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+            <span>Fruits</span>
+          </button>
           <ul sc-tree-item-group>
             <li sc-tree-item [parent]="tree.tree" value="apple">
-              <button sc-tree-item-trigger>Apple</button>
+              <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <span>Apple</span>
+              </button>
             </li>
             <li sc-tree-item [parent]="tree.tree" value="banana">
-              <button sc-tree-item-trigger>Banana</button>
+              <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <span>Banana</span>
+              </button>
             </li>
             <li sc-tree-item [parent]="tree.tree" value="orange">
-              <button sc-tree-item-trigger>Orange</button>
+              <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <span>Orange</span>
+              </button>
             </li>
           </ul>
         </li>
         <li sc-tree-item [parent]="tree.tree" value="vegetables">
-          <button sc-tree-item-trigger>Vegetables</button>
+          <button sc-tree-item-trigger>
+            <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+            <span>Vegetables</span>
+          </button>
           <ul sc-tree-item-group>
             <li sc-tree-item [parent]="tree.tree" value="carrot">
-              <button sc-tree-item-trigger>Carrot</button>
+              <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <span>Carrot</span>
+              </button>
             </li>
             <li sc-tree-item [parent]="tree.tree" value="broccoli">
-              <button sc-tree-item-trigger>Broccoli</button>
+              <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
+                <span>Broccoli</span>
+              </button>
             </li>
           </ul>
         </li>

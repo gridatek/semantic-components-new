@@ -3,9 +3,11 @@ import {
   ScTree,
   ScTreeItem,
   ScTreeItemTrigger,
+  ScTreeItemTriggerIcon,
   ScTreeItemGroup,
   ScTreeItemIcon,
 } from '@semantic-components/ui';
+import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-file-explorer-tree-demo',
@@ -13,14 +15,17 @@ import {
     ScTree,
     ScTreeItem,
     ScTreeItemTrigger,
+    ScTreeItemTriggerIcon,
     ScTreeItemGroup,
     ScTreeItemIcon,
+    SiChevronRightIcon,
   ],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
       <ul sc-tree #tree="scTree">
         <li sc-tree-item [parent]="tree.tree" value="src" [expanded]="true">
           <button sc-tree-item-trigger>
+            <svg sc-tree-item-trigger-icon si-chevron-right-icon />
             <svg
               sc-tree-item-icon
               xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +46,7 @@ import {
           <ul sc-tree-item-group>
             <li sc-tree-item [parent]="tree.tree" value="app" [expanded]="true">
               <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                 <svg
                   sc-tree-item-icon
                   xmlns="http://www.w3.org/2000/svg"
@@ -61,6 +67,7 @@ import {
               <ul sc-tree-item-group>
                 <li sc-tree-item [parent]="tree.tree" value="components">
                   <button sc-tree-item-trigger>
+                    <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +88,7 @@ import {
                   <ul sc-tree-item-group>
                     <li sc-tree-item [parent]="tree.tree" value="button.ts">
                       <button sc-tree-item-trigger>
+                        <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                         <svg
                           sc-tree-item-icon
                           xmlns="http://www.w3.org/2000/svg"
@@ -102,6 +110,7 @@ import {
                     </li>
                     <li sc-tree-item [parent]="tree.tree" value="input.ts">
                       <button sc-tree-item-trigger>
+                        <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                         <svg
                           sc-tree-item-icon
                           xmlns="http://www.w3.org/2000/svg"
@@ -125,6 +134,7 @@ import {
                 </li>
                 <li sc-tree-item [parent]="tree.tree" value="app.ts">
                   <button sc-tree-item-trigger>
+                    <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -146,6 +156,7 @@ import {
                 </li>
                 <li sc-tree-item [parent]="tree.tree" value="app.routes.ts">
                   <button sc-tree-item-trigger>
+                    <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -169,6 +180,7 @@ import {
             </li>
             <li sc-tree-item [parent]="tree.tree" value="assets">
               <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                 <svg
                   sc-tree-item-icon
                   xmlns="http://www.w3.org/2000/svg"
@@ -189,6 +201,7 @@ import {
               <ul sc-tree-item-group>
                 <li sc-tree-item [parent]="tree.tree" value="logo.png">
                   <button sc-tree-item-trigger>
+                    <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -211,6 +224,7 @@ import {
             </li>
             <li sc-tree-item [parent]="tree.tree" value="main.ts">
               <button sc-tree-item-trigger>
+                <svg sc-tree-item-trigger-icon si-chevron-right-icon />
                 <svg
                   sc-tree-item-icon
                   xmlns="http://www.w3.org/2000/svg"
