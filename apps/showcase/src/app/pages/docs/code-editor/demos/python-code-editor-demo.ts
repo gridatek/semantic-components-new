@@ -1,15 +1,37 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor } from '@semantic-components/ui';
+import {
+  ScCodeEditor,
+  ScCodeEditorContent,
+  ScCodeEditorHeader,
+  ScCodeEditorLabel,
+  ScCodeEditorCopyButton,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-python-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [
+    ScCodeEditor,
+    ScCodeEditorHeader,
+    ScCodeEditorLabel,
+    ScCodeEditorContent,
+    ScCodeEditorCopyButton,
+  ],
   template: `
-    <sc-code-editor
-      [(value)]="pythonCode"
-      [language]="'python'"
-      [filename]="'script.py'"
-    />
+    <div sc-code-editor>
+      <div sc-code-editor-header>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">script.py</span>
+          <span sc-code-editor-label>python</span>
+        </div>
+        <button sc-code-editor-copy-button [code]="pythonCode"></button>
+      </div>
+      <div
+        sc-code-editor-content
+        [(value)]="pythonCode"
+        language="python"
+        filename="script.py"
+      ></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

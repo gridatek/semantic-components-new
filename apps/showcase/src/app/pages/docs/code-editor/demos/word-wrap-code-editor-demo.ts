@@ -1,17 +1,39 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor } from '@semantic-components/ui';
+import {
+  ScCodeEditor,
+  ScCodeEditorContent,
+  ScCodeEditorHeader,
+  ScCodeEditorLabel,
+  ScCodeEditorCopyButton,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-word-wrap-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [
+    ScCodeEditor,
+    ScCodeEditorHeader,
+    ScCodeEditorLabel,
+    ScCodeEditorContent,
+    ScCodeEditorCopyButton,
+  ],
   template: `
-    <sc-code-editor
-      [(value)]="longLineCode"
-      [language]="'markdown'"
-      [filename]="'README.md'"
-      [wordWrap]="true"
-      [maxHeight]="'200px'"
-    />
+    <div sc-code-editor>
+      <div sc-code-editor-header>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">README.md</span>
+          <span sc-code-editor-label>markdown</span>
+        </div>
+        <button sc-code-editor-copy-button [code]="longLineCode"></button>
+      </div>
+      <div
+        sc-code-editor-content
+        [(value)]="longLineCode"
+        language="markdown"
+        filename="README.md"
+        [wordWrap]="true"
+        maxHeight="200px"
+      ></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,15 +1,37 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor } from '@semantic-components/ui';
+import {
+  ScCodeEditor,
+  ScCodeEditorContent,
+  ScCodeEditorHeader,
+  ScCodeEditorLabel,
+  ScCodeEditorCopyButton,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-light-theme-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [
+    ScCodeEditor,
+    ScCodeEditorHeader,
+    ScCodeEditorLabel,
+    ScCodeEditorContent,
+    ScCodeEditorCopyButton,
+  ],
   template: `
-    <sc-code-editor
-      [(value)]="lightThemeCode"
-      [language]="'javascript'"
-      [filename]="'light-example.js'"
-    />
+    <div sc-code-editor>
+      <div sc-code-editor-header>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">light-example.js</span>
+          <span sc-code-editor-label>javascript</span>
+        </div>
+        <button sc-code-editor-copy-button [code]="lightThemeCode"></button>
+      </div>
+      <div
+        sc-code-editor-content
+        [(value)]="lightThemeCode"
+        language="javascript"
+        filename="light-example.js"
+      ></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

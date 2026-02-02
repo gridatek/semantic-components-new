@@ -8,23 +8,23 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-code-editor]',
+  selector: 'div[sc-code-editor-header]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'code-editor',
+    'data-slot': 'code-editor-header',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScCodeEditor {
+export class ScCodeEditorHeader {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
     cn(
-      'overflow-hidden rounded-lg border border-border bg-muted focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
+      'flex items-center justify-between border-b border-border bg-background/50 px-3 py-2',
       this.classInput(),
     ),
   );

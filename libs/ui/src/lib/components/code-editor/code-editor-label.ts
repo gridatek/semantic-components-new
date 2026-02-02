@@ -8,24 +8,21 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-code-editor]',
+  selector: 'span[sc-code-editor-label]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'code-editor',
+    'data-slot': 'code-editor-label',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScCodeEditor {
+export class ScCodeEditorLabel {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn(
-      'overflow-hidden rounded-lg border border-border bg-muted focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
-      this.classInput(),
-    ),
+    cn('text-xs font-medium text-muted-foreground', this.classInput()),
   );
 }

@@ -1,17 +1,18 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor } from '@semantic-components/ui';
+import { ScCodeEditor, ScCodeEditorContent } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-minimal-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [ScCodeEditor, ScCodeEditorContent],
   template: `
-    <sc-code-editor
-      [(value)]="minimalCode"
-      [language]="'javascript'"
-      [showHeader]="false"
-      [showFooter]="false"
-      [maxHeight]="'150px'"
-    />
+    <div sc-code-editor>
+      <div
+        sc-code-editor-content
+        [(value)]="minimalCode"
+        language="javascript"
+        maxHeight="150px"
+      ></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

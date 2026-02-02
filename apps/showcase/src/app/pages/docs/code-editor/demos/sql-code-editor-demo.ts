@@ -1,16 +1,38 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor } from '@semantic-components/ui';
+import {
+  ScCodeEditor,
+  ScCodeEditorContent,
+  ScCodeEditorHeader,
+  ScCodeEditorLabel,
+  ScCodeEditorCopyButton,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-sql-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [
+    ScCodeEditor,
+    ScCodeEditorHeader,
+    ScCodeEditorLabel,
+    ScCodeEditorContent,
+    ScCodeEditorCopyButton,
+  ],
   template: `
-    <sc-code-editor
-      [(value)]="sqlCode"
-      [language]="'sql'"
-      [filename]="'query.sql'"
-      [maxHeight]="'200px'"
-    />
+    <div sc-code-editor>
+      <div sc-code-editor-header>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">query.sql</span>
+          <span sc-code-editor-label>sql</span>
+        </div>
+        <button sc-code-editor-copy-button [code]="sqlCode"></button>
+      </div>
+      <div
+        sc-code-editor-content
+        [(value)]="sqlCode"
+        language="sql"
+        filename="query.sql"
+        maxHeight="200px"
+      ></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

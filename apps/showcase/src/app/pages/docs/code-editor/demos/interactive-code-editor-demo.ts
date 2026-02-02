@@ -1,9 +1,22 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScCodeEditor, CodeEditorLanguage } from '@semantic-components/ui';
+import {
+  ScCodeEditor,
+  ScCodeEditorContent,
+  ScCodeEditorHeader,
+  ScCodeEditorLabel,
+  ScCodeEditorCopyButton,
+  ScCodeEditorLanguage,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-interactive-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [
+    ScCodeEditor,
+    ScCodeEditorHeader,
+    ScCodeEditorLabel,
+    ScCodeEditorContent,
+    ScCodeEditorCopyButton,
+  ],
   template: `
     <div class="flex flex-wrap gap-4 mb-4">
       <div>
@@ -45,18 +58,30 @@ import { ScCodeEditor, CodeEditorLanguage } from '@semantic-components/ui';
         </label>
       </div>
     </div>
-    <sc-code-editor
-      [(value)]="interactiveCode"
-      [language]="selectedLanguage()"
-      [showLineNumbers]="showLineNumbers()"
-      [wordWrap]="wordWrapEnabled()"
-      [filename]="'interactive.' + getExtension(selectedLanguage())"
-    />
+    <div sc-code-editor>
+      <div sc-code-editor-header>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">
+            interactive.{{ getExtension(selectedLanguage()) }}
+          </span>
+          <span sc-code-editor-label>{{ selectedLanguage() }}</span>
+        </div>
+        <button sc-code-editor-copy-button [code]="interactiveCode"></button>
+      </div>
+      <div
+        sc-code-editor-content
+        [(value)]="interactiveCode"
+        [language]="selectedLanguage()"
+        [showLineNumbers]="showLineNumbers()"
+        [wordWrap]="wordWrapEnabled()"
+        [filename]="'interactive.' + getExtension(selectedLanguage())"
+      ></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InteractiveCodeEditorDemo {
-  readonly selectedLanguage = signal<CodeEditorLanguage>('javascript');
+  readonly selectedLanguage = signal<ScCodeEditorLanguage>('javascript');
   readonly showLineNumbers = signal(true);
   readonly wordWrapEnabled = signal(false);
 
@@ -65,8 +90,8 @@ function example() {
   return "Hello, World!";
 }`;
 
-  getExtension(lang: CodeEditorLanguage): string {
-    const extensions: Record<CodeEditorLanguage, string> = {
+  getExtension(lang: ScCodeEditorLanguage): string {
+    const extensions: Record<ScCodeEditorLanguage, string> = {
       'angular-ts': 'ts',
       javascript: 'js',
       typescript: 'ts',
