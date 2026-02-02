@@ -18,9 +18,9 @@ import {
   ],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
-      <div sc-tree>
-        <div sc-tree-item [hasChildren]="true" [expanded]="true">
-          <div sc-tree-item-trigger>
+      <ul sc-tree #tree="scTree">
+        <li sc-tree-item [parent]="tree.tree" value="src" [expanded]="true">
+          <button sc-tree-item-trigger>
             <svg
               sc-tree-item-icon
               xmlns="http://www.w3.org/2000/svg"
@@ -37,10 +37,10 @@ import {
               />
             </svg>
             <span>src</span>
-          </div>
-          <div sc-tree-item-content>
-            <div sc-tree-item [hasChildren]="true" [expanded]="true">
-              <div sc-tree-item-trigger>
+          </button>
+          <ul sc-tree-item-content>
+            <li sc-tree-item [parent]="tree.tree" value="app" [expanded]="true">
+              <button sc-tree-item-trigger>
                 <svg
                   sc-tree-item-icon
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,10 +57,10 @@ import {
                   />
                 </svg>
                 <span>app</span>
-              </div>
-              <div sc-tree-item-content>
-                <div sc-tree-item [hasChildren]="true">
-                  <div sc-tree-item-trigger>
+              </button>
+              <ul sc-tree-item-content>
+                <li sc-tree-item [parent]="tree.tree" value="components">
+                  <button sc-tree-item-trigger>
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -77,10 +77,10 @@ import {
                       />
                     </svg>
                     <span>components</span>
-                  </div>
-                  <div sc-tree-item-content>
-                    <div sc-tree-item>
-                      <div sc-tree-item-trigger>
+                  </button>
+                  <ul sc-tree-item-content>
+                    <li sc-tree-item [parent]="tree.tree" value="button.ts">
+                      <button sc-tree-item-trigger>
                         <svg
                           sc-tree-item-icon
                           xmlns="http://www.w3.org/2000/svg"
@@ -98,10 +98,10 @@ import {
                           <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                         </svg>
                         <span>button.ts</span>
-                      </div>
-                    </div>
-                    <div sc-tree-item>
-                      <div sc-tree-item-trigger>
+                      </button>
+                    </li>
+                    <li sc-tree-item [parent]="tree.tree" value="input.ts">
+                      <button sc-tree-item-trigger>
                         <svg
                           sc-tree-item-icon
                           xmlns="http://www.w3.org/2000/svg"
@@ -119,12 +119,12 @@ import {
                           <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                         </svg>
                         <span>input.ts</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div sc-tree-item>
-                  <div sc-tree-item-trigger>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+                <li sc-tree-item [parent]="tree.tree" value="app.ts">
+                  <button sc-tree-item-trigger>
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -142,10 +142,10 @@ import {
                       <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                     </svg>
                     <span>app.ts</span>
-                  </div>
-                </div>
-                <div sc-tree-item>
-                  <div sc-tree-item-trigger>
+                  </button>
+                </li>
+                <li sc-tree-item [parent]="tree.tree" value="app.routes.ts">
+                  <button sc-tree-item-trigger>
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -163,12 +163,12 @@ import {
                       <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                     </svg>
                     <span>app.routes.ts</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div sc-tree-item [hasChildren]="true">
-              <div sc-tree-item-trigger>
+                  </button>
+                </li>
+              </ul>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="assets">
+              <button sc-tree-item-trigger>
                 <svg
                   sc-tree-item-icon
                   xmlns="http://www.w3.org/2000/svg"
@@ -185,10 +185,10 @@ import {
                   />
                 </svg>
                 <span>assets</span>
-              </div>
-              <div sc-tree-item-content>
-                <div sc-tree-item>
-                  <div sc-tree-item-trigger>
+              </button>
+              <ul sc-tree-item-content>
+                <li sc-tree-item [parent]="tree.tree" value="logo.png">
+                  <button sc-tree-item-trigger>
                     <svg
                       sc-tree-item-icon
                       xmlns="http://www.w3.org/2000/svg"
@@ -205,12 +205,12 @@ import {
                       <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
                     </svg>
                     <span>logo.png</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>
+                  </button>
+                </li>
+              </ul>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="main.ts">
+              <button sc-tree-item-trigger>
                 <svg
                   sc-tree-item-icon
                   xmlns="http://www.w3.org/2000/svg"
@@ -228,11 +228,11 @@ import {
                   <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                 </svg>
                 <span>main.ts</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

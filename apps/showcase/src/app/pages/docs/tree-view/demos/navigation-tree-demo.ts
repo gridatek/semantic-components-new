@@ -18,9 +18,14 @@ import {
   ],
   template: `
     <div class="max-w-sm rounded-lg border p-4">
-      <div sc-tree>
-        <div sc-tree-item [hasChildren]="true" [expanded]="true">
-          <div sc-tree-item-trigger>
+      <ul sc-tree #tree="scTree">
+        <li
+          sc-tree-item
+          [parent]="tree.tree"
+          value="getting-started"
+          [expanded]="true"
+        >
+          <button sc-tree-item-trigger>
             <svg
               sc-tree-item-icon
               xmlns="http://www.w3.org/2000/svg"
@@ -35,21 +40,21 @@ import {
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
             <span>Getting Started</span>
-          </div>
-          <div sc-tree-item-content>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Introduction</div>
-            </div>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Installation</div>
-            </div>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Configuration</div>
-            </div>
-          </div>
-        </div>
-        <div sc-tree-item [hasChildren]="true">
-          <div sc-tree-item-trigger>
+          </button>
+          <ul sc-tree-item-content>
+            <li sc-tree-item [parent]="tree.tree" value="introduction">
+              <button sc-tree-item-trigger>Introduction</button>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="installation">
+              <button sc-tree-item-trigger>Installation</button>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="configuration">
+              <button sc-tree-item-trigger>Configuration</button>
+            </li>
+          </ul>
+        </li>
+        <li sc-tree-item [parent]="tree.tree" value="components">
+          <button sc-tree-item-trigger>
             <svg
               sc-tree-item-icon
               xmlns="http://www.w3.org/2000/svg"
@@ -65,21 +70,21 @@ import {
               />
             </svg>
             <span>Components</span>
-          </div>
-          <div sc-tree-item-content>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Button</div>
-            </div>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Input</div>
-            </div>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Select</div>
-            </div>
-          </div>
-        </div>
-        <div sc-tree-item [hasChildren]="true">
-          <div sc-tree-item-trigger>
+          </button>
+          <ul sc-tree-item-content>
+            <li sc-tree-item [parent]="tree.tree" value="button">
+              <button sc-tree-item-trigger>Button</button>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="input">
+              <button sc-tree-item-trigger>Input</button>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="select">
+              <button sc-tree-item-trigger>Select</button>
+            </li>
+          </ul>
+        </li>
+        <li sc-tree-item [parent]="tree.tree" value="api-reference">
+          <button sc-tree-item-trigger>
             <svg
               sc-tree-item-icon
               xmlns="http://www.w3.org/2000/svg"
@@ -96,17 +101,17 @@ import {
               />
             </svg>
             <span>API Reference</span>
-          </div>
-          <div sc-tree-item-content>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Overview</div>
-            </div>
-            <div sc-tree-item>
-              <div sc-tree-item-trigger>Hooks</div>
-            </div>
-          </div>
-        </div>
-      </div>
+          </button>
+          <ul sc-tree-item-content>
+            <li sc-tree-item [parent]="tree.tree" value="overview">
+              <button sc-tree-item-trigger>Overview</button>
+            </li>
+            <li sc-tree-item [parent]="tree.tree" value="hooks">
+              <button sc-tree-item-trigger>Hooks</button>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,7 +10,7 @@ import { cn } from '../../utils';
 import { SC_TREE_ITEM } from './tree-item';
 
 @Component({
-  selector: 'div[sc-tree-item-trigger]',
+  selector: 'button[sc-tree-item-trigger]',
   template: `
     @if (item.hasChildren()) {
       <svg
@@ -24,22 +24,22 @@ import { SC_TREE_ITEM } from './tree-item';
         stroke-linecap="round"
         stroke-linejoin="round"
         class="size-4 shrink-0 transition-transform duration-200"
-        [class.rotate-90]="item.expanded()"
+        [class.rotate-90]="item.treeItem.expanded()"
+        aria-hidden="true"
       >
         <path d="m9 18 6-6-6-6" />
       </svg>
     } @else {
-      <span class="size-4 shrink-0"></span>
+      <span class="size-4 shrink-0" aria-hidden="true"></span>
     }
     <ng-content />
   `,
   host: {
     'data-slot': 'tree-item-trigger',
+    type: 'button',
     '[class]': 'class()',
     '[style.padding-left]': 'paddingLeft()',
     '(click)': 'onClick()',
-    '(keydown)': 'onKeyDown($event)',
-    tabindex: '0',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,11 +51,11 @@ export class ScTreeItemTrigger {
 
   protected readonly class = computed(() =>
     cn(
-      'flex items-center gap-2 rounded-md px-2 py-1.5 text-sm',
+      'flex items-center gap-2 rounded-md px-2 py-1.5 text-sm w-full',
       'cursor-pointer select-none outline-none',
       'hover:bg-accent hover:text-accent-foreground',
       'focus-visible:bg-accent focus-visible:text-accent-foreground',
-      'data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground',
+      'aria-[selected=true]:bg-accent aria-[selected=true]:text-accent-foreground',
       this.classInput(),
     ),
   );
@@ -66,28 +66,8 @@ export class ScTreeItemTrigger {
   });
 
   protected onClick(): void {
-    this.item.toggle();
-  }
-
-  protected onKeyDown(event: KeyboardEvent): void {
-    switch (event.key) {
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        this.item.toggle();
-        break;
-      case 'ArrowRight':
-        event.preventDefault();
-        if (this.item.hasChildren() && !this.item.expanded()) {
-          this.item.expanded.set(true);
-        }
-        break;
-      case 'ArrowLeft':
-        event.preventDefault();
-        if (this.item.hasChildren() && this.item.expanded()) {
-          this.item.expanded.set(false);
-        }
-        break;
+    if (this.item.hasChildren()) {
+      this.item.treeItem.expanded.update((v) => !v);
     }
   }
 }
