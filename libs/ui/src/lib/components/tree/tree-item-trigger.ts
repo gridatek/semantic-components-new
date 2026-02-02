@@ -10,7 +10,7 @@ import { cn } from '../../utils';
 import { SC_TREE_ITEM } from './tree-item';
 
 @Component({
-  selector: 'button[sc-tree-item-trigger]',
+  selector: 'button[sc-tree-item-trigger], a[sc-tree-item-trigger]',
   template: `
     @if (item.hasChildren()) {
       <svg
@@ -65,7 +65,7 @@ export class ScTreeItemTrigger {
     return `${level * 12 + 8}px`;
   });
 
-  protected onClick(event: MouseEvent): void {
+  protected onClick(event: Event): void {
     event.preventDefault();
   }
 }
