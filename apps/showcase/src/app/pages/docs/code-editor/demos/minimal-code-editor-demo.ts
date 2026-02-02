@@ -10,7 +10,7 @@ import { ScCodeEditor, ScCodeEditorContent } from '@semantic-components/ui';
         sc-code-editor-content
         [(value)]="minimalCode"
         language="javascript"
-        maxHeight="150px"
+        class="max-h-[150px]"
       ></div>
     </div>
   `,

@@ -206,11 +206,15 @@ export function detectLanguage(
       white-space: pre-wrap;
       word-break: break-all;
     }
+
+    /* Caret color */
+    [sc-code-editor-content] textarea {
+      caret-color: var(--primary);
+    }
   `,
   host: {
     'data-slot': 'code-editor-content',
     '[class]': 'wrapperClass()',
-    '[style.max-height]': 'maxHeight()',
     '(click)': 'focusTextarea()',
   },
   encapsulation: ViewEncapsulation.None,
@@ -230,8 +234,6 @@ export class ScCodeEditorContent {
   readonly tabSize = input(2);
   readonly insertSpaces = input(true);
   readonly wordWrap = input(false);
-  readonly maxHeight = input<string>('500px');
-  readonly minHeight = input<string>('200px');
   readonly autoDetectLanguage = input(false);
   readonly ariaLabel = input<string>('');
   readonly ariaDescribedby = input<string>('');
@@ -289,8 +291,6 @@ export class ScCodeEditorContent {
   );
 
   protected readonly textareaStyle = computed(() => ({
-    caretColor: 'hsl(var(--primary))',
-    minHeight: this.minHeight(),
     whiteSpace: this.wordWrap() ? 'pre-wrap' : 'pre',
     wordBreak: this.wordWrap() ? 'break-all' : 'normal',
     overflowWrap: this.wordWrap() ? 'break-word' : 'normal',

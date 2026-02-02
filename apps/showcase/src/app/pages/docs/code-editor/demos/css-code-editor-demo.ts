@@ -30,7 +30,7 @@ import {
         [(value)]="cssCode"
         language="css"
         filename="styles.css"
-        maxHeight="250px"
+        class="max-h-[250px]"
       ></div>
     </div>
   `,

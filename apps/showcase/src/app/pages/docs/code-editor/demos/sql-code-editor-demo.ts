@@ -30,7 +30,7 @@ import {
         [(value)]="sqlCode"
         language="sql"
         filename="query.sql"
-        maxHeight="200px"
+        class="max-h-[200px]"
       ></div>
     </div>
   `,

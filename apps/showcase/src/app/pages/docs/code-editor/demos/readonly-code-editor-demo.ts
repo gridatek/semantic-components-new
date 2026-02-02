@@ -31,7 +31,7 @@ import {
         language="typescript"
         [readonly]="true"
         filename="readonly.ts"
-        maxHeight="200px"
+        class="max-h-[200px]"
       ></div>
     </div>
   `,

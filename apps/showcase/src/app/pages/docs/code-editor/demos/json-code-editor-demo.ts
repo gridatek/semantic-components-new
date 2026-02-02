@@ -30,7 +30,7 @@ import {
         [(value)]="jsonCode"
         language="json"
         filename="config.json"
-        maxHeight="250px"
+        class="max-h-[250px]"
       ></div>
     </div>
   `,

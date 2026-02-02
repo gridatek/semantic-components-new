@@ -31,7 +31,7 @@ import {
         language="markdown"
         filename="README.md"
         [wordWrap]="true"
-        maxHeight="200px"
+        class="max-h-[200px]"
       ></div>
     </div>
   `,
