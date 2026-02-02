@@ -6,7 +6,6 @@ import {
   ScAccordionItem,
   ScAccordionPanel,
   ScAccordionTrigger,
-  ScAccordionContent2,
   ScAccordionTriggerIcon,
 } from '@semantic-components/ui';
 
@@ -21,7 +20,6 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
     ScAccordionTrigger,
     ScAccordionContent,
     ScAccordionHeader,
-    ScAccordionContent2,
     SiChevronDownIcon,
     ScAccordionTriggerIcon,
   ],
@@ -37,9 +35,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
         </div>
         <div sc-accordion-panel panelId="item-1">
           <div sc-accordion-content>
-            <div sc-accordion-content-2>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </div>
+            Yes. It adheres to the WAI-ARIA design pattern.
           </div>
         </div>
       </div>
@@ -53,9 +49,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
         </div>
         <div sc-accordion-panel panelId="item-2">
           <div sc-accordion-content>
-            <div sc-accordion-content-2>
-              Yes. It comes with default styles that match other components.
-            </div>
+            Yes. It comes with default styles that match other components.
           </div>
         </div>
         <div sc-accordion-item>
@@ -68,9 +62,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
           </div>
           <div sc-accordion-panel panelId="item-3">
             <div sc-accordion-content>
-              <div sc-accordion-content-2>
-                Yes. It's animated by default with smooth transitions.
-              </div>
+              Yes. It's animated by default with smooth transitions.
             </div>
           </div>
         </div>

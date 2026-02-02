@@ -1,7 +1,7 @@
 ## Import
 
 ```typescript
-import { ScAccordion, ScAccordionItem, ScAccordionHeader, ScAccordionTrigger, ScAccordionPanel, ScAccordionContent, ScAccordionContent2, ScAccordionTriggerIcon } from '@semantic-components/ui';
+import { ScAccordion, ScAccordionItem, ScAccordionHeader, ScAccordionTrigger, ScAccordionPanel, ScAccordionContent, ScAccordionTriggerIcon } from '@semantic-components/ui';
 ```
 
 ## Architecture
@@ -21,12 +21,11 @@ ScAccordion (Root - uses AccordionGroup)
     │     │            └── disabled: boolean
     │     │            └── svg[sc-accordion-trigger-icon] (optional icon)
     │     │
-    │     └── ScAccordionPanel (uses AccordionPanel)
+    │     └── ScAccordionPanel (uses AccordionPanel + animation)
     │           │
     │           ├── panelId: string (links to trigger)
     │           │
-    │           └── ScAccordionContent (animation wrapper)
-    │                 └── ScAccordionContent2 (content styling wrapper)
+    │           └── ScAccordionContent (content styling wrapper)
     │
     ├── ScAccordionItem
     └── ...
@@ -34,16 +33,15 @@ ScAccordion (Root - uses AccordionGroup)
 
 ## Components
 
-| Component                | Selector                         | Description                                         |
-| ------------------------ | -------------------------------- | --------------------------------------------------- |
-| `ScAccordion`            | `div[sc-accordion]`              | Root wrapper using `AccordionGroup`                 |
-| `ScAccordionItem`        | `div[sc-accordion-item]`         | Styling wrapper for accordion item                  |
-| `ScAccordionHeader`      | `div[sc-accordion-header]`       | Flex container for trigger                          |
-| `ScAccordionTrigger`     | `button[sc-accordion-trigger]`   | Button to toggle item using `AccordionTrigger`      |
-| `ScAccordionPanel`       | `div[sc-accordion-panel]`        | Collapsible content using `AccordionPanel`          |
-| `ScAccordionContent`     | `div[sc-accordion-content]`      | Animation wrapper with overflow handling            |
-| `ScAccordionContent2`    | `div[sc-accordion-content-2]`    | Content styling wrapper with padding and typography |
-| `ScAccordionTriggerIcon` | `svg[sc-accordion-trigger-icon]` | Directive to flip an SVG icon                       |
+| Component                | Selector                         | Description                                             |
+| ------------------------ | -------------------------------- | ------------------------------------------------------- |
+| `ScAccordion`            | `div[sc-accordion]`              | Root wrapper using `AccordionGroup`                     |
+| `ScAccordionItem`        | `div[sc-accordion-item]`         | Styling wrapper for accordion item                      |
+| `ScAccordionHeader`      | `div[sc-accordion-header]`       | Flex container for trigger                              |
+| `ScAccordionTrigger`     | `button[sc-accordion-trigger]`   | Button to toggle item using `AccordionTrigger`          |
+| `ScAccordionPanel`       | `div[sc-accordion-panel]`        | Collapsible panel with animation using `AccordionPanel` |
+| `ScAccordionContent`     | `div[sc-accordion-content]`      | Content styling wrapper with padding and typography     |
+| `ScAccordionTriggerIcon` | `svg[sc-accordion-trigger-icon]` | Directive to flip an SVG icon                           |
 
 ## Inputs
 
@@ -79,21 +77,15 @@ The trigger is a button that toggles the expanded state of an accordion panel.
 | --------- | -------- | ------------ | ---------------------------------------- |
 | `panelId` | `string` | **required** | Links panel to its corresponding trigger |
 
+The `ScAccordionPanel` component wraps collapsible content and handles animations. It provides `text-sm` and `overflow-hidden` styles, and uses Angular's `animate.enter`/`animate.leave` for smooth expand/collapse transitions.
+
 ### ScAccordionContent
 
 | Input   | Type     | Default | Description            |
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-The `ScAccordionContent` component handles animations and overflow. It should wrap `ScAccordionContent2` for proper animation behavior. Provides `text-sm` and `overflow-hidden` styles.
-
-### ScAccordionContent2
-
-| Input   | Type     | Default | Description            |
-| ------- | -------- | ------- | ---------------------- |
-| `class` | `string` | `''`    | Additional CSS classes |
-
-The `ScAccordionContent2` component provides content styling including padding (`pt-0 pb-2.5`), height animation support (`h-(--radix-accordion-content-height)`), link styles (underlined, hover effects), and paragraph spacing. Must be nested inside `ScAccordionContent`.
+The `ScAccordionContent` component provides content styling including padding (`pt-0 pb-2.5`), link styles (underlined, hover effects), and paragraph spacing. Must be nested inside `ScAccordionPanel`.
 
 ### ScAccordionTriggerIcon
 
@@ -109,8 +101,6 @@ The `ScAccordionTriggerIcon` directive applies rotation to an SVG icon based on 
 
 Use `panelId` to link each trigger to its corresponding panel. By default, multiple panels can be open at the same time. Set `[multiExpandable]="false"` if you want only one panel open at a time.
 
-**Important**: Content must be wrapped in both `ScAccordionContent` (for animation) and `ScAccordionContent2` (for styling).
-
 ```html
 <div sc-accordion [multiExpandable]="false">
   <div sc-accordion-item>
@@ -121,9 +111,7 @@ Use `panelId` to link each trigger to its corresponding panel. By default, multi
       </button>
     </div>
     <div sc-accordion-panel panelId="item-1">
-      <div sc-accordion-content>
-        <div sc-accordion-content-2>Yes. It adheres to the WAI-ARIA design pattern.</div>
-      </div>
+      <div sc-accordion-content>Yes. It adheres to the WAI-ARIA design pattern.</div>
     </div>
   </div>
   <div sc-accordion-item>
@@ -134,9 +122,7 @@ Use `panelId` to link each trigger to its corresponding panel. By default, multi
       </button>
     </div>
     <div sc-accordion-panel panelId="item-2">
-      <div sc-accordion-content>
-        <div sc-accordion-content-2>Yes. It comes with default styles that match other components.</div>
-      </div>
+      <div sc-accordion-content>Yes. It comes with default styles that match other components.</div>
     </div>
   </div>
   <div sc-accordion-item>
@@ -147,9 +133,7 @@ Use `panelId` to link each trigger to its corresponding panel. By default, multi
       </button>
     </div>
     <div sc-accordion-panel panelId="item-3">
-      <div sc-accordion-content>
-        <div sc-accordion-content-2>Yes. It's animated by default with smooth transitions.</div>
-      </div>
+      <div sc-accordion-content>Yes. It's animated by default with smooth transitions.</div>
     </div>
   </div>
 </div>
@@ -169,9 +153,7 @@ Allow multiple items to be open simultaneously.
       </button>
     </div>
     <div sc-accordion-panel panelId="item-1">
-      <div sc-accordion-content>
-        <div sc-accordion-content-2>Content 1</div>
-      </div>
+      <div sc-accordion-content>Content 1</div>
     </div>
   </div>
   <div sc-accordion-item>
@@ -182,9 +164,7 @@ Allow multiple items to be open simultaneously.
       </button>
     </div>
     <div sc-accordion-panel panelId="item-2">
-      <div sc-accordion-content>
-        <div sc-accordion-content-2>Content 2</div>
-      </div>
+      <div sc-accordion-content>Content 2</div>
     </div>
   </div>
   <div sc-accordion-item>
@@ -195,9 +175,7 @@ Allow multiple items to be open simultaneously.
       </button>
     </div>
     <div sc-accordion-panel panelId="item-3">
-      <div sc-accordion-content>
-        <div sc-accordion-content-2>Content 3</div>
-      </div>
+      <div sc-accordion-content>Content 3</div>
     </div>
   </div>
 </div>
@@ -224,9 +202,7 @@ Disable individual triggers.
     </button>
   </div>
   <div sc-accordion-panel panelId="disabled">
-    <div sc-accordion-content>
-      <div sc-accordion-content-2>Won't be shown</div>
-    </div>
+    <div sc-accordion-content>Won't be shown</div>
   </div>
 </div>
 ```
@@ -266,14 +242,14 @@ The components use Tailwind CSS with shadcn/ui design tokens:
 - Items have `border-b` for visual separation (via `ScAccordionItem`)
 - Triggers show underline on hover (removed when focused for better UX)
 - Built-in chevron icons automatically rotate 180° based on expanded state
-- `ScAccordionContent` provides animation wrapper with `text-sm` and `overflow-hidden`
-- `ScAccordionContent2` provides content styling with padding (`pt-0 pb-2.5`), height animation (`h-(--radix-accordion-content-height)`), link underlines, and paragraph spacing
+- `ScAccordionPanel` provides animation wrapper with `text-sm` and `overflow-hidden`
+- `ScAccordionContent` provides content styling with padding (`pt-0 pb-2.5`), link underlines, and paragraph spacing
 - Focus states use a ring style for keyboard navigation
 - All components support custom classes via the `class` input
 
 ## Animation
 
-The accordion uses Angular's built-in `animate.enter` and `animate.leave` API combined with animations from `tw-animate-css`. Animation is handled by the `ScAccordionContent` component.
+The accordion uses Angular's built-in `animate.enter` and `animate.leave` API combined with animations from `tw-animate-css`. Animation is handled by the `ScAccordionPanel` component.
 
 ### Setup
 
@@ -285,10 +261,8 @@ Make sure you have `tw-animate-css` imported in your CSS:
 
 ### How It Works
 
-- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter` on `ScAccordionContent`
-- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave` on `ScAccordionContent`
-- **Height Calculation**: The component automatically sets the `--radix-accordion-content-height` CSS variable to the actual content height, ensuring smooth animations
+- **Opening**: When a panel expands, Angular applies the `animate-accordion-down` class via `animate.enter` on `ScAccordionPanel`
+- **Closing**: When a panel collapses, Angular applies the `animate-accordion-up` class via `animate.leave` on `ScAccordionPanel`
 - **Timing**: Angular handles all animation timing and cleanup automatically
-- **Content Styling**: `ScAccordionContent2` must be nested inside `ScAccordionContent` to receive proper styling while allowing smooth animations
 
 The animations provide smooth height transitions from `0` to the content height when opening, and back to `0` when closing.

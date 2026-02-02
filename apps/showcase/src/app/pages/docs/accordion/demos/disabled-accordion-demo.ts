@@ -4,7 +4,7 @@ import {
   ScAccordionPanel,
   ScAccordionItem,
   ScAccordionTrigger,
-  ScAccordionContent2,
+  ScAccordionContent,
   ScAccordionHeader,
   ScAccordionTriggerIcon,
 } from '@semantic-components/ui';
@@ -17,7 +17,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
     ScAccordionPanel,
     ScAccordionItem,
     ScAccordionTrigger,
-    ScAccordionContent2,
+    ScAccordionContent,
     ScAccordionHeader,
     SiChevronDownIcon,
     ScAccordionTriggerIcon,
@@ -32,9 +32,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
           </button>
         </div>
         <div sc-accordion-panel panelId="enabled-1">
-          <div sc-accordion-content>
-            <div sc-accordion-content-2>This item can be toggled normally.</div>
-          </div>
+          <div sc-accordion-content>This item can be toggled normally.</div>
         </div>
       </div>
       <div sc-accordion-item>
@@ -45,9 +43,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
           </button>
         </div>
         <div sc-accordion-panel panelId="disabled-1">
-          <div sc-accordion-content>
-            <div sc-accordion-content-2>This content won't be shown.</div>
-          </div>
+          <div sc-accordion-content>This content won't be shown.</div>
         </div>
       </div>
       <div sc-accordion-item>
@@ -58,9 +54,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
           </button>
         </div>
         <div sc-accordion-panel panelId="enabled-2">
-          <div sc-accordion-content>
-            <div sc-accordion-content-2>This item also works normally.</div>
-          </div>
+          <div sc-accordion-content>This item also works normally.</div>
         </div>
       </div>
     </div>

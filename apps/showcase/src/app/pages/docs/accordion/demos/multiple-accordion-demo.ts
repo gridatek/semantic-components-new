@@ -5,7 +5,6 @@ import {
   ScAccordionItem,
   ScAccordionTrigger,
   ScAccordionContent,
-  ScAccordionContent2,
   ScAccordionHeader,
   ScAccordionTriggerIcon,
 } from '@semantic-components/ui';
@@ -19,7 +18,6 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
     ScAccordionItem,
     ScAccordionTrigger,
     ScAccordionContent,
-    ScAccordionContent2,
     ScAccordionHeader,
     SiChevronDownIcon,
     ScAccordionTriggerIcon,
@@ -35,10 +33,8 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
         </div>
         <div sc-accordion-panel panelId="item-a">
           <div sc-accordion-content>
-            <div sc-accordion-content-2>
-              Yes! When using multiExpandable, you can have multiple accordion
-              items open at the same time.
-            </div>
+            Yes! When using multiExpandable, you can have multiple accordion
+            items open at the same time.
           </div>
         </div>
       </div>
@@ -51,10 +47,8 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
         </div>
         <div sc-accordion-panel panelId="item-b">
           <div sc-accordion-content>
-            <div sc-accordion-content-2>
-              Each trigger has an expanded input that you can bind to with
-              [(expanded)] for two-way binding.
-            </div>
+            Each trigger has an expanded input that you can bind to with
+            [(expanded)] for two-way binding.
           </div>
         </div>
       </div>
@@ -67,10 +61,8 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
         </div>
         <div sc-accordion-panel panelId="item-c">
           <div sc-accordion-content>
-            <div sc-accordion-content-2>
-              Each item uses proper ARIA attributes including aria-expanded and
-              role="region" for the content.
-            </div>
+            Each item uses proper ARIA attributes including aria-expanded and
+            role="region" for the content.
           </div>
         </div>
       </div>
