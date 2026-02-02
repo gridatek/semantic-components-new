@@ -9,13 +9,6 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import {
-  ScCommand,
-  ScCommandEmpty,
-  ScCommandInput,
-  ScCommandItem,
-  ScCommandList,
-} from '../command';
-import {
   PopoverAlign,
   PopoverSide,
   ScPopoverPortal,
@@ -23,6 +16,11 @@ import {
   ScPopoverProvider,
   ScPopoverTrigger,
 } from '../popover';
+import { ScComboboxProvider } from './combobox-provider';
+import { ScComboboxInput } from './combobox-input';
+import { ScComboboxList } from './combobox-list';
+import { ScComboboxItem } from './combobox-item';
+import { ScComboboxEmpty } from './combobox-empty';
 
 export interface ComboboxOption {
   value: string;
@@ -37,11 +35,11 @@ export interface ComboboxOption {
     ScPopoverTrigger,
     ScPopoverPortal,
     ScPopover,
-    ScCommand,
-    ScCommandInput,
-    ScCommandList,
-    ScCommandItem,
-    ScCommandEmpty,
+    ScComboboxProvider,
+    ScComboboxInput,
+    ScComboboxList,
+    ScComboboxItem,
+    ScComboboxEmpty,
   ],
   template: `
     <div sc-popover-provider [(open)]="open" [side]="side()" [align]="align()">
@@ -49,6 +47,8 @@ export interface ComboboxOption {
         sc-popover-trigger
         type="button"
         role="combobox"
+        [attr.aria-expanded]="open()"
+        [attr.aria-haspopup]="'listbox'"
         [class]="triggerClass()"
       >
         <span class="truncate">{{ displayText() }}</span>
@@ -70,13 +70,13 @@ export interface ComboboxOption {
       </button>
       <div sc-popover-portal>
         <div sc-popover class="w-[--trigger-width] p-0">
-          <div sc-command [(value)]="searchValue">
-            <div sc-command-input [placeholder]="searchPlaceholder()"></div>
-            <div sc-command-list>
-              <div sc-command-empty>{{ emptyText() }}</div>
+          <div sc-combobox-provider [(value)]="searchValue">
+            <div sc-combobox-input [placeholder]="searchPlaceholder()"></div>
+            <div sc-combobox-list>
+              <div sc-combobox-empty>{{ emptyText() }}</div>
               @for (option of options(); track option.value) {
                 <div
-                  sc-command-item
+                  sc-combobox-item
                   [value]="option.label"
                   [disabled]="option.disabled ?? false"
                   [selected]="isSelected(option.value)"
