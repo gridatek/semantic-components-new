@@ -22,7 +22,6 @@ import { SC_TREE_ITEM } from './tree-item';
     'data-slot': 'tree-item-content',
     role: 'group',
     '[class]': 'class()',
-    '[hidden]': '!item.treeItem.expanded()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
