@@ -79,6 +79,7 @@ export * from './sidebar';
 export * from './signature-pad';
 export * from './skeleton';
 export * from './slider';
+export * from './range-slider';
 export * from './sortable-list';
 export * from './speed-dial';
 export * from './spotlight';
