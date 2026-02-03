@@ -6,6 +6,7 @@ import {
   ScField,
   ScLabel,
   ScFieldDescription,
+  ScInput,
 } from '@semantic-components/ui';
 
 @Component({
@@ -17,6 +18,7 @@ import {
     ScField,
     ScLabel,
     ScFieldDescription,
+    ScInput,
   ],
   template: `
     <fieldset sc-field-set>
@@ -27,6 +29,7 @@ import {
         <div sc-field>
           <label sc-label for="firstName">First Name</label>
           <input
+            sc-input
             id="firstName"
             type="text"
             placeholder="John"
@@ -36,6 +39,7 @@ import {
         <div sc-field>
           <label sc-label for="lastName">Last Name</label>
           <input
+            sc-input
             id="lastName"
             type="text"
             placeholder="Doe"
@@ -45,6 +49,7 @@ import {
         <div sc-field>
           <label sc-label for="email">Email</label>
           <input
+            sc-input
             id="email"
             type="email"
             placeholder="john.doe@example.com"

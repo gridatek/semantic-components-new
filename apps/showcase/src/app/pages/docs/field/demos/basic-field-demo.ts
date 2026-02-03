@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScField, ScLabel, ScFieldDescription } from '@semantic-components/ui';
+import { ScField, ScLabel, ScFieldDescription, ScInput } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-field-demo',
-  imports: [ScField, ScLabel, ScFieldDescription],
+  imports: [ScField, ScLabel, ScFieldDescription, ScInput],
   template: `
     <div sc-field>
       <label sc-label for="email">Email</label>
       <input
+        sc-input
         id="email"
         type="email"
         placeholder="Enter your email"

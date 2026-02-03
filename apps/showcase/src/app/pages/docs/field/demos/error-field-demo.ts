@@ -4,16 +4,18 @@ import {
   ScLabel,
   ScFieldError,
   ScFieldErrorItem,
+  ScInput,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-error-field-demo',
-  imports: [ScField, ScLabel, ScFieldError],
+  imports: [ScField, ScLabel, ScFieldError, ScInput],
   template: `
     <div class="space-y-4">
       <div sc-field [invalid]="singleError().length > 0">
         <label sc-label for="password">Password</label>
         <input
+          sc-input
           id="password"
           type="password"
           placeholder="Enter password"
@@ -24,6 +26,7 @@ import {
       <div sc-field [invalid]="multipleErrors().length > 0">
         <label sc-label for="password2">Password (Multiple Errors)</label>
         <input
+          sc-input
           id="password2"
           type="password"
           placeholder="Enter password"

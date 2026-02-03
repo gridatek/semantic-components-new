@@ -5,16 +5,18 @@ import {
   ScFieldGroup,
   ScFieldSeparator,
   ScSeparator,
+  ScInput,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-separator-field-demo',
-  imports: [ScField, ScLabel, ScFieldGroup, ScFieldSeparator, ScSeparator],
+  imports: [ScField, ScLabel, ScFieldGroup, ScFieldSeparator, ScSeparator, ScInput],
   template: `
     <div sc-field-group>
       <div sc-field>
         <label sc-label for="email">Email</label>
         <input
+          sc-input
           id="email"
           type="email"
           placeholder="Enter your email"
@@ -33,6 +35,7 @@ import {
       <div sc-field>
         <label sc-label for="phone">Phone</label>
         <input
+          sc-input
           id="phone"
           type="tel"
           placeholder="Enter your phone"
