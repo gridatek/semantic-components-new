@@ -23,8 +23,9 @@ import { ScOptFieldSlotChar } from './opt-field-slot-char';
     '[attr.data-filled]': 'isFilled() ? "" : null',
   },
   template: `
-    <sc-opt-field-slot-input
+    <input
       #input
+      sc-opt-field-slot-input
       [value]="char()"
       [disabled]="optField.disabled()"
       (inputChange)="onInputChange($event)"
@@ -32,9 +33,9 @@ import { ScOptFieldSlotChar } from './opt-field-slot-char';
       (focused)="onFocusChange($event)"
     />
     @if (isActive() && !isFilled()) {
-      <sc-opt-field-slot-caret />
+      <div sc-opt-field-slot-caret></div>
     }
-    <sc-opt-field-slot-char [char]="char()" />
+    <span sc-opt-field-slot-char [char]="char()"></span>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

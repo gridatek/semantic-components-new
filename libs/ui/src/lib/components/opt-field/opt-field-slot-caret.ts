@@ -7,27 +7,23 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'sc-opt-field-slot-caret',
+  selector: 'div[sc-opt-field-slot-caret]',
   host: {
     'data-slot': 'opt-field-slot-caret',
-    '[class]': 'containerClass()',
+    '[class]': 'class()',
   },
   template: `
-    <div [class]="caretClass()"></div>
+    <div class="h-4 w-px animate-caret-blink bg-foreground"></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScOptFieldSlotCaret {
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly containerClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'pointer-events-none absolute inset-0 flex items-center justify-center',
       this.classInput(),
     ),
-  );
-
-  protected readonly caretClass = computed(() =>
-    cn('h-4 w-px animate-caret-blink bg-foreground'),
   );
 }

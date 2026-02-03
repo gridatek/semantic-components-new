@@ -1,40 +1,32 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
   computed,
+  Directive,
   ElementRef,
   inject,
   input,
   output,
-  viewChild,
 } from '@angular/core';
 import { cn } from '../../utils';
 
-@Component({
-  selector: 'sc-opt-field-slot-input',
+@Directive({
+  selector: 'input[sc-opt-field-slot-input]',
   host: {
     'data-slot': 'opt-field-slot-input',
+    type: 'text',
+    inputmode: 'numeric',
+    autocomplete: 'one-time-code',
+    maxlength: '1',
+    '[value]': 'value()',
+    '[disabled]': 'disabled()',
+    '[class]': 'class()',
+    '(input)': 'onInput($event)',
+    '(keydown)': 'keydown.emit($event)',
+    '(focus)': 'focused.emit(true)',
+    '(blur)': 'focused.emit(false)',
   },
-  template: `
-    <input
-      #inputEl
-      type="text"
-      inputmode="numeric"
-      autocomplete="one-time-code"
-      maxlength="1"
-      [value]="value()"
-      [disabled]="disabled()"
-      [class]="class()"
-      (input)="onInput($event)"
-      (keydown)="onKeydown($event)"
-      (focus)="focused.emit(true)"
-      (blur)="focused.emit(false)"
-    />
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScOptFieldSlotInput {
-  private readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('inputEl');
+  private readonly elementRef = inject(ElementRef<HTMLInputElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = input<string>('');
@@ -52,10 +44,7 @@ export class ScOptFieldSlotInput {
   );
 
   focus(): void {
-    const input = this.inputEl();
-    if (input) {
-      input.nativeElement.focus();
-    }
+    this.elementRef.nativeElement.focus();
   }
 
   protected onInput(event: Event): void {
@@ -67,9 +56,5 @@ export class ScOptFieldSlotInput {
       input.value = char;
       this.inputChange.emit(char);
     }
-  }
-
-  protected onKeydown(event: KeyboardEvent): void {
-    this.keydown.emit(event);
   }
 }
