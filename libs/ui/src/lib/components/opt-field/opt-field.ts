@@ -19,13 +19,14 @@ import { ScOptFieldSlot } from './opt-field-slot';
 })
 export class ScOptField {
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly maxLength = input<number>(6);
   readonly value = model<string>('');
   readonly disabled = input<boolean>(false);
 
   private readonly slots = contentChildren(ScOptFieldSlot, {
     descendants: true,
   });
+
+  readonly maxLength = computed(() => this.slots().length);
 
   protected readonly class = computed(() =>
     cn('flex items-center gap-2 has-[:disabled]:opacity-50', this.classInput()),
