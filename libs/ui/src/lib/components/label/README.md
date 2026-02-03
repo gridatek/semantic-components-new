@@ -8,6 +8,24 @@ Renders an accessible label associated with controls.
 
 ## Usage
 
+### Recommended: With Field Component
+
+It is recommended to use the label inside a `sc-field` component for automatic association with form controls and better accessibility:
+
+```html
+<div sc-field class="w-full max-w-sm">
+  <label sc-label>Email</label>
+  <input sc-input type="email" placeholder="Enter your email" />
+  <p sc-field-description>The label automatically links to the input via the field context.</p>
+</div>
+```
+
+When used inside a field, the label automatically associates with the input without needing an explicit `for` attribute.
+
+### Standalone Usage
+
+You can also use the label independently with an explicit `for` attribute:
+
 ```html
 <label sc-label for="email">Email</label>
 <input type="email" id="email" />
