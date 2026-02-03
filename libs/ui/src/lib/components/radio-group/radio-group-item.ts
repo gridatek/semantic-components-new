@@ -9,9 +9,12 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScRadioGroup } from './radio-group';
+import { ScRadioIndicator } from './radio-group-indicator';
+import { ScRadioCheckedIcon } from './radio-group-checked-icon';
 
 @Component({
   selector: 'sc-radio-group-item',
+  imports: [ScRadioIndicator, ScRadioCheckedIcon],
   host: {
     'data-slot': 'radio-group-item',
     role: 'radio',
@@ -25,22 +28,9 @@ import { ScRadioGroup } from './radio-group';
     '(keydown.space)': 'onSpace($event)',
   },
   template: `
-    <span
-      class="flex h-4 w-4 items-center justify-center rounded-full border border-primary text-primary ring-offset-background transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      [class.border-primary]="!isDisabled()"
-      [class.opacity-50]="isDisabled()"
-    >
+    <span sc-radio-indicator [disabled]="isDisabled()">
       @if (isSelected()) {
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="size-2.5"
-        >
-          <circle cx="12" cy="12" r="10" />
-        </svg>
+        <svg sc-radio-checked-icon></svg>
       }
     </span>
   `,
