@@ -29,7 +29,7 @@ import { ScOptFieldSlotChar } from './opt-field-slot-char';
       [value]="char()"
       [disabled]="optField.disabled()"
       (inputChange)="onInputChange($event)"
-      (keydown)="onKeydown($event)"
+      (keydownEvent)="onKeydown($event)"
       (focused)="onFocusChange($event)"
     />
     @if (isActive() && !isFilled()) {
@@ -41,8 +41,7 @@ import { ScOptFieldSlotChar } from './opt-field-slot-char';
 })
 export class ScOptFieldSlot {
   readonly optField = inject(ScOptField);
-  private readonly inputComponent =
-    viewChild<ScOptFieldSlotInput>('input');
+  private readonly inputComponent = viewChild.required(ScOptFieldSlotInput);
 
   readonly classInput = input<string>('', { alias: 'class' });
 
@@ -50,7 +49,9 @@ export class ScOptFieldSlot {
   private readonly focused = signal<boolean>(false);
 
   readonly char = computed(() => this.optField.getChar(this.index()));
-  readonly isActive = computed(() => this.focused() && !this.optField.disabled());
+  readonly isActive = computed(
+    () => this.focused() && !this.optField.disabled(),
+  );
   readonly isFilled = computed(() => this.char() !== '');
 
   protected readonly class = computed(() =>
@@ -66,10 +67,7 @@ export class ScOptFieldSlot {
   }
 
   focus(): void {
-    const input = this.inputComponent();
-    if (input) {
-      input.focus();
-    }
+    this.inputComponent().focus();
   }
 
   protected onFocusChange(isFocused: boolean): void {

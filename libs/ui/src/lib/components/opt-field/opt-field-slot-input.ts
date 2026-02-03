@@ -20,7 +20,7 @@ import { cn } from '../../utils';
     '[disabled]': 'disabled()',
     '[class]': 'class()',
     '(input)': 'onInput($event)',
-    '(keydown)': 'keydown.emit($event)',
+    '(keydown)': 'keydownEvent.emit($event)',
     '(focus)': 'focused.emit(true)',
     '(blur)': 'focused.emit(false)',
   },
@@ -33,7 +33,7 @@ export class ScOptFieldSlotInput {
   readonly disabled = input<boolean>(false);
 
   readonly inputChange = output<string>();
-  readonly keydown = output<KeyboardEvent>();
+  readonly keydownEvent = output<KeyboardEvent>();
   readonly focused = output<boolean>();
 
   protected readonly class = computed(() =>
