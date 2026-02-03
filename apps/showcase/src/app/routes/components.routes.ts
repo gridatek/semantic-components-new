@@ -329,6 +329,11 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/rating/rating-page'),
       },
       {
+        path: 'rating-field',
+        loadComponent: () =>
+          import('../pages/docs/rating-field/rating-field-page'),
+      },
+      {
         path: 'resizable',
         loadComponent: () => import('../pages/docs/resizable/resizable-page'),
       },
