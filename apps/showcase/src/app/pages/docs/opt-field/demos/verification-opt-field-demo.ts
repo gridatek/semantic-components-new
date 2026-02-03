@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScOptField,
-  ScOptFieldGroup,
+  ScOptFieldSlotGroup,
   ScOptFieldSeparator,
   ScOptFieldSlot,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-verification-opt-field-demo',
-  imports: [ScOptField, ScOptFieldGroup, ScOptFieldSeparator, ScOptFieldSlot],
+  imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSeparator, ScOptFieldSlot],
   template: `
     <div class="rounded-lg border p-6 max-w-sm">
       <div class="space-y-4">
@@ -20,7 +20,7 @@ import {
         </div>
         <div class="flex justify-center">
           <div sc-opt-field [maxLength]="6" [(value)]="code">
-            <div sc-opt-field-group>
+            <div sc-opt-field-slot-group>
               <sc-opt-field-slot />
               <sc-opt-field-slot />
               <sc-opt-field-slot />
@@ -41,7 +41,7 @@ import {
                 <line x1="5" x2="19" y1="12" y2="12" />
               </svg>
             </div>
-            <div sc-opt-field-group>
+            <div sc-opt-field-slot-group>
               <sc-opt-field-slot />
               <sc-opt-field-slot />
               <sc-opt-field-slot />

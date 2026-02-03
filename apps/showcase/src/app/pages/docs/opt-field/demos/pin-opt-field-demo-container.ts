@@ -21,16 +21,16 @@ export class PinOptFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScOptField,
-  ScOptFieldGroup,
+  ScOptFieldSlotGroup,
   ScOptFieldSlot,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-pin-opt-field-demo',
-  imports: [ScOptField, ScOptFieldGroup, ScOptFieldSlot],
+  imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSlot],
   template: \`
     <div sc-opt-field [maxLength]="4" [(value)]="otp">
-      <div sc-opt-field-group>
+      <div sc-opt-field-slot-group>
         <sc-opt-field-slot />
         <sc-opt-field-slot />
         <sc-opt-field-slot />

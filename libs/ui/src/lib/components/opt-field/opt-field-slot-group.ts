@@ -2,13 +2,13 @@ import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: '[sc-opt-field-group]',
+  selector: '[sc-opt-field-slot-group]',
   host: {
-    'data-slot': 'opt-field-group',
+    'data-slot': 'opt-field-slot-group',
     '[class]': 'class()',
   },
 })
-export class ScOptFieldGroup {
+export class ScOptFieldSlotGroup {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
