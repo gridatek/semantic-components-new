@@ -9,42 +9,40 @@ import {
   model,
   OnInit,
   signal,
-  viewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import type { FormValueControl } from '@angular/forms/signals';
 import { fromEvent, merge } from 'rxjs';
 import { cn } from '../../utils';
+import { ScSliderTrack } from './slider-track';
+import { ScSliderRange } from './slider-range';
+import { ScSliderThumb } from './slider-thumb';
 
 @Component({
   selector: 'div[sc-slider]',
+  imports: [ScSliderTrack, ScSliderRange, ScSliderThumb],
   host: {
     'data-slot': 'slider',
     '[class]': 'class()',
     '[attr.data-disabled]': 'disabled() || null',
   },
   template: `
-    <div data-slot="slider-track" [class]="trackClass()">
-      <div
-        data-slot="slider-range"
-        [class]="rangeClass()"
-        [style.width.%]="percentage()"
-      ></div>
+    <div sc-slider-track>
+      <div sc-slider-range [percentage]="percentage()"></div>
     </div>
     <div
-      #thumb
-      data-slot="slider-thumb"
-      [class]="thumbClass()"
-      [style.left.%]="percentage()"
-      [attr.tabindex]="disabled() ? -1 : 0"
-      [attr.role]="'slider'"
-      [attr.aria-valuemin]="min()"
-      [attr.aria-valuemax]="max()"
-      [attr.aria-valuenow]="value()"
-      [attr.aria-disabled]="disabled() || null"
+      sc-slider-thumb
+      [percentage]="percentage()"
+      [value]="value()"
+      [min]="min()"
+      [max]="max()"
+      [step]="step()"
+      [disabled]="disabled()"
+      [label]="label()"
+      [aria-labelledby]="ariaLabelledby()"
       (keydown)="onKeydown($event)"
-      (mousedown)="onThumbMouseDown($event)"
-      (touchstart)="onThumbTouchStart($event)"
+      (mouseDown)="onThumbMouseDown($event)"
+      (touchStart)="onThumbTouchStart($event)"
     ></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,18 +53,20 @@ export class ScSlider implements OnInit, FormValueControl<number> {
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<number>(0);
-  readonly min = input<number | undefined>(0);
-  readonly max = input<number | undefined>(100);
+  readonly min = input<number>(0);
+  readonly max = input<number>(100);
   readonly step = input<number>(1);
   readonly disabled = input<boolean>(false);
-
-  readonly thumb = viewChild.required<ElementRef<HTMLDivElement>>('thumb');
+  readonly label = input<string | undefined>(undefined);
+  readonly ariaLabelledby = input<string | undefined>(undefined, {
+    alias: 'aria-labelledby',
+  });
 
   private readonly isDragging = signal(false);
 
   protected readonly percentage = computed(() => {
-    const minVal = this.min() ?? 0;
-    const maxVal = this.max() ?? 100;
+    const minVal = this.min();
+    const maxVal = this.max();
     const val = this.value();
     if (maxVal === minVal) return 0;
     return ((val - minVal) / (maxVal - minVal)) * 100;
@@ -77,23 +77,6 @@ export class ScSlider implements OnInit, FormValueControl<number> {
       'relative flex w-full touch-none select-none items-center',
       this.disabled() && 'opacity-50 cursor-not-allowed',
       this.classInput(),
-    ),
-  );
-
-  protected readonly trackClass = computed(() =>
-    cn('relative h-2 w-full grow overflow-hidden rounded-full bg-secondary'),
-  );
-
-  protected readonly rangeClass = computed(() =>
-    cn('absolute h-full bg-primary'),
-  );
-
-  protected readonly thumbClass = computed(() =>
-    cn(
-      'absolute block size-5 -translate-x-1/2 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-      this.disabled()
-        ? 'cursor-not-allowed'
-        : 'cursor-grab active:cursor-grabbing',
     ),
   );
 
@@ -140,8 +123,8 @@ export class ScSlider implements OnInit, FormValueControl<number> {
     if (this.disabled()) return;
 
     const stepVal = this.step();
-    const minVal = this.min() ?? 0;
-    const maxVal = this.max() ?? 100;
+    const minVal = this.min();
+    const maxVal = this.max();
     let newValue = this.value();
 
     switch (event.key) {
@@ -185,8 +168,8 @@ export class ScSlider implements OnInit, FormValueControl<number> {
       Math.min(1, (clientX - rect.left) / rect.width),
     );
 
-    const minVal = this.min() ?? 0;
-    const maxVal = this.max() ?? 100;
+    const minVal = this.min();
+    const maxVal = this.max();
     const stepVal = this.step();
 
     let newValue = minVal + percentage * (maxVal - minVal);
