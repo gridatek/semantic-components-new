@@ -1,4 +1,11 @@
-import { computed, Directive, InjectionToken, input } from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
+import {
+  computed,
+  Directive,
+  inject,
+  InjectionToken,
+  input,
+} from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
@@ -23,6 +30,7 @@ const fieldVariants = cva(
 export type ScFieldVariants = VariantProps<typeof fieldVariants>;
 
 export interface ScFieldContext {
+  id: () => string;
   orientation: () => ScFieldVariants['orientation'];
   invalid: () => boolean;
   disabled: () => boolean;
@@ -51,7 +59,7 @@ export const SC_FIELD_TOKEN = new InjectionToken<ScFieldContext>(
   ],
 })
 export class ScField implements ScFieldContext {
-  readonly id = input<string>();
+  readonly id = input(inject(_IdGenerator).getId('sc-field-'));
   readonly classInput = input<string>('', { alias: 'class' });
   readonly orientation = input<ScFieldVariants['orientation']>('vertical');
   readonly invalid = input<boolean>(false);
