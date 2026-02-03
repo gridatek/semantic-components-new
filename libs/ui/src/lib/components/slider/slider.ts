@@ -53,8 +53,8 @@ export class ScSlider implements OnInit, FormValueControl<number> {
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<number>(0);
-  readonly min = input<number>(0);
-  readonly max = input<number>(100);
+  readonly min = input<number | undefined>(0);
+  readonly max = input<number | undefined>(100);
   readonly step = input<number>(1);
   readonly disabled = input<boolean>(false);
   readonly label = input<string | undefined>(undefined);
@@ -65,8 +65,8 @@ export class ScSlider implements OnInit, FormValueControl<number> {
   private readonly isDragging = signal(false);
 
   protected readonly percentage = computed(() => {
-    const minVal = this.min();
-    const maxVal = this.max();
+    const minVal = this.min() ?? 0;
+    const maxVal = this.max() ?? 100;
     const val = this.value();
     if (maxVal === minVal) return 0;
     return ((val - minVal) / (maxVal - minVal)) * 100;
@@ -123,8 +123,8 @@ export class ScSlider implements OnInit, FormValueControl<number> {
     if (this.disabled()) return;
 
     const stepVal = this.step();
-    const minVal = this.min();
-    const maxVal = this.max();
+    const minVal = this.min() ?? 0;
+    const maxVal = this.max() ?? 100;
     let newValue = this.value();
 
     switch (event.key) {
@@ -168,8 +168,8 @@ export class ScSlider implements OnInit, FormValueControl<number> {
       Math.min(1, (clientX - rect.left) / rect.width),
     );
 
-    const minVal = this.min();
-    const maxVal = this.max();
+    const minVal = this.min() ?? 0;
+    const maxVal = this.max() ?? 100;
     const stepVal = this.step();
 
     let newValue = minVal + percentage * (maxVal - minVal);
