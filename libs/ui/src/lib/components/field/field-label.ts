@@ -1,14 +1,17 @@
-import { computed, Directive, input } from '@angular/core';
+import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_TOKEN } from './field';
 
 @Directive({
   selector: 'label[sc-field-label]',
   host: {
     'data-slot': 'field-label',
+    '[attr.for]': 'field.id()',
     '[class]': 'class()',
   },
 })
 export class ScFieldLabel {
+  readonly field = inject(SC_FIELD_TOKEN);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
