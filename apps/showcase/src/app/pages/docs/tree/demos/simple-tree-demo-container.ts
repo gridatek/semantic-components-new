@@ -8,7 +8,7 @@ import { SimpleTreeDemo } from './simple-tree-demo';
   template: `
     <app-demo-container
       title="Simple"
-      demoUrl="/demos/tree-view/simple-tree-demo"
+      demoUrl="/demos/tree/simple-tree-demo"
       [code]="code"
     >
       <app-simple-tree-demo />

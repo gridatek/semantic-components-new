@@ -8,7 +8,7 @@ import { FileExplorerTreeDemo } from './file-explorer-tree-demo';
   template: `
     <app-demo-container
       title="File Explorer"
-      demoUrl="/demos/tree-view/file-explorer-tree-demo"
+      demoUrl="/demos/tree/file-explorer-tree-demo"
       [code]="code"
     >
       <app-file-explorer-tree-demo />

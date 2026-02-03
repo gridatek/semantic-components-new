@@ -3815,26 +3815,26 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
-    path: 'demos/tree-view',
+    path: 'demos/tree',
     children: [
       {
         path: 'file-explorer-tree-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/file-explorer-tree-demo').then(
+          import('../pages/docs/tree/demos/file-explorer-tree-demo').then(
             (m) => m.FileExplorerTreeDemo,
           ),
       },
       {
         path: 'navigation-tree-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/navigation-tree-demo').then(
+          import('../pages/docs/tree/demos/navigation-tree-demo').then(
             (m) => m.NavigationTreeDemo,
           ),
       },
       {
         path: 'simple-tree-demo',
         loadComponent: () =>
-          import('../pages/docs/tree-view/demos/simple-tree-demo').then(
+          import('../pages/docs/tree/demos/simple-tree-demo').then(
             (m) => m.SimpleTreeDemo,
           ),
       },

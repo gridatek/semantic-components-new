@@ -458,8 +458,8 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/transfer-list/transfer-list-page'),
       },
       {
-        path: 'tree-view',
-        loadComponent: () => import('../pages/docs/tree-view/tree-page'),
+        path: 'tree',
+        loadComponent: () => import('../pages/docs/tree/tree-page'),
       },
       {
         path: 'video-player',

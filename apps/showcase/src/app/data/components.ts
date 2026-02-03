@@ -523,8 +523,8 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'Move items between two lists.',
   },
   {
-    name: 'Tree View',
-    path: 'tree-view',
+    name: 'Tree',
+    path: 'tree',
     description: 'A hierarchical view of nested items.',
   },
   {

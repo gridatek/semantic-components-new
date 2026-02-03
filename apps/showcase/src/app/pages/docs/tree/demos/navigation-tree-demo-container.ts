@@ -8,7 +8,7 @@ import { NavigationTreeDemo } from './navigation-tree-demo';
   template: `
     <app-demo-container
       title="Navigation"
-      demoUrl="/demos/tree-view/navigation-tree-demo"
+      demoUrl="/demos/tree/navigation-tree-demo"
       [code]="code"
     >
       <app-navigation-tree-demo />
