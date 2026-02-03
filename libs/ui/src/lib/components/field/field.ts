@@ -1,10 +1,29 @@
 import { computed, Directive, InjectionToken, input } from '@angular/core';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
-export type ScFieldOrientation = 'vertical' | 'horizontal' | 'responsive';
+const fieldVariants = cva(
+  'gap-2 group/field flex w-full data-[invalid=true]:text-destructive',
+  {
+    variants: {
+      orientation: {
+        vertical: 'flex-col [&>*]:w-full [&>.sr-only]:w-auto',
+        horizontal:
+          'flex-row items-center [&>[data-slot=field-label]]:flex-auto has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
+        responsive:
+          'flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto @md/field-group:[&>[data-slot=field-label]]:flex-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
+      },
+    },
+    defaultVariants: {
+      orientation: 'vertical',
+    },
+  },
+);
+
+export type ScFieldVariants = VariantProps<typeof fieldVariants>;
 
 export interface ScFieldContext {
-  orientation: () => ScFieldOrientation;
+  orientation: () => ScFieldVariants['orientation'];
   invalid: () => boolean;
   disabled: () => boolean;
 }
@@ -18,6 +37,7 @@ export const SC_FIELD_TOKEN = new InjectionToken<ScFieldContext>(
   host: {
     role: 'group',
     'data-slot': 'field',
+    '[attr.id]': 'id()',
     '[attr.data-orientation]': 'orientation()',
     '[attr.data-invalid]': 'invalid()',
     '[attr.data-disabled]': 'disabled()',
@@ -31,30 +51,13 @@ export const SC_FIELD_TOKEN = new InjectionToken<ScFieldContext>(
   ],
 })
 export class ScField implements ScFieldContext {
+  readonly id = input<string>();
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly orientation = input<ScFieldOrientation>('vertical');
+  readonly orientation = input<ScFieldVariants['orientation']>('vertical');
   readonly invalid = input<boolean>(false);
   readonly disabled = input<boolean>(false);
 
-  protected readonly class = computed(() => {
-    const orientation = this.orientation();
-    const invalid = this.invalid();
-
-    const baseClasses =
-      'gap-2 group/field flex w-full data-[invalid=true]:text-destructive';
-
-    const orientationClasses = {
-      vertical: 'flex-col [&>*]:w-full [&>.sr-only]:w-auto',
-      horizontal:
-        'flex-row items-center [&>[data-slot=field-label]]:flex-auto has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
-      responsive:
-        'flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto @md/field-group:[&>[data-slot=field-label]]:flex-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px',
-    };
-
-    return cn(
-      baseClasses,
-      orientationClasses[orientation] || orientationClasses.vertical,
-      this.classInput(),
-    );
-  });
+  protected readonly class = computed(() =>
+    cn(fieldVariants({ orientation: this.orientation() }), this.classInput()),
+  );
 }
