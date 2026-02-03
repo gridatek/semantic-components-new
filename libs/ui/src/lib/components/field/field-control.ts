@@ -1,4 +1,10 @@
-import { computed, Directive, inject, input } from '@angular/core';
+import {
+  booleanAttribute,
+  computed,
+  Directive,
+  inject,
+  input,
+} from '@angular/core';
 import { SC_FIELD_TOKEN } from './field';
 
 @Directive({
@@ -14,8 +20,12 @@ export class ScFieldControl {
   private readonly field = inject(SC_FIELD_TOKEN, { optional: true });
 
   readonly id = input<string>();
-  readonly invalid = input<boolean>();
-  readonly disabled = input<boolean>();
+  readonly invalid = input<boolean, unknown>(false, {
+    transform: booleanAttribute,
+  });
+  readonly disabled = input<boolean, unknown>(false, {
+    transform: booleanAttribute,
+  });
 
   protected readonly controlId = computed(() => {
     return this.id() ?? this.field?.id();

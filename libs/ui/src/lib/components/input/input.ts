@@ -1,15 +1,48 @@
-import { computed, Directive, input } from '@angular/core';
+import {
+  booleanAttribute,
+  computed,
+  Directive,
+  inject,
+  input,
+} from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_TOKEN } from '../field/field';
 
 @Directive({
   selector: 'input[sc-input]',
   host: {
     'data-slot': 'input',
+    '[attr.id]': 'controlId()',
+    '[attr.aria-invalid]': 'ariaInvalid()',
+    '[attr.disabled]': 'controlDisabled()',
     '[class]': 'class()',
   },
 })
 export class ScInput {
+  private readonly field = inject(SC_FIELD_TOKEN, { optional: true });
+
+  readonly id = input<string>();
+  readonly invalid = input<boolean, unknown>(false, {
+    transform: booleanAttribute,
+  });
+  readonly disabled = input<boolean, unknown>(false, {
+    transform: booleanAttribute,
+  });
   readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly controlId = computed(() => {
+    return this.id() ?? this.field?.id();
+  });
+
+  protected readonly ariaInvalid = computed(() => {
+    const invalid = this.invalid() ?? this.field?.invalid();
+    return invalid ?? null;
+  });
+
+  protected readonly controlDisabled = computed(() => {
+    const disabled = this.disabled() ?? this.field?.disabled();
+    return disabled || null;
+  });
 
   protected readonly class = computed(() =>
     cn(

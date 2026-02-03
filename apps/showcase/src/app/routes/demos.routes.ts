@@ -1899,10 +1899,24 @@ export const demosRoutes: Route[] = [
     path: 'demos/label',
     children: [
       {
-        path: 'label-demo',
+        path: 'basic-label-demo',
         loadComponent: () =>
-          import('../pages/docs/label/demos/label-demo').then(
-            (m) => m.ScLabelDemo,
+          import('../pages/docs/label/demos/basic-label-demo').then(
+            (m) => m.BasicLabelDemo,
+          ),
+      },
+      {
+        path: 'checkbox-label-demo',
+        loadComponent: () =>
+          import('../pages/docs/label/demos/checkbox-label-demo').then(
+            (m) => m.CheckboxLabelDemo,
+          ),
+      },
+      {
+        path: 'field-label-demo',
+        loadComponent: () =>
+          import('../pages/docs/label/demos/field-label-demo').then(
+            (m) => m.FieldLabelDemo,
           ),
       },
     ],

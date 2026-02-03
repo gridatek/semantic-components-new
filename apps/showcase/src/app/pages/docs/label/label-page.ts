@@ -1,9 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLabelDemoContainer } from './demos/label-demo-container';
+import { BasicLabelDemoContainer } from './demos/basic-label-demo-container';
+import { CheckboxLabelDemoContainer } from './demos/checkbox-label-demo-container';
+import { FieldLabelDemoContainer } from './demos/field-label-demo-container';
 
 @Component({
   selector: 'app-label-page',
-  imports: [ScLabelDemoContainer],
+  imports: [
+    BasicLabelDemoContainer,
+    CheckboxLabelDemoContainer,
+    FieldLabelDemoContainer,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +21,9 @@ import { ScLabelDemoContainer } from './demos/label-demo-container';
 
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-label-demo-container />
+        <app-basic-label-demo-container />
+        <app-checkbox-label-demo-container />
+        <app-field-label-demo-container />
       </section>
     </div>
   `,

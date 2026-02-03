@@ -13,7 +13,7 @@ import { SC_FIELD_TOKEN } from '../field/field';
 export class ScLabel {
   private readonly field = inject(SC_FIELD_TOKEN, { optional: true });
 
-  readonly forInput = input<string>();
+  readonly forInput = input<string>('', { alias: 'for' });
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly for = computed(() => {
