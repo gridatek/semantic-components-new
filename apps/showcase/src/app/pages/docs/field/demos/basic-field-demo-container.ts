@@ -21,16 +21,16 @@ export class BasicFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScField,
-  ScFieldLabel,
+  ScLabel,
   ScFieldDescription,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-field-demo',
-  imports: [ScField, ScFieldLabel, ScFieldDescription],
+  imports: [ScField, ScLabel, ScFieldDescription],
   template: \`
     <div sc-field>
-      <label sc-field-label for="email">Email</label>
+      <label sc-label for="email">Email</label>
       <input
         id="email"
         type="email"

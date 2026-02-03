@@ -21,7 +21,7 @@ export class SeparatorFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScField,
-  ScFieldLabel,
+  ScLabel,
   ScFieldGroup,
   ScFieldSeparator,
   ScSeparator,
@@ -31,7 +31,7 @@ import {
   selector: 'app-separator-field-demo',
   imports: [
     ScField,
-    ScFieldLabel,
+    ScLabel,
     ScFieldGroup,
     ScFieldSeparator,
     ScSeparator,
@@ -39,7 +39,7 @@ import {
   template: \`
     <div sc-field-group>
       <div sc-field>
-        <label sc-field-label for="email">Email</label>
+        <label sc-label for="email">Email</label>
         <input
           id="email"
           type="email"
@@ -58,7 +58,7 @@ import {
       </div>
 
       <div sc-field>
-        <label sc-field-label for="phone">Phone</label>
+        <label sc-label for="phone">Phone</label>
         <input
           id="phone"
           type="tel"

@@ -4,7 +4,7 @@ import {
   ScFieldLegend,
   ScFieldGroup,
   ScField,
-  ScFieldLabel,
+  ScLabel,
   ScFieldDescription,
 } from '@semantic-components/ui';
 
@@ -15,7 +15,7 @@ import {
     ScFieldLegend,
     ScFieldGroup,
     ScField,
-    ScFieldLabel,
+    ScLabel,
     ScFieldDescription,
   ],
   template: `
@@ -25,7 +25,7 @@ import {
 
       <div sc-field-group>
         <div sc-field>
-          <label sc-field-label for="firstName">First Name</label>
+          <label sc-label for="firstName">First Name</label>
           <input
             id="firstName"
             type="text"
@@ -35,7 +35,7 @@ import {
         </div>
 
         <div sc-field>
-          <label sc-field-label for="lastName">Last Name</label>
+          <label sc-label for="lastName">Last Name</label>
           <input
             id="lastName"
             type="text"
@@ -45,7 +45,7 @@ import {
         </div>
 
         <div sc-field>
-          <label sc-field-label for="email">Email</label>
+          <label sc-label for="email">Email</label>
           <input
             id="email"
             type="email"

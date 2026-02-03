@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScField,
-  ScFieldLabel,
+  ScLabel,
   ScFieldError,
   ScFieldErrorItem,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-error-field-demo',
-  imports: [ScField, ScFieldLabel, ScFieldError],
+  imports: [ScField, ScLabel, ScFieldError],
   template: `
     <div class="space-y-4">
       <div sc-field [invalid]="singleError().length > 0">
-        <label sc-field-label for="password">Password</label>
+        <label sc-label for="password">Password</label>
         <input
           id="password"
           type="password"
@@ -23,7 +23,7 @@ import {
       </div>
 
       <div sc-field [invalid]="multipleErrors().length > 0">
-        <label sc-field-label for="password2">Password (Multiple Errors)</label>
+        <label sc-label for="password2">Password (Multiple Errors)</label>
         <input
           id="password2"
           type="password"

@@ -19,14 +19,14 @@ import { HorizontalFieldDemo } from './horizontal-field-demo';
 })
 export class HorizontalFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScField, ScFieldLabel } from '@semantic-components/ui';
+import { ScField, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-horizontal-field-demo',
-  imports: [ScField, ScFieldLabel],
+  imports: [ScField, ScLabel],
   template: \`
     <div sc-field [orientation]="'horizontal'">
-      <label sc-field-label for="username">Username</label>
+      <label sc-label for="username">Username</label>
       <input
         id="username"
         type="text"
