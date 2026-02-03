@@ -32,8 +32,8 @@ export class ScSliderThumb {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly percentage = input.required<number>();
   readonly value = input.required<number>();
-  readonly min = input<number>(0);
-  readonly max = input<number>(100);
+  readonly min = input<number | undefined>(0);
+  readonly max = input<number | undefined>(100);
   readonly step = input<number>(1);
   readonly disabled = input<boolean>(false);
   readonly label = input<string | undefined>(undefined);
