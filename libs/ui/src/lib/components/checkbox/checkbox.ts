@@ -2,8 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
+  ElementRef,
+  inject,
   input,
   model,
+  viewChild,
 } from '@angular/core';
 import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
@@ -24,8 +28,8 @@ import { cn } from '../../utils';
   },
   template: `
     <input
+      #inputElement
       type="checkbox"
-      [id]="id()"
       [name]="name()"
       [checked]="checked()"
       [disabled]="disabled()"
@@ -33,6 +37,7 @@ import { cn } from '../../utils';
       tabindex="-1"
       class="sr-only"
       (change)="onInputChange($event)"
+      (click)="onInputClick($event)"
     />
     @if (checked() || indeterminate()) {
       <svg
@@ -58,12 +63,32 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCheckbox implements FormCheckboxControl {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly inputElement =
+    viewChild<ElementRef<HTMLInputElement>>('inputElement');
+
   readonly classInput = input<string>('', { alias: 'class' });
   readonly checked = model<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
   readonly id = input<string>('');
   readonly name = input<string>('');
+
+  constructor() {
+    // Transfer id from host element to hidden input for label association
+    effect(() => {
+      const input = this.inputElement()?.nativeElement;
+      if (input) {
+        const hostId =
+          this.id() || this.elementRef.nativeElement.getAttribute('id');
+        if (hostId) {
+          input.id = hostId;
+          // Remove id from host element to prevent duplicate IDs
+          this.elementRef.nativeElement.removeAttribute('id');
+        }
+      }
+    });
+  }
 
   protected readonly dataState = computed(() => {
     if (this.indeterminate()) return 'indeterminate';
@@ -101,5 +126,11 @@ export class ScCheckbox implements FormCheckboxControl {
   protected onInputChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.checked.set(input.checked);
+  }
+
+  protected onInputClick(event: Event): void {
+    // Prevent the click from bubbling to the host element
+    // to avoid double-toggling when clicking via label
+    event.stopPropagation();
   }
 }
