@@ -372,6 +372,11 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/slider/slider-page'),
       },
       {
+        path: 'range-slider',
+        loadComponent: () =>
+          import('../pages/docs/range-slider/range-slider-page'),
+      },
+      {
         path: 'sortable-list',
         loadComponent: () =>
           import('../pages/docs/sortable-list/sortable-list-page'),
