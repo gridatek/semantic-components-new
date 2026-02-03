@@ -7,7 +7,9 @@ import { SiCircleIcon } from '@semantic-icons/lucide-icons';
   host: {
     'data-slot': 'radio-checked-icon',
   },
-  template: `<svg si-circle-icon class="size-2.5 fill-current"></svg>`,
+  template: `
+    <svg si-circle-icon class="size-2.5 fill-current"></svg>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScRadioCheckedIcon {}

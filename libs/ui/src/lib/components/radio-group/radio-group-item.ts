@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScRadioGroup } from './radio-group';
-import { ScRadioIndicator } from './radio-group-indicator';
-import { ScRadioCheckedIcon } from './radio-group-checked-icon';
+import { ScRadioIndicator } from './radio-indicator';
+import { ScRadioCheckedIcon } from './radio-checked-icon';
 
 @Component({
   selector: 'sc-radio-group-item',
