@@ -13,9 +13,9 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent, merge } from 'rxjs';
 import { cn } from '../../utils';
-import { ScSliderTrack } from './slider-track';
-import { ScSliderRange } from './slider-range';
-import { ScSliderThumb } from './slider-thumb';
+import { ScSliderTrack } from '../slider/slider-track';
+import { ScSliderRange } from '../slider/slider-range';
+import { ScSliderThumb } from '../slider/slider-thumb';
 
 @Component({
   selector: 'div[sc-range-slider]',

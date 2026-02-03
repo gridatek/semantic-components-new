@@ -1,0 +1,43 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { BasicRangeSliderDemo } from './basic-range-slider-demo';
+
+@Component({
+  selector: 'app-basic-range-slider-demo-container',
+  imports: [DemoContainer, BasicRangeSliderDemo],
+  template: `
+    <app-demo-container title="Basic" [code]="code">
+      <app-basic-range-slider-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class BasicRangeSliderDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ScRangeSlider } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-basic-range-slider-demo',
+  imports: [ScRangeSlider],
+  template: \`
+    <div class="w-[60%]">
+      <div
+        sc-range-slider
+        [(minValue)]="minValue"
+        [(maxValue)]="maxValue"
+        [minLabel]="'Minimum value'"
+        [maxLabel]="'Maximum value'"
+      ></div>
+      <p class="mt-2 text-sm text-muted-foreground">
+        Range: {{ minValue() }} - {{ maxValue() }}
+      </p>
+    </div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class BasicRangeSliderDemo {
+  readonly minValue = signal(25);
+  readonly maxValue = signal(75);
+}`;
+}
