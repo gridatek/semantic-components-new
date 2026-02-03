@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     fill: 'currentColor',
     class: 'size-2.5',
   },
-  template: `<circle cx="12" cy="12" r="10" />`,
+  template: `<svg:circle cx="12" cy="12" r="10" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScRadioCheckedIcon {}
