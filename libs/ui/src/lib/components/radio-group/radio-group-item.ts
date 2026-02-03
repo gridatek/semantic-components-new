@@ -30,7 +30,7 @@ import { ScRadioCheckedIcon } from './radio-group-checked-icon';
   template: `
     <span sc-radio-indicator [disabled]="isDisabled()">
       @if (isSelected()) {
-        <svg sc-radio-checked-icon></svg>
+        <sc-radio-checked-icon />
       }
     </span>
   `,

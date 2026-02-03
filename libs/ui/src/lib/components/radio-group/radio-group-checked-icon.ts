@@ -1,17 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { SiCircleIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
-  selector: 'svg[sc-radio-checked-icon]',
+  selector: 'sc-radio-checked-icon',
+  imports: [SiCircleIcon],
   host: {
     'data-slot': 'radio-checked-icon',
-    xmlns: 'http://www.w3.org/2000/svg',
-    width: '24',
-    height: '24',
-    viewBox: '0 0 24 24',
-    fill: 'currentColor',
-    class: 'size-2.5',
   },
-  template: `<svg:circle cx="12" cy="12" r="10" />`,
+  template: `<svg si-circle-icon class="size-2.5 fill-current"></svg>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScRadioCheckedIcon {}
