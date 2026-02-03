@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
-  ScNumberFieldGroup,
+  ScNumberFieldInputGroup,
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
@@ -14,7 +14,7 @@ import { ScLabel } from '@semantic-components/ui';
   imports: [
     ScNumberField,
     ScNumberFieldScrubArea,
-    ScNumberFieldGroup,
+    ScNumberFieldInputGroup,
     ScNumberFieldDecrement,
     ScNumberFieldInput,
     ScNumberFieldIncrement,

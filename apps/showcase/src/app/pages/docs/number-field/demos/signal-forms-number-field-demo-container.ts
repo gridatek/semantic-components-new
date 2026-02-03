@@ -23,7 +23,7 @@ import { FormField, form, required, min, max } from '@angular/forms/signals';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
-  ScNumberFieldGroup,
+  ScNumberFieldInputGroup,
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
@@ -35,7 +35,7 @@ import {
     FormField,
     ScNumberField,
     ScNumberFieldScrubArea,
-    ScNumberFieldGroup,
+    ScNumberFieldInputGroup,
     ScNumberFieldDecrement,
     ScNumberFieldInput,
     ScNumberFieldIncrement,

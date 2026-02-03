@@ -67,7 +67,7 @@ export default class NumberFieldPage {
   readonly usageCode = `import {
   ScNumberField,
   ScNumberFieldScrubArea,
-  ScNumberFieldGroup,
+  ScNumberFieldInputGroup,
   ScNumberFieldDecrement,
   ScNumberFieldInput,
   ScNumberFieldIncrement,
@@ -78,7 +78,7 @@ export default class NumberFieldPage {
   imports: [
     ScNumberField,
     ScNumberFieldScrubArea,
-    ScNumberFieldGroup,
+    ScNumberFieldInputGroup,
     ScNumberFieldDecrement,
     ScNumberFieldInput,
     ScNumberFieldIncrement,

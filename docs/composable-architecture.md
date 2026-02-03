@@ -252,7 +252,7 @@ component-name/
 ### Class Names
 
 - **Root**: `ScComponentName` (e.g., `ScNumberField`, `ScPasswordField`)
-- **Containers**: `ScComponentNameGroup` (e.g., `ScNumberFieldGroup`)
+- **Containers**: `ScComponentNameGroup` (e.g., `ScNumberFieldInputGroup`)
 - **Actions**: `ScComponentName[Action]` (e.g., `ScNumberFieldIncrement`, `ScPasswordFieldToggle`)
 - **Inputs**: `ScComponentNameInput` (e.g., `ScNumberFieldInput`)
 
@@ -466,7 +466,7 @@ export class ScNumberField {
     '[class]': 'class()',
   },
 })
-export class ScNumberFieldGroup {
+export class ScNumberFieldInputGroup {
   readonly numberField = inject(SC_NUMBER_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -22,7 +22,7 @@ import { SC_NUMBER_FIELD } from './number-field';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScNumberFieldGroup {
+export class ScNumberFieldInputGroup {
   readonly numberField = inject(SC_NUMBER_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
 
