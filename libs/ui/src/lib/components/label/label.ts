@@ -1,25 +1,30 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_PASSWORD_FIELD } from '../password-field/password-field';
+import { SC_FIELD_TOKEN } from '../field/field';
 
 @Directive({
   selector: 'label[sc-label]',
   host: {
     'data-slot': 'label',
-    '[attr.for]': 'passwordField?.inputId',
+    '[attr.for]': 'for()',
     '[class]': 'class()',
   },
 })
 export class ScLabel {
-  protected readonly passwordField = inject(SC_PASSWORD_FIELD, {
-    optional: true,
-  });
+  private readonly field = inject(SC_FIELD_TOKEN, { optional: true });
 
+  readonly forInput = input<string>();
   readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly for = computed(() => {
+    // Priority: explicit for input > field context
+    return this.forInput() ?? this.field?.id();
+  });
 
   protected readonly class = computed(() =>
     cn(
-      'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+      'has-data-checked:bg-primary/5 has-data-checked:border-primary dark:has-data-checked:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-2.5 group/field-label peer/field-label flex w-fit leading-snug',
+      'has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col',
       this.classInput(),
     ),
   );

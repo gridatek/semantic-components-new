@@ -3,7 +3,6 @@ export * from './field-set';
 export * from './field-legend';
 export * from './field-group';
 export * from './field-content';
-export * from './field-label';
 export * from './field-title';
 export * from './field-description';
 export * from './field-separator';

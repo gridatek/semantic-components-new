@@ -7,6 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_TOKEN } from '../field/field';
 import { SC_PASSWORD_FIELD } from './password-field';
 
 @Component({
@@ -14,11 +15,12 @@ import { SC_PASSWORD_FIELD } from './password-field';
   template: ``,
   host: {
     'data-slot': 'password-field-input',
-    '[id]': 'passwordField.inputId',
+    '[id]': 'field.id()',
     '[type]': 'passwordField.visible() ? "text" : "password"',
     '[class]': 'class()',
     '[value]': 'passwordField.value()',
-    '[disabled]': 'passwordField.disabled()',
+    '[disabled]': 'field.disabled()',
+    '[attr.aria-invalid]': 'field.invalid()',
     '[readonly]': 'readonly()',
     '[placeholder]': 'placeholder()',
     '[autocomplete]': 'autocomplete()',
@@ -28,6 +30,7 @@ import { SC_PASSWORD_FIELD } from './password-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPasswordFieldInput {
+  readonly field = inject(SC_FIELD_TOKEN);
   readonly passwordField = inject(SC_PASSWORD_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
   readonly placeholder = input<string>('');
