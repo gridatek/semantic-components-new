@@ -222,6 +222,10 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/input-otp/input-otp-page'),
       },
       {
+        path: 'opt-field',
+        loadComponent: () => import('../pages/docs/opt-field/opt-field-page'),
+      },
+      {
         path: 'kanban-board',
         loadComponent: () =>
           import('../pages/docs/kanban-board/kanban-board-page'),

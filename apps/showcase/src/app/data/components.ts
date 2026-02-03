@@ -238,6 +238,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'An input for entering one-time passwords.',
   },
   {
+    name: 'Opt Field',
+    path: 'opt-field',
+    description: 'An input for entering one-time passwords.',
+  },
+  {
     name: 'Kanban Board',
     path: 'kanban-board',
     description: 'A drag-and-drop task board.',
