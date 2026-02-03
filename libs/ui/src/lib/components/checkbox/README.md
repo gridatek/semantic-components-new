@@ -88,12 +88,14 @@ OKLCH format parameters:
 
 ## Inputs
 
-| Input           | Type      | Default | Description                       |
-| --------------- | --------- | ------- | --------------------------------- |
-| `checked`       | `boolean` | `false` | Whether checkbox is checked       |
-| `disabled`      | `boolean` | `false` | Whether checkbox is disabled      |
-| `indeterminate` | `boolean` | `false` | Whether checkbox is indeterminate |
-| `class`         | `string`  | `''`    | Additional CSS classes            |
+| Input           | Type      | Default | Description                                  |
+| --------------- | --------- | ------- | -------------------------------------------- |
+| `checked`       | `boolean` | `false` | Whether checkbox is checked                  |
+| `disabled`      | `boolean` | `false` | Whether checkbox is disabled                 |
+| `indeterminate` | `boolean` | `false` | Whether checkbox is indeterminate            |
+| `id`            | `string`  | `''`    | ID for label association and form submission |
+| `name`          | `string`  | `''`    | Name attribute for form submission           |
+| `class`         | `string`  | `''`    | Additional CSS classes                       |
 
 ## Outputs
 
@@ -110,9 +112,12 @@ OKLCH format parameters:
 
 ## Accessibility
 
-- Uses `role="checkbox"` for proper semantics
+- Contains a visually hidden native `<input type="checkbox">` for better form integration and screen reader support
+- Uses `role="checkbox"` on the host element for proper semantics
 - `aria-checked` attribute: `true`, `false`, or `mixed` (indeterminate)
 - `aria-disabled` for disabled state
 - Keyboard accessible (Space to toggle)
 - Focus ring for keyboard navigation
-- Works with associated `<label>` elements via `id`
+- Works with associated `<label>` elements via `id` attribute
+- Supports native form submission via `name` attribute
+- Compatible with browser autofill and form validation

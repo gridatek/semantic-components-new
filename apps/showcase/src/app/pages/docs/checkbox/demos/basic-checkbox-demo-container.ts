@@ -29,7 +29,7 @@ import { ScCheckbox } from '@semantic-components/ui';
       <sc-checkbox [(checked)]="terms" id="terms" />
       <label
         for="terms"
-        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        class="text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         Accept terms and conditions
       </label>

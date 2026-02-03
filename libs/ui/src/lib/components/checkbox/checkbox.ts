@@ -23,6 +23,17 @@ import { cn } from '../../utils';
     '[tabindex]': 'disabled() ? -1 : 0',
   },
   template: `
+    <input
+      type="checkbox"
+      [id]="id()"
+      [name]="name()"
+      [checked]="checked()"
+      [disabled]="disabled()"
+      [attr.aria-hidden]="true"
+      tabindex="-1"
+      class="sr-only"
+      (change)="onInputChange($event)"
+    />
     @if (checked() || indeterminate()) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +62,8 @@ export class ScCheckbox implements FormCheckboxControl {
   readonly checked = model<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly indeterminate = input<boolean>(false);
+  readonly id = input<string>('');
+  readonly name = input<string>('');
 
   protected readonly dataState = computed(() => {
     if (this.indeterminate()) return 'indeterminate';
@@ -83,5 +96,10 @@ export class ScCheckbox implements FormCheckboxControl {
   protected onSpace(event: Event): void {
     event.preventDefault();
     this.toggle();
+  }
+
+  protected onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.checked.set(input.checked);
   }
 }
