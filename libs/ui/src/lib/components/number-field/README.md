@@ -8,7 +8,7 @@ The Number Field component follows a composable pattern with multiple sub-compon
 
 - **ScNumberField**: Root container that manages state and provides context
 - **ScNumberFieldScrubArea**: Interactive label area with mouse scrubbing to adjust values
-- **ScNumberFieldGroup**: Container for input and stepper buttons
+- **ScNumberFieldInputGroup**: Container for input and stepper buttons
 - **ScNumberFieldInput**: The numeric input field
 - **ScNumberFieldIncrement**: Button to increase value
 - **ScNumberFieldDecrement**: Button to decrease value
@@ -81,7 +81,7 @@ An interactive area (typically wrapping a label) that allows users to scrub (dra
 | ------- | -------- | ------- | ---------------------- |
 | `class` | `string` | `''`    | Additional CSS classes |
 
-### ScNumberFieldGroup
+### ScNumberFieldInputGroup
 
 Container for grouping the input field with increment/decrement buttons.
 

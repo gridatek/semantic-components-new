@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
-  ScNumberFieldGroup,
+  ScNumberFieldInputGroup,
   ScNumberFieldIncrement,
   ScNumberFieldInput,
 } from '@semantic-components/ui';
@@ -11,7 +11,7 @@ import {
   selector: 'app-without-label-number-field-demo',
   imports: [
     ScNumberField,
-    ScNumberFieldGroup,
+    ScNumberFieldInputGroup,
     ScNumberFieldDecrement,
     ScNumberFieldInput,
     ScNumberFieldIncrement,

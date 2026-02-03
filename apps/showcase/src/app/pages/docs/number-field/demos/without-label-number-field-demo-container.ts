@@ -22,7 +22,7 @@ export default class WithoutLabelNumberFieldDemoContainer {
 import {
   ScNumberField,
   ScNumberFieldDecrement,
-  ScNumberFieldGroup,
+  ScNumberFieldInputGroup,
   ScNumberFieldIncrement,
   ScNumberFieldInput,
 } from '@semantic-components/ui';
@@ -30,7 +30,7 @@ import {
 @Component({
   imports: [
     ScNumberField,
-    ScNumberFieldGroup,
+    ScNumberFieldInputGroup,
     ScNumberFieldDecrement,
     ScNumberFieldInput,
     ScNumberFieldIncrement,
