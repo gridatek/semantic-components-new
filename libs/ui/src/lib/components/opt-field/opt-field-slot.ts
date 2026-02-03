@@ -27,15 +27,14 @@ import { ScOptFieldSlotChar } from './opt-field-slot-char';
       #input
       [value]="char()"
       [disabled]="optField.disabled()"
-      [class]="inputClass()"
       (inputChange)="onInputChange($event)"
       (keydown)="onKeydown($event)"
       (focused)="onFocusChange($event)"
     />
     @if (isActive() && !isFilled()) {
-      <sc-opt-field-slot-caret [class]="caretClass()" />
+      <sc-opt-field-slot-caret />
     }
-    <sc-opt-field-slot-char [char]="char()" [class]="charClass()" />
+    <sc-opt-field-slot-char [char]="char()" />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,9 +44,6 @@ export class ScOptFieldSlot {
     viewChild<ScOptFieldSlotInput>('input');
 
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly inputClass = input<string>('');
-  readonly caretClass = input<string>('');
-  readonly charClass = input<string>('');
 
   private readonly index = signal<number>(0);
   private readonly focused = signal<boolean>(false);
