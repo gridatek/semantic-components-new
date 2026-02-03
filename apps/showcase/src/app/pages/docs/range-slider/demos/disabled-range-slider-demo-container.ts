@@ -1,0 +1,44 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DemoContainer } from '../../../../components/demo-container/demo-container';
+import { DisabledRangeSliderDemo } from './disabled-range-slider-demo';
+
+@Component({
+  selector: 'app-disabled-range-slider-demo-container',
+  imports: [DemoContainer, DisabledRangeSliderDemo],
+  template: `
+    <app-demo-container title="Disabled" [code]="code">
+      <app-disabled-range-slider-demo />
+    </app-demo-container>
+  `,
+  host: { class: 'block' },
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DisabledRangeSliderDemoContainer {
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ScRangeSlider } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-disabled-range-slider-demo',
+  imports: [ScRangeSlider],
+  template: \`
+    <div class="w-[60%]">
+      <div
+        sc-range-slider
+        [(minValue)]="minValue"
+        [(maxValue)]="maxValue"
+        [disabled]="true"
+        [minLabel]="'Minimum value'"
+        [maxLabel]="'Maximum value'"
+      ></div>
+      <p class="mt-2 text-sm text-muted-foreground">
+        Range: {{ minValue() }} - {{ maxValue() }}
+      </p>
+    </div>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DisabledRangeSliderDemo {
+  readonly minValue = signal(40);
+  readonly maxValue = signal(60);
+}`;
+}

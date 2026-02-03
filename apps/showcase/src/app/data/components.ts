@@ -418,6 +418,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'An input for selecting a value from a range.',
   },
   {
+    name: 'Range Slider',
+    path: 'range-slider',
+    description: 'An input for selecting a range with min and max values.',
+  },
+  {
     name: 'Sortable List',
     path: 'sortable-list',
     description: 'A drag-and-drop sortable list.',
