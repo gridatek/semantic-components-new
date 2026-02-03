@@ -8,7 +8,7 @@ import { ScRangeSlider } from '@semantic-components/ui';
     <div class="w-[60%]">
       <div class="flex justify-between text-sm mb-2">
         <span>Price Range</span>
-        <span>\${{ minPrice() }} - \${{ maxPrice() }}</span>
+        <span>{{ '$' + minPrice() + ' - $' + maxPrice() }}</span>
       </div>
       <div
         sc-range-slider

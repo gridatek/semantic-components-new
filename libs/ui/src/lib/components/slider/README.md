@@ -67,14 +67,16 @@ Note: Add `FormField` to your component's `imports` array to use the `[formField
 
 ## Inputs
 
-| Input      | Type                  | Default | Description                |
-| ---------- | --------------------- | ------- | -------------------------- |
-| `value`    | `number`              | `0`     | Current value (model)      |
-| `min`      | `number \| undefined` | `0`     | Minimum value              |
-| `max`      | `number \| undefined` | `100`   | Maximum value              |
-| `step`     | `number`              | `1`     | Step increment             |
-| `disabled` | `boolean`             | `false` | Whether slider is disabled |
-| `class`    | `string`              | `''`    | Additional CSS classes     |
+| Input              | Type                  | Default     | Description                              |
+| ------------------ | --------------------- | ----------- | ---------------------------------------- |
+| `value`            | `number`              | `0`         | Current value (model)                    |
+| `min`              | `number \| undefined` | `0`         | Minimum value                            |
+| `max`              | `number \| undefined` | `100`       | Maximum value                            |
+| `step`             | `number`              | `1`         | Step increment                           |
+| `disabled`         | `boolean`             | `false`     | Whether slider is disabled               |
+| `label`            | `string \| undefined` | `undefined` | ARIA label for accessibility             |
+| `aria-labelledby`  | `string \| undefined` | `undefined` | ID of element that labels the slider     |
+| `class`            | `string`              | `''`        | Additional CSS classes                   |
 
 ## Outputs
 
