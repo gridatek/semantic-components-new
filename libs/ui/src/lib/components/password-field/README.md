@@ -7,7 +7,7 @@ A composable password input component with visibility toggle and optional streng
 The Password Field component follows a composable pattern with multiple sub-components:
 
 - **ScPasswordField**: Root container that manages state and provides context
-- **ScPasswordFieldGroup**: Container for input and toggle button
+- **ScPasswordFieldInputGroup**: Container for input and toggle button
 - **ScPasswordFieldInput**: The password input field
 - **ScPasswordFieldToggle**: Button to toggle password visibility
 
@@ -15,7 +15,7 @@ The Password Field component follows a composable pattern with multiple sub-comp
 
 ```html
 <div sc-password-field [(value)]="password">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input placeholder="Enter password" />
     <button sc-password-field-toggle></button>
   </div>
@@ -50,11 +50,11 @@ Root container directive that manages the password state and visibility.
 | `valueChange`      | `string`  | Emitted when value changes      |
 | `visibilityChange` | `boolean` | Emitted when visibility toggles |
 
-### ScPasswordFieldGroup
+### ScPasswordFieldInputGroup
 
 Container for grouping the input field with the toggle button.
 
-**Selector:** `[sc-password-field-group]`
+**Selector:** `[sc-password-field-input-group]`
 
 **Inputs:**
 
@@ -108,7 +108,7 @@ Button to toggle password visibility.
 
 ```html
 <div sc-password-field [(value)]="password">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input placeholder="Enter password" />
     <button sc-password-field-toggle></button>
   </div>
@@ -121,7 +121,7 @@ Button to toggle password visibility.
 <div class="space-y-2">
   <label sc-label for="password">Password</label>
   <div sc-password-field [(value)]="password">
-    <div sc-password-field-group>
+    <div sc-password-field-input-group>
       <input sc-password-field-input id="password" placeholder="Enter password" />
       <button sc-password-field-toggle></button>
     </div>
@@ -133,7 +133,7 @@ Button to toggle password visibility.
 
 ```html
 <div sc-password-field [(value)]="password" [showByDefault]="true">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input placeholder="API Key" />
     <button sc-password-field-toggle></button>
   </div>
@@ -144,7 +144,7 @@ Button to toggle password visibility.
 
 ```html
 <div sc-password-field [value]="'********'" [disabled]="true">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input />
     <button sc-password-field-toggle></button>
   </div>
@@ -155,7 +155,7 @@ Button to toggle password visibility.
 
 ```html
 <div sc-password-field [(value)]="newPassword">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input placeholder="New password" autocomplete="new-password" />
     <button sc-password-field-toggle></button>
   </div>
@@ -166,7 +166,7 @@ Button to toggle password visibility.
 
 ```html
 <div sc-password-field [(value)]="password">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input />
     <button sc-password-field-toggle>
       <!-- Custom icon content -->
@@ -186,7 +186,7 @@ Button to toggle password visibility.
 <div class="space-y-2">
   <label sc-label>Password</label>
   <div sc-password-field [(value)]="password">
-    <div sc-password-field-group>
+    <div sc-password-field-input-group>
       <input sc-password-field-input />
       <button sc-password-field-toggle></button>
     </div>

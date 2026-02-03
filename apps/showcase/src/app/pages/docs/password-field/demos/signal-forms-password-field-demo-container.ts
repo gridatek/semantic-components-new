@@ -22,7 +22,7 @@ export default class SignalFormsPasswordFieldDemoContainer {
 import { FormField, form, required, minLength } from '@angular/forms/signals';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScLabel,
@@ -32,7 +32,7 @@ import {
   imports: [
     FormField,
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
@@ -48,7 +48,7 @@ import {
         >
           Password
         </label>
-        <div sc-password-field-group>
+        <div sc-password-field-input-group>
           <input
             sc-password-field-input
             [formField]="loginForm.password"

@@ -333,12 +333,12 @@ export class ScPasswordField {
 
 // Group component
 @Component({
-  selector: '[sc-password-field-group]',
+  selector: '[sc-password-field-input-group]',
   template: `
     <ng-content />
   `,
 })
-export class ScPasswordFieldGroup {
+export class ScPasswordFieldInputGroup {
   readonly passwordField = inject(SC_PASSWORD_FIELD);
 }
 
@@ -372,7 +372,7 @@ export class ScPasswordFieldToggle {
 ```html
 <!-- Basic usage -->
 <div sc-password-field [(value)]="password">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input />
     <button sc-password-field-toggle></button>
   </div>
@@ -381,7 +381,7 @@ export class ScPasswordFieldToggle {
 <!-- With label -->
 <div sc-password-field [(value)]="password">
   <label sc-label>Password</label>
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input placeholder="Enter password" />
     <button sc-password-field-toggle></button>
   </div>
@@ -389,7 +389,7 @@ export class ScPasswordFieldToggle {
 
 <!-- Custom icon -->
 <div sc-password-field [(value)]="password">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <input sc-password-field-input />
     <button sc-password-field-toggle>
       <span>{{ visible() ? 'Hide' : 'Show' }}</span>
@@ -399,7 +399,7 @@ export class ScPasswordFieldToggle {
 
 <!-- With prefix icon -->
 <div sc-password-field [(value)]="password">
-  <div sc-password-field-group>
+  <div sc-password-field-input-group>
     <svg class="ml-2"><!-- Lock icon --></svg>
     <input sc-password-field-input class="pl-8" />
     <button sc-password-field-toggle></button>

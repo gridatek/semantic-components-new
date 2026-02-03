@@ -71,7 +71,7 @@ import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-con
 export default class PasswordFieldPage {
   readonly usageCode = `import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScLabel,
@@ -80,7 +80,7 @@ export default class PasswordFieldPage {
 @Component({
   imports: [
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
@@ -89,7 +89,7 @@ export default class PasswordFieldPage {
     <div class="space-y-2">
       <label sc-label for="password">Password</label>
       <div sc-password-field [(value)]="password">
-        <div sc-password-field-group>
+        <div sc-password-field-input-group>
           <input
             sc-password-field-input
             id="password"

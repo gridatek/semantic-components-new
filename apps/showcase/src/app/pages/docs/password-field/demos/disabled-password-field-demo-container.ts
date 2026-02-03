@@ -21,7 +21,7 @@ export default class DisabledPasswordFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScLabel,
@@ -30,7 +30,7 @@ import {
 @Component({
   imports: [
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
@@ -38,7 +38,7 @@ import {
   template: \`
     <div sc-password-field [value]="'********'" [disabled]="true" class="space-y-2">
       <label sc-label>Password (Disabled)</label>
-      <div sc-password-field-group>
+      <div sc-password-field-input-group>
         <input sc-password-field-input />
         <button sc-password-field-toggle></button>
       </div>
