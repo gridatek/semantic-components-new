@@ -26,11 +26,14 @@ export default [
       '@angular-eslint/component-selector': 'off',
       '@angular-eslint/no-input-rename': 'off',
       '@angular-eslint/no-output-native': 'off',
+      '@angular-eslint/template/label-has-associated-control': 'off',
     },
   },
   {
     files: ['**/*.html'],
     // Override or add rules here
-    rules: {},
+    rules: {
+      '@angular-eslint/template/label-has-associated-control': 'off',
+    },
   },
 ];

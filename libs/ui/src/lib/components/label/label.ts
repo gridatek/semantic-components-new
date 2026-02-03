@@ -18,7 +18,8 @@ export class ScLabel {
 
   protected readonly for = computed(() => {
     // Priority: explicit for input > field context
-    return this.forInput() ?? this.field?.id();
+    const forValue = this.forInput() || this.field?.id();
+    return forValue || null;
   });
 
   protected readonly class = computed(() =>
