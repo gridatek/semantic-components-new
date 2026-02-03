@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
 } from '@semantic-components/ui';
@@ -11,7 +11,7 @@ import { ScLabel } from '@semantic-components/ui';
   selector: 'app-basic-password-field-demo',
   imports: [
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
@@ -19,7 +19,7 @@ import { ScLabel } from '@semantic-components/ui';
   template: `
     <div sc-password-field [(value)]="password" class="space-y-2">
       <label sc-label>Password</label>
-      <div sc-password-field-group>
+      <div sc-password-field-input-group>
         <input sc-password-field-input placeholder="Enter password" />
         <button sc-password-field-toggle></button>
       </div>

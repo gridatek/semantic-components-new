@@ -21,7 +21,7 @@ export default class NewPasswordFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScLabel,
@@ -30,7 +30,7 @@ import {
 @Component({
   imports: [
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
@@ -39,7 +39,7 @@ import {
     <div class="space-y-4">
       <div sc-password-field [(value)]="newPassword" class="space-y-2">
         <label sc-label>New Password</label>
-        <div sc-password-field-group>
+        <div sc-password-field-input-group>
           <input
             sc-password-field-input
             placeholder="Enter new password"
@@ -54,7 +54,7 @@ import {
 
       <div sc-password-field [(value)]="confirmPassword" class="space-y-2">
         <label sc-label>Confirm Password</label>
-        <div sc-password-field-group>
+        <div sc-password-field-input-group>
           <input
             sc-password-field-input
             placeholder="Confirm new password"

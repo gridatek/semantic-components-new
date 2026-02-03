@@ -10,19 +10,19 @@ import { cn } from '../../utils';
 import { SC_FIELD_TOKEN } from '../field/field';
 
 @Component({
-  selector: '[sc-password-field-group]',
+  selector: '[sc-password-field-input-group]',
   template: `
     <ng-content />
   `,
   host: {
-    'data-slot': 'password-field-group',
+    'data-slot': 'password-field-input-group',
     '[class]': 'class()',
     '[attr.data-disabled]': 'field.disabled() || null',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScPasswordFieldGroup {
+export class ScPasswordFieldInputGroup {
   readonly field = inject(SC_FIELD_TOKEN);
   readonly classInput = input<string>('', { alias: 'class' });
 

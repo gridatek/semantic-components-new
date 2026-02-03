@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScPasswordFieldStrength,
@@ -13,7 +13,7 @@ import {
   selector: 'app-full-password-field-demo',
   imports: [
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScPasswordFieldStrength,
@@ -23,7 +23,7 @@ import {
   template: `
     <div sc-password-field [(value)]="password" class="space-y-2">
       <label sc-label>Create Password</label>
-      <div sc-password-field-group>
+      <div sc-password-field-input-group>
         <input
           sc-password-field-input
           placeholder="Enter a strong password"

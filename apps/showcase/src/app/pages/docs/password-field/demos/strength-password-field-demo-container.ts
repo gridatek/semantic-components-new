@@ -21,7 +21,7 @@ export default class StrengthPasswordFieldDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScPasswordFieldStrength,
@@ -31,7 +31,7 @@ import {
 @Component({
   imports: [
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScPasswordFieldStrength,
@@ -40,7 +40,7 @@ import {
   template: \`
     <div sc-password-field [(value)]="password" class="space-y-2">
       <label sc-label>Password</label>
-      <div sc-password-field-group>
+      <div sc-password-field-input-group>
         <input
           sc-password-field-input
           placeholder="Enter password"

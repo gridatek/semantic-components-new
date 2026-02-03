@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormField, form, required, minLength } from '@angular/forms/signals';
 import {
   ScPasswordField,
-  ScPasswordFieldGroup,
+  ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
 } from '@semantic-components/ui';
@@ -13,7 +13,7 @@ import { ScLabel } from '@semantic-components/ui';
   imports: [
     FormField,
     ScPasswordField,
-    ScPasswordFieldGroup,
+    ScPasswordFieldInputGroup,
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
@@ -29,7 +29,7 @@ import { ScLabel } from '@semantic-components/ui';
         >
           Password
         </label>
-        <div sc-password-field-group>
+        <div sc-password-field-input-group>
           <input
             sc-password-field-input
             [formField]="loginForm.password"
