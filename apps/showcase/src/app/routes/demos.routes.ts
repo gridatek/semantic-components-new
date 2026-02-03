@@ -1816,6 +1816,53 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/opt-field',
+    children: [
+      {
+        path: 'basic-opt-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/opt-field/demos/basic-opt-field-demo').then(
+            (m) => m.BasicOptFieldDemo,
+          ),
+      },
+      {
+        path: 'separator-opt-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/opt-field/demos/separator-opt-field-demo').then(
+            (m) => m.SeparatorOptFieldDemo,
+          ),
+      },
+      {
+        path: 'pin-opt-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/opt-field/demos/pin-opt-field-demo').then(
+            (m) => m.PinOptFieldDemo,
+          ),
+      },
+      {
+        path: 'dot-separator-opt-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/opt-field/demos/dot-separator-opt-field-demo').then(
+            (m) => m.DotSeparatorOptFieldDemo,
+          ),
+      },
+      {
+        path: 'disabled-opt-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/opt-field/demos/disabled-opt-field-demo').then(
+            (m) => m.DisabledOptFieldDemo,
+          ),
+      },
+      {
+        path: 'verification-opt-field-demo',
+        loadComponent: () =>
+          import('../pages/docs/opt-field/demos/verification-opt-field-demo').then(
+            (m) => m.VerificationOptFieldDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/kanban-board',
     children: [
       {
