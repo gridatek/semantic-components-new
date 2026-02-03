@@ -29,7 +29,7 @@ import {
   selector: 'app-disabled-opt-field-demo',
   imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSlot],
   template: \`
-    <div sc-opt-field [maxLength]="6" [disabled]="true" value="123456">
+    <div sc-opt-field [disabled]="true" value="123456">
       <div sc-opt-field-slot-group>
         <sc-opt-field-slot />
         <sc-opt-field-slot />

@@ -8,7 +8,12 @@ import {
 
 @Component({
   selector: 'app-verification-opt-field-demo',
-  imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSeparator, ScOptFieldSlot],
+  imports: [
+    ScOptField,
+    ScOptFieldSlotGroup,
+    ScOptFieldSeparator,
+    ScOptFieldSlot,
+  ],
   template: `
     <div class="rounded-lg border p-6 max-w-sm">
       <div class="space-y-4">
@@ -19,7 +24,7 @@ import {
           </p>
         </div>
         <div class="flex justify-center">
-          <div sc-opt-field [maxLength]="6" [(value)]="code">
+          <div sc-opt-field [(value)]="code">
             <div sc-opt-field-slot-group>
               <sc-opt-field-slot />
               <sc-opt-field-slot />

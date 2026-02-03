@@ -39,7 +39,7 @@ import {
           </p>
         </div>
         <div class="flex justify-center">
-          <div sc-opt-field [maxLength]="6" [(value)]="code">
+          <div sc-opt-field [(value)]="code">
             <div sc-opt-field-slot-group>
               <sc-opt-field-slot />
               <sc-opt-field-slot />

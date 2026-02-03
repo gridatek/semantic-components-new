@@ -9,7 +9,7 @@ import {
   selector: 'app-pin-opt-field-demo',
   imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSlot],
   template: `
-    <div sc-opt-field [maxLength]="4" [(value)]="otp">
+    <div sc-opt-field [(value)]="otp">
       <div sc-opt-field-slot-group>
         <sc-opt-field-slot />
         <sc-opt-field-slot />
