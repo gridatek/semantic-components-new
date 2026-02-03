@@ -1,15 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SiCircleIcon } from '@semantic-icons/lucide-icons';
+import { Directive } from '@angular/core';
 
-@Component({
-  selector: 'sc-radio-checked-icon',
-  imports: [SiCircleIcon],
+@Directive({
+  selector: 'svg[sc-radio-checked-icon]',
   host: {
     'data-slot': 'radio-checked-icon',
+    class: 'size-2.5 fill-current',
   },
-  template: `
-    <svg si-circle-icon class="size-2.5 fill-current"></svg>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScRadioCheckedIcon {}

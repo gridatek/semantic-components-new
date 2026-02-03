@@ -7,6 +7,7 @@ import {
   input,
   signal,
 } from '@angular/core';
+import { SiCircleIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
 import { ScRadioGroup } from './radio-group';
 import { ScRadioIndicator } from './radio-indicator';
@@ -14,7 +15,7 @@ import { ScRadioCheckedIcon } from './radio-checked-icon';
 
 @Component({
   selector: 'sc-radio-group-item',
-  imports: [ScRadioIndicator, ScRadioCheckedIcon],
+  imports: [ScRadioIndicator, ScRadioCheckedIcon, SiCircleIcon],
   host: {
     'data-slot': 'radio-group-item',
     role: 'radio',
@@ -30,7 +31,7 @@ import { ScRadioCheckedIcon } from './radio-checked-icon';
   template: `
     <span sc-radio-indicator [disabled]="isDisabled()">
       @if (isSelected()) {
-        <sc-radio-checked-icon />
+        <svg si-circle-icon sc-radio-checked-icon></svg>
       }
     </span>
   `,
