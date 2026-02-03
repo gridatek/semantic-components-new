@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_PASSWORD_FIELD } from './password-field';
+import { SC_FIELD_TOKEN } from '../field/field';
 
 @Component({
   selector: '[sc-password-field-group]',
@@ -17,13 +17,13 @@ import { SC_PASSWORD_FIELD } from './password-field';
   host: {
     'data-slot': 'password-field-group',
     '[class]': 'class()',
-    '[attr.data-disabled]': 'passwordField.disabled() || null',
+    '[attr.data-disabled]': 'field.disabled() || null',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPasswordFieldGroup {
-  readonly passwordField = inject(SC_PASSWORD_FIELD);
+  readonly field = inject(SC_FIELD_TOKEN);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
