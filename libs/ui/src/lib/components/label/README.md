@@ -13,7 +13,7 @@ Renders an accessible label associated with controls.
 It is recommended to use the label inside a `sc-field` component for automatic association with form controls and better accessibility:
 
 ```html
-<div sc-field class="w-full max-w-sm">
+<div sc-field>
   <label sc-label>Email</label>
   <input sc-input type="email" placeholder="Enter your email" />
   <p sc-field-description>The label automatically links to the input via the field context.</p>

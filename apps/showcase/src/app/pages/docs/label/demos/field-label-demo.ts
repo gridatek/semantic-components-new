@@ -10,7 +10,7 @@ import {
   selector: 'app-field-label-demo',
   imports: [ScField, ScInput, ScLabel, ScFieldDescription],
   template: `
-    <div sc-field class="w-full max-w-sm">
+    <div sc-field>
       <label sc-label>Email</label>
       <input sc-input type="email" placeholder="Enter your email" />
       <p sc-field-description>
