@@ -23,8 +23,8 @@ import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
   template: \`
     <div class="rounded-lg border p-6 max-w-md">
       <div class="space-y-4">
-        <h4 class="font-semibold">Notification Preferences</h4>
-        <div sc-radio-group [(value)]="notifyValue" class="gap-3">
+        <h4 id="notify-heading" class="font-semibold">Notification Preferences</h4>
+        <div sc-radio-group [(value)]="notifyValue" class="gap-3" ariaLabelledby="notify-heading">
           <div class="flex items-center space-x-2">
             <sc-radio-group-item value="all" id="notify-all" />
             <label for="notify-all" class="text-sm font-medium">All new messages</label>

@@ -5,7 +5,7 @@ import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
   selector: 'app-basic-radio-group-demo',
   imports: [ScRadioGroup, ScRadioGroupItem],
   template: `
-    <div sc-radio-group [(value)]="value">
+    <div sc-radio-group [(value)]="value" label="Spacing preference">
       <div class="flex items-center space-x-2">
         <sc-radio-group-item value="default" id="r1" />
         <label for="r1" class="text-sm font-medium leading-none">

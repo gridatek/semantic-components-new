@@ -57,13 +57,46 @@ A set of checkable buttons where only one button can be checked at a time.
 </div>
 ```
 
+## With Accessible Label
+
+```html
+<!-- Using aria-label -->
+<div sc-radio-group [(value)]="selected" label="Choose your theme">
+  <div class="flex items-center space-x-2">
+    <sc-radio-group-item value="light" id="light" />
+    <label for="light">Light</label>
+  </div>
+  <div class="flex items-center space-x-2">
+    <sc-radio-group-item value="dark" id="dark" />
+    <label for="dark">Dark</label>
+  </div>
+</div>
+
+<!-- Using aria-labelledby with a visible heading -->
+<div>
+  <h3 id="theme-heading">Choose your theme</h3>
+  <div sc-radio-group [(value)]="selected" ariaLabelledby="theme-heading">
+    <div class="flex items-center space-x-2">
+      <sc-radio-group-item value="light" id="light" />
+      <label for="light">Light</label>
+    </div>
+    <div class="flex items-center space-x-2">
+      <sc-radio-group-item value="dark" id="dark" />
+      <label for="dark">Dark</label>
+    </div>
+  </div>
+</div>
+```
+
 ## ScRadioGroup Inputs
 
-| Input      | Type             | Default | Description                    |
-| ---------- | ---------------- | ------- | ------------------------------ |
-| `value`    | `string \| null` | `null`  | Selected value (model)         |
-| `disabled` | `boolean`        | `false` | Whether all items are disabled |
-| `class`    | `string`         | `''`    | Additional CSS classes         |
+| Input            | Type             | Default | Description                                     |
+| ---------------- | ---------------- | ------- | ----------------------------------------------- |
+| `value`          | `string \| null` | `null`  | Selected value (model)                          |
+| `disabled`       | `boolean`        | `false` | Whether all items are disabled                  |
+| `class`          | `string`         | `''`    | Additional CSS classes                          |
+| `label`          | `string`         | `''`    | Accessible label for the radio group (WCAG)     |
+| `ariaLabelledby` | `string`         | `''`    | ID of element that labels the group (WCAG)      |
 
 ## ScRadioGroup Outputs
 
@@ -90,9 +123,11 @@ A set of checkable buttons where only one button can be checked at a time.
 
 - Uses `role="radiogroup"` on container
 - Uses `role="radio"` on items
+- Supports `aria-label` for programmatic group labels (WCAG 4.1.2)
+- Supports `aria-labelledby` to reference visible group labels (WCAG 4.1.2)
 - `aria-checked` attribute for checked state
 - `aria-disabled` for disabled state
-- Arrow keys navigate between options
+- Arrow keys navigate between options (Up/Down/Left/Right)
 - Space selects the focused option
 - Only one item is in tab order at a time (roving tabindex)
 - Focus ring for keyboard navigation

@@ -20,6 +20,8 @@ import { cn } from '../../utils';
     role: 'radiogroup',
     '[class]': 'class()',
     '[attr.aria-disabled]': 'disabled() || null',
+    '[attr.aria-label]': 'label() || null',
+    '[attr.aria-labelledby]': 'ariaLabelledby() || null',
     '(keydown)': 'onKeydown($event)',
   },
 })
@@ -27,6 +29,8 @@ export class ScRadioGroup {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<string | null>(null);
   readonly disabled = input<boolean>(false);
+  readonly label = input<string>('');
+  readonly ariaLabelledby = input<string>('');
 
   private readonly items = contentChildren(ScRadioGroupItem, {
     descendants: true,
