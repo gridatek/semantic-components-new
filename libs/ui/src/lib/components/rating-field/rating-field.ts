@@ -1,11 +1,13 @@
 import {
   computed,
+  contentChildren,
   Directive,
   InjectionToken,
   input,
   model,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { ScRatingFieldItem } from './rating-item';
 
 // Token for rating field context
 export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
@@ -27,7 +29,6 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
 })
 export class ScRatingField {
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly max = input<number>(5);
   readonly value = model<number>(0);
   readonly readonly = input<boolean>(false);
   readonly disabled = input<boolean>(false);
@@ -35,6 +36,20 @@ export class ScRatingField {
   readonly allowClear = input<boolean>(true);
   readonly label = input<string>('');
   readonly ariaLabelledby = input<string>('');
+
+  private readonly items = contentChildren(ScRatingFieldItem, {
+    descendants: true,
+  });
+
+  readonly max = computed(() => {
+    const allItems = this.items();
+    if (allItems.length === 0) {
+      throw new Error(
+        'ScRatingField: No rating items found. Add at least one [sc-rating-item] element.',
+      );
+    }
+    return Math.max(...allItems.map((item) => item.value()));
+  });
 
   protected readonly class = computed(() =>
     cn('inline-flex items-center', this.classInput()),
@@ -44,8 +59,8 @@ export class ScRatingField {
     if (this.readonly() || this.disabled()) return;
 
     // Validate value is within range
-    const max = this.max();
-    const clampedValue = Math.max(0, Math.min(max, value));
+    const maxValue = this.max();
+    const clampedValue = Math.max(0, Math.min(maxValue, value));
 
     // Allow clearing by clicking the same value
     if (this.allowClear() && clampedValue === this.value()) {

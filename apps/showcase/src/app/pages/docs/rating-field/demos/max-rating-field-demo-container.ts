@@ -27,7 +27,7 @@ import { SiStarIcon } from '@semantic-icons/lucide-icons';
   imports: [ScRatingField, ScRatingItemGroup, ScRatingFieldItem, SiStarIcon],
   template: \`
     <div class="flex flex-col gap-2">
-      <div sc-rating-field [(value)]="rating" [max]="10">
+      <div sc-rating-field [(value)]="rating">
         <div sc-rating-item-group class="flex gap-0.5">
           @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track i) {
             <span
