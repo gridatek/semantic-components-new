@@ -11,11 +11,12 @@ import {
 } from '@angular/core';
 import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
+import { ScInvisibleCheckbox } from './invisible-checkbox';
 import { ScVisualCheckbox } from './visual-checkbox';
 
 @Component({
   selector: 'sc-checkbox',
-  imports: [ScVisualCheckbox],
+  imports: [ScInvisibleCheckbox, ScVisualCheckbox],
   host: {
     'data-slot': 'checkbox',
     '[class]': 'hostClass()',
@@ -26,11 +27,11 @@ import { ScVisualCheckbox } from './visual-checkbox';
     <input
       #inputElement
       type="checkbox"
+      sc-invisible-checkbox
       [id]="id()"
       [name]="name()"
       [checked]="checked()"
       [disabled]="disabled()"
-      class="peer absolute inset-0 size-full cursor-pointer opacity-0 disabled:cursor-not-allowed"
       (change)="onInputChange($event)"
     />
     <span sc-visual-checkbox [state]="dataState()"></span>

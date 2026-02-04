@@ -5,6 +5,7 @@ A control that allows the user to toggle between checked and not checked.
 ## Components
 
 - `ScCheckbox` - Main checkbox component with native input and visual representation
+- `ScInvisibleCheckbox` - Directive for native input styling (applied to input[type="checkbox"])
 - `ScCheckboxIndicator` - Directive for styling the visual checkbox box (applied to span)
 - `ScVisualCheckbox` - Component for visual representation (applied to span)
 
@@ -70,7 +71,7 @@ For advanced customization, you can use the directives directly:
 
 ```html
 <div class="relative inline-flex h-4 w-4">
-  <input type="checkbox" [(ngModel)]="checked" class="peer absolute inset-0 opacity-0" />
+  <input type="checkbox" sc-invisible-checkbox [(ngModel)]="checked" />
   <span sc-checkbox-indicator [state]="checked ? 'checked' : 'unchecked'">
     @if (checked) {
       <svg si-check-icon class="size-4"></svg>
@@ -83,7 +84,7 @@ Or create a completely custom visual:
 
 ```html
 <div class="relative inline-flex h-6 w-6">
-  <input type="checkbox" [(ngModel)]="checked" class="peer absolute inset-0 opacity-0" />
+  <input type="checkbox" sc-invisible-checkbox [(ngModel)]="checked" />
   <span sc-checkbox-indicator [state]="checked ? 'checked' : 'unchecked'" class="h-6 w-6 rounded-full">
     <!-- Your custom icon -->
   </span>
@@ -156,7 +157,7 @@ The checkbox uses a layered approach:
 
 ```
 sc-checkbox
-├── <input type="checkbox"> (native, opacity: 0, covers full area)
+├── input[sc-invisible-checkbox] (native checkbox, opacity: 0, covers full area)
 └── span[sc-visual-checkbox] (decorative wrapper)
     └── span[sc-checkbox-indicator] (visual box)
         ├── <svg si-check-icon> (checkmark icon)
