@@ -19,7 +19,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
   imports: [ScInvisibleCheckbox, ScVisualCheckbox],
   host: {
     'data-slot': 'checkbox',
-    '[class]': 'hostClass()',
+    '[class]': 'class()',
     '[attr.data-state]': 'dataState()',
     '[attr.data-disabled]': 'disabled() ? "" : null',
   },
@@ -79,7 +79,7 @@ export class ScCheckbox implements FormCheckboxControl {
     return this.checked() ? 'checked' : 'unchecked';
   });
 
-  protected readonly hostClass = computed(() =>
+  protected readonly class = computed(() =>
     cn(
       'relative inline-flex h-4 w-4 shrink-0',
       this.classInput(),
