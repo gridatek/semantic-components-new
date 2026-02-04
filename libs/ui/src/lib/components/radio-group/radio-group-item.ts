@@ -2,33 +2,45 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   ElementRef,
   inject,
   input,
-  signal,
+  viewChild,
 } from '@angular/core';
 import { SiCircleIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
+import { ScInvisibleRadio } from './invisible-radio';
 import { ScRadioGroup } from './radio-group';
 import { ScRadioIndicator } from './radio-indicator';
 import { ScRadioCheckedIcon } from './radio-checked-icon';
 
 @Component({
   selector: 'sc-radio-group-item',
-  imports: [ScRadioIndicator, ScRadioCheckedIcon, SiCircleIcon],
+  imports: [
+    ScInvisibleRadio,
+    ScRadioIndicator,
+    ScRadioCheckedIcon,
+    SiCircleIcon,
+  ],
   host: {
     'data-slot': 'radio-group-item',
-    role: 'radio',
     '[class]': 'class()',
-    '[attr.aria-checked]': 'isSelected()',
     '[attr.data-state]': 'isSelected() ? "checked" : "unchecked"',
     '[attr.data-disabled]': 'isDisabled() ? "" : null',
-    '[attr.aria-disabled]': 'isDisabled() || null',
-    '[tabindex]': 'tabIndex()',
-    '(click)': 'onClick()',
-    '(keydown.space)': 'onSpace($event)',
   },
   template: `
+    <input
+      #inputElement
+      type="radio"
+      sc-invisible-radio
+      [id]="id()"
+      [name]="group.name()"
+      [value]="value()"
+      [checked]="isSelected()"
+      [disabled]="isDisabled()"
+      (change)="onChange()"
+    />
     <span sc-radio-indicator [disabled]="isDisabled()">
       @if (isSelected()) {
         <svg si-circle-icon sc-radio-checked-icon></svg>
@@ -38,53 +50,45 @@ import { ScRadioCheckedIcon } from './radio-checked-icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScRadioGroupItem {
-  private readonly group = inject(ScRadioGroup);
-  private readonly elementRef = inject(ElementRef);
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly inputElement =
+    viewChild<ElementRef<HTMLInputElement>>('inputElement');
+
+  readonly group = inject(ScRadioGroup);
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = input.required<string>();
   readonly disabled = input<boolean>(false);
-
-  private readonly index = signal<number>(0);
+  readonly id = input<string>('');
 
   readonly isSelected = computed(() => this.group.isSelected(this.value()));
   readonly isDisabled = computed(
     () => this.disabled() || this.group.disabled(),
   );
 
-  protected readonly tabIndex = computed(() => {
-    if (this.isDisabled()) return -1;
-    // If this item is selected, it should be focusable
-    if (this.isSelected()) return 0;
-    // If no item is selected, the first enabled item should be focusable
-    if (this.group.value() === null && this.index() === 0) return 0;
-    return -1;
-  });
+  constructor() {
+    // Transfer id from host element to input for label association
+    effect(() => {
+      const input = this.inputElement()?.nativeElement;
+      if (input) {
+        const hostId =
+          this.id() || this.elementRef.nativeElement.getAttribute('id');
+        if (hostId) {
+          input.id = hostId;
+          // Remove id from host element to prevent duplicate IDs
+          this.elementRef.nativeElement.removeAttribute('id');
+        }
+      }
+    });
+  }
 
   protected readonly class = computed(() =>
-    cn(
-      'inline-flex cursor-pointer items-center gap-2',
-      this.isDisabled() && 'cursor-not-allowed opacity-50',
-      this.classInput(),
-    ),
+    cn('relative inline-flex items-center gap-2', this.classInput()),
   );
 
-  setIndex(idx: number): void {
-    this.index.set(idx);
-  }
-
-  focus(): void {
-    this.elementRef.nativeElement.focus();
-  }
-
-  protected onClick(): void {
+  protected onChange(): void {
     if (!this.isDisabled()) {
       this.group.select(this.value());
     }
-  }
-
-  protected onSpace(event: Event): void {
-    event.preventDefault();
-    this.onClick();
   }
 }
