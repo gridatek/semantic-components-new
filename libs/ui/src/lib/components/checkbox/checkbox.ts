@@ -11,54 +11,29 @@ import {
 } from '@angular/core';
 import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
+import { ScVisualCheckbox } from './visual-checkbox';
 
 @Component({
   selector: 'sc-checkbox',
+  imports: [ScVisualCheckbox],
   host: {
     'data-slot': 'checkbox',
-    '[class]': 'class()',
+    '[class]': 'hostClass()',
     '[attr.data-state]': 'dataState()',
     '[attr.data-disabled]': 'disabled() ? "" : null',
-    '(click)': 'toggle()',
-    '(keydown.space)': 'onSpace($event)',
-    '[attr.role]': '"checkbox"',
-    '[attr.aria-checked]': 'ariaChecked()',
-    '[attr.aria-disabled]': 'disabled()',
-    '[tabindex]': 'disabled() ? -1 : 0',
   },
   template: `
     <input
       #inputElement
       type="checkbox"
+      [id]="id()"
       [name]="name()"
       [checked]="checked()"
       [disabled]="disabled()"
-      [attr.aria-hidden]="true"
-      tabindex="-1"
-      class="sr-only"
+      class="peer absolute inset-0 size-full cursor-pointer opacity-0 disabled:cursor-not-allowed"
       (change)="onInputChange($event)"
-      (click)="onInputClick($event)"
     />
-    @if (checked() || indeterminate()) {
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="size-4"
-      >
-        @if (indeterminate()) {
-          <line x1="5" x2="19" y1="12" y2="12" />
-        } @else {
-          <path d="M20 6 9 17l-5-5" />
-        }
-      </svg>
-    }
+    <sc-visual-checkbox [state]="dataState()" [class]="visualClass()" />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -75,7 +50,15 @@ export class ScCheckbox implements FormCheckboxControl {
   readonly name = input<string>('');
 
   constructor() {
-    // Transfer id from host element to hidden input for label association
+    // Sync indeterminate state to native input
+    effect(() => {
+      const input = this.inputElement()?.nativeElement;
+      if (input) {
+        input.indeterminate = this.indeterminate();
+      }
+    });
+
+    // Transfer id from host element to input for label association
     effect(() => {
       const input = this.inputElement()?.nativeElement;
       if (input) {
@@ -95,42 +78,23 @@ export class ScCheckbox implements FormCheckboxControl {
     return this.checked() ? 'checked' : 'unchecked';
   });
 
-  protected readonly ariaChecked = computed(() => {
-    if (this.indeterminate()) return 'mixed';
-    return this.checked();
-  });
-
-  protected readonly class = computed(() =>
+  protected readonly hostClass = computed(() =>
     cn(
-      'peer inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-primary ring-offset-background transition-colors',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-      'disabled:cursor-not-allowed disabled:opacity-50',
-      'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-      'data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
-      'data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground',
+      'relative inline-flex h-4 w-4 shrink-0',
       this.classInput(),
     ),
   );
 
-  protected toggle(): void {
-    if (!this.disabled()) {
-      this.checked.update((v) => !v);
-    }
-  }
-
-  protected onSpace(event: Event): void {
-    event.preventDefault();
-    this.toggle();
-  }
+  protected readonly visualClass = computed(() =>
+    cn(
+      'ring-offset-background',
+      'peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2',
+      'peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
+    ),
+  );
 
   protected onInputChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.checked.set(input.checked);
-  }
-
-  protected onInputClick(event: Event): void {
-    // Prevent the click from bubbling to the host element
-    // to avoid double-toggling when clicking via label
-    event.stopPropagation();
   }
 }
