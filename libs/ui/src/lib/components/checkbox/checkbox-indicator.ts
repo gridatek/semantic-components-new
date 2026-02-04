@@ -1,17 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
 
-@Component({
-  selector: 'sc-checkbox-indicator',
+@Directive({
+  selector: 'span[sc-checkbox-indicator]',
   host: {
+    'data-slot': 'checkbox-indicator',
     '[class]': 'class()',
     '[attr.data-state]': 'state()',
     '[attr.aria-hidden]': 'true',
   },
-  template: `
-    <ng-content />
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCheckboxIndicator {
   readonly classInput = input<string>('', { alias: 'class' });

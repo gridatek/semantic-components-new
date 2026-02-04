@@ -1,21 +1,17 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { SiCheckIcon, SiMinusIcon } from '@semantic-icons/lucide-icons';
+import { computed, Directive, input } from '@angular/core';
+import { cn } from '../../utils';
 
-@Component({
-  selector: 'sc-checkbox-icon',
-  imports: [SiCheckIcon, SiMinusIcon],
-  template: `
-    @if (state() === 'indeterminate') {
-      <svg si-minus-icon class="size-4"></svg>
-    } @else if (state() === 'checked') {
-      <svg si-check-icon class="size-4"></svg>
-    }
-  `,
+@Directive({
+  selector: 'svg[sc-checkbox-icon]',
   host: {
-    '[attr.data-state]': 'state()',
+    'data-slot': 'checkbox-icon',
+    '[class]': 'class()',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCheckboxIcon {
-  readonly state = input<'checked' | 'unchecked' | 'indeterminate'>('unchecked');
+  readonly classInput = input<string>('', { alias: 'class' });
+
+  protected readonly class = computed(() =>
+    cn('size-4', this.classInput()),
+  );
 }
