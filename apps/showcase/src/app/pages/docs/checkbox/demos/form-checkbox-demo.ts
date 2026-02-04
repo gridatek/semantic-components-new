@@ -1,65 +1,48 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScCheckboxField, ScInvisibleCheckbox } from '@semantic-components/ui';
+import {
+  ScCheckboxField,
+  ScInvisibleCheckbox,
+  ScLabel,
+} from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-checkbox-demo',
-  imports: [ScCheckboxField, ScInvisibleCheckbox, FormsModule],
+  imports: [ScCheckboxField, ScInvisibleCheckbox, ScLabel, FormsModule],
   template: `
     <div class="rounded-lg border p-6 max-w-md">
       <div class="space-y-4">
         <h4 class="font-semibold">Notification Preferences</h4>
         <div class="space-y-4">
-          <div class="flex items-center space-x-2">
-            <div sc-checkbox-field>
-              <input
-                type="checkbox"
-                sc-invisible-checkbox
-                [(ngModel)]="emailNotif"
-                id="email-notif"
-                name="emailNotifications"
-              />
-            </div>
-            <label
-              for="email-notif"
-              class="text-sm font-medium leading-none cursor-pointer"
-            >
-              Email notifications
-            </label>
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="emailNotif"
+              id="email-notif"
+              name="emailNotifications"
+            />
+            <label sc-label for="email-notif">Email notifications</label>
           </div>
-          <div class="flex items-center space-x-2">
-            <div sc-checkbox-field>
-              <input
-                type="checkbox"
-                sc-invisible-checkbox
-                [(ngModel)]="smsNotif"
-                id="sms-notif"
-                name="smsNotifications"
-              />
-            </div>
-            <label
-              for="sms-notif"
-              class="text-sm font-medium leading-none cursor-pointer"
-            >
-              SMS notifications
-            </label>
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="smsNotif"
+              id="sms-notif"
+              name="smsNotifications"
+            />
+            <label sc-label for="sms-notif">SMS notifications</label>
           </div>
-          <div class="flex items-center space-x-2">
-            <div sc-checkbox-field>
-              <input
-                type="checkbox"
-                sc-invisible-checkbox
-                [(ngModel)]="pushNotif"
-                id="push-notif"
-                name="pushNotifications"
-              />
-            </div>
-            <label
-              for="push-notif"
-              class="text-sm font-medium leading-none cursor-pointer"
-            >
-              Push notifications
-            </label>
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="pushNotif"
+              id="push-notif"
+              name="pushNotifications"
+            />
+            <label sc-label for="push-notif">Push notifications</label>
           </div>
         </div>
       </div>

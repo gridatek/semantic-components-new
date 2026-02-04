@@ -22,6 +22,7 @@ export class IndeterminateCheckboxDemoContainer {
 import {
   ScCheckboxField,
   ScInvisibleCheckbox,
+  ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
@@ -30,58 +31,51 @@ import { FormsModule } from '@angular/forms';
   imports: [
     ScCheckboxField,
     ScInvisibleCheckbox,
+    ScLabel,
     FormsModule,
   ],
   template: \`
     <div class="flex flex-col gap-4">
-      <div class="flex items-center space-x-2">
-        <div sc-checkbox-field>
-          <input
-            type="checkbox"
-            sc-invisible-checkbox
-            [checked]="allSelected()"
-            [indeterminate]="someSelected()"
-            (change)="toggleAll($event)"
-            id="select-all"
-          />
-        </div>
-        <label for="select-all" class="text-sm font-medium leading-none">
+      <div sc-checkbox-field>
+        <input
+          type="checkbox"
+          sc-invisible-checkbox
+          [checked]="allSelected()"
+          [indeterminate]="someSelected()"
+          (change)="toggleAll($event)"
+          id="select-all"
+        />
+        <label sc-label for="select-all">
           Select all
         </label>
       </div>
       <div class="ml-6 flex flex-col gap-2">
-        <div class="flex items-center space-x-2">
-          <div sc-checkbox-field>
-            <input
-              type="checkbox"
-              sc-invisible-checkbox
-              [(ngModel)]="item1"
-              id="item1"
-            />
-            </div>
-          <label for="item1" class="text-sm leading-none">Item 1</label>
+        <div sc-checkbox-field>
+          <input
+            type="checkbox"
+            sc-invisible-checkbox
+            [(ngModel)]="item1"
+            id="item1"
+          />
+          <label sc-label for="item1">Item 1</label>
         </div>
-        <div class="flex items-center space-x-2">
-          <div sc-checkbox-field>
-            <input
-              type="checkbox"
-              sc-invisible-checkbox
-              [(ngModel)]="item2"
-              id="item2"
-            />
-            </div>
-          <label for="item2" class="text-sm leading-none">Item 2</label>
+        <div sc-checkbox-field>
+          <input
+            type="checkbox"
+            sc-invisible-checkbox
+            [(ngModel)]="item2"
+            id="item2"
+          />
+          <label sc-label for="item2">Item 2</label>
         </div>
-        <div class="flex items-center space-x-2">
-          <div sc-checkbox-field>
-            <input
-              type="checkbox"
-              sc-invisible-checkbox
-              [(ngModel)]="item3"
-              id="item3"
-            />
-            </div>
-          <label for="item3" class="text-sm leading-none">Item 3</label>
+        <div sc-checkbox-field>
+          <input
+            type="checkbox"
+            sc-invisible-checkbox
+            [(ngModel)]="item3"
+            id="item3"
+          />
+          <label sc-label for="item3">Item 3</label>
         </div>
       </div>
     </div>

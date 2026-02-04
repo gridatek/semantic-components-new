@@ -21,8 +21,8 @@ import { ScVisualCheckbox } from './visual-checkbox';
     '[attr.data-disabled]': 'disabled() ? "" : null',
   },
   template: `
-    <ng-content />
     <span sc-visual-checkbox></span>
+    <ng-content />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

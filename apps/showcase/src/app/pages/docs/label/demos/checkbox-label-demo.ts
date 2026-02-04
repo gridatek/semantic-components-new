@@ -9,10 +9,8 @@ import {
   selector: 'app-checkbox-label-demo',
   imports: [ScLabel, ScCheckboxField, ScInvisibleCheckbox],
   template: `
-    <div class="flex items-center space-x-2">
-      <div sc-checkbox-field>
-        <input type="checkbox" sc-invisible-checkbox id="terms-label" />
-      </div>
+    <div sc-checkbox-field>
+      <input type="checkbox" sc-invisible-checkbox id="terms-label" />
       <label sc-label [for]="'terms-label'">Accept terms and conditions</label>
     </div>
   `,

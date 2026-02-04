@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
-import { ScCheckboxField, ScInvisibleCheckbox } from '@semantic-components/ui';
+import {
+  ScCheckboxField,
+  ScInvisibleCheckbox,
+  ScLabel,
+} from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
 
 interface CheckboxFormModel {
@@ -12,59 +16,42 @@ interface CheckboxFormModel {
 
 @Component({
   selector: 'app-signal-forms-checkbox-demo',
-  imports: [ScCheckboxField, ScInvisibleCheckbox, JsonPipe, FormField],
+  imports: [ScCheckboxField, ScInvisibleCheckbox, ScLabel, JsonPipe, FormField],
   template: `
     <form>
       <div class="space-y-4">
-        <div class="flex items-center space-x-2">
-          <div sc-checkbox-field>
-            <input
-              type="checkbox"
-              sc-invisible-checkbox
-              id="newsletter-custom"
-              [formField]="checkboxForm.newsletter"
-            />
-          </div>
-          <label
-            for="newsletter-custom"
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
+        <div sc-checkbox-field>
+          <input
+            type="checkbox"
+            sc-invisible-checkbox
+            id="newsletter-custom"
+            [formField]="checkboxForm.newsletter"
+          />
+          <label sc-label for="newsletter-custom">
             Subscribe to newsletter
           </label>
         </div>
 
-        <div class="flex items-center space-x-2">
-          <div sc-checkbox-field>
-            <input
-              type="checkbox"
-              sc-invisible-checkbox
-              id="marketing-custom"
-              [formField]="checkboxForm.marketing"
-            />
-          </div>
-          <label
-            for="marketing-custom"
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
+        <div sc-checkbox-field>
+          <input
+            type="checkbox"
+            sc-invisible-checkbox
+            id="marketing-custom"
+            [formField]="checkboxForm.marketing"
+          />
+          <label sc-label for="marketing-custom">
             Receive marketing emails
           </label>
         </div>
 
-        <div class="flex items-center space-x-2">
-          <div sc-checkbox-field>
-            <input
-              type="checkbox"
-              sc-invisible-checkbox
-              id="terms-custom"
-              [formField]="checkboxForm.acceptTerms"
-            />
-          </div>
-          <label
-            for="terms-custom"
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Accept terms and conditions
-          </label>
+        <div sc-checkbox-field>
+          <input
+            type="checkbox"
+            sc-invisible-checkbox
+            id="terms-custom"
+            [formField]="checkboxForm.acceptTerms"
+          />
+          <label sc-label for="terms-custom">Accept terms and conditions</label>
         </div>
       </div>
 

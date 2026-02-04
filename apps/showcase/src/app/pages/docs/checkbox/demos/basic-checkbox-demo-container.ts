@@ -22,6 +22,7 @@ export class BasicCheckboxDemoContainer {
 import {
   ScCheckboxField,
   ScInvisibleCheckbox,
+  ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
@@ -30,22 +31,18 @@ import { FormsModule } from '@angular/forms';
   imports: [
     ScCheckboxField,
     ScInvisibleCheckbox,
+    ScLabel,
     FormsModule,
   ],
   template: \`
-    <div class="flex items-center space-x-2">
-      <div sc-checkbox-field>
-        <input
-          type="checkbox"
-          sc-invisible-checkbox
-          [(ngModel)]="terms"
-          id="terms"
-        />
-      </div>
-      <label
-        for="terms"
-        class="text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
+    <div sc-checkbox-field>
+      <input
+        type="checkbox"
+        sc-invisible-checkbox
+        [(ngModel)]="terms"
+        id="terms"
+      />
+      <label sc-label for="terms">
         Accept terms and conditions
       </label>
     </div>

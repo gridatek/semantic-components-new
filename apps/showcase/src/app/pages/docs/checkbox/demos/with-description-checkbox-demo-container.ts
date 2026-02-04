@@ -22,6 +22,7 @@ export class WithDescriptionCheckboxDemoContainer {
 import {
   ScCheckboxField,
   ScInvisibleCheckbox,
+  ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
@@ -30,23 +31,19 @@ import { FormsModule } from '@angular/forms';
   imports: [
     ScCheckboxField,
     ScInvisibleCheckbox,
+    ScLabel,
     FormsModule,
   ],
   template: \`
-    <div class="items-top flex space-x-2">
-      <div sc-checkbox-field>
-        <input
-          type="checkbox"
-          sc-invisible-checkbox
-          [(ngModel)]="marketing"
-          id="marketing"
-        />
-      </div>
+    <div sc-checkbox-field>
+      <input
+        type="checkbox"
+        sc-invisible-checkbox
+        [(ngModel)]="marketing"
+        id="marketing"
+      />
       <div class="grid gap-1.5 leading-none">
-        <label
-          for="marketing"
-          class="text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
+        <label sc-label for="marketing">
           Marketing emails
         </label>
         <p class="text-sm text-muted-foreground">
