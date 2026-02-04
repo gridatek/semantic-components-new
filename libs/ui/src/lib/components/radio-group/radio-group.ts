@@ -23,6 +23,7 @@ import { ScRadioGroupItem } from './radio-group-item';
 })
 export class ScRadioGroup {
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly name = input<string>('');
   readonly value = model<string | null>(null);
   readonly disabled = input<boolean>(false);
   readonly label = input<string>('');
@@ -37,12 +38,7 @@ export class ScRadioGroup {
   );
 
   constructor() {
-    effect(() => {
-      const allItems = this.items();
-      allItems.forEach((item, index) => {
-        item.setIndex(index);
-      });
-    });
+    // Items are automatically indexed by contentChildren
   }
 
   isSelected(itemValue: string): boolean {
@@ -83,14 +79,6 @@ export class ScRadioGroup {
     if (nextIndex !== -1) {
       const nextItem = enabledItems[nextIndex];
       this.value.set(nextItem.value());
-      nextItem.focus();
-    }
-  }
-
-  focusItem(index: number): void {
-    const allItems = this.items();
-    if (index >= 0 && index < allItems.length) {
-      allItems[index].focus();
     }
   }
 }
