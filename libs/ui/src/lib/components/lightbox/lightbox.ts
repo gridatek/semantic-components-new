@@ -1,272 +1,77 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  DestroyRef,
-  inject,
+  Directive,
+  InjectionToken,
   input,
   model,
   output,
   signal,
-  ViewEncapsulation,
+  computed,
+  DestroyRef,
+  inject,
+  afterNextRender,
 } from '@angular/core';
-import { cn } from '../../utils';
 import { LightboxImage } from './lightbox.types';
 
-@Component({
-  selector: 'sc-lightbox',
+/**
+ * Injection token for ScLightbox
+ */
+export interface ScLightbox {
+  // Inputs
+  images: () => LightboxImage[];
+  loop: () => boolean;
+  showCounter: () => boolean;
+  showInfo: () => boolean;
+  showZoom: () => boolean;
+  showThumbnails: () => boolean;
+  closeOnOverlayClick: () => boolean;
+  closeOnEscape: () => boolean;
+
+  // Models
+  isOpen: ReturnType<typeof model<boolean>>;
+  currentIndex: ReturnType<typeof model<number>>;
+
+  // Outputs
+  opened: ReturnType<typeof output<number>>;
+  closed: ReturnType<typeof output<void>>;
+  indexChange: ReturnType<typeof output<number>>;
+
+  // State
+  zoomLevel: ReturnType<typeof signal<number>>;
+  imageLoading: ReturnType<typeof signal<boolean>>;
+
+  // Computed
+  currentImage: () => LightboxImage;
+
+  // Methods
+  open: (index?: number) => void;
+  close: () => void;
+  next: () => void;
+  previous: () => void;
+  goTo: (index: number) => void;
+  zoomIn: () => void;
+  zoomOut: () => void;
+  resetZoom: () => void;
+  onImageLoad: () => void;
+  onOverlayClick: (event: MouseEvent) => void;
+  onKeydown: (event: KeyboardEvent) => void;
+  getCurrentImage: () => LightboxImage | undefined;
+}
+
+export const SC_LIGHTBOX = new InjectionToken<ScLightbox>('SC_LIGHTBOX');
+
+@Directive({
+  selector: '[sc-lightbox]',
   exportAs: 'scLightbox',
-
-  template: `
-    @if (isOpen()) {
-      <div
-        [class]="overlayClass()"
-        (click)="onOverlayClick($event)"
-        (keydown)="onKeydown($event)"
-        tabindex="-1"
-        role="dialog"
-        aria-modal="true"
-        [attr.aria-label]="
-          'Image gallery, showing image ' +
-          (currentIndex() + 1) +
-          ' of ' +
-          images().length
-        "
-      >
-        <!-- Close button -->
-        <button
-          type="button"
-          [class]="closeButtonClass()"
-          (click)="close()"
-          aria-label="Close lightbox"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            class="size-6"
-          >
-            <path d="M18 6 6 18M6 6l12 12" />
-          </svg>
-        </button>
-
-        <!-- Navigation: Previous -->
-        @if (images().length > 1) {
-          <button
-            type="button"
-            [class]="navButtonClass('left')"
-            (click)="previous()"
-            [disabled]="!loop() && currentIndex() === 0"
-            aria-label="Previous image"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="size-8"
-            >
-              <path d="m15 18-6-6 6-6" />
-            </svg>
-          </button>
-        }
-
-        <!-- Main image container -->
-        <div [class]="imageContainerClass()">
-          <img
-            [src]="currentImage().src"
-            [alt]="currentImage().alt || 'Image ' + (currentIndex() + 1)"
-            [class]="imageClass()"
-            [style.transform]="'scale(' + zoomLevel() + ')'"
-            (load)="onImageLoad()"
-            draggable="false"
-          />
-
-          <!-- Loading indicator -->
-          @if (imageLoading()) {
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg
-                class="size-8 animate-spin text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                (click)="$event.stopPropagation()"
-              >
-                <circle
-                  class="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  class="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-            </div>
-          }
-        </div>
-
-        <!-- Navigation: Next -->
-        @if (images().length > 1) {
-          <button
-            type="button"
-            [class]="navButtonClass('right')"
-            (click)="next()"
-            [disabled]="!loop() && currentIndex() === images().length - 1"
-            aria-label="Next image"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="size-8"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </button>
-        }
-
-        <!-- Bottom bar -->
-        <div [class]="bottomBarClass()">
-          <!-- Image info -->
-          @if (
-            showInfo() && (currentImage().title || currentImage().description)
-          ) {
-            <div class="flex-1 text-white">
-              @if (currentImage().title) {
-                <h3 class="font-semibold">{{ currentImage().title }}</h3>
-              }
-              @if (currentImage().description) {
-                <p class="text-sm text-white/80">
-                  {{ currentImage().description }}
-                </p>
-              }
-            </div>
-          }
-
-          <!-- Controls -->
-          <div class="flex items-center gap-2">
-            <!-- Counter -->
-            @if (showCounter() && images().length > 1) {
-              <span class="text-sm text-white/80">
-                {{ currentIndex() + 1 }} / {{ images().length }}
-              </span>
-            }
-
-            <!-- Zoom controls -->
-            @if (showZoom()) {
-              <div class="flex items-center gap-1 ml-4">
-                <button
-                  type="button"
-                  class="p-2 text-white/80 hover:text-white transition-colors"
-                  (click)="zoomOut()"
-                  [disabled]="zoomLevel() <= 0.5"
-                  aria-label="Zoom out"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="size-5"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.3-4.3M8 11h6" />
-                  </svg>
-                </button>
-                <span class="text-sm text-white/80 min-w-[3rem] text-center">
-                  {{ Math.round(zoomLevel() * 100) }}%
-                </span>
-                <button
-                  type="button"
-                  class="p-2 text-white/80 hover:text-white transition-colors"
-                  (click)="zoomIn()"
-                  [disabled]="zoomLevel() >= 3"
-                  aria-label="Zoom in"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="size-5"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.3-4.3M8 11h6M11 8v6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  class="p-2 text-white/80 hover:text-white transition-colors"
-                  (click)="resetZoom()"
-                  aria-label="Reset zoom"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="size-5"
-                  >
-                    <path d="M21 21l-6-6m6 6v-4.8m0 4.8h-4.8" />
-                    <path d="M3 16.2V21m0 0h4.8M3 21l6-6" />
-                    <path d="M21 7.8V3m0 0h-4.8M21 3l-6 6" />
-                    <path d="M3 7.8V3m0 0h4.8M3 3l6 6" />
-                  </svg>
-                </button>
-              </div>
-            }
-          </div>
-        </div>
-
-        <!-- Thumbnails -->
-        @if (showThumbnails() && images().length > 1) {
-          <div [class]="thumbnailsClass()">
-            @for (image of images(); track image.src; let i = $index) {
-              <button
-                type="button"
-                [class]="thumbnailClass(i)"
-                (click)="goTo(i)"
-                [attr.aria-label]="'Go to image ' + (i + 1)"
-              >
-                <img
-                  [src]="image.thumbnail || image.src"
-                  [alt]="image.alt || 'Thumbnail ' + (i + 1)"
-                  class="size-full object-cover"
-                />
-              </button>
-            }
-          </div>
-        }
-      </div>
-    }
-
-    <ng-content />
-  `,
+  providers: [{ provide: SC_LIGHTBOX, useExisting: ScLightboxDirective }],
   host: {
     'data-slot': 'lightbox',
   },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScLightbox {
+export class ScLightboxDirective implements ScLightbox {
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly classInput = input<string>('', { alias: 'class' });
+  // Configuration inputs
   readonly images = input<LightboxImage[]>([]);
-  readonly startIndex = input<number>(0);
   readonly loop = input<boolean>(true);
   readonly showCounter = input<boolean>(true);
   readonly showInfo = input<boolean>(true);
@@ -275,79 +80,36 @@ export class ScLightbox {
   readonly closeOnOverlayClick = input<boolean>(true);
   readonly closeOnEscape = input<boolean>(true);
 
+  // Models for two-way binding
   readonly isOpen = model<boolean>(false);
   readonly currentIndex = model<number>(0);
 
+  // Outputs
   readonly opened = output<number>();
   readonly closed = output<void>();
   readonly indexChange = output<number>();
 
-  protected readonly zoomLevel = signal(1);
-  protected readonly imageLoading = signal(false);
+  // Internal state signals
+  readonly zoomLevel = signal(1);
+  readonly imageLoading = signal(false);
 
-  protected readonly Math = Math;
-
-  protected readonly currentImage = computed(() => {
+  // Computed
+  readonly currentImage = computed(() => {
     const images = this.images();
     const index = this.currentIndex();
     return images[index];
   });
 
-  protected readonly overlayClass = computed(() =>
-    cn(
-      'fixed inset-0 z-50 bg-black/95 flex flex-col',
-      'animate-in fade-in-0 duration-200',
-    ),
-  );
-
-  protected readonly closeButtonClass = computed(() =>
-    cn(
-      'absolute top-4 right-4 z-10 p-2 text-white/80 hover:text-white',
-      'transition-colors rounded-full hover:bg-white/10',
-    ),
-  );
-
-  protected navButtonClass(side: 'left' | 'right'): string {
-    return cn(
-      'absolute top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white',
-      'transition-colors rounded-full hover:bg-white/10',
-      'disabled:opacity-30 disabled:cursor-not-allowed',
-      side === 'left' ? 'left-4' : 'right-4',
-    );
+  constructor() {
+    // Set up keyboard handling
+    afterNextRender(() => {
+      this.destroyRef.onDestroy(() => {
+        document.body.style.overflow = '';
+      });
+    });
   }
 
-  protected readonly imageContainerClass = computed(() =>
-    cn('flex-1 flex items-center justify-center overflow-hidden relative'),
-  );
-
-  protected readonly imageClass = computed(() =>
-    cn(
-      'max-h-[calc(100vh-200px)] max-w-[calc(100vw-100px)] object-contain',
-      'transition-transform duration-200',
-      this.imageLoading() && 'opacity-0',
-    ),
-  );
-
-  protected readonly bottomBarClass = computed(() =>
-    cn('flex items-center justify-between px-4 py-3 bg-black/50'),
-  );
-
-  protected readonly thumbnailsClass = computed(() =>
-    cn(
-      'flex items-center justify-center gap-2 px-4 py-3 bg-black/50 overflow-x-auto',
-    ),
-  );
-
-  protected thumbnailClass(index: number): string {
-    return cn(
-      'size-16 rounded overflow-hidden flex-shrink-0',
-      'ring-2 ring-offset-2 ring-offset-black transition-all',
-      index === this.currentIndex()
-        ? 'ring-white'
-        : 'ring-transparent hover:ring-white/50',
-    );
-  }
-
+  // Public methods for child components
   open(index = 0): void {
     this.currentIndex.set(index);
     this.isOpen.set(true);
@@ -410,7 +172,7 @@ export class ScLightbox {
   onOverlayClick(event: MouseEvent): void {
     if (
       this.closeOnOverlayClick() &&
-      (event.target as HTMLElement).getAttribute('data-slot') === 'lightbox'
+      (event.target as HTMLElement).classList.contains('lightbox-overlay')
     ) {
       this.close();
     }

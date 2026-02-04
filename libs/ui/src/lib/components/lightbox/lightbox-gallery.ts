@@ -7,7 +7,8 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { LightboxImage } from './lightbox.types';
-import { ScLightbox } from './lightbox';
+import { ScLightboxDirective } from './lightbox';
+import { ScLightboxContainer } from './lightbox-container';
 
 @Component({
   selector: 'sc-lightbox-gallery',
@@ -30,20 +31,23 @@ import { ScLightbox } from './lightbox';
       }
     </div>
 
-    <sc-lightbox
-      #lightbox
+    <div
+      sc-lightbox
+      #lightbox="scLightbox"
       [images]="images()"
       [loop]="loop()"
       [showCounter]="showCounter()"
       [showInfo]="showInfo()"
       [showZoom]="showZoom()"
       [showThumbnails]="showThumbnails()"
-    />
+    >
+      <div sc-lightbox-container></div>
+    </div>
   `,
   host: {
     'data-slot': 'lightbox-gallery',
   },
-  imports: [ScLightbox],
+  imports: [ScLightboxDirective, ScLightboxContainer],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
