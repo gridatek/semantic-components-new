@@ -1,17 +1,16 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { SiCheckIcon, SiMinusIcon } from '@semantic-icons/lucide-icons';
 import { ScCheckboxIndicator } from './checkbox-indicator';
-import { ScCheckboxIcon } from './checkbox-icon';
 
 @Component({
   selector: 'sc-visual-checkbox',
-  imports: [ScCheckboxIndicator, ScCheckboxIcon, SiCheckIcon, SiMinusIcon],
+  imports: [ScCheckboxIndicator, SiCheckIcon, SiMinusIcon],
   template: `
     <span sc-checkbox-indicator [state]="state()" [class]="indicatorClass()">
       @if (state() === 'indeterminate') {
-        <svg si-minus-icon sc-checkbox-icon></svg>
+        <svg si-minus-icon class="size-4"></svg>
       } @else if (state() === 'checked') {
-        <svg si-check-icon sc-checkbox-icon></svg>
+        <svg si-check-icon class="size-4"></svg>
       }
     </span>
   `,
