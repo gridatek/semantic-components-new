@@ -15,7 +15,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
   imports: [ScVisualCheckbox],
   providers: [{ provide: SC_CHECKBOX_FIELD, useExisting: ScCheckboxField }],
   host: {
-    'data-slot': 'checkbox',
+    'data-slot': 'checkbox-field',
     '[class]': 'class()',
     '[attr.data-state]': 'dataState()',
     '[attr.data-disabled]': 'disabled() ? "" : null',
