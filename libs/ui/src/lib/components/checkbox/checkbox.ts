@@ -33,7 +33,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
       class="peer absolute inset-0 size-full cursor-pointer opacity-0 disabled:cursor-not-allowed"
       (change)="onInputChange($event)"
     />
-    <span sc-visual-checkbox [state]="dataState()" [class]="visualClass()"></span>
+    <span sc-visual-checkbox [state]="dataState()"></span>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -82,14 +82,6 @@ export class ScCheckbox implements FormCheckboxControl {
     cn(
       'relative inline-flex h-4 w-4 shrink-0',
       this.classInput(),
-    ),
-  );
-
-  protected readonly visualClass = computed(() =>
-    cn(
-      'ring-offset-background',
-      'peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2',
-      'peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
     ),
   );
 
