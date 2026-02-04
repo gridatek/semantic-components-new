@@ -1,19 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  ScCheckboxField,
-  ScInvisibleCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-checkbox-demo',
-  imports: [ScCheckboxField, ScInvisibleCheckbox, ScLabel],
+  imports: [ScCheckboxField, ScCheckbox, ScLabel],
   template: `
     <div class="flex flex-col gap-4">
       <div sc-checkbox-field>
         <input
           type="checkbox"
-          sc-invisible-checkbox
+          sc-checkbox
           [disabled]="true"
           id="disabled-unchecked"
         />
@@ -22,7 +18,7 @@ import {
       <div sc-checkbox-field>
         <input
           type="checkbox"
-          sc-invisible-checkbox
+          sc-checkbox
           [checked]="true"
           [disabled]="true"
           id="disabled-checked"

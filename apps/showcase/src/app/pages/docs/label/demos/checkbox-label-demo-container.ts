@@ -18,7 +18,7 @@ export class CheckboxLabelDemoContainer {
 import {
   ScLabel,
   ScCheckboxField,
-  ScInvisibleCheckbox,
+  ScCheckbox,
 } from '@semantic-components/ui';
 
 @Component({
@@ -26,11 +26,11 @@ import {
   imports: [
     ScLabel,
     ScCheckboxField,
-    ScInvisibleCheckbox,
+    ScCheckbox,
   ],
   template: \\\`
     <div sc-checkbox-field>
-      <input type="checkbox" sc-invisible-checkbox id="terms-label" />
+      <input type="checkbox" sc-checkbox id="terms-label" />
       <label sc-label [for]="'terms-label'">Accept terms and conditions</label>
     </div>
   \\\`,

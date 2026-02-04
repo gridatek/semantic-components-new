@@ -21,7 +21,7 @@ export class IndeterminateCheckboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScCheckboxField,
-  ScInvisibleCheckbox,
+  ScCheckbox,
   ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-indeterminate-checkbox-demo',
   imports: [
     ScCheckboxField,
-    ScInvisibleCheckbox,
+    ScCheckbox,
     ScLabel,
     FormsModule,
   ],
@@ -39,7 +39,7 @@ import { FormsModule } from '@angular/forms';
       <div sc-checkbox-field>
         <input
           type="checkbox"
-          sc-invisible-checkbox
+          sc-checkbox
           [checked]="allSelected()"
           [indeterminate]="someSelected()"
           (change)="toggleAll($event)"
@@ -53,7 +53,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="item1"
             id="item1"
           />
@@ -62,7 +62,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="item2"
             id="item2"
           />
@@ -71,7 +71,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="item3"
             id="item3"
           />

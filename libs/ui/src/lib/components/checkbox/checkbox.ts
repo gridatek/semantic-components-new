@@ -11,19 +11,19 @@ import {
 import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
 
-export const SC_INVISIBLE_CHECKBOX = 'SC_INVISIBLE_CHECKBOX';
+export const SC_CHECKBOX = 'SC_CHECKBOX';
 
 @Directive({
-  selector: 'input[type="checkbox"][sc-invisible-checkbox]',
+  selector: 'input[type="checkbox"][sc-checkbox]',
   host: {
-    'data-slot': 'invisible-checkbox',
+    'data-slot': 'checkbox',
     '[class]': 'class()',
     '[checked]': 'checked()',
     '(change)': 'onInputChange($event)',
   },
-  exportAs: SC_INVISIBLE_CHECKBOX,
+  exportAs: SC_CHECKBOX,
 })
-export class ScInvisibleCheckbox implements FormCheckboxControl {
+export class ScCheckbox implements FormCheckboxControl {
   private readonly elementRef = inject(ElementRef<HTMLInputElement>);
 
   readonly classInput = input<string>('', { alias: 'class' });

@@ -1,16 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  ScLabel,
-  ScCheckboxField,
-  ScInvisibleCheckbox,
-} from '@semantic-components/ui';
+import { ScLabel, ScCheckboxField, ScCheckbox } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-checkbox-label-demo',
-  imports: [ScLabel, ScCheckboxField, ScInvisibleCheckbox],
+  imports: [ScLabel, ScCheckboxField, ScCheckbox],
   template: `
     <div sc-checkbox-field>
-      <input type="checkbox" sc-invisible-checkbox id="terms-label" />
+      <input type="checkbox" sc-checkbox id="terms-label" />
       <label sc-label [for]="'terms-label'">Accept terms and conditions</label>
     </div>
   `,

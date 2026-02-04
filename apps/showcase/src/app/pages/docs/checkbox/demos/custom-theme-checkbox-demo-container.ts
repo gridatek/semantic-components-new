@@ -21,7 +21,7 @@ export class CustomThemeCheckboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScCheckboxField,
-  ScInvisibleCheckbox,
+  ScCheckbox,
   ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-custom-theme-checkbox-demo',
   imports: [
     ScCheckboxField,
-    ScInvisibleCheckbox,
+    ScCheckbox,
     ScLabel,
     FormsModule,
   ],
@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="defaultChecked"
             id="default"
           />
@@ -61,7 +61,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="purpleChecked"
             id="purple"
           />
@@ -80,7 +80,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="greenChecked"
             id="green"
           />
@@ -99,7 +99,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="orangeChecked"
             id="orange"
           />
@@ -118,7 +118,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="pinkChecked"
             id="pink"
           />
@@ -137,7 +137,7 @@ import { FormsModule } from '@angular/forms';
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             [(ngModel)]="blueChecked"
             id="blue"
           />

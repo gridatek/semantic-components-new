@@ -1,20 +1,16 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {
-  ScCheckboxField,
-  ScInvisibleCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-indeterminate-checkbox-demo',
-  imports: [ScCheckboxField, ScInvisibleCheckbox, ScLabel, FormsModule],
+  imports: [ScCheckboxField, ScCheckbox, ScLabel, FormsModule],
   template: `
     <div class="flex flex-col gap-4">
       <div sc-checkbox-field>
         <input
           type="checkbox"
-          sc-invisible-checkbox
+          sc-checkbox
           [checked]="allSelected()"
           [indeterminate]="someSelected()"
           (change)="toggleAll($event)"
@@ -24,30 +20,15 @@ import { FormsModule } from '@angular/forms';
       </div>
       <div class="ml-6 flex flex-col gap-2">
         <div sc-checkbox-field>
-          <input
-            type="checkbox"
-            sc-invisible-checkbox
-            [(ngModel)]="item1"
-            id="item1"
-          />
+          <input type="checkbox" sc-checkbox [(ngModel)]="item1" id="item1" />
           <label sc-label for="item1">Item 1</label>
         </div>
         <div sc-checkbox-field>
-          <input
-            type="checkbox"
-            sc-invisible-checkbox
-            [(ngModel)]="item2"
-            id="item2"
-          />
+          <input type="checkbox" sc-checkbox [(ngModel)]="item2" id="item2" />
           <label sc-label for="item2">Item 2</label>
         </div>
         <div sc-checkbox-field>
-          <input
-            type="checkbox"
-            sc-invisible-checkbox
-            [(ngModel)]="item3"
-            id="item3"
-          />
+          <input type="checkbox" sc-checkbox [(ngModel)]="item3" id="item3" />
           <label sc-label for="item3">Item 3</label>
         </div>
       </div>

@@ -21,7 +21,7 @@ export class BasicCheckboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScCheckboxField,
-  ScInvisibleCheckbox,
+  ScCheckbox,
   ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-basic-checkbox-demo',
   imports: [
     ScCheckboxField,
-    ScInvisibleCheckbox,
+    ScCheckbox,
     ScLabel,
     FormsModule,
   ],
@@ -38,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     <div sc-checkbox-field>
       <input
         type="checkbox"
-        sc-invisible-checkbox
+        sc-checkbox
         [(ngModel)]="terms"
         id="terms"
       />

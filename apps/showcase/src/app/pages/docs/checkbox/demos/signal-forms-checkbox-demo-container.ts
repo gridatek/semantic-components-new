@@ -23,7 +23,7 @@ import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
 import {
   ScCheckboxField,
-  ScInvisibleCheckbox,
+  ScCheckbox,
   ScLabel,
 } from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
@@ -38,7 +38,7 @@ interface CheckboxFormModel {
   selector: 'app-signal-forms-checkbox-demo',
   imports: [
     ScCheckboxField,
-    ScInvisibleCheckbox,
+    ScCheckbox,
     ScLabel,
     JsonPipe,
     FormField,
@@ -49,7 +49,7 @@ interface CheckboxFormModel {
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             id="newsletter-custom"
             [formField]="checkboxForm.newsletter"
           />
@@ -61,7 +61,7 @@ interface CheckboxFormModel {
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             id="marketing-custom"
             [formField]="checkboxForm.marketing"
           />
@@ -73,7 +73,7 @@ interface CheckboxFormModel {
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             id="terms-custom"
             [formField]="checkboxForm.acceptTerms"
           />

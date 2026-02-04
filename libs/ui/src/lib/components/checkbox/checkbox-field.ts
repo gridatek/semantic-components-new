@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_CHECKBOX_FIELD, type ScCheckboxContext } from './checkbox-types';
-import { ScInvisibleCheckbox } from './invisible-checkbox';
+import { ScCheckbox } from './checkbox';
 import { ScVisualCheckbox } from './visual-checkbox';
 
 @Component({
@@ -27,20 +27,18 @@ import { ScVisualCheckbox } from './visual-checkbox';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCheckboxField implements ScCheckboxContext {
-  private readonly invisibleCheckbox = contentChild(ScInvisibleCheckbox);
+  private readonly checkbox = contentChild(ScCheckbox);
 
   readonly classInput = input<string>('', { alias: 'class' });
 
   // Computed state from input (implements ScCheckboxContext)
-  // These read directly from the ScInvisibleCheckbox's signals
-  readonly checked = computed(
-    () => this.invisibleCheckbox()?.checked() ?? false,
-  );
+  // These read directly from the ScCheckbox's signals
+  readonly checked = computed(() => this.checkbox()?.checked() ?? false);
   readonly disabled = computed(
-    () => this.invisibleCheckbox()?.disabledSignal() ?? false,
+    () => this.checkbox()?.disabledSignal() ?? false,
   );
   readonly indeterminate = computed(
-    () => this.invisibleCheckbox()?.indeterminate() ?? false,
+    () => this.checkbox()?.indeterminate() ?? false,
   );
   readonly dataState = computed(() => {
     if (this.indeterminate()) return 'indeterminate';

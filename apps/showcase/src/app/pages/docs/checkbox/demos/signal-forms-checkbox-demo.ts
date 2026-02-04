@@ -1,11 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
-import {
-  ScCheckboxField,
-  ScInvisibleCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
 
 interface CheckboxFormModel {
@@ -16,14 +12,14 @@ interface CheckboxFormModel {
 
 @Component({
   selector: 'app-signal-forms-checkbox-demo',
-  imports: [ScCheckboxField, ScInvisibleCheckbox, ScLabel, JsonPipe, FormField],
+  imports: [ScCheckboxField, ScCheckbox, ScLabel, JsonPipe, FormField],
   template: `
     <form>
       <div class="space-y-4">
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             id="newsletter-custom"
             [formField]="checkboxForm.newsletter"
           />
@@ -35,7 +31,7 @@ interface CheckboxFormModel {
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             id="marketing-custom"
             [formField]="checkboxForm.marketing"
           />
@@ -47,7 +43,7 @@ interface CheckboxFormModel {
         <div sc-checkbox-field>
           <input
             type="checkbox"
-            sc-invisible-checkbox
+            sc-checkbox
             id="terms-custom"
             [formField]="checkboxForm.acceptTerms"
           />

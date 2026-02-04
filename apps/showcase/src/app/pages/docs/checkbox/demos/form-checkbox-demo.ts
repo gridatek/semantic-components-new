@@ -1,14 +1,10 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {
-  ScCheckboxField,
-  ScInvisibleCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-checkbox-demo',
-  imports: [ScCheckboxField, ScInvisibleCheckbox, ScLabel, FormsModule],
+  imports: [ScCheckboxField, ScCheckbox, ScLabel, FormsModule],
   template: `
     <div class="rounded-lg border p-6 max-w-md">
       <div class="space-y-4">
@@ -17,7 +13,7 @@ import { FormsModule } from '@angular/forms';
           <div sc-checkbox-field>
             <input
               type="checkbox"
-              sc-invisible-checkbox
+              sc-checkbox
               [(ngModel)]="emailNotif"
               id="email-notif"
               name="emailNotifications"
@@ -27,7 +23,7 @@ import { FormsModule } from '@angular/forms';
           <div sc-checkbox-field>
             <input
               type="checkbox"
-              sc-invisible-checkbox
+              sc-checkbox
               [(ngModel)]="smsNotif"
               id="sms-notif"
               name="smsNotifications"
@@ -37,7 +33,7 @@ import { FormsModule } from '@angular/forms';
           <div sc-checkbox-field>
             <input
               type="checkbox"
-              sc-invisible-checkbox
+              sc-checkbox
               [(ngModel)]="pushNotif"
               id="push-notif"
               name="pushNotifications"

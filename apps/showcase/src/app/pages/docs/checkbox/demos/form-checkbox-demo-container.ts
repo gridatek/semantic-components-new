@@ -21,7 +21,7 @@ export class FormCheckboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScCheckboxField,
-  ScInvisibleCheckbox,
+  ScCheckbox,
   ScLabel,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-form-checkbox-demo',
   imports: [
     ScCheckboxField,
-    ScInvisibleCheckbox,
+    ScCheckbox,
     ScLabel,
     FormsModule,
   ],
@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
           <div sc-checkbox-field>
             <input
               type="checkbox"
-              sc-invisible-checkbox
+              sc-checkbox
               [(ngModel)]="emailNotif"
               id="email-notif"
               name="emailNotifications"
@@ -54,7 +54,7 @@ import { FormsModule } from '@angular/forms';
           <div sc-checkbox-field>
             <input
               type="checkbox"
-              sc-invisible-checkbox
+              sc-checkbox
               [(ngModel)]="smsNotif"
               id="sms-notif"
               name="smsNotifications"
@@ -66,7 +66,7 @@ import { FormsModule } from '@angular/forms';
           <div sc-checkbox-field>
             <input
               type="checkbox"
-              sc-invisible-checkbox
+              sc-checkbox
               [(ngModel)]="pushNotif"
               id="push-notif"
               name="pushNotifications"
