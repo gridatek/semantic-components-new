@@ -1,52 +1,56 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScNotificationCenter,
+  ScNotificationCenterContainer,
   type Notification,
   type NotificationGroup,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-notification-center-demo',
-  imports: [ScNotificationCenter],
+  imports: [ScNotificationCenter, ScNotificationCenterContainer],
   template: `
     <div class="space-y-8">
       <!-- Grouped Notifications -->
       <section>
         <h3 class="text-lg font-medium mb-4">Grouped Notifications</h3>
-        <div class="max-w-md h-[500px]">
-          <sc-notification-center
-            [(notifications)]="groupedNotifications"
-            [groups]="groups()"
-            class="h-full"
-            (markRead)="onMarkRead($event)"
-            (dismiss)="onDismiss($event)"
-            (clearAll)="onClearAll()"
-          />
+        <div
+          sc-notification-center
+          [(notifications)]="groupedNotifications"
+          [groups]="groups()"
+          (markRead)="onMarkRead($event)"
+          (dismiss)="onDismiss($event)"
+          (clearAll)="onClearAll()"
+          class="max-w-md h-[500px]"
+        >
+          <div sc-notification-center-container class="h-full"></div>
         </div>
       </section>
 
       <!-- Flat List -->
       <section>
         <h3 class="text-lg font-medium mb-4">Flat List (No Groups)</h3>
-        <div class="max-w-md h-[400px]">
-          <sc-notification-center
-            [(notifications)]="flatNotifications"
-            class="h-full"
-            [showFilters]="true"
-          />
+        <div
+          sc-notification-center
+          [(notifications)]="flatNotifications"
+          [showFilters]="true"
+          class="max-w-md h-[400px]"
+        >
+          <div sc-notification-center-container class="h-full"></div>
         </div>
       </section>
 
       <!-- Empty State -->
       <section>
         <h3 class="text-lg font-medium mb-4">Empty State</h3>
-        <div class="max-w-md h-[300px]">
-          <sc-notification-center
-            [(notifications)]="emptyNotifications"
-            class="h-full"
-            emptyTitle="All caught up!"
-            emptyDescription="No new notifications to show."
-          />
+        <div
+          sc-notification-center
+          [(notifications)]="emptyNotifications"
+          emptyTitle="All caught up!"
+          emptyDescription="No new notifications to show."
+          class="max-w-md h-[300px]"
+        >
+          <div sc-notification-center-container class="h-full"></div>
         </div>
       </section>
     </div>
