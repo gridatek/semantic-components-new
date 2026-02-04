@@ -3,35 +3,42 @@ import {
   CropArea,
   CropResult,
   ScImageCropper,
+  ScImageCropperContainer,
   ScImageCropperControls,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-image-cropper-demo',
-  imports: [ScImageCropper, ScImageCropperControls],
+  imports: [ScImageCropper, ScImageCropperContainer, ScImageCropperControls],
   template: `
     <div
-      #cropper="scImageCropper"
       sc-image-cropper
+      #cropper="scImageCropper"
       [src]="imageSrc()"
       [(cropArea)]="cropArea"
       [containerHeight]="300"
-      class="space-y-4 rounded-lg overflow-hidden border"
+      class="space-y-4"
     >
+      <div
+        sc-image-cropper-container
+        #container
+        class="rounded-lg overflow-hidden border"
+      ></div>
+
       <div sc-image-cropper-controls></div>
 
       <div class="flex gap-4">
         <button
           type="button"
           class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-          (click)="cropImage(cropper)"
+          (click)="cropImage(container)"
         >
           Crop Image
         </button>
         <button
           type="button"
           class="px-4 py-2 border rounded-md hover:bg-accent"
-          (click)="cropper.resetCropArea()"
+          (click)="container.resetCropArea()"
         >
           Reset
         </button>
@@ -64,9 +71,11 @@ export class BasicImageCropperDemo {
   });
   readonly croppedImage = signal<string | null>(null);
 
-  async cropImage(cropper: ScImageCropper): Promise<void> {
+  async cropImage(
+    container: InstanceType<typeof ScImageCropperContainer>,
+  ): Promise<void> {
     try {
-      const result: CropResult = await cropper.crop();
+      const result: CropResult = await container.crop();
       this.croppedImage.set(result.dataUrl);
     } catch (error) {
       console.error('Failed to crop image:', error);
