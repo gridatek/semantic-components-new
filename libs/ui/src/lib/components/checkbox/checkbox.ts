@@ -33,7 +33,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
       class="peer absolute inset-0 size-full cursor-pointer opacity-0 disabled:cursor-not-allowed"
       (change)="onInputChange($event)"
     />
-    <sc-visual-checkbox [state]="dataState()" [class]="visualClass()" />
+    <span sc-visual-checkbox [state]="dataState()" [class]="visualClass()"></span>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

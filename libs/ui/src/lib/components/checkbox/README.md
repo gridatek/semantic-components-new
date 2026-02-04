@@ -5,8 +5,8 @@ A control that allows the user to toggle between checked and not checked.
 ## Components
 
 - `ScCheckbox` - Main checkbox component with native input and visual representation
-- `ScCheckboxIndicator` - Directive for styling the visual checkbox box
-- `ScVisualCheckbox` - Composition component combining indicator and icons
+- `ScCheckboxIndicator` - Directive for styling the visual checkbox box (applied to span)
+- `ScVisualCheckbox` - Component for visual representation (applied to span)
 
 ## Usage
 
@@ -157,7 +157,7 @@ The checkbox uses a layered approach:
 ```
 sc-checkbox
 ├── <input type="checkbox"> (native, opacity: 0, covers full area)
-└── sc-visual-checkbox (decorative)
+└── span[sc-visual-checkbox] (decorative wrapper)
     └── span[sc-checkbox-indicator] (visual box)
         ├── <svg si-check-icon> (checkmark icon)
         └── <svg si-minus-icon> (indeterminate icon)

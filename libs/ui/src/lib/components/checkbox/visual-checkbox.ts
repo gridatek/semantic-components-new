@@ -3,7 +3,7 @@ import { SiCheckIcon, SiMinusIcon } from '@semantic-icons/lucide-icons';
 import { ScCheckboxIndicator } from './checkbox-indicator';
 
 @Component({
-  selector: 'sc-visual-checkbox',
+  selector: 'span[sc-visual-checkbox]',
   imports: [ScCheckboxIndicator, SiCheckIcon, SiMinusIcon],
   template: `
     <span sc-checkbox-indicator [state]="state()" [class]="indicatorClass()">
