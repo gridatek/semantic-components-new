@@ -4,7 +4,9 @@ A control that allows the user to toggle between checked and not checked.
 
 ## Components
 
-- `ScCheckbox` - Checkbox control with checked, unchecked, and indeterminate states
+- `ScCheckbox` - Main checkbox component with native input and visual representation
+- `ScCheckboxIndicator` - Directive for styling the visual checkbox box
+- `ScVisualCheckbox` - Composition component combining indicator and icons
 
 ## Usage
 
@@ -62,6 +64,32 @@ Note: Add `FormField` to your component's `imports` array to use the `[formField
 <sc-checkbox [checked]="true" [disabled]="true" />
 ```
 
+## Advanced: Custom Checkbox Indicator
+
+For advanced customization, you can use the directives directly:
+
+```html
+<div class="relative inline-flex h-4 w-4">
+  <input type="checkbox" [(ngModel)]="checked" class="peer absolute inset-0 opacity-0" />
+  <span sc-checkbox-indicator [state]="checked ? 'checked' : 'unchecked'">
+    @if (checked) {
+      <svg si-check-icon class="size-4"></svg>
+    }
+  </span>
+</div>
+```
+
+Or create a completely custom visual:
+
+```html
+<div class="relative inline-flex h-6 w-6">
+  <input type="checkbox" [(ngModel)]="checked" class="peer absolute inset-0 opacity-0" />
+  <span sc-checkbox-indicator [state]="checked ? 'checked' : 'unchecked'" class="h-6 w-6 rounded-full">
+    <!-- Your custom icon -->
+  </span>
+</div>
+```
+
 ## Custom Theme
 
 Customize colors using CSS variables:
@@ -112,12 +140,31 @@ OKLCH format parameters:
 
 ## Accessibility
 
-- Contains a visually hidden native `<input type="checkbox">` for better form integration and screen reader support
-- Uses `role="checkbox"` on the host element for proper semantics
-- `aria-checked` attribute: `true`, `false`, or `mixed` (indeterminate)
-- `aria-disabled` for disabled state
-- Keyboard accessible (Space to toggle)
-- Focus ring for keyboard navigation
-- Works with associated `<label>` elements via `id` attribute
-- Supports native form submission via `name` attribute
-- Compatible with browser autofill and form validation
+- Uses a native `<input type="checkbox">` with `opacity: 0` for full accessibility
+- Native checkbox provides all semantic roles and ARIA attributes automatically
+- Keyboard accessible via native browser behavior (Space/Enter to toggle)
+- Focus ring styled via `peer-focus-visible` CSS classes
+- Works seamlessly with associated `<label>` elements via `id` attribute
+- Full native form integration (submission, validation, autofill)
+- Visual representation is marked with `aria-hidden="true"` (decorative only)
+- Compatible with all screen readers (NVDA, JAWS, VoiceOver, TalkBack)
+- Indeterminate state synced to native input element
+
+## Architecture
+
+The checkbox uses a layered approach:
+
+```
+sc-checkbox
+├── <input type="checkbox"> (native, opacity: 0, covers full area)
+└── sc-visual-checkbox (decorative)
+    └── span[sc-checkbox-indicator] (visual box)
+        ├── <svg si-check-icon> (checkmark icon)
+        └── <svg si-minus-icon> (indeterminate icon)
+```
+
+This pattern provides:
+- **Native behavior**: All browser/OS checkbox features work automatically
+- **Accessibility**: Screen readers interact with the real checkbox
+- **Styling**: Visual representation is fully customizable
+- **Simplicity**: No manual ARIA management or keyboard handling needed
