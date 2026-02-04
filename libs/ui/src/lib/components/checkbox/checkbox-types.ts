@@ -8,4 +8,6 @@ export interface ScCheckboxContext {
   dataState: () => 'checked' | 'unchecked' | 'indeterminate';
 }
 
-export const SC_CHECKBOX = new InjectionToken<ScCheckboxContext>('SC_CHECKBOX');
+export const SC_CHECKBOX_FIELD = new InjectionToken<ScCheckboxContext>(
+  'SC_CHECKBOX_FIELD',
+);

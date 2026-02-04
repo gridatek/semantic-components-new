@@ -19,18 +19,33 @@ import { CustomThemeCheckboxDemo } from './custom-theme-checkbox-demo';
 })
 export class CustomThemeCheckboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScCheckbox } from '@semantic-components/ui';
+import {
+  ScCheckboxField,
+  ScInvisibleCheckbox,
+} from '@semantic-components/ui';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-theme-checkbox-demo',
-  imports: [ScCheckbox],
+  imports: [
+    ScCheckboxField,
+    ScInvisibleCheckbox,
+    FormsModule,
+  ],
   template: \`
     <div class="space-y-8">
       <!-- Default Theme -->
       <div class="space-y-3">
         <h3 class="text-sm font-semibold">Default Theme</h3>
         <div class="flex items-center space-x-2">
-          <sc-checkbox [(checked)]="defaultChecked" id="default" />
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="defaultChecked"
+              id="default"
+            />
+          </div>
           <label for="default" class="text-sm font-medium leading-none">
             Default color scheme
           </label>
@@ -38,10 +53,20 @@ import { ScCheckbox } from '@semantic-components/ui';
       </div>
 
       <!-- Purple Theme -->
-      <div class="space-y-3" style="--primary: oklch(0.6 0.25 280); --primary-foreground: oklch(0.985 0 0);">
+      <div
+        class="space-y-3"
+        style="--primary: oklch(0.6 0.25 280); --primary-foreground: oklch(0.985 0 0);"
+      >
         <h3 class="text-sm font-semibold">Purple Theme</h3>
         <div class="flex items-center space-x-2">
-          <sc-checkbox [(checked)]="purpleChecked" id="purple" />
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="purpleChecked"
+              id="purple"
+            />
+          </div>
           <label for="purple" class="text-sm font-medium leading-none">
             Purple color scheme
           </label>
@@ -49,10 +74,20 @@ import { ScCheckbox } from '@semantic-components/ui';
       </div>
 
       <!-- Green Theme -->
-      <div class="space-y-3" style="--primary: oklch(0.5 0.18 145); --primary-foreground: oklch(0.985 0 0);">
+      <div
+        class="space-y-3"
+        style="--primary: oklch(0.5 0.18 145); --primary-foreground: oklch(0.985 0 0);"
+      >
         <h3 class="text-sm font-semibold">Green Theme</h3>
         <div class="flex items-center space-x-2">
-          <sc-checkbox [(checked)]="greenChecked" id="green" />
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="greenChecked"
+              id="green"
+            />
+          </div>
           <label for="green" class="text-sm font-medium leading-none">
             Green color scheme
           </label>
@@ -60,10 +95,20 @@ import { ScCheckbox } from '@semantic-components/ui';
       </div>
 
       <!-- Orange Theme -->
-      <div class="space-y-3" style="--primary: oklch(0.646 0.222 41.116); --primary-foreground: oklch(0.985 0 0);">
+      <div
+        class="space-y-3"
+        style="--primary: oklch(0.646 0.222 41.116); --primary-foreground: oklch(0.985 0 0);"
+      >
         <h3 class="text-sm font-semibold">Orange Theme</h3>
         <div class="flex items-center space-x-2">
-          <sc-checkbox [(checked)]="orangeChecked" id="orange" />
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="orangeChecked"
+              id="orange"
+            />
+          </div>
           <label for="orange" class="text-sm font-medium leading-none">
             Orange color scheme
           </label>
@@ -71,10 +116,20 @@ import { ScCheckbox } from '@semantic-components/ui';
       </div>
 
       <!-- Pink Theme -->
-      <div class="space-y-3" style="--primary: oklch(0.627 0.265 303.9); --primary-foreground: oklch(0.985 0 0);">
+      <div
+        class="space-y-3"
+        style="--primary: oklch(0.627 0.265 303.9); --primary-foreground: oklch(0.985 0 0);"
+      >
         <h3 class="text-sm font-semibold">Pink Theme</h3>
         <div class="flex items-center space-x-2">
-          <sc-checkbox [(checked)]="pinkChecked" id="pink" />
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="pinkChecked"
+              id="pink"
+            />
+          </div>
           <label for="pink" class="text-sm font-medium leading-none">
             Pink color scheme
           </label>
@@ -82,10 +137,20 @@ import { ScCheckbox } from '@semantic-components/ui';
       </div>
 
       <!-- Custom Border & Focus Ring -->
-      <div class="space-y-3" style="--primary: oklch(0.6 0.118 184.704); --primary-foreground: oklch(0.985 0 0); --ring: oklch(0.6 0.118 184.704);">
+      <div
+        class="space-y-3"
+        style="--primary: oklch(0.6 0.118 184.704); --primary-foreground: oklch(0.985 0 0); --ring: oklch(0.6 0.118 184.704);"
+      >
         <h3 class="text-sm font-semibold">Blue with Custom Focus Ring</h3>
         <div class="flex items-center space-x-2">
-          <sc-checkbox [(checked)]="blueChecked" id="blue" />
+          <div sc-checkbox-field>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              [(ngModel)]="blueChecked"
+              id="blue"
+            />
+          </div>
           <label for="blue" class="text-sm font-medium leading-none">
             Blue with matching focus ring
           </label>

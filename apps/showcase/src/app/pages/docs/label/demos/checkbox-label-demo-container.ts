@@ -15,17 +15,25 @@ import { CheckboxLabelDemo } from './checkbox-label-demo';
 })
 export class CheckboxLabelDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLabel, ScCheckbox } from '@semantic-components/ui';
+import {
+  ScLabel,
+  ScCheckboxField,
+  ScInvisibleCheckbox,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-checkbox-label-demo',
-  imports: [ScLabel, ScCheckbox],
+  imports: [
+    ScLabel,
+    ScCheckboxField,
+    ScInvisibleCheckbox,
+  ],
   template: \\\`
     <div class="flex items-center space-x-2">
-      <sc-checkbox id="terms-label" />
-      <label sc-label [for]="'terms-label'">
-        Accept terms and conditions
-      </label>
+      <div sc-checkbox-field>
+        <input type="checkbox" sc-invisible-checkbox id="terms-label" />
+      </div>
+      <label sc-label [for]="'terms-label'">Accept terms and conditions</label>
     </div>
   \\\`,
   changeDetection: ChangeDetectionStrategy.OnPush,

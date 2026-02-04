@@ -1,11 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
-import {
-  ScCheckboxDirective,
-  ScInvisibleCheckbox,
-  ScVisualCheckbox,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScInvisibleCheckbox } from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
 
 interface CheckboxFormModel {
@@ -16,25 +12,18 @@ interface CheckboxFormModel {
 
 @Component({
   selector: 'app-signal-forms-checkbox-demo',
-  imports: [
-    ScCheckboxDirective,
-    ScInvisibleCheckbox,
-    ScVisualCheckbox,
-    JsonPipe,
-    FormField,
-  ],
+  imports: [ScCheckboxField, ScInvisibleCheckbox, JsonPipe, FormField],
   template: `
     <form>
       <div class="space-y-4">
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               id="newsletter-custom"
               [formField]="checkboxForm.newsletter"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label
             for="newsletter-custom"
@@ -45,14 +34,13 @@ interface CheckboxFormModel {
         </div>
 
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               id="marketing-custom"
               [formField]="checkboxForm.marketing"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label
             for="marketing-custom"
@@ -63,14 +51,13 @@ interface CheckboxFormModel {
         </div>
 
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               id="terms-custom"
               [formField]="checkboxForm.acceptTerms"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label
             for="terms-custom"

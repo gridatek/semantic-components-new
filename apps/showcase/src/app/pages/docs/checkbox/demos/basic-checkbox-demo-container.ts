@@ -19,14 +19,29 @@ import { BasicCheckboxDemo } from './basic-checkbox-demo';
 })
 export class BasicCheckboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScCheckbox } from '@semantic-components/ui';
+import {
+  ScCheckboxField,
+  ScInvisibleCheckbox,
+} from '@semantic-components/ui';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-checkbox-demo',
-  imports: [ScCheckbox],
+  imports: [
+    ScCheckboxField,
+    ScInvisibleCheckbox,
+    FormsModule,
+  ],
   template: \`
     <div class="flex items-center space-x-2">
-      <sc-checkbox [(checked)]="terms" id="terms" />
+      <div sc-checkbox-field>
+        <input
+          type="checkbox"
+          sc-invisible-checkbox
+          [(ngModel)]="terms"
+          id="terms"
+        />
+      </div>
       <label
         for="terms"
         class="text-sm font-medium leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

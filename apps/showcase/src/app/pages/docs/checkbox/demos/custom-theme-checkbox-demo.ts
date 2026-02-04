@@ -1,33 +1,23 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {
-  ScCheckboxDirective,
-  ScInvisibleCheckbox,
-  ScVisualCheckbox,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScInvisibleCheckbox } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-theme-checkbox-demo',
-  imports: [
-    ScCheckboxDirective,
-    ScInvisibleCheckbox,
-    ScVisualCheckbox,
-    FormsModule,
-  ],
+  imports: [ScCheckboxField, ScInvisibleCheckbox, FormsModule],
   template: `
     <div class="space-y-8">
       <!-- Default Theme -->
       <div class="space-y-3">
         <h3 class="text-sm font-semibold">Default Theme</h3>
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               [(ngModel)]="defaultChecked"
               id="default"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label for="default" class="text-sm font-medium leading-none">
             Default color scheme
@@ -42,14 +32,13 @@ import { FormsModule } from '@angular/forms';
       >
         <h3 class="text-sm font-semibold">Purple Theme</h3>
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               [(ngModel)]="purpleChecked"
               id="purple"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label for="purple" class="text-sm font-medium leading-none">
             Purple color scheme
@@ -64,14 +53,13 @@ import { FormsModule } from '@angular/forms';
       >
         <h3 class="text-sm font-semibold">Green Theme</h3>
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               [(ngModel)]="greenChecked"
               id="green"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label for="green" class="text-sm font-medium leading-none">
             Green color scheme
@@ -86,14 +74,13 @@ import { FormsModule } from '@angular/forms';
       >
         <h3 class="text-sm font-semibold">Orange Theme</h3>
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               [(ngModel)]="orangeChecked"
               id="orange"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label for="orange" class="text-sm font-medium leading-none">
             Orange color scheme
@@ -108,14 +95,13 @@ import { FormsModule } from '@angular/forms';
       >
         <h3 class="text-sm font-semibold">Pink Theme</h3>
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               [(ngModel)]="pinkChecked"
               id="pink"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label for="pink" class="text-sm font-medium leading-none">
             Pink color scheme
@@ -130,14 +116,13 @@ import { FormsModule } from '@angular/forms';
       >
         <h3 class="text-sm font-semibold">Blue with Custom Focus Ring</h3>
         <div class="flex items-center space-x-2">
-          <div sc-checkbox>
+          <div sc-checkbox-field>
             <input
               type="checkbox"
               sc-invisible-checkbox
               [(ngModel)]="blueChecked"
               id="blue"
             />
-            <span sc-visual-checkbox></span>
           </div>
           <label for="blue" class="text-sm font-medium leading-none">
             Blue with matching focus ring

@@ -8,7 +8,7 @@ import {
 import { SiCheckIcon, SiMinusIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
 import { ScCheckboxIndicator } from './checkbox-indicator';
-import { SC_CHECKBOX } from './checkbox-types';
+import { SC_CHECKBOX_FIELD } from './checkbox-types';
 
 @Component({
   selector: 'span[sc-visual-checkbox]',
@@ -30,7 +30,7 @@ import { SC_CHECKBOX } from './checkbox-types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScVisualCheckbox {
-  readonly checkbox = inject(SC_CHECKBOX);
+  readonly checkbox = inject(SC_CHECKBOX_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
