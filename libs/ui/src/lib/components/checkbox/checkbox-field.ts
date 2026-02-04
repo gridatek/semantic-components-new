@@ -46,6 +46,6 @@ export class ScCheckboxField implements ScCheckboxContext {
   });
 
   protected readonly class = computed(() =>
-    cn('relative inline-flex h-4 w-4 shrink-0', this.classInput()),
+    cn('relative inline-flex shrink-0', this.classInput()),
   );
 }

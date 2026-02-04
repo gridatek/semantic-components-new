@@ -205,14 +205,58 @@ readonly checkbox = inject(SC_CHECKBOX_FIELD);
 
 The checkbox uses a composable directive-based architecture:
 
+### Component Structure
+
 ```
-[sc-checkbox-field] (directive - observes input state, provides context)
-├── input[sc-checkbox] (native checkbox, opacity: 0, covers full area)
-└── span[sc-visual-checkbox] (decorative wrapper, injects context)
+[sc-checkbox-field] (component - observes input state, provides context)
+├── <ng-content /> (projected: input[sc-checkbox])
+└── span[sc-visual-checkbox] (visual wrapper, injects context)
     └── span[sc-checkbox-indicator] (visual box)
         ├── <svg si-check-icon> (checkmark icon)
         └── <svg si-minus-icon> (indeterminate icon)
 ```
+
+**Usage in HTML:**
+
+```html
+<div sc-checkbox-field>
+  <input type="checkbox" sc-checkbox [(ngModel)]="value" />
+  <span sc-visual-checkbox></span>
+</div>
+```
+
+### Layout & Styling
+
+The components use layered positioning for proper interaction and visual display:
+
+```
+┌─ ScCheckboxField (relative positioning, flexible size) ──────┐
+│                                                               │
+│  ┌─ ScCheckbox (absolute, fills container) ─────────────┐    │
+│  │ <input type="checkbox">                             │    │
+│  │ • opacity: 0 (invisible)                            │    │
+│  │ • cursor: pointer                                   │    │
+│  │ • peer class (for CSS peer selectors)              │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                                                               │
+│  ┌─ ScVisualCheckbox (16px × 16px) ──────────────────┐      │
+│  │  ┌─ ScCheckboxIndicator ───────────────────────┐  │      │
+│  │  │ • border, rounded corners                   │  │      │
+│  │  │ • background color (when checked)           │  │      │
+│  │  │ • checkmark/minus icon                      │  │      │
+│  │  └─────────────────────────────────────────────┘  │      │
+│  └───────────────────────────────────────────────────┘      │
+└───────────────────────────────────────────────────────────────┘
+```
+
+**Styling breakdown:**
+
+- **ScCheckboxField**: `relative inline-flex shrink-0` - Creates positioning context
+- **ScCheckbox**: `peer absolute inset-0 size-full cursor-pointer opacity-0` - Invisible clickable layer
+- **ScVisualCheckbox**: `inline-flex h-4 w-4 shrink-0 items-center justify-center` - Visual container (16px × 16px)
+- **ScCheckboxIndicator**: `h-4 w-4 border rounded-sm` - Actual visual checkbox box
+
+The input is layered on top using absolute positioning and remains clickable, while the visual checkbox displays underneath. The `peer` class on the input enables visual styles to respond to input states (focus, disabled, hover, etc.) using Tailwind's peer selectors.
 
 ### State Flow
 
@@ -223,14 +267,24 @@ Native Input (source of truth)
   └─ Attributes (checked, disabled, indeterminate)
          ↓
 ScCheckboxField (observer)
-  ├─ contentChild() queries input
-  ├─ Listens to change/input events
-  └─ Provides via SC_CHECKBOX_FIELD token
+  ├─ contentChild() queries ScCheckbox
+  ├─ Reads signals from ScCheckbox directly
+  └─ Provides context via SC_CHECKBOX_FIELD token
          ↓
 ScVisualCheckbox (renderer)
   ├─ inject(SC_CHECKBOX_FIELD)
   └─ Renders based on checkbox.dataState()
 ```
+
+**How state propagates:**
+
+1. User interacts with native input (click, keyboard)
+2. Input's `(change)` event handler updates the `checked` model signal
+3. ScCheckboxField's computed signals react to changes (zoneless-compatible)
+4. ScVisualCheckbox injects context and renders accordingly
+5. CSS peer selectors style based on input state (focus, disabled, etc.)
+
+### Benefits
 
 This pattern provides:
 
@@ -240,6 +294,7 @@ This pattern provides:
 - **Flexibility**: Visual representation is fully customizable
 - **Simplicity**: No manual ARIA management or keyboard handling needed
 - **Single source of truth**: Native input owns all state
+- **Zoneless compatible**: Works with OnPush change detection and zoneless mode
 
 ## Migration Guide
 
