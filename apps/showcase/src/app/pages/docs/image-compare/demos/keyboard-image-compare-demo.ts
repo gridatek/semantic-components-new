@@ -1,9 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScImageCompare } from '@semantic-components/ui';
+import {
+  ScImageCompare,
+  ScImageCompareContainer,
+  ScImageCompareBefore,
+  ScImageCompareAfter,
+  ScImageCompareSlider,
+  ScImageCompareLabel,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-keyboard-image-compare-demo',
-  imports: [ScImageCompare],
+  imports: [
+    ScImageCompare,
+    ScImageCompareContainer,
+    ScImageCompareBefore,
+    ScImageCompareAfter,
+    ScImageCompareSlider,
+    ScImageCompareLabel,
+  ],
   template: `
     <p class="text-sm text-muted-foreground mb-4">
       Focus the comparison and use arrow keys to adjust. Hold Shift for larger
@@ -31,11 +45,23 @@ import { ScImageCompare } from '@semantic-components/ui';
         + Arrow - Move by 10%
       </li>
     </ul>
-    <sc-image-compare
-      [beforeImage]="'https://picsum.photos/800/400?grayscale&random=8'"
-      [afterImage]="'https://picsum.photos/800/400?random=8'"
-      class="w-full max-w-2xl aspect-[2/1]"
-    />
+    <div sc-image-compare class="w-full max-w-2xl aspect-[2/1]">
+      <div sc-image-compare-container>
+        <img
+          sc-image-compare-before
+          src="https://picsum.photos/800/400?grayscale&random=8"
+          alt="Before"
+        />
+        <img
+          sc-image-compare-after
+          src="https://picsum.photos/800/400?random=8"
+          alt="After"
+        />
+        <div sc-image-compare-slider></div>
+        <div sc-image-compare-label class="top-2 left-2">Before</div>
+        <div sc-image-compare-label class="top-2 right-2">After</div>
+      </div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

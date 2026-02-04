@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ScLightbox,
+  ScLightboxContainer,
   ScLightboxTrigger,
   LightboxImage,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-info-lightbox-demo',
-  imports: [ScLightbox, ScLightboxTrigger],
+  imports: [ScLightbox, ScLightboxContainer, ScLightboxTrigger],
   template: `
-    <sc-lightbox [images]="images">
+    <div sc-lightbox [images]="images">
       <div class="flex gap-4">
         @for (image of images; track image.src; let i = $index) {
           <button
@@ -28,7 +29,8 @@ import {
           </button>
         }
       </div>
-    </sc-lightbox>
+      <div sc-lightbox-container></div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,61 +1,158 @@
 # Image Compare
 
-Before/after image comparison slider with keyboard and touch support.
+Before/after image comparison slider with keyboard and touch support. Built using the composable architecture pattern for maximum flexibility.
 
 ## Components
 
-- `ScImageCompare` - Main comparison component
-- `ScImageCompareSlider` - Convenience wrapper with same API
+- `ScImageCompare` (directive) - Root state management
+- `ScImageCompareContainer` - Interactive container with event handling
+- `ScImageCompareBefore` - Before image positioning
+- `ScImageCompareAfter` - After image with clip-path reveal
+- `ScImageCompareSlider` - Draggable slider line and handle
+- `ScImageCompareLabel` - Customizable labels
 
-## Usage
+## Basic Usage
 
 ```html
-<sc-image-compare [beforeImage]="'before.jpg'" [afterImage]="'after.jpg'" class="w-full max-w-2xl aspect-[2/1]" />
+<div sc-image-compare class="w-full max-w-2xl aspect-[2/1]">
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="before.jpg" alt="Before" />
+    <img sc-image-compare-after src="after.jpg" alt="After" />
+    <div sc-image-compare-slider></div>
+    <div sc-image-compare-label class="top-2 left-2">Before</div>
+    <div sc-image-compare-label class="top-2 right-2">After</div>
+  </div>
+</div>
 ```
 
 ## API
 
-### ScImageCompare
+### ScImageCompare (Directive)
 
-| Input         | Type                         | Default                     | Description               |
-| ------------- | ---------------------------- | --------------------------- | ------------------------- |
-| `beforeImage` | `string`                     | _required_                  | URL of the "before" image |
-| `afterImage`  | `string`                     | _required_                  | URL of the "after" image  |
-| `beforeLabel` | `string`                     | `'Before'`                  | Label for before image    |
-| `afterLabel`  | `string`                     | `'After'`                   | Label for after image     |
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'`              | Slider orientation        |
-| `showLabels`  | `boolean`                    | `true`                      | Show image labels         |
-| `ariaLabel`   | `string`                     | `'Image comparison slider'` | Accessibility label       |
-| `class`       | `string`                     | -                           | Additional CSS classes    |
+The root directive that manages state.
+
+| Input         | Type                         | Default        | Description        |
+| ------------- | ---------------------------- | -------------- | ------------------ |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Slider orientation |
 
 | Model      | Type     | Default | Description             |
 | ---------- | -------- | ------- | ----------------------- |
 | `position` | `number` | `50`    | Slider position (0-100) |
+
+### ScImageCompareContainer
+
+The interactive container that handles user input.
+
+| Input        | Type     | Default                     | Description          |
+| ------------ | -------- | --------------------------- | -------------------- |
+| `ariaLabel`  | `string` | `'Image comparison slider'` | Accessibility label  |
+| `class`      | `string` | -                           | Additional CSS class |
+
+### ScImageCompareBefore / ScImageCompareAfter
+
+Image components for before/after images. Use as attribute directives on `<img>` tags.
+
+| Input   | Type     | Default | Description          |
+| ------- | -------- | ------- | -------------------- |
+| `class` | `string` | -       | Additional CSS class |
+
+### ScImageCompareSlider
+
+The draggable slider line and handle.
+
+| Input   | Type     | Default | Description          |
+| ------- | -------- | ------- | -------------------- |
+| `class` | `string` | -       | Additional CSS class |
+
+**Content Projection:** Place custom handle icons inside the slider component.
+
+### ScImageCompareLabel
+
+Label component with full positioning control.
+
+| Input   | Type     | Default | Description          |
+| ------- | -------- | ------- | -------------------- |
+| `class` | `string` | -       | Additional CSS class |
 
 ## Examples
 
 ### Basic Usage
 
 ```html
-<sc-image-compare [beforeImage]="'/images/before.jpg'" [afterImage]="'/images/after.jpg'" class="w-full max-w-2xl aspect-[2/1]" />
-```
-
-### Custom Labels
-
-```html
-<sc-image-compare [beforeImage]="'/images/blurred.jpg'" [afterImage]="'/images/sharp.jpg'" [beforeLabel]="'Blurred'" [afterLabel]="'Sharp'" />
+<div sc-image-compare class="w-full max-w-2xl aspect-[2/1]">
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="/images/before.jpg" alt="Before" />
+    <img sc-image-compare-after src="/images/after.jpg" alt="After" />
+    <div sc-image-compare-slider></div>
+    <div sc-image-compare-label class="top-2 left-2">Before</div>
+    <div sc-image-compare-label class="top-2 right-2">After</div>
+  </div>
+</div>
 ```
 
 ### Without Labels
 
+Simply omit the label components:
+
 ```html
-<sc-image-compare [beforeImage]="before" [afterImage]="after" [showLabels]="false" />
+<div sc-image-compare class="w-full max-w-2xl aspect-[2/1]">
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="before.jpg" alt="Before" />
+    <img sc-image-compare-after src="after.jpg" alt="After" />
+    <div sc-image-compare-slider></div>
+  </div>
+</div>
 ```
 
 ### Vertical Orientation
 
 ```html
-<sc-image-compare [beforeImage]="before" [afterImage]="after" [orientation]="'vertical'" [beforeLabel]="'Top'" [afterLabel]="'Bottom'" class="w-full max-w-sm aspect-[2/3]" />
+<div sc-image-compare [orientation]="'vertical'" class="w-full max-w-sm aspect-[2/3]">
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="before.jpg" alt="Top" />
+    <img sc-image-compare-after src="after.jpg" alt="Bottom" />
+    <div sc-image-compare-slider></div>
+    <div sc-image-compare-label class="top-2 left-2">Top</div>
+    <div sc-image-compare-label class="bottom-2 left-2">Bottom</div>
+  </div>
+</div>
+```
+
+### Custom Labels
+
+Labels have full positioning control:
+
+```html
+<div sc-image-compare class="w-full max-w-2xl aspect-[2/1]">
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="before.jpg" alt="Before" />
+    <img sc-image-compare-after src="after.jpg" alt="After" />
+    <div sc-image-compare-slider></div>
+    <div sc-image-compare-label class="bottom-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full">
+      Original
+    </div>
+    <div sc-image-compare-label class="bottom-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full">
+      Enhanced
+    </div>
+  </div>
+</div>
+```
+
+### Custom Slider Handle
+
+Use content projection to customize the slider handle:
+
+```html
+<div sc-image-compare>
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="before.jpg" alt="Before" />
+    <img sc-image-compare-after src="after.jpg" alt="After" />
+    <div sc-image-compare-slider>
+      <!-- Custom handle content -->
+      <svg><!-- Your custom icon --></svg>
+    </div>
+  </div>
+</div>
 ```
 
 ### Controlled Position
@@ -63,9 +160,21 @@ Before/after image comparison slider with keyboard and touch support.
 ```typescript
 @Component({
   template: `
-    <sc-image-compare [beforeImage]="before" [afterImage]="after" [(position)]="position" />
+    <div sc-image-compare [(position)]="position" class="w-full max-w-2xl aspect-[2/1]">
+      <div sc-image-compare-container>
+        <img sc-image-compare-before src="before.jpg" alt="Before" />
+        <img sc-image-compare-after src="after.jpg" alt="After" />
+        <div sc-image-compare-slider></div>
+      </div>
+    </div>
 
-    <input type="range" min="0" max="100" [value]="position()" (input)="position.set(+$event.target.value)" />
+    <input
+      type="range"
+      min="0"
+      max="100"
+      [value]="position()"
+      (input)="position.set(+$any($event.target).value)"
+    />
   `,
 })
 export class MyComponent {
@@ -75,12 +184,18 @@ export class MyComponent {
 
 ### Custom Initial Position
 
-```html
-<sc-image-compare [beforeImage]="before" [afterImage]="after" [(position)]="position" />
-```
-
 ```typescript
 readonly position = signal(25); // Start at 25%
+```
+
+```html
+<div sc-image-compare [(position)]="position">
+  <div sc-image-compare-container>
+    <img sc-image-compare-before src="before.jpg" alt="Before" />
+    <img sc-image-compare-after src="after.jpg" alt="After" />
+    <div sc-image-compare-slider></div>
+  </div>
+</div>
 ```
 
 ## Keyboard Navigation
@@ -95,18 +210,40 @@ readonly position = signal(25); // Start at 25%
 
 ## Styling
 
-The component uses CSS `clip-path` for the reveal effect. Set dimensions using CSS classes:
+The component uses CSS `clip-path` for the reveal effect. Set dimensions on the root:
 
 ```html
 <!-- Fixed aspect ratio -->
-<sc-image-compare class="w-full max-w-2xl aspect-[16/9]" />
+<div sc-image-compare class="w-full max-w-2xl aspect-[16/9]">
+  ...
+</div>
 
 <!-- Square -->
-<sc-image-compare class="w-full max-w-md aspect-square" />
+<div sc-image-compare class="w-full max-w-md aspect-square">
+  ...
+</div>
 
 <!-- Custom dimensions -->
-<sc-image-compare class="w-[600px] h-[400px]" />
+<div sc-image-compare class="w-[600px] h-[400px]">
+  ...
+</div>
 ```
+
+## Composable Architecture
+
+This component follows the composable architecture pattern:
+
+- **Root Directive** (`sc-image-compare`): Manages state (position, orientation)
+- **Container** (`sc-image-compare-container`): Handles user interactions (mouse, touch, keyboard)
+- **Image Components**: Positioned with appropriate clip-path
+- **Slider**: Customizable via content projection
+- **Labels**: Optional, fully customizable positioning and styling
+
+Benefits:
+- Full control over structure and layout
+- Easy customization of all visual elements
+- Content projection for icons and labels
+- Can add additional elements between components
 
 ## Accessibility
 

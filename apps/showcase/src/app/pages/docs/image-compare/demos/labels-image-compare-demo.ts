@@ -1,17 +1,41 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScImageCompare } from '@semantic-components/ui';
+import {
+  ScImageCompare,
+  ScImageCompareContainer,
+  ScImageCompareBefore,
+  ScImageCompareAfter,
+  ScImageCompareSlider,
+  ScImageCompareLabel,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-labels-image-compare-demo',
-  imports: [ScImageCompare],
+  imports: [
+    ScImageCompare,
+    ScImageCompareContainer,
+    ScImageCompareBefore,
+    ScImageCompareAfter,
+    ScImageCompareSlider,
+    ScImageCompareLabel,
+  ],
   template: `
-    <sc-image-compare
-      [beforeImage]="'https://picsum.photos/800/400?blur=5&random=2'"
-      [afterImage]="'https://picsum.photos/800/400?random=2'"
-      [beforeLabel]="'Blurred'"
-      [afterLabel]="'Sharp'"
-      class="w-full max-w-2xl aspect-[2/1]"
-    />
+    <div sc-image-compare class="w-full max-w-2xl aspect-[2/1]">
+      <div sc-image-compare-container>
+        <img
+          sc-image-compare-before
+          src="https://picsum.photos/800/400?blur=5&random=2"
+          alt="Blurred"
+        />
+        <img
+          sc-image-compare-after
+          src="https://picsum.photos/800/400?random=2"
+          alt="Sharp"
+        />
+        <div sc-image-compare-slider></div>
+        <div sc-image-compare-label class="top-2 left-2">Blurred</div>
+        <div sc-image-compare-label class="top-2 right-2">Sharp</div>
+      </div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

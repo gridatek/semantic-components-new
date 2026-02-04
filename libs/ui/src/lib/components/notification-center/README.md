@@ -7,15 +7,24 @@ A grouped notification management component with filtering, read states, and act
 Import the components from the notification-center module:
 
 ```typescript
-import { ScNotificationCenter, ScNotificationGroup, ScNotificationItem } from '@/ui/notification-center';
+import { ScNotificationCenter, ScNotificationCenterContainer, type Notification, type NotificationGroup } from '@/ui/notification-center';
 ```
+
+## Components
+
+- **ScNotificationCenter (Directive)**: State management and business logic
+- **ScNotificationCenterContainer**: UI rendering with header, filters, and notification list
+- **ScNotificationGroup**: Grouped notification section (used internally)
+- **ScNotificationItem**: Individual notification item (used internally)
 
 ## Usage
 
 ### Basic Usage
 
 ```html
-<sc-notification-center [(notifications)]="notifications" (markRead)="onMarkRead($event)" (dismiss)="onDismiss($event)" />
+<div sc-notification-center [(notifications)]="notifications" (markRead)="onMarkRead($event)" (dismiss)="onDismiss($event)">
+  <div sc-notification-center-container></div>
+</div>
 ```
 
 ```typescript
@@ -44,7 +53,9 @@ notifications = signal<Notification[]>([
 ### With Groups
 
 ```html
-<sc-notification-center [(notifications)]="notifications" [groups]="groups" />
+<div sc-notification-center [(notifications)]="notifications" [groups]="groups()">
+  <div sc-notification-center-container></div>
+</div>
 ```
 
 ```typescript
@@ -114,20 +125,36 @@ notifications = signal<Notification[]>([
 ### Custom Empty State
 
 ```html
-<sc-notification-center [(notifications)]="notifications" emptyTitle="All caught up!" emptyDescription="No new notifications to show." />
+<div sc-notification-center [(notifications)]="notifications" emptyTitle="All caught up!" emptyDescription="No new notifications to show.">
+  <div sc-notification-center-container></div>
+</div>
 ```
 
 ### Without Filters
 
 ```html
-<sc-notification-center [(notifications)]="notifications" [showFilters]="false" />
+<div sc-notification-center [(notifications)]="notifications" [showFilters]="false">
+  <div sc-notification-center-container></div>
+</div>
+```
+
+### Custom Container Styling
+
+```html
+<div sc-notification-center [(notifications)]="notifications" class="max-w-md h-[500px]">
+  <div sc-notification-center-container class="h-full"></div>
+</div>
 ```
 
 ## API Reference
 
-### ScNotificationCenter
+### ScNotificationCenter (Directive)
 
-The main container component that manages notifications.
+The root directive that manages notification state and business logic.
+
+#### Selector
+
+`[sc-notification-center]`
 
 #### Inputs
 
@@ -141,7 +168,6 @@ The main container component that manages notifications.
 | `showDismiss`      | `boolean`             | `true`                    | Show dismiss button on items     |
 | `emptyTitle`       | `string`              | `'No notifications'`      | Empty state title                |
 | `emptyDescription` | `string`              | `"You're all caught up!"` | Empty state description          |
-| `class`            | `string`              | `''`                      | Additional CSS classes           |
 
 #### Outputs
 
@@ -155,13 +181,89 @@ The main container component that manages notifications.
 | `itemClick`    | `Notification`             | Notification clicked      |
 | `filterChange` | `NotificationFilter`       | Filter changed            |
 
+#### Exported As
+
+`scNotificationCenter` - Access directive instance via template reference variable
+
+```html
+<div sc-notification-center #center="scNotificationCenter">
+  <!-- Access center.totalUnread(), center.filteredNotifications(), etc. -->
+</div>
+```
+
+### ScNotificationCenterContainer
+
+The container component that renders the notification center UI.
+
+#### Selector
+
+`[sc-notification-center-container]`
+
+#### Inputs
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
 ### ScNotificationGroup
 
-Individual group component (used internally or standalone).
+Individual group component (used internally by container).
 
 ### ScNotificationItem
 
-Individual notification item component (used internally or standalone).
+Individual notification item component (used internally by container).
+
+## Composable Architecture
+
+The notification center follows a composable architecture pattern that separates state management from UI rendering:
+
+### Pattern Overview
+
+1. **Root Directive** (`sc-notification-center`): Manages all state, computed values, and business logic
+2. **Container Component** (`sc-notification-center-container`): Renders the UI and delegates actions to the directive
+3. **Dependency Injection**: The container accesses the directive's state via the `SC_NOTIFICATION_CENTER` injection token
+
+### Benefits
+
+- **Separation of Concerns**: State management is isolated from UI rendering
+- **Flexibility**: You can access directive state via template references for custom implementations
+- **Reusability**: The directive can be used with custom containers or UI implementations
+- **Testability**: Business logic in the directive is easier to test in isolation
+
+### Example with Template Reference
+
+```html
+<div sc-notification-center #center="scNotificationCenter" [(notifications)]="notifications">
+  <!-- Access state -->
+  <p>Total unread: {{ center.totalUnread() }}</p>
+  <p>Filtered: {{ center.filteredNotifications().length }}</p>
+
+  <!-- Use the standard container -->
+  <div sc-notification-center-container></div>
+</div>
+```
+
+### Custom Implementation
+
+You can build custom UIs by accessing the directive's state:
+
+```html
+<div sc-notification-center #center="scNotificationCenter" [(notifications)]="notifications">
+  <!-- Custom UI using directive state -->
+  <div class="custom-header">
+    <h2>{{ center.title() }}</h2>
+    <span class="badge">{{ center.totalUnread() }}</span>
+  </div>
+
+  <!-- Custom notification list -->
+  @for (notification of center.filteredNotifications(); track notification.id) {
+  <div class="custom-notification">
+    {{ notification.title }}
+    <button (click)="center.onDismiss(notification)">Dismiss</button>
+  </div>
+  }
+</div>
+```
 
 ## Type Definitions
 

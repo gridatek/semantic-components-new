@@ -1,20 +1,13 @@
 import {
   afterNextRender,
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  ElementRef,
-  inject,
+  Directive,
   InjectionToken,
   input,
   model,
   OnDestroy,
   output,
   signal,
-  ViewEncapsulation,
-  viewChild,
 } from '@angular/core';
-import { cn } from '../../utils';
 
 export interface CropArea {
   x: number;
@@ -30,152 +23,78 @@ export interface CropResult {
   height: number;
 }
 
-// Token for image cropper context
+/**
+ * Injection token for ScImageCropper
+ */
+export interface ScImageCropper {
+  // Inputs
+  src: () => string;
+  aspectRatio: () => number | null;
+  minWidth: () => number;
+  minHeight: () => number;
+  containerHeight: () => number;
+  showGrid: () => boolean;
+  disabled: () => boolean;
+  outputType: () => 'image/png' | 'image/jpeg' | 'image/webp';
+  outputQuality: () => number;
+
+  // Models
+  cropArea: ReturnType<typeof model<CropArea>>;
+  zoom: ReturnType<typeof model<number>>;
+
+  // Outputs
+  cropChange: ReturnType<typeof output<CropArea>>;
+  imageLoaded: ReturnType<typeof output<{ width: number; height: number }>>;
+
+  // State
+  imageNaturalWidth: ReturnType<typeof signal<number>>;
+  imageNaturalHeight: ReturnType<typeof signal<number>>;
+  imageLoaded$: ReturnType<typeof signal<boolean>>;
+  isDragging: boolean;
+  isResizing: boolean;
+  resizeHandle: string;
+  startX: number;
+  startY: number;
+  startCropArea: CropArea;
+
+  // Methods
+  onImageLoad: (width: number, height: number) => void;
+  initializeCropArea: (containerWidth: number) => void;
+  getScaledImageWidth: () => number;
+  getScaledImageHeight: () => number;
+  startDragging: (clientX: number, clientY: number) => void;
+  startResizing: (clientX: number, clientY: number, handle: string) => void;
+  handleDrag: (clientX: number, clientY: number, containerWidth: number) => void;
+  handleResize: (clientX: number, clientY: number, containerWidth: number) => void;
+  stopInteraction: () => void;
+  crop: (
+    imageElement: HTMLImageElement,
+    canvasElement: HTMLCanvasElement,
+    containerWidth: number,
+  ) => Promise<CropResult>;
+  resetCropArea: (containerWidth: number) => void;
+  setZoom: (value: number) => void;
+  zoomIn: () => void;
+  zoomOut: () => void;
+}
+
 export const SC_IMAGE_CROPPER = new InjectionToken<ScImageCropper>(
   'SC_IMAGE_CROPPER',
 );
 
-@Component({
+@Directive({
   selector: '[sc-image-cropper]',
   exportAs: 'scImageCropper',
-  providers: [{ provide: SC_IMAGE_CROPPER, useExisting: ScImageCropper }],
-  template: `
-    <div
-      class="relative overflow-hidden bg-black/90 select-none"
-      [style.height.px]="containerHeight()"
-    >
-      <!-- Image container -->
-      <div
-        class="absolute inset-0 flex items-center justify-center"
-        [style.transform]="imageTransform()"
-      >
-        <img
-          #imageEl
-          [src]="src()"
-          class="max-w-none"
-          [style.width.px]="scaledImageWidth()"
-          [style.height.px]="scaledImageHeight()"
-          (load)="onImageLoad()"
-          draggable="false"
-          alt="Image to crop"
-        />
-      </div>
-
-      <!-- Overlay mask -->
-      <div class="absolute inset-0 pointer-events-none">
-        <svg class="w-full h-full">
-          <defs>
-            <mask id="cropMask">
-              <rect width="100%" height="100%" fill="white" />
-              <rect
-                [attr.x]="cropArea().x"
-                [attr.y]="cropArea().y"
-                [attr.width]="cropArea().width"
-                [attr.height]="cropArea().height"
-                fill="black"
-              />
-            </mask>
-          </defs>
-          <rect
-            width="100%"
-            height="100%"
-            fill="rgba(0,0,0,0.5)"
-            mask="url(#cropMask)"
-          />
-        </svg>
-      </div>
-
-      <!-- Crop area -->
-      <div
-        class="absolute border-2 border-white cursor-move"
-        [style.left.px]="cropArea().x"
-        [style.top.px]="cropArea().y"
-        [style.width.px]="cropArea().width"
-        [style.height.px]="cropArea().height"
-        (mousedown)="onCropAreaMouseDown($event)"
-        (touchstart)="onCropAreaTouchStart($event)"
-      >
-        <!-- Grid lines -->
-        @if (showGrid()) {
-          <div class="absolute inset-0 pointer-events-none">
-            <div
-              class="absolute left-1/3 top-0 bottom-0 w-px bg-white/30"
-            ></div>
-            <div
-              class="absolute left-2/3 top-0 bottom-0 w-px bg-white/30"
-            ></div>
-            <div class="absolute top-1/3 left-0 right-0 h-px bg-white/30"></div>
-            <div class="absolute top-2/3 left-0 right-0 h-px bg-white/30"></div>
-          </div>
-        }
-
-        <!-- Resize handles -->
-        @if (!disabled()) {
-          <!-- Corners -->
-          <div
-            class="absolute -left-1.5 -top-1.5 size-3 bg-white border border-gray-400 cursor-nw-resize"
-            (mousedown)="onHandleMouseDown($event, 'nw')"
-            (touchstart)="onHandleTouchStart($event, 'nw')"
-          ></div>
-          <div
-            class="absolute -right-1.5 -top-1.5 size-3 bg-white border border-gray-400 cursor-ne-resize"
-            (mousedown)="onHandleMouseDown($event, 'ne')"
-            (touchstart)="onHandleTouchStart($event, 'ne')"
-          ></div>
-          <div
-            class="absolute -left-1.5 -bottom-1.5 size-3 bg-white border border-gray-400 cursor-sw-resize"
-            (mousedown)="onHandleMouseDown($event, 'sw')"
-            (touchstart)="onHandleTouchStart($event, 'sw')"
-          ></div>
-          <div
-            class="absolute -right-1.5 -bottom-1.5 size-3 bg-white border border-gray-400 cursor-se-resize"
-            (mousedown)="onHandleMouseDown($event, 'se')"
-            (touchstart)="onHandleTouchStart($event, 'se')"
-          ></div>
-
-          <!-- Edges -->
-          <div
-            class="absolute left-1/2 -translate-x-1/2 -top-1.5 w-6 h-3 bg-white border border-gray-400 cursor-n-resize"
-            (mousedown)="onHandleMouseDown($event, 'n')"
-            (touchstart)="onHandleTouchStart($event, 'n')"
-          ></div>
-          <div
-            class="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-6 h-3 bg-white border border-gray-400 cursor-s-resize"
-            (mousedown)="onHandleMouseDown($event, 's')"
-            (touchstart)="onHandleTouchStart($event, 's')"
-          ></div>
-          <div
-            class="absolute top-1/2 -translate-y-1/2 -left-1.5 w-3 h-6 bg-white border border-gray-400 cursor-w-resize"
-            (mousedown)="onHandleMouseDown($event, 'w')"
-            (touchstart)="onHandleTouchStart($event, 'w')"
-          ></div>
-          <div
-            class="absolute top-1/2 -translate-y-1/2 -right-1.5 w-3 h-6 bg-white border border-gray-400 cursor-e-resize"
-            (mousedown)="onHandleMouseDown($event, 'e')"
-            (touchstart)="onHandleTouchStart($event, 'e')"
-          ></div>
-        }
-      </div>
-    </div>
-
-    <!-- Hidden canvas for cropping -->
-    <canvas #canvasEl class="hidden"></canvas>
-
-    <!-- Content projection for controls and other child components -->
-    <ng-content></ng-content>
-  `,
+  providers: [{ provide: SC_IMAGE_CROPPER, useExisting: ScImageCropperDirective }],
   host: {
     'data-slot': 'image-cropper',
-    '[class]': 'class()',
     '[attr.data-disabled]': 'disabled() || null',
   },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScImageCropper implements OnDestroy {
-  readonly classInput = input<string>('', { alias: 'class' });
+export class ScImageCropperDirective implements ScImageCropper, OnDestroy {
+  // Configuration inputs
   readonly src = input.required<string>();
-  readonly aspectRatio = input<number | null>(null); // null = free, 1 = square, 16/9, etc.
+  readonly aspectRatio = input<number | null>(null);
   readonly minWidth = input<number>(50);
   readonly minHeight = input<number>(50);
   readonly containerHeight = input<number>(400);
@@ -186,6 +105,7 @@ export class ScImageCropper implements OnDestroy {
   );
   readonly outputQuality = input<number>(0.92);
 
+  // Models for two-way binding
   readonly cropArea = model<CropArea>({
     x: 50,
     y: 50,
@@ -194,36 +114,22 @@ export class ScImageCropper implements OnDestroy {
   });
   readonly zoom = model<number>(1);
 
+  // Outputs
   readonly cropChange = output<CropArea>();
   readonly imageLoaded = output<{ width: number; height: number }>();
 
-  private readonly imageEl = viewChild<ElementRef<HTMLImageElement>>('imageEl');
-  private readonly canvasEl =
-    viewChild<ElementRef<HTMLCanvasElement>>('canvasEl');
+  // Internal state signals
+  readonly imageNaturalWidth = signal(0);
+  readonly imageNaturalHeight = signal(0);
+  readonly imageLoaded$ = signal(false);
 
-  protected readonly class = computed(() => cn('block', this.classInput()));
-
-  private readonly imageNaturalWidth = signal(0);
-  private readonly imageNaturalHeight = signal(0);
-  private readonly imageLoaded$ = signal(false);
-
-  protected readonly scaledImageWidth = computed(
-    () => this.imageNaturalWidth() * this.zoom(),
-  );
-  protected readonly scaledImageHeight = computed(
-    () => this.imageNaturalHeight() * this.zoom(),
-  );
-
-  protected readonly imageTransform = computed(() => {
-    return `scale(1)`;
-  });
-
-  private isDragging = false;
-  private isResizing = false;
-  private resizeHandle = '';
-  private startX = 0;
-  private startY = 0;
-  private startCropArea: CropArea = { x: 0, y: 0, width: 0, height: 0 };
+  // Drag/resize state (not signals since they change frequently)
+  isDragging = false;
+  isResizing = false;
+  resizeHandle = '';
+  startX = 0;
+  startY = 0;
+  startCropArea: CropArea = { x: 0, y: 0, width: 0, height: 0 };
 
   private readonly boundMouseMove = this.onMouseMove.bind(this);
   private readonly boundMouseUp = this.onMouseUp.bind(this);
@@ -248,31 +154,30 @@ export class ScImageCropper implements OnDestroy {
     document.removeEventListener('touchend', this.boundTouchEnd);
   }
 
-  onImageLoad(): void {
-    const img = this.imageEl()?.nativeElement;
-    if (!img) return;
-
-    this.imageNaturalWidth.set(img.naturalWidth);
-    this.imageNaturalHeight.set(img.naturalHeight);
-    this.imageLoaded$.set(true);
-
-    this.imageLoaded.emit({
-      width: img.naturalWidth,
-      height: img.naturalHeight,
-    });
-
-    // Initialize crop area to center
-    this.initializeCropArea();
+  // Public methods for child components
+  getScaledImageWidth(): number {
+    return this.imageNaturalWidth() * this.zoom();
   }
 
-  private initializeCropArea(): void {
+  getScaledImageHeight(): number {
+    return this.imageNaturalHeight() * this.zoom();
+  }
+
+  onImageLoad(width: number, height: number): void {
+    this.imageNaturalWidth.set(width);
+    this.imageNaturalHeight.set(height);
+    this.imageLoaded$.set(true);
+
+    this.imageLoaded.emit({ width, height });
+  }
+
+  initializeCropArea(containerWidth: number): void {
     const containerH = this.containerHeight();
-    const imgW = this.scaledImageWidth();
-    const imgH = this.scaledImageHeight();
+    const imgW = this.getScaledImageWidth();
+    const imgH = this.getScaledImageHeight();
 
     // Calculate displayed image dimensions within container
-    const containerW = this.getContainerWidth();
-    const scale = Math.min(containerW / imgW, containerH / imgH, 1);
+    const scale = Math.min(containerWidth / imgW, containerH / imgH, 1);
     const displayedW = imgW * scale;
     const displayedH = imgH * scale;
 
@@ -289,7 +194,7 @@ export class ScImageCropper implements OnDestroy {
       }
     }
 
-    const x = (containerW - cropW) / 2;
+    const x = (containerWidth - cropW) / 2;
     const y = (containerH - cropH) / 2;
 
     this.cropArea.set({
@@ -300,51 +205,14 @@ export class ScImageCropper implements OnDestroy {
     });
   }
 
-  private getContainerWidth(): number {
-    const el = document.querySelector('[sc-image-cropper]');
-    return el?.clientWidth ?? 400;
-  }
-
-  onCropAreaMouseDown(event: MouseEvent): void {
-    if (this.disabled()) return;
-    event.preventDefault();
-    this.startDragging(event.clientX, event.clientY);
-  }
-
-  onCropAreaTouchStart(event: TouchEvent): void {
-    if (this.disabled()) return;
-    event.preventDefault();
-    const touch = event.touches[0];
-    this.startDragging(touch.clientX, touch.clientY);
-  }
-
-  private startDragging(clientX: number, clientY: number): void {
+  startDragging(clientX: number, clientY: number): void {
     this.isDragging = true;
     this.startX = clientX;
     this.startY = clientY;
     this.startCropArea = { ...this.cropArea() };
   }
 
-  onHandleMouseDown(event: MouseEvent, handle: string): void {
-    if (this.disabled()) return;
-    event.preventDefault();
-    event.stopPropagation();
-    this.startResizing(event.clientX, event.clientY, handle);
-  }
-
-  onHandleTouchStart(event: TouchEvent, handle: string): void {
-    if (this.disabled()) return;
-    event.preventDefault();
-    event.stopPropagation();
-    const touch = event.touches[0];
-    this.startResizing(touch.clientX, touch.clientY, handle);
-  }
-
-  private startResizing(
-    clientX: number,
-    clientY: number,
-    handle: string,
-  ): void {
+  startResizing(clientX: number, clientY: number, handle: string): void {
     this.isResizing = true;
     this.resizeHandle = handle;
     this.startX = clientX;
@@ -352,31 +220,10 @@ export class ScImageCropper implements OnDestroy {
     this.startCropArea = { ...this.cropArea() };
   }
 
-  private onMouseMove(event: MouseEvent): void {
-    this.handleMove(event.clientX, event.clientY);
-  }
-
-  private onTouchMove(event: TouchEvent): void {
-    if (this.isDragging || this.isResizing) {
-      event.preventDefault();
-      const touch = event.touches[0];
-      this.handleMove(touch.clientX, touch.clientY);
-    }
-  }
-
-  private handleMove(clientX: number, clientY: number): void {
-    if (this.isDragging) {
-      this.handleDrag(clientX, clientY);
-    } else if (this.isResizing) {
-      this.handleResize(clientX, clientY);
-    }
-  }
-
-  private handleDrag(clientX: number, clientY: number): void {
+  handleDrag(clientX: number, clientY: number, containerWidth: number): void {
     const deltaX = clientX - this.startX;
     const deltaY = clientY - this.startY;
 
-    const containerW = this.getContainerWidth();
     const containerH = this.containerHeight();
     const crop = this.startCropArea;
 
@@ -384,7 +231,7 @@ export class ScImageCropper implements OnDestroy {
     let newY = crop.y + deltaY;
 
     // Constrain to container
-    newX = Math.max(0, Math.min(newX, containerW - crop.width));
+    newX = Math.max(0, Math.min(newX, containerWidth - crop.width));
     newY = Math.max(0, Math.min(newY, containerH - crop.height));
 
     this.cropArea.set({
@@ -396,14 +243,13 @@ export class ScImageCropper implements OnDestroy {
     this.cropChange.emit(this.cropArea());
   }
 
-  private handleResize(clientX: number, clientY: number): void {
+  handleResize(clientX: number, clientY: number, containerWidth: number): void {
     const deltaX = clientX - this.startX;
     const deltaY = clientY - this.startY;
     const crop = this.startCropArea;
     const aspectRatio = this.aspectRatio();
     const minW = this.minWidth();
     const minH = this.minHeight();
-    const containerW = this.getContainerWidth();
     const containerH = this.containerHeight();
 
     let newX = crop.x;
@@ -473,8 +319,8 @@ export class ScImageCropper implements OnDestroy {
       newH += newY;
       newY = 0;
     }
-    if (newX + newW > containerW) {
-      newW = containerW - newX;
+    if (newX + newW > containerWidth) {
+      newW = containerWidth - newX;
     }
     if (newY + newH > containerH) {
       newH = containerH - newY;
@@ -499,34 +345,45 @@ export class ScImageCropper implements OnDestroy {
     this.cropChange.emit(this.cropArea());
   }
 
-  private onMouseUp(): void {
+  stopInteraction(): void {
     this.isDragging = false;
     this.isResizing = false;
+  }
+
+  private onMouseMove(event: MouseEvent): void {
+    if (this.isDragging || this.isResizing) {
+      // Will be handled by container component
+    }
+  }
+
+  private onTouchMove(event: TouchEvent): void {
+    if (this.isDragging || this.isResizing) {
+      event.preventDefault();
+    }
+  }
+
+  private onMouseUp(): void {
+    this.stopInteraction();
   }
 
   private onTouchEnd(): void {
-    this.isDragging = false;
-    this.isResizing = false;
+    this.stopInteraction();
   }
 
-  async crop(): Promise<CropResult> {
-    const img = this.imageEl()?.nativeElement;
-    const canvas = this.canvasEl()?.nativeElement;
-
-    if (!img || !canvas) {
-      throw new Error('Image or canvas not found');
-    }
-
+  async crop(
+    imageElement: HTMLImageElement,
+    canvasElement: HTMLCanvasElement,
+    containerWidth: number,
+  ): Promise<CropResult> {
     const crop = this.cropArea();
-    const containerW = this.getContainerWidth();
     const containerH = this.containerHeight();
 
     // Calculate the scale between displayed image and natural image
-    const displayedW = this.scaledImageWidth();
-    const displayedH = this.scaledImageHeight();
-    const scale = Math.min(containerW / displayedW, containerH / displayedH, 1);
+    const displayedW = this.getScaledImageWidth();
+    const displayedH = this.getScaledImageHeight();
+    const scale = Math.min(containerWidth / displayedW, containerH / displayedH, 1);
 
-    const offsetX = (containerW - displayedW * scale) / 2;
+    const offsetX = (containerWidth - displayedW * scale) / 2;
     const offsetY = (containerH - displayedH * scale) / 2;
 
     // Convert crop area to natural image coordinates
@@ -537,22 +394,25 @@ export class ScImageCropper implements OnDestroy {
     const srcH = crop.height * naturalScale;
 
     // Set canvas size to crop dimensions
-    canvas.width = srcW;
-    canvas.height = srcH;
+    canvasElement.width = srcW;
+    canvasElement.height = srcH;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvasElement.getContext('2d');
     if (!ctx) {
       throw new Error('Could not get canvas context');
     }
 
     // Draw cropped portion
-    ctx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, srcW, srcH);
+    ctx.drawImage(imageElement, srcX, srcY, srcW, srcH, 0, 0, srcW, srcH);
 
     // Get result
-    const dataUrl = canvas.toDataURL(this.outputType(), this.outputQuality());
+    const dataUrl = canvasElement.toDataURL(
+      this.outputType(),
+      this.outputQuality(),
+    );
 
     return new Promise((resolve) => {
-      canvas.toBlob(
+      canvasElement.toBlob(
         (blob) => {
           resolve({
             dataUrl,
@@ -567,8 +427,8 @@ export class ScImageCropper implements OnDestroy {
     });
   }
 
-  resetCropArea(): void {
-    this.initializeCropArea();
+  resetCropArea(containerWidth: number): void {
+    this.initializeCropArea(containerWidth);
   }
 
   setZoom(value: number): void {
