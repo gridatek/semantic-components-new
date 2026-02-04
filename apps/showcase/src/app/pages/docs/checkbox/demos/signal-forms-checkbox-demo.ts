@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
-import { ScCheckbox } from '@semantic-components/ui';
+import {
+  ScCheckboxDirective,
+  ScInvisibleCheckbox,
+  ScVisualCheckbox,
+} from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
 
 interface CheckboxFormModel {
@@ -12,15 +16,26 @@ interface CheckboxFormModel {
 
 @Component({
   selector: 'app-signal-forms-checkbox-demo',
-  imports: [ScCheckbox, JsonPipe, FormField],
+  imports: [
+    ScCheckboxDirective,
+    ScInvisibleCheckbox,
+    ScVisualCheckbox,
+    JsonPipe,
+    FormField,
+  ],
   template: `
     <form>
       <div class="space-y-4">
         <div class="flex items-center space-x-2">
-          <sc-checkbox
-            id="newsletter-custom"
-            [formField]="checkboxForm.newsletter"
-          />
+          <div sc-checkbox>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              id="newsletter-custom"
+              [formField]="checkboxForm.newsletter"
+            />
+            <span sc-visual-checkbox></span>
+          </div>
           <label
             for="newsletter-custom"
             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -30,10 +45,15 @@ interface CheckboxFormModel {
         </div>
 
         <div class="flex items-center space-x-2">
-          <sc-checkbox
-            id="marketing-custom"
-            [formField]="checkboxForm.marketing"
-          />
+          <div sc-checkbox>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              id="marketing-custom"
+              [formField]="checkboxForm.marketing"
+            />
+            <span sc-visual-checkbox></span>
+          </div>
           <label
             for="marketing-custom"
             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -43,10 +63,15 @@ interface CheckboxFormModel {
         </div>
 
         <div class="flex items-center space-x-2">
-          <sc-checkbox
-            id="terms-custom"
-            [formField]="checkboxForm.acceptTerms"
-          />
+          <div sc-checkbox>
+            <input
+              type="checkbox"
+              sc-invisible-checkbox
+              id="terms-custom"
+              [formField]="checkboxForm.acceptTerms"
+            />
+            <span sc-visual-checkbox></span>
+          </div>
           <label
             for="terms-custom"
             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

@@ -1,7 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { SiCheckIcon, SiMinusIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
 import { ScCheckboxIndicator } from './checkbox-indicator';
+import { SC_CHECKBOX } from './checkbox-types';
 
 @Component({
   selector: 'span[sc-visual-checkbox]',
@@ -9,13 +16,13 @@ import { ScCheckboxIndicator } from './checkbox-indicator';
   host: {
     'data-slot': 'visual-checkbox',
     '[class]': 'class()',
-    '[attr.data-state]': 'state()',
+    '[attr.data-state]': 'checkbox.dataState()',
   },
   template: `
-    <span sc-checkbox-indicator [state]="state()">
-      @if (state() === 'indeterminate') {
+    <span sc-checkbox-indicator [state]="checkbox.dataState()">
+      @if (checkbox.dataState() === 'indeterminate') {
         <svg si-minus-icon class="size-4"></svg>
-      } @else if (state() === 'checked') {
+      } @else if (checkbox.dataState() === 'checked') {
         <svg si-check-icon class="size-4"></svg>
       }
     </span>
@@ -23,8 +30,8 @@ import { ScCheckboxIndicator } from './checkbox-indicator';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScVisualCheckbox {
+  readonly checkbox = inject(SC_CHECKBOX);
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly state = input<'checked' | 'unchecked' | 'indeterminate'>('unchecked');
 
   protected readonly class = computed(() =>
     cn(

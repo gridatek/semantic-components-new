@@ -1,15 +1,55 @@
-import { computed, Directive, input } from '@angular/core';
+import {
+  computed,
+  Directive,
+  effect,
+  ElementRef,
+  inject,
+  input,
+  model,
+  signal,
+} from '@angular/core';
+import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
+
+export const SC_INVISIBLE_CHECKBOX = 'SC_INVISIBLE_CHECKBOX';
 
 @Directive({
   selector: 'input[type="checkbox"][sc-invisible-checkbox]',
   host: {
     'data-slot': 'invisible-checkbox',
     '[class]': 'class()',
+    '[checked]': 'checked()',
+    '(change)': 'onInputChange($event)',
   },
+  exportAs: SC_INVISIBLE_CHECKBOX,
 })
-export class ScInvisibleCheckbox {
+export class ScInvisibleCheckbox implements FormCheckboxControl {
+  private readonly elementRef = inject(ElementRef<HTMLInputElement>);
+
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly indeterminate = input<boolean>(false);
+  readonly checked = model<boolean>(false);
+
+  // Expose disabled state as a signal
+  readonly disabledSignal = signal(false);
+
+  constructor() {
+    // Sync indeterminate input to native property
+    effect(() => {
+      this.elementRef.nativeElement.indeterminate = this.indeterminate();
+    });
+
+    // Track disabled state
+    effect(() => {
+      this.disabledSignal.set(this.elementRef.nativeElement.disabled);
+    });
+  }
+
+  protected onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.checked.set(input.checked);
+    this.disabledSignal.set(input.disabled);
+  }
 
   protected readonly class = computed(() =>
     cn(

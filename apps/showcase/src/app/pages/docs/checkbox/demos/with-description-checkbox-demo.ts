@@ -1,12 +1,30 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScCheckbox } from '@semantic-components/ui';
+import {
+  ScCheckboxDirective,
+  ScInvisibleCheckbox,
+  ScVisualCheckbox,
+} from '@semantic-components/ui';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-with-description-checkbox-demo',
-  imports: [ScCheckbox],
+  imports: [
+    ScCheckboxDirective,
+    ScInvisibleCheckbox,
+    ScVisualCheckbox,
+    FormsModule,
+  ],
   template: `
     <div class="items-top flex space-x-2">
-      <sc-checkbox [(checked)]="marketing" id="marketing" />
+      <div sc-checkbox>
+        <input
+          type="checkbox"
+          sc-invisible-checkbox
+          [(ngModel)]="marketing"
+          id="marketing"
+        />
+        <span sc-visual-checkbox></span>
+      </div>
       <div class="grid gap-1.5 leading-none">
         <label
           for="marketing"

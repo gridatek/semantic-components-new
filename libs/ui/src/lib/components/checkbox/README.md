@@ -4,7 +4,7 @@ A control that allows the user to toggle between checked and not checked.
 
 ## Components
 
-- `ScCheckbox` - Main checkbox component with native input and visual representation
+- `ScCheckboxDirective` (selector: `[sc-checkbox]`) - Coordinator directive that observes input state and provides it to child components
 - `ScInvisibleCheckbox` - Directive for native input styling (applied to input[type="checkbox"])
 - `ScCheckboxIndicator` - Directive for styling the visual checkbox box (applied to span)
 - `ScVisualCheckbox` - Component for visual representation (applied to span)
@@ -13,7 +13,10 @@ A control that allows the user to toggle between checked and not checked.
 
 ```html
 <div class="flex items-center space-x-2">
-  <sc-checkbox [(checked)]="accepted" id="terms" />
+  <div sc-checkbox>
+    <input type="checkbox" sc-invisible-checkbox [(ngModel)]="accepted" id="terms" />
+    <span sc-visual-checkbox></span>
+  </div>
   <label for="terms">Accept terms and conditions</label>
 </div>
 ```
@@ -22,7 +25,10 @@ A control that allows the user to toggle between checked and not checked.
 
 ```html
 <div class="items-top flex space-x-2">
-  <sc-checkbox [(checked)]="marketing" id="marketing" />
+  <div sc-checkbox>
+    <input type="checkbox" sc-invisible-checkbox [(ngModel)]="marketing" id="marketing" />
+    <span sc-visual-checkbox></span>
+  </div>
   <div class="grid gap-1.5 leading-none">
     <label for="marketing">Marketing emails</label>
     <p class="text-sm text-muted-foreground">Receive emails about new products, features, and more.</p>
@@ -32,7 +38,7 @@ A control that allows the user to toggle between checked and not checked.
 
 ## With Signal Forms
 
-ScCheckbox implements `FormCheckboxControl` and works seamlessly with Angular Signal Forms:
+`ScInvisibleCheckbox` implements `FormCheckboxControl` and works seamlessly with Angular Signal Forms:
 
 ```typescript
 import { signal } from '@angular/core';
@@ -46,7 +52,10 @@ readonly myForm = form(this.formModel, (schemaPath) => {
 ```
 
 ```html
-<sc-checkbox [formField]="myForm.acceptTerms" id="terms" />
+<div sc-checkbox>
+  <input type="checkbox" sc-invisible-checkbox [formField]="myForm.acceptTerms" id="terms" />
+  <span sc-visual-checkbox></span>
+</div>
 <label for="terms">Accept terms and conditions</label>
 ```
 
@@ -55,40 +64,50 @@ Note: Add `FormField` to your component's `imports` array to use the `[formField
 ## Indeterminate State
 
 ```html
-<sc-checkbox [checked]="allSelected" [indeterminate]="someSelected" (checkedChange)="toggleAll($event)" />
+<div sc-checkbox>
+  <input type="checkbox" sc-invisible-checkbox [(ngModel)]="allSelected" [indeterminate]="someSelected" />
+  <span sc-visual-checkbox></span>
+</div>
 ```
 
 ## Disabled
 
 ```html
-<sc-checkbox [disabled]="true" />
-<sc-checkbox [checked]="true" [disabled]="true" />
+<div sc-checkbox>
+  <input type="checkbox" sc-invisible-checkbox [disabled]="true" />
+  <span sc-visual-checkbox></span>
+</div>
+
+<div sc-checkbox>
+  <input type="checkbox" sc-invisible-checkbox [(ngModel)]="checked" [disabled]="true" />
+  <span sc-visual-checkbox></span>
+</div>
 ```
 
 ## Advanced: Custom Checkbox Indicator
 
-For advanced customization, you can use the directives directly:
+For advanced customization, you can use the directives directly with custom visuals:
 
 ```html
-<div class="relative inline-flex h-4 w-4">
-  <input type="checkbox" sc-invisible-checkbox [(ngModel)]="checked" />
-  <span sc-checkbox-indicator [state]="checked ? 'checked' : 'unchecked'">
-    @if (checked) {
-      <svg si-check-icon class="size-4"></svg>
-    }
-  </span>
-</div>
-```
-
-Or create a completely custom visual:
-
-```html
-<div class="relative inline-flex h-6 w-6">
+<div sc-checkbox class="relative inline-flex h-6 w-6">
   <input type="checkbox" sc-invisible-checkbox [(ngModel)]="checked" />
   <span sc-checkbox-indicator [state]="checked ? 'checked' : 'unchecked'" class="h-6 w-6 rounded-full">
     <!-- Your custom icon -->
   </span>
 </div>
+```
+
+Or inject the checkbox context to build completely custom visuals:
+
+```typescript
+import { inject } from '@angular/core';
+import { SC_CHECKBOX } from '@semantic-components/ui';
+
+export class MyCustomCheckboxVisual {
+  readonly checkbox = inject(SC_CHECKBOX);
+
+  // Use checkbox.checked(), checkbox.disabled(), checkbox.indeterminate(), checkbox.dataState()
+}
 ```
 
 ## Custom Theme
@@ -97,7 +116,10 @@ Customize colors using CSS variables:
 
 ```html
 <div style="--primary: oklch(0.6 0.25 280); --primary-foreground: oklch(0.985 0 0);">
-  <sc-checkbox [(checked)]="purple" id="purple" />
+  <div sc-checkbox>
+    <input type="checkbox" sc-invisible-checkbox [(ngModel)]="purple" id="purple" />
+    <span sc-visual-checkbox></span>
+  </div>
   <label for="purple">Purple checkbox</label>
 </div>
 ```
@@ -117,20 +139,48 @@ OKLCH format parameters:
 
 ## Inputs
 
-| Input           | Type      | Default | Description                                  |
-| --------------- | --------- | ------- | -------------------------------------------- |
-| `checked`       | `boolean` | `false` | Whether checkbox is checked                  |
-| `disabled`      | `boolean` | `false` | Whether checkbox is disabled                 |
-| `indeterminate` | `boolean` | `false` | Whether checkbox is indeterminate            |
-| `id`            | `string`  | `''`    | ID for label association and form submission |
-| `name`          | `string`  | `''`    | Name attribute for form submission           |
-| `class`         | `string`  | `''`    | Additional CSS classes                       |
+### ScCheckboxDirective (`[sc-checkbox]`)
 
-## Outputs
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
 
-| Output          | Type      | Description                      |
-| --------------- | --------- | -------------------------------- |
-| `checkedChange` | `boolean` | Emits when checked state changes |
+### ScInvisibleCheckbox (`sc-invisible-checkbox`)
+
+| Input           | Type      | Default | Description                       |
+| --------------- | --------- | ------- | --------------------------------- |
+| `indeterminate` | `boolean` | `false` | Whether checkbox is indeterminate |
+| `class`         | `string`  | `''`    | Additional CSS classes            |
+
+Note: Standard input attributes (`id`, `name`, `checked`, `disabled`) are set directly on the native input element.
+
+### ScVisualCheckbox (`sc-visual-checkbox`)
+
+| Input   | Type     | Default | Description            |
+| ------- | -------- | ------- | ---------------------- |
+| `class` | `string` | `''`    | Additional CSS classes |
+
+## Context API
+
+The `sc-checkbox` directive provides a context via dependency injection that child components can access:
+
+```typescript
+export interface ScCheckboxContext {
+  checked: () => boolean;
+  disabled: () => boolean;
+  indeterminate: () => boolean;
+  dataState: () => 'checked' | 'unchecked' | 'indeterminate';
+}
+```
+
+Inject using `SC_CHECKBOX` token:
+
+```typescript
+import { inject } from '@angular/core';
+import { SC_CHECKBOX } from '@semantic-components/ui';
+
+readonly checkbox = inject(SC_CHECKBOX);
+```
 
 ## Data Attributes
 
@@ -153,19 +203,69 @@ OKLCH format parameters:
 
 ## Architecture
 
-The checkbox uses a layered approach:
+The checkbox uses a composable directive-based architecture:
 
 ```
-sc-checkbox
+[sc-checkbox] (directive - observes input state, provides context)
 ├── input[sc-invisible-checkbox] (native checkbox, opacity: 0, covers full area)
-└── span[sc-visual-checkbox] (decorative wrapper)
+└── span[sc-visual-checkbox] (decorative wrapper, injects context)
     └── span[sc-checkbox-indicator] (visual box)
         ├── <svg si-check-icon> (checkmark icon)
         └── <svg si-minus-icon> (indeterminate icon)
 ```
 
+### State Flow
+
+```
+Native Input (source of truth)
+  ├─ User interactions (click, keyboard)
+  ├─ Form bindings (ngModel, formField)
+  └─ Attributes (checked, disabled, indeterminate)
+         ↓
+ScCheckboxDirective (observer)
+  ├─ contentChild() queries input
+  ├─ Listens to change/input events
+  └─ Provides via SC_CHECKBOX token
+         ↓
+ScVisualCheckbox (renderer)
+  ├─ inject(SC_CHECKBOX)
+  └─ Renders based on checkbox.dataState()
+```
+
 This pattern provides:
+
 - **Native behavior**: All browser/OS checkbox features work automatically
 - **Accessibility**: Screen readers interact with the real checkbox
-- **Styling**: Visual representation is fully customizable
+- **Composability**: Consumers provide their own input element
+- **Flexibility**: Visual representation is fully customizable
 - **Simplicity**: No manual ARIA management or keyboard handling needed
+- **Single source of truth**: Native input owns all state
+
+## Migration Guide
+
+If upgrading from the previous component-based API:
+
+**Before:**
+
+```html
+<sc-checkbox [(checked)]="terms" [disabled]="loading" id="terms" />
+<label for="terms">Accept terms</label>
+```
+
+**After:**
+
+```html
+<div sc-checkbox>
+  <input type="checkbox" sc-invisible-checkbox [(ngModel)]="terms" [disabled]="loading" id="terms" />
+  <span sc-visual-checkbox></span>
+</div>
+<label for="terms">Accept terms</label>
+```
+
+**Key changes:**
+
+- `sc-checkbox` is now a directive (use `[sc-checkbox]` or on a container element)
+- You must provide your own `input[type="checkbox"]` element
+- State bindings (`[(ngModel)]`, `[formField]`) go on the input, not the directive
+- `[indeterminate]` input goes on `sc-invisible-checkbox`
+- Standard attributes (`id`, `disabled`, `name`) go directly on the input element
