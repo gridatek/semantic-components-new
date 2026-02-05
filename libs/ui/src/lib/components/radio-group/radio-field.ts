@@ -7,7 +7,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD } from '../field/field';
+import { SC_FIELD } from '../field';
 
 @Component({
   selector: 'div[sc-radio-field], label[sc-radio-field]',

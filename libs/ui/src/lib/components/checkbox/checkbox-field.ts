@@ -8,7 +8,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD } from '../field/field';
+import { SC_FIELD } from '../field';
 import { SC_CHECKBOX_FIELD, type ScCheckboxContext } from './checkbox-types';
 import { ScCheckbox } from './checkbox';
 import { ScVisualCheckbox } from './visual-checkbox';

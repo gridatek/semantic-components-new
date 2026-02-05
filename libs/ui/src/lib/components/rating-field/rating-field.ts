@@ -9,7 +9,7 @@ import {
   model,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD } from '../field/field';
+import { SC_FIELD } from '../field';
 import { ScRatingFieldItem } from './rating-item';
 
 // Token for rating field context

@@ -7,7 +7,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD } from '../field/field';
+import { SC_FIELD } from '../field';
 import { ScTheme, Theme } from './theme.service';
 
 @Component({

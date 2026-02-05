@@ -8,7 +8,7 @@ import {
   model,
   output,
 } from '@angular/core';
-import { SC_FIELD } from '../field/field';
+import { SC_FIELD } from '../field';
 
 // Token for number field context
 export const SC_NUMBER_FIELD = new InjectionToken<ScNumberField>(

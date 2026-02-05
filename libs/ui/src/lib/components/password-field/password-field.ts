@@ -12,7 +12,7 @@ import {
   untracked,
   WritableSignal,
 } from '@angular/core';
-import { SC_FIELD, type ScFieldVariants } from '../field/field';
+import { SC_FIELD, type ScFieldVariants } from '../field';
 
 // Token for password field context - interface to avoid circular dependency
 export interface ScPasswordFieldContext {
