@@ -1,60 +1,34 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
 import {
   ScField,
-  ScLabel,
   ScFieldError,
-  ScFieldErrorItem,
   ScInput,
+  ScLabel,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-error-field-demo',
-  imports: [ScField, ScLabel, ScFieldError, ScInput],
+  imports: [FormField, ScField, ScFieldError, ScInput, ScLabel],
   template: `
-    <div class="space-y-4">
-      <div sc-field [invalid]="singleError().length > 0">
-        <label sc-label for="password">Password</label>
-        <input
-          sc-input
-          id="password"
-          type="password"
-          placeholder="Enter password"
-        />
-        <div sc-field-error [errors]="singleError()"></div>
-      </div>
-
-      <div sc-field [invalid]="multipleErrors().length > 0">
-        <label sc-label for="password2">Password (Multiple Errors)</label>
-        <input
-          sc-input
-          id="password2"
-          type="password"
-          placeholder="Enter password"
-        />
-        @if (multipleErrors().length === 1) {
-          <div sc-field-error [errors]="multipleErrors()"></div>
-        } @else if (multipleErrors().length > 1) {
-          <div sc-field-error>
-            <ul class="ml-4 flex list-disc flex-col gap-1">
-              @for (error of multipleErrors(); track error.message) {
-                <li>{{ error.message }}</li>
-              }
-            </ul>
-          </div>
-        }
-      </div>
+    <div sc-field>
+      <label sc-label>Password</label>
+      <input
+        sc-input
+        type="password"
+        [formField]="passwordForm.password"
+        placeholder="Enter password"
+      />
+      @for (error of passwordForm.password().errors(); track error.kind) {
+        <p sc-field-error>{{ error.message }}</p>
+      }
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorFieldDemo {
-  readonly singleError = signal<ScFieldErrorItem[]>([
-    { message: 'Password is required' },
-  ]);
-
-  readonly multipleErrors = signal<ScFieldErrorItem[]>([
-    { message: 'Password must be at least 8 characters' },
-    { message: 'Password must contain a number' },
-    { message: 'Password must contain a special character' },
-  ]);
+  readonly formModel = signal({ password: '' });
+  readonly passwordForm = form(this.formModel, (s) => {
+    required(s.password, { message: 'Password is required' });
+  });
 }
