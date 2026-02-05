@@ -1,10 +1,6 @@
-import {
-  booleanAttribute,
-  computed,
-  Directive,
-  inject,
-  input,
-} from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
+import { computed, Directive, inject, input } from '@angular/core';
+import { FormField } from '@angular/forms/signals';
 import { cn } from '../../utils';
 import { SC_FIELD } from '../field';
 
@@ -12,35 +8,29 @@ import { SC_FIELD } from '../field';
   selector: 'input[sc-input]',
   host: {
     'data-slot': 'input',
-    '[attr.id]': 'controlId()',
-    '[attr.aria-invalid]': 'ariaInvalid()',
-    '[attr.disabled]': 'controlDisabled()',
+    '[attr.id]': 'id()',
+    '[attr.data-invalid]': 'invalid() || null',
+    '[attr.data-disabled]': 'disabled() || null',
     '[class]': 'class()',
   },
 })
 export class ScInput {
   private readonly field = inject(SC_FIELD, { optional: true });
+  private readonly formField = inject(FormField, { optional: true });
+  private readonly fallbackId = inject(_IdGenerator).getId('sc-input-');
 
-  readonly id = input<string>();
-  readonly invalid = input<boolean, unknown>(false, {
-    transform: booleanAttribute,
-  });
-  readonly disabled = input<boolean, unknown>(false, {
-    transform: booleanAttribute,
-  });
+  readonly idInput = input('', { alias: 'id' });
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly controlId = computed(() => {
-    return this.id() ?? this.field?.id();
-  });
+  readonly id = computed(
+    () => this.idInput() || this.field?.id() || this.fallbackId,
+  );
 
-  protected readonly ariaInvalid = computed(() => {
-    return this.invalid() || null;
-  });
+  readonly invalid = computed(() => this.formField?.state().invalid() ?? false);
 
-  protected readonly controlDisabled = computed(() => {
-    return this.disabled() || null;
-  });
+  readonly disabled = computed(
+    () => this.formField?.state().disabled() ?? false,
+  );
 
   protected readonly class = computed(() =>
     cn(
