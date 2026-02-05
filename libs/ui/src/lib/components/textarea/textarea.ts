@@ -10,7 +10,7 @@ import { SC_FIELD } from '../field/field';
     'data-slot': 'textarea',
     '[attr.id]': 'id()',
     '[attr.aria-invalid]': 'invalid() || null',
-    '[attr.data-disabled]': 'disabled() || null',
+    '[attr.disabled]': 'disabled() || null',
     '[class]': 'class()',
   },
 })
