@@ -17,7 +17,7 @@ This is tedious, error-prone, and creates maintenance overhead — especially wh
 
 ## The Solution
 
-Field components auto-generate an ID and share it with their children via the `SC_FIELD_ID` token. Labels read this token automatically. No manual `id` or `for` needed:
+Field components auto-generate an ID and share it with their children via the `SC_FIELD` token. Labels read this token automatically. No manual `id` or `for` needed:
 
 ```html
 <div sc-checkbox-field>
@@ -39,12 +39,12 @@ The generated DOM:
 
 ### 1. Field Generates an ID
 
-Each field component generates a unique ID using Angular CDK's `_IdGenerator` and provides it via the `SC_FIELD_ID` token:
+Each field component generates a unique ID using Angular CDK's `_IdGenerator` and provides it via the `SC_FIELD` token:
 
 ```typescript
 // checkbox-field.ts
 @Component({
-  providers: [{ provide: SC_FIELD_ID, useExisting: ScCheckboxField }],
+  providers: [{ provide: SC_FIELD, useExisting: ScCheckboxField }],
 })
 export class ScCheckboxField {
   readonly id = input(inject(_IdGenerator).getId('sc-checkbox-field-'));
@@ -72,12 +72,12 @@ export class ScCheckbox {
 
 ### 3. Label Reads the Field's ID
 
-`ScLabel` injects `SC_FIELD_ID` and automatically sets its `for` attribute:
+`ScLabel` injects `SC_FIELD` and automatically sets its `for` attribute:
 
 ```typescript
 // label.ts
 export class ScLabel {
-  private readonly fieldId = inject(SC_FIELD_ID, { optional: true });
+  private readonly fieldId = inject(SC_FIELD, { optional: true });
 
   readonly forInput = input<string>('', { alias: 'for' });
 
@@ -94,7 +94,7 @@ export class ScLabel {
 ScCheckboxField
   │
   ├─ generates id: "sc-checkbox-field-0"
-  ├─ provides SC_FIELD_ID  ──────────────────────► ScLabel reads SC_FIELD_ID
+  ├─ provides SC_FIELD  ──────────────────────► ScLabel reads SC_FIELD
   │                                                  └─ sets for="sc-checkbox-field-0"
   └─ provides SC_CHECKBOX_FIELD ─► ScCheckbox reads id
                                      └─ sets id="sc-checkbox-field-0"
@@ -117,7 +117,7 @@ Both the `<input>` and the `<label>` point to the same ID without any manual wir
 | Priority          | Source                      | Example               |
 | ----------------- | --------------------------- | --------------------- |
 | 1. Explicit `for` | Consumer sets `for="terms"` | `terms`               |
-| 2. Field's ID     | From `SC_FIELD_ID` token    | `sc-checkbox-field-0` |
+| 2. Field's ID     | From `SC_FIELD` token       | `sc-checkbox-field-0` |
 
 ## Consumer Override
 
@@ -141,7 +141,7 @@ Or override at the control level for full manual control:
 </div>
 ```
 
-## The SC_FIELD_ID Token
+## The SC_FIELD Token
 
 ```typescript
 // label-id.ts
@@ -149,17 +149,17 @@ export interface ScFieldIdContext {
   id: () => string;
 }
 
-export const SC_FIELD_ID = new InjectionToken<ScFieldIdContext>('SC_FIELD_ID');
+export const SC_FIELD = new InjectionToken<ScFieldIdContext>('SC_FIELD');
 ```
 
-A minimal interface with a single `id` method. Any field component that provides `SC_FIELD_ID` automatically connects to `ScLabel`.
+A minimal interface with a single `id` method. Any field component that provides `SC_FIELD` automatically connects to `ScLabel`.
 
 ## Implementing for New Field Components
 
 Every field component should:
 
 1. **Generate an ID** using `_IdGenerator` with a descriptive prefix
-2. **Provide `SC_FIELD_ID`** so labels auto-connect
+2. **Provide `SC_FIELD`** so labels auto-connect
 3. **Expose the ID** to child controls via its own context token
 
 ```typescript
@@ -167,7 +167,7 @@ Every field component should:
   selector: '[sc-my-field]',
   providers: [
     { provide: SC_MY_FIELD, useExisting: ScMyField },
-    { provide: SC_FIELD_ID, useExisting: ScMyField },
+    { provide: SC_FIELD, useExisting: ScMyField },
   ],
 })
 export class ScMyField {
