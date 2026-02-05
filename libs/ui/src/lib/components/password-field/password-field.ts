@@ -12,7 +12,7 @@ import {
   untracked,
   WritableSignal,
 } from '@angular/core';
-import { SC_FIELD, type ScFieldVariants } from '../field';
+import { SC_FIELD } from '../field';
 
 // Token for password field context - interface to avoid circular dependency
 export interface ScPasswordFieldContext {
@@ -38,14 +38,12 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
   host: {
     role: 'group',
     'data-slot': 'password-field',
-    '[attr.data-orientation]': 'orientation()',
     '[attr.data-invalid]': 'invalid()',
     '[attr.data-disabled]': 'disabled() || null',
   },
 })
 export class ScPasswordField implements ScPasswordFieldContext {
   readonly id = input(inject(_IdGenerator).getId('sc-password-field-'));
-  readonly orientation = input<ScFieldVariants['orientation']>('vertical');
   readonly invalid = input<boolean>(false);
   readonly value = model<string>('');
   readonly disabled = input<boolean>(false);
