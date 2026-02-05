@@ -18,7 +18,8 @@ import { MaxlengthTextareaDemo } from './maxlength-textarea-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaxlengthTextareaDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField, maxLength } from '@angular/forms/signals';
 import {
   ScField,
   ScFieldDescription,
@@ -28,13 +29,13 @@ import {
 
 @Component({
   selector: 'app-maxlength-textarea-demo',
-  imports: [ScField, ScFieldDescription, ScLabel, ScTextarea],
+  imports: [FormField, ScField, ScFieldDescription, ScLabel, ScTextarea],
   template: \`
     <div sc-field>
       <label sc-label>Description</label>
       <textarea
         sc-textarea
-        maxlength="200"
+        [formField]="descForm.description"
         placeholder="Enter description..."
       ></textarea>
       <p sc-field-description>Max 200 characters.</p>
@@ -42,5 +43,10 @@ import {
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MaxlengthTextareaDemo {}`;
+export class MaxlengthTextareaDemo {
+  readonly formModel = signal({ description: '' });
+  readonly descForm = form(this.formModel, (s) => {
+    maxLength(s.description, 200);
+  });
+}`;
 }

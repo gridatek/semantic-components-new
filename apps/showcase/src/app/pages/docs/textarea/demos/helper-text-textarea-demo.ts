@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import {
   ScField,
   ScFieldDescription,
@@ -8,11 +9,15 @@ import {
 
 @Component({
   selector: 'app-helper-text-textarea-demo',
-  imports: [ScField, ScFieldDescription, ScLabel, ScTextarea],
+  imports: [FormField, ScField, ScFieldDescription, ScLabel, ScTextarea],
   template: `
     <div sc-field>
       <label sc-label>Bio</label>
-      <textarea sc-textarea placeholder="Tell us about yourself"></textarea>
+      <textarea
+        sc-textarea
+        [formField]="bioForm.bio"
+        placeholder="Tell us about yourself"
+      ></textarea>
       <p sc-field-description>
         Your bio will be visible on your public profile.
       </p>
@@ -20,4 +25,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HelperTextTextareaDemo {}
+export class HelperTextTextareaDemo {
+  readonly formModel = signal({ bio: '' });
+  readonly bioForm = form(this.formModel);
+}

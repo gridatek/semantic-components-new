@@ -18,19 +18,29 @@ import { LabelTextareaDemo } from './label-textarea-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelTextareaDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
 import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-label-textarea-demo',
-  imports: [ScField, ScLabel, ScTextarea],
+  imports: [FormField, ScField, ScLabel, ScTextarea],
   template: \`
     <div sc-field>
       <label sc-label>Your message</label>
-      <textarea sc-textarea placeholder="Type your message here."></textarea>
+      <textarea
+        sc-textarea
+        [formField]="textareaForm.message"
+        placeholder="Type your message here."
+      ></textarea>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LabelTextareaDemo {}`;
+export class LabelTextareaDemo {
+  readonly formModel = signal({ message: '' });
+  readonly textareaForm = form(this.formModel, (s) => {
+    required(s.message);
+  });
+}`;
 }

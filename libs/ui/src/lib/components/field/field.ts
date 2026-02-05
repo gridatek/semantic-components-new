@@ -1,11 +1,13 @@
 import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
+  contentChild,
   Directive,
   inject,
   InjectionToken,
   input,
 } from '@angular/core';
+import { FormField } from '@angular/forms/signals';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
@@ -57,8 +59,20 @@ export class ScField implements ScFieldContext {
   readonly id = input(inject(_IdGenerator).getId('sc-field-'));
   readonly classInput = input<string>('', { alias: 'class' });
   readonly orientation = input<ScFieldVariants['orientation']>('vertical');
-  readonly invalid = input<boolean>(false);
-  readonly disabled = input<boolean>(false);
+  readonly invalidInput = input<boolean>(false, { alias: 'invalid' });
+  readonly disabledInput = input<boolean>(false, { alias: 'disabled' });
+
+  private readonly formFieldDirective = contentChild(FormField);
+
+  readonly invalid = computed(() => {
+    if (this.invalidInput()) return true;
+    return this.formFieldDirective()?.state().invalid() ?? false;
+  });
+
+  readonly disabled = computed(() => {
+    if (this.disabledInput()) return true;
+    return this.formFieldDirective()?.state().disabled() ?? false;
+  });
 
   protected readonly class = computed(() =>
     cn(fieldVariants({ orientation: this.orientation() }), this.classInput()),

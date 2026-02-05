@@ -1,15 +1,25 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { disabled, form, FormField } from '@angular/forms/signals';
 import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-textarea-demo',
-  imports: [ScField, ScLabel, ScTextarea],
+  imports: [FormField, ScField, ScLabel, ScTextarea],
   template: `
-    <div sc-field [disabled]="true">
+    <div sc-field>
       <label sc-label>Disabled</label>
-      <textarea sc-textarea placeholder="Disabled textarea" disabled></textarea>
+      <textarea
+        sc-textarea
+        [formField]="disabledForm.message"
+        placeholder="Disabled textarea"
+      ></textarea>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DisabledTextareaDemo {}
+export class DisabledTextareaDemo {
+  readonly formModel = signal({ message: '' });
+  readonly disabledForm = form(this.formModel, (s) => {
+    disabled(s.message);
+  });
+}
