@@ -8,7 +8,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD } from '../field/field';
 import { SC_CHECKBOX_FIELD, type ScCheckboxContext } from './checkbox-types';
 import { ScCheckbox } from './checkbox';
 import { ScVisualCheckbox } from './visual-checkbox';
@@ -18,7 +18,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
   imports: [ScVisualCheckbox],
   providers: [
     { provide: SC_CHECKBOX_FIELD, useExisting: ScCheckboxField },
-    { provide: SC_FIELD_ID, useExisting: ScCheckboxField },
+    { provide: SC_FIELD, useExisting: ScCheckboxField },
   ],
   host: {
     'data-slot': 'checkbox-field',

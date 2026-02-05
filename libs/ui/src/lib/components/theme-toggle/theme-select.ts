@@ -7,7 +7,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD } from '../field/field';
 import { ScTheme, Theme } from './theme.service';
 
 @Component({
@@ -26,7 +26,7 @@ import { ScTheme, Theme } from './theme.service';
 })
 export class ScThemeSelect {
   private readonly themeService = inject(ScTheme);
-  private readonly fieldId = inject(SC_FIELD_ID, { optional: true });
+  private readonly field = inject(SC_FIELD, { optional: true });
   private readonly fallbackId = inject(_IdGenerator).getId('sc-theme-select-');
 
   readonly idInput = input('', { alias: 'id' });
@@ -34,7 +34,7 @@ export class ScThemeSelect {
 
   // Priority: explicit id > field's id > own fallback id
   readonly id = computed(
-    () => this.idInput() || this.fieldId?.id() || this.fallbackId,
+    () => this.idInput() || this.field?.id() || this.fallbackId,
   );
 
   protected readonly theme = this.themeService.theme;

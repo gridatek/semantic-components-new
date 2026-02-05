@@ -7,11 +7,11 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD } from '../field/field';
 
 @Component({
   selector: 'div[sc-theme-field]',
-  providers: [{ provide: SC_FIELD_ID, useExisting: ScThemeField }],
+  providers: [{ provide: SC_FIELD, useExisting: ScThemeField }],
   host: {
     'data-slot': 'theme-field',
     '[class]': 'class()',

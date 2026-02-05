@@ -9,12 +9,12 @@ import {
   model,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD } from '../field/field';
 import { ScOptFieldSlot } from './opt-field-slot';
 
 @Directive({
   selector: 'div[sc-opt-field]',
-  providers: [{ provide: SC_FIELD_ID, useExisting: ScOptField }],
+  providers: [{ provide: SC_FIELD, useExisting: ScOptField }],
   host: {
     'data-slot': 'opt-field',
     '[class]': 'class()',

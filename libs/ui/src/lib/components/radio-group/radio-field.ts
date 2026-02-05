@@ -7,12 +7,12 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD } from '../field/field';
 
 @Component({
   selector: 'div[sc-radio-field], label[sc-radio-field]',
   imports: [],
-  providers: [{ provide: SC_FIELD_ID, useExisting: ScRadioField }],
+  providers: [{ provide: SC_FIELD, useExisting: ScRadioField }],
   host: {
     'data-slot': 'radio-field',
     '[class]': 'class()',

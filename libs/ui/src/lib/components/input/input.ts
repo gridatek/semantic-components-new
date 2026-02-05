@@ -35,13 +35,11 @@ export class ScInput {
   });
 
   protected readonly ariaInvalid = computed(() => {
-    const invalid = this.invalid() ?? this.field?.invalid();
-    return invalid ?? null;
+    return this.invalid() || null;
   });
 
   protected readonly controlDisabled = computed(() => {
-    const disabled = this.disabled() ?? this.field?.disabled();
-    return disabled || null;
+    return this.disabled() || null;
   });
 
   protected readonly class = computed(() =>

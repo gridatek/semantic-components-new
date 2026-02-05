@@ -12,17 +12,14 @@ import {
   untracked,
   WritableSignal,
 } from '@angular/core';
-import {
-  SC_FIELD,
-  type ScFieldContext,
-  type ScFieldVariants,
-} from '../field/field';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD, type ScFieldVariants } from '../field/field';
 
 // Token for password field context - interface to avoid circular dependency
 export interface ScPasswordFieldContext {
   readonly value: ModelSignal<string>;
   readonly visible: WritableSignal<boolean>;
+  readonly disabled: () => boolean;
+  readonly invalid: () => boolean;
   toggle(): void;
   setValue(value: string): void;
 }
@@ -37,7 +34,6 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
   providers: [
     { provide: SC_PASSWORD_FIELD, useExisting: ScPasswordField },
     { provide: SC_FIELD, useExisting: ScPasswordField },
-    { provide: SC_FIELD_ID, useExisting: ScPasswordField },
   ],
   host: {
     role: 'group',
@@ -47,7 +43,7 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
     '[attr.data-disabled]': 'disabled() || null',
   },
 })
-export class ScPasswordField implements ScFieldContext {
+export class ScPasswordField implements ScPasswordFieldContext {
   readonly id = input(inject(_IdGenerator).getId('sc-password-field-'));
   readonly orientation = input<ScFieldVariants['orientation']>('vertical');
   readonly invalid = input<boolean>(false);

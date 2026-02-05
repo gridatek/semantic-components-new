@@ -7,7 +7,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD } from '../field/field';
 import { SC_PASSWORD_FIELD } from './password-field';
 
 @Component({
@@ -57,7 +56,7 @@ import { SC_PASSWORD_FIELD } from './password-field';
     'data-slot': 'password-field-toggle',
     type: 'button',
     '[class]': 'class()',
-    '[disabled]': 'field.disabled()',
+    '[disabled]': 'passwordField.disabled()',
     '[attr.aria-label]':
       'passwordField.visible() ? "Hide password" : "Show password"',
     '[attr.aria-pressed]': 'passwordField.visible()',
@@ -67,7 +66,6 @@ import { SC_PASSWORD_FIELD } from './password-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPasswordFieldToggle {
-  readonly field = inject(SC_FIELD);
   readonly passwordField = inject(SC_PASSWORD_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
 

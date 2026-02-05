@@ -9,7 +9,7 @@ import {
   model,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
+import { SC_FIELD } from '../field/field';
 import { ScRatingFieldItem } from './rating-item';
 
 // Token for rating field context
@@ -21,7 +21,7 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
   selector: '[sc-rating-field]',
   providers: [
     { provide: SC_RATING_FIELD, useExisting: ScRatingField },
-    { provide: SC_FIELD_ID, useExisting: ScRatingField },
+    { provide: SC_FIELD, useExisting: ScRatingField },
   ],
   host: {
     'data-slot': 'rating-field',

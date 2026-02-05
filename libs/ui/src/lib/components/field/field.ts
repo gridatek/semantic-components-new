@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
-import { SC_FIELD_ID } from '../label/label-id';
 
 const fieldVariants = cva(
   'gap-2 group/field flex w-full data-[invalid=true]:text-destructive',
@@ -32,9 +31,6 @@ export type ScFieldVariants = VariantProps<typeof fieldVariants>;
 
 export interface ScFieldContext {
   id: () => string;
-  orientation: () => ScFieldVariants['orientation'];
-  invalid: () => boolean;
-  disabled: () => boolean;
 }
 
 export const SC_FIELD = new InjectionToken<ScFieldContext>('SC_FIELD');
@@ -53,10 +49,6 @@ export const SC_FIELD = new InjectionToken<ScFieldContext>('SC_FIELD');
   providers: [
     {
       provide: SC_FIELD,
-      useExisting: ScField,
-    },
-    {
-      provide: SC_FIELD_ID,
       useExisting: ScField,
     },
   ],
