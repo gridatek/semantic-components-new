@@ -28,10 +28,14 @@ export const SC_CHECKBOX = 'SC_CHECKBOX';
 export class ScCheckbox implements FormCheckboxControl {
   private readonly elementRef = inject(ElementRef<HTMLInputElement>);
 
-  readonly id = input(inject(_IdGenerator).getId('sc-checkbox-'));
+  readonly idInput = input(inject(_IdGenerator).getId('sc-checkbox-'), {
+    alias: 'id',
+  });
   readonly classInput = input<string>('', { alias: 'class' });
   readonly indeterminate = input<boolean>(false);
   readonly checked = model<boolean>(false);
+
+  readonly id = computed(() => this.idInput());
 
   // Expose disabled state as a signal
   readonly disabledSignal = signal(false);
