@@ -1,5 +1,6 @@
 import { _IdGenerator } from '@angular/cdk/a11y';
 import { computed, Directive, inject, input } from '@angular/core';
+import { FormField } from '@angular/forms/signals';
 import { cn } from '../../utils';
 import { SC_FIELD } from '../field/field';
 
@@ -8,11 +9,14 @@ import { SC_FIELD } from '../field/field';
   host: {
     'data-slot': 'textarea',
     '[attr.id]': 'id()',
+    '[attr.data-invalid]': 'invalid() || null',
+    '[attr.data-disabled]': 'disabled() || null',
     '[class]': 'class()',
   },
 })
 export class ScTextarea {
   private readonly field = inject(SC_FIELD, { optional: true });
+  private readonly formField = inject(FormField, { optional: true });
   private readonly fallbackId = inject(_IdGenerator).getId('sc-textarea-');
 
   readonly idInput = input('', { alias: 'id' });
@@ -20,6 +24,12 @@ export class ScTextarea {
 
   readonly id = computed(
     () => this.idInput() || this.field?.id() || this.fallbackId,
+  );
+
+  readonly invalid = computed(() => this.formField?.state().invalid() ?? false);
+
+  readonly disabled = computed(
+    () => this.formField?.state().disabled() ?? false,
   );
 
   protected readonly class = computed(() =>
