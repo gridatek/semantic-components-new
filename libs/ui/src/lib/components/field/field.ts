@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
+import { SC_FIELD_ID } from '../label/label-id';
 
 const fieldVariants = cva(
   'gap-2 group/field flex w-full data-[invalid=true]:text-destructive',
@@ -54,6 +55,10 @@ export const SC_FIELD_TOKEN = new InjectionToken<ScFieldContext>(
   providers: [
     {
       provide: SC_FIELD_TOKEN,
+      useExisting: ScField,
+    },
+    {
+      provide: SC_FIELD_ID,
       useExisting: ScField,
     },
   ],

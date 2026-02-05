@@ -1,6 +1,6 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_TOKEN } from '../field/field';
+import { SC_FIELD_ID } from './label-id';
 
 @Directive({
   selector: 'label[sc-label]',
@@ -11,14 +11,14 @@ import { SC_FIELD_TOKEN } from '../field/field';
   },
 })
 export class ScLabel {
-  private readonly field = inject(SC_FIELD_TOKEN, { optional: true });
+  private readonly fieldId = inject(SC_FIELD_ID, { optional: true });
 
   readonly forInput = input<string>('', { alias: 'for' });
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly for = computed(() => {
     // Priority: explicit for input > field context
-    const forValue = this.forInput() || this.field?.id();
+    const forValue = this.forInput() || this.fieldId?.id();
     return forValue || null;
   });
 

@@ -1,3 +1,4 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
   Directive,
@@ -17,6 +18,7 @@ export const SC_CHECKBOX = 'SC_CHECKBOX';
   selector: 'input[type="checkbox"][sc-checkbox]',
   host: {
     'data-slot': 'checkbox',
+    '[id]': 'id()',
     '[class]': 'class()',
     '[checked]': 'checked()',
     '(change)': 'onInputChange($event)',
@@ -26,6 +28,7 @@ export const SC_CHECKBOX = 'SC_CHECKBOX';
 export class ScCheckbox implements FormCheckboxControl {
   private readonly elementRef = inject(ElementRef<HTMLInputElement>);
 
+  readonly id = input(inject(_IdGenerator).getId('sc-checkbox-'));
   readonly classInput = input<string>('', { alias: 'class' });
   readonly indeterminate = input<boolean>(false);
   readonly checked = model<boolean>(false);

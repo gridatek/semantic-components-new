@@ -6,6 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_ID } from '../label/label-id';
 import { SC_CHECKBOX_FIELD, type ScCheckboxContext } from './checkbox-types';
 import { ScCheckbox } from './checkbox';
 import { ScVisualCheckbox } from './visual-checkbox';
@@ -13,7 +14,10 @@ import { ScVisualCheckbox } from './visual-checkbox';
 @Component({
   selector: 'div[sc-checkbox-field], label[sc-checkbox-field]',
   imports: [ScVisualCheckbox],
-  providers: [{ provide: SC_CHECKBOX_FIELD, useExisting: ScCheckboxField }],
+  providers: [
+    { provide: SC_CHECKBOX_FIELD, useExisting: ScCheckboxField },
+    { provide: SC_FIELD_ID, useExisting: ScCheckboxField },
+  ],
   host: {
     'data-slot': 'checkbox-field',
     '[class]': 'class()',
@@ -31,6 +35,9 @@ export class ScCheckboxField implements ScCheckboxContext {
   private readonly checkbox = contentChild(ScCheckbox);
 
   readonly classInput = input<string>('', { alias: 'class' });
+
+  // Expose checkbox id for label association (provided via SC_FIELD_ID)
+  readonly id = computed(() => this.checkbox()?.id() ?? '');
 
   // Computed state from input (implements ScCheckboxContext)
   // These read directly from the ScCheckbox's signals
