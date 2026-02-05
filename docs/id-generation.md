@@ -77,12 +77,12 @@ export class ScCheckbox {
 ```typescript
 // label.ts
 export class ScLabel {
-  private readonly fieldId = inject(SC_FIELD, { optional: true });
+  private readonly field = inject(SC_FIELD, { optional: true });
 
   readonly forInput = input<string>('', { alias: 'for' });
 
   protected readonly for = computed(() => {
-    const forValue = this.forInput() || this.fieldId?.id();
+    const forValue = this.forInput() || this.field?.id();
     return forValue || null;
   });
 }
@@ -144,15 +144,17 @@ Or override at the control level for full manual control:
 ## The SC_FIELD Token
 
 ```typescript
-// label-id.ts
-export interface ScFieldIdContext {
+// field.ts
+export interface ScFieldContext {
   id: () => string;
 }
 
-export const SC_FIELD = new InjectionToken<ScFieldIdContext>('SC_FIELD');
+export const SC_FIELD = new InjectionToken<ScFieldContext>('SC_FIELD');
 ```
 
 A minimal interface with a single `id` method. Any field component that provides `SC_FIELD` automatically connects to `ScLabel`.
+
+Each field also provides its own specific token (e.g. `SC_CHECKBOX_FIELD`, `SC_PASSWORD_FIELD`, `SC_NUMBER_FIELD`) for domain-specific children that need more than just `id`.
 
 ## Implementing for New Field Components
 
