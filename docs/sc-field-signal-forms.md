@@ -81,20 +81,23 @@ The `|| null` ensures the attribute is removed entirely when `false` (not set to
 
 ## Usage
 
-### Basic field with validation
+### Basic field with validation and errors
 
 ```html
 <div sc-field>
   <label sc-label>Email</label>
   <input sc-input type="email" [formField]="myForm.email" placeholder="Email" />
+  @for (error of myForm.email().errors(); track error.kind) {
+  <p sc-field-error>{{ error.message }}</p>
+  }
 </div>
 ```
 
 ```typescript
 readonly formModel = signal({ email: '' });
 readonly myForm = form(this.formModel, (s) => {
-  required(s.email);
-  email(s.email);
+  required(s.email, { message: 'Email is required' });
+  email(s.email, { message: 'Please enter a valid email' });
 });
 ```
 
@@ -102,6 +105,28 @@ When the field is invalid:
 
 - The `<div sc-field>` gets `data-invalid="true"` → label turns red via `data-[invalid=true]:text-destructive`
 - The `<input>` gets `aria-invalid="true"` → red ring/border via `aria-invalid:ring-destructive/20`
+- Error messages render below the input via `sc-field-error` (`role="alert"`, red text)
+
+### Validators with messages
+
+Always pass a `{ message }` option to validators. This keeps error messages in code (localizable) and the template generic:
+
+```typescript
+readonly myForm = form(this.formModel, (s) => {
+  required(s.name, { message: 'Name is required' });
+  required(s.email, { message: 'Email is required' });
+  email(s.email, { message: 'Please enter a valid email' });
+  maxLength(s.bio, 500, { message: 'Bio must be 500 characters or less' });
+});
+```
+
+The template pattern is always the same — loop over `errors()` and display `error.message`:
+
+```html
+@for (error of myForm.name().errors(); track error.kind) {
+<p sc-field-error>{{ error.message }}</p>
+}
+```
 
 ### Disabled field
 
@@ -131,6 +156,55 @@ When disabled:
   <label sc-label>Bio</label>
   <textarea sc-textarea [formField]="myForm.bio" placeholder="Tell us about yourself"></textarea>
   <p sc-field-description>Max 500 characters.</p>
+  @for (error of myForm.bio().errors(); track error.kind) {
+  <p sc-field-error>{{ error.message }}</p>
+  }
+</div>
+```
+
+### Complete form example
+
+```typescript
+interface ContactForm {
+  name: string;
+  email: string;
+  message: string;
+}
+
+readonly formModel = signal<ContactForm>({ name: '', email: '', message: '' });
+
+readonly contactForm = form(this.formModel, (s) => {
+  required(s.name, { message: 'Name is required' });
+  required(s.email, { message: 'Email is required' });
+  email(s.email, { message: 'Please enter a valid email' });
+  required(s.message, { message: 'Message is required' });
+  maxLength(s.message, 1000, { message: 'Message must be 1000 characters or less' });
+});
+```
+
+```html
+<div sc-field>
+  <label sc-label>Name</label>
+  <input sc-input type="text" [formField]="contactForm.name" placeholder="John Doe" />
+  @for (error of contactForm.name().errors(); track error.kind) {
+  <p sc-field-error>{{ error.message }}</p>
+  }
+</div>
+
+<div sc-field>
+  <label sc-label>Email</label>
+  <input sc-input type="email" [formField]="contactForm.email" placeholder="john@example.com" />
+  @for (error of contactForm.email().errors(); track error.kind) {
+  <p sc-field-error>{{ error.message }}</p>
+  }
+</div>
+
+<div sc-field>
+  <label sc-label>Message</label>
+  <textarea sc-textarea [formField]="contactForm.message" placeholder="Your message..."></textarea>
+  @for (error of contactForm.message().errors(); track error.kind) {
+  <p sc-field-error>{{ error.message }}</p>
+  }
 </div>
 ```
 
@@ -193,5 +267,11 @@ When refactoring other field components to follow this pattern:
 
 1. Wrap controls inside `<div sc-field>` with `<label sc-label>`
 2. Use `form()` + `FormField` binding: `[formField]="myForm.fieldName"`
-3. Use validators: `required()`, `email()`, `maxLength()`, `disabled()`, etc.
-4. Remove all manual `id`/`for` wiring
+3. Use validators with messages: `required(s.field, { message: '...' })`
+4. Display errors in template:
+   ```html
+   @for (error of myForm.field().errors(); track error.kind) {
+   <p sc-field-error>{{ error.message }}</p>
+   }
+   ```
+5. Remove all manual `id`/`for` wiring

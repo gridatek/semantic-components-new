@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { form, FormField, required } from '@angular/forms/signals';
-import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
+import {
+  ScField,
+  ScFieldError,
+  ScInput,
+  ScLabel,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-label-input-demo',
-  imports: [FormField, ScField, ScInput, ScLabel],
+  imports: [FormField, ScField, ScFieldError, ScInput, ScLabel],
   template: `
     <div sc-field>
       <label sc-label>Email</label>
@@ -14,6 +19,9 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
         [formField]="emailForm.email"
         placeholder="Email"
       />
+      @for (error of emailForm.email().errors(); track error.kind) {
+        <p sc-field-error>{{ error.message }}</p>
+      }
     </div>
     <pre class="mt-4 text-xs">
 invalid: {{ emailForm.email().invalid() }}
@@ -28,6 +36,6 @@ value: "{{ emailForm.email().value() }}"
 export class LabelInputDemo {
   readonly formModel = signal({ email: '' });
   readonly emailForm = form(this.formModel, (s) => {
-    required(s.email);
+    required(s.email, { message: 'Email is required' });
   });
 }
