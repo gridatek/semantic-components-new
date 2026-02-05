@@ -38,9 +38,7 @@ export class ScCheckboxField implements ScCheckboxContext {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  readonly generatedId = inject(_IdGenerator).getId('sc-checkbox-field-');
-
-  readonly id = computed(() => this.generatedId);
+  readonly id = input(inject(_IdGenerator).getId('sc-checkbox-field-'));
 
   // Computed state from input (implements ScCheckboxContext)
   // These read directly from the ScCheckbox's signals

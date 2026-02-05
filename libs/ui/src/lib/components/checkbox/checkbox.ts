@@ -40,7 +40,7 @@ export class ScCheckbox implements FormCheckboxControl {
 
   // Priority: explicit id > field's generated id > own fallback id
   readonly id = computed(
-    () => this.idInput() || this.checkboxField?.generatedId || this.fallbackId,
+    () => this.idInput() || this.checkboxField?.id() || this.fallbackId,
   );
 
   // Expose disabled state as a signal

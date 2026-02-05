@@ -1,8 +1,8 @@
 import { InjectionToken } from '@angular/core';
 
 export interface ScCheckboxContext {
-  // Auto-generated id for the checkbox input
-  generatedId: string;
+  // Auto-generated id, overridable by consumer
+  id: () => string;
   // Computed state from native input
   checked: () => boolean;
   disabled: () => boolean;
