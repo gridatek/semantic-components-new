@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_TOKEN } from '../field/field';
+import { SC_FIELD } from '../field/field';
 import { SC_PASSWORD_FIELD } from './password-field';
 
 @Component({
@@ -30,7 +30,7 @@ import { SC_PASSWORD_FIELD } from './password-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPasswordFieldInput {
-  readonly field = inject(SC_FIELD_TOKEN);
+  readonly field = inject(SC_FIELD);
   readonly passwordField = inject(SC_PASSWORD_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
   readonly placeholder = input<string>('');

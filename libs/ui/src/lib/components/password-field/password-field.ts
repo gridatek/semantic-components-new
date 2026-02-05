@@ -13,7 +13,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import {
-  SC_FIELD_TOKEN,
+  SC_FIELD,
   type ScFieldContext,
   type ScFieldVariants,
 } from '../field/field';
@@ -36,7 +36,7 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
   exportAs: 'scPasswordField',
   providers: [
     { provide: SC_PASSWORD_FIELD, useExisting: ScPasswordField },
-    { provide: SC_FIELD_TOKEN, useExisting: ScPasswordField },
+    { provide: SC_FIELD, useExisting: ScPasswordField },
     { provide: SC_FIELD_ID, useExisting: ScPasswordField },
   ],
   host: {

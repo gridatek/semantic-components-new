@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_TOKEN } from '../field/field';
+import { SC_FIELD } from '../field/field';
 
 @Component({
   selector: '[sc-password-field-input-group]',
@@ -23,7 +23,7 @@ import { SC_FIELD_TOKEN } from '../field/field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPasswordFieldInputGroup {
-  readonly field = inject(SC_FIELD_TOKEN);
+  readonly field = inject(SC_FIELD);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

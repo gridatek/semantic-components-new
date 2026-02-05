@@ -37,9 +37,7 @@ export interface ScFieldContext {
   disabled: () => boolean;
 }
 
-export const SC_FIELD_TOKEN = new InjectionToken<ScFieldContext>(
-  'SC_FIELD_TOKEN',
-);
+export const SC_FIELD = new InjectionToken<ScFieldContext>('SC_FIELD');
 
 @Directive({
   selector: '[sc-field]',
@@ -54,7 +52,7 @@ export const SC_FIELD_TOKEN = new InjectionToken<ScFieldContext>(
   },
   providers: [
     {
-      provide: SC_FIELD_TOKEN,
+      provide: SC_FIELD,
       useExisting: ScField,
     },
     {

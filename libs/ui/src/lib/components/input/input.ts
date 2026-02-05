@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { SC_FIELD_TOKEN } from '../field/field';
+import { SC_FIELD } from '../field/field';
 
 @Directive({
   selector: 'input[sc-input]',
@@ -19,7 +19,7 @@ import { SC_FIELD_TOKEN } from '../field/field';
   },
 })
 export class ScInput {
-  private readonly field = inject(SC_FIELD_TOKEN, { optional: true });
+  private readonly field = inject(SC_FIELD, { optional: true });
 
   readonly id = input<string>();
   readonly invalid = input<boolean, unknown>(false, {
