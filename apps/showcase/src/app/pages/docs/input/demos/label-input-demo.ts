@@ -15,6 +15,13 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
         placeholder="Email"
       />
     </div>
+    <pre class="mt-4 text-xs">
+invalid: {{ emailForm.email().invalid() }}
+disabled: {{ emailForm.email().disabled() }}
+dirty: {{ emailForm.email().dirty() }}
+value: "{{ emailForm.email().value() }}"
+    </pre
+    >
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
