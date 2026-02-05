@@ -1,16 +1,20 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
   contentChildren,
   Directive,
   effect,
+  inject,
   input,
   model,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_ID } from '../label/label-id';
 import { ScOptFieldSlot } from './opt-field-slot';
 
 @Directive({
   selector: 'div[sc-opt-field]',
+  providers: [{ provide: SC_FIELD_ID, useExisting: ScOptField }],
   host: {
     'data-slot': 'opt-field',
     '[class]': 'class()',
@@ -18,6 +22,7 @@ import { ScOptFieldSlot } from './opt-field-slot';
   },
 })
 export class ScOptField {
+  readonly id = input(inject(_IdGenerator).getId('sc-opt-field-'));
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<string>('');
   readonly disabled = input<boolean>(false);

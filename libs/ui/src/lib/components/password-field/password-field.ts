@@ -17,6 +17,7 @@ import {
   type ScFieldContext,
   type ScFieldVariants,
 } from '../field/field';
+import { SC_FIELD_ID } from '../label/label-id';
 
 // Token for password field context - interface to avoid circular dependency
 export interface ScPasswordFieldContext {
@@ -36,6 +37,7 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
   providers: [
     { provide: SC_PASSWORD_FIELD, useExisting: ScPasswordField },
     { provide: SC_FIELD_TOKEN, useExisting: ScPasswordField },
+    { provide: SC_FIELD_ID, useExisting: ScPasswordField },
   ],
   host: {
     role: 'group',

@@ -1,3 +1,4 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,12 +7,14 @@ import {
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_ID } from '../label/label-id';
 import { ScTheme, Theme } from './theme.service';
 
 @Component({
   selector: 'select[sc-theme-select]',
   host: {
     'data-slot': 'theme-select',
+    '[id]': 'id()',
     '[class]': 'class()',
     '[value]': 'theme()',
     '(change)': 'onThemeChange($event)',
@@ -23,8 +26,16 @@ import { ScTheme, Theme } from './theme.service';
 })
 export class ScThemeSelect {
   private readonly themeService = inject(ScTheme);
+  private readonly fieldId = inject(SC_FIELD_ID, { optional: true });
+  private readonly fallbackId = inject(_IdGenerator).getId('sc-theme-select-');
 
+  readonly idInput = input('', { alias: 'id' });
   readonly classInput = input<string>('', { alias: 'class' });
+
+  // Priority: explicit id > field's id > own fallback id
+  readonly id = computed(
+    () => this.idInput() || this.fieldId?.id() || this.fallbackId,
+  );
 
   protected readonly theme = this.themeService.theme;
 

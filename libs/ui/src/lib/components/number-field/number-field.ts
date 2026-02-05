@@ -1,11 +1,14 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
   Directive,
+  inject,
   InjectionToken,
   input,
   model,
   output,
 } from '@angular/core';
+import { SC_FIELD_ID } from '../label/label-id';
 
 // Token for number field context
 export const SC_NUMBER_FIELD = new InjectionToken<ScNumberField>(
@@ -15,13 +18,17 @@ export const SC_NUMBER_FIELD = new InjectionToken<ScNumberField>(
 @Directive({
   selector: '[sc-number-field]',
   exportAs: 'scNumberField',
-  providers: [{ provide: SC_NUMBER_FIELD, useExisting: ScNumberField }],
+  providers: [
+    { provide: SC_NUMBER_FIELD, useExisting: ScNumberField },
+    { provide: SC_FIELD_ID, useExisting: ScNumberField },
+  ],
   host: {
     'data-slot': 'number-field',
     '[attr.data-disabled]': 'disabled() || null',
   },
 })
 export class ScNumberField {
+  readonly id = input(inject(_IdGenerator).getId('sc-number-field-'));
   readonly value = model<number | null>(null);
   readonly min = input<number | null>(null);
   readonly max = input<number | null>(null);

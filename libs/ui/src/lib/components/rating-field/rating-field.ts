@@ -1,12 +1,15 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
   contentChildren,
   Directive,
+  inject,
   InjectionToken,
   input,
   model,
 } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD_ID } from '../label/label-id';
 import { ScRatingFieldItem } from './rating-item';
 
 // Token for rating field context
@@ -16,7 +19,10 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
 
 @Directive({
   selector: '[sc-rating-field]',
-  providers: [{ provide: SC_RATING_FIELD, useExisting: ScRatingField }],
+  providers: [
+    { provide: SC_RATING_FIELD, useExisting: ScRatingField },
+    { provide: SC_FIELD_ID, useExisting: ScRatingField },
+  ],
   host: {
     'data-slot': 'rating-field',
     role: 'group',
@@ -28,6 +34,7 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
   },
 })
 export class ScRatingField {
+  readonly id = input(inject(_IdGenerator).getId('sc-rating-field-'));
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<number>(0);
   readonly readonly = input<boolean>(false);
