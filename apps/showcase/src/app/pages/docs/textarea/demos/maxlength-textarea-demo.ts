@@ -1,18 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLabel, ScTextarea } from '@semantic-components/ui';
+import {
+  ScField,
+  ScFieldDescription,
+  ScLabel,
+  ScTextarea,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-maxlength-textarea-demo',
-  imports: [ScTextarea, ScLabel],
+  imports: [ScField, ScFieldDescription, ScLabel, ScTextarea],
   template: `
-    <div class="grid w-full gap-1.5">
-      <label sc-label for="limited">Description (max 200 characters)</label>
+    <div sc-field>
+      <label sc-label>Description</label>
       <textarea
         sc-textarea
-        id="limited"
         maxlength="200"
         placeholder="Enter description..."
       ></textarea>
+      <p sc-field-description>Max 200 characters.</p>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

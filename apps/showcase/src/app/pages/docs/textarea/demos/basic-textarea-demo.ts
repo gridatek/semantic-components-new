@@ -1,11 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTextarea } from '@semantic-components/ui';
+import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-textarea-demo',
-  imports: [ScTextarea],
+  imports: [ScField, ScLabel, ScTextarea],
   template: `
-    <textarea sc-textarea placeholder="Type your message here."></textarea>
+    <div sc-field>
+      <label sc-label>Your message</label>
+      <textarea sc-textarea placeholder="Type your message here."></textarea>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

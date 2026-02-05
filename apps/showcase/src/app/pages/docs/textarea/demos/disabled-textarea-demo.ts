@@ -1,15 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTextarea } from '@semantic-components/ui';
+import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-textarea-demo',
-  imports: [ScTextarea],
+  imports: [ScField, ScLabel, ScTextarea],
   template: `
-    <textarea
-      sc-textarea
-      placeholder="Disabled textarea"
-      disabled
-    ></textarea>
+    <div sc-field [disabled]="true">
+      <label sc-label>Disabled</label>
+      <textarea sc-textarea placeholder="Disabled textarea" disabled></textarea>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
