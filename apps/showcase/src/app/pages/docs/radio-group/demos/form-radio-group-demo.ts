@@ -1,21 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {
-  ScRadioFieldGroup,
-  ScRadioField,
-  ScRadio,
-} from '@semantic-components/ui';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-form-radio-group-demo',
-  imports: [FormsModule, ScRadioFieldGroup, ScRadioField, ScRadio],
+  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
   template: `
     <div class="rounded-lg border p-6 max-w-md">
       <div class="space-y-4">
         <h4 id="notify-heading" class="font-semibold">
           Notification Preferences
         </h4>
-        <div sc-radio-field-group class="gap-3">
+        <div sc-radio-group class="gap-3">
           <label sc-radio-field class="flex items-center space-x-2">
             <input
               type="radio"

@@ -4,14 +4,14 @@ A set of checkable buttons where only one button can be checked at a time.
 
 ## Components
 
-- `ScRadioFieldGroup` - Container directive that provides radiogroup semantics (applied to div)
+- `ScRadioGroup` - Container directive that provides radiogroup semantics (applied to div)
 - `ScRadioField` - Container component for each radio option (applied to div or label)
 - `ScRadio` - Directive for styling native radio inputs (applied to input[type="radio"])
 
 ## Usage
 
 ```html
-<div sc-radio-field-group>
+<div sc-radio-group>
   <label sc-radio-field class="flex items-center space-x-2">
     <input type="radio" sc-radio name="options" value="option1" [(ngModel)]="selected" />
     <span>Option 1</span>
@@ -30,7 +30,7 @@ A set of checkable buttons where only one button can be checked at a time.
 ## Horizontal Layout
 
 ```html
-<div sc-radio-field-group class="flex flex-row gap-4">
+<div sc-radio-group class="flex flex-row gap-4">
   <label sc-radio-field class="flex items-center space-x-2">
     <input type="radio" sc-radio name="filter" value="all" [(ngModel)]="selected" />
     <span>All</span>
@@ -47,7 +47,7 @@ A set of checkable buttons where only one button can be checked at a time.
 ```html
 <!-- Disable entire group using fieldset -->
 <fieldset [disabled]="true">
-  <div sc-radio-field-group>
+  <div sc-radio-group>
     <label sc-radio-field class="flex items-center space-x-2">
       <input type="radio" sc-radio name="options" value="option1" [(ngModel)]="selected" />
       <span>Option 1</span>
@@ -60,7 +60,7 @@ A set of checkable buttons where only one button can be checked at a time.
 </fieldset>
 
 <!-- Disable individual items -->
-<div sc-radio-field-group>
+<div sc-radio-group>
   <label sc-radio-field class="flex items-center space-x-2">
     <input type="radio" sc-radio name="options" value="option1" [(ngModel)]="selected" />
     <span>Option 1</span>
@@ -76,7 +76,7 @@ A set of checkable buttons where only one button can be checked at a time.
 
 ```html
 <!-- Using aria-label -->
-<div sc-radio-field-group aria-label="Choose your theme">
+<div sc-radio-group aria-label="Choose your theme">
   <label sc-radio-field class="flex items-center space-x-2">
     <input type="radio" sc-radio name="theme" value="light" [(ngModel)]="selected" />
     <span>Light</span>
@@ -90,7 +90,7 @@ A set of checkable buttons where only one button can be checked at a time.
 <!-- Using aria-labelledby with a visible heading -->
 <div>
   <h3 id="theme-heading">Choose your theme</h3>
-  <div sc-radio-field-group aria-labelledby="theme-heading">
+  <div sc-radio-group aria-labelledby="theme-heading">
     <label sc-radio-field class="flex items-center space-x-2">
       <input type="radio" sc-radio name="theme" value="light" [(ngModel)]="selected" />
       <span>Light</span>
@@ -105,11 +105,11 @@ A set of checkable buttons where only one button can be checked at a time.
 
 ## API
 
-### ScRadioFieldGroup
+### ScRadioGroup
 
 Container directive for radio buttons that provides radiogroup semantics.
 
-**Selector:** `div[sc-radio-field-group]`
+**Selector:** `div[sc-radio-group]`
 
 **Inputs:**
 
@@ -157,7 +157,7 @@ Directive for styling native radio inputs. Apply to `input[type="radio"]` elemen
 The `ScRadio` directive styles the native radio input using CSS. You can customize the appearance by passing custom classes:
 
 ```html
-<div sc-radio-field-group>
+<div sc-radio-group>
   <label sc-radio-field>
     <input type="radio" sc-radio class="h-6 w-6 border-2" name="custom" value="option1" [(ngModel)]="selected" />
     <span>Custom sized radio</span>
@@ -168,7 +168,7 @@ The `ScRadio` directive styles the native radio input using CSS. You can customi
 For complete custom styling, you can omit the `sc-radio` directive and style the native input directly:
 
 ```html
-<div sc-radio-field-group>
+<div sc-radio-group>
   <label sc-radio-field>
     <input type="radio" class="your-custom-classes" name="custom" value="option1" [(ngModel)]="selected" />
     <span>Fully custom radio</span>
@@ -180,11 +180,11 @@ For complete custom styling, you can omit the `sc-radio` directive and style the
 
 All components have a `data-slot` attribute for styling purposes:
 
-| Component         | data-slot           |
-| ----------------- | ------------------- |
-| ScRadioFieldGroup | `radio-field-group` |
-| ScRadioField      | `radio-field`       |
-| ScRadio           | `radio`             |
+| Component    | data-slot     |
+| ------------ | ------------- |
+| ScRadioGroup | `radio-group` |
+| ScRadioField | `radio-field` |
+| ScRadio      | `radio`       |
 
 ## Accessibility
 
@@ -205,7 +205,7 @@ All components have a `data-slot` attribute for styling purposes:
 The radio group uses a composable directive-based architecture:
 
 ```
-div[sc-radio-field-group] (container with role="radiogroup")
+div[sc-radio-group] (container with role="radiogroup")
 └── label[sc-radio-field] (or div[sc-radio-field]) (for each radio option)
     └── input[type="radio"][sc-radio] (styled native radio input)
 ```

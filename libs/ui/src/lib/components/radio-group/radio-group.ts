@@ -2,14 +2,14 @@ import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: 'div[sc-radio-field-group]',
+  selector: 'div[sc-radio-group]',
   host: {
-    'data-slot': 'radio-field-group',
+    'data-slot': 'radio-group',
     role: 'radiogroup',
     '[class]': 'class()',
   },
 })
-export class ScRadioFieldGroup {
+export class ScRadioGroup {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>

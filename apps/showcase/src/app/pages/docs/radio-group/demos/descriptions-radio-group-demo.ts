@@ -1,16 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {
-  ScRadioFieldGroup,
-  ScRadioField,
-  ScRadio,
-} from '@semantic-components/ui';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-descriptions-radio-group-demo',
-  imports: [FormsModule, ScRadioFieldGroup, ScRadioField, ScRadio],
+  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
   template: `
-    <div sc-radio-field-group class="gap-4">
+    <div sc-radio-group class="gap-4">
       <label sc-radio-field class="flex items-start space-x-3">
         <input
           type="radio"
