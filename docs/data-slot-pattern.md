@@ -4,7 +4,7 @@ This document explains how `data-slot` attributes are used in Semantic Component
 
 ## Overview
 
-Every sub-component in the library sets a `data-slot` attribute on its host element. Parent containers use these attributes to position children in a CSS Grid layout. This is the same pattern used by [Catalyst](https://catalyst.tailwindui.com/) (Tailwind CSS Plus).
+Every sub-component in the library sets a `data-slot` attribute on its host element. Parent containers use these attributes to position children in a CSS Grid layout.
 
 ```html
 <div sc-checkbox-field>
