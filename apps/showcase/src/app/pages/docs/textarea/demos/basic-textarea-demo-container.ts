@@ -6,7 +6,11 @@ import { BasicTextareaDemo } from './basic-textarea-demo';
   selector: 'app-basic-textarea-demo-container',
   imports: [DemoContainer, BasicTextareaDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/textarea/basic-textarea-demo"
+      [code]="code"
+    >
       <app-basic-textarea-demo />
     </app-demo-container>
   `,
@@ -15,13 +19,16 @@ import { BasicTextareaDemo } from './basic-textarea-demo';
 })
 export class BasicTextareaDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTextarea } from '@semantic-components/ui';
+import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-textarea-demo',
-  imports: [ScTextarea],
+  imports: [ScField, ScLabel, ScTextarea],
   template: \`
-    <textarea sc-textarea placeholder="Type your message here."></textarea>
+    <div sc-field>
+      <label sc-label>Your message</label>
+      <textarea sc-textarea placeholder="Type your message here."></textarea>
+    </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -6,7 +6,11 @@ import { RowsTextareaDemo } from './rows-textarea-demo';
   selector: 'app-rows-textarea-demo-container',
   imports: [DemoContainer, RowsTextareaDemo],
   template: `
-    <app-demo-container title="Custom Rows" [code]="code">
+    <app-demo-container
+      title="Custom Rows"
+      demoUrl="/demos/textarea/rows-textarea-demo"
+      [code]="code"
+    >
       <app-rows-textarea-demo />
     </app-demo-container>
   `,
@@ -15,30 +19,20 @@ import { RowsTextareaDemo } from './rows-textarea-demo';
 })
 export class RowsTextareaDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLabel, ScTextarea } from '@semantic-components/ui';
+import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-rows-textarea-demo',
-  imports: [ScTextarea, ScLabel],
+  imports: [ScField, ScLabel, ScTextarea],
   template: \`
     <div class="grid w-full gap-4">
-      <div class="grid gap-1.5">
-        <label sc-label for="small">Small (2 rows)</label>
-        <textarea
-          sc-textarea
-          id="small"
-          rows="2"
-          placeholder="Small textarea"
-        ></textarea>
+      <div sc-field>
+        <label sc-label>Small (2 rows)</label>
+        <textarea sc-textarea rows="2" placeholder="Small textarea"></textarea>
       </div>
-      <div class="grid gap-1.5">
-        <label sc-label for="large">Large (6 rows)</label>
-        <textarea
-          sc-textarea
-          id="large"
-          rows="6"
-          placeholder="Large textarea"
-        ></textarea>
+      <div sc-field>
+        <label sc-label>Large (6 rows)</label>
+        <textarea sc-textarea rows="6" placeholder="Large textarea"></textarea>
       </div>
     </div>
   \`,

@@ -6,7 +6,11 @@ import { LabelTextareaDemo } from './label-textarea-demo';
   selector: 'app-label-textarea-demo-container',
   imports: [DemoContainer, LabelTextareaDemo],
   template: `
-    <app-demo-container title="With Label" [code]="code">
+    <app-demo-container
+      title="With Label"
+      demoUrl="/demos/textarea/label-textarea-demo"
+      [code]="code"
+    >
       <app-label-textarea-demo />
     </app-demo-container>
   `,
@@ -15,19 +19,15 @@ import { LabelTextareaDemo } from './label-textarea-demo';
 })
 export class LabelTextareaDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScLabel, ScTextarea } from '@semantic-components/ui';
+import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-label-textarea-demo',
-  imports: [ScTextarea, ScLabel],
+  imports: [ScField, ScLabel, ScTextarea],
   template: \`
-    <div class="grid w-full gap-1.5">
-      <label sc-label for="message">Your message</label>
-      <textarea
-        sc-textarea
-        id="message"
-        placeholder="Type your message here."
-      ></textarea>
+    <div sc-field>
+      <label sc-label>Your message</label>
+      <textarea sc-textarea placeholder="Type your message here."></textarea>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
