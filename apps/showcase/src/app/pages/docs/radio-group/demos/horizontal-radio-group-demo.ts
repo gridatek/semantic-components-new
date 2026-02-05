@@ -1,19 +1,22 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { form, FormField } from '@angular/forms/signals';
 import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface FilterFormModel {
+  filter: string;
+}
 
 @Component({
   selector: 'app-horizontal-radio-group-demo',
-  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: `
     <div sc-radio-group class="flex flex-row gap-4">
       <label sc-radio-field>
         <input
           type="radio"
           sc-radio
-          name="horizontal"
           value="all"
-          [(ngModel)]="horizontalValue"
+          [formField]="filterForm.filter"
           id="h1"
         />
         <span class="text-sm font-medium">All</span>
@@ -22,9 +25,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <input
           type="radio"
           sc-radio
-          name="horizontal"
           value="unread"
-          [(ngModel)]="horizontalValue"
+          [formField]="filterForm.filter"
           id="h2"
         />
         <span class="text-sm font-medium">Unread</span>
@@ -33,9 +35,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <input
           type="radio"
           sc-radio
-          name="horizontal"
           value="archived"
-          [(ngModel)]="horizontalValue"
+          [formField]="filterForm.filter"
           id="h3"
         />
         <span class="text-sm font-medium">Archived</span>
@@ -45,5 +46,9 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalRadioGroupDemo {
-  horizontalValue = 'all';
+  readonly formModel = signal<FilterFormModel>({
+    filter: 'all',
+  });
+
+  readonly filterForm = form(this.formModel);
 }

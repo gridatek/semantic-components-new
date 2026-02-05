@@ -15,39 +15,63 @@ import { BasicRadioGroupDemo } from './basic-radio-group-demo';
 })
 export class BasicRadioGroupDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
+import { form, FormField } from '@angular/forms/signals';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface SpacingFormModel {
+  spacing: string;
+}
 
 @Component({
   selector: 'app-basic-radio-group-demo',
-  imports: [ScRadioGroup, ScRadioGroupItem],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: \`
-    <div sc-radio-group [(value)]="value" label="Spacing preference">
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="default" id="r1" />
-        <label for="r1" class="text-sm font-medium leading-none">
-          Default
-        </label>
-      </div>
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="comfortable" id="r2" />
-        <label for="r2" class="text-sm font-medium leading-none">
-          Comfortable
-        </label>
-      </div>
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="compact" id="r3" />
-        <label for="r3" class="text-sm font-medium leading-none">
-          Compact
-        </label>
-      </div>
+    <div sc-radio-group>
+      <label sc-radio-field class="flex items-center space-x-2">
+        <input
+          type="radio"
+          sc-radio
+          name="spacing"
+          value="default"
+          [formField]="spacingForm.spacing"
+          id="r1"
+        />
+        <span class="text-sm font-medium leading-none">Default</span>
+      </label>
+      <label sc-radio-field class="flex items-center space-x-2">
+        <input
+          type="radio"
+          sc-radio
+          name="spacing"
+          value="comfortable"
+          [formField]="spacingForm.spacing"
+          id="r2"
+        />
+        <span class="text-sm font-medium leading-none">Comfortable</span>
+      </label>
+      <label sc-radio-field class="flex items-center space-x-2">
+        <input
+          type="radio"
+          sc-radio
+          name="spacing"
+          value="compact"
+          [formField]="spacingForm.spacing"
+          id="r3"
+        />
+        <span class="text-sm font-medium leading-none">Compact</span>
+      </label>
     </div>
     <p class="mt-2 text-sm text-muted-foreground">
-      Selected: {{ value() || 'none' }}
+      Selected: {{ formModel().spacing || 'none' }}
     </p>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicRadioGroupDemo {
-  readonly value = signal<string | null>('comfortable');
+  readonly formModel = signal<SpacingFormModel>({
+    spacing: 'comfortable',
+  });
+
+  readonly spacingForm = form(this.formModel);
 }`;
 }

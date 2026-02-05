@@ -1,10 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface NotificationFormModel {
+  notify: string;
+}
 
 @Component({
   selector: 'app-form-radio-group-demo',
-  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: `
     <div class="rounded-lg border p-6 max-w-md">
       <div class="space-y-4">
@@ -16,9 +20,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
             <input
               type="radio"
               sc-radio
-              name="notify"
               value="all"
-              [(ngModel)]="notifyValue"
+              [formField]="notificationForm.notify"
               id="notify-all"
             />
             <span class="text-sm font-medium">All new messages</span>
@@ -27,9 +30,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
             <input
               type="radio"
               sc-radio
-              name="notify"
               value="mentions"
-              [(ngModel)]="notifyValue"
+              [formField]="notificationForm.notify"
               id="notify-mentions"
             />
             <span class="text-sm font-medium">
@@ -40,9 +42,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
             <input
               type="radio"
               sc-radio
-              name="notify"
               value="none"
-              [(ngModel)]="notifyValue"
+              [formField]="notificationForm.notify"
               id="notify-none"
             />
             <span class="text-sm font-medium">Nothing</span>
@@ -54,5 +55,9 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormRadioGroupDemo {
-  notifyValue = 'mentions';
+  readonly formModel = signal<NotificationFormModel>({
+    notify: 'mentions',
+  });
+
+  readonly notificationForm = form(this.formModel);
 }

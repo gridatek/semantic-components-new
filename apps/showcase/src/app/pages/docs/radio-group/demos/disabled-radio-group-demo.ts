@@ -1,10 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface DisabledFormModel {
+  individual: string;
+}
 
 @Component({
   selector: 'app-disabled-radio-group-demo',
-  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: `
     <div class="flex flex-col gap-4">
       <div>
@@ -16,32 +20,22 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
             <input
               type="radio"
               sc-radio
-              name="individual"
               value="option1"
-              [(ngModel)]="disabledDemo"
+              [formField]="disabledForm.individual"
               id="d1"
             />
             <span class="text-sm">Option 1</span>
           </label>
           <label sc-radio-field class="flex items-center space-x-2">
-            <input
-              type="radio"
-              sc-radio
-              name="individual"
-              value="option2"
-              [(ngModel)]="disabledDemo"
-              id="d2"
-              [disabled]="true"
-            />
+            <input type="radio" sc-radio value="option2" id="d2" disabled />
             <span class="text-sm opacity-50">Option 2 (disabled)</span>
           </label>
           <label sc-radio-field class="flex items-center space-x-2">
             <input
               type="radio"
               sc-radio
-              name="individual"
               value="option3"
-              [(ngModel)]="disabledDemo"
+              [formField]="disabledForm.individual"
               id="d3"
             />
             <span class="text-sm">Option 3</span>
@@ -52,25 +46,11 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <p class="text-xs text-muted-foreground mb-2">Entire group disabled:</p>
         <div sc-radio-group>
           <label sc-radio-field class="flex items-center space-x-2">
-            <input
-              type="radio"
-              sc-radio
-              name="group"
-              value="option1"
-              [disabled]="true"
-              id="g1"
-            />
+            <input type="radio" sc-radio value="option1" disabled id="g1" />
             <span class="text-sm opacity-50">Option 1</span>
           </label>
           <label sc-radio-field class="flex items-center space-x-2">
-            <input
-              type="radio"
-              sc-radio
-              name="group"
-              value="option2"
-              [disabled]="true"
-              id="g2"
-            />
+            <input type="radio" sc-radio value="option2" disabled id="g2" />
             <span class="text-sm opacity-50">Option 2</span>
           </label>
         </div>
@@ -80,5 +60,9 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledRadioGroupDemo {
-  disabledDemo = 'option1';
+  readonly formModel = signal<DisabledFormModel>({
+    individual: 'option1',
+  });
+
+  readonly disabledForm = form(this.formModel);
 }

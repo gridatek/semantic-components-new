@@ -1,19 +1,22 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface PlanFormModel {
+  plan: string;
+}
 
 @Component({
   selector: 'app-descriptions-radio-group-demo',
-  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: `
     <div sc-radio-group class="gap-4">
       <label sc-radio-field class="flex items-start space-x-3">
         <input
           type="radio"
           sc-radio
-          name="plan"
           value="free"
-          [(ngModel)]="planValue"
+          [formField]="planForm.plan"
           id="plan-free"
           class="mt-1"
         />
@@ -28,9 +31,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <input
           type="radio"
           sc-radio
-          name="plan"
           value="pro"
-          [(ngModel)]="planValue"
+          [formField]="planForm.plan"
           id="plan-pro"
           class="mt-1"
         />
@@ -45,9 +47,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <input
           type="radio"
           sc-radio
-          name="plan"
           value="enterprise"
-          [(ngModel)]="planValue"
+          [formField]="planForm.plan"
           id="plan-enterprise"
           class="mt-1"
         />
@@ -63,5 +64,9 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DescriptionsRadioGroupDemo {
-  planValue = 'pro';
+  readonly formModel = signal<PlanFormModel>({
+    plan: 'pro',
+  });
+
+  readonly planForm = form(this.formModel);
 }

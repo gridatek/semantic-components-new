@@ -10,21 +10,39 @@ A set of checkable buttons where only one button can be checked at a time.
 
 ## Usage
 
-```html
-<div sc-radio-group>
-  <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="options" value="option1" [(ngModel)]="selected" />
-    <span>Option 1</span>
-  </label>
-  <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="options" value="option2" [(ngModel)]="selected" />
-    <span>Option 2</span>
-  </label>
-  <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="options" value="option3" [(ngModel)]="selected" />
-    <span>Option 3</span>
-  </label>
-</div>
+```typescript
+import { Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface FormModel {
+  option: string;
+}
+
+@Component({
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
+  template: `
+    <div sc-radio-group>
+      <label sc-radio-field class="flex items-center space-x-2">
+        <input type="radio" sc-radio value="option1" [formField]="optionForm.option" />
+        <span>Option 1</span>
+      </label>
+      <label sc-radio-field class="flex items-center space-x-2">
+        <input type="radio" sc-radio value="option2" [formField]="optionForm.option" />
+        <span>Option 2</span>
+      </label>
+      <label sc-radio-field class="flex items-center space-x-2">
+        <input type="radio" sc-radio value="option3" [formField]="optionForm.option" />
+        <span>Option 3</span>
+      </label>
+    </div>
+    <p>Selected: {{ formModel().option }}</p>
+  `,
+})
+export class MyComponent {
+  readonly formModel = signal<FormModel>({ option: 'option1' });
+  readonly optionForm = form(this.formModel);
+}
 ```
 
 ## Horizontal Layout
@@ -32,11 +50,11 @@ A set of checkable buttons where only one button can be checked at a time.
 ```html
 <div sc-radio-group class="flex flex-row gap-4">
   <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="filter" value="all" [(ngModel)]="selected" />
+    <input type="radio" sc-radio value="all" [formField]="filterForm.filter" />
     <span>All</span>
   </label>
   <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="filter" value="unread" [(ngModel)]="selected" />
+    <input type="radio" sc-radio value="unread" [formField]="filterForm.filter" />
     <span>Unread</span>
   </label>
 </div>
@@ -46,31 +64,33 @@ A set of checkable buttons where only one button can be checked at a time.
 
 ```html
 <!-- Disable entire group using fieldset -->
-<fieldset [disabled]="true">
+<fieldset disabled>
   <div sc-radio-group>
     <label sc-radio-field class="flex items-center space-x-2">
-      <input type="radio" sc-radio name="options" value="option1" [(ngModel)]="selected" />
+      <input type="radio" sc-radio value="option1" [formField]="optionForm.option" />
       <span>Option 1</span>
     </label>
     <label sc-radio-field class="flex items-center space-x-2">
-      <input type="radio" sc-radio name="options" value="option2" [(ngModel)]="selected" />
+      <input type="radio" sc-radio value="option2" [formField]="optionForm.option" />
       <span>Option 2</span>
     </label>
   </div>
 </fieldset>
 
-<!-- Disable individual items -->
+<!-- Disable individual items (without formField) -->
 <div sc-radio-group>
   <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="options" value="option1" [(ngModel)]="selected" />
+    <input type="radio" sc-radio value="option1" [formField]="optionForm.option" />
     <span>Option 1</span>
   </label>
   <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="options" value="option2" [(ngModel)]="selected" [disabled]="true" />
-    <span>Option 2</span>
+    <input type="radio" sc-radio value="option2" disabled />
+    <span>Option 2 (disabled)</span>
   </label>
 </div>
 ```
+
+**Note:** The `disabled` attribute cannot be used on inputs with `[formField]`. To disable individual form-connected radio buttons, remove `[formField]` and use the native `disabled` attribute.
 
 ## With Accessible Label
 
@@ -78,11 +98,11 @@ A set of checkable buttons where only one button can be checked at a time.
 <!-- Using aria-label -->
 <div sc-radio-group aria-label="Choose your theme">
   <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="theme" value="light" [(ngModel)]="selected" />
+    <input type="radio" sc-radio value="light" [formField]="themeForm.theme" />
     <span>Light</span>
   </label>
   <label sc-radio-field class="flex items-center space-x-2">
-    <input type="radio" sc-radio name="theme" value="dark" [(ngModel)]="selected" />
+    <input type="radio" sc-radio value="dark" [formField]="themeForm.theme" />
     <span>Dark</span>
   </label>
 </div>
@@ -92,11 +112,11 @@ A set of checkable buttons where only one button can be checked at a time.
   <h3 id="theme-heading">Choose your theme</h3>
   <div sc-radio-group aria-labelledby="theme-heading">
     <label sc-radio-field class="flex items-center space-x-2">
-      <input type="radio" sc-radio name="theme" value="light" [(ngModel)]="selected" />
+      <input type="radio" sc-radio value="light" [formField]="themeForm.theme" />
       <span>Light</span>
     </label>
     <label sc-radio-field class="flex items-center space-x-2">
-      <input type="radio" sc-radio name="theme" value="dark" [(ngModel)]="selected" />
+      <input type="radio" sc-radio value="dark" [formField]="themeForm.theme" />
       <span>Dark</span>
     </label>
   </div>

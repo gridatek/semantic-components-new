@@ -1,19 +1,22 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
 import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface SpacingFormModel {
+  spacing: string;
+}
 
 @Component({
   selector: 'app-basic-radio-group-demo',
-  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: `
     <div sc-radio-group>
       <label sc-radio-field class="flex items-center space-x-2">
         <input
           type="radio"
           sc-radio
-          name="spacing"
           value="default"
-          [(ngModel)]="value"
+          [formField]="spacingForm.spacing"
           id="r1"
         />
         <span class="text-sm font-medium leading-none">Default</span>
@@ -22,9 +25,8 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <input
           type="radio"
           sc-radio
-          name="spacing"
           value="comfortable"
-          [(ngModel)]="value"
+          [formField]="spacingForm.spacing"
           id="r2"
         />
         <span class="text-sm font-medium leading-none">Comfortable</span>
@@ -33,20 +35,23 @@ import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
         <input
           type="radio"
           sc-radio
-          name="spacing"
           value="compact"
-          [(ngModel)]="value"
+          [formField]="spacingForm.spacing"
           id="r3"
         />
         <span class="text-sm font-medium leading-none">Compact</span>
       </label>
     </div>
     <p class="mt-2 text-sm text-muted-foreground">
-      Selected: {{ value || 'none' }}
+      Selected: {{ formModel().spacing || 'none' }}
     </p>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicRadioGroupDemo {
-  value = 'comfortable';
+  readonly formModel = signal<SpacingFormModel>({
+    spacing: 'comfortable',
+  });
+
+  readonly spacingForm = form(this.formModel);
 }
