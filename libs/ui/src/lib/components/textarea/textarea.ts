@@ -1,15 +1,26 @@
-import { computed, Directive, input } from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
+import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD } from '../field/field';
 
 @Directive({
   selector: 'textarea[sc-textarea]',
   host: {
     'data-slot': 'textarea',
+    '[attr.id]': 'id()',
     '[class]': 'class()',
   },
 })
 export class ScTextarea {
+  private readonly field = inject(SC_FIELD, { optional: true });
+  private readonly fallbackId = inject(_IdGenerator).getId('sc-textarea-');
+
+  readonly idInput = input('', { alias: 'id' });
   readonly classInput = input<string>('', { alias: 'class' });
+
+  readonly id = computed(
+    () => this.idInput() || this.field?.id() || this.fallbackId,
+  );
 
   protected readonly class = computed(() =>
     cn(
