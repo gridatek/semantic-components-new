@@ -1,8 +1,10 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
   contentChild,
+  inject,
   input,
 } from '@angular/core';
 import { cn } from '../../utils';
@@ -36,8 +38,9 @@ export class ScCheckboxField implements ScCheckboxContext {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  // Expose checkbox id for label association (provided via SC_FIELD_ID)
-  readonly id = computed(() => this.checkbox()?.id() ?? '');
+  readonly generatedId = inject(_IdGenerator).getId('sc-checkbox-field-');
+
+  readonly id = computed(() => this.generatedId);
 
   // Computed state from input (implements ScCheckboxContext)
   // These read directly from the ScCheckbox's signals

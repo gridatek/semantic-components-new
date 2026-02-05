@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
+import { SC_CHECKBOX_FIELD } from './checkbox-types';
 
 export const SC_CHECKBOX = 'SC_CHECKBOX';
 
@@ -27,15 +28,20 @@ export const SC_CHECKBOX = 'SC_CHECKBOX';
 })
 export class ScCheckbox implements FormCheckboxControl {
   private readonly elementRef = inject(ElementRef<HTMLInputElement>);
-
-  readonly idInput = input(inject(_IdGenerator).getId('sc-checkbox-'), {
-    alias: 'id',
+  private readonly checkboxField = inject(SC_CHECKBOX_FIELD, {
+    optional: true,
   });
+  private readonly fallbackId = inject(_IdGenerator).getId('sc-checkbox-');
+
+  readonly idInput = input('', { alias: 'id' });
   readonly classInput = input<string>('', { alias: 'class' });
   readonly indeterminate = input<boolean>(false);
   readonly checked = model<boolean>(false);
 
-  readonly id = computed(() => this.idInput());
+  // Priority: explicit id > field's generated id > own fallback id
+  readonly id = computed(
+    () => this.idInput() || this.checkboxField?.generatedId || this.fallbackId,
+  );
 
   // Expose disabled state as a signal
   readonly disabledSignal = signal(false);
