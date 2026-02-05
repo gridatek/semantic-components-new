@@ -15,6 +15,13 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
         placeholder="Disabled input"
       />
     </div>
+    <pre class="mt-4 text-xs">
+invalid: {{ disabledForm.text().invalid() }}
+disabled: {{ disabledForm.text().disabled() }}
+dirty: {{ disabledForm.text().dirty() }}
+value: "{{ disabledForm.text().value() }}"
+    </pre
+    >
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
