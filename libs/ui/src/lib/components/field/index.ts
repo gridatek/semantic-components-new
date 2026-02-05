@@ -1,5 +1,4 @@
 export * from './field';
-export * from './field-control';
 export * from './field-set';
 export * from './field-legend';
 export * from './field-group';
