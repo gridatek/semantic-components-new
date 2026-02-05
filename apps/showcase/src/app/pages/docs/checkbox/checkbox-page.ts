@@ -4,6 +4,7 @@ import { CustomThemeCheckboxDemoContainer } from './demos/custom-theme-checkbox-
 import { DisabledCheckboxDemoContainer } from './demos/disabled-checkbox-demo-container';
 import { FormCheckboxDemoContainer } from './demos/form-checkbox-demo-container';
 import { IndeterminateCheckboxDemoContainer } from './demos/indeterminate-checkbox-demo-container';
+import { LabelCheckboxDemoContainer } from './demos/label-checkbox-demo-container';
 import { SignalFormsCheckboxDemoContainer } from './demos/signal-forms-checkbox-demo-container';
 import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-checkbox-demo-container';
 
@@ -12,6 +13,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
   imports: [
     BasicCheckboxDemoContainer,
     WithDescriptionCheckboxDemoContainer,
+    LabelCheckboxDemoContainer,
     DisabledCheckboxDemoContainer,
     IndeterminateCheckboxDemoContainer,
     FormCheckboxDemoContainer,
@@ -32,6 +34,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-checkbox-demo-container />
         <app-with-description-checkbox-demo-container />
+        <app-label-checkbox-demo-container />
         <app-disabled-checkbox-demo-container />
         <app-indeterminate-checkbox-demo-container />
         <app-form-checkbox-demo-container />
