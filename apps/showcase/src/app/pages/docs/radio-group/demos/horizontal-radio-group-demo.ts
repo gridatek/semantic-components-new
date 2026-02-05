@@ -1,31 +1,53 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
+import { FormsModule } from '@angular/forms';
+import {
+  ScRadioFieldGroup,
+  ScRadioField,
+  ScRadio,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-horizontal-radio-group-demo',
-  imports: [ScRadioGroup, ScRadioGroupItem],
+  imports: [FormsModule, ScRadioFieldGroup, ScRadioField, ScRadio],
   template: `
-    <div
-      sc-radio-group
-      [(value)]="horizontalValue"
-      class="flex flex-row gap-4"
-    >
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="all" id="h1" />
-        <label for="h1" class="text-sm font-medium">All</label>
-      </div>
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="unread" id="h2" />
-        <label for="h2" class="text-sm font-medium">Unread</label>
-      </div>
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="archived" id="h3" />
-        <label for="h3" class="text-sm font-medium">Archived</label>
-      </div>
+    <div sc-radio-field-group class="flex flex-row gap-4">
+      <label sc-radio-field>
+        <input
+          type="radio"
+          sc-radio
+          name="horizontal"
+          value="all"
+          [(ngModel)]="horizontalValue"
+          id="h1"
+        />
+        <span class="text-sm font-medium">All</span>
+      </label>
+      <label sc-radio-field>
+        <input
+          type="radio"
+          sc-radio
+          name="horizontal"
+          value="unread"
+          [(ngModel)]="horizontalValue"
+          id="h2"
+        />
+        <span class="text-sm font-medium">Unread</span>
+      </label>
+      <label sc-radio-field>
+        <input
+          type="radio"
+          sc-radio
+          name="horizontal"
+          value="archived"
+          [(ngModel)]="horizontalValue"
+          id="h3"
+        />
+        <span class="text-sm font-medium">Archived</span>
+      </label>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalRadioGroupDemo {
-  readonly horizontalValue = signal<string | null>('all');
+  horizontalValue = 'all';
 }

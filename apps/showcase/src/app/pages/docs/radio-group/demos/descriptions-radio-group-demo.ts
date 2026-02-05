@@ -1,55 +1,71 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {
+  ScRadioFieldGroup,
+  ScRadioField,
+  ScRadio,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-descriptions-radio-group-demo',
-  imports: [ScRadioGroup, ScRadioGroupItem],
+  imports: [FormsModule, ScRadioFieldGroup, ScRadioField, ScRadio],
   template: `
-    <div sc-radio-group [(value)]="planValue" class="gap-4">
-      <div class="flex items-start space-x-3">
-        <sc-radio-group-item value="free" id="plan-free" class="mt-1" />
+    <div sc-radio-field-group class="gap-4">
+      <label sc-radio-field class="flex items-start space-x-3">
+        <input
+          type="radio"
+          sc-radio
+          name="plan"
+          value="free"
+          [(ngModel)]="planValue"
+          id="plan-free"
+          class="mt-1"
+        />
         <div class="grid gap-1">
-          <label for="plan-free" class="text-sm font-medium leading-none">
-            Free
-          </label>
+          <span class="text-sm font-medium leading-none">Free</span>
           <p class="text-sm text-muted-foreground">
             Get started with basic features
           </p>
         </div>
-      </div>
-      <div class="flex items-start space-x-3">
-        <sc-radio-group-item value="pro" id="plan-pro" class="mt-1" />
+      </label>
+      <label sc-radio-field class="flex items-start space-x-3">
+        <input
+          type="radio"
+          sc-radio
+          name="plan"
+          value="pro"
+          [(ngModel)]="planValue"
+          id="plan-pro"
+          class="mt-1"
+        />
         <div class="grid gap-1">
-          <label for="plan-pro" class="text-sm font-medium leading-none">
-            Pro
-          </label>
+          <span class="text-sm font-medium leading-none">Pro</span>
           <p class="text-sm text-muted-foreground">
             Advanced features for professionals
           </p>
         </div>
-      </div>
-      <div class="flex items-start space-x-3">
-        <sc-radio-group-item
+      </label>
+      <label sc-radio-field class="flex items-start space-x-3">
+        <input
+          type="radio"
+          sc-radio
+          name="plan"
           value="enterprise"
+          [(ngModel)]="planValue"
           id="plan-enterprise"
           class="mt-1"
         />
         <div class="grid gap-1">
-          <label
-            for="plan-enterprise"
-            class="text-sm font-medium leading-none"
-          >
-            Enterprise
-          </label>
+          <span class="text-sm font-medium leading-none">Enterprise</span>
           <p class="text-sm text-muted-foreground">
             Custom solutions for large teams
           </p>
         </div>
-      </div>
+      </label>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DescriptionsRadioGroupDemo {
-  readonly planValue = signal<string | null>('pro');
+  planValue = 'pro';
 }

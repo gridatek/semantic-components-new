@@ -2,20 +2,17 @@ import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
-  selector: 'input[type="radio"][sc-invisible-radio]',
+  selector: 'div[sc-radio-field-group]',
   host: {
-    'data-slot': 'invisible-radio',
+    'data-slot': 'radio-field-group',
+    role: 'radiogroup',
     '[class]': 'class()',
   },
 })
-export class ScInvisibleRadio {
+export class ScRadioFieldGroup {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn(
-      'peer absolute inset-0 size-full cursor-pointer opacity-0',
-      'disabled:cursor-not-allowed',
-      this.classInput(),
-    ),
+    cn('grid gap-2', this.classInput()),
   );
 }
