@@ -21,6 +21,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
     '[attr.data-disabled]': 'disabled() ? "" : null',
   },
   template: `
+    <ng-content select="[sc-checkbox]" />
     <span sc-visual-checkbox></span>
     <ng-content />
   `,
@@ -46,6 +47,14 @@ export class ScCheckboxField implements ScCheckboxContext {
   });
 
   protected readonly class = computed(() =>
-    cn('relative flex shrink-0 items-start gap-2', this.classInput()),
+    cn(
+      'grid grid-cols-[1rem_1fr] items-start gap-x-2 gap-y-1',
+      '*:data-[slot=checkbox]:col-start-1 *:data-[slot=checkbox]:row-start-1',
+      '*:data-[slot=visual-checkbox]:col-start-1 *:data-[slot=visual-checkbox]:row-start-1',
+      '*:data-[slot=label]:col-start-2 *:data-[slot=label]:row-start-1',
+      '*:data-[slot=field-description]:col-start-2 *:data-[slot=field-description]:row-start-2',
+      'has-[>[data-slot=field-description]]:*:data-[slot=label]:font-medium',
+      this.classInput(),
+    ),
   );
 }

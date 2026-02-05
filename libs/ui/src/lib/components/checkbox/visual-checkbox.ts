@@ -35,7 +35,7 @@ export class ScVisualCheckbox {
 
   protected readonly class = computed(() =>
     cn(
-      'inline-flex h-4 w-4 shrink-0 items-center justify-center mt-0.5',
+      'pointer-events-none inline-flex size-4 shrink-0 items-center justify-center',
       'ring-offset-background',
       'peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2',
       'peer-disabled:cursor-not-allowed peer-disabled:opacity-50',

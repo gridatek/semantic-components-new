@@ -1,10 +1,21 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
+import {
+  ScCheckboxField,
+  ScCheckbox,
+  ScLabel,
+  ScFieldDescription,
+} from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-with-description-checkbox-demo',
-  imports: [ScCheckboxField, ScCheckbox, ScLabel, FormsModule],
+  imports: [
+    ScCheckboxField,
+    ScCheckbox,
+    ScLabel,
+    ScFieldDescription,
+    FormsModule,
+  ],
   template: `
     <div sc-checkbox-field>
       <input
@@ -13,12 +24,10 @@ import { FormsModule } from '@angular/forms';
         [(ngModel)]="marketing"
         id="marketing"
       />
-      <div class="grid gap-1.5 leading-none">
-        <label sc-label for="marketing">Marketing emails</label>
-        <p class="text-sm text-muted-foreground">
-          Receive emails about new products, features, and more.
-        </p>
-      </div>
+      <label sc-label for="marketing">Marketing emails</label>
+      <p sc-field-description>
+        Receive emails about new products, features, and more.
+      </p>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
