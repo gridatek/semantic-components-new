@@ -1,15 +1,26 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInput, ScLabel } from '@semantic-components/ui';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
+import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-label-input-demo',
-  imports: [ScInput, ScLabel],
+  imports: [FormField, ScField, ScInput, ScLabel],
   template: `
-    <div class="grid w-full max-w-sm items-center gap-1.5">
-      <label sc-label for="email">Email</label>
-      <input sc-input type="email" id="email" placeholder="Email" />
+    <div sc-field>
+      <label sc-label>Email</label>
+      <input
+        sc-input
+        type="email"
+        [formField]="emailForm.email"
+        placeholder="Email"
+      />
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LabelInputDemo {}
+export class LabelInputDemo {
+  readonly formModel = signal({ email: '' });
+  readonly emailForm = form(this.formModel, (s) => {
+    required(s.email);
+  });
+}

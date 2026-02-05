@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInput, ScLabel } from '@semantic-components/ui';
+import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-file-input-demo',
-  imports: [ScInput, ScLabel],
+  imports: [ScField, ScInput, ScLabel],
   template: `
-    <div class="grid w-full max-w-sm items-center gap-1.5">
-      <label sc-label for="file">Upload file</label>
-      <input sc-input type="file" id="file" />
+    <div sc-field>
+      <label sc-label>Upload file</label>
+      <input sc-input type="file" />
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

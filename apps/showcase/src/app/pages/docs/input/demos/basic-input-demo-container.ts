@@ -6,7 +6,11 @@ import { BasicInputDemo } from './basic-input-demo';
   selector: 'app-basic-input-demo-container',
   imports: [DemoContainer, BasicInputDemo],
   template: `
-    <app-demo-container title="Basic" [code]="code">
+    <app-demo-container
+      title="Basic"
+      demoUrl="/demos/input/basic-input-demo"
+      [code]="code"
+    >
       <app-basic-input-demo />
     </app-demo-container>
   `,
@@ -14,14 +18,23 @@ import { BasicInputDemo } from './basic-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInput } from '@semantic-components/ui';
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-input-demo',
-  imports: [ScInput],
-  template: \`<input sc-input type="text" placeholder="Enter text..." />\`,
+  imports: [FormField, ScField, ScInput, ScLabel],
+  template: \`
+    <div sc-field>
+      <label sc-label>Text</label>
+      <input sc-input type="text" [formField]="textForm.text" placeholder="Enter text..." />
+    </div>
+  \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicInputDemo {}`;
+export class BasicInputDemo {
+  readonly formModel = signal({ text: '' });
+  readonly textForm = form(this.formModel);
+}`;
 }

@@ -1,41 +1,91 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInput, ScLabel } from '@semantic-components/ui';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { email, form, FormField, required } from '@angular/forms/signals';
+import {
+  ScCard,
+  ScCardContent,
+  ScCardHeader,
+  ScCardTitle,
+  ScField,
+  ScInput,
+  ScLabel,
+} from '@semantic-components/ui';
+
+interface CreateAccountForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-form-input-demo',
-  imports: [ScInput, ScLabel],
+  imports: [
+    FormField,
+    ScCard,
+    ScCardContent,
+    ScCardHeader,
+    ScCardTitle,
+    ScField,
+    ScInput,
+    ScLabel,
+  ],
   template: `
-    <div class="rounded-lg border p-6 max-w-md">
-      <div class="space-y-4">
-        <h4 class="font-semibold">Create Account</h4>
-        <div class="grid gap-4">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="grid gap-1.5">
-              <label sc-label for="first-name">First name</label>
-              <input sc-input type="text" id="first-name" placeholder="John" />
-            </div>
-            <div class="grid gap-1.5">
-              <label sc-label for="last-name">Last name</label>
-              <input sc-input type="text" id="last-name" placeholder="Doe" />
-            </div>
-          </div>
-          <div class="grid gap-1.5">
-            <label sc-label for="signup-email">Email</label>
+    <div sc-card class="max-w-md">
+      <div sc-card-header>
+        <h4 sc-card-title class="text-base">Create Account</h4>
+      </div>
+      <div sc-card-content class="grid gap-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div sc-field>
+            <label sc-label>First name</label>
             <input
               sc-input
-              type="email"
-              id="signup-email"
-              placeholder="john&#64;example.com"
+              type="text"
+              [formField]="accountForm.firstName"
+              placeholder="John"
             />
           </div>
-          <div class="grid gap-1.5">
-            <label sc-label for="signup-password">Password</label>
-            <input sc-input type="password" id="signup-password" />
+          <div sc-field>
+            <label sc-label>Last name</label>
+            <input
+              sc-input
+              type="text"
+              [formField]="accountForm.lastName"
+              placeholder="Doe"
+            />
           </div>
+        </div>
+        <div sc-field>
+          <label sc-label>Email</label>
+          <input
+            sc-input
+            type="email"
+            [formField]="accountForm.email"
+            placeholder="john&#64;example.com"
+          />
+        </div>
+        <div sc-field>
+          <label sc-label>Password</label>
+          <input sc-input type="password" [formField]="accountForm.password" />
         </div>
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormInputDemo {}
+export class FormInputDemo {
+  readonly formModel = signal<CreateAccountForm>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+
+  readonly accountForm = form(this.formModel, (s) => {
+    required(s.firstName);
+    required(s.lastName);
+    required(s.email);
+    email(s.email);
+    required(s.password);
+  });
+}

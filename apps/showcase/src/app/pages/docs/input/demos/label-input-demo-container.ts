@@ -6,7 +6,11 @@ import { LabelInputDemo } from './label-input-demo';
   selector: 'app-label-input-demo-container',
   imports: [DemoContainer, LabelInputDemo],
   template: `
-    <app-demo-container title="With Label" [code]="code">
+    <app-demo-container
+      title="With Label"
+      demoUrl="/demos/input/label-input-demo"
+      [code]="code"
+    >
       <app-label-input-demo />
     </app-demo-container>
   `,
@@ -14,19 +18,25 @@ import { LabelInputDemo } from './label-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInput, ScLabel } from '@semantic-components/ui';
+  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField, required } from '@angular/forms/signals';
+import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-label-input-demo',
-  imports: [ScInput, ScLabel],
+  imports: [FormField, ScField, ScInput, ScLabel],
   template: \`
-    <div class="grid w-full max-w-sm items-center gap-1.5">
-      <label sc-label for="email">Email</label>
-      <input sc-input type="email" id="email" placeholder="Email" />
+    <div sc-field>
+      <label sc-label>Email</label>
+      <input sc-input type="email" [formField]="emailForm.email" placeholder="Email" />
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LabelInputDemo {}`;
+export class LabelInputDemo {
+  readonly formModel = signal({ email: '' });
+  readonly emailForm = form(this.formModel, (s) => {
+    required(s.email);
+  });
+}`;
 }

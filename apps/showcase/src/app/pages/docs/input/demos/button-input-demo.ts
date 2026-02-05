@@ -1,19 +1,27 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScInput } from '@semantic-components/ui';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScButton, ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-button-input-demo',
-  imports: [ScInput],
+  imports: [FormField, ScButton, ScField, ScInput, ScLabel],
   template: `
-    <div class="flex w-full max-w-sm items-center space-x-2">
-      <input sc-input type="email" placeholder="Email" />
-      <button
-        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-      >
-        Subscribe
-      </button>
+    <div class="flex max-w-sm items-end gap-2">
+      <div sc-field class="flex-1">
+        <label sc-label>Email</label>
+        <input
+          sc-input
+          type="email"
+          [formField]="emailForm.email"
+          placeholder="Email"
+        />
+      </div>
+      <button sc-button>Subscribe</button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonInputDemo {}
+export class ButtonInputDemo {
+  readonly formModel = signal({ email: '' });
+  readonly emailForm = form(this.formModel);
+}
