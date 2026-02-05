@@ -176,6 +176,40 @@ For complete custom styling, you can omit the `sc-radio` directive and style the
 </div>
 ```
 
+### Theming with CSS Variables
+
+You can customize the radio button colors by setting CSS custom properties (variables) on a parent element:
+
+```html
+<!-- Purple theme -->
+<div style="--primary: oklch(0.6 0.25 280); --primary-foreground: oklch(0.985 0 0);">
+  <div sc-radio-group>
+    <label sc-radio-field class="flex items-center space-x-2">
+      <input type="radio" sc-radio name="theme" value="option1" [(ngModel)]="selected" />
+      <span>Option 1</span>
+    </label>
+  </div>
+</div>
+
+<!-- Green theme -->
+<div style="--primary: oklch(0.5 0.18 145); --primary-foreground: oklch(0.985 0 0);">
+  <div sc-radio-group>
+    <label sc-radio-field class="flex items-center space-x-2">
+      <input type="radio" sc-radio name="theme" value="option1" [(ngModel)]="selected" />
+      <span>Option 1</span>
+    </label>
+  </div>
+</div>
+```
+
+**Available CSS Variables:**
+
+| Variable               | Usage                                          |
+| ---------------------- | ---------------------------------------------- |
+| `--primary`            | Border color and checked indicator background  |
+| `--primary-foreground` | Foreground color (not used in default styling) |
+| `--ring`               | Focus ring color                               |
+
 ## Data Attributes
 
 All components have a `data-slot` attribute for styling purposes:
