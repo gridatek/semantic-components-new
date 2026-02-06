@@ -15,6 +15,6 @@ export class ScDialogTitle {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('text-lg font-semibold leading-none tracking-tight', this.classInput()),
+    cn('text-base leading-none font-medium', this.classInput()),
   );
 }

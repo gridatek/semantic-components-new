@@ -15,6 +15,9 @@ export class ScDialogDescription {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('text-muted-foreground text-sm', this.classInput()),
+    cn(
+      'text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3',
+      this.classInput(),
+    ),
   );
 }
