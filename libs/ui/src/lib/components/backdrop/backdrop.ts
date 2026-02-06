@@ -56,8 +56,6 @@ export class ScBackdrop {
   );
 
   constructor() {
-    console.log('Backdrop initialized');
-
     // Sync state with open input
     effect(() => {
       const isOpen = this.open();

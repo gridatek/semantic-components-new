@@ -57,8 +57,6 @@ export class ScDialog {
   );
 
   constructor() {
-    console.log('Dialog initialized with ID:', this.dialogId);
-
     // Sync state with provider's open signal
     effect(() => {
       const isOpen = this.dialogProvider.open();
