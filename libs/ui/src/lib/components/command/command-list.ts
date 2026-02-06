@@ -1,11 +1,12 @@
+import { Listbox } from '@angular/aria/listbox';
 import { computed, Directive, input } from '@angular/core';
 import { cn } from '../../utils';
 
 @Directive({
   selector: 'div[sc-command-list]',
+  hostDirectives: [Listbox],
   host: {
     'data-slot': 'command-list',
-    role: 'listbox',
     '[class]': 'class()',
   },
 })
