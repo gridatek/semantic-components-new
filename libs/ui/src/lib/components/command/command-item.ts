@@ -9,7 +9,6 @@ import {
   output,
 } from '@angular/core';
 import { cn } from '../../utils';
-import { ScCommand } from './command';
 
 @Directive({
   selector: 'div[sc-command-item]',
@@ -23,15 +22,11 @@ import { ScCommand } from './command';
     'data-slot': 'command-item',
     '[attr.data-disabled]': 'disabled() || null',
     '[class]': 'class()',
-    '[hidden]': '!isVisible()',
     '(click)': 'onClick()',
   },
 })
 export class ScCommandItem {
-  private readonly command = inject(ScCommand);
-
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly keywords = input<string[]>([]);
   readonly disabled = input<boolean>(false);
 
   readonly select = output<void>();
@@ -46,19 +41,6 @@ export class ScCommandItem {
       }
     });
   }
-
-  protected readonly isVisible = computed(() => {
-    const searchValue = this.command.value().toLowerCase();
-    if (!searchValue) return true;
-
-    const itemValue = (this.option.value() ?? '').toString().toLowerCase();
-    const itemKeywords = this.keywords().map((k) => k.toLowerCase());
-
-    return (
-      itemValue.includes(searchValue) ||
-      itemKeywords.some((k) => k.includes(searchValue))
-    );
-  });
 
   protected readonly class = computed(() =>
     cn(

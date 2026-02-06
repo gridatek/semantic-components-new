@@ -32,10 +32,4 @@ export class ScCommand {
       this.classInput(),
     ),
   );
-
-  filter(text: string): boolean {
-    const searchValue = this.value().toLowerCase();
-    if (!searchValue) return true;
-    return text.toLowerCase().includes(searchValue);
-  }
 }
