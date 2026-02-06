@@ -13,7 +13,7 @@ import {
 import { cn } from '../../utils';
 import { ScDialogProvider } from './dialog-provider';
 
-type ScDialogState = 'open' | 'closed' | 'hidden';
+type ScDialogState = 'initial' | 'open' | 'closed';
 
 @Component({
   selector: 'div[sc-dialog]',
@@ -28,7 +28,7 @@ type ScDialogState = 'open' | 'closed' | 'hidden';
     '[attr.aria-describedby]': 'descriptionId',
     '[attr.data-open]': 'state() === "open" ? "" : null',
     '[attr.data-closed]': 'state() === "closed" ? "" : null',
-    '[attr.data-hidden]': 'state() === "hidden" ? "" : null',
+    '[attr.data-initial]': 'state() === "initial" ? "" : null',
     '[class]': 'class()',
     '[tabindex]': '-1',
     '(animationend)': 'onAnimationEnd($event)',
@@ -41,7 +41,7 @@ export class ScDialog {
 
   readonly dialogProvider = inject(ScDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly state = signal<ScDialogState>('closed');
+  readonly state = signal<ScDialogState>('initial');
 
   readonly dialogId = inject(_IdGenerator).getId('sc-dialog-');
 
@@ -50,7 +50,7 @@ export class ScDialog {
 
   protected readonly class = computed(() =>
     cn(
-      'data-hidden:hidden',
+      'data-initial:opacity-0',
       'bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-xl p-4 text-sm ring-1 duration-100 sm:max-w-sm fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none',
       this.classInput(),
     ),
@@ -62,9 +62,7 @@ export class ScDialog {
     // Sync state with provider's open signal
     effect(() => {
       const isOpen = this.dialogProvider.open();
-      if (this.state() !== 'hidden') {
-        this.state.set(isOpen ? 'open' : 'closed');
-      }
+      this.state.set(isOpen ? 'open' : 'closed');
     });
   }
 
@@ -74,7 +72,7 @@ export class ScDialog {
       this.state() === 'closed' &&
       event.target === this.elementRef.nativeElement
     ) {
-      this.state.set('hidden');
+      this.state.set('initial');
       this.dialogProvider.onDialogAnimationComplete();
     }
   }
