@@ -85,7 +85,10 @@ interface CommandItem {
                       [label]="item.label"
                       (select)="onSelect(item.label)"
                     >
-                      <span [innerHTML]="item.icon"></span>
+                      <span
+                        class="[&>svg]:size-4 [&>svg]:shrink-0"
+                        [innerHTML]="item.icon"
+                      ></span>
                       <span>{{ item.label }}</span>
                     </div>
                   }
@@ -107,7 +110,10 @@ interface CommandItem {
                       [label]="item.label"
                       (select)="onSelect(item.label)"
                     >
-                      <span [innerHTML]="item.icon"></span>
+                      <span
+                        class="[&>svg]:size-4 [&>svg]:shrink-0"
+                        [innerHTML]="item.icon"
+                      ></span>
                       <span>{{ item.label }}</span>
                       @if (item.shortcut) {
                         <span sc-command-shortcut>{{ item.shortcut }}</span>
