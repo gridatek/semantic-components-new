@@ -14,31 +14,76 @@ import { CountriesComboboxDemo } from './countries-combobox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountriesComboboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ComboboxOption, ScCombobox } from '@semantic-components/ui';
+  readonly code = `import { afterRenderEffect, ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import {
+  ScCombobox, ScComboboxContent, ScComboboxEmpty, ScComboboxIcon,
+  ScComboboxInput, ScComboboxItem, ScComboboxItemIndicator,
+  ScComboboxList, ScComboboxTrigger,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-countries-combobox-demo',
-  imports: [ScCombobox],
+  imports: [
+    ScCombobox, ScComboboxTrigger, ScComboboxInput, ScComboboxIcon,
+    ScComboboxContent, ScComboboxList, ScComboboxItem,
+    ScComboboxItemIndicator, ScComboboxEmpty,
+  ],
   template: \`
-    <sc-combobox
-      [(value)]="selectedCountry"
-      [options]="countries"
-      placeholder="Select country..."
-      searchPlaceholder="Search country..."
-      emptyText="No country found."
-    />
+    <div sc-combobox class="w-[200px]">
+      <div sc-combobox-trigger>
+        <span class="pointer-events-none absolute left-3 truncate">{{ displayValue() }}</span>
+        <input sc-combobox-input />
+        <svg sc-combobox-icon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m7 15 5 5 5-5" /><path d="m7 9 5-5 5 5" />
+        </svg>
+      </div>
+      <div sc-combobox-content searchPlaceholder="Search country..." [(searchValue)]="search">
+        @if (filteredOptions().length === 0) {
+          <div sc-combobox-empty>No country found.</div>
+        }
+        <div sc-combobox-list [(values)]="selectedValues">
+          @for (option of filteredOptions(); track option.value) {
+            <div sc-combobox-item [value]="option.value" [label]="option.label">
+              <span>{{ option.label }}</span>
+              <svg sc-combobox-item-indicator xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountriesComboboxDemo {
-  readonly selectedCountry = signal<string>('');
+  readonly search = signal('');
+  readonly selectedValues = signal<string[]>([]);
 
-  readonly countries: ComboboxOption[] = [
+  readonly countries = [
     { value: 'us', label: 'United States' },
     { value: 'uk', label: 'United Kingdom' },
     { value: 'ca', label: 'Canada' },
     // ... more countries
   ];
+
+  readonly filteredOptions = computed(() => {
+    const query = this.search().toLowerCase();
+    if (!query) return this.countries;
+    return this.countries.filter((o) => o.label.toLowerCase().includes(query));
+  });
+
+  readonly displayValue = computed(() => {
+    const vals = this.selectedValues();
+    if (vals.length === 0) return 'Select country...';
+    const option = this.countries.find((o) => o.value === vals[0]);
+    return option?.label ?? 'Select country...';
+  });
+
+  constructor() {
+    afterRenderEffect(() => {
+      if (this.selectedValues().length > 0) this.search.set('');
+    });
+  }
 }`;
 }

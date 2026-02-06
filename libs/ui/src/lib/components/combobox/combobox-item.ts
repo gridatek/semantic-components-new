@@ -1,57 +1,49 @@
-import { computed, Directive, inject, input, output } from '@angular/core';
+import { Option } from '@angular/aria/listbox';
+import {
+  computed,
+  Directive,
+  effect,
+  ElementRef,
+  inject,
+  input,
+} from '@angular/core';
 import { cn } from '../../utils';
-import { ScComboboxProvider } from './combobox-provider';
 
 @Directive({
   selector: 'div[sc-combobox-item]',
+  hostDirectives: [
+    {
+      directive: Option,
+      inputs: ['value', 'label', 'disabled'],
+    },
+  ],
   host: {
     'data-slot': 'combobox-item',
-    role: 'option',
-    '[attr.data-disabled]': 'disabled() || null',
-    '[attr.data-selected]': 'selected() || null',
     '[class]': 'class()',
-    '[hidden]': '!isVisible()',
-    '(click)': 'onClick()',
   },
 })
 export class ScComboboxItem {
-  private readonly comboboxProvider = inject(ScComboboxProvider);
-
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly value = input<string>('');
-  readonly keywords = input<string[]>([]);
-  readonly disabled = input<boolean>(false);
-  readonly selected = input<boolean>(false);
 
-  readonly select = output<void>();
+  private readonly option = inject(Option);
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  protected readonly isVisible = computed(() => {
-    const searchValue = this.comboboxProvider.value().toLowerCase();
-    if (!searchValue) return true;
-
-    const itemValue = this.value().toLowerCase();
-    const itemKeywords = this.keywords().map((k) => k.toLowerCase());
-
-    return (
-      itemValue.includes(searchValue) ||
-      itemKeywords.some((k) => k.includes(searchValue))
-    );
-  });
+  constructor() {
+    effect(() => {
+      if (this.option.active()) {
+        this.elementRef.nativeElement.scrollIntoView({ block: 'nearest' });
+      }
+    });
+  }
 
   protected readonly class = computed(() =>
     cn(
-      'relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      'data-[selected]:bg-accent data-[selected]:text-accent-foreground',
+      'relative flex min-h-9 cursor-pointer select-none items-center gap-2 rounded-sm px-2 py-1.5 pr-8 text-sm outline-none transition-colors',
       'hover:bg-accent hover:text-accent-foreground',
-      '[&>svg]:size-4 [&>svg]:shrink-0',
+      'data-[active=true]:ring-2 data-[active=true]:ring-ring data-[active=true]:ring-offset-1',
+      'aria-selected:bg-accent/50 aria-selected:text-accent-foreground',
+      'aria-disabled:pointer-events-none aria-disabled:opacity-50',
       this.classInput(),
     ),
   );
-
-  onClick(): void {
-    if (!this.disabled()) {
-      this.select.emit();
-    }
-  }
 }
