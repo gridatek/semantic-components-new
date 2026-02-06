@@ -1,15 +1,17 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { CdkTrapFocus } from '@angular/cdk/a11y';
-import { Overlay, OverlayModule } from '@angular/cdk/overlay';
+import { Overlay, OverlayModule, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   effect,
   inject,
   input,
   TemplateRef,
-  ViewChild,
+  viewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
@@ -19,7 +21,7 @@ import { ScDialogProvider } from './dialog-provider';
 
 @Component({
   selector: 'div[sc-dialog-portal]',
-  imports: [OverlayModule, ScBackdrop, CdkTrapFocus],
+  imports: [OverlayModule, ScBackdrop, CdkTrapFocus, NgTemplateOutlet],
   template: `
     <ng-template #dialogTemplate>
       <!-- Visual backdrop (behind transparent CDK backdrop) -->
@@ -29,7 +31,7 @@ import { ScDialogProvider } from './dialog-provider';
         (animationComplete)="onBackdropAnimationComplete()"
       ></div>
       <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-        <ng-content />
+        <ng-container [ngTemplateOutlet]="dialogContent()" />
       </div>
     </ng-template>
   `,
@@ -47,29 +49,16 @@ export class ScDialogPortal {
 
   readonly classInput = input<string>('', { alias: 'class' });
 
-  @ViewChild('dialogTemplate', { static: true })
-  private dialogTemplate!: TemplateRef<unknown>;
+  private readonly dialogTemplate =
+    viewChild.required<TemplateRef<unknown>>('dialogTemplate');
 
-  private overlayRef = this.overlay.create({
-    positionStrategy: this.overlay
-      .position()
-      .global()
-      .centerHorizontally()
-      .centerVertically(),
-    hasBackdrop: true,
-    backdropClass: 'cdk-overlay-transparent-backdrop',
-    scrollStrategy: this.overlay.scrollStrategies.block(),
-  });
+  protected readonly dialogContent = contentChild.required(TemplateRef);
+
+  private overlayRef: OverlayRef | null = null;
 
   protected readonly class = computed(() => cn('', this.classInput()));
 
   constructor() {
-    // Handle Backdrop and Keyboard Close
-    this.overlayRef.backdropClick().subscribe(() => this.closeDialog());
-    this.overlayRef.keydownEvents().subscribe((event) => {
-      if (event.key === 'Escape') this.closeDialog();
-    });
-
     // Use overlayOpen instead of open to delay DOM removal until animation completes
     effect(() => {
       if (this.dialogProvider.overlayOpen()) {
@@ -80,18 +69,40 @@ export class ScDialogPortal {
     });
   }
 
+  private getOverlayRef() {
+    if (!this.overlayRef) {
+      this.overlayRef = this.overlay.create({
+        positionStrategy: this.overlay
+          .position()
+          .global()
+          .centerHorizontally()
+          .centerVertically(),
+        hasBackdrop: true,
+        backdropClass: 'cdk-overlay-transparent-backdrop',
+        scrollStrategy: this.overlay.scrollStrategies.block(),
+      });
+
+      this.overlayRef.backdropClick().subscribe(() => this.closeDialog());
+      this.overlayRef.keydownEvents().subscribe((event) => {
+        if (event.key === 'Escape') this.closeDialog();
+      });
+    }
+    return this.overlayRef;
+  }
+
   private attachDialog(): void {
-    if (!this.overlayRef.hasAttached()) {
+    const ref = this.getOverlayRef();
+    if (!ref.hasAttached()) {
       const portal = new TemplatePortal(
-        this.dialogTemplate,
+        this.dialogTemplate(),
         this.viewContainerRef,
       );
-      this.overlayRef.attach(portal);
+      ref.attach(portal);
     }
   }
 
   private detachDialog(): void {
-    if (this.overlayRef.hasAttached()) {
+    if (this.overlayRef?.hasAttached()) {
       this.overlayRef.detach();
     }
   }
