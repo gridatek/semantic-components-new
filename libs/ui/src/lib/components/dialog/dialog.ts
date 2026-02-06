@@ -26,9 +26,9 @@ type ScDialogState = 'initial' | 'open' | 'closed';
     'aria-modal': 'true',
     '[attr.aria-labelledby]': 'titleId',
     '[attr.aria-describedby]': 'descriptionId',
+    '[attr.data-initial]': 'state() === "initial" ? "" : null',
     '[attr.data-open]': 'state() === "open" ? "" : null',
     '[attr.data-closed]': 'state() === "closed" ? "" : null',
-    '[attr.data-initial]': 'state() === "initial" ? "" : null',
     '[class]': 'class()',
     '[tabindex]': '-1',
     '(animationend)': 'onAnimationEnd($event)',
@@ -41,7 +41,7 @@ export class ScDialog {
 
   readonly dialogProvider = inject(ScDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly state = signal<ScDialogState>('initial');
+  protected readonly state = signal<ScDialogState>('initial');
 
   readonly dialogId = inject(_IdGenerator).getId('sc-dialog-');
 
