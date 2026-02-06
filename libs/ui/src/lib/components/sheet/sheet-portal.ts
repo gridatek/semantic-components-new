@@ -1,3 +1,4 @@
+import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { Overlay, OverlayModule } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
@@ -18,7 +19,7 @@ import { ScSheetProvider } from './sheet-provider';
 
 @Component({
   selector: 'div[sc-sheet-portal]',
-  imports: [OverlayModule, ScBackdrop],
+  imports: [OverlayModule, ScBackdrop, CdkTrapFocus],
   template: `
     <ng-template #sheetTemplate>
       <!-- Visual backdrop (behind transparent CDK backdrop) -->
@@ -27,7 +28,9 @@ import { ScSheetProvider } from './sheet-provider';
         [open]="sheetProvider.open()"
         (animationComplete)="onBackdropAnimationComplete()"
       ></div>
-      <ng-content />
+      <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+        <ng-content />
+      </div>
     </ng-template>
   `,
   host: {

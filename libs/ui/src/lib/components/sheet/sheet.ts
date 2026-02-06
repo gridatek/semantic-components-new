@@ -78,10 +78,6 @@ export class ScSheet {
       const isOpen = this.sheetProvider.open();
       this.state.set(isOpen ? 'open' : 'closed');
     });
-
-    setTimeout(() => {
-      this.elementRef.nativeElement.focus();
-    });
   }
 
   protected onAnimationEnd(event: AnimationEvent): void {
