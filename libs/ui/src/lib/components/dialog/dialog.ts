@@ -61,11 +61,6 @@ export class ScDialog {
       const isOpen = this.dialogProvider.open();
       this.state.set(isOpen ? 'open' : 'closed');
     });
-
-    // Focus the dialog when it opens
-    setTimeout(() => {
-      this.elementRef.nativeElement.focus();
-    });
   }
 
   protected onAnimationEnd(event: AnimationEvent): void {

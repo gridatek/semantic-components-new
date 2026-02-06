@@ -1,3 +1,4 @@
+import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { Overlay, OverlayModule } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
@@ -18,7 +19,7 @@ import { ScDialogProvider } from './dialog-provider';
 
 @Component({
   selector: 'div[sc-dialog-portal]',
-  imports: [OverlayModule, ScBackdrop],
+  imports: [OverlayModule, ScBackdrop, CdkTrapFocus],
   template: `
     <ng-template #dialogTemplate>
       <!-- Visual backdrop (behind transparent CDK backdrop) -->
@@ -27,7 +28,9 @@ import { ScDialogProvider } from './dialog-provider';
         [open]="dialogProvider.open()"
         (animationComplete)="onBackdropAnimationComplete()"
       ></div>
-      <ng-content />
+      <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+        <ng-content />
+      </div>
     </ng-template>
   `,
   host: {
