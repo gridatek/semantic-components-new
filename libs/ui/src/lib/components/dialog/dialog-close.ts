@@ -1,6 +1,7 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
 import { ScDialogProvider } from './dialog-provider';
+import { buttonVariants, ScButtonVariants } from '../button';
 
 @Directive({
   selector: 'button[sc-dialog-close]',
@@ -12,19 +13,20 @@ import { ScDialogProvider } from './dialog-provider';
 })
 export class ScDialogClose {
   private readonly dialogProvider = inject(ScDialogProvider);
+
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly variant = input<ScButtonVariants['variant']>('ghost');
+  readonly size = input<ScButtonVariants['size']>('icon-sm');
 
   protected readonly class = computed(() =>
     cn(
-      'absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity',
-      'hover:opacity-100',
-      'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-      'disabled:pointer-events-none',
+      'absolute top-2 right-2',
+      buttonVariants({ variant: this.variant(), size: this.size() }),
       this.classInput(),
     ),
   );
 
-  closeDialog(): void {
+  protected closeDialog(): void {
     this.dialogProvider.open.set(false);
   }
 }
