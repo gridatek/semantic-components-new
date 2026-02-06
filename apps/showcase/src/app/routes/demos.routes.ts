@@ -837,6 +837,13 @@ export const demosRoutes: Route[] = [
             (m) => m.ScCommandDemo,
           ),
       },
+      {
+        path: 'command-dialog-demo',
+        loadComponent: () =>
+          import('../pages/docs/command/demos/command-dialog-demo').then(
+            (m) => m.ScCommandDialogDemo,
+          ),
+      },
     ],
   },
   {

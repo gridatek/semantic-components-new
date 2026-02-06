@@ -6,7 +6,11 @@ import { ScCommandDemo } from './command-demo';
   selector: 'app-command-demo-container',
   imports: [DemoContainer, ScCommandDemo],
   template: `
-    <app-demo-container title="Command" [code]="code">
+    <app-demo-container
+      title="Command"
+      [code]="code"
+      demoUrl="/demos/command/command-demo"
+    >
       <app-command-demo />
     </app-demo-container>
   `,

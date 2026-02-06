@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScCommandDemoContainer } from './demos/command-demo-container';
+import { ScCommandDialogDemoContainer } from './demos/command-dialog-demo-container';
 
 @Component({
   selector: 'app-command-page',
-  imports: [ScCommandDemoContainer],
+  imports: [ScCommandDemoContainer, ScCommandDialogDemoContainer],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,6 +17,7 @@ import { ScCommandDemoContainer } from './demos/command-demo-container';
       <section class="space-y-8">
         <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-command-demo-container />
+        <app-command-dialog-demo-container />
       </section>
     </div>
   `,
