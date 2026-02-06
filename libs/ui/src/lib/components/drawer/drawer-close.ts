@@ -5,13 +5,13 @@ import { ScDrawerProvider } from './drawer-provider';
   selector: 'button[sc-drawer-close]',
   host: {
     'data-slot': 'drawer-close',
-    '(click)': 'close()',
+    '(click)': 'closeDrawer()',
   },
 })
 export class ScDrawerClose {
   private readonly drawer = inject(ScDrawerProvider);
 
-  protected close(): void {
+  protected closeDrawer(): void {
     this.drawer.open.set(false);
   }
 }

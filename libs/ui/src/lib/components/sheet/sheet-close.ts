@@ -1,6 +1,7 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
 import { ScSheetProvider } from './sheet-provider';
+import { buttonVariants, ScButtonVariants } from '../button';
 
 @Directive({
   selector: 'button[sc-sheet-close]',
@@ -12,20 +13,20 @@ import { ScSheetProvider } from './sheet-provider';
 })
 export class ScSheetClose {
   private readonly sheetProvider = inject(ScSheetProvider);
+
   readonly classInput = input<string>('', { alias: 'class' });
+  readonly variant = input<ScButtonVariants['variant']>('ghost');
+  readonly size = input<ScButtonVariants['size']>('icon-sm');
 
   protected readonly class = computed(() =>
     cn(
-      'absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity',
-      'hover:opacity-100',
-      'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-      'disabled:pointer-events-none',
-      '[&>svg]:size-4',
+      'absolute top-3 right-3',
+      buttonVariants({ variant: this.variant(), size: this.size() }),
       this.classInput(),
     ),
   );
 
-  closeSheet(): void {
+  protected closeSheet(): void {
     this.sheetProvider.open.set(false);
   }
 }

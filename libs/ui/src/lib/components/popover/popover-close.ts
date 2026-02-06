@@ -23,7 +23,7 @@ export class ScPopoverClose {
     ),
   );
 
-  closePopover(): void {
+  protected closePopover(): void {
     this.popover.open.set(false);
   }
 }
