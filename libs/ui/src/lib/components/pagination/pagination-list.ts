@@ -12,6 +12,6 @@ export class ScPaginationList {
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() =>
-    cn('flex flex-row items-center gap-1', this.classInput()),
+    cn('gap-0.5 flex items-center', this.classInput()),
   );
 }

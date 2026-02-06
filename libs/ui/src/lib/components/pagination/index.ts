@@ -1,5 +1,5 @@
 export * from './pagination';
-export * from './sc-pagination-list';
+export * from './pagination-list';
 export * from './pagination-item';
 export * from './pagination-link';
 export * from './pagination-previous';
