@@ -13,7 +13,7 @@ import {
 import { cn } from '../../utils';
 import { ScDialogProvider } from './dialog-provider';
 
-type ScDialogState = 'open' | 'closed';
+type ScDialogState = 'open' | 'closed' | 'hidden';
 
 @Component({
   selector: 'div[sc-dialog]',
@@ -26,7 +26,9 @@ type ScDialogState = 'open' | 'closed';
     'aria-modal': 'true',
     '[attr.aria-labelledby]': 'titleId',
     '[attr.aria-describedby]': 'descriptionId',
-    '[attr.data-state]': 'state()',
+    '[attr.data-open]': 'state() === "open" ? "" : null',
+    '[attr.data-closed]': 'state() === "closed" ? "" : null',
+    '[attr.data-hidden]': 'state() === "hidden" ? "" : null',
     '[class]': 'class()',
     '[tabindex]': '-1',
     '(animationend)': 'onAnimationEnd($event)',
@@ -48,9 +50,8 @@ export class ScDialog {
 
   protected readonly class = computed(() =>
     cn(
-      'bg-background relative z-50 grid w-full max-w-lg gap-4 rounded-lg border p-6 shadow-lg',
-      'animate-in fade-in-0 zoom-in-95 duration-300',
-      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:duration-300',
+      'data-hidden:hidden',
+      'bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-4 rounded-xl p-4 text-sm ring-1 duration-100 sm:max-w-sm fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 outline-none',
       this.classInput(),
     ),
   );
@@ -61,7 +62,9 @@ export class ScDialog {
     // Sync state with provider's open signal
     effect(() => {
       const isOpen = this.dialogProvider.open();
-      this.state.set(isOpen ? 'open' : 'closed');
+      if (this.state() !== 'hidden') {
+        this.state.set(isOpen ? 'open' : 'closed');
+      }
     });
   }
 
@@ -71,6 +74,7 @@ export class ScDialog {
       this.state() === 'closed' &&
       event.target === this.elementRef.nativeElement
     ) {
+      this.state.set('hidden');
       this.dialogProvider.onDialogAnimationComplete();
     }
   }
