@@ -31,7 +31,7 @@ import { ScDialogProvider } from './dialog-provider';
         (animationComplete)="onBackdropAnimationComplete()"
       ></div>
       <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-        <ng-container [ngTemplateOutlet]="dialogContent()" />
+        <ng-container [ngTemplateOutlet]="contentTemplate()" />
       </div>
     </ng-template>
   `,
@@ -52,7 +52,7 @@ export class ScDialogPortal {
   private readonly dialogTemplate =
     viewChild.required<TemplateRef<unknown>>('dialogTemplate');
 
-  protected readonly dialogContent = contentChild.required(TemplateRef);
+  protected readonly contentTemplate = contentChild.required(TemplateRef);
 
   private overlayRef: OverlayRef | null = null;
 
