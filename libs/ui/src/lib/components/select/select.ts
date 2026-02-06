@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 import { cn } from '../../utils';
-import { ScSelectContent } from './select-content';
+import { ScSelectList } from './select-list';
 import { ScSelectTrigger } from './select-trigger';
 
 @Component({
@@ -36,7 +36,7 @@ export class ScSelect {
   readonly classInput = input<string>('', { alias: 'class' });
 
   private readonly trigger = contentChild(ScSelectTrigger);
-  private readonly content = contentChild(ScSelectContent, {
+  private readonly content = contentChild(ScSelectList, {
     descendants: true,
   });
 

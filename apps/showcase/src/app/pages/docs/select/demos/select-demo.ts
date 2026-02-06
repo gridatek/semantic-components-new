@@ -7,12 +7,12 @@ import {
 import { SiCheckIcon, SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 import {
   ScSelect,
-  ScSelectContent,
+  ScSelectList,
   ScSelectIcon,
   ScSelectInput,
   ScSelectItem,
   ScSelectItemIndicator,
-  ScSelectPopup,
+  ScSelectPortal,
   ScSelectTrigger,
   ScSelectValue,
 } from '@semantic-components/ui';
@@ -21,12 +21,12 @@ import {
   selector: 'app-select-demo',
   imports: [
     ScSelect,
-    ScSelectContent,
+    ScSelectList,
     ScSelectIcon,
     ScSelectInput,
     ScSelectItem,
     ScSelectItemIndicator,
-    ScSelectPopup,
+    ScSelectPortal,
     ScSelectTrigger,
     ScSelectValue,
     SiCheckIcon,
@@ -101,8 +101,8 @@ import {
         />
         <svg sc-select-icon si-chevron-down-icon aria-hidden="true"></svg>
       </div>
-      <div sc-select-popup>
-        <div sc-select-content>
+      <div sc-select-portal>
+        <div sc-select-list>
           @for (label of labels; track label.value) {
             <div sc-select-item [value]="label.value" [label]="label.value">
               <svg

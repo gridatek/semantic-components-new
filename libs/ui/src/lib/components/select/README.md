@@ -19,8 +19,8 @@ A set of components for building accessible select dropdowns following the Singl
 | `ScSelectInput`         | `input[sc-select-input]`        | Hidden input, wraps `ComboboxInput` from `@angular/aria`        |
 | `ScSelectValue`         | `span[sc-select-value]`         | Display selected value with styling                             |
 | `ScSelectIcon`          | `svg[sc-select-icon]`           | Chevron icon styling (use with `@semantic-icons/lucide-icons`)  |
-| `ScSelectPopup`         | `div[sc-select-popup]`          | Overlay positioning & combobox popup container (infrastructure) |
-| `ScSelectContent`       | `div[sc-select-content]`        | Content container, wraps `Listbox` from `@angular/aria`         |
+| `ScSelectPortal`        | `div[sc-select-portal]`         | Overlay positioning & combobox popup container (infrastructure) |
+| `ScSelectList`          | `div[sc-select-list]`           | Content container, wraps `Listbox` from `@angular/aria`         |
 | `ScSelectItem`          | `div[sc-select-item]`           | Option item styling, wraps `Option` from `@angular/aria`        |
 | `ScSelectItemIndicator` | `svg[sc-select-item-indicator]` | Checkmark icon for selected state                               |
 
@@ -35,8 +35,8 @@ A set of components for building accessible select dropdowns following the Singl
     <input sc-select-input aria-label="Select" placeholder="Select an option" />
     <svg sc-select-icon si-chevron-down-icon aria-hidden="true"></svg>
   </div>
-  <div sc-select-popup>
-    <div sc-select-content>
+  <div sc-select-portal>
+    <div sc-select-list>
       @for (option of options; track option.value) {
       <div sc-select-item [value]="option.value" [label]="option.label">
         {{ option.label }}
@@ -53,11 +53,11 @@ A set of components for building accessible select dropdowns following the Singl
 ```typescript
 import { ChangeDetectionStrategy, Component, computed, viewChild } from '@angular/core';
 import { SiCheckIcon, SiChevronDownIcon } from '@semantic-icons/lucide-icons';
-import { ScSelect, ScSelectContent, ScSelectIcon, ScSelectInput, ScSelectItem, ScSelectItemIndicator, ScSelectPopup, ScSelectTrigger, ScSelectValue } from '@app/ui/select';
+import { ScSelect, ScSelectList, ScSelectIcon, ScSelectInput, ScSelectItem, ScSelectItemIndicator, ScSelectPortal, ScSelectTrigger, ScSelectValue } from '@app/ui/select';
 
 @Component({
   selector: 'app-example',
-  imports: [ScSelect, ScSelectContent, ScSelectIcon, ScSelectInput, ScSelectItem, ScSelectItemIndicator, ScSelectPopup, ScSelectTrigger, ScSelectValue, SiCheckIcon, SiChevronDownIcon],
+  imports: [ScSelect, ScSelectList, ScSelectIcon, ScSelectInput, ScSelectItem, ScSelectItemIndicator, ScSelectPortal, ScSelectTrigger, ScSelectValue, SiCheckIcon, SiChevronDownIcon],
   template: `
     ...
   `,
@@ -161,8 +161,8 @@ ScSelect (root, wraps Combobox)
 │   ├── ScSelectValue (display value)
 │   ├── ScSelectInput (wraps ComboboxInput)
 │   └── ScSelectIcon (chevron icon)
-└── ScSelectPopup (overlay infrastructure)
-    └── ScSelectContent (wraps Listbox)
+└── ScSelectPortal (overlay infrastructure)
+    └── ScSelectList (wraps Listbox)
         └── ScSelectItem (wraps Option)
             └── ScSelectItemIndicator (checkmark icon)
 ```

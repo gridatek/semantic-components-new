@@ -11,20 +11,20 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-select-content]',
+  selector: 'div[sc-select-list]',
   imports: [],
   template: `
     <ng-content />
   `,
   hostDirectives: [Listbox],
   host: {
-    'data-slot': 'select-content',
+    'data-slot': 'select-list',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSelectContent {
+export class ScSelectList {
   readonly listbox = inject(Listbox);
   readonly classInput = input<string>('', { alias: 'class' });
 

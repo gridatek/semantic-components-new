@@ -12,7 +12,7 @@ import { ScSelect } from './select';
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-select-popup]',
+  selector: 'div[sc-select-portal]',
   imports: [ComboboxPopupContainer, OverlayModule],
   template: `
     <ng-template ngComboboxPopupContainer>
@@ -31,13 +31,13 @@ import { cn } from '../../utils';
     </ng-template>
   `,
   host: {
-    'data-slot': 'select-popup',
+    'data-slot': 'select-portal',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScSelectPopup {
+export class ScSelectPortal {
   private readonly select = inject(ScSelect);
 
   protected readonly origin = computed(() => this.select.origin());
