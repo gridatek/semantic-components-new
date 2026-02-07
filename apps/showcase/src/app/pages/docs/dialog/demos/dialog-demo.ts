@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import {
   ScButton,
   ScDialogProvider,
-  ScDialogClose,
   ScDialog,
   ScDialogDescription,
   ScDialogFooter,
@@ -21,7 +20,6 @@ import {
   imports: [
     ScButton,
     ScDialogProvider,
-    ScDialogClose,
     ScDialog,
     ScDialogDescription,
     ScDialogFooter,
@@ -35,7 +33,7 @@ import {
     ScLabel,
   ],
   template: `
-    <div sc-dialog-provider>
+    <div sc-dialog-provider [(open)]="isOpen">
       <button sc-dialog-trigger sc-button variant="outline">Open Dialog</button>
       <div sc-dialog-portal>
         <ng-template>
@@ -59,7 +57,7 @@ import {
                 </div>
               </div>
               <div sc-dialog-footer>
-                <button sc-dialog-close sc-button variant="outline">
+                <button sc-button variant="outline" (click)="isOpen.set(false)">
                   Cancel
                 </button>
                 <button sc-button type="submit">Save changes</button>
@@ -72,4 +70,6 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScDialogDemo {}
+export class ScDialogDemo {
+  readonly isOpen = signal(false);
+}
