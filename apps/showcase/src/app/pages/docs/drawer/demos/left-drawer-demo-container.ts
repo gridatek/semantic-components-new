@@ -23,7 +23,11 @@ import { LeftDrawerDemo } from './left-drawer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftDrawerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScDrawer,
   ScDrawerDescription,
@@ -89,6 +93,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftDrawerDemo {}`;

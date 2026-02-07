@@ -19,12 +19,34 @@ import { BasicTimelineDemo } from './basic-timeline-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicTimelineDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTimeline, ScTimelineItem, ScTimelineConnector, ScTimelineDot, ScTimelineContent, ScTimelineTitle, ScTimelineDescription, ScTimelineTime } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScTimeline,
+  ScTimelineItem,
+  ScTimelineConnector,
+  ScTimelineDot,
+  ScTimelineContent,
+  ScTimelineTitle,
+  ScTimelineDescription,
+  ScTimelineTime,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-timeline-demo',
-  imports: [ScTimeline, ScTimelineItem, ScTimelineConnector, ScTimelineDot, ScTimelineContent, ScTimelineTitle, ScTimelineDescription, ScTimelineTime],
+  imports: [
+    ScTimeline,
+    ScTimelineItem,
+    ScTimelineConnector,
+    ScTimelineDot,
+    ScTimelineContent,
+    ScTimelineTitle,
+    ScTimelineDescription,
+    ScTimelineTime,
+  ],
   template: \`
     <div sc-timeline class="ml-4">
       <div sc-timeline-item>
@@ -32,10 +54,13 @@ import { ScTimeline, ScTimelineItem, ScTimelineConnector, ScTimelineDot, ScTimel
         <div sc-timeline-dot></div>
         <div sc-timeline-content>
           <h4 sc-timeline-title>Project Started</h4>
-          <p sc-timeline-description>Initial setup and planning phase completed.</p>
+          <p sc-timeline-description>
+            Initial setup and planning phase completed.
+          </p>
           <span sc-timeline-time>January 2024</span>
         </div>
       </div>
+
       <div sc-timeline-item>
         <div sc-timeline-connector></div>
         <div sc-timeline-dot></div>
@@ -45,6 +70,7 @@ import { ScTimeline, ScTimelineItem, ScTimelineConnector, ScTimelineDot, ScTimel
           <span sc-timeline-time>February 2024</span>
         </div>
       </div>
+
       <div sc-timeline-item>
         <div sc-timeline-dot></div>
         <div sc-timeline-content>
@@ -55,6 +81,7 @@ import { ScTimeline, ScTimelineItem, ScTimelineConnector, ScTimelineDot, ScTimel
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicTimelineDemo {}`;

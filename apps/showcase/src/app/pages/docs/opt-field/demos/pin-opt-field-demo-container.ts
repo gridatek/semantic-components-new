@@ -23,7 +23,12 @@ import { PinOptFieldDemo } from './pin-opt-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PinOptFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScOptField,
   ScOptFieldSlotGroup,
@@ -46,6 +51,7 @@ import {
       Value: {{ otp() || 'empty' }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PinOptFieldDemo {

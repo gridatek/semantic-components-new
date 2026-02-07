@@ -23,13 +23,16 @@ import { NoSearchEmojiPickerDemo } from './no-search-emoji-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoSearchEmojiPickerDemoContainer {
-  readonly code = `import { Component } from '@angular/core';
+  readonly code = `import { Component, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-search-emoji-picker-demo',
   imports: [ScEmojiPicker],
-  template: \` <sc-emoji-picker [showSearch]="false" /> \`,
+  template: \`
+    <sc-emoji-picker [showSearch]="false" />
+  \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class NoSearchEmojiPickerDemo {}`;
 }

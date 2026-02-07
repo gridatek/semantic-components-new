@@ -19,7 +19,11 @@ import { DescriptionSwitchDemo } from './description-switch-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DescriptionSwitchDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSwitch } from '@semantic-components/ui';
 
 @Component({
@@ -30,9 +34,7 @@ import { ScSwitch } from '@semantic-components/ui';
       class="flex flex-row items-center justify-between rounded-lg border p-4"
     >
       <div class="space-y-0.5">
-        <label for="dark-mode" class="text-base font-medium">
-          Dark Mode
-        </label>
+        <label for="dark-mode" class="text-base font-medium">Dark Mode</label>
         <p class="text-sm text-muted-foreground">
           Enable dark mode for a better viewing experience in low light.
         </p>
@@ -40,6 +42,7 @@ import { ScSwitch } from '@semantic-components/ui';
       <button sc-switch id="dark-mode"></button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DescriptionSwitchDemo {}`;

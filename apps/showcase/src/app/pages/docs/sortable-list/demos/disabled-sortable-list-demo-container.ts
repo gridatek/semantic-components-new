@@ -19,23 +19,19 @@ import { DisabledSortableListDemo } from './disabled-sortable-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledSortableListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  ScSortableItem,
-  ScSortableList,
-} from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScSortableItem, ScSortableList } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-sortable-list-demo',
   imports: [ScSortableList, ScSortableItem],
   template: \`
     <div class="max-w-md">
-      <div
-        sc-sortable-list
-        [items]="items"
-        [disabled]="true"
-        class="gap-2"
-      >
+      <div sc-sortable-list [items]="items" [disabled]="true" class="gap-2">
         @for (item of items; track item; let i = $index) {
           <div
             sc-sortable-item
@@ -49,6 +45,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledSortableListDemo {

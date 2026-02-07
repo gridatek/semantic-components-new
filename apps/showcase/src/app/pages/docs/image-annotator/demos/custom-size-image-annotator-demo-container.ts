@@ -19,7 +19,12 @@ import { CustomSizeImageAnnotatorDemo } from './custom-size-image-annotator-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomSizeImageAnnotatorDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScImageAnnotator } from '@semantic-components/ui';
 
 @Component({
@@ -28,6 +33,7 @@ import { ScImageAnnotator } from '@semantic-components/ui';
   template: \`
     <sc-image-annotator [src]="imageSrc()" [width]="400" [height]="300" />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomSizeImageAnnotatorDemo {

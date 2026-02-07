@@ -23,7 +23,11 @@ import { VariantsKbdDemo } from './variants-kbd-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsKbdDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScKbd } from '@semantic-components/ui';
 
 @Component({
@@ -43,6 +47,7 @@ import { ScKbd } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsKbdDemo {}`;

@@ -19,7 +19,11 @@ import { ScContextMenuDemo } from './context-menu-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScContextMenuDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScContextMenu,
   ScContextMenuContent,
@@ -108,6 +112,7 @@ import {
       </sc-context-menu-content>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScContextMenuDemo {

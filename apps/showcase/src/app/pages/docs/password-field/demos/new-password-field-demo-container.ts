@@ -23,16 +23,22 @@ import { NewPasswordFieldDemo } from './new-password-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class NewPasswordFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-new-password-field-demo',
   imports: [
     ScPasswordField,
     ScPasswordFieldInputGroup,
@@ -70,6 +76,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewPasswordFieldDemo {

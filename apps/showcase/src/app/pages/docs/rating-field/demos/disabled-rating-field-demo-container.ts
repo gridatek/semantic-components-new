@@ -19,7 +19,12 @@ import { DisabledRatingFieldDemo } from './disabled-rating-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledRatingFieldDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScRatingField,
   ScRatingItemGroup,
@@ -52,6 +57,8 @@ import { SiStarIcon } from '@semantic-icons/lucide-icons';
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledRatingFieldDemo {
   readonly rating = signal(2);

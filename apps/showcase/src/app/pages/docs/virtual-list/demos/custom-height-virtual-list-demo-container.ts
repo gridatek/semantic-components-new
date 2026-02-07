@@ -23,7 +23,12 @@ import { CustomHeightVirtualListDemo } from './custom-height-virtual-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomHeightVirtualListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScVirtualList } from '@semantic-components/ui';
 
 @Component({
@@ -31,11 +36,7 @@ import { ScVirtualList } from '@semantic-components/ui';
   imports: [ScVirtualList],
   template: \`
     <div class="border rounded-lg overflow-hidden">
-      <sc-virtual-list
-        [items]="items()"
-        [itemHeight]="36"
-        height="200px"
-      >
+      <sc-virtual-list [items]="items()" [itemHeight]="36" height="200px">
         <ng-template let-item let-index="index">
           <div
             class="flex items-center px-4 h-full border-b text-sm hover:bg-muted/50 transition-colors"
@@ -47,6 +48,7 @@ import { ScVirtualList } from '@semantic-components/ui';
       </sc-virtual-list>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomHeightVirtualListDemo {

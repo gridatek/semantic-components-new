@@ -23,14 +23,18 @@ import { BasicAccordionDemo } from './basic-accordion-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAccordionDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAccordion,
+  ScAccordionContent,
   ScAccordionHeader,
   ScAccordionItem,
   ScAccordionPanel,
   ScAccordionTrigger,
-  ScAccordionContent,
   ScAccordionTriggerIcon,
 } from '@semantic-components/ui';
 
@@ -43,8 +47,8 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
     ScAccordionPanel,
     ScAccordionItem,
     ScAccordionTrigger,
-    ScAccordionHeader,
     ScAccordionContent,
+    ScAccordionHeader,
     SiChevronDownIcon,
     ScAccordionTriggerIcon,
   ],
@@ -94,6 +98,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAccordionDemo {}`;

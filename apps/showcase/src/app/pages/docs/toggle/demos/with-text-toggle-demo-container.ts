@@ -23,7 +23,12 @@ import { WithTextToggleDemo } from './with-text-toggle-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithTextToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggle } from '@semantic-components/ui';
 
 @Component({
@@ -49,6 +54,7 @@ import { ScToggle } from '@semantic-components/ui';
       Underline
     </button>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithTextToggleDemo {

@@ -19,7 +19,11 @@ import { ButtonOffsetTimezoneDemo } from './button-offset-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonOffsetTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneButton } from '@semantic-components/ui';
 
 @Component({
@@ -28,6 +32,7 @@ import { ScTimezoneButton } from '@semantic-components/ui';
   template: \`
     <button sc-timezone-button variant="outline" [showOffset]="true"></button>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonOffsetTimezoneDemo {}`;

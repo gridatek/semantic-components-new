@@ -23,7 +23,12 @@ import { DotSeparatorOptFieldDemo } from './dot-separator-opt-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DotSeparatorOptFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScOptField,
   ScOptFieldSlotGroup,
@@ -33,7 +38,12 @@ import {
 
 @Component({
   selector: 'app-dot-separator-opt-field-demo',
-  imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSeparator, ScOptFieldSlot],
+  imports: [
+    ScOptField,
+    ScOptFieldSlotGroup,
+    ScOptFieldSeparator,
+    ScOptFieldSlot,
+  ],
   template: \`
     <div sc-opt-field [(value)]="otp">
       <div sc-opt-field-slot-group>
@@ -85,6 +95,7 @@ import {
       Value: {{ otp() || 'empty' }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DotSeparatorOptFieldDemo {

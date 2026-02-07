@@ -19,7 +19,11 @@ import { CodeCopyButtonDemo } from './code-copy-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeCopyButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyCode } from '@semantic-components/ui';
 
 @Component({
@@ -30,6 +34,7 @@ import { ScCopyCode } from '@semantic-components/ui';
       <div sc-copy-code [value]="codeSnippet">{{ codeSnippet }}</div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeCopyButtonDemo {

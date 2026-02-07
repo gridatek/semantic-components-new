@@ -19,7 +19,12 @@ import { MaxTagsTagInputDemo } from './max-tags-tag-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaxTagsTagInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTagInput,
   ScTagInputCount,
@@ -43,6 +48,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaxTagsTagInputDemo {

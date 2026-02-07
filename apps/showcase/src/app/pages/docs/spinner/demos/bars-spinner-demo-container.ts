@@ -19,7 +19,11 @@ import { BarsSpinnerDemo } from './bars-spinner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarsSpinnerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinnerBars } from '@semantic-components/ui';
 
 @Component({
@@ -34,6 +38,7 @@ import { ScSpinnerBars } from '@semantic-components/ui';
       <span sc-spinner-bars size="xl"></span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarsSpinnerDemo {}`;

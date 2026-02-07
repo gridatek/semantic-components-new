@@ -23,7 +23,12 @@ import { SignalFormsNumberFieldDemo } from './signal-forms-number-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SignalFormsNumberFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormField, form, required, min, max } from '@angular/forms/signals';
 import {
   ScNumberField,
@@ -32,10 +37,11 @@ import {
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-signal-forms-number-field-demo',
   imports: [
     FormField,
     ScNumberField,
@@ -94,6 +100,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsNumberFieldDemo {
@@ -121,6 +128,7 @@ export class SignalFormsNumberFieldDemo {
   }
 
   hasError(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field: any,
     errorKey: string,
   ): boolean {

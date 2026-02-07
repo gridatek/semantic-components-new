@@ -19,7 +19,12 @@ import { SingleToggleGroupDemo } from './single-toggle-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleToggleGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -93,6 +98,7 @@ import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleToggleGroupDemo {

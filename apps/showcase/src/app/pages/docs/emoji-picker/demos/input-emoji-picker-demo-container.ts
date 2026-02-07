@@ -23,7 +23,7 @@ import { InputEmojiPickerDemo } from './input-emoji-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputEmojiPickerDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
 
 @Component({
@@ -71,6 +71,7 @@ import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class InputEmojiPickerDemo {
   readonly inputValue = signal('');

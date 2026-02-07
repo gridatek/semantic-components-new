@@ -19,7 +19,11 @@ import { InputCopyButtonDemo } from './input-copy-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputCopyButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyInput } from '@semantic-components/ui';
 
 @Component({
@@ -37,14 +41,11 @@ import { ScCopyInput } from '@semantic-components/ui';
       </div>
       <div>
         <label class="text-sm font-medium">API Key</label>
-        <div
-          sc-copy-input
-          [value]="'sk_live_abc123xyz789'"
-          class="mt-1"
-        ></div>
+        <div sc-copy-input [value]="'sk_live_abc123xyz789'" class="mt-1"></div>
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputCopyButtonDemo {}`;

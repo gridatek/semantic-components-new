@@ -19,7 +19,11 @@ import { NavigationTimezoneDemo } from './navigation-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneDisplay } from '@semantic-components/ui';
 
 @Component({
@@ -36,6 +40,7 @@ import { ScTimezoneDisplay } from '@semantic-components/ui';
       <button sc-timezone-display variant="outline"></button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationTimezoneDemo {}`;

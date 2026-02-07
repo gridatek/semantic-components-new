@@ -19,7 +19,12 @@ import { EasingAnimatedCounterDemo } from './easing-animated-counter-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EasingAnimatedCounterDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAnimatedCounter } from '@semantic-components/ui';
 
 @Component({
@@ -73,6 +78,7 @@ import { ScAnimatedCounter } from '@semantic-components/ui';
       </button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EasingAnimatedCounterDemo {

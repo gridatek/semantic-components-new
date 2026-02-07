@@ -19,7 +19,12 @@ import { HandleSortableListDemo } from './handle-sortable-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HandleSortableListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSortableHandle,
   ScSortableItem,
@@ -29,15 +34,15 @@ import {
 
 @Component({
   selector: 'app-handle-sortable-list-demo',
-  imports: [ScSortableList, ScSortableItem, ScSortableHandle, ScSortableOverlay],
+  imports: [
+    ScSortableList,
+    ScSortableItem,
+    ScSortableHandle,
+    ScSortableOverlay,
+  ],
   template: \`
     <div class="max-w-md">
-      <div
-        sc-sortable-list
-        [(items)]="items"
-        [handleOnly]="true"
-        class="gap-2"
-      >
+      <div sc-sortable-list [(items)]="items" [handleOnly]="true" class="gap-2">
         <div sc-sortable-overlay></div>
         @for (item of items(); track item; let i = $index) {
           <div
@@ -53,6 +58,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HandleSortableListDemo {

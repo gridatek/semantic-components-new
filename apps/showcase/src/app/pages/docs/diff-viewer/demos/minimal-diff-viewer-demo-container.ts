@@ -23,7 +23,11 @@ import { MinimalDiffViewerDemo } from './minimal-diff-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinimalDiffViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -39,16 +43,17 @@ import { ScDiffViewer } from '@semantic-components/ui';
       [maxHeight]="'200px'"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinimalDiffViewerDemo {
-  oldText = \\\`Line 1
+  oldText = \`Line 1
 Line 2
-Line 3\\\`;
+Line 3\`;
 
-  newText = \\\`Line 1
+  newText = \`Line 1
 Modified Line 2
 Line 3
-New Line 4\\\`;
+New Line 4\`;
 }`;
 }

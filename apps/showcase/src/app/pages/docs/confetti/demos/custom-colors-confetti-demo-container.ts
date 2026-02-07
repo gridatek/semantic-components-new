@@ -19,7 +19,12 @@ import { CustomColorsConfettiDemo } from './custom-colors-confetti-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomColorsConfettiDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  viewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScConfetti } from '@semantic-components/ui';
 
 @Component({
@@ -34,6 +39,7 @@ import { ScConfetti } from '@semantic-components/ui';
       Purple Party
     </button>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomColorsConfettiDemo {

@@ -24,15 +24,17 @@ import { BrowserSupportBarcodeScannerDemo } from './browser-support-barcode-scan
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowserSupportBarcodeScannerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-browser-support-barcode-scanner-demo',
   template: \`
     <div class="space-y-3">
-      <ul
-        class="text-sm space-y-1 list-disc list-inside text-muted-foreground"
-      >
+      <ul class="text-sm space-y-1 list-disc list-inside text-muted-foreground">
         <li>Chrome 83+ (desktop and Android)</li>
         <li>Edge 83+</li>
         <li>Opera 69+</li>
@@ -44,6 +46,7 @@ export class BrowserSupportBarcodeScannerDemoContainer {
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowserSupportBarcodeScannerDemo {}`;

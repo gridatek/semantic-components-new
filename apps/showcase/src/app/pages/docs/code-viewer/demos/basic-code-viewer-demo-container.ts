@@ -19,7 +19,12 @@ import { BasicCodeViewerDemo } from './basic-code-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BasicCodeViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCodeViewer,
   ScCodeViewerContent,
@@ -40,7 +45,7 @@ import {
   template: \`
     <div sc-code-viewer>
       <div sc-code-viewer-header>
-        <span sc-code-viewer-label>app.component.ts</span>
+        <span sc-code-viewer-label>app.ts</span>
         <button sc-copy-button [value]="sampleCode()"></button>
       </div>
       <div
@@ -51,6 +56,7 @@ import {
       ></div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicCodeViewerDemo {
@@ -65,7 +71,7 @@ export class BasicCodeViewerDemo {
     </div>
   \\\`,
 })
-export class AppComponent {
+export class App {
   title = 'my-app';
 }\`);
 }`;

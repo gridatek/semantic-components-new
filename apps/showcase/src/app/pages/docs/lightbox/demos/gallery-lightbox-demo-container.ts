@@ -19,18 +19,20 @@ import { GalleryLightboxDemo } from './gallery-lightbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GalleryLightboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLightboxGallery, LightboxImage } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-gallery-lightbox-demo',
   imports: [ScLightboxGallery],
   template: \`
-    <sc-lightbox-gallery
-      [images]="images"
-      class="grid-cols-4 gap-2 max-w-xl"
-    />
+    <sc-lightbox-gallery [images]="images" class="grid-cols-4 gap-2 max-w-xl" />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GalleryLightboxDemo {

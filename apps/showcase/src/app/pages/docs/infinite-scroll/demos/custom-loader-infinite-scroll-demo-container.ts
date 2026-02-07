@@ -23,7 +23,12 @@ import { CustomLoaderInfiniteScrollDemo } from './custom-loader-infinite-scroll-
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomLoaderInfiniteScrollDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScInfiniteScroll,
   ScInfiniteScrollLoader,
@@ -72,6 +77,7 @@ interface Item {
       </div>
     </sc-infinite-scroll>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomLoaderInfiniteScrollDemo {
@@ -82,8 +88,8 @@ export class CustomLoaderInfiniteScrollDemo {
   private generateItems(start: number, count: number): Item[] {
     return Array.from({ length: count }, (_, i) => ({
       id: start + i + 1,
-      title: \\\`Item \\\${start + i + 1}\\\`,
-      description: \\\`This is the description for item \\\${start + i + 1}\\\`,
+      title: \`Item \${start + i + 1}\`,
+      description: \`This is the description for item \${start + i + 1}\`,
     }));
   }
 

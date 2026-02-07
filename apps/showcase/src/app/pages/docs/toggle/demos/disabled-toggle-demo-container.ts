@@ -23,7 +23,11 @@ import { DisabledToggleDemo } from './disabled-toggle-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggle } from '@semantic-components/ui';
 
 @Component({
@@ -72,6 +76,7 @@ import { ScToggle } from '@semantic-components/ui';
       </button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledToggleDemo {}`;

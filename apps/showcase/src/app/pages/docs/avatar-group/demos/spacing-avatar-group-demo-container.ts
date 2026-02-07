@@ -24,7 +24,11 @@ import { SpacingAvatarGroupDemo } from './spacing-avatar-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpacingAvatarGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -46,11 +50,16 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpacingAvatarGroupDemo {
   readonly users: AvatarGroupItem[] = [
-    { id: '1', src: 'https://i.pravatar.cc/150?u=user1', name: 'Alice Johnson' },
+    {
+      id: '1',
+      src: 'https://i.pravatar.cc/150?u=user1',
+      name: 'Alice Johnson',
+    },
     { id: '2', src: 'https://i.pravatar.cc/150?u=user2', name: 'Bob Smith' },
     { id: '3', src: 'https://i.pravatar.cc/150?u=user3', name: 'Carol White' },
     { id: '4', src: 'https://i.pravatar.cc/150?u=user4', name: 'David Brown' },

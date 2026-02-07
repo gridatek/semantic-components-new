@@ -23,7 +23,12 @@ import { RowsTextareaDemo } from './rows-textarea-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RowsTextareaDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
 
@@ -52,6 +57,7 @@ import { ScField, ScLabel, ScTextarea } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RowsTextareaDemo {

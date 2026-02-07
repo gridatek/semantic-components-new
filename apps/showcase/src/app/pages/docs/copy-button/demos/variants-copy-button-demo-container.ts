@@ -19,7 +19,11 @@ import { VariantsCopyButtonDemo } from './variants-copy-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsCopyButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyButton } from '@semantic-components/ui';
 
 @Component({
@@ -53,6 +57,7 @@ import { ScCopyButton } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsCopyButtonDemo {}`;

@@ -19,7 +19,12 @@ import { OutlineToggleGroupDemo } from './outline-toggle-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OutlineToggleGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -92,6 +97,7 @@ import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
       </button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OutlineToggleGroupDemo {

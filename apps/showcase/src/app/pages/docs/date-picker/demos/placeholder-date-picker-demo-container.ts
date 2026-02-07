@@ -23,7 +23,12 @@ import { PlaceholderDatePickerDemo } from './placeholder-date-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaceholderDatePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDatePicker } from '@semantic-components/ui';
 
 @Component({
@@ -35,6 +40,7 @@ import { ScDatePicker } from '@semantic-components/ui';
       placeholder="Select your birthday"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaceholderDatePickerDemo {

@@ -24,6 +24,7 @@ export class ScSelectDemoContainer {
   Component,
   computed,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { SiCheckIcon, SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 import {
@@ -37,7 +38,6 @@ import {
   ScSelectTrigger,
   ScSelectValue,
 } from '@semantic-components/ui';
-
 
 @Component({
   selector: 'app-select-demo',
@@ -193,6 +193,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSelectDemo {

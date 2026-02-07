@@ -19,7 +19,12 @@ import { SimpleStepperDemo } from './simple-stepper-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleStepperDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScStepper,
   ScStepperList,
@@ -69,6 +74,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleStepperDemo {

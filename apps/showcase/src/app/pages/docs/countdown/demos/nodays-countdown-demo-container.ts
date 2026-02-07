@@ -19,5 +19,29 @@ import { NodaysCountdownDemo } from './nodays-countdown-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NodaysCountdownDemoContainer {
-  readonly code = `// See nodays-countdown-demo.ts for full source`;
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCountdown } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-nodays-countdown-demo',
+  imports: [ScCountdown],
+  template: \`
+    <div class="p-4 rounded-lg border inline-block">
+      <sc-countdown
+        [targetDate]="shortFuture"
+        [showDays]="false"
+        variant="compact"
+      />
+    </div>
+  \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class NodaysCountdownDemo {
+  readonly shortFuture = new Date(Date.now() + 2 * 60 * 60 * 1000);
+}`;
 }

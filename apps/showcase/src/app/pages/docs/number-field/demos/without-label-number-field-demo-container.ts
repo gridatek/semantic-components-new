@@ -23,7 +23,12 @@ import { WithoutLabelNumberFieldDemo } from './without-label-number-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class WithoutLabelNumberFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -33,6 +38,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-without-label-number-field-demo',
   imports: [
     ScNumberField,
     ScNumberFieldInputGroup,
@@ -43,7 +49,13 @@ import {
   template: \`
     <div class="flex items-center gap-4">
       <span class="text-sm font-medium">Quantity:</span>
-      <div sc-number-field [(value)]="quantity" [min]="1" [max]="10" class="w-28">
+      <div
+        sc-number-field
+        [(value)]="quantity"
+        [min]="1"
+        [max]="10"
+        class="w-28"
+      >
         <div sc-number-field-group>
           <button sc-number-field-decrement></button>
           <input sc-number-field-input />
@@ -52,6 +64,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithoutLabelNumberFieldDemo {

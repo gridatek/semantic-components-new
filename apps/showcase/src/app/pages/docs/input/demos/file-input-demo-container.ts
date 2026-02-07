@@ -23,7 +23,11 @@ import { FileInputDemo } from './file-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
@@ -35,6 +39,7 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
       <input sc-input type="file" />
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileInputDemo {}`;

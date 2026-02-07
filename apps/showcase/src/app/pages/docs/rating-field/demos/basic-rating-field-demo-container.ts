@@ -19,7 +19,12 @@ import { BasicRatingFieldDemo } from './basic-rating-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicRatingFieldDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScRatingField,
   ScRatingItemGroup,
@@ -54,6 +59,8 @@ import { SiStarIcon } from '@semantic-icons/lucide-icons';
       <p class="text-sm text-muted-foreground">Rating: {{ rating() }} / 5</p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicRatingFieldDemo {
   readonly rating = signal(3);

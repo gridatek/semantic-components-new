@@ -23,7 +23,12 @@ import { LabelCheckboxDemo } from './label-checkbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCheckboxField, ScCheckbox } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
@@ -55,6 +60,7 @@ import { FormsModule } from '@angular/forms';
       {{ option3() ? 'Three' : '' }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelCheckboxDemo {

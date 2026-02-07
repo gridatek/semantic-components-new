@@ -19,20 +19,22 @@ import { NoControlsSignaturePadDemo } from './no-controls-signature-pad-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoControlsSignaturePadDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSignaturePad } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScSignaturePad, ScSignaturePadCanvas } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-controls-signature-pad-demo',
-  imports: [ScSignaturePad],
+  imports: [ScSignaturePad, ScSignaturePadCanvas],
   template: \`
     <div class="space-y-3">
-      <sc-signature-pad
-        #pad
-        [width]="400"
-        [height]="150"
-        [showControls]="false"
-      />
+      <div sc-signature-pad #pad="scSignaturePad" class="relative inline-block">
+        <canvas sc-signature-pad-canvas [width]="400" [height]="150"></canvas>
+      </div>
+
       <div class="flex gap-2">
         <button
           (click)="pad.undo()"
@@ -49,6 +51,7 @@ import { ScSignaturePad } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoControlsSignaturePadDemo {}`;

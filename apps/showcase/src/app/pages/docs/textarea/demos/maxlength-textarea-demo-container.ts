@@ -23,7 +23,12 @@ import { MaxlengthTextareaDemo } from './maxlength-textarea-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaxlengthTextareaDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField, maxLength } from '@angular/forms/signals';
 import {
   ScField,
@@ -46,6 +51,7 @@ import {
       <p sc-field-description>Max 200 characters.</p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaxlengthTextareaDemo {

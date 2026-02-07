@@ -23,7 +23,12 @@ import { StrengthPasswordFieldDemo } from './strength-password-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class StrengthPasswordFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
@@ -34,6 +39,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-strength-password-field-demo',
   imports: [
     ScPasswordField,
     ScPasswordFieldInputGroup,
@@ -56,6 +62,7 @@ import {
       <div sc-password-field-strength></div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StrengthPasswordFieldDemo {

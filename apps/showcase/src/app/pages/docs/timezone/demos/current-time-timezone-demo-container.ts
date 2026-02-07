@@ -19,7 +19,12 @@ import { CurrentTimeTimezoneDemo } from './current-time-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentTimeTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneBadge, ScTimezoneService } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +38,7 @@ import { ScTimezoneBadge, ScTimezoneService } from '@semantic-components/ui';
       </span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentTimeTimezoneDemo {

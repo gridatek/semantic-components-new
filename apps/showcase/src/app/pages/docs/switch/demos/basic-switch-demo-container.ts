@@ -19,7 +19,11 @@ import { BasicSwitchDemo } from './basic-switch-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSwitchDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSwitch } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +37,7 @@ import { ScSwitch } from '@semantic-components/ui';
       </label>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSwitchDemo {}`;

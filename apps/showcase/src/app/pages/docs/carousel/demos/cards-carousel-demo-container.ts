@@ -23,7 +23,11 @@ import { CardsCarouselDemo } from './cards-carousel-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsCarouselDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCarousel,
   ScCarouselViewport,
@@ -39,7 +43,16 @@ import {
 
 @Component({
   selector: 'app-cards-carousel-demo',
-  imports: [ScCarousel, ScCarouselViewport, ScCarouselTrack, ScCarouselItem, ScCarouselPrevious, ScCarouselNext, SiChevronLeftIcon, SiChevronRightIcon],
+  imports: [
+    ScCarousel,
+    ScCarouselViewport,
+    ScCarouselTrack,
+    ScCarouselItem,
+    ScCarouselPrevious,
+    ScCarouselNext,
+    SiChevronLeftIcon,
+    SiChevronRightIcon,
+  ],
   template: \`
     <div class="mx-auto w-full max-w-sm">
       <div sc-carousel class="w-full">
@@ -50,7 +63,9 @@ import {
                 <div class="p-1">
                   <div class="rounded-lg border bg-card p-6">
                     <h4 class="font-semibold">{{ card.title }}</h4>
-                    <p class="mt-2 text-sm text-muted-foreground">{{ card.description }}</p>
+                    <p class="mt-2 text-sm text-muted-foreground">
+                      {{ card.description }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -68,14 +83,27 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsCarouselDemo {
   readonly cards = [
-    { title: 'Card 1', description: 'This is the first card with some description text.' },
-    { title: 'Card 2', description: 'This is the second card with different content.' },
-    { title: 'Card 3', description: 'This is the third card with more information.' },
-    { title: 'Card 4', description: 'This is the fourth card with additional details.' },
+    {
+      title: 'Card 1',
+      description: 'This is the first card with some description text.',
+    },
+    {
+      title: 'Card 2',
+      description: 'This is the second card with different content.',
+    },
+    {
+      title: 'Card 3',
+      description: 'This is the third card with more information.',
+    },
+    {
+      title: 'Card 4',
+      description: 'This is the fourth card with additional details.',
+    },
     { title: 'Card 5', description: 'This is the fifth and final card.' },
   ];
 }`;

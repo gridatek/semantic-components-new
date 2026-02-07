@@ -23,7 +23,11 @@ import { LongerPathBreadcrumbDemo } from './longer-path-breadcrumb-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LongerPathBreadcrumbDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScBreadcrumb,
   ScBreadcrumbItem,
@@ -68,6 +72,7 @@ import {
       </ol>
     </nav>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LongerPathBreadcrumbDemo {}`;

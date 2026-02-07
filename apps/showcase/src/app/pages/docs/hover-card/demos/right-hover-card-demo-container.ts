@@ -23,7 +23,11 @@ import { RightHoverCardDemo } from './right-hover-card-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RightHoverCardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScHoverCardProvider,
   ScHoverCardPortal,
@@ -33,7 +37,12 @@ import {
 
 @Component({
   selector: 'app-right-hover-card-demo',
-  imports: [ScHoverCardProvider, ScHoverCardPortal, ScHoverCard, ScHoverCardTrigger],
+  imports: [
+    ScHoverCardProvider,
+    ScHoverCardPortal,
+    ScHoverCard,
+    ScHoverCardTrigger,
+  ],
   template: \`
     <div sc-hover-card-provider side="right">
       <button
@@ -73,6 +82,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RightHoverCardDemo {}`;

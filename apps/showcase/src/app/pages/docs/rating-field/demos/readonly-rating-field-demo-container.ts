@@ -19,7 +19,11 @@ import { ReadonlyRatingFieldDemo } from './readonly-rating-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReadonlyRatingFieldDemoContainer {
-  readonly code = `import { Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScRatingField,
   ScRatingItemGroup,
@@ -71,6 +75,8 @@ import { SiStarIcon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReadonlyRatingFieldDemo {}`;
 }

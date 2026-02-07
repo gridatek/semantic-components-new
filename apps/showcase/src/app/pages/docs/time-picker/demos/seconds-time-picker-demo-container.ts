@@ -19,7 +19,12 @@ import { SecondsTimePickerDemo } from './seconds-time-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SecondsTimePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimePicker,
   ScTimePickerInput,
@@ -32,12 +37,7 @@ import {
   imports: [ScTimePicker, ScTimePickerInput, ScTimePickerSeparator],
   template: \`
     <div class="flex flex-col gap-4">
-      <div
-        sc-time-picker
-        format="24h"
-        [showSeconds]="true"
-        [(value)]="time"
-      >
+      <div sc-time-picker format="24h" [showSeconds]="true" [(value)]="time">
         <input sc-time-picker-input type="hours" label="Hours" />
         <span sc-time-picker-separator>:</span>
         <input sc-time-picker-input type="minutes" label="Minutes" />
@@ -49,6 +49,7 @@ import {
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SecondsTimePickerDemo {

@@ -23,13 +23,16 @@ import { NoCategoriesEmojiPickerDemo } from './no-categories-emoji-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoCategoriesEmojiPickerDemoContainer {
-  readonly code = `import { Component } from '@angular/core';
+  readonly code = `import { Component, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-categories-emoji-picker-demo',
   imports: [ScEmojiPicker],
-  template: \` <sc-emoji-picker [showCategories]="false" class="h-72" /> \`,
+  template: \`
+    <sc-emoji-picker [showCategories]="false" class="h-72" />
+  \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class NoCategoriesEmojiPickerDemo {}`;
 }

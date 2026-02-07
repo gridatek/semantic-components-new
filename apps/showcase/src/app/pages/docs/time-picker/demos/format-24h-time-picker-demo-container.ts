@@ -19,7 +19,12 @@ import { Format24hTimePickerDemo } from './format-24h-time-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Format24hTimePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimePicker,
   ScTimePickerInput,
@@ -42,6 +47,7 @@ import {
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Format24hTimePickerDemo {

@@ -23,7 +23,12 @@ import { IndeterminateNativeCheckboxDemo } from './indeterminate-native-checkbox
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IndeterminateNativeCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScNativeCheckbox } from '@semantic-components/ui';
 
 @Component({
@@ -96,6 +101,7 @@ import { ScNativeCheckbox } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IndeterminateNativeCheckboxDemo {

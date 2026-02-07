@@ -23,7 +23,11 @@ import { SimpleTreeDemo } from './simple-tree-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleTreeDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTree,
   ScTreeItem,
@@ -95,6 +99,7 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
       </ul>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleTreeDemo {}`;

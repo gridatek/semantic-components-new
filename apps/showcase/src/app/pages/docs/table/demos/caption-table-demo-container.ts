@@ -19,7 +19,11 @@ import { CaptionTableDemo } from './caption-table-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CaptionTableDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTable,
   ScTableBody,
@@ -68,6 +72,7 @@ import {
       </tbody>
     </table>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CaptionTableDemo {}`;

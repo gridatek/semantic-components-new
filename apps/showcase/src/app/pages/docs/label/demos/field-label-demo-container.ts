@@ -19,7 +19,11 @@ import { FieldLabelDemo } from './field-label-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldLabelDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScField,
   ScInput,
@@ -30,7 +34,7 @@ import {
 @Component({
   selector: 'app-field-label-demo',
   imports: [ScField, ScInput, ScLabel, ScFieldDescription],
-  template: \\\`
+  template: \`
     <div sc-field>
       <label sc-label>Email</label>
       <input sc-input type="email" placeholder="Enter your email" />
@@ -38,7 +42,8 @@ import {
         The label automatically links to the input via the field context.
       </p>
     </div>
-  \\\`,
+  \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldLabelDemo {}`;

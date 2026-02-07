@@ -19,7 +19,11 @@ import { HorizontalScrollAreaDemo } from './horizontal-scroll-area-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalScrollAreaDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
 
 @Component({
@@ -49,6 +53,7 @@ import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
       <div sc-scroll-bar orientation="horizontal"></div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalScrollAreaDemo {

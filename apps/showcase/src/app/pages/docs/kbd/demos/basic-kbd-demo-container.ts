@@ -23,7 +23,11 @@ import { BasicKbdDemo } from './basic-kbd-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicKbdDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScKbd } from '@semantic-components/ui';
 
 @Component({
@@ -41,6 +45,7 @@ import { ScKbd } from '@semantic-components/ui';
       <kbd sc-kbd>Space</kbd>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicKbdDemo {}`;

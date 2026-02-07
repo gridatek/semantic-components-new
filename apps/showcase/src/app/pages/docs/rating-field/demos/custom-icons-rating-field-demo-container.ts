@@ -19,7 +19,12 @@ import { CustomIconsRatingFieldDemo } from './custom-icons-rating-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomIconsRatingFieldDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScRatingField,
   ScRatingItemGroup,
@@ -54,6 +59,8 @@ import { SiHeartIcon } from '@semantic-icons/lucide-icons';
       <p class="text-sm text-muted-foreground">Hearts: {{ rating() }} / 5</p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomIconsRatingFieldDemo {
   readonly rating = signal(4);

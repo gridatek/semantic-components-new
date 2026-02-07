@@ -19,7 +19,12 @@ import { DuplicatesTagInputDemo } from './duplicates-tag-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DuplicatesTagInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTagInput,
   ScTagInputField,
@@ -39,6 +44,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DuplicatesTagInputDemo {

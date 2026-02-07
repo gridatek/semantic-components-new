@@ -23,7 +23,12 @@ import { BasicNumberFieldDemo } from './basic-number-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BasicNumberFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -31,10 +36,11 @@ import {
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-basic-number-field-demo',
   imports: [
     ScNumberField,
     ScNumberFieldScrubArea,
@@ -61,6 +67,7 @@ import {
       Current value: {{ count() ?? 'null' }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicNumberFieldDemo {

@@ -23,16 +23,22 @@ import { UploadImageCropperDemo } from './upload-image-cropper-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadImageCropperDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   CropResult,
   ScImageCropper,
+  ScImageCropperContainer,
   ScImageCropperControls,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-upload-image-cropper-demo',
-  imports: [ScImageCropper, ScImageCropperControls],
+  imports: [ScImageCropper, ScImageCropperContainer, ScImageCropperControls],
   template: \`
     <div class="space-y-4">
       <div class="flex items-center gap-4">
@@ -66,19 +72,24 @@ import {
 
       @if (uploadedImageSrc()) {
         <div
-          #cropper="scImageCropper"
           sc-image-cropper
           [src]="uploadedImageSrc()!"
           [containerHeight]="350"
-          class="rounded-lg overflow-hidden border"
+          class="space-y-4"
         >
-          <div class="flex items-center justify-between mt-4">
+          <div
+            sc-image-cropper-container
+            #container
+            class="rounded-lg overflow-hidden border"
+          ></div>
+
+          <div class="flex items-center justify-between">
             <div sc-image-cropper-controls></div>
             <div class="flex gap-2">
               <button
                 type="button"
                 class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-                (click)="cropImage(cropper)"
+                (click)="cropImage(container)"
               >
                 Crop & Download
               </button>
@@ -88,14 +99,17 @@ import {
       }
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadImageCropperDemo {
   readonly uploadedImageSrc = signal<string | null>(null);
 
-  async cropImage(cropper: ScImageCropper): Promise<void> {
+  async cropImage(
+    container: InstanceType<typeof ScImageCropperContainer>,
+  ): Promise<void> {
     try {
-      const result: CropResult = await cropper.crop();
+      const result: CropResult = await container.crop();
 
       // Download the cropped image
       const link = document.createElement('a');

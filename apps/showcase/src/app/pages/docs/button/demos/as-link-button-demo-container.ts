@@ -23,7 +23,11 @@ import { AsLinkButtonDemo } from './as-link-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsLinkButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
@@ -36,6 +40,7 @@ import { ScButton } from '@semantic-components/ui';
       <a sc-button variant="ghost" href="#">Ghost Link</a>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsLinkButtonDemo {}`;

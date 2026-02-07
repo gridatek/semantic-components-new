@@ -19,7 +19,12 @@ import { PriceRangeSliderDemo } from './price-range-slider-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PriceRangeSliderDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScRangeSlider } from '@semantic-components/ui';
 
 @Component({
@@ -43,6 +48,7 @@ import { ScRangeSlider } from '@semantic-components/ui';
       ></div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PriceRangeSliderDemo {

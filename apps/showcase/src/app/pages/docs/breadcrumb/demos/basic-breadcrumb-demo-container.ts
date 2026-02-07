@@ -23,7 +23,11 @@ import { BasicBreadcrumbDemo } from './basic-breadcrumb-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicBreadcrumbDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScBreadcrumb,
   ScBreadcrumbItem,
@@ -60,6 +64,7 @@ import {
       </ol>
     </nav>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicBreadcrumbDemo {}`;

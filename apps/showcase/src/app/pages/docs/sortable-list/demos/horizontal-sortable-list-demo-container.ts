@@ -19,7 +19,12 @@ import { HorizontalSortableListDemo } from './horizontal-sortable-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalSortableListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSortableItem,
   ScSortableList,
@@ -54,6 +59,7 @@ import {
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalSortableListDemo {

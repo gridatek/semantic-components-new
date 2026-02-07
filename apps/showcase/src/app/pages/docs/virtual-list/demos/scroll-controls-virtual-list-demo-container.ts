@@ -23,7 +23,13 @@ import { ScrollControlsVirtualListDemo } from './scroll-controls-virtual-list-de
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrollControlsVirtualListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  viewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScVirtualList } from '@semantic-components/ui';
 
 @Component({
@@ -82,6 +88,7 @@ import { ScVirtualList } from '@semantic-components/ui';
       </sc-virtual-list>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrollControlsVirtualListDemo {

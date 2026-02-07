@@ -19,7 +19,12 @@ import { ValidationTagInputDemo } from './validation-tag-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidationTagInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTagInput,
   ScTagInputField,
@@ -31,12 +36,7 @@ import {
   imports: [ScTagInput, ScTagInputField, ScTagInputTag],
   template: \`
     <div class="max-w-md">
-      <div
-        sc-tag-input
-        [(tags)]="tags"
-        [minLength]="2"
-        [maxLength]="15"
-      >
+      <div sc-tag-input [(tags)]="tags" [minLength]="2" [maxLength]="15">
         @for (tag of tags(); track tag) {
           <span sc-tag-input-tag [tag]="tag"></span>
         }
@@ -44,6 +44,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidationTagInputDemo {

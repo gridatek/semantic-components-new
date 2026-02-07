@@ -23,7 +23,11 @@ import { ImagesCarouselDemo } from './images-carousel-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImagesCarouselDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCarousel,
   ScCarouselViewport,
@@ -39,7 +43,16 @@ import {
 
 @Component({
   selector: 'app-images-carousel-demo',
-  imports: [ScCarousel, ScCarouselViewport, ScCarouselTrack, ScCarouselItem, ScCarouselPrevious, ScCarouselNext, SiChevronLeftIcon, SiChevronRightIcon],
+  imports: [
+    ScCarousel,
+    ScCarouselViewport,
+    ScCarouselTrack,
+    ScCarouselItem,
+    ScCarouselPrevious,
+    ScCarouselNext,
+    SiChevronLeftIcon,
+    SiChevronRightIcon,
+  ],
   template: \`
     <div class="mx-auto w-full max-w-md">
       <div sc-carousel class="w-full">
@@ -48,8 +61,12 @@ import {
             @for (image of images; track image.alt) {
               <div sc-carousel-item>
                 <div class="p-1">
-                  <div class="flex aspect-video items-center justify-center rounded-lg border bg-muted">
-                    <span class="text-sm text-muted-foreground">{{ image.alt }}</span>
+                  <div
+                    class="flex aspect-video items-center justify-center rounded-lg border bg-muted"
+                  >
+                    <span class="text-sm text-muted-foreground">
+                      {{ image.alt }}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -67,6 +84,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImagesCarouselDemo {

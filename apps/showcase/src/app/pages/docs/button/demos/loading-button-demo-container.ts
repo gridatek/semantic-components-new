@@ -23,7 +23,11 @@ import { LoadingButtonDemo } from './loading-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
@@ -50,6 +54,7 @@ import { ScButton } from '@semantic-components/ui';
       </button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingButtonDemo {}`;

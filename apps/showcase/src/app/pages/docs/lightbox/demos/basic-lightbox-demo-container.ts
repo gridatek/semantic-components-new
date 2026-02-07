@@ -19,19 +19,24 @@ import { BasicLightboxDemo } from './basic-lightbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLightboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScLightbox,
+  ScLightboxContainer,
   ScLightboxTrigger,
   LightboxImage,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-lightbox-demo',
-  imports: [ScLightbox, ScLightboxTrigger],
+  imports: [ScLightbox, ScLightboxContainer, ScLightboxTrigger],
   template: \`
     <div class="space-y-2">
-      <sc-lightbox [images]="images">
+      <div sc-lightbox [images]="images">
         <div class="flex gap-4">
           @for (image of images; track image.src; let i = $index) {
             <button
@@ -47,12 +52,15 @@ import {
             </button>
           }
         </div>
-      </sc-lightbox>
+        <div sc-lightbox-container></div>
+      </div>
       <p class="text-sm text-muted-foreground">
-        Click an image to open the lightbox. Use arrow keys or buttons to navigate.
+        Click an image to open the lightbox. Use arrow keys or buttons to
+        navigate.
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLightboxDemo {

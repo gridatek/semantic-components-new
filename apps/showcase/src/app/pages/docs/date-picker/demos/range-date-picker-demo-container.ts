@@ -23,7 +23,12 @@ import { RangeDatePickerDemo } from './range-date-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeDatePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DateRange, ScDatePicker } from '@semantic-components/ui';
 
 @Component({
@@ -46,6 +51,7 @@ import { DateRange, ScDatePicker } from '@semantic-components/ui';
       </p>
     }
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeDatePickerDemo {

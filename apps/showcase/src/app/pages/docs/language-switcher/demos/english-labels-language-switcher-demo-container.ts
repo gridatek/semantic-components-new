@@ -19,7 +19,11 @@ import { EnglishLabelsLanguageSwitcherDemo } from './english-labels-language-swi
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EnglishLabelsLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageSelect } from '@semantic-components/ui';
 
 @Component({
@@ -30,6 +34,7 @@ import { ScLanguageSelect } from '@semantic-components/ui';
       <sc-language-select [showNativeLabels]="false"></sc-language-select>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EnglishLabelsLanguageSwitcherDemo {}`;

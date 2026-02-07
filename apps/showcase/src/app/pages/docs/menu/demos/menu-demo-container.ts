@@ -23,9 +23,12 @@ import { ScMenuDemo } from './menu-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenuDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
-  ScMenuProvider,
   ScMenu,
   ScMenuItem,
   ScMenuPortal,
@@ -35,14 +38,13 @@ import {
   ScMenuSubIcon,
   ScMenuSubPortal,
   ScMenuSubTrigger,
+  ScMenuProvider,
   ScMenuTrigger,
 } from '@semantic-components/ui';
-
 
 @Component({
   selector: 'app-menu-demo',
   imports: [
-    ScMenuProvider,
     ScMenu,
     ScMenuItem,
     ScMenuPortal,
@@ -52,6 +54,7 @@ import {
     ScMenuSubIcon,
     ScMenuSubPortal,
     ScMenuSubTrigger,
+    ScMenuProvider,
     ScMenuTrigger,
   ],
   template: \`
@@ -291,6 +294,9 @@ import {
       </div>
     </div>
   \`,
+
+  encapsulation: ViewEncapsulation.None,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenuDemo {}`;

@@ -19,40 +19,82 @@ import { DescriptionsRadioGroupDemo } from './descriptions-radio-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DescriptionsRadioGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface PlanFormModel {
+  plan: string;
+}
 
 @Component({
   selector: 'app-descriptions-radio-group-demo',
-  imports: [ScRadioGroup, ScRadioGroupItem],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: \`
-    <div sc-radio-group [(value)]="planValue" class="gap-4">
-      <div class="flex items-start space-x-3">
-        <sc-radio-group-item value="free" id="plan-free" class="mt-1" />
+    <div sc-radio-group class="gap-4">
+      <label sc-radio-field class="flex items-start space-x-3">
+        <input
+          type="radio"
+          sc-radio
+          value="free"
+          [formField]="planForm.plan"
+          id="plan-free"
+          class="mt-1"
+        />
         <div class="grid gap-1">
-          <label for="plan-free" class="text-sm font-medium leading-none">Free</label>
-          <p class="text-sm text-muted-foreground">Get started with basic features</p>
+          <span class="text-sm font-medium leading-none">Free</span>
+          <p class="text-sm text-muted-foreground">
+            Get started with basic features
+          </p>
         </div>
-      </div>
-      <div class="flex items-start space-x-3">
-        <sc-radio-group-item value="pro" id="plan-pro" class="mt-1" />
+      </label>
+      <label sc-radio-field class="flex items-start space-x-3">
+        <input
+          type="radio"
+          sc-radio
+          value="pro"
+          [formField]="planForm.plan"
+          id="plan-pro"
+          class="mt-1"
+        />
         <div class="grid gap-1">
-          <label for="plan-pro" class="text-sm font-medium leading-none">Pro</label>
-          <p class="text-sm text-muted-foreground">Advanced features for professionals</p>
+          <span class="text-sm font-medium leading-none">Pro</span>
+          <p class="text-sm text-muted-foreground">
+            Advanced features for professionals
+          </p>
         </div>
-      </div>
-      <div class="flex items-start space-x-3">
-        <sc-radio-group-item value="enterprise" id="plan-enterprise" class="mt-1" />
+      </label>
+      <label sc-radio-field class="flex items-start space-x-3">
+        <input
+          type="radio"
+          sc-radio
+          value="enterprise"
+          [formField]="planForm.plan"
+          id="plan-enterprise"
+          class="mt-1"
+        />
         <div class="grid gap-1">
-          <label for="plan-enterprise" class="text-sm font-medium leading-none">Enterprise</label>
-          <p class="text-sm text-muted-foreground">Custom solutions for large teams</p>
+          <span class="text-sm font-medium leading-none">Enterprise</span>
+          <p class="text-sm text-muted-foreground">
+            Custom solutions for large teams
+          </p>
         </div>
-      </div>
+      </label>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DescriptionsRadioGroupDemo {
-  readonly planValue = signal<string | null>('pro');
+  readonly formModel = signal<PlanFormModel>({
+    plan: 'pro',
+  });
+
+  readonly planForm = form(this.formModel);
 }`;
 }

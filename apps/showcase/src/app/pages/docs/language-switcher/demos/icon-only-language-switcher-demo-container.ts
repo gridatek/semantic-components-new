@@ -19,7 +19,11 @@ import { IconOnlyLanguageSwitcherDemo } from './icon-only-language-switcher-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconOnlyLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageToggle } from '@semantic-components/ui';
 
 @Component({
@@ -31,6 +35,7 @@ import { ScLanguageToggle } from '@semantic-components/ui';
       <span class="text-sm text-muted-foreground">Globe icon only</span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconOnlyLanguageSwitcherDemo {}`;

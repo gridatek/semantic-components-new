@@ -19,7 +19,12 @@ import { BasicSearchInputDemo } from './basic-search-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSearchInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSearchInput } from '@semantic-components/ui';
 import type { SearchSuggestion } from '@semantic-components/ui';
 
@@ -49,6 +54,7 @@ import type { SearchSuggestion } from '@semantic-components/ui';
       }
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSearchInputDemo {

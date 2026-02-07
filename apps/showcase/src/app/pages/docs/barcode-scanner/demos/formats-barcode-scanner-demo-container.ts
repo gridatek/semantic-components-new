@@ -24,7 +24,11 @@ import { FormatsBarcodeScannerDemo } from './formats-barcode-scanner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormatsBarcodeScannerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BarcodeFormat } from '@semantic-components/ui';
 
 @Component({
@@ -38,6 +42,7 @@ import { BarcodeFormat } from '@semantic-components/ui';
       }
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormatsBarcodeScannerDemo {

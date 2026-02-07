@@ -23,7 +23,12 @@ import { FormTextareaDemo } from './form-textarea-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormTextareaDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField, required, email } from '@angular/forms/signals';
 import {
   ScCard,
@@ -103,6 +108,7 @@ interface ContactForm {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormTextareaDemo {

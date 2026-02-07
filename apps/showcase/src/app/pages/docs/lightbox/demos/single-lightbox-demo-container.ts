@@ -19,18 +19,23 @@ import { SingleLightboxDemo } from './single-lightbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleLightboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScLightbox,
+  ScLightboxContainer,
   ScLightboxTrigger,
   LightboxImage,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-single-lightbox-demo',
-  imports: [ScLightbox, ScLightboxTrigger],
+  imports: [ScLightbox, ScLightboxContainer, ScLightboxTrigger],
   template: \`
-    <sc-lightbox [images]="[image]">
+    <div sc-lightbox [images]="[image]">
       <button
         sc-lightbox-trigger
         [index]="0"
@@ -42,8 +47,10 @@ import {
           class="w-full aspect-video object-cover"
         />
       </button>
-    </sc-lightbox>
+      <div sc-lightbox-container></div>
+    </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleLightboxDemo {

@@ -19,7 +19,11 @@ import { DisabledTagInputDemo } from './disabled-tag-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledTagInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTagInput,
   ScTagInputField,
@@ -31,11 +35,7 @@ import {
   imports: [ScTagInput, ScTagInputField, ScTagInputTag],
   template: \`
     <div class="max-w-md">
-      <div
-        sc-tag-input
-        [tags]="['Angular', 'React', 'Vue']"
-        [disabled]="true"
-      >
+      <div sc-tag-input [tags]="['Angular', 'React', 'Vue']" [disabled]="true">
         @for (tag of ['Angular', 'React', 'Vue']; track tag) {
           <span sc-tag-input-tag [tag]="tag"></span>
         }
@@ -43,6 +43,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledTagInputDemo {}`;

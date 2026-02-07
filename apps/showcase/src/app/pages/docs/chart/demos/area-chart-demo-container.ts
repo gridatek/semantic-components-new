@@ -23,8 +23,16 @@ import { AreaChartDemo } from './area-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AreaChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScLineChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScLineChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-area-chart-demo',
@@ -32,10 +40,16 @@ import { ScChartContainer, ScLineChart, ChartDataPoint } from '@semantic-compone
   template: \`
     <div class="max-w-lg rounded-lg border p-6">
       <div sc-chart-container>
-        <div sc-line-chart [data]="lineData" [height]="250" [showArea]="true"></div>
+        <div
+          sc-line-chart
+          [data]="lineData"
+          [height]="250"
+          [showArea]="true"
+        ></div>
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AreaChartDemo {

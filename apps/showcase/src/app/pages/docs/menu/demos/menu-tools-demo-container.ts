@@ -23,7 +23,11 @@ import { MenuToolsDemo } from './menu-tools-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuToolsDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScMenu,
   ScMenuItem,
@@ -198,6 +202,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuToolsDemo {}`;

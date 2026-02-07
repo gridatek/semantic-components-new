@@ -23,7 +23,12 @@ import { EllipsisPaginationDemo } from './ellipsis-pagination-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EllipsisPaginationDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPagination,
   ScPaginationChange,
@@ -93,6 +98,7 @@ import {
       </ul>
     </nav>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EllipsisPaginationDemo {

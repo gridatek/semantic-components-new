@@ -19,7 +19,12 @@ import { ClockHoursTimePickerDemo } from './clock-hours-time-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClockHoursTimePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimePicker,
   ScTimePickerClock,
@@ -47,6 +52,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClockHoursTimePickerDemo {

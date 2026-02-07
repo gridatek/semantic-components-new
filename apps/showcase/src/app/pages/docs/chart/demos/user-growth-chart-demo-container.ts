@@ -23,8 +23,16 @@ import { UserGrowthChartDemo } from './user-growth-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserGrowthChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScLineChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScLineChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-user-growth-chart-demo',
@@ -43,6 +51,7 @@ import { ScChartContainer, ScLineChart, ChartDataPoint } from '@semantic-compone
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserGrowthChartDemo {

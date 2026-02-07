@@ -24,7 +24,12 @@ import { QrCodeBarcodeScannerDemo } from './qr-code-barcode-scanner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QrCodeBarcodeScannerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScBarcodeScanner, BarcodeResult } from '@semantic-components/ui';
 
 @Component({
@@ -43,6 +48,7 @@ import { ScBarcodeScanner, BarcodeResult } from '@semantic-components/ui';
       </div>
     }
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QrCodeBarcodeScannerDemo {

@@ -19,7 +19,12 @@ import { BasicSelectTimezoneDemo } from './basic-select-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSelectTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneSelect, ScTimezoneService } from '@semantic-components/ui';
 
 @Component({
@@ -37,6 +42,7 @@ import { ScTimezoneSelect, ScTimezoneService } from '@semantic-components/ui';
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSelectTimezoneDemo {

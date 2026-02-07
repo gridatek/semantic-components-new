@@ -23,7 +23,11 @@ import { DisabledButtonDemo } from './disabled-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
@@ -37,6 +41,7 @@ import { ScButton } from '@semantic-components/ui';
       <button sc-button variant="outline" disabled>Outline</button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledButtonDemo {}`;

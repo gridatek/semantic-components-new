@@ -19,7 +19,11 @@ import { DefaultSpinnerDemo } from './default-spinner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DefaultSpinnerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinner } from '@semantic-components/ui';
 
 @Component({
@@ -34,6 +38,7 @@ import { ScSpinner } from '@semantic-components/ui';
       <span sc-spinner size="xl"></span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DefaultSpinnerDemo {}`;

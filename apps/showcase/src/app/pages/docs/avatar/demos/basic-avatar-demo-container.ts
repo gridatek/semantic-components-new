@@ -19,8 +19,16 @@ import { BasicAvatarDemo } from './basic-avatar-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAvatarDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScAvatar, ScAvatarFallback, ScAvatarImage } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScAvatar,
+  ScAvatarFallback,
+  ScAvatarImage,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-avatar-demo',
@@ -31,6 +39,7 @@ import { ScAvatar, ScAvatarFallback, ScAvatarImage } from '@semantic-components/
       <span sc-avatar-fallback>CN</span>
     </span>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAvatarDemo {}`;

@@ -23,7 +23,12 @@ import { ErrorFieldDemo } from './error-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField, required } from '@angular/forms/signals';
 import {
   ScField,
@@ -49,6 +54,7 @@ import {
       }
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorFieldDemo {

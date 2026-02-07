@@ -23,7 +23,11 @@ import { BasicPopoverDemo } from './basic-popover-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicPopoverDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPopoverProvider,
   ScPopoverPortal,
@@ -90,6 +94,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicPopoverDemo {}`;

@@ -23,7 +23,11 @@ import { SizesStatCardDemo } from './sizes-stat-card-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesStatCardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScStatCard,
   ScStatCardIcon,
@@ -43,7 +47,17 @@ import {
             <p sc-stat-card-value size="sm">1,234</p>
           </div>
           <div sc-stat-card-icon size="sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="12" x2="12" y1="20" y2="10" />
               <line x1="18" x2="18" y1="20" y2="4" />
               <line x1="6" x2="6" y1="20" y2="16" />
@@ -59,7 +73,17 @@ import {
             <p sc-stat-card-value size="md">5,678</p>
           </div>
           <div sc-stat-card-icon size="md">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="12" x2="12" y1="20" y2="10" />
               <line x1="18" x2="18" y1="20" y2="4" />
               <line x1="6" x2="6" y1="20" y2="16" />
@@ -75,7 +99,17 @@ import {
             <p sc-stat-card-value size="lg">9,012</p>
           </div>
           <div sc-stat-card-icon size="lg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="12" x2="12" y1="20" y2="10" />
               <line x1="18" x2="18" y1="20" y2="4" />
               <line x1="6" x2="6" y1="20" y2="16" />
@@ -85,6 +119,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesStatCardDemo {}`;

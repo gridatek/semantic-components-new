@@ -23,24 +23,31 @@ import { MinimalCodeEditorDemo } from './minimal-code-editor-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinimalCodeEditorDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCodeEditor, ScCodeEditorContent } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-minimal-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [ScCodeEditor, ScCodeEditorContent],
   template: \`
-    <sc-code-editor
-      [(value)]="minimalCode"
-      [language]="'javascript'"
-      [showHeader]="false"
-      [showFooter]="false"
-      [maxHeight]="'150px'"
-    />
+    <div sc-code-editor>
+      <div
+        sc-code-editor-content
+        [(value)]="minimalCode"
+        language="javascript"
+        class="max-h-[150px]"
+      ></div>
+    </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinimalCodeEditorDemo {
-  minimalCode = 'const hello = "world";\\nconsole.log(hello);';
+  minimalCode = \`const hello = "world";
+console.log(hello);\`;
 }`;
 }

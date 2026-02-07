@@ -23,7 +23,11 @@ import { TopSheetDemo } from './top-sheet-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopSheetDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSheetProvider,
   ScSheetClose,
@@ -84,6 +88,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopSheetDemo {}`;

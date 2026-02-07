@@ -23,7 +23,11 @@ import { LargeDiffViewerDemo } from './large-diff-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LargeDiffViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -38,10 +42,11 @@ import { ScDiffViewer } from '@semantic-components/ui';
       [maxHeight]="'400px'"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LargeDiffViewerDemo {
-  oldLarge = \\\`// User Service
+  oldLarge = \`// User Service
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -65,7 +70,7 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>(\\\\\`\\\${this.apiUrl}/\\\${id}\\\\\`);
+    return this.http.get<User>(\\\`\\\${this.apiUrl}/\\\${id}\\\`);
   }
 
   createUser(user: Omit<User, 'id'>): Observable<User> {
@@ -73,15 +78,15 @@ export class UserService {
   }
 
   updateUser(id: number, user: Partial<User>): Observable<User> {
-    return this.http.put<User>(\\\\\`\\\${this.apiUrl}/\\\${id}\\\\\`, user);
+    return this.http.put<User>(\\\`\\\${this.apiUrl}/\\\${id}\\\`, user);
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(\\\\\`\\\${this.apiUrl}/\\\${id}\\\\\`);
+    return this.http.delete<void>(\\\`\\\${this.apiUrl}/\\\${id}\\\`);
   }
-}\\\`;
+}\`;
 
-  newLarge = \\\`// User Service - Updated
+  newLarge = \`// User Service - Updated
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, retry } from 'rxjs';
@@ -122,7 +127,7 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>(\\\\\`\\\${this.apiUrl}/\\\${id}\\\\\`).pipe(
+    return this.http.get<User>(\\\`\\\${this.apiUrl}/\\\${id}\\\`).pipe(
       catchError(this.handleError)
     );
   }
@@ -134,13 +139,13 @@ export class UserService {
   }
 
   updateUser(id: number, user: Partial<User>): Observable<User> {
-    return this.http.patch<User>(\\\\\`\\\${this.apiUrl}/\\\${id}\\\\\`, user).pipe(
+    return this.http.patch<User>(\\\`\\\${this.apiUrl}/\\\${id}\\\`, user).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(\\\\\`\\\${this.apiUrl}/\\\${id}\\\\\`).pipe(
+    return this.http.delete<void>(\\\`\\\${this.apiUrl}/\\\${id}\\\`).pipe(
       catchError(this.handleError)
     );
   }
@@ -149,6 +154,6 @@ export class UserService {
     console.error('UserService error:', error);
     throw error;
   }
-}\\\`;
+}\`;
 }`;
 }

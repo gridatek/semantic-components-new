@@ -23,17 +23,23 @@ import { SignalFormsPasswordFieldDemo } from './signal-forms-password-field-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SignalFormsPasswordFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormField, form, required, minLength } from '@angular/forms/signals';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-signal-forms-password-field-demo',
   imports: [
     FormField,
     ScPasswordField,
@@ -81,6 +87,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsPasswordFieldDemo {
@@ -107,6 +114,7 @@ export class SignalFormsPasswordFieldDemo {
   }
 
   hasError(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field: any,
     errorKey: string,
   ): boolean {

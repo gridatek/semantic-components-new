@@ -23,7 +23,12 @@ import { BasicInputDemo } from './basic-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
@@ -33,9 +38,15 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
   template: \`
     <div sc-field>
       <label sc-label>Text</label>
-      <input sc-input type="text" [formField]="textForm.text" placeholder="Enter text..." />
+      <input
+        sc-input
+        type="text"
+        [formField]="textForm.text"
+        placeholder="Enter text..."
+      />
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicInputDemo {

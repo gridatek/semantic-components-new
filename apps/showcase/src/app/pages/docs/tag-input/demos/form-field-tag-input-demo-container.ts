@@ -19,7 +19,12 @@ import { FormFieldTagInputDemo } from './form-field-tag-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormFieldTagInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTagInput,
   ScTagInputClear,
@@ -73,6 +78,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormFieldTagInputDemo {
