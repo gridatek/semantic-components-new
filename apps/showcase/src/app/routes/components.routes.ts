@@ -326,10 +326,6 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/radio-group/radio-group-page'),
       },
       {
-        path: 'rating',
-        loadComponent: () => import('../pages/docs/rating/rating-page'),
-      },
-      {
         path: 'rating-field',
         loadComponent: () =>
           import('../pages/docs/rating-field/rating-field-page'),

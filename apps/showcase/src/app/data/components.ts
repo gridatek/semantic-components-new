@@ -363,11 +363,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A group of radio buttons for single selection.',
   },
   {
-    name: 'Rating',
-    path: 'rating',
-    description: 'A star rating component for feedback.',
-  },
-  {
     name: 'Rating Field',
     path: 'rating-field',
     description: 'A composable rating field for feedback and reviews.',
