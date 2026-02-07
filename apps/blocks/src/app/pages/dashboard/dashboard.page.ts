@@ -395,10 +395,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
       <main sc-sidebar-inset>
         <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <button
-            sc-sidebar-trigger
-            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9"
-          >
+          <button sc-sidebar-trigger>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
