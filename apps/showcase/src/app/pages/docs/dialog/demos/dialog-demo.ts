@@ -48,7 +48,7 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
         <ng-template>
           <form>
             <div sc-dialog class="sm:max-w-sm">
-              <button sc-dialog-close>
+              <button type="button" sc-dialog-close>
                 <svg si-x-icon></svg>
                 <span class="sr-only">Close</span>
               </button>
@@ -70,7 +70,12 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
                 </div>
               </div>
               <div sc-dialog-footer>
-                <button sc-button variant="outline" (click)="isOpen.set(false)">
+                <button
+                  type="button"
+                  sc-button
+                  variant="outline"
+                  (click)="isOpen.set(false)"
+                >
                   Cancel
                 </button>
                 <button sc-button type="submit">Save changes</button>
