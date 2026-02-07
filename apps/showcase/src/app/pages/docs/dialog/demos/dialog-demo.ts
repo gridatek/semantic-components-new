@@ -62,7 +62,7 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
               <div sc-field-group>
                 <div sc-field orientation="horizontal">
                   <label sc-label>Name</label>
-                  <input sc-input value="Pedro Duarte" />
+                  <input cdkFocusInitial sc-input value="Pedro Duarte" />
                 </div>
                 <div sc-field orientation="horizontal">
                   <label sc-label>Username</label>
