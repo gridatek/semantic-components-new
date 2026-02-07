@@ -23,6 +23,7 @@ export class ScDialogDemoContainer {
 import {
   ScButton,
   ScDialogProvider,
+  ScDialogClose,
   ScDialog,
   ScDialogDescription,
   ScDialogFooter,
@@ -35,12 +36,14 @@ import {
   ScInput,
   ScLabel,
 } from '@semantic-components/ui';
+import { SiXIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-dialog-demo',
   imports: [
     ScButton,
     ScDialogProvider,
+    ScDialogClose,
     ScDialog,
     ScDialogDescription,
     ScDialogFooter,
@@ -52,6 +55,7 @@ import {
     ScFieldGroup,
     ScInput,
     ScLabel,
+    SiXIcon,
   ],
   template: \`
     <div sc-dialog-provider [(open)]="isOpen">
@@ -60,6 +64,10 @@ import {
         <ng-template>
           <form>
             <div sc-dialog class="sm:max-w-sm">
+              <button sc-dialog-close>
+                <svg si-x-icon></svg>
+                <span class="sr-only">Close</span>
+              </button>
               <div sc-dialog-header>
                 <h2 sc-dialog-title>Edit profile</h2>
                 <p sc-dialog-description>
