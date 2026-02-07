@@ -120,14 +120,16 @@ if (open()) {
    - Purpose: Click blocking and scroll prevention
    - Functional layer only, no visual styling
 
-2. **ScBackdrop Component** (300ms fade animation)
+2. **ScBackdrop Component** (100ms fade animation)
    - Reusable component from `components/backdrop`
+   - Three-state model (`idle` / `open` / `closed`) with `data-idle`, `data-open`, `data-closed` attributes
    - Fade effect via Tailwind animate classes
-   - Positioned with `-z-10` (behind dialog)
+   - Positioned with `fixed inset-0 -z-50` (behind dialog, behind CDK overlay)
    - Emits `animationComplete` output when close animation finishes
 
-3. **Dialog Content Animation** (300ms)
+3. **Dialog Content Animation** (100ms)
    - Zoom + Fade effects
+   - Three-state model (`idle` / `open` / `closed`) with `data-idle`, `data-open`, `data-closed` attributes
    - Managed by Tailwind animate classes
    - Completion detected via `animationend` event (triggers cleanup)
 
@@ -136,8 +138,8 @@ if (open()) {
 Both ScBackdrop and Dialog animations:
 
 - Start simultaneously when `open` changes
-- Use same duration (300ms)
-- Respond to same `data-state` attribute
+- Use same duration (100ms)
+- Use same three-state model (`idle` → `open` → `closed` → `idle`)
 - Inside same portal template (removed together)
 
 ### Dialog Three-State Model
@@ -188,18 +190,19 @@ protected readonly class = computed(() =>
 
 ### ScBackdrop Component Animations
 
-Managed via ScBackdrop component from `components/backdrop`:
+Managed via ScBackdrop component from `components/backdrop`. Uses the same three-state model as the dialog:
 
 ```typescript
 // In backdrop.ts
+type ScBackdropState = 'idle' | 'open' | 'closed';
+
 protected readonly class = computed(() =>
   cn(
-    'fixed inset-0 -z-10 bg-black/10',
-    'supports-backdrop-filter:backdrop-blur-xs',
-    'animate-in fade-in-0 duration-300',
-    'data-[state=closed]:animate-out',
-    'data-[state=closed]:fade-out-0',
-    'data-[state=closed]:duration-300',
+    'pointer-events-none fixed inset-0 -z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs',
+    'data-idle:opacity-0',
+    'data-open:animate-in data-open:fade-in-0',
+    'data-closed:animate-out data-closed:fade-out-0',
+    this.classInput(),
   ),
 );
 ```
@@ -208,10 +211,10 @@ protected readonly class = computed(() =>
 
 1. Portal renders: `<div sc-backdrop [open]="dialogProvider.open()" (animationComplete)="..."></div>`
 2. ScBackdrop receives `open` input
-3. Sets `data-state` based on `open` value
-4. Tailwind applies appropriate animation classes
-5. Animation plays for 300ms
-6. On `animationend`, emits `animationComplete` output
+3. Effect sets `state` to `'open'` or `'closed'` based on `open` value
+4. Data attribute (`data-open` / `data-closed`) triggers Tailwind animation classes
+5. Animation plays for 100ms
+6. On `animationend`, if closing: state resets to `'idle'` (hidden), emits `animationComplete` output
 7. Portal forwards event to provider for coordination
 
 **Why Separate Component?**
@@ -237,7 +240,7 @@ User clicks trigger:
 │     └─ overlayRef.attach(portal)  ← DOM mounted
 │
 ├─ t=0ms: CDK adds .cdk-overlay-backdrop-showing
-│  └─ Backdrop: opacity 0 → 1 (300ms)
+│  └─ Backdrop: state → 'open' (data-open set, 100ms fade-in)
 │
 ├─ t=0ms: Dialog effect (triggered by open):
 │  └─ state.set('open')
@@ -246,9 +249,9 @@ User clicks trigger:
 │        ├─ zoom-in-95
 │        └─ duration-100
 │
-├─ t=0-300ms: Both animations play
+├─ t=0-100ms: Both animations play
 │
-└─ t=300ms: Animations complete, dialog visible
+└─ t=100ms: Animations complete, dialog visible
 ```
 
 ### Closing Sequence (Coordinated Completion)
@@ -273,16 +276,16 @@ User clicks close/backdrop/escape:
 │  └─ DOM remains mounted so animations can play
 │  └─ animationsCompleted = 0 (waiting for both)
 │
-├─ t=0-300ms: Both animations play simultaneously
+├─ t=0-100ms: Both animations play simultaneously
 │
-├─ t=~300ms: Dialog animation completes
+├─ t=~100ms: Dialog animation completes
 │  └─ onAnimationEnd(event) fires
 │     └─ if (state === 'closed' && target === element):
 │        ├─ state.set('idle')  ← Reset to hidden resting state
 │        └─ provider.onDialogAnimationComplete()
 │           └─ animationsCompleted.update(n => n + 1)  ← Count = 1
 │
-├─ t=~300ms: Backdrop animation completes
+├─ t=~100ms: Backdrop animation completes
 │  └─ backdrop emits (animationComplete)
 │     └─ portal.onBackdropAnimationComplete()
 │        └─ provider.onBackdropAnimationComplete()
@@ -292,7 +295,7 @@ User clicks close/backdrop/escape:
 │  └─ overlayOpen.set(false)  ← Cleanup triggered!
 │  └─ animationsCompleted.set(0)  ← Reset for next cycle
 │
-└─ t=~300ms: Portal effect (triggered by overlayOpen):
+└─ t=~100ms: Portal effect (triggered by overlayOpen):
    └─ overlayRef.detach()  ← DOM removed cleanly after BOTH complete
 ```
 
@@ -315,9 +318,9 @@ onDialogAnimationComplete(): void {
 
 **Issues:**
 
-- Assumes backdrop takes exactly 300ms
+- Assumes backdrop takes exactly 100ms
 - Browser rendering variations can cause timing differences
-- Backdrop might take 305ms, getting cut off at 300ms
+- Backdrop might take 105ms, getting cut off at 100ms
 - No way to know if backdrop actually completed
 - Might wait longer than necessary if backdrop finishes early
 
@@ -345,7 +348,7 @@ effect(() => {
 **Benefits:**
 
 1. **Event-driven**: Waits for actual completion, not estimated time
-2. **Robust**: Handles browser timing variations (300ms vs 305ms)
+2. **Robust**: Handles browser timing variations (100ms vs 105ms)
 3. **Accurate**: Both animations explicitly signal completion
 4. **Extensible**: Easy to add more animations (just increase target count)
 5. **No race conditions**: Counter resets on open for clean cycles
@@ -509,8 +512,8 @@ private async detachDialogWithAnimation() {
     const backdrop = this.overlayRef.backdropElement;
     backdrop?.classList.add('sc-backdrop-hiding');
 
-    // Wait arbitrary 300ms
-    await firstValueFrom(timer(300));
+    // Wait arbitrary time
+    await firstValueFrom(timer(100));
 
     this.overlayRef.detach();  // Might cut off dialog animation!
   }
@@ -651,13 +654,14 @@ onBackdropAnimationComplete(): void {
 ### Backdrop Classes
 
 ```typescript
-// Entry animation
-'animate-in fade-in-0 duration-300';
+// Idle state (hidden)
+'data-idle:opacity-0';
 
-// Exit animation (via data-state="closed")
-'data-[state=closed]:animate-out';
-'data-[state=closed]:fade-out-0';
-'data-[state=closed]:duration-300';
+// Entry animation (via data-open)
+'data-open:animate-in data-open:fade-in-0';
+
+// Exit animation (via data-closed)
+'data-closed:animate-out data-closed:fade-out-0';
 ```
 
 ## Accessibility Considerations
@@ -764,7 +768,7 @@ describe('Dialog Animations', () => {
     expect(overlayRef.hasAttached()).toBe(true);
 
     // After animations complete - DOM should be removed
-    await delay(400); // Buffer for 300ms animation
+    await delay(200); // Buffer for 100ms animation
     expect(overlayRef.hasAttached()).toBe(false);
   });
 });
