@@ -9,6 +9,7 @@ import {
   output,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -267,6 +268,7 @@ interface DetectedBarcode {
       animation: scan 2s ease-in-out infinite;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScBarcodeScanner {
@@ -456,4 +458,3 @@ export class ScBarcodeScanner {
     }
   }
 }
-

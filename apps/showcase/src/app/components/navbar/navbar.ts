@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   ScButton,
@@ -183,6 +187,7 @@ import { COMPONENTS } from '../../data/components';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Navbar {

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  viewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSpotlight,
   ScSpotlightActions,
@@ -239,6 +244,7 @@ import {
       </sc-spotlight>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpotlightDemo {

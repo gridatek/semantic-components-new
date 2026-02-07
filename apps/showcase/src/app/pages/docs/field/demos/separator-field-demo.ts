@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScField,
   ScLabel,
@@ -10,7 +14,14 @@ import {
 
 @Component({
   selector: 'app-separator-field-demo',
-  imports: [ScField, ScLabel, ScFieldGroup, ScFieldSeparator, ScSeparator, ScInput],
+  imports: [
+    ScField,
+    ScLabel,
+    ScFieldGroup,
+    ScFieldSeparator,
+    ScSeparator,
+    ScInput,
+  ],
   template: `
     <div sc-field-group>
       <div sc-field>
@@ -34,15 +45,11 @@ import {
 
       <div sc-field>
         <label sc-label for="phone">Phone</label>
-        <input
-          sc-input
-          id="phone"
-          type="tel"
-          placeholder="Enter your phone"
-        />
+        <input sc-input id="phone" type="tel" placeholder="Enter your phone" />
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SeparatorFieldDemo {}

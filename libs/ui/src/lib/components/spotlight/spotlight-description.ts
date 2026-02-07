@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -11,6 +12,7 @@ import { cn } from '../../utils';
   template: `
     <p [class]="computedClass()"><ng-content></ng-content></p>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSpotlightDescription {

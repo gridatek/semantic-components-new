@@ -9,6 +9,7 @@ import {
   input,
   model,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScSpeedDialAction } from './speed-dial-action';
@@ -81,6 +82,7 @@ import type {
   host: {
     '(document:keydown.escape)': 'onEscape()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSpeedDial {

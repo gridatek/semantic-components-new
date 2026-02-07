@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTransferList } from '@semantic-components/ui';
 import type { TransferListItem } from '@semantic-components/ui';
 
@@ -39,6 +44,7 @@ import type { TransferListItem } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicTransferListDemo {

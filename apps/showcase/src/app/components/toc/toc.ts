@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { TocItem } from './toc.service';
 
 @Component({
@@ -33,6 +38,7 @@ import { TocItem } from './toc.service';
     'data-slot': 'toc',
     class: 'block',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Toc {

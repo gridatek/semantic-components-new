@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import Navbar from '../../components/navbar/navbar';
 
 @Component({
@@ -7,6 +11,7 @@ import Navbar from '../../components/navbar/navbar';
   template: `
     <app-navbar />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class HomePage {}

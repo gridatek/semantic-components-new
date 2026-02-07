@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { generateQRCode } from './qr-generator';
@@ -65,6 +66,7 @@ export type QRErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
       </svg>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScQrCode {
@@ -117,4 +119,3 @@ export class ScQrCode {
     cn('inline-block', this.class()),
   );
 }
-

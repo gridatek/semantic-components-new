@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCodeViewer,
   ScCodeViewerContent,
@@ -50,6 +54,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CodeViewerPage {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicInfiniteScrollDemoContainer } from './demos/basic-infinite-scroll-demo-container';
 import { CustomLoaderInfiniteScrollDemoContainer } from './demos/custom-loader-infinite-scroll-demo-container';
 import { EndMessageInfiniteScrollDemoContainer } from './demos/end-message-infinite-scroll-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class InfiniteScrollPage {}

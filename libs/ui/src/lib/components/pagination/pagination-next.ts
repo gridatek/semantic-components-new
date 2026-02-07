@@ -6,6 +6,7 @@ import {
   ElementRef,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScPagination } from './pagination';
@@ -24,6 +25,7 @@ import { buttonVariants, ScButtonVariants } from '../button';
   template: `
     <ng-content />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPaginationNext {

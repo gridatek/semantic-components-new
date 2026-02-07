@@ -9,6 +9,7 @@ import {
   output,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { cn } from '../../utils';
@@ -190,6 +191,7 @@ import {
       height: 100vh !important;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPdfViewer {

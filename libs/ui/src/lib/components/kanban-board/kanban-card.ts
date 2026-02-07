@@ -4,6 +4,7 @@ import {
   computed,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { KanbanCard } from './kanban-types';
@@ -116,6 +117,7 @@ import type { KanbanCard } from './kanban-types';
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScKanbanCard {

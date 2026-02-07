@@ -4,6 +4,7 @@ import {
   computed,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { EmptyStateAction, EmptyStateSize } from './empty-state-types';
@@ -52,6 +53,7 @@ import type { EmptyStateAction, EmptyStateSize } from './empty-state-types';
       display: block;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScEmptyState {

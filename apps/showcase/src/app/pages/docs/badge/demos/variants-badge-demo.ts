@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScBadge } from '@semantic-components/ui';
 
 @Component({
@@ -12,6 +16,7 @@ import { ScBadge } from '@semantic-components/ui';
       <div sc-badge variant="outline">Outline</div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsBadgeDemo {}

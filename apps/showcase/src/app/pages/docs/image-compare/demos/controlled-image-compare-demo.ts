@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScImageCompare,
   ScImageCompareContainer,
@@ -19,7 +24,11 @@ import {
     ScImageCompareLabel,
   ],
   template: `
-    <div sc-image-compare [(position)]="position" class="w-full max-w-2xl aspect-[2/1]">
+    <div
+      sc-image-compare
+      [(position)]="position"
+      class="w-full max-w-2xl aspect-[2/1]"
+    >
       <div sc-image-compare-container>
         <img
           sc-image-compare-before
@@ -48,6 +57,7 @@ import {
       <span class="text-sm w-12 text-right">{{ position() }}%</span>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ControlledImageCompareDemo {

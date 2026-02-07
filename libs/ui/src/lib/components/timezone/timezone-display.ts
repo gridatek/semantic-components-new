@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScTimezoneService } from './timezone.service';
@@ -62,6 +63,7 @@ export const sizeStyles: Record<TimezoneSize, string> = {
       <span class="text-sm font-medium">{{ displayText() }}</span>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTimezoneDisplay {

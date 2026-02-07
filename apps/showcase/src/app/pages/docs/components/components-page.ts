@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { COMPONENTS } from '../../../data/components';
 
@@ -32,6 +36,7 @@ import { COMPONENTS } from '../../../data/components';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ComponentsPage {

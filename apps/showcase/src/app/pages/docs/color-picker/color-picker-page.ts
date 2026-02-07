@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CompactColorPickerDemoContainer } from './demos/compact-color-picker-demo-container';
 import { EyedropperColorPickerDemoContainer } from './demos/eyedropper-color-picker-demo-container';
 import { FullColorPickerDemoContainer } from './demos/full-color-picker-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ColorPickerPage {}

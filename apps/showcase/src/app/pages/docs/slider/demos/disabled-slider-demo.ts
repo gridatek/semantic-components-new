@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSlider } from '@semantic-components/ui';
 
 @Component({
@@ -9,6 +13,7 @@ import { ScSlider } from '@semantic-components/ui';
       <div sc-slider [value]="50" [disabled]="true"></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledSliderDemo {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicImageAnnotatorDemoContainer } from './demos/basic-image-annotator-demo-container';
 import { CustomSizeImageAnnotatorDemoContainer } from './demos/custom-size-image-annotator-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
@@ -26,6 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ImageAnnotatorPage {}

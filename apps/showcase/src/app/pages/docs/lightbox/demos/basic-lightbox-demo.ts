@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScLightbox,
   ScLightboxContainer,
@@ -30,10 +34,12 @@ import {
         <div sc-lightbox-container></div>
       </div>
       <p class="text-sm text-muted-foreground">
-        Click an image to open the lightbox. Use arrow keys or buttons to navigate.
+        Click an image to open the lightbox. Use arrow keys or buttons to
+        navigate.
       </p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLightboxDemo {

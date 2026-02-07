@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicSignaturePadDemoContainer } from './demos/basic-signature-pad-demo-container';
 import { ColorsSignaturePadDemoContainer } from './demos/colors-signature-pad-demo-container';
 import { ThickPenSignaturePadDemoContainer } from './demos/thick-pen-signature-pad-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SignaturePadPage {}

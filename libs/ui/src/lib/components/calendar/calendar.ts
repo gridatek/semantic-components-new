@@ -5,6 +5,7 @@ import {
   input,
   model,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScCalendarDayView } from './calendar-day-view';
@@ -87,6 +88,7 @@ export interface DateRange {
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCalendar {

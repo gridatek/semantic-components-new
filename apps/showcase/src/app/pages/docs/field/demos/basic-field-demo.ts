@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScField, ScLabel, ScFieldDescription, ScInput } from '@semantic-components/ui';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScField,
+  ScLabel,
+  ScFieldDescription,
+  ScInput,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-field-demo',
@@ -7,15 +16,11 @@ import { ScField, ScLabel, ScFieldDescription, ScInput } from '@semantic-compone
   template: `
     <div sc-field>
       <label sc-label for="email">Email</label>
-      <input
-        sc-input
-        id="email"
-        type="email"
-        placeholder="Enter your email"
-      />
+      <input sc-input id="email" type="email" placeholder="Enter your email" />
       <p sc-field-description>We'll never share your email with anyone else.</p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicFieldDemo {}

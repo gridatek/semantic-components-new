@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { DateRange, ScCalendar } from '@semantic-components/ui';
 
@@ -63,6 +64,7 @@ import { DateRange, ScCalendar } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeCalendarDemo {

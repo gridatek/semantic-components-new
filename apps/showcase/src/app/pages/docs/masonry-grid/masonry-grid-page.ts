@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicMasonryGridDemoContainer } from './demos/basic-masonry-grid-demo-container';
 import { ImageGalleryMasonryGridDemoContainer } from './demos/image-gallery-masonry-grid-demo-container';
 import { BreakpointsMasonryGridDemoContainer } from './demos/breakpoints-masonry-grid-demo-container';
@@ -33,6 +37,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class MasonryGridPage {}

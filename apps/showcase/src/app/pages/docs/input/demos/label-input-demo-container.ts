@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { LabelInputDemo } from './label-input-demo';
 
@@ -15,6 +19,7 @@ import { LabelInputDemo } from './label-input-demo';
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelInputDemoContainer {

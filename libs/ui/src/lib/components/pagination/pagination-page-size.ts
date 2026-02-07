@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScPagination } from './pagination';
@@ -25,6 +26,7 @@ import { ScPagination } from './pagination';
       }
     </select>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPaginationPageSize {

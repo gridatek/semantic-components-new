@@ -5,6 +5,7 @@ import {
   input,
   output,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type {
@@ -109,6 +110,7 @@ import type {
       display: block;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScOrgChartNode {

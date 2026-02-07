@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinner } from '@semantic-components/ui';
 
 @Component({
@@ -14,6 +18,7 @@ import { ScSpinner } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverlaySpinnerDemo {}

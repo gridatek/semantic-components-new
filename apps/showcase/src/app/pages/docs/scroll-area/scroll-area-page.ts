@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { VerticalScrollAreaDemoContainer } from './demos/vertical-scroll-area-demo-container';
 import { HorizontalScrollAreaDemoContainer } from './demos/horizontal-scroll-area-demo-container';
 import { BothScrollAreaDemoContainer } from './demos/both-scroll-area-demo-container';
@@ -30,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ScrollAreaPage {}

@@ -9,6 +9,7 @@ import {
   model,
   OnInit,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent, merge } from 'rxjs';
@@ -60,6 +61,7 @@ import { ScSliderTrack, ScSliderRange, ScSliderThumb } from '../slider';
       (touchStart)="onMaxThumbTouchStart($event)"
     ></div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScRangeSlider implements OnInit {

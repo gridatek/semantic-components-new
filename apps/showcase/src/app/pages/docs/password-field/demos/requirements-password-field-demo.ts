@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
@@ -32,6 +37,7 @@ import {
       <ul sc-password-field-requirements></ul>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequirementsPasswordFieldDemo {

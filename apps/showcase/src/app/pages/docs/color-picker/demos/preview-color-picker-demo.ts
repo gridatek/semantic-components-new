@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScColorPicker,
   ScColorPickerArea,
@@ -41,7 +46,10 @@ import {
         </div>
         <div class="space-y-2">
           <div class="flex items-center gap-2">
-            <div class="size-4 rounded" [style.background-color]="color()"></div>
+            <div
+              class="size-4 rounded"
+              [style.background-color]="color()"
+            ></div>
             <span class="font-mono text-sm">{{ color() }}</span>
           </div>
           <p class="text-sm text-muted-foreground">
@@ -51,6 +59,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PreviewColorPickerDemo {

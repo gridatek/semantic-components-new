@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
 
 @Component({
@@ -18,9 +22,9 @@ import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
         <div class="mt-4 space-y-2">
           @for (i of numbers; track i) {
             <div class="text-sm whitespace-nowrap">
-              Row {{ i }}: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Row {{ i }}: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua.
             </div>
           }
         </div>
@@ -29,6 +33,7 @@ import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
       <div sc-scroll-bar orientation="horizontal"></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BothScrollAreaDemo {

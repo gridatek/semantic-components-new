@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   ScNavbar,
@@ -194,6 +198,7 @@ import { SiMenuIcon, SiXIcon } from '@semantic-icons/lucide-icons';
     'data-slot': 'navbar',
     class: 'block',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {}

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   CropArea,
   ScImageCropper,
@@ -16,7 +21,10 @@ import {
         [(cropArea)]="cropArea"
         [containerHeight]="300"
       >
-        <div sc-image-cropper-container class="rounded-lg overflow-hidden border"></div>
+        <div
+          sc-image-cropper-container
+          class="rounded-lg overflow-hidden border"
+        ></div>
       </div>
 
       <div class="rounded-md border p-4 bg-muted/50">
@@ -45,6 +53,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoImageCropperDemo {

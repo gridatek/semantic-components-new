@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { AsLinkButtonDemoContainer } from './demos/as-link-button-demo-container';
 import { DisabledButtonDemoContainer } from './demos/disabled-button-demo-container';
 import { LoadingButtonDemoContainer } from './demos/loading-button-demo-container';
@@ -38,6 +42,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ButtonPage {}

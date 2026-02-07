@@ -7,6 +7,7 @@ import {
   model,
   OnDestroy,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScSidebarState } from './sidebar-state.service';
@@ -26,6 +27,7 @@ const MOBILE_BREAKPOINT = 768;
     '[style.--sidebar-width-mobile]': '"18rem"',
     '[style.--sidebar-width-icon]': '"3rem"',
   },
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScSidebarProvider implements OnInit, OnDestroy {
   readonly state = inject(ScSidebarState);

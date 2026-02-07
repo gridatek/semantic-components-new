@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
@@ -53,6 +58,7 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypesInputDemo {

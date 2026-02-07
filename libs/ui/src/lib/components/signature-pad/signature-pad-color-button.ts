@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { SC_SIGNATURE_PAD } from './signature-pad';
 import { cn } from '../../utils';
@@ -19,6 +20,7 @@ import { cn } from '../../utils';
     '[disabled]': 'signaturePad.disabled() || null',
     '(click)': 'onClick()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSignaturePadColorButton {

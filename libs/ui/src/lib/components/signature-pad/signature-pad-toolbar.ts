@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -12,6 +13,7 @@ import { cn } from '../../utils';
   host: {
     '[class]': 'class()',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSignaturePadToolbar {

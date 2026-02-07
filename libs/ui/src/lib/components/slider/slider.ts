@@ -9,6 +9,7 @@ import {
   model,
   OnInit,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import type { FormValueControl } from '@angular/forms/signals';
@@ -45,6 +46,7 @@ import { ScSliderThumb } from './slider-thumb';
       (touchStart)="onThumbTouchStart($event)"
     ></div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSlider implements OnInit, FormValueControl<number> {

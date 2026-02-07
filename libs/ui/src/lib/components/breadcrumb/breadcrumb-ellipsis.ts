@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -33,6 +34,7 @@ import { cn } from '../../utils';
     </svg>
     <span class="sr-only">More</span>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScBreadcrumbEllipsis {

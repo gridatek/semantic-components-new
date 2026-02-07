@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScLanguageService } from './language.service';
@@ -51,6 +52,7 @@ import { sizeStyles, variantStyles } from '../timezone';
       </span>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScLanguageToggle {

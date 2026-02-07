@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinnerRing } from '@semantic-components/ui';
 
 @Component({
@@ -13,6 +17,7 @@ import { ScSpinnerRing } from '@semantic-components/ui';
       <span sc-spinner-ring size="xl"></span>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RingSpinnerDemo {}

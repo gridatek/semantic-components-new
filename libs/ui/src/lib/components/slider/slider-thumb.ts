@@ -4,6 +4,7 @@ import {
   computed,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -26,6 +27,7 @@ import { cn } from '../../utils';
     '(touchstart)': 'onTouchStart($event)',
   },
   template: '',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSliderThumb {

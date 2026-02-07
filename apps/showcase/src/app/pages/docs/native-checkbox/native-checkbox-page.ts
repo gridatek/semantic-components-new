@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicNativeCheckboxDemoContainer } from './demos/basic-native-checkbox-demo-container';
 import { IndeterminateNativeCheckboxDemoContainer } from './demos/indeterminate-native-checkbox-demo-container';
 import { SignalFormsNativeCheckboxDemoContainer } from './demos/signal-forms-native-checkbox-demo-container';
@@ -30,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class NativeCheckboxPage {}

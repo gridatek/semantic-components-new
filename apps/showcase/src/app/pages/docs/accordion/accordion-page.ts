@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicAccordionDemoContainer } from './demos/basic-accordion-demo-container';
 import { DisabledAccordionDemoContainer } from './demos/disabled-accordion-demo-container';
 import { MultipleAccordionDemoContainer } from './demos/multiple-accordion-demo-container';
@@ -30,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class AccordionPage {}

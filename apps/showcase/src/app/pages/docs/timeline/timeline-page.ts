@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicTimelineDemoContainer } from './demos/basic-timeline-demo-container';
 import { StatusTimelineDemoContainer } from './demos/status-timeline-demo-container';
 import { SizesTimelineDemoContainer } from './demos/sizes-timeline-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TimelinePage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { SecondsTimePickerDemo } from './seconds-time-picker-demo';
 
@@ -11,6 +15,7 @@ import { SecondsTimePickerDemo } from './seconds-time-picker-demo';
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SecondsTimePickerDemoContainer {

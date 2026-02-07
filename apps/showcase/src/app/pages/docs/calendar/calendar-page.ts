@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DisabledDatesCalendarDemoContainer } from './demos/disabled-dates-calendar-demo-container';
 import { MinMaxCalendarDemoContainer } from './demos/min-max-calendar-demo-container';
 import { MultipleDateCalendarDemoContainer } from './demos/multiple-date-calendar-demo-container';
@@ -36,6 +40,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CalendarPage {}

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
 
 @Component({
@@ -54,6 +54,7 @@ import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
 })
 export class MessageReactionsEmojiPickerDemo {
   readonly showReactionPicker = signal(false);

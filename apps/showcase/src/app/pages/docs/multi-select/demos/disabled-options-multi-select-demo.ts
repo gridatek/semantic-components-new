@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
 
 @Component({
@@ -6,12 +10,10 @@ import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
   imports: [ScMultiSelect],
   template: `
     <div class="max-w-sm">
-      <sc-multi-select
-        [options]="options"
-        placeholder="Select frameworks..."
-      />
+      <sc-multi-select [options]="options" placeholder="Select frameworks..." />
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledOptionsMultiSelectDemo {

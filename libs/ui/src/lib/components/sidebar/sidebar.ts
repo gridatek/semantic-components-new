@@ -1,5 +1,11 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { SiXIcon } from '@semantic-icons/lucide-icons';
 import { cn } from '../../utils';
 import {
@@ -65,6 +71,7 @@ import { ScSidebarState } from './sidebar-state.service';
     '[attr.data-side]': 'side()',
     '[attr.data-collapsible]': 'collapsible()',
   },
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScSidebar {
   readonly state = inject(ScSidebarState);

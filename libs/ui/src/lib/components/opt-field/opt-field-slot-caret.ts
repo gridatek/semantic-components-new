@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -15,6 +16,7 @@ import { cn } from '../../utils';
   template: `
     <div class="h-4 w-px animate-caret-blink bg-foreground"></div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScOptFieldSlotCaret {

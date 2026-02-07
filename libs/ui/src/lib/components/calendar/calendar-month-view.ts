@@ -6,6 +6,7 @@ import {
   output,
   signal,
   viewChildren,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Grid, GridRow, GridCell, GridCellWidget } from '@angular/aria/grid';
 import { cn } from '../../utils';
@@ -61,6 +62,7 @@ interface MonthInfo {
       </tbody>
     </table>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCalendarMonthView {

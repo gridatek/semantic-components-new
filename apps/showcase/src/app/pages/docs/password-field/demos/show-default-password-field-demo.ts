@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
@@ -17,7 +22,12 @@ import { ScLabel } from '@semantic-components/ui';
     ScLabel,
   ],
   template: `
-    <div sc-password-field [(value)]="apiKey" [showByDefault]="true" class="space-y-2">
+    <div
+      sc-password-field
+      [(value)]="apiKey"
+      [showByDefault]="true"
+      class="space-y-2"
+    >
       <label sc-label>API Key</label>
       <div sc-password-field-input-group>
         <input sc-password-field-input placeholder="sk-..." />
@@ -25,6 +35,7 @@ import { ScLabel } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowDefaultPasswordFieldDemo {

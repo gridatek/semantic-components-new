@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScSpinner, ScSpinnerDots, ScSpinnerRing } from '@semantic-components/ui';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScSpinner,
+  ScSpinnerDots,
+  ScSpinnerRing,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-button-spinner-demo',
@@ -29,6 +37,7 @@ import { ScSpinner, ScSpinnerDots, ScSpinnerRing } from '@semantic-components/ui
       </button>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonSpinnerDemo {}

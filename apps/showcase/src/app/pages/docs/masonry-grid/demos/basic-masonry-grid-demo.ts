@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui';
 
 interface DemoItem {
@@ -29,6 +34,7 @@ interface DemoItem {
       }
     </sc-masonry-grid>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicMasonryGridDemo {

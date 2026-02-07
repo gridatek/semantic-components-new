@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicCardDemoContainer } from './demos/basic-card-demo-container';
 import { FormCardDemoContainer } from './demos/form-card-demo-container';
 import { NotificationCardDemoContainer } from './demos/notification-card-demo-container';
@@ -32,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CardPage {}

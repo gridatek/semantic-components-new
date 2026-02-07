@@ -6,6 +6,7 @@ import {
   contentChild,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_FIELD } from '../field';
@@ -31,6 +32,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
     <span sc-visual-checkbox></span>
     <ng-content />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCheckboxField implements ScCheckboxContext {

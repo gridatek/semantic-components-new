@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { BasicToggleLanguageSwitcherDemo } from './basic-toggle-language-switcher-demo';
 
@@ -11,6 +15,7 @@ import { BasicToggleLanguageSwitcherDemo } from './basic-toggle-language-switche
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicToggleLanguageSwitcherDemoContainer {

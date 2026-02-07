@@ -4,6 +4,7 @@ import {
   computed,
   input,
   model,
+  ViewEncapsulation,
 } from '@angular/core';
 import type { FormValueControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
@@ -26,6 +27,7 @@ import { cn } from '../../utils';
       [style.transform]="'translateX(-' + (100 - percentage()) + '%)'"
     ></div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScProgress implements FormValueControl<number | null> {

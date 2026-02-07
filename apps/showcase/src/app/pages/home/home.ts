@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScButton } from '@semantic-components/ui';
 import { HeroSection } from '../../components/hero-section/hero-section';
 import { FeatureGrid } from '../../components/feature-grid/feature-grid';
@@ -22,6 +26,7 @@ import { FeatureGrid } from '../../components/feature-grid/feature-grid';
       </div>
     </section>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Home {}

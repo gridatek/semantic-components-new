@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { VariantsBadgeDemoContainer } from './demos/variants-badge-demo-container';
 import { WithIconsBadgeDemoContainer } from './demos/with-icons-badge-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
@@ -26,6 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BadgePage {}

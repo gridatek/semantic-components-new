@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSortableHandle,
   ScSortableItem,
@@ -15,7 +20,12 @@ interface Task {
 
 @Component({
   selector: 'app-task-list-sortable-list-demo',
-  imports: [ScSortableList, ScSortableItem, ScSortableHandle, ScSortableOverlay],
+  imports: [
+    ScSortableList,
+    ScSortableItem,
+    ScSortableHandle,
+    ScSortableOverlay,
+  ],
   template: `
     <div class="max-w-md">
       <div
@@ -52,6 +62,7 @@ interface Task {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListSortableListDemo {

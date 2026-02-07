@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
 
 @Component({
@@ -88,6 +93,7 @@ import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
       />
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TourGuideDemo {

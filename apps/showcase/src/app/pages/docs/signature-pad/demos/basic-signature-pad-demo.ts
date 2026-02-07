@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSignaturePad,
   ScSignaturePadCanvas,
@@ -50,6 +55,7 @@ import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSignaturePadDemo {

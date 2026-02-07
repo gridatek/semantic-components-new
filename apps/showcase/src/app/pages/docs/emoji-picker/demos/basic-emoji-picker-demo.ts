@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
 
 @Component({
@@ -8,7 +8,8 @@ import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
     <sc-emoji-picker (emojiSelect)="onEmojiSelect($event)" />
     @if (selectedEmoji()) {
       <p class="text-sm text-muted-foreground mt-4">
-        Selected: {{ selectedEmoji()?.emoji }} ({{ selectedEmoji()?.name }})
+        Selected: {{ selectedEmoji()?.emoji }} ({{ selectedEmoji()?.name },
+        encapsulation: ViewEncapsulation.None})
       </p>
     }
   `,

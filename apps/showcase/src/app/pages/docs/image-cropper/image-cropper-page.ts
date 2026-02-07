@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicImageCropperDemoContainer } from './demos/basic-image-cropper-demo-container';
 import { AspectRatioImageCropperDemoContainer } from './demos/aspect-ratio-image-cropper-demo-container';
 import { AvatarImageCropperDemoContainer } from './demos/avatar-image-cropper-demo-container';
@@ -36,6 +40,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ImageCropperPage {}

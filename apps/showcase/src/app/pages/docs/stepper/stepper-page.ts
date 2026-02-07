@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { HorizontalStepperDemoContainer } from './demos/horizontal-stepper-demo-container';
 import { VerticalStepperDemoContainer } from './demos/vertical-stepper-demo-container';
 import { SimpleStepperDemoContainer } from './demos/simple-stepper-demo-container';
@@ -29,6 +33,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class StepperPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicCheckboxDemoContainer } from './demos/basic-checkbox-demo-container';
 import { CustomThemeCheckboxDemoContainer } from './demos/custom-theme-checkbox-demo-container';
 import { DisabledCheckboxDemoContainer } from './demos/disabled-checkbox-demo-container';
@@ -45,6 +49,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CheckboxPage {}

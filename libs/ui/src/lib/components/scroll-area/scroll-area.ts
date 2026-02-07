@@ -7,6 +7,7 @@ import {
   input,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScScrollBar } from './scroll-bar';
@@ -38,6 +39,7 @@ import { ScScrollBar } from './scroll-bar';
       display: none;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScScrollArea {

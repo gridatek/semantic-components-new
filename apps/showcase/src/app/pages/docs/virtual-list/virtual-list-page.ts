@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicVirtualListDemoContainer } from './demos/basic-virtual-list-demo-container';
 import { ComplexVirtualListDemoContainer } from './demos/complex-virtual-list-demo-container';
 import { ScrollControlsVirtualListDemoContainer } from './demos/scroll-controls-virtual-list-demo-container';
@@ -32,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class VirtualListPage {}

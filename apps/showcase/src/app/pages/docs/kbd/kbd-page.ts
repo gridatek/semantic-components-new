@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ArrowKeysKbdDemoContainer } from './demos/arrow-keys-kbd-demo-container';
 import { BasicKbdDemoContainer } from './demos/basic-kbd-demo-container';
 import { ComplexShortcutsKbdDemoContainer } from './demos/complex-shortcuts-kbd-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class KbdPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicTagInputDemoContainer } from './demos/basic-tag-input-demo-container';
 import { BlurTagInputDemoContainer } from './demos/blur-tag-input-demo-container';
 import { ClearableTagInputDemoContainer } from './demos/clearable-tag-input-demo-container';
@@ -56,6 +60,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TagInputPage {}

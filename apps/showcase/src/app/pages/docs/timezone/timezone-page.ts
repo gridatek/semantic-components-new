@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BadgeNoIconTimezoneDemoContainer } from './demos/badge-no-icon-timezone-demo-container';
 import { BadgeTimezoneDemoContainer } from './demos/badge-timezone-demo-container';
 import { BasicSelectTimezoneDemoContainer } from './demos/basic-select-timezone-demo-container';
@@ -67,6 +71,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TimezonePage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicBreadcrumbDemoContainer } from './demos/basic-breadcrumb-demo-container';
 import { CustomSeparatorBreadcrumbDemoContainer } from './demos/custom-separator-breadcrumb-demo-container';
 import { EllipsisBreadcrumbDemoContainer } from './demos/ellipsis-breadcrumb-demo-container';
@@ -32,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BreadcrumbPage {}

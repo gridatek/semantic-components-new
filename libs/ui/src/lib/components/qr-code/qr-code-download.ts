@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScQrCode, QRErrorCorrectionLevel } from './qr-code';
@@ -41,6 +42,7 @@ import { ScQrCode, QRErrorCorrectionLevel } from './qr-code';
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScQrCodeDownload {

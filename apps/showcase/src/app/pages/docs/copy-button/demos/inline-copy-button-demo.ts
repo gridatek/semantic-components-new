@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyButton } from '@semantic-components/ui';
 
 @Component({
@@ -18,6 +22,7 @@ import { ScCopyButton } from '@semantic-components/ui';
       ></button>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InlineCopyButtonDemo {}

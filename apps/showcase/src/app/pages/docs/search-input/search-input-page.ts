@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicSearchInputDemoContainer } from './demos/basic-search-input-demo-container';
 import { LoadingSearchInputDemoContainer } from './demos/loading-search-input-demo-container';
 import { CategoriesSearchInputDemoContainer } from './demos/categories-search-input-demo-container';
@@ -27,6 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SearchInputPage {}

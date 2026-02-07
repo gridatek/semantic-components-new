@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyButton } from '@semantic-components/ui';
 
 @Component({
@@ -34,11 +38,7 @@ import { ScCopyButton } from '@semantic-components/ui';
             <p class="text-sm font-medium">#3B82F6</p>
             <p class="text-xs text-muted-foreground">Blue 500</p>
           </div>
-          <button
-            sc-copy-button
-            [value]="'#3B82F6'"
-            variant="ghost"
-          ></button>
+          <button sc-copy-button [value]="'#3B82F6'" variant="ghost"></button>
         </div>
       </div>
 
@@ -61,6 +61,7 @@ import { ScCopyButton } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsecasesCopyButtonDemo {

@@ -6,6 +6,7 @@ import {
   output,
   viewChildren,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Grid, GridRow, GridCell, GridCellWidget } from '@angular/aria/grid';
 import { cn } from '../../utils';
@@ -88,6 +89,7 @@ interface DayInfo {
       </tbody>
     </table>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCalendarDayView {

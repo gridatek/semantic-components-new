@@ -9,6 +9,7 @@ import {
   output,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { SearchSuggestion } from './search-input-types';
@@ -125,6 +126,7 @@ import { DEFAULT_SEARCH_OPTIONS } from './search-input-types';
   host: {
     '(document:click)': 'onDocumentClick($event)',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSearchInput {

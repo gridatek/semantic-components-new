@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicImageCompareDemoContainer } from './demos/basic-image-compare-demo-container';
 import { LabelsImageCompareDemoContainer } from './demos/labels-image-compare-demo-container';
 import { NoLabelsImageCompareDemoContainer } from './demos/no-labels-image-compare-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ImageComparePage {}

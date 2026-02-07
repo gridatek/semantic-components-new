@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneBadge } from '@semantic-components/ui';
 
 @Component({
@@ -10,6 +14,7 @@ import { ScTimezoneBadge } from '@semantic-components/ui';
       <span sc-timezone-badge [showIcon]="false" [showLabel]="true"></span>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeNoIconTimezoneDemo {}

@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScTheme, Theme } from './theme.service';
@@ -39,6 +40,7 @@ const sizeStyles: Record<ThemeToggleSize, string> = {
   template: `
     <ng-content />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScThemeToggle {

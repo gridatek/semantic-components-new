@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { SiCheckIcon, SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 import {
@@ -171,6 +172,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSelectDemo {

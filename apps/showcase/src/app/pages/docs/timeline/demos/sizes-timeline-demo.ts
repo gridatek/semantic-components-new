@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimeline,
   ScTimelineItem,
@@ -27,7 +31,9 @@ import {
         <div sc-timeline-dot size="sm"></div>
         <div sc-timeline-content>
           <h4 sc-timeline-title>Small Dot</h4>
-          <p sc-timeline-description>Using size="sm" for a smaller indicator.</p>
+          <p sc-timeline-description>
+            Using size="sm" for a smaller indicator.
+          </p>
         </div>
       </div>
 
@@ -36,14 +42,25 @@ import {
         <div sc-timeline-dot size="default"></div>
         <div sc-timeline-content>
           <h4 sc-timeline-title>Default Dot</h4>
-          <p sc-timeline-description>Using default size for standard indicator.</p>
+          <p sc-timeline-description>
+            Using default size for standard indicator.
+          </p>
         </div>
       </div>
 
       <div sc-timeline-item>
         <div sc-timeline-dot size="lg">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="size-4"
+          >
+            <path
+              d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+            />
           </svg>
         </div>
         <div sc-timeline-content>
@@ -53,6 +70,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesTimelineDemo {}

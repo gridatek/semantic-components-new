@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicProgressDemoContainer } from './demos/basic-progress-demo-container';
 import { CustomMaxProgressDemoContainer } from './demos/custom-max-progress-demo-container';
 import { CustomStylingProgressDemoContainer } from './demos/custom-styling-progress-demo-container';
@@ -36,6 +40,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ProgressPage {}

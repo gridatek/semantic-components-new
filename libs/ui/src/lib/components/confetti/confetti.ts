@@ -9,6 +9,7 @@ import {
   output,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import type {
   ConfettiOptions,
@@ -33,6 +34,7 @@ import { DEFAULT_CONFETTI_OPTIONS } from './confetti-types';
       display: contents;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScConfetti {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicFieldDemoContainer } from './demos/basic-field-demo-container';
 import { HorizontalFieldDemoContainer } from './demos/horizontal-field-demo-container';
 import { ErrorFieldDemoContainer } from './demos/error-field-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class FieldPage {}

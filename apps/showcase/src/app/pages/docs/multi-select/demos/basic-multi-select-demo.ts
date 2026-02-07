@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
 
 @Component({
@@ -18,6 +23,7 @@ import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
       </p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicMultiSelectDemo {

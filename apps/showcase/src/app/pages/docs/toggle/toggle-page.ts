@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicToggleDemoContainer } from './demos/basic-toggle-demo-container';
 import { DisabledToggleDemoContainer } from './demos/disabled-toggle-demo-container';
 import { OutlineToggleDemoContainer } from './demos/outline-toggle-demo-container';
@@ -38,6 +42,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TogglePage {}

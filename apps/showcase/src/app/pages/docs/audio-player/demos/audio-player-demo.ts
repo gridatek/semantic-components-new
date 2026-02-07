@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAudioPlayer,
   ScAudioPlayerCover,
@@ -93,6 +97,7 @@ import {
       <div sc-audio-player-volume class="justify-center"></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AudioPlayerDemo {

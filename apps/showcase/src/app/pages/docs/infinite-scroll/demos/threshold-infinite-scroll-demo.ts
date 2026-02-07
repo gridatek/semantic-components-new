@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScInfiniteScroll } from '@semantic-components/ui';
 
 interface Item {
@@ -30,6 +35,7 @@ interface Item {
       </div>
     </sc-infinite-scroll>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThresholdInfiniteScrollDemo {

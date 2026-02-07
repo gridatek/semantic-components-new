@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-browser-support-barcode-scanner-demo',
@@ -16,6 +20,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowserSupportBarcodeScannerDemo {}

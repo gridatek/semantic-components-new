@@ -5,6 +5,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { SC_FIELD } from '../field';
@@ -22,6 +23,7 @@ import { ScTheme, Theme } from './theme.service';
   template: `
     <ng-content />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScThemeSelect {

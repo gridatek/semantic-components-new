@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScLanguageService } from './language.service';
@@ -48,6 +49,7 @@ import {
       <path d="m6 9 6 6 6-6" />
     </svg>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScLanguageButton {

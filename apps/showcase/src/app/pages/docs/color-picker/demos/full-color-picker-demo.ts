@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScColorPicker,
   ScColorPickerArea,
@@ -30,11 +35,10 @@ import {
           <input sc-color-picker-input format="hex" class="flex-1" />
         </div>
       </div>
-      <p class="mt-2 text-sm text-muted-foreground">
-        Selected: {{ color() }}
-      </p>
+      <p class="mt-2 text-sm text-muted-foreground">Selected: {{ color() }}</p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullColorPickerDemo {

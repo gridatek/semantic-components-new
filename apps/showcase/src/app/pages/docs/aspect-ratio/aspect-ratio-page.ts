@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { SixteenNineAspectRatioDemoContainer } from './demos/sixteen-nine-aspect-ratio-demo-container';
 import { FourThreeAspectRatioDemoContainer } from './demos/four-three-aspect-ratio-demo-container';
 import { SquareAspectRatioDemoContainer } from './demos/square-aspect-ratio-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class AspectRatioPage {}

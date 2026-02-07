@@ -4,6 +4,7 @@ import {
   computed,
   input,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import {
@@ -231,6 +232,7 @@ export type { DiffLine, DiffResult } from './diff-algorithm';
       border-radius: 2px;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScDiffViewer {

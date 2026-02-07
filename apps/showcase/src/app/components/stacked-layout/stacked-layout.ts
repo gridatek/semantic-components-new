@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScStackedLayout } from '@semantic-components/ui';
 import Navbar from '../navbar/navbar';
 import { Footer } from '../footer/footer';
@@ -15,6 +19,7 @@ import { Footer } from '../footer/footer';
   host: {
     class: 'block',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StackedLayout {}

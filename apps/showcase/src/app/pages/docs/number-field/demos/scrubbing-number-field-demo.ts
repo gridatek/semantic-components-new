@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -57,6 +62,7 @@ import { ScLabel } from '@semantic-components/ui';
       💡 Tip: Click and drag on the label to scrub values
     </p>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrubbingNumberFieldDemo {

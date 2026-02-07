@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLabel, ScCheckboxField, ScCheckbox } from '@semantic-components/ui';
 
 @Component({
@@ -10,6 +14,7 @@ import { ScLabel, ScCheckboxField, ScCheckbox } from '@semantic-components/ui';
       <label sc-label [for]="'terms-label'">Accept terms and conditions</label>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxLabelDemo {}

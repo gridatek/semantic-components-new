@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { HeroSection } from '../../components/hero-section/hero-section';
 import { FeatureGrid } from '../../components/feature-grid/feature-grid';
 
@@ -29,6 +33,7 @@ import { FeatureGrid } from '../../components/feature-grid/feature-grid';
     'data-slot': 'home-page',
     class: 'block',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Home {}

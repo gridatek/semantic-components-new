@@ -6,6 +6,7 @@ import {
   ElementRef,
   inject,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -66,6 +67,7 @@ import { COMPONENTS } from '../../data/components';
     'data-slot': 'components-layout',
     class: 'block',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComponentsLayout {

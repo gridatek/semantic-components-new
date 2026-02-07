@@ -5,6 +5,7 @@ import {
   input,
   model,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScKanbanColumn } from './kanban-column';
@@ -93,6 +94,7 @@ import type {
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScKanbanBoard {

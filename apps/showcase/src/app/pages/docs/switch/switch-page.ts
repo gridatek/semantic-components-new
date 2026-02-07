@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicSwitchDemoContainer } from './demos/basic-switch-demo-container';
 import { DescriptionSwitchDemoContainer } from './demos/description-switch-demo-container';
 import { DisabledSwitchDemoContainer } from './demos/disabled-switch-demo-container';
@@ -39,6 +43,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SwitchPage {}

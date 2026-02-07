@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSkeleton } from '@semantic-components/ui';
 
 @Component({
@@ -10,6 +14,7 @@ import { ScSkeleton } from '@semantic-components/ui';
       <div sc-skeleton class="h-4 w-[200px]"></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSkeletonDemo {}
