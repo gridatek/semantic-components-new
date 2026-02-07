@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 
-type ScBackdropState = 'initial' | 'open' | 'closed';
+type ScBackdropState = 'idle' | 'open' | 'closed';
 
 @Component({
   selector: 'div[sc-backdrop]',
@@ -20,7 +20,7 @@ type ScBackdropState = 'initial' | 'open' | 'closed';
   host: {
     'data-slot': 'backdrop',
     '[class]': 'class()',
-    '[attr.data-initial]': 'state() === "initial" ? "" : null',
+    '[attr.data-idle]': 'state() === "idle" ? "" : null',
     '[attr.data-open]': 'state() === "open" ? "" : null',
     '[attr.data-closed]': 'state() === "closed" ? "" : null',
     '(animationend)': 'onAnimationEnd($event)',
@@ -40,7 +40,7 @@ export class ScBackdrop {
    */
   readonly open = input.required<boolean>();
 
-  protected readonly state = signal<ScBackdropState>('initial');
+  protected readonly state = signal<ScBackdropState>('idle');
 
   /**
    * Emits when the close animation completes
@@ -49,7 +49,7 @@ export class ScBackdrop {
 
   protected readonly class = computed(() =>
     cn(
-      'data-initial:opacity-0 pointer-events-none',
+      'data-idle:opacity-0 pointer-events-none',
       'data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 isolate z-50',
       this.classInput(),
     ),
@@ -66,7 +66,7 @@ export class ScBackdrop {
   protected onAnimationEnd(event: AnimationEvent): void {
     // Only emit when close animation completes
     if (!this.open() && event.target === this.elementRef.nativeElement) {
-      this.state.set('initial');
+      this.state.set('idle');
       this.animationComplete.emit();
     }
   }
