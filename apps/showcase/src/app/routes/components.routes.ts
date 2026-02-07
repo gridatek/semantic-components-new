@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
-import { ComponentsLayout } from '../layouts/components-layout/components-layout';
+import { DocsLayout } from '../layouts/docs-layout/docs-layout';
 
 export const componentsRoutes: Route[] = [
   {
     path: 'docs/components',
-    component: ComponentsLayout,
+    component: DocsLayout,
     children: [
       {
         path: '',
