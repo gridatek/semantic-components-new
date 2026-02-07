@@ -43,7 +43,7 @@ A comprehensive sidebar component system for Angular applications with collapsib
 
 - **Reactive State Management** - Built with Angular signals
 - **Keyboard Shortcuts** - Cmd/Ctrl + B to toggle sidebar
-- **Cookie Persistence** - State persists across page refreshes (7 days)
+- **LocalStorage Persistence** - State persists across page refreshes
 - **Mobile Responsive** - Sheet drawer on mobile devices
 - **Multiple Variants** - sidebar, floating, inset
 - **Collapsible Modes** - offcanvas, icon, none
@@ -226,7 +226,7 @@ The sidebar uses CSS variables that can be customized:
 
 ## State Persistence
 
-The sidebar state is automatically saved to a cookie (`sidebar_state`) with a 7-day expiration. The state will be restored when the page is refreshed.
+The sidebar state is automatically saved to `localStorage` (key: `sc-sidebar-state`). The state will be restored when the page is refreshed.
 
 ## Mobile Behavior
 
