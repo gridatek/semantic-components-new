@@ -1,9 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ButtonGroupDemoContainer } from './demos/button-group-demo-container';
 
 @Component({
   selector: 'app-button-group-page',
   imports: [ButtonGroupDemoContainer],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div class="space-y-8">
       <div class="space-y-2">

@@ -1,10 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { ButtonGroupDemo } from './button-group-demo';
 
 @Component({
   selector: 'app-button-group-demo-container',
   imports: [DemoContainer, ButtonGroupDemo],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <app-demo-container
       title="Button Group"

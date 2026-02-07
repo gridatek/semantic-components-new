@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScButton,
   ScButtonGroup,
@@ -9,6 +13,7 @@ import {
 @Component({
   selector: 'app-button-group-demo',
   imports: [ScButton, ScButtonGroup, ScButtonGroupSeparator, ScButtonGroupText],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div class="flex flex-col gap-4">
       <div sc-button-group>
