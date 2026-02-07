@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAlertDialogProvider,
   ScAlertDialogAction,
@@ -10,6 +14,7 @@ import {
   ScAlertDialogPortal,
   ScAlertDialogTitle,
   ScAlertDialogTrigger,
+  ScButton,
 } from '@semantic-components/ui';
 
 @Component({
@@ -25,13 +30,12 @@ import {
     ScAlertDialogPortal,
     ScAlertDialogTitle,
     ScAlertDialogTrigger,
+    ScButton,
   ],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div sc-alert-dialog-provider>
-      <button
-        sc-alert-dialog-trigger
-        class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
+      <button sc-button sc-alert-dialog-trigger variant="outline">
         Delete Account
       </button>
       <div sc-alert-dialog-portal>

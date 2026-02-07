@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAlertDialogProvider,
   ScAlertDialogAction,
@@ -10,6 +14,7 @@ import {
   ScAlertDialogPortal,
   ScAlertDialogTitle,
   ScAlertDialogTrigger,
+  ScButton,
 } from '@semantic-components/ui';
 
 @Component({
@@ -25,13 +30,12 @@ import {
     ScAlertDialogPortal,
     ScAlertDialogTitle,
     ScAlertDialogTrigger,
+    ScButton,
   ],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div sc-alert-dialog-provider>
-      <button
-        sc-alert-dialog-trigger
-        class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md bg-destructive px-4 py-2 text-sm font-medium text-destructive-foreground shadow-xs transition-colors hover:bg-destructive/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
+      <button sc-button sc-alert-dialog-trigger variant="destructive">
         Delete All
       </button>
       <div sc-alert-dialog-portal>
@@ -45,12 +49,7 @@ import {
           </div>
           <div sc-alert-dialog-footer>
             <button sc-alert-dialog-cancel>Cancel</button>
-            <button
-              sc-alert-dialog-action
-              class="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            >
-              Delete All
-            </button>
+            <button sc-alert-dialog-action>Delete All</button>
           </div>
         </div>
       </div>
