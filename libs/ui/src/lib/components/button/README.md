@@ -18,11 +18,12 @@ Button directive that can be applied to `button` or `a` elements.
 
 **Inputs:**
 
-| Input     | Type            | Default     | Description            |
-| --------- | --------------- | ----------- | ---------------------- |
-| `variant` | `ButtonVariant` | `'default'` | Visual style variant   |
-| `size`    | `ButtonSize`    | `'default'` | Size of the button     |
-| `class`   | `string`        | `''`        | Additional CSS classes |
+| Input     | Type            | Default     | Description                                                 |
+| --------- | --------------- | ----------- | ----------------------------------------------------------- |
+| `variant` | `ButtonVariant` | `'default'` | Visual style variant                                        |
+| `size`    | `ButtonSize`    | `'default'` | Size of the button                                          |
+| `type`    | `string`        | `'button'`  | Button type attribute (only applied to `<button>` elements) |
+| `class`   | `string`        | `''`        | Additional CSS classes                                      |
 
 **ButtonVariant:**
 
@@ -89,6 +90,20 @@ Button directive that can be applied to `button` or `a` elements.
 ```html
 <a sc-button href="/somewhere">Link Button</a>
 <a sc-button variant="outline" href="/somewhere">Outline Link</a>
+```
+
+### Form Submit
+
+By default, `sc-button` sets `type="button"` to prevent accidental form submissions. Use `type="submit"` explicitly for submit buttons:
+
+```html
+<form>
+  <button sc-button variant="outline">Cancel</button>
+  <!-- type="button" by default, won't submit -->
+
+  <button sc-button type="submit">Save</button>
+  <!-- explicit type="submit" -->
+</form>
 ```
 
 ### Loading State
