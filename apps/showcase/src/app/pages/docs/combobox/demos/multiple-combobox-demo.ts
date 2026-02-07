@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import {
   ScCombobox,
-  ScComboboxContent,
+  ScComboboxPortal,
   ScComboboxEmpty,
   ScComboboxIcon,
   ScComboboxInput,
@@ -28,7 +28,7 @@ interface ComboboxOption {
     ScComboboxTrigger,
     ScComboboxInput,
     ScComboboxIcon,
-    ScComboboxContent,
+    ScComboboxPortal,
     ScComboboxList,
     ScComboboxItem,
     ScComboboxItemIndicator,
@@ -57,7 +57,7 @@ interface ComboboxOption {
           </svg>
         </div>
         <div
-          sc-combobox-content
+          sc-combobox-portal
           searchPlaceholder="Search language..."
           [(searchValue)]="search"
         >

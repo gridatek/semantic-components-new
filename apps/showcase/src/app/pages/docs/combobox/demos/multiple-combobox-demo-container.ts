@@ -16,7 +16,7 @@ import { MultipleComboboxDemo } from './multiple-combobox-demo';
 export class MultipleComboboxDemoContainer {
   readonly code = `import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import {
-  ScCombobox, ScComboboxContent, ScComboboxEmpty, ScComboboxIcon,
+  ScCombobox, ScComboboxPortal, ScComboboxEmpty, ScComboboxIcon,
   ScComboboxInput, ScComboboxItem, ScComboboxItemIndicator,
   ScComboboxList, ScComboboxTrigger,
 } from '@semantic-components/ui';
@@ -25,7 +25,7 @@ import {
   selector: 'app-multiple-combobox-demo',
   imports: [
     ScCombobox, ScComboboxTrigger, ScComboboxInput, ScComboboxIcon,
-    ScComboboxContent, ScComboboxList, ScComboboxItem,
+    ScComboboxPortal, ScComboboxList, ScComboboxItem,
     ScComboboxItemIndicator, ScComboboxEmpty,
   ],
   template: \`
@@ -37,7 +37,7 @@ import {
           <path d="m7 15 5 5 5-5" /><path d="m7 9 5-5 5 5" />
         </svg>
       </div>
-      <div sc-combobox-content searchPlaceholder="Search language..." [(searchValue)]="search">
+      <div sc-combobox-portal searchPlaceholder="Search language..." [(searchValue)]="search">
         @if (filteredOptions().length === 0) {
           <div sc-combobox-empty>No results found.</div>
         }

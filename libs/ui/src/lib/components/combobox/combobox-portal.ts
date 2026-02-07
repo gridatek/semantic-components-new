@@ -19,7 +19,7 @@ import {
 import { cn } from '../../utils';
 
 @Component({
-  selector: 'div[sc-combobox-content]',
+  selector: 'div[sc-combobox-portal]',
   imports: [ComboboxPopupContainer, ComboboxDialog, Combobox, ComboboxInput],
   template: `
     <ng-template ngComboboxPopupContainer>
@@ -58,13 +58,13 @@ import { cn } from '../../utils';
     </ng-template>
   `,
   host: {
-    'data-slot': 'combobox-content',
+    'data-slot': 'combobox-portal',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScComboboxContent {
+export class ScComboboxPortal {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly searchPlaceholder = input<string>('Search...');
   readonly searchValue = model<string>('');
