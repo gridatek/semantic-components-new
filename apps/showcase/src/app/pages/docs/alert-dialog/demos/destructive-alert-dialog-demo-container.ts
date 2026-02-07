@@ -66,7 +66,7 @@ import {
           </div>
           <div sc-alert-dialog-footer>
             <button sc-alert-dialog-cancel>Cancel</button>
-            <button sc-alert-dialog-action>Delete All</button>
+            <button sc-alert-dialog-action variant="destructive">Delete All</button>
           </div>
         </div>
       </div>
