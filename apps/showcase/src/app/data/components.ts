@@ -233,11 +233,6 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A text input field for user data entry.',
   },
   {
-    name: 'Input OTP',
-    path: 'input-otp',
-    description: 'An input for entering one-time passwords.',
-  },
-  {
     name: 'Opt Field',
     path: 'opt-field',
     description: 'An input for entering one-time passwords.',

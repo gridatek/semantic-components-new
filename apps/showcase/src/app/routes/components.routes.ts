@@ -218,10 +218,6 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/input/input-page'),
       },
       {
-        path: 'input-otp',
-        loadComponent: () => import('../pages/docs/input-otp/input-otp-page'),
-      },
-      {
         path: 'opt-field',
         loadComponent: () => import('../pages/docs/opt-field/opt-field-page'),
       },
