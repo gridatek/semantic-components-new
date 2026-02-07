@@ -67,7 +67,6 @@ export * from './popover';
 export * from './progress';
 export * from './qr-code';
 export * from './radio-group';
-export * from './rating';
 export * from './rating-field';
 export * from './resizable';
 export * from './editor';
