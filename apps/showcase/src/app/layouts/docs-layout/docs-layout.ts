@@ -94,9 +94,11 @@ import { COMPONENTS } from '../../data/components';
                   </svg>
                 </div>
                 <div class="grid flex-1 text-left text-sm leading-tight">
-                  <span class="truncate font-semibold">SC</span>
-                  <span class="truncate text-xs text-sidebar-foreground/70">
+                  <span class="truncate font-semibold">
                     Semantic Components
+                  </span>
+                  <span class="truncate text-xs text-sidebar-foreground/70">
+                    UI lib for Angular
                   </span>
                 </div>
               </a>
