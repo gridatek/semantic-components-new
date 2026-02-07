@@ -391,6 +391,18 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/button-group',
+    children: [
+      {
+        path: 'button-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/button-group/demos/button-group-demo').then(
+            (m) => m.ButtonGroupDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/calendar',
     children: [
       {

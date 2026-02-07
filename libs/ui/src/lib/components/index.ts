@@ -11,6 +11,7 @@ export * from './badge';
 export * from './barcode-scanner';
 export * from './breadcrumb';
 export * from './button';
+export * from './button-group';
 export * from './calendar';
 export * from './card';
 export * from './chart';

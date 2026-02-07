@@ -65,6 +65,11 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/button/button-page'),
       },
       {
+        path: 'button-group',
+        loadComponent: () =>
+          import('../pages/docs/button-group/button-group-page'),
+      },
+      {
         path: 'calendar',
         loadComponent: () => import('../pages/docs/calendar/calendar-page'),
       },

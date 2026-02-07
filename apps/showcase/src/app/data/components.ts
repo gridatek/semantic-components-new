@@ -66,6 +66,11 @@ export const COMPONENTS: ComponentItem[] = [
     description: 'A clickable button with multiple variants.',
   },
   {
+    name: 'Button Group',
+    path: 'button-group',
+    description: 'Groups buttons together with merged borders and rounding.',
+  },
+  {
     name: 'Calendar',
     path: 'calendar',
     description: 'A date picker calendar component.',
