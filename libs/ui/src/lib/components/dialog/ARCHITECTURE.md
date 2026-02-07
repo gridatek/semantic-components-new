@@ -140,6 +140,22 @@ Both ScBackdrop and Dialog animations:
 - Respond to same `data-state` attribute
 - Inside same portal template (removed together)
 
+### Dialog Three-State Model
+
+The dialog uses three states to prevent a flash of content on first render:
+
+```typescript
+type ScDialogState = 'idle' | 'open' | 'closed';
+```
+
+| State    | Data Attribute | Purpose                                                  |
+| -------- | -------------- | -------------------------------------------------------- |
+| `idle`   | `data-idle`    | Hidden (`opacity-0`), resting state                      |
+| `open`   | `data-open`    | Entry animation (`fade-in`, `zoom-in`)                   |
+| `closed` | `data-closed`  | Exit animation (`fade-out`, `zoom-out`) → back to `idle` |
+
+Flow: `idle` → `open` → `closed` → `idle`
+
 ### Dialog Content Animations
 
 Applied via Tailwind classes in `dialog.ts`:
@@ -147,28 +163,28 @@ Applied via Tailwind classes in `dialog.ts`:
 ```typescript
 protected readonly class = computed(() =>
   cn(
+    // Idle state: hidden
+    'data-idle:opacity-0',
+
+    // Entry animation (triggered by data-open)
+    'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95',
+
+    // Exit animation (triggered by data-closed)
+    'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
+
     // Base styles
-    'bg-background relative z-50 grid w-full max-w-lg gap-4 rounded-lg border p-6 shadow-lg',
-
-    // Entry animation
-    'animate-in fade-in-0 zoom-in-95 duration-300',
-
-    // Exit animation (triggered by data-state="closed")
-    'data-[state=closed]:animate-out',
-    'data-[state=closed]:fade-out-0',
-    'data-[state=closed]:zoom-out-95',
-    'data-[state=closed]:duration-300',
+    'bg-background ring-foreground/10 grid max-w-sm gap-4 rounded-xl p-4 text-sm ring-1 duration-100 ...',
   ),
 );
 ```
 
 **Animation Flow:**
 
-1. `state` signal changes from `'open'` to `'closed'`
-2. `data-state` attribute updates to `"closed"`
-3. Tailwind applies exit animation classes
-4. Animation plays for 300ms
-5. `animationend` event fires
+1. `state` signal changes from `'idle'` to `'open'`
+2. `data-open` attribute set → entry animation starts
+3. User closes → `state` changes to `'closed'`
+4. `data-closed` attribute set → exit animation starts
+5. `animationend` event fires → `state` resets to `'idle'` (`opacity-0`)
 
 ### ScBackdrop Component Animations
 
@@ -225,10 +241,10 @@ User clicks trigger:
 │
 ├─ t=0ms: Dialog effect (triggered by open):
 │  └─ state.set('open')
-│     └─ data-state="open" → Entry animation starts
+│     └─ data-open set → Entry animation starts
 │        ├─ fade-in-0
 │        ├─ zoom-in-95
-│        └─ duration-300
+│        └─ duration-100
 │
 ├─ t=0-300ms: Both animations play
 │
@@ -244,15 +260,14 @@ User clicks close/backdrop/escape:
 │  │
 │  ├─ Dialog effect (triggered by open):
 │  │  └─ state.set('closed')  ← Triggers animation
-│  │     └─ data-state="closed" → Exit animation starts
+│  │     └─ data-closed set → Exit animation starts
 │  │        ├─ animate-out
 │  │        ├─ fade-out-0
-│  │        ├─ zoom-out-95
-│  │        └─ duration-300
+│  │        └─ zoom-out-95
 │  │
 │  └─ Backdrop receives [open]="false" input:
 │     └─ state.set('closed')  ← Triggers backdrop animation
-│        └─ data-state="closed" → Backdrop fade-out (300ms)
+│        └─ data-closed set → Backdrop fade-out
 │
 ├─ IMPORTANT: overlayOpen is STILL true!
 │  └─ DOM remains mounted so animations can play
@@ -263,6 +278,7 @@ User clicks close/backdrop/escape:
 ├─ t=~300ms: Dialog animation completes
 │  └─ onAnimationEnd(event) fires
 │     └─ if (state === 'closed' && target === element):
+│        ├─ state.set('idle')  ← Reset to hidden resting state
 │        └─ provider.onDialogAnimationComplete()
 │           └─ animationsCompleted.update(n => n + 1)  ← Count = 1
 │
@@ -374,11 +390,6 @@ constructor() {
     const isOpen = this.dialogProvider.open();
     this.state.set(isOpen ? 'open' : 'closed');
   });
-
-  // Auto-focus dialog when it opens
-  setTimeout(() => {
-    this.elementRef.nativeElement.focus();
-  });
 }
 ```
 
@@ -416,6 +427,7 @@ protected onAnimationEnd(event: AnimationEvent): void {
     this.state() === 'closed' &&
     event.target === this.elementRef.nativeElement
   ) {
+    this.state.set('idle'); // Reset to hidden resting state
     this.dialogProvider.onDialogAnimationComplete();
   }
 }
@@ -626,14 +638,14 @@ onBackdropAnimationComplete(): void {
 ### Dialog Content Classes
 
 ```typescript
-// Entry animation
-'animate-in fade-in-0 zoom-in-95 duration-300';
+// Idle state (hidden)
+'data-idle:opacity-0';
 
-// Exit animation (via data-state="closed")
-'data-[state=closed]:animate-out';
-'data-[state=closed]:fade-out-0';
-'data-[state=closed]:zoom-out-95';
-'data-[state=closed]:duration-300';
+// Entry animation (via data-open)
+'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95';
+
+// Exit animation (via data-closed)
+'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95';
 ```
 
 ### Backdrop Classes
@@ -716,7 +728,7 @@ The animation system preserves accessibility:
 1. **State Transitions:**
    - open: false → true → false
    - overlayOpen follows correctly
-   - state syncs with open
+   - state: idle → open → closed → idle
 
 2. **Animation Timing:**
    - Animations play for full duration

@@ -165,18 +165,30 @@ effect(() => {
 
 ### Animations
 
-`ScDialogContent` applies Tailwind CSS transitions for enter/leave animations:
+`ScDialog` uses a three-state animation model:
+
+| State    | Data Attribute | Description                                              |
+| -------- | -------------- | -------------------------------------------------------- |
+| `idle`   | `data-idle`    | Hidden (`opacity-0`), resting state                      |
+| `open`   | `data-open`    | Entry animation (`fade-in`, `zoom-in`)                   |
+| `closed` | `data-closed`  | Exit animation (`fade-out`, `zoom-out`) → back to `idle` |
+
+The flow is: `idle` → `open` → `closed` → `idle`
 
 ```typescript
+type ScDialogState = 'idle' | 'open' | 'closed';
+
 protected readonly class = computed(() =>
   cn(
-    'bg-background relative z-50 ...',
-    this.dialog.open()
-      ? 'opacity-100 scale-100 transition-[opacity,transform] duration-150 ease-out'
-      : 'opacity-0 scale-95 transition-[opacity,transform] duration-150 ease-in',
+    'data-idle:opacity-0',
+    'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95',
+    'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
+    // ...
   ),
 );
 ```
+
+On `animationend`, the `closed` state resets to `idle`, which triggers overlay cleanup via `onDialogAnimationComplete()`.
 
 ## Accessibility
 
