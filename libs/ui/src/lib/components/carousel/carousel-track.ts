@@ -5,6 +5,7 @@ import { ScCarousel } from './carousel';
 @Directive({
   selector: 'div[sc-carousel-track]',
   host: {
+    'data-slot': 'carousel-track',
     '[class]': 'class()',
   },
 })

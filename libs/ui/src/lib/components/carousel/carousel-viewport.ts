@@ -15,7 +15,7 @@ import { cn } from '../../utils';
     <ng-content />
   `,
   host: {
-    'data-slot': 'carousel-content',
+    'data-slot': 'carousel-viewport',
     '[class]': 'class()',
   },
   encapsulation: ViewEncapsulation.None,
