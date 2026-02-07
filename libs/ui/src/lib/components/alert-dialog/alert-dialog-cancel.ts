@@ -1,6 +1,7 @@
 import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
 import { ScAlertDialogProvider } from './alert-dialog-provider';
+import { buttonVariants, ScButtonVariants } from '../button';
 
 @Directive({
   selector: 'button[sc-alert-dialog-cancel]',
@@ -15,12 +16,12 @@ export class ScAlertDialogCancel {
   private readonly alertDialogProvider = inject(ScAlertDialogProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 
+  readonly variant = input<ScButtonVariants['variant']>('outline');
+  readonly size = input<ScButtonVariants['size']>('default');
+
   protected readonly class = computed(() =>
     cn(
-      'inline-flex h-9 items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors',
-      'hover:bg-accent hover:text-accent-foreground',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-      'disabled:pointer-events-none disabled:opacity-50',
+      buttonVariants({ variant: this.variant(), size: this.size() }),
       this.classInput(),
     ),
   );
