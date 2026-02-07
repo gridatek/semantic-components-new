@@ -70,12 +70,7 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
                 </div>
               </div>
               <div sc-dialog-footer>
-                <button
-                  type="button"
-                  sc-button
-                  variant="outline"
-                  (click)="isOpen.set(false)"
-                >
+                <button sc-button variant="outline" (click)="isOpen.set(false)">
                   Cancel
                 </button>
                 <button sc-button type="submit">Save changes</button>

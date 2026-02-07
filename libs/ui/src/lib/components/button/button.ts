@@ -1,4 +1,4 @@
-import { computed, Directive, input } from '@angular/core';
+import { computed, Directive, ElementRef, inject, input } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
@@ -45,13 +45,21 @@ export type ScButtonVariants = VariantProps<typeof buttonVariants>;
   selector: 'button[sc-button], a[sc-button]',
   host: {
     'data-slot': 'button',
+    '[attr.type]': 'isButton() ? type() : null',
     '[class]': 'class()',
   },
 })
 export class ScButton {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly classInput = input<string>('', { alias: 'class' });
   readonly variant = input<ScButtonVariants['variant']>('default');
   readonly size = input<ScButtonVariants['size']>('default');
+  readonly type = input<string>('button');
+
+  protected readonly isButton = computed(
+    () => this.elementRef.nativeElement.tagName === 'BUTTON',
+  );
 
   protected readonly class = computed(() =>
     cn(
