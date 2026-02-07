@@ -23,7 +23,12 @@ import { PriceNumberFieldDemo } from './price-number-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class PriceNumberFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -31,10 +36,11 @@ import {
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-price-number-field-demo',
   imports: [
     ScNumberField,
     ScNumberFieldScrubArea,
@@ -50,7 +56,8 @@ import {
       [(value)]="price"
       [step]="0.01"
       [min]="0"
-      [formatOptions]="formatOptions">
+      [formatOptions]="formatOptions"
+    >
       <div sc-number-field-scrub-area>
         <label sc-label>Price ($)</label>
       </div>
@@ -66,6 +73,7 @@ import {
       Current price: {{ '$' + (price() ?? 0).toFixed(2) }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PriceNumberFieldDemo {

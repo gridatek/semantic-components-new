@@ -23,8 +23,17 @@ import { PieChartDemo } from './pie-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PieChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScChartLegend, ScPieChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScChartLegend,
+  ScPieChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-pie-chart-demo',
@@ -37,6 +46,7 @@ import { ScChartContainer, ScChartLegend, ScPieChart, ChartDataPoint } from '@se
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PieChartDemo {

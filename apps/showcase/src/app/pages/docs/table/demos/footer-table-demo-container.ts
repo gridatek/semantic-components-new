@@ -19,7 +19,11 @@ import { FooterTableDemo } from './footer-table-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class FooterTableDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTable,
   ScTableBody,
@@ -79,6 +83,7 @@ import {
       </tfoot>
     </table>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterTableDemo {}`;

@@ -22,14 +22,14 @@ export class SpotlightDemoContainer {
   readonly code = `import {
   ChangeDetectionStrategy,
   Component,
-  signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   ScSpotlight,
-  ScSpotlightTitle,
-  ScSpotlightDescription,
   ScSpotlightActions,
+  ScSpotlightDescription,
+  ScSpotlightTitle,
 } from '@semantic-components/ui';
 
 @Component({
@@ -265,6 +265,7 @@ import {
       </sc-spotlight>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpotlightDemo {

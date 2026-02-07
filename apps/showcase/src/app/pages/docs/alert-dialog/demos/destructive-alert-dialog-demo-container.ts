@@ -19,7 +19,11 @@ import { DestructiveAlertDialogDemo } from './destructive-alert-dialog-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DestructiveAlertDialogDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAlertDialogProvider,
   ScAlertDialogAction,
@@ -60,13 +64,15 @@ import {
           <div sc-alert-dialog-header>
             <h2 sc-alert-dialog-title>Delete all items?</h2>
             <p sc-alert-dialog-description>
-              This will permanently delete all items in your collection. This action cannot
-              be reversed.
+              This will permanently delete all items in your collection. This
+              action cannot be reversed.
             </p>
           </div>
           <div sc-alert-dialog-footer>
             <button sc-alert-dialog-cancel>Cancel</button>
-            <button sc-alert-dialog-action variant="destructive">Delete All</button>
+            <button sc-alert-dialog-action variant="destructive">
+              Delete All
+            </button>
           </div>
         </div>
       </div>

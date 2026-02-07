@@ -19,7 +19,11 @@ import { ButtonLanguageSwitcherDemo } from './button-language-switcher-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageButton } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +37,7 @@ import { ScLanguageButton } from '@semantic-components/ui';
       </span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonLanguageSwitcherDemo {}`;

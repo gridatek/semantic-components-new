@@ -24,7 +24,12 @@ import { BasicAvatarGroupDemo } from './basic-avatar-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAvatarGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -43,13 +48,18 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
       </p>
     }
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAvatarGroupDemo {
   readonly clickedUser = signal<string | null>(null);
 
   readonly users: AvatarGroupItem[] = [
-    { id: '1', src: 'https://i.pravatar.cc/150?u=user1', name: 'Alice Johnson' },
+    {
+      id: '1',
+      src: 'https://i.pravatar.cc/150?u=user1',
+      name: 'Alice Johnson',
+    },
     { id: '2', src: 'https://i.pravatar.cc/150?u=user2', name: 'Bob Smith' },
     { id: '3', src: 'https://i.pravatar.cc/150?u=user3', name: 'Carol White' },
     { id: '4', src: 'https://i.pravatar.cc/150?u=user4', name: 'David Brown' },
@@ -59,11 +69,11 @@ export class BasicAvatarGroupDemo {
   ];
 
   onAvatarClick(event: { avatar: AvatarGroupItem; index: number }): void {
-    this.clickedUser.set(event.avatar.name || \\\`Avatar \\\${event.index + 1}\\\`);
+    this.clickedUser.set(event.avatar.name || \`Avatar \${event.index + 1}\`);
   }
 
   onOverflowClick(avatars: AvatarGroupItem[]): void {
-    this.clickedUser.set(\\\`+\\\${avatars.length} more users\\\`);
+    this.clickedUser.set(\`+\${avatars.length} more users\`);
   }
 }`;
 }

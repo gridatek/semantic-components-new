@@ -19,7 +19,11 @@ import { BasicAlertDialogDemo } from './basic-alert-dialog-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAlertDialogDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAlertDialogProvider,
   ScAlertDialogAction,
@@ -60,8 +64,8 @@ import {
           <div sc-alert-dialog-header>
             <h2 sc-alert-dialog-title>Are you absolutely sure?</h2>
             <p sc-alert-dialog-description>
-              This action cannot be undone. This will permanently delete your account and
-              remove your data from our servers.
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
             </p>
           </div>
           <div sc-alert-dialog-footer>

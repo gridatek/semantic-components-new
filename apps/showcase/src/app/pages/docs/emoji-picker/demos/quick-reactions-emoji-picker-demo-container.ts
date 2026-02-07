@@ -23,7 +23,7 @@ import { QuickReactionsEmojiPickerDemo } from './quick-reactions-emoji-picker-de
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuickReactionsEmojiPickerDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import { Component, signal, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-quick-reactions-emoji-picker-demo',
@@ -48,6 +48,7 @@ export class QuickReactionsEmojiPickerDemoContainer {
       </p>
     }
   \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class QuickReactionsEmojiPickerDemo {
   readonly lastReaction = signal('');

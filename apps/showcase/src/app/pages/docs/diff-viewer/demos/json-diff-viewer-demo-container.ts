@@ -23,7 +23,11 @@ import { JsonDiffViewerDemo } from './json-diff-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JsonDiffViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -37,10 +41,11 @@ import { ScDiffViewer } from '@semantic-components/ui';
       [newTitle]="'config.json (after)'"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JsonDiffViewerDemo {
-  oldJson = \\\`{
+  oldJson = \`{
   "name": "my-project",
   "version": "1.0.0",
   "description": "A sample project",
@@ -52,9 +57,9 @@ export class JsonDiffViewerDemo {
   "dependencies": {
     "express": "^4.17.0"
   }
-}\\\`;
+}\`;
 
-  newJson = \\\`{
+  newJson = \`{
   "name": "my-project",
   "version": "1.1.0",
   "description": "A sample project with updates",
@@ -71,6 +76,6 @@ export class JsonDiffViewerDemo {
   "devDependencies": {
     "typescript": "^5.0.0"
   }
-}\\\`;
+}\`;
 }`;
 }

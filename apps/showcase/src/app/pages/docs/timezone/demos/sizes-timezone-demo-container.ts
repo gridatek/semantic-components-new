@@ -19,7 +19,11 @@ import { SizesTimezoneDemo } from './sizes-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneDisplay } from '@semantic-components/ui';
 
 @Component({
@@ -50,6 +54,7 @@ import { ScTimezoneDisplay } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesTimezoneDemo {}`;

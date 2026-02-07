@@ -23,7 +23,11 @@ import { DisabledAccordionDemo } from './disabled-accordion-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledAccordionDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScAccordion,
   ScAccordionPanel,
@@ -84,6 +88,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledAccordionDemo {}`;

@@ -23,8 +23,17 @@ import { DonutChartDemo } from './donut-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DonutChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScChartLegend, ScDonutChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScChartLegend,
+  ScDonutChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-donut-chart-demo',
@@ -32,11 +41,17 @@ import { ScChartContainer, ScChartLegend, ScDonutChart, ChartDataPoint } from '@
   template: \`
     <div class="max-w-sm rounded-lg border p-6">
       <div sc-chart-container>
-        <div sc-donut-chart [data]="pieData" [size]="280" [innerRadius]="70"></div>
+        <div
+          sc-donut-chart
+          [data]="pieData"
+          [size]="280"
+          [innerRadius]="70"
+        ></div>
         <div sc-chart-legend [items]="pieLegend"></div>
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DonutChartDemo {

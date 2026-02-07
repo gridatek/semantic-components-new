@@ -19,31 +19,64 @@ import { HorizontalRadioGroupDemo } from './horizontal-radio-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalRadioGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface FilterFormModel {
+  filter: string;
+}
 
 @Component({
   selector: 'app-horizontal-radio-group-demo',
-  imports: [ScRadioGroup, ScRadioGroupItem],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: \`
-    <div sc-radio-group [(value)]="horizontalValue" class="flex flex-row gap-4">
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="all" id="h1" />
-        <label for="h1" class="text-sm font-medium">All</label>
-      </div>
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="unread" id="h2" />
-        <label for="h2" class="text-sm font-medium">Unread</label>
-      </div>
-      <div class="flex items-center space-x-2">
-        <sc-radio-group-item value="archived" id="h3" />
-        <label for="h3" class="text-sm font-medium">Archived</label>
-      </div>
+    <div sc-radio-group class="flex flex-row gap-4">
+      <label sc-radio-field>
+        <input
+          type="radio"
+          sc-radio
+          value="all"
+          [formField]="filterForm.filter"
+          id="h1"
+        />
+        <span class="text-sm font-medium">All</span>
+      </label>
+      <label sc-radio-field>
+        <input
+          type="radio"
+          sc-radio
+          value="unread"
+          [formField]="filterForm.filter"
+          id="h2"
+        />
+        <span class="text-sm font-medium">Unread</span>
+      </label>
+      <label sc-radio-field>
+        <input
+          type="radio"
+          sc-radio
+          value="archived"
+          [formField]="filterForm.filter"
+          id="h3"
+        />
+        <span class="text-sm font-medium">Archived</span>
+      </label>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalRadioGroupDemo {
-  readonly horizontalValue = signal<string | null>('all');
+  readonly formModel = signal<FilterFormModel>({
+    filter: 'all',
+  });
+
+  readonly filterForm = form(this.formModel);
 }`;
 }

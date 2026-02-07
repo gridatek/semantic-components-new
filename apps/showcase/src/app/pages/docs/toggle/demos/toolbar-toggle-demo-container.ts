@@ -23,7 +23,12 @@ import { ToolbarToggleDemo } from './toolbar-toggle-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggle } from '@semantic-components/ui';
 
 @Component({
@@ -103,6 +108,7 @@ import { ScToggle } from '@semantic-components/ui';
       </button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarToggleDemo {

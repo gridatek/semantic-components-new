@@ -19,7 +19,11 @@ import { DotsSpinnerDemo } from './dots-spinner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DotsSpinnerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinnerDots } from '@semantic-components/ui';
 
 @Component({
@@ -34,6 +38,7 @@ import { ScSpinnerDots } from '@semantic-components/ui';
       <span sc-spinner-dots size="xl"></span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DotsSpinnerDemo {}`;

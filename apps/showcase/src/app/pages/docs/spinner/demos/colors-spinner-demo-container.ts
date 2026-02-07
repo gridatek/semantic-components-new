@@ -19,7 +19,11 @@ import { ColorsSpinnerDemo } from './colors-spinner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColorsSpinnerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinner } from '@semantic-components/ui';
 
 @Component({
@@ -35,6 +39,7 @@ import { ScSpinner } from '@semantic-components/ui';
       <span sc-spinner class="text-purple-500"></span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColorsSpinnerDemo {}`;

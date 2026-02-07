@@ -19,7 +19,12 @@ import { CategoriesSearchInputDemo } from './categories-search-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesSearchInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSearchInput } from '@semantic-components/ui';
 import type { SearchSuggestion } from '@semantic-components/ui';
 
@@ -34,6 +39,7 @@ import type { SearchSuggestion } from '@semantic-components/ui';
       class="max-w-md"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesSearchInputDemo {

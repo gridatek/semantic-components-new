@@ -23,7 +23,11 @@ import { WhitespaceDiffViewerDemo } from './whitespace-diff-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WhitespaceDiffViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -40,6 +44,7 @@ import { ScDiffViewer } from '@semantic-components/ui';
       [showFooter]="false"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WhitespaceDiffViewerDemo {}`;

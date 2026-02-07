@@ -19,7 +19,12 @@ import { BasicSortableListDemo } from './basic-sortable-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSortableListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import {
   ScSortableItem,
@@ -55,6 +60,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSortableListDemo {

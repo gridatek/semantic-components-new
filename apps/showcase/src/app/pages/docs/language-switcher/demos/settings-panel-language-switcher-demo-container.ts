@@ -19,7 +19,11 @@ import { SettingsPanelLanguageSwitcherDemo } from './settings-panel-language-swi
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsPanelLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageSelect } from '@semantic-components/ui';
 
 @Component({
@@ -40,6 +44,7 @@ import { ScLanguageSelect } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsPanelLanguageSwitcherDemo {}`;

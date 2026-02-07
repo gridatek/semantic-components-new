@@ -19,7 +19,11 @@ import { SelectLanguageSwitcherDemo } from './select-language-switcher-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageSelect } from '@semantic-components/ui';
 
 @Component({
@@ -30,6 +34,7 @@ import { ScLanguageSelect } from '@semantic-components/ui';
       <sc-language-select></sc-language-select>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectLanguageSwitcherDemo {}`;

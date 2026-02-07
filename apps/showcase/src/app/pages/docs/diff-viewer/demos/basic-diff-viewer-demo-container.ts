@@ -23,7 +23,11 @@ import { BasicDiffViewerDemo } from './basic-diff-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicDiffViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -37,10 +41,11 @@ import { ScDiffViewer } from '@semantic-components/ui';
       [newTitle]="'main.ts (modified)'"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicDiffViewerDemo {
-  oldCode = \\\`import { Component } from '@angular/core';
+  oldCode = \`import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -52,9 +57,9 @@ export class App {
   ngOnInit() {
     console.log('App initialized');
   }
-}\\\`;
+}\`;
 
-  newCode = \\\`import { Component, OnInit } from '@angular/core';
+  newCode = \`import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -73,6 +78,6 @@ export class AppComponent implements OnInit {
   private loadData(): void {
     // Load initial data
   }
-}\\\`;
+}\`;
 }`;
 }

@@ -24,7 +24,11 @@ import { TeamAvatarGroupDemo } from './team-avatar-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamAvatarGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -33,11 +37,10 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
   template: \`
     <div class="flex items-center gap-3 p-4 border rounded-lg">
       <sc-avatar-group [avatars]="members" [max]="3" size="sm" />
-      <span class="text-sm text-muted-foreground">
-        Working on this project
-      </span>
+      <span class="text-sm text-muted-foreground">Working on this project</span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamAvatarGroupDemo {

@@ -19,7 +19,12 @@ import { PresetsTimePickerDemo } from './presets-time-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PresetsTimePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimePicker,
   ScTimePickerInput,
@@ -76,6 +81,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PresetsTimePickerDemo {

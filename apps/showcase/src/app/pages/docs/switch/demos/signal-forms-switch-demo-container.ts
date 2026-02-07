@@ -23,7 +23,12 @@ import { SignalFormsSwitchDemo } from './signal-forms-switch-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsSwitchDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
 import { ScSwitch } from '@semantic-components/ui';
@@ -60,9 +65,7 @@ interface SwitchFormModel {
         <div class="flex items-center justify-between">
           <div class="space-y-0.5">
             <label class="text-sm font-medium leading-none">Dark Mode</label>
-            <p class="text-sm text-muted-foreground">
-              Switch to dark theme
-            </p>
+            <p class="text-sm text-muted-foreground">Switch to dark theme</p>
           </div>
           <button
             sc-switch
@@ -92,6 +95,7 @@ interface SwitchFormModel {
       </div>
     </form>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsSwitchDemo {

@@ -19,5 +19,25 @@ import { CompletedCountdownDemo } from './completed-countdown-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompletedCountdownDemoContainer {
-  readonly code = `// See completed-countdown-demo.ts for full source`;
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCountdown } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-completed-countdown-demo',
+  imports: [ScCountdown],
+  template: \`
+    <div class="p-6 rounded-lg border inline-block">
+      <sc-countdown [targetDate]="pastDate" variant="cards" />
+    </div>
+  \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CompletedCountdownDemo {
+  readonly pastDate = new Date(Date.now() - 1000);
+}`;
 }

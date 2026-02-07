@@ -23,7 +23,11 @@ import { DisabledNumberFieldDemo } from './disabled-number-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DisabledNumberFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -31,10 +35,11 @@ import {
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-disabled-number-field-demo',
   imports: [
     ScNumberField,
     ScNumberFieldScrubArea,
@@ -57,6 +62,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledNumberFieldDemo {}`;

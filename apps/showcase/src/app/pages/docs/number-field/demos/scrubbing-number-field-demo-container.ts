@@ -23,7 +23,12 @@ import { ScrubbingNumberFieldDemo } from './scrubbing-number-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ScrubbingNumberFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -31,10 +36,11 @@ import {
   ScNumberFieldIncrement,
   ScNumberFieldInput,
   ScNumberFieldScrubArea,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-scrubbing-number-field-demo',
   imports: [
     ScNumberField,
     ScNumberFieldScrubArea,
@@ -46,7 +52,13 @@ import {
   ],
   template: \`
     <div class="space-y-6">
-      <div sc-number-field [(value)]="opacity" [min]="0" [max]="100" [scrubSpeed]="0.5">
+      <div
+        sc-number-field
+        [(value)]="opacity"
+        [min]="0"
+        [max]="100"
+        [scrubSpeed]="0.5"
+      >
         <div sc-number-field-scrub-area>
           <label sc-label>Opacity (%)</label>
         </div>
@@ -70,7 +82,12 @@ import {
         </div>
       </div>
     </div>
+
+    <p class="mt-4 text-sm text-muted-foreground">
+      💡 Tip: Click and drag on the label to scrub values
+    </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrubbingNumberFieldDemo {

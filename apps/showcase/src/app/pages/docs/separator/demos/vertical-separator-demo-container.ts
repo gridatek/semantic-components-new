@@ -19,7 +19,11 @@ import { VerticalSeparatorDemo } from './vertical-separator-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerticalSeparatorDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSeparator } from '@semantic-components/ui';
 
 @Component({
@@ -36,6 +40,7 @@ import { ScSeparator } from '@semantic-components/ui';
       <div>Contact</div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerticalSeparatorDemo {}`;

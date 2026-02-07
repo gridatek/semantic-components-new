@@ -19,7 +19,12 @@ import { ActionToastDemo } from './action-toast-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionToastDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToastStack, ScToaster } from '@semantic-components/ui';
 
 @Component({
@@ -35,6 +40,7 @@ import { ScToastStack, ScToaster } from '@semantic-components/ui';
 
     <sc-toast-stack />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionToastDemo {

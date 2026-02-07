@@ -23,7 +23,11 @@ import { DisabledOptFieldDemo } from './disabled-opt-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledOptFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScOptField,
   ScOptFieldSlotGroup,
@@ -45,6 +49,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledOptFieldDemo {}`;

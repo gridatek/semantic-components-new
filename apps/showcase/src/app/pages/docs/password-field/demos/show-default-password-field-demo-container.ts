@@ -23,16 +23,22 @@ import { ShowDefaultPasswordFieldDemo } from './show-default-password-field-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ShowDefaultPasswordFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-show-default-password-field-demo',
   imports: [
     ScPasswordField,
     ScPasswordFieldInputGroup,
@@ -41,7 +47,12 @@ import {
     ScLabel,
   ],
   template: \`
-    <div sc-password-field [(value)]="apiKey" [showByDefault]="true" class="space-y-2">
+    <div
+      sc-password-field
+      [(value)]="apiKey"
+      [showByDefault]="true"
+      class="space-y-2"
+    >
       <label sc-label>API Key</label>
       <div sc-password-field-input-group>
         <input sc-password-field-input placeholder="sk-..." />
@@ -49,6 +60,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowDefaultPasswordFieldDemo {

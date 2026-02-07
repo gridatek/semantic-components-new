@@ -25,6 +25,7 @@ export class BasicProgressDemoContainer {
   OnDestroy,
   OnInit,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ScProgress } from '@semantic-components/ui';
 
@@ -37,6 +38,7 @@ import { ScProgress } from '@semantic-components/ui';
       <p class="text-sm text-muted-foreground">{{ progress() }}% complete</p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicProgressDemo implements OnInit, OnDestroy {

@@ -23,7 +23,12 @@ import { ConstrainedDatePickerDemo } from './constrained-date-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConstrainedDatePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDatePicker } from '@semantic-components/ui';
 
 @Component({
@@ -40,6 +45,7 @@ import { ScDatePicker } from '@semantic-components/ui';
       placeholder="Pick a date (next 30 days)"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConstrainedDatePickerDemo {

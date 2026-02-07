@@ -19,7 +19,12 @@ import { HalfRatingFieldDemo } from './half-rating-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HalfRatingFieldDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScRatingField,
   ScRatingItemGroup,
@@ -56,6 +61,8 @@ import { SiStarIcon } from '@semantic-icons/lucide-icons';
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HalfRatingFieldDemo {
   readonly rating = signal(3.5);

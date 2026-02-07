@@ -23,11 +23,17 @@ import { WithDescriptionCheckboxDemo } from './with-description-checkbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithDescriptionCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCheckboxField,
   ScCheckbox,
   ScLabel,
+  ScFieldDescription,
 } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
@@ -37,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     ScCheckboxField,
     ScCheckbox,
     ScLabel,
+    ScFieldDescription,
     FormsModule,
   ],
   template: \`
@@ -47,16 +54,13 @@ import { FormsModule } from '@angular/forms';
         [(ngModel)]="marketing"
         id="marketing"
       />
-      <div class="grid gap-1.5 leading-none">
-        <label sc-label for="marketing">
-          Marketing emails
-        </label>
-        <p class="text-sm text-muted-foreground">
-          Receive emails about new products, features, and more.
-        </p>
-      </div>
+      <label sc-label for="marketing">Marketing emails</label>
+      <p sc-field-description>
+        Receive emails about new products, features, and more.
+      </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithDescriptionCheckboxDemo {

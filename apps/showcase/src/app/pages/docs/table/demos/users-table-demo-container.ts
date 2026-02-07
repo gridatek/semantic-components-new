@@ -19,7 +19,11 @@ import { UsersTableDemo } from './users-table-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class UsersTableDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTable,
   ScTableBody,
@@ -56,7 +60,7 @@ import {
               <div class="font-medium">John Doe</div>
               <div class="text-sm text-muted-foreground">Engineer</div>
             </td>
-            <td sc-table-cell>john@example.com</td>
+            <td sc-table-cell>john&#64;example.com</td>
             <td sc-table-cell>
               <span
                 class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold"
@@ -77,7 +81,7 @@ import {
               <div class="font-medium">Jane Smith</div>
               <div class="text-sm text-muted-foreground">Designer</div>
             </td>
-            <td sc-table-cell>jane@example.com</td>
+            <td sc-table-cell>jane&#64;example.com</td>
             <td sc-table-cell>
               <span
                 class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold"
@@ -98,7 +102,7 @@ import {
               <div class="font-medium">Bob Johnson</div>
               <div class="text-sm text-muted-foreground">Manager</div>
             </td>
-            <td sc-table-cell>bob@example.com</td>
+            <td sc-table-cell>bob&#64;example.com</td>
             <td sc-table-cell>
               <span
                 class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold"
@@ -118,6 +122,7 @@ import {
       </table>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersTableDemo {}`;

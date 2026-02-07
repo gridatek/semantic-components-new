@@ -19,7 +19,12 @@ import { TourGuideDemo } from './tour-guide-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TourGuideDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
 
 @Component({
@@ -109,6 +114,7 @@ import { ScTourGuide, TourService, TourOptions } from '@semantic-components/ui';
       />
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TourGuideDemo {

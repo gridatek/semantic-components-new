@@ -19,7 +19,12 @@ import { OrgChartDemo } from './org-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrgChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScOrgChart,
   type OrgChartNode,
@@ -106,6 +111,7 @@ import {
       </section>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrgChartDemo {

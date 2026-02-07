@@ -19,7 +19,12 @@ import { FormRatingFieldDemo } from './form-rating-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormRatingFieldDemoContainer {
-  readonly code = `import { Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScRatingField,
   ScRatingItemGroup,
@@ -69,7 +74,9 @@ interface ReviewForm {
         </div>
       </div>
 
-      <button sc-button (click)="onSubmit()" class="w-fit">Submit Rating</button>
+      <button sc-button (click)="onSubmit()" class="w-fit">
+        Submit Rating
+      </button>
 
       @if (submitted) {
         <div class="rounded-md bg-muted p-4">
@@ -79,6 +86,8 @@ interface ReviewForm {
       }
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormRatingFieldDemo {
   readonly formModel = signal<ReviewForm>({

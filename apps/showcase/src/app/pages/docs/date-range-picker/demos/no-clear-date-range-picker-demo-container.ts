@@ -23,7 +23,11 @@ import { NoClearDateRangePickerDemo } from './no-clear-date-range-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoClearDateRangePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDateRangePicker } from '@semantic-components/ui';
 
 @Component({
@@ -32,6 +36,7 @@ import { ScDateRangePicker } from '@semantic-components/ui';
   template: \`
     <sc-date-range-picker [showClear]="false" placeholder="No clear button" />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoClearDateRangePickerDemo {}`;

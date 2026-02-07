@@ -23,17 +23,27 @@ import { CustomThemeRadioGroupDemo } from './custom-theme-radio-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomThemeRadioGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {
-  ScRadioGroup,
-  ScRadioField,
-  ScRadio,
-} from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface ThemeFormModel {
+  default: string;
+  purple: string;
+  green: string;
+  orange: string;
+  pink: string;
+  blue: string;
+}
 
 @Component({
   selector: 'app-custom-theme-radio-group-demo',
-  imports: [FormsModule, ScRadioGroup, ScRadioField, ScRadio],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: \`
     <div class="space-y-8">
       <!-- Default Theme -->
@@ -44,9 +54,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="default"
               value="option1"
-              [(ngModel)]="defaultValue"
+              [formField]="themeForm.default"
             />
             <span class="text-sm">Option 1</span>
           </label>
@@ -54,9 +63,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="default"
               value="option2"
-              [(ngModel)]="defaultValue"
+              [formField]="themeForm.default"
             />
             <span class="text-sm">Option 2</span>
           </label>
@@ -74,9 +82,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="purple"
               value="option1"
-              [(ngModel)]="purpleValue"
+              [formField]="themeForm.purple"
             />
             <span class="text-sm">Option 1</span>
           </label>
@@ -84,9 +91,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="purple"
               value="option2"
-              [(ngModel)]="purpleValue"
+              [formField]="themeForm.purple"
             />
             <span class="text-sm">Option 2</span>
           </label>
@@ -104,9 +110,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="green"
               value="option1"
-              [(ngModel)]="greenValue"
+              [formField]="themeForm.green"
             />
             <span class="text-sm">Option 1</span>
           </label>
@@ -114,9 +119,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="green"
               value="option2"
-              [(ngModel)]="greenValue"
+              [formField]="themeForm.green"
             />
             <span class="text-sm">Option 2</span>
           </label>
@@ -134,9 +138,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="orange"
               value="option1"
-              [(ngModel)]="orangeValue"
+              [formField]="themeForm.orange"
             />
             <span class="text-sm">Option 1</span>
           </label>
@@ -144,9 +147,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="orange"
               value="option2"
-              [(ngModel)]="orangeValue"
+              [formField]="themeForm.orange"
             />
             <span class="text-sm">Option 2</span>
           </label>
@@ -164,9 +166,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="pink"
               value="option1"
-              [(ngModel)]="pinkValue"
+              [formField]="themeForm.pink"
             />
             <span class="text-sm">Option 1</span>
           </label>
@@ -174,9 +175,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="pink"
               value="option2"
-              [(ngModel)]="pinkValue"
+              [formField]="themeForm.pink"
             />
             <span class="text-sm">Option 2</span>
           </label>
@@ -194,9 +194,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="blue"
               value="option1"
-              [(ngModel)]="blueValue"
+              [formField]="themeForm.blue"
             />
             <span class="text-sm">Option 1</span>
           </label>
@@ -204,9 +203,8 @@ import {
             <input
               type="radio"
               sc-radio
-              name="blue"
               value="option2"
-              [(ngModel)]="blueValue"
+              [formField]="themeForm.blue"
             />
             <span class="text-sm">Option 2</span>
           </label>
@@ -214,14 +212,19 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomThemeRadioGroupDemo {
-  defaultValue = 'option1';
-  purpleValue = 'option1';
-  greenValue = 'option1';
-  orangeValue = 'option1';
-  pinkValue = 'option1';
-  blueValue = 'option1';
+  readonly formModel = signal<ThemeFormModel>({
+    default: 'option1',
+    purple: 'option1',
+    green: 'option1',
+    orange: 'option1',
+    pink: 'option1',
+    blue: 'option1',
+  });
+
+  readonly themeForm = form(this.formModel);
 }`;
 }

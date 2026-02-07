@@ -23,8 +23,16 @@ import { MonthlyRevenueChartDemo } from './monthly-revenue-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonthlyRevenueChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScBarChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScBarChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-monthly-revenue-chart-demo',
@@ -36,6 +44,7 @@ import { ScChartContainer, ScBarChart, ChartDataPoint } from '@semantic-componen
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonthlyRevenueChartDemo {

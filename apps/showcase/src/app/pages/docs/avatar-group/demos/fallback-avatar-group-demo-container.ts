@@ -24,7 +24,11 @@ import { FallbackAvatarGroupDemo } from './fallback-avatar-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FallbackAvatarGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +37,7 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
   template: \`
     <sc-avatar-group [avatars]="users" [max]="6" />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FallbackAvatarGroupDemo {

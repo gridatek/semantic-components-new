@@ -23,7 +23,12 @@ import { FormInputDemo } from './form-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { email, form, FormField, required } from '@angular/forms/signals';
 import {
   ScCard,
@@ -63,11 +68,21 @@ interface CreateAccountForm {
         <div class="grid grid-cols-2 gap-4">
           <div sc-field>
             <label sc-label>First name</label>
-            <input sc-input type="text" [formField]="accountForm.firstName" placeholder="John" />
+            <input
+              sc-input
+              type="text"
+              [formField]="accountForm.firstName"
+              placeholder="John"
+            />
           </div>
           <div sc-field>
             <label sc-label>Last name</label>
-            <input sc-input type="text" [formField]="accountForm.lastName" placeholder="Doe" />
+            <input
+              sc-input
+              type="text"
+              [formField]="accountForm.lastName"
+              placeholder="Doe"
+            />
           </div>
         </div>
         <div sc-field>
@@ -86,6 +101,7 @@ interface CreateAccountForm {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormInputDemo {

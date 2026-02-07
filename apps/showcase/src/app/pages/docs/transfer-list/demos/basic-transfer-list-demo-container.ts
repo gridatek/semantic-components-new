@@ -23,7 +23,12 @@ import { BasicTransferListDemo } from './basic-transfer-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicTransferListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTransferList } from '@semantic-components/ui';
 import type { TransferListItem } from '@semantic-components/ui';
 
@@ -64,6 +69,7 @@ import type { TransferListItem } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicTransferListDemo {

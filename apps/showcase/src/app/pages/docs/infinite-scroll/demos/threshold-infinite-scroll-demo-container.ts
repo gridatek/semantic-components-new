@@ -23,7 +23,12 @@ import { ThresholdInfiniteScrollDemo } from './threshold-infinite-scroll-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThresholdInfiniteScrollDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScInfiniteScroll } from '@semantic-components/ui';
 
 interface Item {
@@ -55,6 +60,7 @@ interface Item {
       </div>
     </sc-infinite-scroll>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThresholdInfiniteScrollDemo {
@@ -65,8 +71,8 @@ export class ThresholdInfiniteScrollDemo {
   private generateItems(start: number, count: number): Item[] {
     return Array.from({ length: count }, (_, i) => ({
       id: start + i + 1,
-      title: \\\`Item \\\${start + i + 1}\\\`,
-      description: \\\`This is the description for item \\\${start + i + 1}\\\`,
+      title: \`Item \${start + i + 1}\`,
+      description: \`This is the description for item \${start + i + 1}\`,
     }));
   }
 

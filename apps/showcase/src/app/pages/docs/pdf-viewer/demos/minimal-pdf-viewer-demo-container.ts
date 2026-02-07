@@ -18,21 +18,47 @@ import { MinimalPdfViewerDemo } from './minimal-pdf-viewer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinimalPdfViewerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScPdfViewer } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScPdfViewerRoot,
+  ScPdfViewerContainer,
+  ScPdfViewerContent,
+  ScPdfViewerLoading,
+  ScPdfViewerError,
+  ScPdfViewerEmpty,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-minimal-pdf-viewer-demo',
-  imports: [ScPdfViewer],
+  imports: [
+    ScPdfViewerRoot,
+    ScPdfViewerContainer,
+    ScPdfViewerContent,
+    ScPdfViewerLoading,
+    ScPdfViewerError,
+    ScPdfViewerEmpty,
+  ],
   template: \`
     <div class="h-[400px]">
-      <sc-pdf-viewer
+      <div
+        sc-pdf-viewer
         src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
-        [showToolbar]="false"
-        class="h-full"
-      />
+      >
+        <div sc-pdf-viewer-container class="h-full">
+          <div sc-pdf-viewer-content>
+            <div sc-pdf-viewer-loading></div>
+            <div sc-pdf-viewer-error></div>
+            <div sc-pdf-viewer-empty></div>
+          </div>
+        </div>
+      </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinimalPdfViewerDemo {}`;

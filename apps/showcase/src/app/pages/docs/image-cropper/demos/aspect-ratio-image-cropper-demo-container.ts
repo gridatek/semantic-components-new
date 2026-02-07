@@ -23,9 +23,15 @@ import { AspectRatioImageCropperDemo } from './aspect-ratio-image-cropper-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AspectRatioImageCropperDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScImageCropper,
+  ScImageCropperContainer,
   ScImageCropperAspectRatio,
   ScImageCropperControls,
 } from '@semantic-components/ui';
@@ -34,18 +40,23 @@ import {
   selector: 'app-aspect-ratio-image-cropper-demo',
   imports: [
     ScImageCropper,
+    ScImageCropperContainer,
     ScImageCropperControls,
     ScImageCropperAspectRatio,
   ],
   template: \`
     <div
-      #cropper="scImageCropper"
       sc-image-cropper
       [src]="imageSrc()"
       [aspectRatio]="selectedAspectRatio()"
       [containerHeight]="300"
-      class="space-y-4 rounded-lg overflow-hidden border"
+      class="space-y-4"
     >
+      <div
+        sc-image-cropper-container
+        class="rounded-lg overflow-hidden border"
+      ></div>
+
       <div class="flex items-center justify-between">
         <div
           sc-image-cropper-aspect-ratio
@@ -56,6 +67,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AspectRatioImageCropperDemo {

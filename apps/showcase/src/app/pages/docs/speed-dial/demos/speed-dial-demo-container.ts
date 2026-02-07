@@ -19,7 +19,12 @@ import { SpeedDialDemo } from './speed-dial-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpeedDialDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSpeedDial,
   type SpeedDialAction,
@@ -205,6 +210,7 @@ import {
       </section>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpeedDialDemo {

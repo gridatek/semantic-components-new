@@ -19,16 +19,21 @@ import { KeyboardLightboxDemo } from './keyboard-lightbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeyboardLightboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScLightbox,
+  ScLightboxContainer,
   ScLightboxTrigger,
   LightboxImage,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-keyboard-lightbox-demo',
-  imports: [ScLightbox, ScLightboxTrigger],
+  imports: [ScLightbox, ScLightboxContainer, ScLightboxTrigger],
   template: \`
     <div class="space-y-3">
       <ul class="text-sm space-y-1 list-disc list-inside text-muted-foreground">
@@ -53,7 +58,7 @@ import {
           - Close lightbox
         </li>
       </ul>
-      <sc-lightbox [images]="images">
+      <div sc-lightbox [images]="images">
         <button
           sc-lightbox-trigger
           [index]="0"
@@ -73,9 +78,11 @@ import {
           </svg>
           Open Gallery
         </button>
-      </sc-lightbox>
+        <div sc-lightbox-container></div>
+      </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeyboardLightboxDemo {

@@ -23,7 +23,11 @@ import { MenuAvatarDemo } from './menu-avatar-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuAvatarDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScMenu,
   ScMenuItem,
@@ -216,6 +220,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuAvatarDemo {}`;

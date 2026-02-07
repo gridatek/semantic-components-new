@@ -23,7 +23,12 @@ import { KeyboardNavigationPaginationDemo } from './keyboard-navigation-paginati
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeyboardNavigationPaginationDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPagination,
   ScPaginationChange,
@@ -69,9 +74,31 @@ import {
       <div class="rounded-lg border border-border bg-muted/50 p-4">
         <h3 class="mb-2 font-semibold">Keyboard Navigation</h3>
         <ul class="space-y-1 text-sm text-muted-foreground">
-          <li><kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">Tab</kbd> - Move between controls</li>
-          <li><kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">Enter</kbd> / <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">Space</kbd> - Activate button</li>
-          <li><kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">↑</kbd> <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">↓</kbd> - Navigate page size options</li>
+          <li>
+            <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">
+              Tab
+            </kbd>
+            - Move between controls
+          </li>
+          <li>
+            <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">
+              Enter
+            </kbd>
+            /
+            <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">
+              Space
+            </kbd>
+            - Activate button
+          </li>
+          <li>
+            <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">
+              ↑
+            </kbd>
+            <kbd class="rounded bg-background px-1.5 py-0.5 font-mono text-xs">
+              ↓
+            </kbd>
+            - Navigate page size options
+          </li>
         </ul>
       </div>
 
@@ -163,6 +190,7 @@ import {
       </nav>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeyboardNavigationPaginationDemo {

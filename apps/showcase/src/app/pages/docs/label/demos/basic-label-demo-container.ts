@@ -19,18 +19,23 @@ import { BasicLabelDemo } from './basic-label-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLabelDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-basic-label-demo',
   imports: [ScField, ScInput, ScLabel],
-  template: \\\`
+  template: \`
     <div sc-field>
       <label sc-label>Email</label>
       <input sc-input type="email" placeholder="Enter your email" />
     </div>
-  \\\`,
+  \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLabelDemo {}`;

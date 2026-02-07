@@ -23,7 +23,12 @@ import { VerificationOptFieldDemo } from './verification-opt-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerificationOptFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScOptField,
   ScOptFieldSlotGroup,
@@ -33,7 +38,12 @@ import {
 
 @Component({
   selector: 'app-verification-opt-field-demo',
-  imports: [ScOptField, ScOptFieldSlotGroup, ScOptFieldSeparator, ScOptFieldSlot],
+  imports: [
+    ScOptField,
+    ScOptFieldSlotGroup,
+    ScOptFieldSeparator,
+    ScOptFieldSlot,
+  ],
   template: \`
     <div class="rounded-lg border p-6 max-w-sm">
       <div class="space-y-4">
@@ -83,6 +93,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerificationOptFieldDemo {

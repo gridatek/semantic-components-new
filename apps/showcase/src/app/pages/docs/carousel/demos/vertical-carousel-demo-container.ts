@@ -23,7 +23,11 @@ import { VerticalCarouselDemo } from './vertical-carousel-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerticalCarouselDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCarousel,
   ScCarouselViewport,
@@ -39,7 +43,16 @@ import {
 
 @Component({
   selector: 'app-vertical-carousel-demo',
-  imports: [ScCarousel, ScCarouselViewport, ScCarouselTrack, ScCarouselItem, ScCarouselPrevious, ScCarouselNext, SiChevronLeftIcon, SiChevronRightIcon],
+  imports: [
+    ScCarousel,
+    ScCarouselViewport,
+    ScCarouselTrack,
+    ScCarouselItem,
+    ScCarouselPrevious,
+    ScCarouselNext,
+    SiChevronLeftIcon,
+    SiChevronRightIcon,
+  ],
   template: \`
     <div class="mx-auto flex h-[350px] w-full max-w-xs items-center">
       <div
@@ -53,7 +66,9 @@ import {
             @for (index of items; track index) {
               <div sc-carousel-item class="basis-1/2 pt-1">
                 <div class="p-1">
-                  <div class="flex items-center justify-center rounded-lg border bg-card p-6">
+                  <div
+                    class="flex items-center justify-center rounded-lg border bg-card p-6"
+                  >
                     <span class="text-3xl font-semibold">{{ index }}</span>
                   </div>
                 </div>
@@ -72,6 +87,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerticalCarouselDemo {

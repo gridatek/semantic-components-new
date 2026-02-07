@@ -23,26 +23,41 @@ import { AvatarImageCropperDemo } from './avatar-image-cropper-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarImageCropperDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScImageCropper,
+  ScImageCropperContainer,
   ScImageCropperControls,
   ScImageCropperPreview,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-avatar-image-cropper-demo',
-  imports: [ScImageCropper, ScImageCropperControls, ScImageCropperPreview],
+  imports: [
+    ScImageCropper,
+    ScImageCropperContainer,
+    ScImageCropperControls,
+    ScImageCropperPreview,
+  ],
   template: \`
     <div
-      #cropper="scImageCropper"
       sc-image-cropper
       [src]="imageSrc()"
       [aspectRatio]="1"
       [containerHeight]="250"
-      class="rounded-lg overflow-hidden border"
+      class="space-y-4"
     >
-      <div class="flex gap-8 mt-4">
+      <div
+        sc-image-cropper-container
+        class="rounded-lg overflow-hidden border"
+      ></div>
+
+      <div class="flex gap-8">
         <div class="flex-1">
           <div sc-image-cropper-controls></div>
         </div>
@@ -78,6 +93,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarImageCropperDemo {

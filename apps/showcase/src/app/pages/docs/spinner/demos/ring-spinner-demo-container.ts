@@ -19,7 +19,11 @@ import { RingSpinnerDemo } from './ring-spinner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RingSpinnerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSpinnerRing } from '@semantic-components/ui';
 
 @Component({
@@ -34,6 +38,7 @@ import { ScSpinnerRing } from '@semantic-components/ui';
       <span sc-spinner-ring size="xl"></span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RingSpinnerDemo {}`;

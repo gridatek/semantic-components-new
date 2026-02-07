@@ -19,7 +19,12 @@ import { ScPhoneInputDemo } from './phone-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPhoneInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPhoneInput,
   ScPhoneInputSimple,
@@ -161,6 +166,7 @@ import {
       </section>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPhoneInputDemo {

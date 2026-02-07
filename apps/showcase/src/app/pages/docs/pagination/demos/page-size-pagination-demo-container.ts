@@ -23,7 +23,12 @@ import { PageSizePaginationDemo } from './page-size-pagination-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageSizePaginationDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPagination,
   ScPaginationChange,
@@ -114,6 +119,7 @@ import {
       </nav>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageSizePaginationDemo {

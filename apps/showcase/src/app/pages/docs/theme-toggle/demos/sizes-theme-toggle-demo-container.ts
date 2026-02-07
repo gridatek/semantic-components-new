@@ -23,7 +23,11 @@ import { SizesThemeToggleDemo } from './sizes-theme-toggle-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesThemeToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScThemeToggle } from '@semantic-components/ui';
 import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
@@ -33,7 +37,12 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
   template: \`
     <div class="flex items-center gap-4">
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="sm" #toggle1="scThemeToggle">
+        <button
+          sc-theme-toggle
+          variant="outline"
+          size="sm"
+          #toggle1="scThemeToggle"
+        >
           @if (toggle1.isDark()) {
             <svg si-sun-icon></svg>
           } @else {
@@ -43,7 +52,12 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
         <span class="text-xs text-muted-foreground">Small</span>
       </div>
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="default" #toggle2="scThemeToggle">
+        <button
+          sc-theme-toggle
+          variant="outline"
+          size="default"
+          #toggle2="scThemeToggle"
+        >
           @if (toggle2.isDark()) {
             <svg si-sun-icon></svg>
           } @else {
@@ -53,7 +67,12 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
         <span class="text-xs text-muted-foreground">Default</span>
       </div>
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="lg" #toggle3="scThemeToggle">
+        <button
+          sc-theme-toggle
+          variant="outline"
+          size="lg"
+          #toggle3="scThemeToggle"
+        >
           @if (toggle3.isDark()) {
             <svg si-sun-icon></svg>
           } @else {
@@ -63,7 +82,12 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
         <span class="text-xs text-muted-foreground">Large</span>
       </div>
       <div class="flex flex-col items-center gap-2">
-        <button sc-theme-toggle variant="outline" size="icon" #toggle4="scThemeToggle">
+        <button
+          sc-theme-toggle
+          variant="outline"
+          size="icon"
+          #toggle4="scThemeToggle"
+        >
           @if (toggle4.isDark()) {
             <svg si-sun-icon></svg>
           } @else {
@@ -74,6 +98,7 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesThemeToggleDemo {}`;

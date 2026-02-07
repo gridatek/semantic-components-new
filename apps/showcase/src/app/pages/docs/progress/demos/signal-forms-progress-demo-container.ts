@@ -23,10 +23,17 @@ import { SignalFormsProgressDemo } from './signal-forms-progress-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsProgressDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required, minLength } from '@angular/forms/signals';
-import { ScProgress, ScLabel } from '@semantic-components/ui';
+import { ScProgress } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
 
 interface UserFormModel {
@@ -43,7 +50,11 @@ interface UserFormModel {
       <div class="space-y-4">
         <div class="space-y-2">
           <label sc-label>Form Completion</label>
-          <div sc-progress [value]="formCompletionPercentage()" class="w-full"></div>
+          <div
+            sc-progress
+            [value]="formCompletionPercentage()"
+            class="w-full"
+          ></div>
           <p class="text-xs text-muted-foreground">
             {{ formCompletionPercentage() }}% complete
           </p>
@@ -88,6 +99,7 @@ interface UserFormModel {
       </div>
     </form>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsProgressDemo {
@@ -108,7 +120,9 @@ export class SignalFormsProgressDemo {
   readonly formCompletionPercentage = computed(() => {
     const data = this.formModel();
     const fields = [data.name, data.email, data.bio];
-    const filledFields = fields.filter(field => field && field.trim().length > 0).length;
+    const filledFields = fields.filter(
+      (field) => field && field.trim().length > 0,
+    ).length;
     return Math.round((filledFields / fields.length) * 100);
   });
 }`;

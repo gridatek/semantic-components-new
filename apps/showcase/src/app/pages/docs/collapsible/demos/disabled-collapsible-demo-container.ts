@@ -19,7 +19,11 @@ import { DisabledCollapsibleDemo } from './disabled-collapsible-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledCollapsibleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCollapsible,
   ScCollapsibleContent,
@@ -30,7 +34,13 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-disabled-collapsible-demo',
-  imports: [ScCollapsible, ScCollapsibleContent, ScCollapsiblePanel, ScCollapsibleTrigger, SiChevronDownIcon],
+  imports: [
+    ScCollapsible,
+    ScCollapsibleContent,
+    ScCollapsiblePanel,
+    ScCollapsibleTrigger,
+    SiChevronDownIcon,
+  ],
   template: \`
     <div sc-collapsible [disabled]="true" class="w-[350px] space-y-2">
       <div class="flex items-center justify-between space-x-4 px-4">
@@ -56,6 +66,7 @@ import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledCollapsibleDemo {}`;

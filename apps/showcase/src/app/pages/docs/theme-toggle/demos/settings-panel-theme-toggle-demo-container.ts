@@ -23,7 +23,11 @@ import { SettingsPanelThemeToggleDemo } from './settings-panel-theme-toggle-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsPanelThemeToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScThemeSelect } from '@semantic-components/ui';
 
 @Component({
@@ -34,7 +38,9 @@ import { ScThemeSelect } from '@semantic-components/ui';
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div class="space-y-0.5">
-            <label for="settings-theme" class="text-sm font-medium">Theme</label>
+            <label for="settings-theme" class="text-sm font-medium">
+              Theme
+            </label>
             <p class="text-sm text-muted-foreground">
               Select your preferred theme
             </p>
@@ -48,6 +54,7 @@ import { ScThemeSelect } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsPanelThemeToggleDemo {}`;

@@ -19,49 +19,78 @@ import { DisabledRadioGroupDemo } from './disabled-radio-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledRadioGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ScRadioGroup, ScRadioGroupItem } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import { form, FormField } from '@angular/forms/signals';
+import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
+
+interface DisabledFormModel {
+  individual: string;
+}
 
 @Component({
   selector: 'app-disabled-radio-group-demo',
-  imports: [ScRadioGroup, ScRadioGroupItem],
+  imports: [ScRadioGroup, ScRadioField, ScRadio, FormField],
   template: \`
     <div class="flex flex-col gap-4">
       <div>
-        <p class="text-xs text-muted-foreground mb-2">Individual item disabled:</p>
-        <div sc-radio-group [(value)]="disabledDemo">
-          <div class="flex items-center space-x-2">
-            <sc-radio-group-item value="option1" id="d1" />
-            <label for="d1" class="text-sm">Option 1</label>
-          </div>
-          <div class="flex items-center space-x-2">
-            <sc-radio-group-item value="option2" id="d2" [disabled]="true" />
-            <label for="d2" class="text-sm opacity-50">Option 2 (disabled)</label>
-          </div>
-          <div class="flex items-center space-x-2">
-            <sc-radio-group-item value="option3" id="d3" />
-            <label for="d3" class="text-sm">Option 3</label>
-          </div>
+        <p class="text-xs text-muted-foreground mb-2">
+          Individual item disabled:
+        </p>
+        <div sc-radio-group>
+          <label sc-radio-field class="flex items-center space-x-2">
+            <input
+              type="radio"
+              sc-radio
+              value="option1"
+              [formField]="disabledForm.individual"
+              id="d1"
+            />
+            <span class="text-sm">Option 1</span>
+          </label>
+          <label sc-radio-field class="flex items-center space-x-2">
+            <input type="radio" sc-radio value="option2" id="d2" disabled />
+            <span class="text-sm opacity-50">Option 2 (disabled)</span>
+          </label>
+          <label sc-radio-field class="flex items-center space-x-2">
+            <input
+              type="radio"
+              sc-radio
+              value="option3"
+              [formField]="disabledForm.individual"
+              id="d3"
+            />
+            <span class="text-sm">Option 3</span>
+          </label>
         </div>
       </div>
       <div>
         <p class="text-xs text-muted-foreground mb-2">Entire group disabled:</p>
-        <div sc-radio-group [disabled]="true" value="option1">
-          <div class="flex items-center space-x-2">
-            <sc-radio-group-item value="option1" id="g1" />
-            <label for="g1" class="text-sm opacity-50">Option 1</label>
-          </div>
-          <div class="flex items-center space-x-2">
-            <sc-radio-group-item value="option2" id="g2" />
-            <label for="g2" class="text-sm opacity-50">Option 2</label>
-          </div>
+        <div sc-radio-group>
+          <label sc-radio-field class="flex items-center space-x-2">
+            <input type="radio" sc-radio value="option1" disabled id="g1" />
+            <span class="text-sm opacity-50">Option 1</span>
+          </label>
+          <label sc-radio-field class="flex items-center space-x-2">
+            <input type="radio" sc-radio value="option2" disabled id="g2" />
+            <span class="text-sm opacity-50">Option 2</span>
+          </label>
         </div>
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledRadioGroupDemo {
-  readonly disabledDemo = signal<string | null>('option1');
+  readonly formModel = signal<DisabledFormModel>({
+    individual: 'option1',
+  });
+
+  readonly disabledForm = form(this.formModel);
 }`;
 }

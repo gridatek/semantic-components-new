@@ -23,7 +23,11 @@ import { StatsCardDemo } from './stats-card-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatsCardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCard,
   ScCardContent,
@@ -34,7 +38,13 @@ import {
 
 @Component({
   selector: 'app-stats-card-demo',
-  imports: [ScCard, ScCardContent, ScCardDescription, ScCardHeader, ScCardTitle],
+  imports: [
+    ScCard,
+    ScCardContent,
+    ScCardDescription,
+    ScCardHeader,
+    ScCardTitle,
+  ],
   template: \`
     <div class="grid gap-4 md:grid-cols-3">
       <div sc-card>
@@ -66,6 +76,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatsCardDemo {}`;

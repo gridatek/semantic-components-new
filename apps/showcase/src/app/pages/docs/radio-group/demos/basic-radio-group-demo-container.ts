@@ -19,7 +19,12 @@ import { BasicRadioGroupDemo } from './basic-radio-group-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicRadioGroupDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ScRadioGroup, ScRadioField, ScRadio } from '@semantic-components/ui';
 
@@ -36,7 +41,6 @@ interface SpacingFormModel {
         <input
           type="radio"
           sc-radio
-          name="spacing"
           value="default"
           [formField]="spacingForm.spacing"
           id="r1"
@@ -47,7 +51,6 @@ interface SpacingFormModel {
         <input
           type="radio"
           sc-radio
-          name="spacing"
           value="comfortable"
           [formField]="spacingForm.spacing"
           id="r2"
@@ -58,7 +61,6 @@ interface SpacingFormModel {
         <input
           type="radio"
           sc-radio
-          name="spacing"
           value="compact"
           [formField]="spacingForm.spacing"
           id="r3"
@@ -70,6 +72,7 @@ interface SpacingFormModel {
       Selected: {{ formModel().spacing || 'none' }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicRadioGroupDemo {

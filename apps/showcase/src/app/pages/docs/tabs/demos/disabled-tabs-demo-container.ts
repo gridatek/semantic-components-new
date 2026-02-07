@@ -19,19 +19,23 @@ import { DisabledTabsDemo } from './disabled-tabs-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledTabsDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScTabs, ScTabPanel, ScTabList } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScTabs, ScTabPanel, ScTabList, ScTab } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-tabs-demo',
-  imports: [ScTabs, ScTabPanel, ScTabList],
+  imports: [ScTabs, ScTabPanel, ScTabList, ScTab],
   template: \`
     <div sc-tabs class="w-[500px]">
       <div sc-tab-list [selectedTab]="'overview'">
-        <button sc-tab-trigger value="overview">Overview</button>
-        <button sc-tab-trigger value="analytics">Analytics</button>
-        <button sc-tab-trigger value="reports">Reports</button>
-        <button sc-tab-trigger value="notifications" [disabled]="true">
+        <button sc-tab value="overview">Overview</button>
+        <button sc-tab value="analytics">Analytics</button>
+        <button sc-tab value="reports">Reports</button>
+        <button sc-tab value="notifications" [disabled]="true">
           Notifications
         </button>
       </div>
@@ -57,7 +61,8 @@ import { ScTabs, ScTabPanel, ScTabList } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DisabledTabsDemo {};`;
+export class DisabledTabsDemo {}`;
 }

@@ -19,7 +19,11 @@ import { NoAbbrTimezoneDemo } from './no-abbr-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoAbbrTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneSelect } from '@semantic-components/ui';
 
 @Component({
@@ -30,6 +34,7 @@ import { ScTimezoneSelect } from '@semantic-components/ui';
       <sc-timezone-select [showAbbr]="false"></sc-timezone-select>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoAbbrTimezoneDemo {}`;

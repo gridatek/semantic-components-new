@@ -23,7 +23,11 @@ import { EllipsisBreadcrumbDemo } from './ellipsis-breadcrumb-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EllipsisBreadcrumbDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScBreadcrumb,
   ScBreadcrumbEllipsis,
@@ -66,6 +70,7 @@ import {
       </ol>
     </nav>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EllipsisBreadcrumbDemo {}`;

@@ -23,7 +23,12 @@ import { NoSearchTransferListDemo } from './no-search-transfer-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoSearchTransferListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTransferList } from '@semantic-components/ui';
 import type { TransferListItem } from '@semantic-components/ui';
 
@@ -39,6 +44,7 @@ import type { TransferListItem } from '@semantic-components/ui';
       targetTitle="Chosen"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoSearchTransferListDemo {

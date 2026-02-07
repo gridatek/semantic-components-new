@@ -23,7 +23,12 @@ import { TypesInputDemo } from './types-input-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypesInputDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
@@ -34,15 +39,30 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
     <div class="grid w-full max-w-sm gap-4">
       <div sc-field>
         <label sc-label>Text</label>
-        <input sc-input type="text" [formField]="typesForm.text" placeholder="Text input" />
+        <input
+          sc-input
+          type="text"
+          [formField]="typesForm.text"
+          placeholder="Text input"
+        />
       </div>
       <div sc-field>
         <label sc-label>Password</label>
-        <input sc-input type="password" [formField]="typesForm.password" placeholder="Password" />
+        <input
+          sc-input
+          type="password"
+          [formField]="typesForm.password"
+          placeholder="Password"
+        />
       </div>
       <div sc-field>
         <label sc-label>Number</label>
-        <input sc-input type="number" [formField]="typesForm.number" placeholder="0" />
+        <input
+          sc-input
+          type="number"
+          [formField]="typesForm.number"
+          placeholder="0"
+        />
       </div>
       <div sc-field>
         <label sc-label>Date</label>
@@ -54,10 +74,16 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
       </div>
       <div sc-field>
         <label sc-label>Search</label>
-        <input sc-input type="search" [formField]="typesForm.search" placeholder="Search..." />
+        <input
+          sc-input
+          type="search"
+          [formField]="typesForm.search"
+          placeholder="Search..."
+        />
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypesInputDemo {

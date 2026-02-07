@@ -19,5 +19,25 @@ import { BasicCountdownDemo } from './basic-countdown-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicCountdownDemoContainer {
-  readonly code = `// See basic-countdown-demo.ts for full source`;
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCountdown } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-basic-countdown-demo',
+  imports: [ScCountdown],
+  template: \`
+    <div class="p-6 rounded-lg border inline-block">
+      <sc-countdown [targetDate]="futureDate" />
+    </div>
+  \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class BasicCountdownDemo {
+  readonly futureDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+}`;
 }

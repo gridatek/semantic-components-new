@@ -19,7 +19,12 @@ import { BasicImageAnnotatorDemo } from './basic-image-annotator-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicImageAnnotatorDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScImageAnnotator, type Annotation } from '@semantic-components/ui';
 
 @Component({
@@ -37,6 +42,7 @@ import { ScImageAnnotator, type Annotation } from '@semantic-components/ui';
       Annotations: {{ annotationCount() }}
     </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicImageAnnotatorDemo {

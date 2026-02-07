@@ -19,7 +19,11 @@ import { BadgeTimezoneDemo } from './badge-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneBadge } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +37,7 @@ import { ScTimezoneBadge } from '@semantic-components/ui';
       <span sc-timezone-badge [showLabel]="true" [showOffset]="true"></span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeTimezoneDemo {}`;

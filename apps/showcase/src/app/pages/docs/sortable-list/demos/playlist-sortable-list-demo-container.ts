@@ -19,7 +19,12 @@ import { PlaylistSortableListDemo } from './playlist-sortable-list-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaylistSortableListDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSortableHandle,
   ScSortableItem,
@@ -36,7 +41,12 @@ interface PlaylistItem {
 
 @Component({
   selector: 'app-playlist-sortable-list-demo',
-  imports: [ScSortableList, ScSortableItem, ScSortableHandle, ScSortableOverlay],
+  imports: [
+    ScSortableList,
+    ScSortableItem,
+    ScSortableHandle,
+    ScSortableOverlay,
+  ],
   template: \`
     <div class="max-w-lg">
       <div class="rounded-lg border">
@@ -76,6 +86,7 @@ interface PlaylistItem {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaylistSortableListDemo {

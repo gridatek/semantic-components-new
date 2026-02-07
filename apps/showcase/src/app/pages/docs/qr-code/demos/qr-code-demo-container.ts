@@ -19,7 +19,12 @@ import { ScQrCodeDemo } from './qr-code-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScQrCodeDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ScQrCode, ScQrCodeDownload } from '@semantic-components/ui';
 
@@ -239,6 +244,7 @@ import { ScQrCode, ScQrCodeDownload } from '@semantic-components/ui';
       </section>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScQrCodeDemo {

@@ -23,7 +23,11 @@ import { BasicHoverCardDemo } from './basic-hover-card-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicHoverCardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScHoverCardProvider,
   ScHoverCardPortal,
@@ -33,7 +37,12 @@ import {
 
 @Component({
   selector: 'app-basic-hover-card-demo',
-  imports: [ScHoverCardProvider, ScHoverCardPortal, ScHoverCard, ScHoverCardTrigger],
+  imports: [
+    ScHoverCardProvider,
+    ScHoverCardPortal,
+    ScHoverCard,
+    ScHoverCardTrigger,
+  ],
   template: \`
     <div sc-hover-card-provider>
       <a
@@ -87,6 +96,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicHoverCardDemo {}`;

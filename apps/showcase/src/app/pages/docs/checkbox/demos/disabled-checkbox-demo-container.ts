@@ -23,12 +23,12 @@ import { DisabledCheckboxDemo } from './disabled-checkbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  ScCheckboxField,
-  ScCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-disabled-checkbox-demo',
@@ -42,9 +42,7 @@ import {
           [disabled]="true"
           id="disabled-unchecked"
         />
-        <label sc-label for="disabled-unchecked">
-          Disabled unchecked
-        </label>
+        <label sc-label for="disabled-unchecked">Disabled unchecked</label>
       </div>
       <div sc-checkbox-field>
         <input
@@ -54,12 +52,11 @@ import {
           [disabled]="true"
           id="disabled-checked"
         />
-        <label sc-label for="disabled-checked">
-          Disabled checked
-        </label>
+        <label sc-label for="disabled-checked">Disabled checked</label>
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledCheckboxDemo {}`;

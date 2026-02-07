@@ -23,8 +23,16 @@ import { LineChartDemo } from './line-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LineChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScLineChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScLineChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-line-chart-demo',
@@ -36,6 +44,7 @@ import { ScChartContainer, ScLineChart, ChartDataPoint } from '@semantic-compone
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LineChartDemo {

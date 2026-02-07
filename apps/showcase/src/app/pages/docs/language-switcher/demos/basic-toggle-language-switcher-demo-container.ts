@@ -19,7 +19,12 @@ import { BasicToggleLanguageSwitcherDemo } from './basic-toggle-language-switche
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicToggleLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageService, ScLanguageToggle } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +38,7 @@ import { ScLanguageService, ScLanguageToggle } from '@semantic-components/ui';
       </span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicToggleLanguageSwitcherDemo {

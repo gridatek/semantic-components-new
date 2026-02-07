@@ -19,7 +19,11 @@ import { WithtextCopyButtonDemo } from './withtext-copy-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithtextCopyButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyButtonWithText } from '@semantic-components/ui';
 
 @Component({
@@ -35,13 +39,10 @@ import { ScCopyButtonWithText } from '@semantic-components/ui';
         copiedText="Link Copied!"
         variant="outline"
       ></div>
-      <div
-        sc-copy-button-with-text
-        [value]="'Small button'"
-        size="sm"
-      ></div>
+      <div sc-copy-button-with-text [value]="'Small button'" size="sm"></div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithtextCopyButtonDemo {}`;

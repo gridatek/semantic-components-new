@@ -23,21 +23,44 @@ import { ReadonlyEditorDemo } from './readonly-editor-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReadonlyEditorDemoContainer {
-  readonly code = `content = signal(\`
-  <h3>Readonly Content</h3>
-  <p>This content cannot be edited...</p>
-\`);
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScEditor,
+  ScEditorContent,
+  ScEditorFooter,
+  ScEditorCount,
+  ScEditorWordCount,
+  ScEditorCharCount,
+} from '@semantic-components/ui';
 
-<div sc-editor [readonly]="true" class="border rounded-lg overflow-hidden">
-  <!-- No toolbar in readonly mode -->
+@Component({
+  selector: 'app-readonly-editor-demo',
+  imports: [ScEditor, ScEditorContent, ScEditorFooter, ScEditorCount],
+  template: \`
+    <div sc-editor [readonly]="true" class="border rounded-lg overflow-hidden">
+      <div sc-editor-content [(value)]="content"></div>
 
-  <div sc-editor-content [(value)]="content"></div>
-
-  <div sc-editor-footer>
-    <div sc-editor-count>
-    <span sc-editor-word-count></span>
-    <span sc-editor-char-count></span>
-  </div>
-  </div>
-</div>`;
+      <div sc-editor-footer>
+        <div sc-editor-count>
+          <span sc-editor-word-count></span>
+          <span sc-editor-char-count></span>
+        </div>
+      </div>
+    </div>
+  \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ReadonlyEditorDemo {
+  readonly content = signal(\`
+    <h3>Readonly Content</h3>
+    <p>This content cannot be edited. The editor is in readonly mode with the toolbar hidden.</p>
+    <p>Useful for displaying formatted content that users should only read.</p>
+  \`);
+}`;
 }

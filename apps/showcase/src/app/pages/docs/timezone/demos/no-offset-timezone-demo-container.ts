@@ -19,7 +19,11 @@ import { NoOffsetTimezoneDemo } from './no-offset-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoOffsetTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneSelect } from '@semantic-components/ui';
 
 @Component({
@@ -30,6 +34,7 @@ import { ScTimezoneSelect } from '@semantic-components/ui';
       <sc-timezone-select [showOffset]="false"></sc-timezone-select>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoOffsetTimezoneDemo {}`;

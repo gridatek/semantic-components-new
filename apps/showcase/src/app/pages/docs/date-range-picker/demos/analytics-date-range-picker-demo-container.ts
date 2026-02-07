@@ -23,7 +23,12 @@ import { AnalyticsDateRangePickerDemo } from './analytics-date-range-picker-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnalyticsDateRangePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScDateRangePicker,
   DateRange,
@@ -60,6 +65,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnalyticsDateRangePickerDemo {

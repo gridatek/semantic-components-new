@@ -23,7 +23,11 @@ import { BasicCardDemo } from './basic-card-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicCardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScCard,
   ScCardContent,
@@ -60,6 +64,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicCardDemo {}`;

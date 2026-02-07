@@ -23,7 +23,12 @@ import { MultipleDatePickerDemo } from './multiple-date-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultipleDatePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDatePicker } from '@semantic-components/ui';
 
 @Component({
@@ -41,6 +46,7 @@ import { ScDatePicker } from '@semantic-components/ui';
       </p>
     }
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultipleDatePickerDemo {

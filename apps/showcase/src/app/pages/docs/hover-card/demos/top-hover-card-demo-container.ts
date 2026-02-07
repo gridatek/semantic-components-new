@@ -23,7 +23,11 @@ import { TopHoverCardDemo } from './top-hover-card-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopHoverCardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScHoverCardProvider,
   ScHoverCardPortal,
@@ -33,7 +37,12 @@ import {
 
 @Component({
   selector: 'app-top-hover-card-demo',
-  imports: [ScHoverCardProvider, ScHoverCardPortal, ScHoverCard, ScHoverCardTrigger],
+  imports: [
+    ScHoverCardProvider,
+    ScHoverCardPortal,
+    ScHoverCard,
+    ScHoverCardTrigger,
+  ],
   template: \`
     <div sc-hover-card-provider side="top" align="start">
       <span
@@ -67,6 +76,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopHoverCardDemo {}`;

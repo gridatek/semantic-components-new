@@ -23,7 +23,11 @@ import { ThemeSelectDemo } from './theme-select-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeSelectDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
 
 @Component({
@@ -44,6 +48,7 @@ import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
       </p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeSelectDemo {}`;

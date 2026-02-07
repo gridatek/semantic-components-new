@@ -23,7 +23,12 @@ import { OutlineToggleDemo } from './outline-toggle-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OutlineToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggle } from '@semantic-components/ui';
 
 @Component({
@@ -54,6 +59,7 @@ import { ScToggle } from '@semantic-components/ui';
       </svg>
     </button>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OutlineToggleDemo {

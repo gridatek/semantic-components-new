@@ -23,7 +23,11 @@ import { TopDrawerDemo } from './top-drawer-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopDrawerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScDrawer,
   ScDrawerClose,
@@ -93,6 +97,7 @@ import {
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopDrawerDemo {}`;

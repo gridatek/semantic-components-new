@@ -23,7 +23,11 @@ import { VariantsThemeToggleDemo } from './variants-theme-toggle-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsThemeToggleDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScThemeToggle } from '@semantic-components/ui';
 import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
@@ -64,6 +68,7 @@ import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VariantsThemeToggleDemo {}`;

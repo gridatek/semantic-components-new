@@ -19,7 +19,12 @@ import { ImageGalleryMasonryGridDemo } from './image-gallery-masonry-grid-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageGalleryMasonryGridDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui';
 
 @Component({
@@ -49,6 +54,7 @@ import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui';
       }
     </sc-masonry-grid>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageGalleryMasonryGridDemo {

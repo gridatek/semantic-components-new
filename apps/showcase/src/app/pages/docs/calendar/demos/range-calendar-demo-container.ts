@@ -23,22 +23,73 @@ import { RangeCalendarDemo } from './range-calendar-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeCalendarDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DateRange, ScCalendar } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-range-calendar-demo',
   imports: [ScCalendar],
   template: \`
-    <div class="rounded-md border">
-      <sc-calendar mode="range" [(selectedRange)]="selectedRange" />
+    <div class="space-y-4">
+      <div class="rounded-md border">
+        <sc-calendar mode="range" [(selectedRange)]="selectedRange" />
+      </div>
+
+      <div class="space-y-2">
+        @if (selectedRange().from) {
+          <div class="p-4 rounded-md border bg-muted/50">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-sm font-medium">Selected Range</p>
+              <button
+                type="button"
+                class="px-3 py-1 text-sm rounded-md border hover:bg-accent"
+                (click)="clearSelection()"
+              >
+                Clear
+              </button>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <p class="text-xs text-muted-foreground mb-1">From</p>
+                <p class="text-sm">
+                  {{ selectedRange().from?.toLocaleDateString() }}
+                </p>
+              </div>
+              <div>
+                <p class="text-xs text-muted-foreground mb-1">To</p>
+                <p class="text-sm">
+                  @if (selectedRange().to) {
+                    {{ selectedRange().to?.toLocaleDateString() }}
+                  } @else {
+                    <span class="text-muted-foreground">Not selected</span>
+                  }
+                </p>
+              </div>
+            </div>
+            @if (dayCount() !== null) {
+              <p class="text-xs text-muted-foreground mt-2">
+                {{ dayCount() }}
+                {{ dayCount() === 1 ? 'day' : 'days' }} selected
+              </p>
+            }
+          </div>
+        } @else {
+          <p
+            class="text-sm text-muted-foreground p-4 text-center border rounded-md"
+          >
+            No range selected. Click a start date, then click an end date.
+          </p>
+        }
+      </div>
     </div>
-    @if (selectedRange().from) {
-      <p class="text-sm text-muted-foreground mt-4">
-        Range: {{ formatRange() }}
-      </p>
-    }
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RangeCalendarDemo {
@@ -47,15 +98,17 @@ export class RangeCalendarDemo {
     to: undefined,
   });
 
-  formatRange(): string {
+  readonly dayCount = computed(() => {
     const range = this.selectedRange();
     if (range.from && range.to) {
-      return \\\`\\\${range.from.toLocaleDateString()} - \\\${range.to.toLocaleDateString()}\\\`;
+      const diff = range.to.getTime() - range.from.getTime();
+      return Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
     }
-    if (range.from) {
-      return \\\`\\\${range.from.toLocaleDateString()} - ...\\\`;
-    }
-    return '';
+    return null;
+  });
+
+  clearSelection(): void {
+    this.selectedRange.set({ from: undefined, to: undefined });
   }
 }`;
 }

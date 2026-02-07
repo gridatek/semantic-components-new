@@ -23,13 +23,16 @@ import { CompactEmojiPickerDemo } from './compact-emoji-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompactEmojiPickerDemoContainer {
-  readonly code = `import { Component } from '@angular/core';
+  readonly code = `import { Component, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-compact-emoji-picker-demo',
   imports: [ScEmojiPicker],
-  template: \` <sc-emoji-picker [columns]="6" class="w-56" /> \`,
+  template: \`
+    <sc-emoji-picker [columns]="6" class="w-56" />
+  \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class CompactEmojiPickerDemo {}`;
 }

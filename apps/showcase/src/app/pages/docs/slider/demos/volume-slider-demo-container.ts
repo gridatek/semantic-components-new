@@ -19,7 +19,12 @@ import { VolumeSliderDemo } from './volume-slider-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VolumeSliderDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSlider } from '@semantic-components/ui';
 
 @Component({
@@ -58,11 +63,10 @@ import { ScSlider } from '@semantic-components/ui';
         <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
         <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
       </svg>
-      <span class="w-12 text-sm text-muted-foreground">
-        {{ volume() }}%
-      </span>
+      <span class="w-12 text-sm text-muted-foreground">{{ volume() }}%</span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VolumeSliderDemo {

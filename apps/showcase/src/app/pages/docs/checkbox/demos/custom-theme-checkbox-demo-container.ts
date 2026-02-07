@@ -23,22 +23,18 @@ import { CustomThemeCheckboxDemo } from './custom-theme-checkbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomThemeCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {
-  ScCheckboxField,
-  ScCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-theme-checkbox-demo',
-  imports: [
-    ScCheckboxField,
-    ScCheckbox,
-    ScLabel,
-    FormsModule,
-  ],
+  imports: [ScCheckboxField, ScCheckbox, ScLabel, FormsModule],
   template: \`
     <div class="space-y-8">
       <!-- Default Theme -->
@@ -51,9 +47,7 @@ import { FormsModule } from '@angular/forms';
             [(ngModel)]="defaultChecked"
             id="default"
           />
-          <label sc-label for="default">
-            Default color scheme
-          </label>
+          <label sc-label for="default">Default color scheme</label>
         </div>
       </div>
 
@@ -70,9 +64,7 @@ import { FormsModule } from '@angular/forms';
             [(ngModel)]="purpleChecked"
             id="purple"
           />
-          <label sc-label for="purple">
-            Purple color scheme
-          </label>
+          <label sc-label for="purple">Purple color scheme</label>
         </div>
       </div>
 
@@ -89,9 +81,7 @@ import { FormsModule } from '@angular/forms';
             [(ngModel)]="greenChecked"
             id="green"
           />
-          <label sc-label for="green">
-            Green color scheme
-          </label>
+          <label sc-label for="green">Green color scheme</label>
         </div>
       </div>
 
@@ -108,9 +98,7 @@ import { FormsModule } from '@angular/forms';
             [(ngModel)]="orangeChecked"
             id="orange"
           />
-          <label sc-label for="orange">
-            Orange color scheme
-          </label>
+          <label sc-label for="orange">Orange color scheme</label>
         </div>
       </div>
 
@@ -127,9 +115,7 @@ import { FormsModule } from '@angular/forms';
             [(ngModel)]="pinkChecked"
             id="pink"
           />
-          <label sc-label for="pink">
-            Pink color scheme
-          </label>
+          <label sc-label for="pink">Pink color scheme</label>
         </div>
       </div>
 
@@ -146,13 +132,12 @@ import { FormsModule } from '@angular/forms';
             [(ngModel)]="blueChecked"
             id="blue"
           />
-          <label sc-label for="blue">
-            Blue with matching focus ring
-          </label>
+          <label sc-label for="blue">Blue with matching focus ring</label>
         </div>
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomThemeCheckboxDemo {

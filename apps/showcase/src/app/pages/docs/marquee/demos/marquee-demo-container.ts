@@ -19,7 +19,7 @@ import { ScMarqueeDemo } from './marquee-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMarqueeDemoContainer {
-  readonly code = `import { Component } from '@angular/core';
+  readonly code = `import { Component, ViewEncapsulation } from '@angular/core';
 import {
   ScMarquee,
   ScMarqueeClone,
@@ -331,6 +331,7 @@ import {
       </section>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScMarqueeDemo {
   readonly brands = ['Acme', 'Globex', 'Initech', 'Umbrella', 'Stark', 'Wayne'];

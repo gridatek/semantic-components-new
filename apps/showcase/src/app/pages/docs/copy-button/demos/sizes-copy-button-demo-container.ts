@@ -19,7 +19,11 @@ import { SizesCopyButtonDemo } from './sizes-copy-button-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesCopyButtonDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCopyButton } from '@semantic-components/ui';
 
 @Component({
@@ -65,6 +69,7 @@ import { ScCopyButton } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SizesCopyButtonDemo {}`;

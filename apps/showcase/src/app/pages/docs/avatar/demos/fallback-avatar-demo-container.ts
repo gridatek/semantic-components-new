@@ -19,7 +19,11 @@ import { FallbackAvatarDemo } from './fallback-avatar-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FallbackAvatarDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatar, ScAvatarFallback } from '@semantic-components/ui';
 
 @Component({
@@ -35,6 +39,7 @@ import { ScAvatar, ScAvatarFallback } from '@semantic-components/ui';
       </span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FallbackAvatarDemo {}`;

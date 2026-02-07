@@ -24,7 +24,12 @@ import { ProductBarcodeScannerDemo } from './product-barcode-scanner-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductBarcodeScannerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScBarcodeScanner,
   BarcodeResult,
@@ -50,6 +55,7 @@ import {
       </div>
     }
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductBarcodeScannerDemo {

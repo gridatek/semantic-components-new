@@ -23,7 +23,12 @@ import { EndMessageInfiniteScrollDemo } from './end-message-infinite-scroll-demo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EndMessageInfiniteScrollDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScInfiniteScroll } from '@semantic-components/ui';
 
 interface Item {
@@ -52,6 +57,7 @@ interface Item {
       </div>
     </sc-infinite-scroll>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EndMessageInfiniteScrollDemo {
@@ -62,8 +68,8 @@ export class EndMessageInfiniteScrollDemo {
   private generateItems(start: number, count: number): Item[] {
     return Array.from({ length: count }, (_, i) => ({
       id: start + i + 1,
-      title: \\\`Item \\\${start + i + 1}\\\`,
-      description: \\\`This is the description for item \\\${start + i + 1}\\\`,
+      title: \`Item \${start + i + 1}\`,
+      description: \`This is the description for item \${start + i + 1}\`,
     }));
   }
 

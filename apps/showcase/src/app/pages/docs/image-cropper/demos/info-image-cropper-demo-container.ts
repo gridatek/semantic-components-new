@@ -23,22 +23,34 @@ import { InfoImageCropperDemo } from './info-image-cropper-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoImageCropperDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { CropArea, ScImageCropper } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  CropArea,
+  ScImageCropper,
+  ScImageCropperContainer,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-info-image-cropper-demo',
-  imports: [ScImageCropper],
+  imports: [ScImageCropper, ScImageCropperContainer],
   template: \`
     <div class="space-y-4">
       <div
-        #cropper="scImageCropper"
         sc-image-cropper
         [src]="imageSrc()"
         [(cropArea)]="cropArea"
         [containerHeight]="300"
-        class="rounded-lg overflow-hidden border"
-      ></div>
+      >
+        <div
+          sc-image-cropper-container
+          class="rounded-lg overflow-hidden border"
+        ></div>
+      </div>
 
       <div class="rounded-md border p-4 bg-muted/50">
         <div class="grid grid-cols-2 gap-4 text-sm">
@@ -66,6 +78,7 @@ import { CropArea, ScImageCropper } from '@semantic-components/ui';
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoImageCropperDemo {

@@ -19,7 +19,12 @@ import { StepSliderDemo } from './step-slider-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepSliderDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScSlider } from '@semantic-components/ui';
 
 @Component({
@@ -31,6 +36,7 @@ import { ScSlider } from '@semantic-components/ui';
       <p class="mt-2 text-sm text-muted-foreground">Value: {{ stepValue() }}</p>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepSliderDemo {

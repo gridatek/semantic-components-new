@@ -23,7 +23,7 @@ import { TriggerEmojiPickerDemo } from './trigger-emoji-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TriggerEmojiPickerDemoContainer {
-  readonly code = `import { Component } from '@angular/core';
+  readonly code = `import { Component, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPickerTrigger } from '@semantic-components/ui';
 
 @Component({
@@ -40,6 +40,7 @@ import { ScEmojiPickerTrigger } from '@semantic-components/ui';
       </span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
 })
 export class TriggerEmojiPickerDemo {}`;
 }

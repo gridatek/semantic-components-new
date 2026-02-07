@@ -23,16 +23,22 @@ import { BasicPasswordFieldDemo } from './basic-password-field-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BasicPasswordFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
-  ScLabel,
 } from '@semantic-components/ui';
+import { ScLabel } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-basic-password-field-demo',
   imports: [
     ScPasswordField,
     ScPasswordFieldInputGroup,
@@ -48,7 +54,12 @@ import {
         <button sc-password-field-toggle></button>
       </div>
     </div>
+
+    <p class="mt-4 text-sm text-muted-foreground">
+      Value: {{ password() || '(empty)' }}
+    </p>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicPasswordFieldDemo {

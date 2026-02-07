@@ -19,18 +19,23 @@ import { NoLoopLightboxDemo } from './no-loop-lightbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoLoopLightboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScLightbox,
+  ScLightboxContainer,
   ScLightboxTrigger,
   LightboxImage,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-no-loop-lightbox-demo',
-  imports: [ScLightbox, ScLightboxTrigger],
+  imports: [ScLightbox, ScLightboxContainer, ScLightboxTrigger],
   template: \`
-    <sc-lightbox [images]="images" [loop]="false">
+    <div sc-lightbox [images]="images" [loop]="false">
       <div class="flex gap-4">
         @for (image of images; track image.src; let i = $index) {
           <button
@@ -46,8 +51,10 @@ import {
           </button>
         }
       </div>
-    </sc-lightbox>
+      <div sc-lightbox-container></div>
+    </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoLoopLightboxDemo {

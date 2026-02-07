@@ -19,7 +19,11 @@ import { NavigationLanguageSwitcherDemo } from './navigation-language-switcher-d
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationLanguageSwitcherDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageToggle } from '@semantic-components/ui';
 
 @Component({
@@ -36,6 +40,7 @@ import { ScLanguageToggle } from '@semantic-components/ui';
       <button sc-language-toggle variant="outline"></button>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationLanguageSwitcherDemo {}`;

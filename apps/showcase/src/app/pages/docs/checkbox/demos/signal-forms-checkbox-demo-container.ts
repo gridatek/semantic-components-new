@@ -23,14 +23,15 @@ import { SignalFormsCheckboxDemo } from './signal-forms-checkbox-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsCheckboxDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
-import {
-  ScCheckboxField,
-  ScCheckbox,
-  ScLabel,
-} from '@semantic-components/ui';
+import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 import { JsonPipe } from '@angular/common';
 
 interface CheckboxFormModel {
@@ -41,13 +42,7 @@ interface CheckboxFormModel {
 
 @Component({
   selector: 'app-signal-forms-checkbox-demo',
-  imports: [
-    ScCheckboxField,
-    ScCheckbox,
-    ScLabel,
-    JsonPipe,
-    FormField,
-  ],
+  imports: [ScCheckboxField, ScCheckbox, ScLabel, JsonPipe, FormField],
   template: \`
     <form>
       <div class="space-y-4">
@@ -82,9 +77,7 @@ interface CheckboxFormModel {
             id="terms-custom"
             [formField]="checkboxForm.acceptTerms"
           />
-          <label sc-label for="terms-custom">
-            Accept terms and conditions
-          </label>
+          <label sc-label for="terms-custom">Accept terms and conditions</label>
         </div>
       </div>
 
@@ -94,6 +87,7 @@ interface CheckboxFormModel {
       </div>
     </form>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsCheckboxDemo {

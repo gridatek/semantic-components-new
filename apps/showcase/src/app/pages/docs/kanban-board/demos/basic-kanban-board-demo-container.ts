@@ -23,7 +23,12 @@ import { BasicKanbanBoardDemo } from './basic-kanban-board-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicKanbanBoardDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScKanbanBoard,
   type KanbanCard,
@@ -46,6 +51,7 @@ import {
       />
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicKanbanBoardDemo {

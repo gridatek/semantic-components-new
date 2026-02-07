@@ -23,7 +23,12 @@ import { PresetsDateRangePickerDemo } from './presets-date-range-picker-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PresetsDateRangePickerDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScDateRangePicker,
   DateRange,
@@ -41,6 +46,7 @@ import {
       placeholder="Select date range"
     />
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PresetsDateRangePickerDemo {

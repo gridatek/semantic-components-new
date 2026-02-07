@@ -23,25 +23,55 @@ import { LightThemeCodeEditorDemo } from './light-theme-code-editor-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightThemeCodeEditorDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScCodeEditor, THEMES } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScCodeEditor,
+  ScCodeEditorContent,
+  ScCodeEditorHeader,
+  ScCodeEditorLabel,
+  ScCodeEditorCopyButton,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-light-theme-code-editor-demo',
-  imports: [ScCodeEditor],
+  imports: [
+    ScCodeEditor,
+    ScCodeEditorHeader,
+    ScCodeEditorLabel,
+    ScCodeEditorContent,
+    ScCodeEditorCopyButton,
+  ],
   template: \`
-    <sc-code-editor
-      [(value)]="lightThemeCode"
-      [language]="'javascript'"
-      [theme]="lightTheme"
-      [filename]="'light-example.js'"
-    />
+    <div sc-code-editor>
+      <div sc-code-editor-header>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">light-example.js</span>
+          <span sc-code-editor-label>javascript</span>
+        </div>
+        <button sc-code-editor-copy-button [code]="lightThemeCode"></button>
+      </div>
+      <div
+        sc-code-editor-content
+        [(value)]="lightThemeCode"
+        language="javascript"
+        filename="light-example.js"
+      ></div>
+    </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightThemeCodeEditorDemo {
-  readonly lightTheme = THEMES['light'];
+  lightThemeCode = \`// Light theme example
+const calculateSum = (numbers) => {
+  return numbers.reduce((acc, num) => acc + num, 0);
+};
 
-  lightThemeCode = '// Light theme example\\nconst calculateSum = ...';
+const numbers = [1, 2, 3, 4, 5];
+console.log('Sum:', calculateSum(numbers));\`;
 }`;
 }

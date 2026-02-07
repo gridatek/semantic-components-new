@@ -19,5 +19,25 @@ import { CardsCountdownDemo } from './cards-countdown-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsCountdownDemoContainer {
-  readonly code = `// See cards-countdown-demo.ts for full source`;
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ScCountdown } from '@semantic-components/ui';
+
+@Component({
+  selector: 'app-cards-countdown-demo',
+  imports: [ScCountdown],
+  template: \`
+    <div class="p-6 rounded-lg border inline-block">
+      <sc-countdown [targetDate]="futureDate" variant="cards" />
+    </div>
+  \`,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CardsCountdownDemo {
+  readonly futureDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+}`;
 }

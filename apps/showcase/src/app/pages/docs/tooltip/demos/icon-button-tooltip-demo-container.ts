@@ -23,7 +23,11 @@ import { IconButtonTooltipDemo } from './icon-button-tooltip-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconButtonTooltipDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
@@ -53,6 +57,7 @@ import { ScTooltipTrigger } from '@semantic-components/ui';
       <span class="sr-only">Add item</span>
     </button>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconButtonTooltipDemo {}`;

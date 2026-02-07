@@ -19,7 +19,11 @@ import { DisplayOffsetTimezoneDemo } from './display-offset-timezone-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisplayOffsetTimezoneDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneDisplay } from '@semantic-components/ui';
 
 @Component({
@@ -33,6 +37,7 @@ import { ScTimezoneDisplay } from '@semantic-components/ui';
       </span>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisplayOffsetTimezoneDemo {}`;

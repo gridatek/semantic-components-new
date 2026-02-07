@@ -23,8 +23,17 @@ import { BarChartDemo } from './bar-chart-demo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarChartDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ScChartContainer, ScChartLegend, ScBarChart, ChartDataPoint } from '@semantic-components/ui';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  ScChartContainer,
+  ScChartLegend,
+  ScBarChart,
+  ChartDataPoint,
+} from '@semantic-components/ui';
 
 @Component({
   selector: 'app-bar-chart-demo',
@@ -37,6 +46,7 @@ import { ScChartContainer, ScChartLegend, ScBarChart, ChartDataPoint } from '@se
       </div>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarChartDemo {

@@ -23,7 +23,12 @@ import { RequirementsPasswordFieldDemo } from './requirements-password-field-dem
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class RequirementsPasswordFieldDemoContainer {
-  readonly code = `import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+  readonly code = `import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
@@ -34,6 +39,7 @@ import {
 } from '@semantic-components/ui';
 
 @Component({
+  selector: 'app-requirements-password-field-demo',
   imports: [
     ScPasswordField,
     ScPasswordFieldInputGroup,
@@ -56,6 +62,7 @@ import {
       <ul sc-password-field-requirements></ul>
     </div>
   \`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequirementsPasswordFieldDemo {
