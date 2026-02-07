@@ -3,6 +3,7 @@ import { BasicStatCardDemoContainer } from './demos/basic-stat-card-demo-contain
 import { SizesStatCardDemoContainer } from './demos/sizes-stat-card-demo-container';
 import { VariantsStatCardDemoContainer } from './demos/variants-stat-card-demo-container';
 import { DescriptionStatCardDemoContainer } from './demos/description-stat-card-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-stat-card-page',
@@ -11,6 +12,7 @@ import { DescriptionStatCardDemoContainer } from './demos/description-stat-card-
     SizesStatCardDemoContainer,
     VariantsStatCardDemoContainer,
     DescriptionStatCardDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -20,7 +22,7 @@ import { DescriptionStatCardDemoContainer } from './demos/description-stat-card-
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-stat-card-demo-container />
         <app-sizes-stat-card-demo-container />
         <app-variants-stat-card-demo-container />

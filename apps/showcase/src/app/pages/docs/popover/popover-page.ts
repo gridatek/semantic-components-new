@@ -5,6 +5,7 @@ import { RightPopoverDemoContainer } from './demos/right-popover-demo-container'
 import { LeftPopoverDemoContainer } from './demos/left-popover-demo-container';
 import { AlignStartPopoverDemoContainer } from './demos/align-start-popover-demo-container';
 import { AlignEndPopoverDemoContainer } from './demos/align-end-popover-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-popover-page',
@@ -15,6 +16,7 @@ import { AlignEndPopoverDemoContainer } from './demos/align-end-popover-demo-con
     LeftPopoverDemoContainer,
     AlignStartPopoverDemoContainer,
     AlignEndPopoverDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -26,7 +28,7 @@ import { AlignEndPopoverDemoContainer } from './demos/align-end-popover-demo-con
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-popover-demo-container />
         <app-top-popover-demo-container />
         <app-right-popover-demo-container />

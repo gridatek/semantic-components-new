@@ -5,6 +5,7 @@ import { DisabledSwitchDemoContainer } from './demos/disabled-switch-demo-contai
 import { FormSwitchDemoContainer } from './demos/form-switch-demo-container';
 import { SignalFormsSwitchDemoContainer } from './demos/signal-forms-switch-demo-container';
 import { StateSwitchDemoContainer } from './demos/state-switch-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-switch-page',
@@ -15,6 +16,7 @@ import { StateSwitchDemoContainer } from './demos/state-switch-demo-container';
     FormSwitchDemoContainer,
     DescriptionSwitchDemoContainer,
     SignalFormsSwitchDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -27,7 +29,7 @@ import { StateSwitchDemoContainer } from './demos/state-switch-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-switch-demo-container />
         <app-state-switch-demo-container />
         <app-disabled-switch-demo-container />

@@ -4,6 +4,7 @@ import { BasicDockDemoContainer } from './demos/basic-dock-demo-container';
 import { MagnificationScaleDockDemoContainer } from './demos/magnification-scale-dock-demo-container';
 import { NoMagnificationDockDemoContainer } from './demos/no-magnification-dock-demo-container';
 import { SizesDockDemoContainer } from './demos/sizes-dock-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-dock-page',
@@ -13,6 +14,7 @@ import { SizesDockDemoContainer } from './demos/sizes-dock-demo-container';
     BadgesDockDemoContainer,
     SizesDockDemoContainer,
     MagnificationScaleDockDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -22,7 +24,7 @@ import { SizesDockDemoContainer } from './demos/sizes-dock-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-dock-demo-container />
         <app-no-magnification-dock-demo-container />
         <app-badges-dock-demo-container />

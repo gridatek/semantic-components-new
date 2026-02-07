@@ -3,6 +3,7 @@ import { ActionsEmptyStateDemoContainer } from './demos/actions-empty-state-demo
 import { BasicEmptyStateDemoContainer } from './demos/basic-empty-state-demo-container';
 import { SizesEmptyStateDemoContainer } from './demos/sizes-empty-state-demo-container';
 import { UsecasesEmptyStateDemoContainer } from './demos/usecases-empty-state-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-empty-state-page',
@@ -11,6 +12,7 @@ import { UsecasesEmptyStateDemoContainer } from './demos/usecases-empty-state-de
     ActionsEmptyStateDemoContainer,
     SizesEmptyStateDemoContainer,
     UsecasesEmptyStateDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -20,7 +22,7 @@ import { UsecasesEmptyStateDemoContainer } from './demos/usecases-empty-state-de
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-empty-state-demo-container />
         <app-actions-empty-state-demo-container />
         <app-sizes-empty-state-demo-container />

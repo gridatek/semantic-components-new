@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScCommandDemoContainer } from './demos/command-demo-container';
 import { ScCommandDialogDemoContainer } from './demos/command-dialog-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-command-page',
-  imports: [ScCommandDemoContainer, ScCommandDialogDemoContainer],
+  imports: [ScCommandDemoContainer, ScCommandDialogDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,7 @@ import { ScCommandDialogDemoContainer } from './demos/command-dialog-demo-contai
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-command-demo-container />
         <app-command-dialog-demo-container />
       </section>

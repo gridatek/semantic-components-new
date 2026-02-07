@@ -4,6 +4,7 @@ import { BasicToastDemoContainer } from './demos/basic-toast-demo-container';
 import { DestructiveToastDemoContainer } from './demos/destructive-toast-demo-container';
 import { DurationToastDemoContainer } from './demos/duration-toast-demo-container';
 import { TitleToastDemoContainer } from './demos/title-toast-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-toast-page',
@@ -13,6 +14,7 @@ import { TitleToastDemoContainer } from './demos/title-toast-demo-container';
     ActionToastDemoContainer,
     DestructiveToastDemoContainer,
     DurationToastDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -24,7 +26,7 @@ import { TitleToastDemoContainer } from './demos/title-toast-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-toast-demo-container />
         <app-title-toast-demo-container />
         <app-action-toast-demo-container />

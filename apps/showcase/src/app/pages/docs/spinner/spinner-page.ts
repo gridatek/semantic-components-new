@@ -7,10 +7,21 @@ import { RingSpinnerDemoContainer } from './demos/ring-spinner-demo-container';
 import { VariantsSpinnerDemoContainer } from './demos/variants-spinner-demo-container';
 import { ButtonSpinnerDemoContainer } from './demos/button-spinner-demo-container';
 import { OverlaySpinnerDemoContainer } from './demos/overlay-spinner-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-spinner-page',
-  imports: [DefaultSpinnerDemoContainer, ColorsSpinnerDemoContainer, DotsSpinnerDemoContainer, BarsSpinnerDemoContainer, RingSpinnerDemoContainer, VariantsSpinnerDemoContainer, ButtonSpinnerDemoContainer, OverlaySpinnerDemoContainer],
+  imports: [
+    DefaultSpinnerDemoContainer,
+    ColorsSpinnerDemoContainer,
+    DotsSpinnerDemoContainer,
+    BarsSpinnerDemoContainer,
+    RingSpinnerDemoContainer,
+    VariantsSpinnerDemoContainer,
+    ButtonSpinnerDemoContainer,
+    OverlaySpinnerDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -21,7 +32,7 @@ import { OverlaySpinnerDemoContainer } from './demos/overlay-spinner-demo-contai
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-default-spinner-demo-container />
         <app-colors-spinner-demo-container />
         <app-dots-spinner-demo-container />

@@ -7,6 +7,7 @@ import {
   ScCopyButton,
 } from '@semantic-components/ui';
 import BasicCodeViewerDemoContainer from './demos/basic-code-viewer-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-code-viewer-page',
@@ -17,6 +18,7 @@ import BasicCodeViewerDemoContainer from './demos/basic-code-viewer-demo-contain
     ScCodeViewerContent,
     ScCopyButton,
     BasicCodeViewerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -28,7 +30,7 @@ import BasicCodeViewerDemoContainer from './demos/basic-code-viewer-demo-contain
       </div>
 
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Usage</h2>
         <div sc-code-viewer>
           <div sc-code-viewer-header>
             <span sc-code-viewer-label>angular-ts</span>
@@ -43,7 +45,7 @@ import BasicCodeViewerDemoContainer from './demos/basic-code-viewer-demo-contain
       </section>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-code-viewer-demo-container />
       </section>
     </div>
@@ -66,6 +68,7 @@ export default class CodeViewerPage {
     ScCodeViewerLabel,
     ScCodeViewerContent,
     ScCopyButton,
+    TocHeading,
   ],
   template: \`
     <div sc-code-viewer>

@@ -8,6 +8,7 @@ import { InputEmojiPickerDemoContainer } from './demos/input-emoji-picker-demo-c
 import { TriggerEmojiPickerDemoContainer } from './demos/trigger-emoji-picker-demo-container';
 import { QuickReactionsEmojiPickerDemoContainer } from './demos/quick-reactions-emoji-picker-demo-container';
 import { MessageReactionsEmojiPickerDemoContainer } from './demos/message-reactions-emoji-picker-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-emoji-picker-page',
@@ -21,6 +22,7 @@ import { MessageReactionsEmojiPickerDemoContainer } from './demos/message-reacti
     TriggerEmojiPickerDemoContainer,
     QuickReactionsEmojiPickerDemoContainer,
     MessageReactionsEmojiPickerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -32,7 +34,7 @@ import { MessageReactionsEmojiPickerDemoContainer } from './demos/message-reacti
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-emoji-picker-demo-container />
         <app-no-search-emoji-picker-demo-container />
         <app-no-categories-emoji-picker-demo-container />

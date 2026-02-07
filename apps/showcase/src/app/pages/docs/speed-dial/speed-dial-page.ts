@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SpeedDialDemoContainer } from './demos/speed-dial-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-speed-dial-page',
-  imports: [SpeedDialDemoContainer],
+  imports: [SpeedDialDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,7 @@ import { SpeedDialDemoContainer } from './demos/speed-dial-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-speed-dial-demo-container />
       </section>
     </div>

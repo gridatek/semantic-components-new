@@ -3,6 +3,7 @@ import { ScMenuDemoContainer } from './demos/menu-demo-container';
 import { MenuShortcutsDemoContainer } from './demos/menu-shortcuts-demo-container';
 import { MenuToolsDemoContainer } from './demos/menu-tools-demo-container';
 import { MenuAvatarDemoContainer } from './demos/menu-avatar-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-menu-page',
@@ -11,6 +12,7 @@ import { MenuAvatarDemoContainer } from './demos/menu-avatar-demo-container';
     MenuShortcutsDemoContainer,
     MenuToolsDemoContainer,
     MenuAvatarDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -23,7 +25,7 @@ import { MenuAvatarDemoContainer } from './demos/menu-avatar-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-menu-demo-container />
         <app-menu-shortcuts-demo-container />
         <app-menu-tools-demo-container />

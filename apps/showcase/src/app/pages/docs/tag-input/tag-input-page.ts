@@ -11,6 +11,7 @@ import { MaxTagsTagInputDemoContainer } from './demos/max-tags-tag-input-demo-co
 import { OutputTagInputDemoContainer } from './demos/output-tag-input-demo-container';
 import { ValidationTagInputDemoContainer } from './demos/validation-tag-input-demo-container';
 import { VariantsTagInputDemoContainer } from './demos/variants-tag-input-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-tag-input-page',
@@ -27,6 +28,7 @@ import { VariantsTagInputDemoContainer } from './demos/variants-tag-input-demo-c
     FormFieldTagInputDemoContainer,
     EmailTagInputDemoContainer,
     OutputTagInputDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -38,7 +40,7 @@ import { VariantsTagInputDemoContainer } from './demos/variants-tag-input-demo-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-tag-input-demo-container />
         <app-clearable-tag-input-demo-container />
         <app-max-tags-tag-input-demo-container />

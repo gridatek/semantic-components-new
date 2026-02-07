@@ -6,6 +6,7 @@ import { LineChartDemoContainer } from './demos/line-chart-demo-container';
 import { MonthlyRevenueChartDemoContainer } from './demos/monthly-revenue-chart-demo-container';
 import { PieChartDemoContainer } from './demos/pie-chart-demo-container';
 import { UserGrowthChartDemoContainer } from './demos/user-growth-chart-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-chart-page',
@@ -17,6 +18,7 @@ import { UserGrowthChartDemoContainer } from './demos/user-growth-chart-demo-con
     DonutChartDemoContainer,
     MonthlyRevenueChartDemoContainer,
     UserGrowthChartDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -28,7 +30,7 @@ import { UserGrowthChartDemoContainer } from './demos/user-growth-chart-demo-con
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-bar-chart-demo-container />
         <app-line-chart-demo-container />
         <app-area-chart-demo-container />

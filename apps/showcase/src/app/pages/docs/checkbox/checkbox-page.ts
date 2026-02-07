@@ -7,6 +7,7 @@ import { IndeterminateCheckboxDemoContainer } from './demos/indeterminate-checkb
 import { LabelCheckboxDemoContainer } from './demos/label-checkbox-demo-container';
 import { SignalFormsCheckboxDemoContainer } from './demos/signal-forms-checkbox-demo-container';
 import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-checkbox-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-checkbox-page',
@@ -19,6 +20,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
     FormCheckboxDemoContainer,
     SignalFormsCheckboxDemoContainer,
     CustomThemeCheckboxDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -31,7 +33,7 @@ import { WithDescriptionCheckboxDemoContainer } from './demos/with-description-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-checkbox-demo-container />
         <app-with-description-checkbox-demo-container />
         <app-label-checkbox-demo-container />

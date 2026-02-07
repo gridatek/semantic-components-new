@@ -3,6 +3,7 @@ import { BasicRangeSliderDemoContainer } from './demos/basic-range-slider-demo-c
 import { PriceRangeSliderDemoContainer } from './demos/price-range-slider-demo-container';
 import { TemperatureRangeSliderDemoContainer } from './demos/temperature-range-slider-demo-container';
 import { DisabledRangeSliderDemoContainer } from './demos/disabled-range-slider-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-range-slider-page',
@@ -11,6 +12,7 @@ import { DisabledRangeSliderDemoContainer } from './demos/disabled-range-slider-
     PriceRangeSliderDemoContainer,
     TemperatureRangeSliderDemoContainer,
     DisabledRangeSliderDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -23,7 +25,7 @@ import { DisabledRangeSliderDemoContainer } from './demos/disabled-range-slider-
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-range-slider-demo-container />
         <app-price-range-slider-demo-container />
         <app-temperature-range-slider-demo-container />

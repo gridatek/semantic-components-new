@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { VariantsBadgeDemoContainer } from './demos/variants-badge-demo-container';
 import { WithIconsBadgeDemoContainer } from './demos/with-icons-badge-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-badge-page',
-  imports: [VariantsBadgeDemoContainer, WithIconsBadgeDemoContainer],
+  imports: [
+    VariantsBadgeDemoContainer,
+    WithIconsBadgeDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +20,7 @@ import { WithIconsBadgeDemoContainer } from './demos/with-icons-badge-demo-conta
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-variants-badge-demo-container />
         <app-with-icons-badge-demo-container />
       </section>

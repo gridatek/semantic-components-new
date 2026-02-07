@@ -4,6 +4,7 @@ import { MultipleToggleGroupDemoContainer } from './demos/multiple-toggle-group-
 import { OutlineToggleGroupDemoContainer } from './demos/outline-toggle-group-demo-container';
 import { SingleToggleGroupDemoContainer } from './demos/single-toggle-group-demo-container';
 import { SizesToggleGroupDemoContainer } from './demos/sizes-toggle-group-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-toggle-group-page',
@@ -13,6 +14,7 @@ import { SizesToggleGroupDemoContainer } from './demos/sizes-toggle-group-demo-c
     OutlineToggleGroupDemoContainer,
     SizesToggleGroupDemoContainer,
     DisabledToggleGroupDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -24,7 +26,7 @@ import { SizesToggleGroupDemoContainer } from './demos/sizes-toggle-group-demo-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-single-toggle-group-demo-container />
         <app-multiple-toggle-group-demo-container />
         <app-outline-toggle-group-demo-container />

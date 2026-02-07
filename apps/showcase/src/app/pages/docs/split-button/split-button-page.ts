@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SplitButtonDemoContainer } from './demos/split-button-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-split-button-page',
-  imports: [SplitButtonDemoContainer],
+  imports: [SplitButtonDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,7 @@ import { SplitButtonDemoContainer } from './demos/split-button-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-split-button-demo-container />
       </section>
     </div>

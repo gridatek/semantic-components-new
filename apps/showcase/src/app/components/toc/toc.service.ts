@@ -19,7 +19,7 @@ export class TocService {
   extractHeadings(container: HTMLElement): void {
     this.disconnectObserver();
 
-    const headings = container.querySelectorAll('h2, h3');
+    const headings = container.querySelectorAll('[data-toc]');
     const tocItems: TocItem[] = [];
 
     headings.forEach((heading) => {
@@ -48,7 +48,7 @@ export class TocService {
   }
 
   private setupScrollSpy(container: HTMLElement): void {
-    const headings = container.querySelectorAll('h2[id], h3[id]');
+    const headings = container.querySelectorAll('[data-toc][id]');
     if (headings.length === 0) return;
 
     this.observer = new IntersectionObserver(

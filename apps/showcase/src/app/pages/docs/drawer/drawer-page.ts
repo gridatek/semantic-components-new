@@ -3,6 +3,7 @@ import { BasicDrawerDemoContainer } from './demos/basic-drawer-demo-container';
 import { TopDrawerDemoContainer } from './demos/top-drawer-demo-container';
 import { LeftDrawerDemoContainer } from './demos/left-drawer-demo-container';
 import { RightDrawerDemoContainer } from './demos/right-drawer-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-drawer-page',
@@ -11,6 +12,7 @@ import { RightDrawerDemoContainer } from './demos/right-drawer-demo-container';
     TopDrawerDemoContainer,
     LeftDrawerDemoContainer,
     RightDrawerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -24,7 +26,7 @@ import { RightDrawerDemoContainer } from './demos/right-drawer-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-drawer-demo-container />
         <app-top-drawer-demo-container />
         <app-left-drawer-demo-container />

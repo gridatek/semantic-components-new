@@ -2,10 +2,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HorizontalStepperDemoContainer } from './demos/horizontal-stepper-demo-container';
 import { VerticalStepperDemoContainer } from './demos/vertical-stepper-demo-container';
 import { SimpleStepperDemoContainer } from './demos/simple-stepper-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-stepper-page',
-  imports: [HorizontalStepperDemoContainer, VerticalStepperDemoContainer, SimpleStepperDemoContainer],
+  imports: [
+    HorizontalStepperDemoContainer,
+    VerticalStepperDemoContainer,
+    SimpleStepperDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +22,7 @@ import { SimpleStepperDemoContainer } from './demos/simple-stepper-demo-containe
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-horizontal-stepper-demo-container />
         <app-vertical-stepper-demo-container />
         <app-simple-stepper-demo-container />

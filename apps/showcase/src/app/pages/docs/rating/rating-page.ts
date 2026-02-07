@@ -9,10 +9,23 @@ import { DisabledRatingDemoContainer } from './demos/disabled-rating-demo-contai
 import { NoclearRatingDemoContainer } from './demos/noclear-rating-demo-container';
 import { IconsRatingDemoContainer } from './demos/icons-rating-demo-container';
 import { ReviewRatingDemoContainer } from './demos/review-rating-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-rating-page',
-  imports: [BasicRatingDemoContainer, SizesRatingDemoContainer, ColorsRatingDemoContainer, HalfRatingDemoContainer, MaxRatingDemoContainer, ReadonlyRatingDemoContainer, DisabledRatingDemoContainer, NoclearRatingDemoContainer, IconsRatingDemoContainer, ReviewRatingDemoContainer],
+  imports: [
+    BasicRatingDemoContainer,
+    SizesRatingDemoContainer,
+    ColorsRatingDemoContainer,
+    HalfRatingDemoContainer,
+    MaxRatingDemoContainer,
+    ReadonlyRatingDemoContainer,
+    DisabledRatingDemoContainer,
+    NoclearRatingDemoContainer,
+    IconsRatingDemoContainer,
+    ReviewRatingDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -23,7 +36,7 @@ import { ReviewRatingDemoContainer } from './demos/review-rating-demo-container'
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-rating-demo-container />
         <app-sizes-rating-demo-container />
         <app-colors-rating-demo-container />

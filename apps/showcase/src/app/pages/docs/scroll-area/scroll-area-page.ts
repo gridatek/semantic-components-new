@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { VerticalScrollAreaDemoContainer } from './demos/vertical-scroll-area-demo-container';
 import { HorizontalScrollAreaDemoContainer } from './demos/horizontal-scroll-area-demo-container';
 import { BothScrollAreaDemoContainer } from './demos/both-scroll-area-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-scroll-area-page',
@@ -9,6 +10,7 @@ import { BothScrollAreaDemoContainer } from './demos/both-scroll-area-demo-conta
     VerticalScrollAreaDemoContainer,
     HorizontalScrollAreaDemoContainer,
     BothScrollAreaDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -21,7 +23,7 @@ import { BothScrollAreaDemoContainer } from './demos/both-scroll-area-demo-conta
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-vertical-scroll-area-demo-container />
         <app-horizontal-scroll-area-demo-container />
         <app-both-scroll-area-demo-container />

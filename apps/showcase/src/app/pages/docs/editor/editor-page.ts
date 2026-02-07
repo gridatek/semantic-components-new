@@ -6,6 +6,7 @@ import { NoCountEditorDemoContainer } from './demos/no-count-editor-demo-contain
 import { ReadonlyEditorDemoContainer } from './demos/readonly-editor-demo-container';
 import { CustomHeightEditorDemoContainer } from './demos/custom-height-editor-demo-container';
 import { FullFeaturedEditorDemoContainer } from './demos/full-featured-editor-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-editor-page',
@@ -17,6 +18,7 @@ import { FullFeaturedEditorDemoContainer } from './demos/full-featured-editor-de
     ReadonlyEditorDemoContainer,
     CustomHeightEditorDemoContainer,
     FullFeaturedEditorDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -29,7 +31,7 @@ import { FullFeaturedEditorDemoContainer } from './demos/full-featured-editor-de
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-editor-demo-container />
         <app-prefilled-editor-demo-container />
         <app-minimal-toolbar-editor-demo-container />

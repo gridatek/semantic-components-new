@@ -4,10 +4,18 @@ import { StatusTimelineDemoContainer } from './demos/status-timeline-demo-contai
 import { SizesTimelineDemoContainer } from './demos/sizes-timeline-demo-container';
 import { ActivityTimelineDemoContainer } from './demos/activity-timeline-demo-container';
 import { TrackingTimelineDemoContainer } from './demos/tracking-timeline-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-timeline-page',
-  imports: [BasicTimelineDemoContainer, StatusTimelineDemoContainer, SizesTimelineDemoContainer, ActivityTimelineDemoContainer, TrackingTimelineDemoContainer],
+  imports: [
+    BasicTimelineDemoContainer,
+    StatusTimelineDemoContainer,
+    SizesTimelineDemoContainer,
+    ActivityTimelineDemoContainer,
+    TrackingTimelineDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -18,7 +26,7 @@ import { TrackingTimelineDemoContainer } from './demos/tracking-timeline-demo-co
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-timeline-demo-container />
         <app-status-timeline-demo-container />
         <app-sizes-timeline-demo-container />

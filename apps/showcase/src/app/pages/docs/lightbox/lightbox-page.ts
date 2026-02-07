@@ -7,6 +7,7 @@ import { NoZoomLightboxDemoContainer } from './demos/no-zoom-lightbox-demo-conta
 import { NoLoopLightboxDemoContainer } from './demos/no-loop-lightbox-demo-container';
 import { SingleLightboxDemoContainer } from './demos/single-lightbox-demo-container';
 import { KeyboardLightboxDemoContainer } from './demos/keyboard-lightbox-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-lightbox-page',
@@ -19,6 +20,7 @@ import { KeyboardLightboxDemoContainer } from './demos/keyboard-lightbox-demo-co
     NoLoopLightboxDemoContainer,
     SingleLightboxDemoContainer,
     KeyboardLightboxDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { KeyboardLightboxDemoContainer } from './demos/keyboard-lightbox-demo-co
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-lightbox-demo-container />
         <app-info-lightbox-demo-container />
         <app-gallery-lightbox-demo-container />

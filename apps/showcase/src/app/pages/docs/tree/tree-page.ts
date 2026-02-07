@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FileExplorerTreeDemoContainer } from './demos/file-explorer-tree-demo-container';
 import { NavigationTreeDemoContainer } from './demos/navigation-tree-demo-container';
 import { SimpleTreeDemoContainer } from './demos/simple-tree-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-tree-page',
@@ -9,6 +10,7 @@ import { SimpleTreeDemoContainer } from './demos/simple-tree-demo-container';
     FileExplorerTreeDemoContainer,
     NavigationTreeDemoContainer,
     SimpleTreeDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -20,7 +22,7 @@ import { SimpleTreeDemoContainer } from './demos/simple-tree-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-file-explorer-tree-demo-container />
         <app-navigation-tree-demo-container />
         <app-simple-tree-demo-container />

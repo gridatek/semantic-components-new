@@ -5,6 +5,7 @@ import { LoadingButtonDemoContainer } from './demos/loading-button-demo-containe
 import { SizesButtonDemoContainer } from './demos/sizes-button-demo-container';
 import { VariantsButtonDemoContainer } from './demos/variants-button-demo-container';
 import { WithIconsButtonDemoContainer } from './demos/with-icons-button-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-button-page',
@@ -15,6 +16,7 @@ import { WithIconsButtonDemoContainer } from './demos/with-icons-button-demo-con
     DisabledButtonDemoContainer,
     AsLinkButtonDemoContainer,
     LoadingButtonDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -26,7 +28,7 @@ import { WithIconsButtonDemoContainer } from './demos/with-icons-button-demo-con
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-variants-button-demo-container />
         <app-sizes-button-demo-container />
         <app-with-icons-button-demo-container />

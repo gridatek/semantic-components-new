@@ -6,6 +6,7 @@ import { PlaylistSortableListDemoContainer } from './demos/playlist-sortable-lis
 import { HorizontalSortableListDemoContainer } from './demos/horizontal-sortable-list-demo-container';
 import { KanbanSortableListDemoContainer } from './demos/kanban-sortable-list-demo-container';
 import { DisabledSortableListDemoContainer } from './demos/disabled-sortable-list-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-sortable-list-page',
@@ -17,6 +18,7 @@ import { DisabledSortableListDemoContainer } from './demos/disabled-sortable-lis
     HorizontalSortableListDemoContainer,
     KanbanSortableListDemoContainer,
     DisabledSortableListDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -28,7 +30,7 @@ import { DisabledSortableListDemoContainer } from './demos/disabled-sortable-lis
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-sortable-list-demo-container />
         <app-handle-sortable-list-demo-container />
         <app-task-list-sortable-list-demo-container />

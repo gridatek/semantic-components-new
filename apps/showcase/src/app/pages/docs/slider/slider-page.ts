@@ -7,6 +7,7 @@ import { SignalFormsSliderDemoContainer } from './demos/signal-forms-slider-demo
 import { StepSliderDemoContainer } from './demos/step-slider-demo-container';
 import { TemperatureSliderDemoContainer } from './demos/temperature-slider-demo-container';
 import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-slider-page',
@@ -19,6 +20,7 @@ import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container'
     PriceSliderDemoContainer,
     TemperatureSliderDemoContainer,
     SignalFormsSliderDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container'
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-slider-demo-container />
         <app-range-slider-demo-container />
         <app-step-slider-demo-container />

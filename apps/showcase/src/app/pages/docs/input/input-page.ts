@@ -6,6 +6,7 @@ import { FileInputDemoContainer } from './demos/file-input-demo-container';
 import { FormInputDemoContainer } from './demos/form-input-demo-container';
 import { LabelInputDemoContainer } from './demos/label-input-demo-container';
 import { TypesInputDemoContainer } from './demos/types-input-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-input-page',
@@ -17,6 +18,7 @@ import { TypesInputDemoContainer } from './demos/types-input-demo-container';
     DisabledInputDemoContainer,
     ButtonInputDemoContainer,
     FormInputDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -29,7 +31,7 @@ import { TypesInputDemoContainer } from './demos/types-input-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-input-demo-container />
         <app-label-input-demo-container />
         <app-types-input-demo-container />

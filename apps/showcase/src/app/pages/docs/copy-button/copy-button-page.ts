@@ -9,6 +9,7 @@ import { InlineCopyButtonDemoContainer } from './demos/inline-copy-button-demo-c
 import { TimeoutCopyButtonDemoContainer } from './demos/timeout-copy-button-demo-container';
 import { DisabledCopyButtonDemoContainer } from './demos/disabled-copy-button-demo-container';
 import { UsecasesCopyButtonDemoContainer } from './demos/usecases-copy-button-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-copy-button-page',
@@ -23,6 +24,7 @@ import { UsecasesCopyButtonDemoContainer } from './demos/usecases-copy-button-de
     TimeoutCopyButtonDemoContainer,
     DisabledCopyButtonDemoContainer,
     UsecasesCopyButtonDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -34,7 +36,7 @@ import { UsecasesCopyButtonDemoContainer } from './demos/usecases-copy-button-de
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-copy-button-demo-container />
         <app-variants-copy-button-demo-container />
         <app-sizes-copy-button-demo-container />

@@ -5,6 +5,7 @@ import { HalfWidthCarouselDemoContainer } from './demos/half-width-carousel-demo
 import { ImagesCarouselDemoContainer } from './demos/images-carousel-demo-container';
 import { ThirdWidthCarouselDemoContainer } from './demos/third-width-carousel-demo-container';
 import { VerticalCarouselDemoContainer } from './demos/vertical-carousel-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-carousel-page',
@@ -15,6 +16,7 @@ import { VerticalCarouselDemoContainer } from './demos/vertical-carousel-demo-co
     HalfWidthCarouselDemoContainer,
     VerticalCarouselDemoContainer,
     ImagesCarouselDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -26,7 +28,7 @@ import { VerticalCarouselDemoContainer } from './demos/vertical-carousel-demo-co
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-default-carousel-demo-container />
         <app-cards-carousel-demo-container />
         <app-third-width-carousel-demo-container />

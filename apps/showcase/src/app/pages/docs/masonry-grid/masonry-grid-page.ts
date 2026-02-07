@@ -3,6 +3,7 @@ import { BasicMasonryGridDemoContainer } from './demos/basic-masonry-grid-demo-c
 import { ImageGalleryMasonryGridDemoContainer } from './demos/image-gallery-masonry-grid-demo-container';
 import { BreakpointsMasonryGridDemoContainer } from './demos/breakpoints-masonry-grid-demo-container';
 import { CardsMasonryGridDemoContainer } from './demos/cards-masonry-grid-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-masonry-grid-page',
@@ -11,6 +12,7 @@ import { CardsMasonryGridDemoContainer } from './demos/cards-masonry-grid-demo-c
     ImageGalleryMasonryGridDemoContainer,
     BreakpointsMasonryGridDemoContainer,
     CardsMasonryGridDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -23,7 +25,7 @@ import { CardsMasonryGridDemoContainer } from './demos/cards-masonry-grid-demo-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-masonry-grid-demo-container />
         <app-image-gallery-masonry-grid-demo-container />
         <app-breakpoints-masonry-grid-demo-container />

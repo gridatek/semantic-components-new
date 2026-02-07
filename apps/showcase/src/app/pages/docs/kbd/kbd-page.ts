@@ -7,6 +7,7 @@ import { InlineKbdDemoContainer } from './demos/inline-kbd-demo-container';
 import { ShortcutsKbdDemoContainer } from './demos/shortcuts-kbd-demo-container';
 import { SizesKbdDemoContainer } from './demos/sizes-kbd-demo-container';
 import { VariantsKbdDemoContainer } from './demos/variants-kbd-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-kbd-page',
@@ -19,6 +20,7 @@ import { VariantsKbdDemoContainer } from './demos/variants-kbd-demo-container';
     FunctionKeysKbdDemoContainer,
     InlineKbdDemoContainer,
     ComplexShortcutsKbdDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { VariantsKbdDemoContainer } from './demos/variants-kbd-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-kbd-demo-container />
         <app-shortcuts-kbd-demo-container />
         <app-variants-kbd-demo-container />

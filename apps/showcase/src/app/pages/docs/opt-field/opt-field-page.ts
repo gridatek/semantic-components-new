@@ -5,6 +5,7 @@ import { PinOptFieldDemoContainer } from './demos/pin-opt-field-demo-container';
 import { DotSeparatorOptFieldDemoContainer } from './demos/dot-separator-opt-field-demo-container';
 import { DisabledOptFieldDemoContainer } from './demos/disabled-opt-field-demo-container';
 import { VerificationOptFieldDemoContainer } from './demos/verification-opt-field-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-opt-field-page',
@@ -15,6 +16,7 @@ import { VerificationOptFieldDemoContainer } from './demos/verification-opt-fiel
     DotSeparatorOptFieldDemoContainer,
     DisabledOptFieldDemoContainer,
     VerificationOptFieldDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -26,7 +28,7 @@ import { VerificationOptFieldDemoContainer } from './demos/verification-opt-fiel
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-opt-field-demo-container />
         <app-separator-opt-field-demo-container />
         <app-pin-opt-field-demo-container />

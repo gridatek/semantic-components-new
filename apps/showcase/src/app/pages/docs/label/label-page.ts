@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicLabelDemoContainer } from './demos/basic-label-demo-container';
 import { CheckboxLabelDemoContainer } from './demos/checkbox-label-demo-container';
 import { FieldLabelDemoContainer } from './demos/field-label-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-label-page',
@@ -9,6 +10,7 @@ import { FieldLabelDemoContainer } from './demos/field-label-demo-container';
     BasicLabelDemoContainer,
     CheckboxLabelDemoContainer,
     FieldLabelDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -20,7 +22,7 @@ import { FieldLabelDemoContainer } from './demos/field-label-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-label-demo-container />
         <app-checkbox-label-demo-container />
         <app-field-label-demo-container />

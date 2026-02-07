@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicAlertDialogDemoContainer } from './demos/basic-alert-dialog-demo-container';
 import { DestructiveAlertDialogDemoContainer } from './demos/destructive-alert-dialog-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-alert-dialog-page',
-  imports: [BasicAlertDialogDemoContainer, DestructiveAlertDialogDemoContainer],
+  imports: [
+    BasicAlertDialogDemoContainer,
+    DestructiveAlertDialogDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +21,7 @@ import { DestructiveAlertDialogDemoContainer } from './demos/destructive-alert-d
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-alert-dialog-demo-container />
         <app-destructive-alert-dialog-demo-container />
       </section>

@@ -4,6 +4,7 @@ import { DropzoneFileUploadDemoContainer } from './demos/dropzone-file-upload-de
 import { ImageFileUploadDemoContainer } from './demos/image-file-upload-demo-container';
 import { ProgressFileUploadDemoContainer } from './demos/progress-file-upload-demo-container';
 import { SingleFileUploadDemoContainer } from './demos/single-file-upload-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-file-upload-page',
@@ -13,6 +14,7 @@ import { SingleFileUploadDemoContainer } from './demos/single-file-upload-demo-c
     ButtonFileUploadDemoContainer,
     SingleFileUploadDemoContainer,
     ProgressFileUploadDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -24,7 +26,7 @@ import { SingleFileUploadDemoContainer } from './demos/single-file-upload-demo-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-dropzone-file-upload-demo-container />
         <app-image-file-upload-demo-container />
         <app-button-file-upload-demo-container />

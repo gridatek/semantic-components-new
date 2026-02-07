@@ -4,10 +4,11 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ButtonGroupDemoContainer } from './demos/button-group-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-button-group-page',
-  imports: [ButtonGroupDemoContainer],
+  imports: [ButtonGroupDemoContainer, TocHeading],
   encapsulation: ViewEncapsulation.None,
   template: `
     <div class="space-y-8">
@@ -19,7 +20,7 @@ import { ButtonGroupDemoContainer } from './demos/button-group-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-button-group-demo-container />
       </section>
     </div>

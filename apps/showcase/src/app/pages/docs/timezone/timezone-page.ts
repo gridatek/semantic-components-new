@@ -14,6 +14,7 @@ import { NoOffsetTimezoneDemoContainer } from './demos/no-offset-timezone-demo-c
 import { SettingsPanelTimezoneDemoContainer } from './demos/settings-panel-timezone-demo-container';
 import { SizesTimezoneDemoContainer } from './demos/sizes-timezone-demo-container';
 import { VariantsTimezoneDemoContainer } from './demos/variants-timezone-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-timezone-page',
@@ -33,6 +34,7 @@ import { VariantsTimezoneDemoContainer } from './demos/variants-timezone-demo-co
     NavigationTimezoneDemoContainer,
     SettingsPanelTimezoneDemoContainer,
     CurrentTimeTimezoneDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -46,7 +48,7 @@ import { VariantsTimezoneDemoContainer } from './demos/variants-timezone-demo-co
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-select-timezone-demo-container />
         <app-no-abbr-timezone-demo-container />
         <app-no-offset-timezone-demo-container />

@@ -4,10 +4,18 @@ import { CardSkeletonDemoContainer } from './demos/card-skeleton-demo-container'
 import { ArticleSkeletonDemoContainer } from './demos/article-skeleton-demo-container';
 import { ListSkeletonDemoContainer } from './demos/list-skeleton-demo-container';
 import { TableSkeletonDemoContainer } from './demos/table-skeleton-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-skeleton-page',
-  imports: [BasicSkeletonDemoContainer, CardSkeletonDemoContainer, ArticleSkeletonDemoContainer, ListSkeletonDemoContainer, TableSkeletonDemoContainer],
+  imports: [
+    BasicSkeletonDemoContainer,
+    CardSkeletonDemoContainer,
+    ArticleSkeletonDemoContainer,
+    ListSkeletonDemoContainer,
+    TableSkeletonDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -18,7 +26,7 @@ import { TableSkeletonDemoContainer } from './demos/table-skeleton-demo-containe
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-skeleton-demo-container />
         <app-card-skeleton-demo-container />
         <app-article-skeleton-demo-container />

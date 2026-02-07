@@ -4,6 +4,7 @@ import { CornerBurstsConfettiDemoContainer } from './demos/corner-bursts-confett
 import { CustomColorsConfettiDemoContainer } from './demos/custom-colors-confetti-demo-container';
 import { FromElementConfettiDemoContainer } from './demos/from-element-confetti-demo-container';
 import { MultipleBurstsConfettiDemoContainer } from './demos/multiple-bursts-confetti-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-confetti-page',
@@ -13,6 +14,7 @@ import { MultipleBurstsConfettiDemoContainer } from './demos/multiple-bursts-con
     CustomColorsConfettiDemoContainer,
     MultipleBurstsConfettiDemoContainer,
     CornerBurstsConfettiDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -22,7 +24,7 @@ import { MultipleBurstsConfettiDemoContainer } from './demos/multiple-bursts-con
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-confetti-demo-container />
         <app-from-element-confetti-demo-container />
         <app-custom-colors-confetti-demo-container />

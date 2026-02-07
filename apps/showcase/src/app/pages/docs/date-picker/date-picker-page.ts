@@ -5,6 +5,7 @@ import { RangeDatePickerDemoContainer } from './demos/range-date-picker-demo-con
 import { MultipleDatePickerDemoContainer } from './demos/multiple-date-picker-demo-container';
 import { ConstrainedDatePickerDemoContainer } from './demos/constrained-date-picker-demo-container';
 import { FormDatePickerDemoContainer } from './demos/form-date-picker-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-date-picker-page',
@@ -15,6 +16,7 @@ import { FormDatePickerDemoContainer } from './demos/form-date-picker-demo-conta
     MultipleDatePickerDemoContainer,
     ConstrainedDatePickerDemoContainer,
     FormDatePickerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -26,7 +28,7 @@ import { FormDatePickerDemoContainer } from './demos/form-date-picker-demo-conta
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-date-picker-demo-container />
         <app-placeholder-date-picker-demo-container />
         <app-range-date-picker-demo-container />

@@ -3,6 +3,7 @@ import { BasicPdfViewerDemoContainer } from './demos/basic-pdf-viewer-demo-conta
 import { MinimalPdfViewerDemoContainer } from './demos/minimal-pdf-viewer-demo-container';
 import { CustomToolbarPdfViewerDemoContainer } from './demos/custom-toolbar-pdf-viewer-demo-container';
 import { InteractivePdfViewerDemoContainer } from './demos/interactive-pdf-viewer-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-pdf-viewer-page',
@@ -11,6 +12,7 @@ import { InteractivePdfViewerDemoContainer } from './demos/interactive-pdf-viewe
     MinimalPdfViewerDemoContainer,
     CustomToolbarPdfViewerDemoContainer,
     InteractivePdfViewerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -23,7 +25,7 @@ import { InteractivePdfViewerDemoContainer } from './demos/interactive-pdf-viewe
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-pdf-viewer-demo-container />
         <app-minimal-pdf-viewer-demo-container />
         <app-custom-toolbar-pdf-viewer-demo-container />

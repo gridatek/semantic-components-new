@@ -6,6 +6,7 @@ import { MinimalDiffViewerDemoContainer } from './demos/minimal-diff-viewer-demo
 import { WhitespaceDiffViewerDemoContainer } from './demos/whitespace-diff-viewer-demo-container';
 import { LargeDiffViewerDemoContainer } from './demos/large-diff-viewer-demo-container';
 import { IdenticalDiffViewerDemoContainer } from './demos/identical-diff-viewer-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-diff-viewer-page',
@@ -17,6 +18,7 @@ import { IdenticalDiffViewerDemoContainer } from './demos/identical-diff-viewer-
     WhitespaceDiffViewerDemoContainer,
     LargeDiffViewerDemoContainer,
     IdenticalDiffViewerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -28,7 +30,7 @@ import { IdenticalDiffViewerDemoContainer } from './demos/identical-diff-viewer-
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-diff-viewer-demo-container />
         <app-unified-diff-viewer-demo-container />
         <app-json-diff-viewer-demo-container />

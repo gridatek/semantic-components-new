@@ -3,6 +3,7 @@ import { RightSheetDemoContainer } from './demos/right-sheet-demo-container';
 import { LeftSheetDemoContainer } from './demos/left-sheet-demo-container';
 import { TopSheetDemoContainer } from './demos/top-sheet-demo-container';
 import { BottomSheetDemoContainer } from './demos/bottom-sheet-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-sheet-page',
@@ -11,6 +12,7 @@ import { BottomSheetDemoContainer } from './demos/bottom-sheet-demo-container';
     LeftSheetDemoContainer,
     TopSheetDemoContainer,
     BottomSheetDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -23,7 +25,7 @@ import { BottomSheetDemoContainer } from './demos/bottom-sheet-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-right-sheet-demo-container />
         <app-left-sheet-demo-container />
         <app-top-sheet-demo-container />

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicAvatarDemoContainer } from './demos/basic-avatar-demo-container';
 import { FallbackAvatarDemoContainer } from './demos/fallback-avatar-demo-container';
 import { SizesAvatarDemoContainer } from './demos/sizes-avatar-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-avatar-page',
@@ -9,6 +10,7 @@ import { SizesAvatarDemoContainer } from './demos/sizes-avatar-demo-container';
     BasicAvatarDemoContainer,
     FallbackAvatarDemoContainer,
     SizesAvatarDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -20,7 +22,7 @@ import { SizesAvatarDemoContainer } from './demos/sizes-avatar-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-avatar-demo-container />
         <app-fallback-avatar-demo-container />
         <app-sizes-avatar-demo-container />

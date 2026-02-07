@@ -4,6 +4,7 @@ import { MinMaxCalendarDemoContainer } from './demos/min-max-calendar-demo-conta
 import { MultipleDateCalendarDemoContainer } from './demos/multiple-date-calendar-demo-container';
 import { RangeCalendarDemoContainer } from './demos/range-calendar-demo-container';
 import { SingleDateCalendarDemoContainer } from './demos/single-date-calendar-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-calendar-page',
@@ -13,6 +14,7 @@ import { SingleDateCalendarDemoContainer } from './demos/single-date-calendar-de
     RangeCalendarDemoContainer,
     DisabledDatesCalendarDemoContainer,
     MinMaxCalendarDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -25,7 +27,7 @@ import { SingleDateCalendarDemoContainer } from './demos/single-date-calendar-de
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-single-date-calendar-demo-container />
         <app-multiple-date-calendar-demo-container />
         <app-range-calendar-demo-container />

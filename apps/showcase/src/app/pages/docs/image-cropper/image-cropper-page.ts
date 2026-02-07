@@ -4,6 +4,7 @@ import { AspectRatioImageCropperDemoContainer } from './demos/aspect-ratio-image
 import { AvatarImageCropperDemoContainer } from './demos/avatar-image-cropper-demo-container';
 import { UploadImageCropperDemoContainer } from './demos/upload-image-cropper-demo-container';
 import { InfoImageCropperDemoContainer } from './demos/info-image-cropper-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-image-cropper-page',
@@ -13,6 +14,7 @@ import { InfoImageCropperDemoContainer } from './demos/info-image-cropper-demo-c
     AvatarImageCropperDemoContainer,
     UploadImageCropperDemoContainer,
     InfoImageCropperDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -25,7 +27,7 @@ import { InfoImageCropperDemoContainer } from './demos/info-image-cropper-demo-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-image-cropper-demo-container />
         <app-aspect-ratio-image-cropper-demo-container />
         <app-avatar-image-cropper-demo-container />

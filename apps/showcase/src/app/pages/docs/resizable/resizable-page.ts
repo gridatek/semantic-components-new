@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScResizableDemoContainer } from './demos/resizable-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-resizable-page',
-  imports: [ScResizableDemoContainer],
+  imports: [ScResizableDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -14,7 +15,7 @@ import { ScResizableDemoContainer } from './demos/resizable-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-resizable-demo-container />
       </section>
     </div>

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { TocHeading } from '../toc/toc-heading';
 import {
   ScCodeViewer,
   ScCodeViewerContent,

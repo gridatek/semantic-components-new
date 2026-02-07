@@ -7,6 +7,7 @@ import { DisabledSignaturePadDemoContainer } from './demos/disabled-signature-pa
 import { SmallSignaturePadDemoContainer } from './demos/small-signature-pad-demo-container';
 import { PreviewSignaturePadDemoContainer } from './demos/preview-signature-pad-demo-container';
 import { FormSignaturePadDemoContainer } from './demos/form-signature-pad-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-signature-pad-page',
@@ -19,6 +20,7 @@ import { FormSignaturePadDemoContainer } from './demos/form-signature-pad-demo-c
     SmallSignaturePadDemoContainer,
     PreviewSignaturePadDemoContainer,
     FormSignaturePadDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { FormSignaturePadDemoContainer } from './demos/form-signature-pad-demo-c
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-signature-pad-demo-container />
         <app-colors-signature-pad-demo-container />
         <app-thick-pen-signature-pad-demo-container />

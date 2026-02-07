@@ -7,6 +7,7 @@ import { PreviewColorPickerDemoContainer } from './demos/preview-color-picker-de
 import { RgbColorPickerDemoContainer } from './demos/rgb-color-picker-demo-container';
 import { SimpleColorPickerDemoContainer } from './demos/simple-color-picker-demo-container';
 import { SwatchesColorPickerDemoContainer } from './demos/swatches-color-picker-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-color-picker-page',
@@ -19,6 +20,7 @@ import { SwatchesColorPickerDemoContainer } from './demos/swatches-color-picker-
     RgbColorPickerDemoContainer,
     HslColorPickerDemoContainer,
     PreviewColorPickerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { SwatchesColorPickerDemoContainer } from './demos/swatches-color-picker-
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-full-color-picker-demo-container />
         <app-swatches-color-picker-demo-container />
         <app-eyedropper-color-picker-demo-container />

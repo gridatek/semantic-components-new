@@ -5,6 +5,7 @@ import { OutlineToggleDemoContainer } from './demos/outline-toggle-demo-containe
 import { SizesToggleDemoContainer } from './demos/sizes-toggle-demo-container';
 import { ToolbarToggleDemoContainer } from './demos/toolbar-toggle-demo-container';
 import { WithTextToggleDemoContainer } from './demos/with-text-toggle-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-toggle-page',
@@ -15,6 +16,7 @@ import { WithTextToggleDemoContainer } from './demos/with-text-toggle-demo-conta
     SizesToggleDemoContainer,
     DisabledToggleDemoContainer,
     ToolbarToggleDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -26,7 +28,7 @@ import { WithTextToggleDemoContainer } from './demos/with-text-toggle-demo-conta
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-toggle-demo-container />
         <app-outline-toggle-demo-container />
         <app-with-text-toggle-demo-container />

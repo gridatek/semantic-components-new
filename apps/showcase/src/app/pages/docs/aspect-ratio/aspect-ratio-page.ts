@@ -7,6 +7,7 @@ import { PortraitAspectRatioDemoContainer } from './demos/portrait-aspect-ratio-
 import { PlaceholderAspectRatioDemoContainer } from './demos/placeholder-aspect-ratio-demo-container';
 import { VideoAspectRatioDemoContainer } from './demos/video-aspect-ratio-demo-container';
 import { MapAspectRatioDemoContainer } from './demos/map-aspect-ratio-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-aspect-ratio-page',
@@ -19,6 +20,7 @@ import { MapAspectRatioDemoContainer } from './demos/map-aspect-ratio-demo-conta
     PlaceholderAspectRatioDemoContainer,
     VideoAspectRatioDemoContainer,
     MapAspectRatioDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { MapAspectRatioDemoContainer } from './demos/map-aspect-ratio-demo-conta
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-sixteen-nine-aspect-ratio-demo-container />
         <app-four-three-aspect-ratio-demo-container />
         <app-square-aspect-ratio-demo-container />

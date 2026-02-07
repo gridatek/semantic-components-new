@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicSearchInputDemoContainer } from './demos/basic-search-input-demo-container';
 import { LoadingSearchInputDemoContainer } from './demos/loading-search-input-demo-container';
 import { CategoriesSearchInputDemoContainer } from './demos/categories-search-input-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-search-input-page',
@@ -9,6 +10,7 @@ import { CategoriesSearchInputDemoContainer } from './demos/categories-search-in
     BasicSearchInputDemoContainer,
     LoadingSearchInputDemoContainer,
     CategoriesSearchInputDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -18,7 +20,7 @@ import { CategoriesSearchInputDemoContainer } from './demos/categories-search-in
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-search-input-demo-container />
         <app-loading-search-input-demo-container />
         <app-categories-search-input-demo-container />

@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicImageAnnotatorDemoContainer } from './demos/basic-image-annotator-demo-container';
 import { CustomSizeImageAnnotatorDemoContainer } from './demos/custom-size-image-annotator-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-image-annotator-page',
-  imports: [BasicImageAnnotatorDemoContainer, CustomSizeImageAnnotatorDemoContainer],
+  imports: [
+    BasicImageAnnotatorDemoContainer,
+    CustomSizeImageAnnotatorDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +20,7 @@ import { CustomSizeImageAnnotatorDemoContainer } from './demos/custom-size-image
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-image-annotator-demo-container />
         <app-custom-size-image-annotator-demo-container />
       </section>

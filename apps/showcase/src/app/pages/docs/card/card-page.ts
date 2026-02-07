@@ -3,6 +3,7 @@ import { BasicCardDemoContainer } from './demos/basic-card-demo-container';
 import { FormCardDemoContainer } from './demos/form-card-demo-container';
 import { NotificationCardDemoContainer } from './demos/notification-card-demo-container';
 import { StatsCardDemoContainer } from './demos/stats-card-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-card-page',
@@ -11,6 +12,7 @@ import { StatsCardDemoContainer } from './demos/stats-card-demo-container';
     FormCardDemoContainer,
     NotificationCardDemoContainer,
     StatsCardDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -22,7 +24,7 @@ import { StatsCardDemoContainer } from './demos/stats-card-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-card-demo-container />
         <app-form-card-demo-container />
         <app-notification-card-demo-container />

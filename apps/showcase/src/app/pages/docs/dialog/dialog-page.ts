@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScDialogDemoContainer } from './demos/dialog-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-dialog-page',
-  imports: [ScDialogDemoContainer],
+  imports: [ScDialogDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,7 @@ import { ScDialogDemoContainer } from './demos/dialog-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-dialog-demo-container />
       </section>
     </div>

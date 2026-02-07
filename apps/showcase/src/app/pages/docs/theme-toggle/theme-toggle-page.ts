@@ -5,6 +5,7 @@ import { SettingsPanelThemeToggleDemoContainer } from './demos/settings-panel-th
 import { SizesThemeToggleDemoContainer } from './demos/sizes-theme-toggle-demo-container';
 import { ThemeSelectDemoContainer } from './demos/theme-select-demo-container';
 import { VariantsThemeToggleDemoContainer } from './demos/variants-theme-toggle-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-theme-toggle-page',
@@ -15,6 +16,7 @@ import { VariantsThemeToggleDemoContainer } from './demos/variants-theme-toggle-
     ThemeSelectDemoContainer,
     NavigationThemeToggleDemoContainer,
     SettingsPanelThemeToggleDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -27,7 +29,7 @@ import { VariantsThemeToggleDemoContainer } from './demos/variants-theme-toggle-
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-theme-toggle-demo-container />
         <app-variants-theme-toggle-demo-container />
         <app-sizes-theme-toggle-demo-container />

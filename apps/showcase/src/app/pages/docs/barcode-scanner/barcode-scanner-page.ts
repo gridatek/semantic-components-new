@@ -6,6 +6,7 @@ import { HistoryBarcodeScannerDemoContainer } from './demos/history-barcode-scan
 import { ProductBarcodeScannerDemoContainer } from './demos/product-barcode-scanner-demo-container';
 import { QrCodeBarcodeScannerDemoContainer } from './demos/qr-code-barcode-scanner-demo-container';
 import { SingleScanBarcodeScannerDemoContainer } from './demos/single-scan-barcode-scanner-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-barcode-scanner-page',
@@ -17,6 +18,7 @@ import { SingleScanBarcodeScannerDemoContainer } from './demos/single-scan-barco
     HistoryBarcodeScannerDemoContainer,
     FormatsBarcodeScannerDemoContainer,
     BrowserSupportBarcodeScannerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -29,7 +31,7 @@ import { SingleScanBarcodeScannerDemoContainer } from './demos/single-scan-barco
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-barcode-scanner-demo-container />
         <app-qr-code-barcode-scanner-demo-container />
         <app-product-barcode-scanner-demo-container />

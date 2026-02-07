@@ -11,6 +11,7 @@ import ScrubbingNumberFieldDemoContainer from './demos/scrubbing-number-field-de
 import PriceNumberFieldDemoContainer from './demos/price-number-field-demo-container';
 import DisabledNumberFieldDemoContainer from './demos/disabled-number-field-demo-container';
 import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-field-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-number-field-page',
@@ -25,6 +26,7 @@ import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-f
     PriceNumberFieldDemoContainer,
     DisabledNumberFieldDemoContainer,
     WithoutLabelNumberFieldDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -37,7 +39,7 @@ import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-f
       </div>
 
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Usage</h2>
         <div sc-code-viewer>
           <div sc-code-viewer-header>
             <span sc-code-viewer-label>angular-ts</span>
@@ -52,7 +54,7 @@ import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-f
       </section>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-number-field-demo-container />
         <app-scrubbing-number-field-demo-container />
         <app-price-number-field-demo-container />
@@ -83,6 +85,7 @@ export default class NumberFieldPage {
     ScNumberFieldInput,
     ScNumberFieldIncrement,
     ScLabel,
+    TocHeading,
   ],
   template: \`
     <div sc-number-field [(value)]="quantity" [min]="1" [max]="10">

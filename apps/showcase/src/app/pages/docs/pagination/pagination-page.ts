@@ -7,6 +7,7 @@ import { FirstPagePaginationDemoContainer } from './demos/first-page-pagination-
 import { LastPagePaginationDemoContainer } from './demos/last-page-pagination-demo-container';
 import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-demo-container';
 import { KeyboardNavigationPaginationDemoContainer } from './demos/keyboard-navigation-pagination-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-pagination-page',
@@ -19,6 +20,7 @@ import { KeyboardNavigationPaginationDemoContainer } from './demos/keyboard-navi
     LastPagePaginationDemoContainer,
     PageSizePaginationDemoContainer,
     KeyboardNavigationPaginationDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -29,7 +31,7 @@ import { KeyboardNavigationPaginationDemoContainer } from './demos/keyboard-navi
         </p>
       </div>
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-pagination-demo-container />
         <app-ellipsis-pagination-demo-container />
         <app-many-pages-pagination-demo-container />

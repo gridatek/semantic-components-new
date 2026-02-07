@@ -4,6 +4,7 @@ import { CustomLoaderInfiniteScrollDemoContainer } from './demos/custom-loader-i
 import { EndMessageInfiniteScrollDemoContainer } from './demos/end-message-infinite-scroll-demo-container';
 import { ThresholdInfiniteScrollDemoContainer } from './demos/threshold-infinite-scroll-demo-container';
 import { GridInfiniteScrollDemoContainer } from './demos/grid-infinite-scroll-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-infinite-scroll-page',
@@ -13,6 +14,7 @@ import { GridInfiniteScrollDemoContainer } from './demos/grid-infinite-scroll-de
     EndMessageInfiniteScrollDemoContainer,
     ThresholdInfiniteScrollDemoContainer,
     GridInfiniteScrollDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -24,7 +26,7 @@ import { GridInfiniteScrollDemoContainer } from './demos/grid-infinite-scroll-de
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-infinite-scroll-demo-container />
         <app-custom-loader-infinite-scroll-demo-container />
         <app-end-message-infinite-scroll-demo-container />

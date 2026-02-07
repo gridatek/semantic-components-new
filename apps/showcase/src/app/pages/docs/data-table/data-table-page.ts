@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FeaturedDataTableDemoContainer } from './demos/featured-data-table-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-data-table-page',
-  imports: [FeaturedDataTableDemoContainer],
+  imports: [FeaturedDataTableDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,7 @@ import { FeaturedDataTableDemoContainer } from './demos/featured-data-table-demo
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-featured-data-table-demo-container />
       </section>
     </div>

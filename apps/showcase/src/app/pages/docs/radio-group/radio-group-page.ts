@@ -5,6 +5,7 @@ import { DisabledRadioGroupDemoContainer } from './demos/disabled-radio-group-de
 import { HorizontalRadioGroupDemoContainer } from './demos/horizontal-radio-group-demo-container';
 import { FormRadioGroupDemoContainer } from './demos/form-radio-group-demo-container';
 import { CustomThemeRadioGroupDemoContainer } from './demos/custom-theme-radio-group-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-radio-group-page',
@@ -15,6 +16,7 @@ import { CustomThemeRadioGroupDemoContainer } from './demos/custom-theme-radio-g
     HorizontalRadioGroupDemoContainer,
     FormRadioGroupDemoContainer,
     CustomThemeRadioGroupDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -27,7 +29,7 @@ import { CustomThemeRadioGroupDemoContainer } from './demos/custom-theme-radio-g
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-radio-group-demo-container />
         <app-descriptions-radio-group-demo-container />
         <app-disabled-radio-group-demo-container />

@@ -10,6 +10,7 @@ import BasicTableDemoContainer from './demos/basic-table-demo-container';
 import CaptionTableDemoContainer from './demos/caption-table-demo-container';
 import FooterTableDemoContainer from './demos/footer-table-demo-container';
 import UsersTableDemoContainer from './demos/users-table-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-table-page',
@@ -23,6 +24,7 @@ import UsersTableDemoContainer from './demos/users-table-demo-container';
     CaptionTableDemoContainer,
     FooterTableDemoContainer,
     UsersTableDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -32,7 +34,7 @@ import UsersTableDemoContainer from './demos/users-table-demo-container';
       </div>
 
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Usage</h2>
         <div sc-code-viewer>
           <div sc-code-viewer-header>
             <span sc-code-viewer-label>angular-ts</span>
@@ -47,7 +49,7 @@ import UsersTableDemoContainer from './demos/users-table-demo-container';
       </section>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-table-demo-container />
         <app-caption-table-demo-container />
         <app-footer-table-demo-container />
@@ -79,6 +81,7 @@ export default class TablePage {
     ScTableHeaderCell,
     ScTableHeader,
     ScTableRow,
+    TocHeading,
   ],
   template: \`
     <table sc-table>

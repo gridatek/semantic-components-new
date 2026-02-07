@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicTabsDemoContainer } from './demos/basic-tabs-demo-container';
 import { DisabledTabsDemoContainer } from './demos/disabled-tabs-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-tabs-page',
-  imports: [BasicTabsDemoContainer, DisabledTabsDemoContainer],
+  imports: [BasicTabsDemoContainer, DisabledTabsDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +17,7 @@ import { DisabledTabsDemoContainer } from './demos/disabled-tabs-demo-container'
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-tabs-demo-container />
         <app-disabled-tabs-demo-container />
       </section>

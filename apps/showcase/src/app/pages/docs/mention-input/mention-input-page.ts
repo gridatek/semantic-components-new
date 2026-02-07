@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScMentionInputDemoContainer } from './demos/mention-input-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-mention-input-page',
-  imports: [ScMentionInputDemoContainer],
+  imports: [ScMentionInputDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,7 +16,7 @@ import { ScMentionInputDemoContainer } from './demos/mention-input-demo-containe
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-mention-input-demo-container />
       </section>
     </div>

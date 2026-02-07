@@ -6,6 +6,7 @@ import { Format12hTimePickerDemoContainer } from './demos/format-12h-time-picker
 import { Format24hTimePickerDemoContainer } from './demos/format-24h-time-picker-demo-container';
 import { PresetsTimePickerDemoContainer } from './demos/presets-time-picker-demo-container';
 import { SecondsTimePickerDemoContainer } from './demos/seconds-time-picker-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-time-picker-page',
@@ -17,6 +18,7 @@ import { SecondsTimePickerDemoContainer } from './demos/seconds-time-picker-demo
     ClockHoursTimePickerDemoContainer,
     ClockMinutesTimePickerDemoContainer,
     PresetsTimePickerDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -28,7 +30,7 @@ import { SecondsTimePickerDemoContainer } from './demos/seconds-time-picker-demo
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-format-12h-time-picker-demo-container />
         <app-format-24h-time-picker-demo-container />
         <app-seconds-time-picker-demo-container />

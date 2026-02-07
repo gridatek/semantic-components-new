@@ -2,10 +2,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BasicSeparatorDemoContainer } from './demos/basic-separator-demo-container';
 import { CardSeparatorDemoContainer } from './demos/card-separator-demo-container';
 import { VerticalSeparatorDemoContainer } from './demos/vertical-separator-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-separator-page',
-  imports: [BasicSeparatorDemoContainer, VerticalSeparatorDemoContainer, CardSeparatorDemoContainer],
+  imports: [
+    BasicSeparatorDemoContainer,
+    VerticalSeparatorDemoContainer,
+    CardSeparatorDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,7 +22,7 @@ import { VerticalSeparatorDemoContainer } from './demos/vertical-separator-demo-
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-separator-demo-container />
         <app-vertical-separator-demo-container />
         <app-card-separator-demo-container />

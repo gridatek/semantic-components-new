@@ -5,6 +5,7 @@ import { MaxCountAvatarGroupDemoContainer } from './demos/max-count-avatar-group
 import { SizesAvatarGroupDemoContainer } from './demos/sizes-avatar-group-demo-container';
 import { SpacingAvatarGroupDemoContainer } from './demos/spacing-avatar-group-demo-container';
 import { TeamAvatarGroupDemoContainer } from './demos/team-avatar-group-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-avatar-group-page',
@@ -15,6 +16,7 @@ import { TeamAvatarGroupDemoContainer } from './demos/team-avatar-group-demo-con
     MaxCountAvatarGroupDemoContainer,
     FallbackAvatarGroupDemoContainer,
     TeamAvatarGroupDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -27,7 +29,7 @@ import { TeamAvatarGroupDemoContainer } from './demos/team-avatar-group-demo-con
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-avatar-group-demo-container />
         <app-sizes-avatar-group-demo-container />
         <app-spacing-avatar-group-demo-container />

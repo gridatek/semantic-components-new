@@ -9,10 +9,23 @@ import { SimpleCountdownDemoContainer } from './demos/simple-countdown-demo-cont
 import { EventCountdownDemoContainer } from './demos/event-countdown-demo-container';
 import { SaleCountdownDemoContainer } from './demos/sale-countdown-demo-container';
 import { CompletedCountdownDemoContainer } from './demos/completed-countdown-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-countdown-page',
-  imports: [BasicCountdownDemoContainer, CompactCountdownDemoContainer, CardsCountdownDemoContainer, SeparatorCountdownDemoContainer, LabelsCountdownDemoContainer, NodaysCountdownDemoContainer, SimpleCountdownDemoContainer, EventCountdownDemoContainer, SaleCountdownDemoContainer, CompletedCountdownDemoContainer],
+  imports: [
+    BasicCountdownDemoContainer,
+    CompactCountdownDemoContainer,
+    CardsCountdownDemoContainer,
+    SeparatorCountdownDemoContainer,
+    LabelsCountdownDemoContainer,
+    NodaysCountdownDemoContainer,
+    SimpleCountdownDemoContainer,
+    EventCountdownDemoContainer,
+    SaleCountdownDemoContainer,
+    CompletedCountdownDemoContainer,
+    TocHeading,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -24,7 +37,7 @@ import { CompletedCountdownDemoContainer } from './demos/completed-countdown-dem
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-countdown-demo-container />
         <app-compact-countdown-demo-container />
         <app-cards-countdown-demo-container />

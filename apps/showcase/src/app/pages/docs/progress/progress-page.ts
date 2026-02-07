@@ -4,6 +4,7 @@ import { CustomMaxProgressDemoContainer } from './demos/custom-max-progress-demo
 import { CustomStylingProgressDemoContainer } from './demos/custom-styling-progress-demo-container';
 import { SignalFormsProgressDemoContainer } from './demos/signal-forms-progress-demo-container';
 import { ValuesProgressDemoContainer } from './demos/values-progress-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-progress-page',
@@ -13,6 +14,7 @@ import { ValuesProgressDemoContainer } from './demos/values-progress-demo-contai
     CustomMaxProgressDemoContainer,
     CustomStylingProgressDemoContainer,
     SignalFormsProgressDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -25,7 +27,7 @@ import { ValuesProgressDemoContainer } from './demos/values-progress-demo-contai
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-progress-demo-container />
         <app-values-progress-demo-container />
         <app-custom-max-progress-demo-container />

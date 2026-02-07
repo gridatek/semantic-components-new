@@ -6,6 +6,7 @@ import { DisabledOptionsMultiSelectDemoContainer } from './demos/disabled-option
 import { FormMultiSelectDemoContainer } from './demos/form-multi-select-demo-container';
 import { NosearchMultiSelectDemoContainer } from './demos/nosearch-multi-select-demo-container';
 import { SelectallMultiSelectDemoContainer } from './demos/selectall-multi-select-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-multi-select-page',
@@ -17,6 +18,7 @@ import { SelectallMultiSelectDemoContainer } from './demos/selectall-multi-selec
     NosearchMultiSelectDemoContainer,
     DisabledMultiSelectDemoContainer,
     FormMultiSelectDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -29,7 +31,7 @@ import { SelectallMultiSelectDemoContainer } from './demos/selectall-multi-selec
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-multi-select-demo-container />
         <app-selectall-multi-select-demo-container />
         <app-count-multi-select-demo-container />

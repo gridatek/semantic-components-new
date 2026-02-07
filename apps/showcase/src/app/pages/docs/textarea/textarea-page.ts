@@ -6,6 +6,7 @@ import { HelperTextTextareaDemoContainer } from './demos/helper-text-textarea-de
 import { LabelTextareaDemoContainer } from './demos/label-textarea-demo-container';
 import { MaxlengthTextareaDemoContainer } from './demos/maxlength-textarea-demo-container';
 import { RowsTextareaDemoContainer } from './demos/rows-textarea-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-textarea-page',
@@ -17,6 +18,7 @@ import { RowsTextareaDemoContainer } from './demos/rows-textarea-demo-container'
     DisabledTextareaDemoContainer,
     MaxlengthTextareaDemoContainer,
     FormTextareaDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -28,7 +30,7 @@ import { RowsTextareaDemoContainer } from './demos/rows-textarea-demo-container'
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-textarea-demo-container />
         <app-label-textarea-demo-container />
         <app-helper-text-textarea-demo-container />

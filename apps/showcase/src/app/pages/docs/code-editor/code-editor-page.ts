@@ -11,6 +11,7 @@ import { ReadonlyCodeEditorDemoContainer } from './demos/readonly-code-editor-de
 import { SqlCodeEditorDemoContainer } from './demos/sql-code-editor-demo-container';
 import { TypescriptCodeEditorDemoContainer } from './demos/typescript-code-editor-demo-container';
 import { WordWrapCodeEditorDemoContainer } from './demos/word-wrap-code-editor-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-code-editor-page',
@@ -27,6 +28,7 @@ import { WordWrapCodeEditorDemoContainer } from './demos/word-wrap-code-editor-d
     MinimalCodeEditorDemoContainer,
     WordWrapCodeEditorDemoContainer,
     InteractiveCodeEditorDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -39,7 +41,7 @@ import { WordWrapCodeEditorDemoContainer } from './demos/word-wrap-code-editor-d
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-code-editor-demo-container />
         <app-typescript-code-editor-demo-container />
         <app-html-code-editor-demo-container />

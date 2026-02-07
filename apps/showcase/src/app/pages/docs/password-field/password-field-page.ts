@@ -13,6 +13,7 @@ import NewPasswordFieldDemoContainer from './demos/new-password-field-demo-conta
 import StrengthPasswordFieldDemoContainer from './demos/strength-password-field-demo-container';
 import RequirementsPasswordFieldDemoContainer from './demos/requirements-password-field-demo-container';
 import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-password-field-page',
@@ -29,6 +30,7 @@ import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-con
     StrengthPasswordFieldDemoContainer,
     RequirementsPasswordFieldDemoContainer,
     FullPasswordFieldDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -40,7 +42,7 @@ import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-con
       </div>
 
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold tracking-tight">Usage</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Usage</h2>
         <div sc-code-viewer>
           <div sc-code-viewer-header>
             <span sc-code-viewer-label>angular-ts</span>
@@ -55,7 +57,7 @@ import FullPasswordFieldDemoContainer from './demos/full-password-field-demo-con
       </section>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-password-field-demo-container />
         <app-show-default-password-field-demo-container />
         <app-disabled-password-field-demo-container />
@@ -84,6 +86,7 @@ export default class PasswordFieldPage {
     ScPasswordFieldInput,
     ScPasswordFieldToggle,
     ScLabel,
+    TocHeading,
   ],
   template: \`
     <div class="space-y-2">

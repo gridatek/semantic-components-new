@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScPhoneInputDemoContainer } from './demos/phone-input-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-phone-input-page',
-  imports: [ScPhoneInputDemoContainer],
+  imports: [ScPhoneInputDemoContainer, TocHeading],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -14,7 +15,7 @@ import { ScPhoneInputDemoContainer } from './demos/phone-input-demo-container';
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-phone-input-demo-container />
       </section>
     </div>

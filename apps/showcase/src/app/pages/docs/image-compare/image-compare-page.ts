@@ -7,6 +7,7 @@ import { PositionImageCompareDemoContainer } from './demos/position-image-compar
 import { ControlledImageCompareDemoContainer } from './demos/controlled-image-compare-demo-container';
 import { SquareImageCompareDemoContainer } from './demos/square-image-compare-demo-container';
 import { KeyboardImageCompareDemoContainer } from './demos/keyboard-image-compare-demo-container';
+import { TocHeading } from '../../../components/toc/toc-heading';
 
 @Component({
   selector: 'app-image-compare-page',
@@ -19,6 +20,7 @@ import { KeyboardImageCompareDemoContainer } from './demos/keyboard-image-compar
     ControlledImageCompareDemoContainer,
     SquareImageCompareDemoContainer,
     KeyboardImageCompareDemoContainer,
+    TocHeading,
   ],
   template: `
     <div class="space-y-8">
@@ -30,7 +32,7 @@ import { KeyboardImageCompareDemoContainer } from './demos/keyboard-image-compar
       </div>
 
       <section class="space-y-8">
-        <h2 class="text-xl font-semibold tracking-tight">Examples</h2>
+        <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
         <app-basic-image-compare-demo-container />
         <app-labels-image-compare-demo-container />
         <app-no-labels-image-compare-demo-container />
