@@ -59,33 +59,37 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     <div sc-sidebar-provider class="min-h-screen">
       <div sc-sidebar side="left" variant="sidebar" collapsible="icon">
         <div sc-sidebar-header>
-          <div class="flex items-center gap-2 px-2 py-1">
-            <div
-              class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m-9-9 6-6m-6 6 6 6m-6-6h14"
-                />
-              </svg>
-            </div>
-            <div class="grid flex-1 text-left text-sm leading-tight">
-              <span class="truncate font-semibold">Acme Inc</span>
-              <span class="truncate text-xs text-sidebar-foreground/70">
-                Enterprise
-              </span>
-            </div>
-          </div>
+          <ul sc-sidebar-menu>
+            <li sc-sidebar-menu-item>
+              <a sc-sidebar-menu-button size="lg">
+                <div
+                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m-9-9 6-6m-6 6 6 6m-6-6h14"
+                    />
+                  </svg>
+                </div>
+                <div class="grid flex-1 text-left text-sm leading-tight">
+                  <span class="truncate font-semibold">Acme Inc</span>
+                  <span class="truncate text-xs text-sidebar-foreground/70">
+                    Enterprise
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
           <input sc-sidebar-input type="search" placeholder="Search..." />
         </div>
 
@@ -354,32 +358,36 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         </div>
 
         <div sc-sidebar-footer>
-          <div class="flex items-center gap-2 px-2 py-1">
-            <div
-              class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-accent text-sidebar-accent-foreground"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-            <div class="grid flex-1 text-left text-sm leading-tight">
-              <span class="truncate font-semibold">John Doe</span>
-              <span class="truncate text-xs text-sidebar-foreground/70">
-                john example.com
-              </span>
-            </div>
-          </div>
+          <ul sc-sidebar-menu>
+            <li sc-sidebar-menu-item>
+              <a sc-sidebar-menu-button size="lg">
+                <div
+                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-accent text-sidebar-accent-foreground"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <div class="grid flex-1 text-left text-sm leading-tight">
+                  <span class="truncate font-semibold">John Doe</span>
+                  <span class="truncate text-xs text-sidebar-foreground/70">
+                    john&#64;example.com
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
 
         <button sc-sidebar-rail></button>
