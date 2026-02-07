@@ -72,7 +72,11 @@ import {
           <button sc-tab value="code">Code</button>
         </div>
 
-        <div sc-tab-panel value="preview" class="rounded-md border p-6">
+        <div
+          sc-tab-panel
+          value="preview"
+          class="flex min-h-40 items-center justify-center rounded-md border p-6"
+        >
           <ng-content />
         </div>
 
