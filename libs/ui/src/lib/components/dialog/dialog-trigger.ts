@@ -6,6 +6,7 @@ import { ScDialogProvider } from './dialog-provider';
   selector: 'button[sc-dialog-trigger]',
   host: {
     'data-slot': 'dialog-trigger',
+    type: 'button',
     '[class]': 'class()',
     '[attr.aria-haspopup]': '"dialog"',
     '[attr.aria-expanded]': 'dialogProvider.open()',

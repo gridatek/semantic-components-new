@@ -23,6 +23,7 @@ import { cn } from '../../utils';
   `,
   host: {
     'data-slot': 'accordion-trigger',
+    type: 'button',
     '[attr.data-state]': 'trigger.expanded() ? "open" : "closed"',
     '[attr.data-disabled]': 'trigger.disabled() ? "" : null',
     '[class]': 'class()',

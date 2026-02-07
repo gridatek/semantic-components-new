@@ -24,6 +24,7 @@ import { cn } from '../../utils';
   `,
   host: {
     'data-slot': 'collapsible-trigger',
+    type: 'button',
     '[attr.data-state]': 'trigger.expanded() ? "open" : "closed"',
     '[disabled]': 'trigger.disabled()',
     '[class]': 'class()',

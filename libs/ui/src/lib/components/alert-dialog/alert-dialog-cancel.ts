@@ -6,6 +6,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
   selector: 'button[sc-alert-dialog-cancel]',
   host: {
     'data-slot': 'alert-dialog-cancel',
+    type: 'button',
     '[class]': 'class()',
     '(click)': 'cancel()',
   },

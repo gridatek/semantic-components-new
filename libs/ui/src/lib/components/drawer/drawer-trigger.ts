@@ -6,6 +6,7 @@ import { ScDrawerProvider } from './drawer-provider';
   selector: 'button[sc-drawer-trigger]',
   host: {
     'data-slot': 'drawer-trigger',
+    type: 'button',
     '[class]': 'class()',
     '[attr.aria-expanded]': 'drawer.open()',
     '(click)': 'openDrawer()',

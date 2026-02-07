@@ -6,6 +6,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
   selector: 'button[sc-alert-dialog-action]',
   host: {
     'data-slot': 'alert-dialog-action',
+    type: 'button',
     '[class]': 'class()',
     '(click)': 'action()',
   },

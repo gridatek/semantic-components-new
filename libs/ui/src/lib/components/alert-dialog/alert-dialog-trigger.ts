@@ -6,6 +6,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
   selector: 'button[sc-alert-dialog-trigger]',
   host: {
     'data-slot': 'alert-dialog-trigger',
+    type: 'button',
     '[class]': 'class()',
     '[attr.aria-haspopup]': '"alertdialog"',
     '[attr.aria-expanded]': 'alertDialogProvider.open()',

@@ -5,6 +5,7 @@ import { ScDrawerProvider } from './drawer-provider';
   selector: 'button[sc-drawer-close]',
   host: {
     'data-slot': 'drawer-close',
+    type: 'button',
     '(click)': 'closeDrawer()',
   },
 })
