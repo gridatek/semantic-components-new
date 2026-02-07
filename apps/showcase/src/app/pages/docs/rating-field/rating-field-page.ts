@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicRatingFieldDemoContainer } from './demos/basic-rating-field-demo-container';
 import { HalfRatingFieldDemoContainer } from './demos/half-rating-field-demo-container';
 import { ReadonlyRatingFieldDemoContainer } from './demos/readonly-rating-field-demo-container';
@@ -41,6 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class RatingFieldPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
 @Component({
@@ -10,6 +14,7 @@ import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
       <input sc-input type="email" placeholder="Enter your email" />
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLabelDemo {}

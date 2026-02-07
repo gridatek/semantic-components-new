@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScButton } from '@semantic-components/ui';
 
 @Component({
@@ -25,6 +29,7 @@ import { ScButton } from '@semantic-components/ui';
       </div>
     </section>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroSection {}

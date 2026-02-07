@@ -3,8 +3,13 @@ import {
   Component,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
-import { ScBarcodeScanner, BarcodeFormat, BarcodeResult } from './barcode-scanner';
+import {
+  ScBarcodeScanner,
+  BarcodeFormat,
+  BarcodeResult,
+} from './barcode-scanner';
 
 @Component({
   selector: 'sc-barcode-scanner-simple',
@@ -18,6 +23,7 @@ import { ScBarcodeScanner, BarcodeFormat, BarcodeResult } from './barcode-scanne
       [class]="class()"
     />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScBarcodeScannerSimple {

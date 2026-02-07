@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   ColumnDef,
@@ -27,18 +28,102 @@ interface User {
 }
 
 const SAMPLE_DATA: User[] = [
-  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active', createdAt: new Date('2024-01-15') },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'active', createdAt: new Date('2024-02-20') },
-  { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'Viewer', status: 'inactive', createdAt: new Date('2024-01-10') },
-  { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'Editor', status: 'pending', createdAt: new Date('2024-03-05') },
-  { id: 5, name: 'Charlie Wilson', email: 'charlie@example.com', role: 'Admin', status: 'active', createdAt: new Date('2024-02-28') },
-  { id: 6, name: 'Diana Miller', email: 'diana@example.com', role: 'Viewer', status: 'active', createdAt: new Date('2024-01-22') },
-  { id: 7, name: 'Edward Davis', email: 'edward@example.com', role: 'Editor', status: 'inactive', createdAt: new Date('2024-03-12') },
-  { id: 8, name: 'Fiona Garcia', email: 'fiona@example.com', role: 'Viewer', status: 'pending', createdAt: new Date('2024-02-14') },
-  { id: 9, name: 'George Martinez', email: 'george@example.com', role: 'Admin', status: 'active', createdAt: new Date('2024-01-30') },
-  { id: 10, name: 'Hannah Lee', email: 'hannah@example.com', role: 'Editor', status: 'active', createdAt: new Date('2024-03-01') },
-  { id: 11, name: 'Ivan Taylor', email: 'ivan@example.com', role: 'Viewer', status: 'inactive', createdAt: new Date('2024-02-08') },
-  { id: 12, name: 'Julia Anderson', email: 'julia@example.com', role: 'Editor', status: 'active', createdAt: new Date('2024-03-18') },
+  {
+    id: 1,
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'Admin',
+    status: 'active',
+    createdAt: new Date('2024-01-15'),
+  },
+  {
+    id: 2,
+    name: 'Jane Smith',
+    email: 'jane@example.com',
+    role: 'Editor',
+    status: 'active',
+    createdAt: new Date('2024-02-20'),
+  },
+  {
+    id: 3,
+    name: 'Bob Johnson',
+    email: 'bob@example.com',
+    role: 'Viewer',
+    status: 'inactive',
+    createdAt: new Date('2024-01-10'),
+  },
+  {
+    id: 4,
+    name: 'Alice Brown',
+    email: 'alice@example.com',
+    role: 'Editor',
+    status: 'pending',
+    createdAt: new Date('2024-03-05'),
+  },
+  {
+    id: 5,
+    name: 'Charlie Wilson',
+    email: 'charlie@example.com',
+    role: 'Admin',
+    status: 'active',
+    createdAt: new Date('2024-02-28'),
+  },
+  {
+    id: 6,
+    name: 'Diana Miller',
+    email: 'diana@example.com',
+    role: 'Viewer',
+    status: 'active',
+    createdAt: new Date('2024-01-22'),
+  },
+  {
+    id: 7,
+    name: 'Edward Davis',
+    email: 'edward@example.com',
+    role: 'Editor',
+    status: 'inactive',
+    createdAt: new Date('2024-03-12'),
+  },
+  {
+    id: 8,
+    name: 'Fiona Garcia',
+    email: 'fiona@example.com',
+    role: 'Viewer',
+    status: 'pending',
+    createdAt: new Date('2024-02-14'),
+  },
+  {
+    id: 9,
+    name: 'George Martinez',
+    email: 'george@example.com',
+    role: 'Admin',
+    status: 'active',
+    createdAt: new Date('2024-01-30'),
+  },
+  {
+    id: 10,
+    name: 'Hannah Lee',
+    email: 'hannah@example.com',
+    role: 'Editor',
+    status: 'active',
+    createdAt: new Date('2024-03-01'),
+  },
+  {
+    id: 11,
+    name: 'Ivan Taylor',
+    email: 'ivan@example.com',
+    role: 'Viewer',
+    status: 'inactive',
+    createdAt: new Date('2024-02-08'),
+  },
+  {
+    id: 12,
+    name: 'Julia Anderson',
+    email: 'julia@example.com',
+    role: 'Editor',
+    status: 'active',
+    createdAt: new Date('2024-03-18'),
+  },
 ];
 
 @Component({
@@ -79,16 +164,25 @@ const SAMPLE_DATA: User[] = [
                 />
               </th>
               <th sc-data-table-head columnId="name" [sortable]="true">Name</th>
-              <th sc-data-table-head columnId="email" [sortable]="true">Email</th>
+              <th sc-data-table-head columnId="email" [sortable]="true">
+                Email
+              </th>
               <th sc-data-table-head columnId="role" [sortable]="true">Role</th>
-              <th sc-data-table-head columnId="status" [sortable]="true">Status</th>
-              <th sc-data-table-head columnId="createdAt" [sortable]="true">Created</th>
+              <th sc-data-table-head columnId="status" [sortable]="true">
+                Status
+              </th>
+              <th sc-data-table-head columnId="createdAt" [sortable]="true">
+                Created
+              </th>
               <th sc-data-table-head class="w-[80px]">Actions</th>
             </tr>
           </thead>
           <tbody sc-data-table-body>
             @for (row of paginatedData(); track row.id) {
-              <tr sc-data-table-row [selected]="rowSelection().has(getRowIndex(row))">
+              <tr
+                sc-data-table-row
+                [selected]="rowSelection().has(getRowIndex(row))"
+              >
                 <td sc-data-table-cell>
                   <input
                     type="checkbox"
@@ -112,14 +206,27 @@ const SAMPLE_DATA: User[] = [
                     class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium"
                     [class]="getStatusBadgeClass(row.status)"
                   >
-                    <span class="size-1.5 rounded-full" [class]="getStatusDotClass(row.status)"></span>
+                    <span
+                      class="size-1.5 rounded-full"
+                      [class]="getStatusDotClass(row.status)"
+                    ></span>
                     {{ row.status }}
                   </span>
                 </td>
                 <td sc-data-table-cell>{{ formatDate(row.createdAt) }}</td>
                 <td sc-data-table-cell>
-                  <button type="button" class="inline-flex size-8 items-center justify-center rounded-md hover:bg-muted">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4">
+                  <button
+                    type="button"
+                    class="inline-flex size-8 items-center justify-center rounded-md hover:bg-muted"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="size-4"
+                    >
                       <circle cx="12" cy="12" r="1" />
                       <circle cx="19" cy="12" r="1" />
                       <circle cx="5" cy="12" r="1" />
@@ -129,16 +236,23 @@ const SAMPLE_DATA: User[] = [
               </tr>
             } @empty {
               <tr>
-                <td colspan="7" class="h-24 text-center text-muted-foreground">No results found.</td>
+                <td colspan="7" class="h-24 text-center text-muted-foreground">
+                  No results found.
+                </td>
               </tr>
             }
           </tbody>
         </table>
       </div>
 
-      <div sc-data-table-pagination [(pageSize)]="pageSize" [(currentPage)]="currentPage"></div>
+      <div
+        sc-data-table-pagination
+        [(pageSize)]="pageSize"
+        [(currentPage)]="currentPage"
+      ></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeaturedDataTableDemo {
@@ -148,8 +262,18 @@ export class FeaturedDataTableDemo {
     { id: 'name', header: 'Name', accessorKey: 'name', enableSorting: true },
     { id: 'email', header: 'Email', accessorKey: 'email', enableSorting: true },
     { id: 'role', header: 'Role', accessorKey: 'role', enableSorting: true },
-    { id: 'status', header: 'Status', accessorKey: 'status', enableSorting: true },
-    { id: 'createdAt', header: 'Created', accessorKey: 'createdAt', enableSorting: true },
+    {
+      id: 'status',
+      header: 'Status',
+      accessorKey: 'status',
+      enableSorting: true,
+    },
+    {
+      id: 'createdAt',
+      header: 'Created',
+      accessorKey: 'createdAt',
+      enableSorting: true,
+    },
   ];
 
   readonly rowSelection = signal<Set<number>>(new Set());
@@ -167,7 +291,9 @@ export class FeaturedDataTableDemo {
   }
 
   isAllSelected(): boolean {
-    return this.data.length > 0 && this.rowSelection().size === this.data.length;
+    return (
+      this.data.length > 0 && this.rowSelection().size === this.data.length
+    );
   }
 
   isSomeSelected(): boolean {
@@ -231,6 +357,10 @@ export class FeaturedDataTableDemo {
   }
 
   formatDate(date: Date): string {
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   }
 }

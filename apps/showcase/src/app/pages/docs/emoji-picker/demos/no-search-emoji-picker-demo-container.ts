@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { NoSearchEmojiPickerDemo } from './no-search-emoji-picker-demo';
 
@@ -15,6 +19,7 @@ import { NoSearchEmojiPickerDemo } from './no-search-emoji-picker-demo';
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoSearchEmojiPickerDemoContainer {

@@ -3,6 +3,7 @@ import {
   Component,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   SiChevronLeftIcon,
@@ -41,6 +42,7 @@ import {
       </button>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCalendarHeader {

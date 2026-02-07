@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { ScButton, ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
@@ -19,6 +24,7 @@ import { ScButton, ScField, ScInput, ScLabel } from '@semantic-components/ui';
       <button sc-button>Subscribe</button>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonInputDemo {

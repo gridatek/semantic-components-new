@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicCountdownDemoContainer } from './demos/basic-countdown-demo-container';
 import { CompactCountdownDemoContainer } from './demos/compact-countdown-demo-container';
 import { CardsCountdownDemoContainer } from './demos/cards-countdown-demo-container';
@@ -51,6 +55,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CountdownPage {}

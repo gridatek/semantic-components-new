@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DisabledToggleGroupDemoContainer } from './demos/disabled-toggle-group-demo-container';
 import { MultipleToggleGroupDemoContainer } from './demos/multiple-toggle-group-demo-container';
 import { OutlineToggleGroupDemoContainer } from './demos/outline-toggle-group-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ToggleGroupPage {}

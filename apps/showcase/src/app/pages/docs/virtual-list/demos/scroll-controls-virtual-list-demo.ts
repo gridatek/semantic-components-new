@@ -3,6 +3,7 @@ import {
   Component,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ScVirtualList } from '@semantic-components/ui';
 
@@ -62,6 +63,7 @@ import { ScVirtualList } from '@semantic-components/ui';
       </sc-virtual-list>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrollControlsVirtualListDemo {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { AreaChartDemoContainer } from './demos/area-chart-demo-container';
 import { BarChartDemoContainer } from './demos/bar-chart-demo-container';
 import { DonutChartDemoContainer } from './demos/donut-chart-demo-container';
@@ -41,6 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ChartPage {}

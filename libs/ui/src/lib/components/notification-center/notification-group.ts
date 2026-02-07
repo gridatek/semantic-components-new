@@ -5,6 +5,7 @@ import {
   input,
   output,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScNotificationItem } from './notification-item';
@@ -136,6 +137,7 @@ import type {
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNotificationGroup {

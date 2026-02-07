@@ -9,6 +9,7 @@ import {
   OnInit,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent, merge } from 'rxjs';
@@ -37,6 +38,7 @@ export type ScrollBarOrientation = 'vertical' | 'horizontal';
       (mousedown)="onThumbMouseDown($event)"
     ></div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScScrollBar implements OnInit {

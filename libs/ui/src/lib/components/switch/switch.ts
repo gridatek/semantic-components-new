@@ -4,6 +4,7 @@ import {
   computed,
   input,
   model,
+  ViewEncapsulation,
 } from '@angular/core';
 import type { FormCheckboxControl } from '@angular/forms/signals';
 import { cn } from '../../utils';
@@ -24,6 +25,7 @@ import { cn } from '../../utils';
   template: `
     <span data-slot="switch-thumb" [class]="thumbClass()"></span>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSwitch implements FormCheckboxControl {

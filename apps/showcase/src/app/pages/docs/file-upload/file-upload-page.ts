@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ButtonFileUploadDemoContainer } from './demos/button-file-upload-demo-container';
 import { DropzoneFileUploadDemoContainer } from './demos/dropzone-file-upload-demo-container';
 import { ImageFileUploadDemoContainer } from './demos/image-file-upload-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class FileUploadPage {}

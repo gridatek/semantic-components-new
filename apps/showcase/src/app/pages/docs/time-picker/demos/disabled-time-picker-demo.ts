@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimePicker,
   ScTimePickerInput,
@@ -16,18 +21,14 @@ import {
     ScTimePickerPeriod,
   ],
   template: `
-    <div
-      sc-time-picker
-      format="12h"
-      [disabled]="true"
-      [(value)]="time"
-    >
+    <div sc-time-picker format="12h" [disabled]="true" [(value)]="time">
       <input sc-time-picker-input type="hours" label="Hours" />
       <span sc-time-picker-separator>:</span>
       <input sc-time-picker-input type="minutes" label="Minutes" />
       <div sc-time-picker-period></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledTimePickerDemo {

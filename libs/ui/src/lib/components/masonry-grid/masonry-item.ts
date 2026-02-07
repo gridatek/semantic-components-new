@@ -7,6 +7,7 @@ import {
   inject,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 
 @Component({
@@ -20,6 +21,7 @@ import {
       break-inside: avoid;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMasonryItem {

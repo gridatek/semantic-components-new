@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScEmptyState } from '@semantic-components/ui';
 
 @Component({
@@ -13,6 +17,7 @@ import { ScEmptyState } from '@semantic-components/ui';
       />
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicEmptyStateDemo {

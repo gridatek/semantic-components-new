@@ -4,6 +4,7 @@ import {
   computed,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { AvatarGroupItem, AvatarGroupSize } from './avatar-group-types';
@@ -57,6 +58,7 @@ import type { AvatarGroupItem, AvatarGroupSize } from './avatar-group-types';
       display: inline-block;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAvatarGroup {

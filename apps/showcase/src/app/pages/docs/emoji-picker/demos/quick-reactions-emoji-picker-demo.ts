@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-quick-reactions-emoji-picker-demo',
@@ -23,6 +23,7 @@ import { Component, signal } from '@angular/core';
       </p>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
 })
 export class QuickReactionsEmojiPickerDemo {
   readonly lastReaction = signal('');

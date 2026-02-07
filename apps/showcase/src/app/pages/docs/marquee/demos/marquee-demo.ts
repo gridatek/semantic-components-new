@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {
   ScMarquee,
   ScMarqueeClone,
@@ -310,6 +310,7 @@ import {
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScMarqueeDemo {
   readonly brands = ['Acme', 'Globex', 'Initech', 'Umbrella', 'Stark', 'Wayne'];

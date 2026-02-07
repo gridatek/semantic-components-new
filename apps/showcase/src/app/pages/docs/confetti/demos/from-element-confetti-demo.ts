@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  viewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScConfetti } from '@semantic-components/ui';
 
 @Component({
@@ -14,6 +19,7 @@ import { ScConfetti } from '@semantic-components/ui';
       Celebrate!
     </button>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FromElementConfettiDemo {

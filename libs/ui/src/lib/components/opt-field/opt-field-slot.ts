@@ -6,6 +6,7 @@ import {
   input,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScOptField } from './opt-field';
@@ -37,6 +38,7 @@ import { ScOptFieldSlotChar } from './opt-field-slot-char';
     }
     <span sc-opt-field-slot-char [char]="char()"></span>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScOptFieldSlot {

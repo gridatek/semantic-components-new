@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DefaultSpinnerDemoContainer } from './demos/default-spinner-demo-container';
 import { ColorsSpinnerDemoContainer } from './demos/colors-spinner-demo-container';
 import { DotsSpinnerDemoContainer } from './demos/dots-spinner-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SpinnerPage {}

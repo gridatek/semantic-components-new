@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicSliderDemoContainer } from './demos/basic-slider-demo-container';
 import { DisabledSliderDemoContainer } from './demos/disabled-slider-demo-container';
 import { PriceSliderDemoContainer } from './demos/price-slider-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SliderPage {}

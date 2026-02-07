@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicPopoverDemoContainer } from './demos/basic-popover-demo-container';
 import { TopPopoverDemoContainer } from './demos/top-popover-demo-container';
 import { RightPopoverDemoContainer } from './demos/right-popover-demo-container';
@@ -38,6 +42,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class PopoverPage {}

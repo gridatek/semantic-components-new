@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { cn } from '../../utils';
 
 @Component({
@@ -7,7 +13,10 @@ import { cn } from '../../utils';
     'data-slot': 'slider-track',
     '[class]': 'class()',
   },
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSliderTrack {

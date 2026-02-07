@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required, min, max } from '@angular/forms/signals';
 import { ScSlider } from '@semantic-components/ui';
@@ -49,6 +54,7 @@ interface SliderFormModel {
       </div>
     </form>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsSliderDemo {

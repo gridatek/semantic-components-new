@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScLanguageSelect } from '@semantic-components/ui';
 
 @Component({
@@ -9,6 +13,7 @@ import { ScLanguageSelect } from '@semantic-components/ui';
       <sc-language-select [showNativeLabels]="false"></sc-language-select>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EnglishLabelsLanguageSwitcherDemo {}

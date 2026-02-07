@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicCollapsibleDemoContainer } from './demos/basic-collapsible-demo-container';
 import { DisabledCollapsibleDemoContainer } from './demos/disabled-collapsible-demo-container';
 import { OpenCollapsibleDemoContainer } from './demos/open-collapsible-demo-container';
@@ -29,6 +33,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CollapsiblePage {}

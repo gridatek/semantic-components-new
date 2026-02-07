@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { CustomThemeCheckboxDemo } from './custom-theme-checkbox-demo';
 
@@ -15,6 +19,7 @@ import { CustomThemeCheckboxDemo } from './custom-theme-checkbox-demo';
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomThemeCheckboxDemoContainer {

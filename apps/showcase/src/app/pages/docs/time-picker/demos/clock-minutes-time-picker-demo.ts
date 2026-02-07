@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTimePicker,
   ScTimePickerClock,
@@ -16,17 +21,14 @@ import {
       <div class="space-y-2">
         <p class="text-sm font-medium">Selected Time</p>
         <p class="text-2xl tabular-nums">
-          {{
-            ((time()?.hours ?? 0) % 12 || 12)
-              .toString()
-              .padStart(2, '0')
-          }}:{{
+          {{ ((time()?.hours ?? 0) % 12 || 12).toString().padStart(2, '0') }}:{{
             (time()?.minutes ?? 0).toString().padStart(2, '0')
           }}
         </p>
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClockMinutesTimePickerDemo {

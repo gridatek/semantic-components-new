@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -17,6 +21,7 @@ import { RouterOutlet } from '@angular/router';
     'data-slot': 'stacked-layout',
     class: 'min-h-screen flex flex-col block',
   },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StackedLayout {}

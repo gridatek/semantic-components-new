@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   ScCombobox,
@@ -86,6 +87,7 @@ interface ComboboxOption {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountriesComboboxDemo {

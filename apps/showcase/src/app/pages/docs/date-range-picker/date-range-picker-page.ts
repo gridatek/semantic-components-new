@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicDateRangePickerDemoContainer } from './demos/basic-date-range-picker-demo-container';
 import { PresetsDateRangePickerDemoContainer } from './demos/presets-date-range-picker-demo-container';
 import { ConstrainedDateRangePickerDemoContainer } from './demos/constrained-date-range-picker-demo-container';
@@ -42,6 +46,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DateRangePickerPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneDisplay } from '@semantic-components/ui';
 
 @Component({
@@ -10,6 +14,7 @@ import { ScTimezoneDisplay } from '@semantic-components/ui';
       <span class="text-sm text-muted-foreground">Clock icon only</span>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconOnlyTimezoneDemo {}

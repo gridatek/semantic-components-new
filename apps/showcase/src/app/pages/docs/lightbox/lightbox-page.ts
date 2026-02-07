@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicLightboxDemoContainer } from './demos/basic-lightbox-demo-container';
 import { InfoLightboxDemoContainer } from './demos/info-lightbox-demo-container';
 import { GalleryLightboxDemoContainer } from './demos/gallery-lightbox-demo-container';
@@ -44,6 +48,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class LightboxPage {}

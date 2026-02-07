@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneSelect } from '@semantic-components/ui';
 
 @Component({
@@ -9,6 +13,7 @@ import { ScTimezoneSelect } from '@semantic-components/ui';
       <sc-timezone-select [showOffset]="false"></sc-timezone-select>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NoOffsetTimezoneDemo {}

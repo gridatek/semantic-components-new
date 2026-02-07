@@ -6,6 +6,7 @@ import {
   model,
   output,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { TransferListItem } from './transfer-list-types';
@@ -227,6 +228,7 @@ import type { TransferListItem } from './transfer-list-types';
       display: block;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTransferList {

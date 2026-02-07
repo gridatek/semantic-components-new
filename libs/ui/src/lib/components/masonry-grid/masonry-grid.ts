@@ -10,6 +10,7 @@ import {
   input,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScMasonryItem } from './masonry-item';
@@ -42,6 +43,7 @@ export type MasonryLayoutMode = 'columns' | 'absolute';
       margin-bottom: var(--masonry-gap, 16px);
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMasonryGrid {

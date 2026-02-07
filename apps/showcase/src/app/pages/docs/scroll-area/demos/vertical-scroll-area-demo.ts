@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
 
 interface Tag {
@@ -25,6 +29,7 @@ interface Tag {
       <div sc-scroll-bar orientation="vertical"></div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerticalScrollAreaDemo {

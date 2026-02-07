@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDateRangePicker } from '@semantic-components/ui';
 
 @Component({
@@ -14,6 +18,7 @@ import { ScDateRangePicker } from '@semantic-components/ui';
       placeholder="Select within last 30 days"
     />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConstrainedDateRangePickerDemo {

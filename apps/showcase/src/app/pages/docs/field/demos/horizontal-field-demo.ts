@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScField, ScLabel, ScInput } from '@semantic-components/ui';
 
 @Component({
@@ -7,14 +11,10 @@ import { ScField, ScLabel, ScInput } from '@semantic-components/ui';
   template: `
     <div sc-field [orientation]="'horizontal'">
       <label sc-label for="username">Username</label>
-      <input
-        sc-input
-        id="username"
-        type="text"
-        placeholder="Enter username"
-      />
+      <input sc-input id="username" type="text" placeholder="Enter username" />
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalFieldDemo {}

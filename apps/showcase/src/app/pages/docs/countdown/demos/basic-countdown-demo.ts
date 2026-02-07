@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCountdown } from '@semantic-components/ui';
 
 @Component({
@@ -9,6 +13,7 @@ import { ScCountdown } from '@semantic-components/ui';
       <sc-countdown [targetDate]="futureDate" />
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicCountdownDemo {

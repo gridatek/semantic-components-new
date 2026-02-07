@@ -10,6 +10,7 @@ import {
   output,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -134,6 +135,7 @@ interface TargetRect {
       </div>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(window:resize)': 'updateTargetRect()',
@@ -363,4 +365,3 @@ export class ScSpotlight {
     this.hide();
   }
 }
-

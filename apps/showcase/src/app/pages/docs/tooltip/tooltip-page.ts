@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicTooltipDemoContainer } from './demos/basic-tooltip-demo-container';
 import { PositionsTooltipDemoContainer } from './demos/positions-tooltip-demo-container';
 import { IconButtonTooltipDemoContainer } from './demos/icon-button-tooltip-demo-container';
@@ -34,6 +38,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TooltipPage {}

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneSelect, ScTimezoneService } from '@semantic-components/ui';
 
 @Component({
@@ -16,6 +21,7 @@ import { ScTimezoneSelect, ScTimezoneService } from '@semantic-components/ui';
       </p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicSelectTimezoneDemo {

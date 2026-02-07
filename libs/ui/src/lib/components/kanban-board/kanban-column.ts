@@ -5,6 +5,7 @@ import {
   input,
   output,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScKanbanCard } from './kanban-card';
@@ -202,6 +203,7 @@ import type { KanbanCard, KanbanColumn, KanbanDragEvent } from './kanban-types';
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScKanbanColumn {

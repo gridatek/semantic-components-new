@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScMenuDemoContainer } from './demos/menu-demo-container';
 import { MenuShortcutsDemoContainer } from './demos/menu-shortcuts-demo-container';
 import { MenuToolsDemoContainer } from './demos/menu-tools-demo-container';
@@ -33,6 +37,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class MenuPage {}

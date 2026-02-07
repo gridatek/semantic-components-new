@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicOptFieldDemoContainer } from './demos/basic-opt-field-demo-container';
 import { SeparatorOptFieldDemoContainer } from './demos/separator-opt-field-demo-container';
 import { PinOptFieldDemoContainer } from './demos/pin-opt-field-demo-container';
@@ -38,6 +42,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OptFieldPage {}

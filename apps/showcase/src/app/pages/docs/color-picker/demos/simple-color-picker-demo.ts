@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScColorPicker,
   ScColorPickerPreview,
@@ -29,15 +34,28 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleColorPickerDemo {
   readonly color = signal('#ef4444');
 
   readonly swatches = [
-    '#1e293b', '#334155', '#475569', '#64748b',
-    '#dc2626', '#ea580c', '#d97706', '#65a30d',
-    '#16a34a', '#0d9488', '#0891b2', '#2563eb',
-    '#7c3aed', '#c026d3', '#94a3b8', '#cbd5e1',
+    '#1e293b',
+    '#334155',
+    '#475569',
+    '#64748b',
+    '#dc2626',
+    '#ea580c',
+    '#d97706',
+    '#65a30d',
+    '#16a34a',
+    '#0d9488',
+    '#0891b2',
+    '#2563eb',
+    '#7c3aed',
+    '#c026d3',
+    '#94a3b8',
+    '#cbd5e1',
   ];
 }

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicRadioGroupDemoContainer } from './demos/basic-radio-group-demo-container';
 import { DescriptionsRadioGroupDemoContainer } from './demos/descriptions-radio-group-demo-container';
 import { DisabledRadioGroupDemoContainer } from './demos/disabled-radio-group-demo-container';
@@ -39,6 +43,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class RadioGroupPage {}

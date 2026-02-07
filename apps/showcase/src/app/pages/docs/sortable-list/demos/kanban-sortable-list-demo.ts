@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSortableHandle,
   ScSortableItem,
@@ -15,15 +20,15 @@ interface KanbanCard {
 
 @Component({
   selector: 'app-kanban-sortable-list-demo',
-  imports: [ScSortableList, ScSortableItem, ScSortableHandle, ScSortableOverlay],
+  imports: [
+    ScSortableList,
+    ScSortableItem,
+    ScSortableHandle,
+    ScSortableOverlay,
+  ],
   template: `
     <div class="max-w-md">
-      <div
-        sc-sortable-list
-        [(items)]="cards"
-        [handleOnly]="true"
-        class="gap-3"
-      >
+      <div sc-sortable-list [(items)]="cards" [handleOnly]="true" class="gap-3">
         <div sc-sortable-overlay></div>
         @for (card of cards(); track card.id; let i = $index) {
           <div
@@ -54,6 +59,7 @@ interface KanbanCard {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KanbanSortableListDemo {

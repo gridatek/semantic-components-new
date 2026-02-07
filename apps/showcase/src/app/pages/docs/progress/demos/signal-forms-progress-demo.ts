@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required, minLength } from '@angular/forms/signals';
@@ -73,6 +74,7 @@ interface UserFormModel {
       </div>
     </form>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignalFormsProgressDemo {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTooltipTrigger } from '@semantic-components/ui';
 
 @Component({
@@ -12,6 +16,7 @@ import { ScTooltipTrigger } from '@semantic-components/ui';
       Hover me
     </button>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicTooltipDemo {}

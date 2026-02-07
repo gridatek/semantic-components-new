@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ActionToastDemoContainer } from './demos/action-toast-demo-container';
 import { BasicToastDemoContainer } from './demos/basic-toast-demo-container';
 import { DestructiveToastDemoContainer } from './demos/destructive-toast-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ToastPage {}

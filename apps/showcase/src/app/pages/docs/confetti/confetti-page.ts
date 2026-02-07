@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicConfettiDemoContainer } from './demos/basic-confetti-demo-container';
 import { CornerBurstsConfettiDemoContainer } from './demos/corner-bursts-confetti-demo-container';
 import { CustomColorsConfettiDemoContainer } from './demos/custom-colors-confetti-demo-container';
@@ -33,6 +37,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ConfettiPage {}

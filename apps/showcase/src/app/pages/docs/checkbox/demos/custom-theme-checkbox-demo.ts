@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
 import { FormsModule } from '@angular/forms';
 
@@ -107,6 +112,7 @@ import { FormsModule } from '@angular/forms';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomThemeCheckboxDemo {

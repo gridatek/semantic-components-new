@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicComboboxDemoContainer } from './demos/basic-combobox-demo-container';
 import { CountriesComboboxDemoContainer } from './demos/countries-combobox-demo-container';
 import { DisabledComboboxDemoContainer } from './demos/disabled-combobox-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ComboboxPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicTextareaDemoContainer } from './demos/basic-textarea-demo-container';
 import { DisabledTextareaDemoContainer } from './demos/disabled-textarea-demo-container';
 import { FormTextareaDemoContainer } from './demos/form-textarea-demo-container';
@@ -41,6 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TextareaPage {}

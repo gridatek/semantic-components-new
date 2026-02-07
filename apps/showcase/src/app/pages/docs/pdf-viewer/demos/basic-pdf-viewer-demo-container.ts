@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { BasicPdfViewerDemo } from './basic-pdf-viewer-demo';
 
@@ -10,6 +14,7 @@ import { BasicPdfViewerDemo } from './basic-pdf-viewer-demo';
       <app-basic-pdf-viewer-demo />
     </app-demo-container>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicPdfViewerDemoContainer {

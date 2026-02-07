@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -14,6 +18,7 @@ const y = 2;'"
       [newTitle]="'file.ts'"
     />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IdenticalDiffViewerDemo {}

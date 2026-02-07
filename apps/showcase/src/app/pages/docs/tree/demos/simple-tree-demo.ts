@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTree,
   ScTreeItem,
@@ -70,6 +74,7 @@ import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
       </ul>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleTreeDemo {}

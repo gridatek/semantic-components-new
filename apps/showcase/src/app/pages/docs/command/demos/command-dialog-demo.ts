@@ -6,6 +6,7 @@ import {
   inject,
   signal,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {
@@ -130,6 +131,7 @@ interface CommandItem {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCommandDialogDemo {

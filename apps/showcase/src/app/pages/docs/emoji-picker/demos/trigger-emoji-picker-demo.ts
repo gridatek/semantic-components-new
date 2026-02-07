@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPickerTrigger } from '@semantic-components/ui';
 
 @Component({
@@ -15,5 +15,6 @@ import { ScEmojiPickerTrigger } from '@semantic-components/ui';
       </span>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
 })
 export class TriggerEmojiPickerDemo {}

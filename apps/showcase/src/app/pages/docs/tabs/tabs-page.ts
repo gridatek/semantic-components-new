@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicTabsDemoContainer } from './demos/basic-tabs-demo-container';
 import { DisabledTabsDemoContainer } from './demos/disabled-tabs-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
@@ -23,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TabsPage {}

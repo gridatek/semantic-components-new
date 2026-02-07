@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScImageCropper,
   ScImageCropperContainer,
@@ -22,7 +27,10 @@ import {
       [containerHeight]="250"
       class="space-y-4"
     >
-      <div sc-image-cropper-container class="rounded-lg overflow-hidden border"></div>
+      <div
+        sc-image-cropper-container
+        class="rounded-lg overflow-hidden border"
+      ></div>
 
       <div class="flex gap-8">
         <div class="flex-1">
@@ -60,6 +68,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarImageCropperDemo {

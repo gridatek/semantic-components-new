@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicDiffViewerDemoContainer } from './demos/basic-diff-viewer-demo-container';
 import { UnifiedDiffViewerDemoContainer } from './demos/unified-diff-viewer-demo-container';
 import { JsonDiffViewerDemoContainer } from './demos/json-diff-viewer-demo-container';
@@ -41,6 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DiffViewerPage {}

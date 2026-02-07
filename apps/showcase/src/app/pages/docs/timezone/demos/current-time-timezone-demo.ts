@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScTimezoneBadge, ScTimezoneService } from '@semantic-components/ui';
 
 @Component({
@@ -12,6 +17,7 @@ import { ScTimezoneBadge, ScTimezoneService } from '@semantic-components/ui';
       </span>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentTimeTimezoneDemo {

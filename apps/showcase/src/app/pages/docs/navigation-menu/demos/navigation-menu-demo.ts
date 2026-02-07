@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNavigationMenu,
   ScNavigationMenuContent,
@@ -164,6 +168,7 @@ import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
       </ul>
     </nav>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNavigationMenuDemo {}

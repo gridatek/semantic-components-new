@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicKanbanBoardDemoContainer } from './demos/basic-kanban-board-demo-container';
 import { MinimalKanbanBoardDemoContainer } from './demos/minimal-kanban-board-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
@@ -27,6 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class KanbanBoardPage {}

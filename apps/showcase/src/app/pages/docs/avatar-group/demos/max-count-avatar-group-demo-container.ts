@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { MaxCountAvatarGroupDemo } from './max-count-avatar-group-demo';
 
@@ -16,6 +20,7 @@ import { MaxCountAvatarGroupDemo } from './max-count-avatar-group-demo';
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaxCountAvatarGroupDemoContainer {

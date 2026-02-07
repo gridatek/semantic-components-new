@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { disabled, form, FormField } from '@angular/forms/signals';
 import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
 
@@ -23,6 +28,7 @@ value: "{{ disabledForm.text().value() }}"
     </pre
     >
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledInputDemo {

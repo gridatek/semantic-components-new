@@ -9,6 +9,7 @@ import {
   output,
   signal,
   DoCheck,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
@@ -259,6 +260,7 @@ export class TourService {
       </div>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(window:resize)': 'updateTargetRect()',

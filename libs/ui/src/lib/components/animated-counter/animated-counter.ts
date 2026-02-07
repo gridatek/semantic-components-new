@@ -8,6 +8,7 @@ import {
   input,
   output,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { AnimatedCounterEasing } from './animated-counter-types';
@@ -25,6 +26,7 @@ import { DEFAULT_COUNTER_OPTIONS } from './animated-counter-types';
       display: inline-block;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAnimatedCounter {

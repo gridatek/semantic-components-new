@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -7,6 +11,7 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
   template: `
     <sc-avatar-group [avatars]="users" [max]="6" />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FallbackAvatarGroupDemo {

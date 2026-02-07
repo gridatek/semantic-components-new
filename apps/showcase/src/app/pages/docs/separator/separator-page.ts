@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicSeparatorDemoContainer } from './demos/basic-separator-demo-container';
 import { CardSeparatorDemoContainer } from './demos/card-separator-demo-container';
 import { VerticalSeparatorDemoContainer } from './demos/vertical-separator-demo-container';
@@ -29,6 +33,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SeparatorPage {}

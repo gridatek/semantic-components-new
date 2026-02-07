@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -43,6 +48,7 @@ import { ScLabel } from '@semantic-components/ui';
       Current price: {{ '$' + (price() ?? 0).toFixed(2) }}
     </p>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PriceNumberFieldDemo {

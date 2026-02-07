@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicSkeletonDemoContainer } from './demos/basic-skeleton-demo-container';
 import { CardSkeletonDemoContainer } from './demos/card-skeleton-demo-container';
 import { ArticleSkeletonDemoContainer } from './demos/article-skeleton-demo-container';
@@ -35,6 +39,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SkeletonPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicCodeEditorDemoContainer } from './demos/basic-code-editor-demo-container';
 import { CssCodeEditorDemoContainer } from './demos/css-code-editor-demo-container';
 import { HtmlCodeEditorDemoContainer } from './demos/html-code-editor-demo-container';
@@ -57,6 +61,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CodeEditorPage {}

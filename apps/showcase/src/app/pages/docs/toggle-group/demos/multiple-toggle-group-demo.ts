@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -29,11 +34,7 @@ import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
             <path d="M15 20a4 4 0 0 0 0-8H6v8" />
           </svg>
         </button>
-        <button
-          sc-toggle-group-item
-          value="italic"
-          aria-label="Toggle italic"
-        >
+        <button sc-toggle-group-item value="italic" aria-label="Toggle italic">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -78,6 +79,7 @@ import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
       </p>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultipleToggleGroupDemo {

@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScTimezoneService } from './timezone.service';
@@ -43,6 +44,7 @@ import { ScTimezoneService } from './timezone.service';
     }
     <span>{{ displayText() }}</span>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTimezoneBadge {

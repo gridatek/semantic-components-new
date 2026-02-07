@@ -4,6 +4,7 @@ import {
   computed,
   input,
   output,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import type { Notification, NotificationAction } from './notification-types';
@@ -101,6 +102,7 @@ import type { Notification, NotificationAction } from './notification-types';
       }
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNotificationItem {

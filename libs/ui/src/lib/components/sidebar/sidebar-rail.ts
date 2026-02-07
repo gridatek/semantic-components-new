@@ -1,4 +1,10 @@
-import { Component, computed, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { cn } from '../../utils';
 import { ScSidebarState } from './sidebar-state.service';
 
@@ -12,6 +18,7 @@ import { ScSidebarState } from './sidebar-state.service';
     tabindex: '-1',
     title: 'Toggle Sidebar',
   },
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScSidebarRail {
   readonly state = inject(ScSidebarState);

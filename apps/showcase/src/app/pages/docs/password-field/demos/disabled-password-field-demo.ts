@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScPasswordField,
   ScPasswordFieldInputGroup,
@@ -17,7 +21,12 @@ import { ScLabel } from '@semantic-components/ui';
     ScLabel,
   ],
   template: `
-    <div sc-password-field [value]="'********'" [disabled]="true" class="space-y-2">
+    <div
+      sc-password-field
+      [value]="'********'"
+      [disabled]="true"
+      class="space-y-2"
+    >
       <label sc-label>Password (Disabled)</label>
       <div sc-password-field-input-group>
         <input sc-password-field-input />
@@ -25,6 +34,7 @@ import { ScLabel } from '@semantic-components/ui';
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisabledPasswordFieldDemo {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicMultiSelectDemoContainer } from './demos/basic-multi-select-demo-container';
 import { CountMultiSelectDemoContainer } from './demos/count-multi-select-demo-container';
 import { DisabledMultiSelectDemoContainer } from './demos/disabled-multi-select-demo-container';
@@ -42,6 +46,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class MultiSelectPage {}

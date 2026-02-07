@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { cn } from '../../utils';
 
 @Component({
@@ -9,6 +15,7 @@ import { cn } from '../../utils';
     '[style.width.%]': 'percentage()',
   },
   template: '',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSliderRange {

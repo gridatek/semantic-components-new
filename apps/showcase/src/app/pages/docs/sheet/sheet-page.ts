@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RightSheetDemoContainer } from './demos/right-sheet-demo-container';
 import { LeftSheetDemoContainer } from './demos/left-sheet-demo-container';
 import { TopSheetDemoContainer } from './demos/top-sheet-demo-container';
@@ -33,6 +37,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SheetPage {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScBreadcrumb,
   ScBreadcrumbEllipsis,
@@ -41,6 +45,7 @@ import {
       </ol>
     </nav>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EllipsisBreadcrumbDemo {}

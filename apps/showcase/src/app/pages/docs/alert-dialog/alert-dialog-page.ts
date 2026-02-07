@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicAlertDialogDemoContainer } from './demos/basic-alert-dialog-demo-container';
 import { DestructiveAlertDialogDemoContainer } from './demos/destructive-alert-dialog-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
@@ -27,6 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class AlertDialogPage {}

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScNumberField,
   ScNumberFieldDecrement,
@@ -37,6 +42,7 @@ import { ScLabel } from '@semantic-components/ui';
       Current value: {{ count() ?? 'null' }}
     </p>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicNumberFieldDemo {

@@ -12,6 +12,7 @@ import {
   signal,
   TemplateRef,
   viewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { cn } from '../../utils';
@@ -57,6 +58,7 @@ import type { VirtualListItem, VirtualListRange } from './virtual-list-types';
       display: block;
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScVirtualList<T> {

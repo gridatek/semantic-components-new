@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScTagInput,
   ScTagInputField,
@@ -10,11 +15,7 @@ import {
   imports: [ScTagInput, ScTagInputField, ScTagInputTag],
   template: `
     <div class="max-w-md">
-      <div
-        sc-tag-input
-        [(tags)]="tags"
-        [delimiters]="['Enter', ' ', 'Tab']"
-      >
+      <div sc-tag-input [(tags)]="tags" [delimiters]="['Enter', ' ', 'Tab']">
         @for (tag of tags(); track tag) {
           <span sc-tag-input-tag [tag]="tag"></span>
         }
@@ -22,6 +23,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DelimitersTagInputDemo {

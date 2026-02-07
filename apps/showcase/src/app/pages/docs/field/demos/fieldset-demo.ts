@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScFieldSet,
   ScFieldLegend,
@@ -28,22 +32,12 @@ import {
       <div sc-field-group>
         <div sc-field>
           <label sc-label for="firstName">First Name</label>
-          <input
-            sc-input
-            id="firstName"
-            type="text"
-            placeholder="John"
-          />
+          <input sc-input id="firstName" type="text" placeholder="John" />
         </div>
 
         <div sc-field>
           <label sc-label for="lastName">Last Name</label>
-          <input
-            sc-input
-            id="lastName"
-            type="text"
-            placeholder="Doe"
-          />
+          <input sc-input id="lastName" type="text" placeholder="Doe" />
         </div>
 
         <div sc-field>
@@ -58,6 +52,7 @@ import {
       </div>
     </fieldset>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldsetDemo {}

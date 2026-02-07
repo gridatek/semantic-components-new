@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DemoContainer } from '../../../../components/demo-container/demo-container';
 import { QrCodeBarcodeScannerDemo } from './qr-code-barcode-scanner-demo';
 
@@ -16,6 +20,7 @@ import { QrCodeBarcodeScannerDemo } from './qr-code-barcode-scanner-demo';
     </app-demo-container>
   `,
   host: { class: 'block' },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QrCodeBarcodeScannerDemoContainer {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScCountdown } from '@semantic-components/ui';
 
 @Component({
@@ -9,9 +13,7 @@ import { ScCountdown } from '@semantic-components/ui';
       class="max-w-md rounded-lg border bg-gradient-to-br from-primary/10 to-primary/5 p-8 text-center"
     >
       <h4 class="text-lg font-semibold mb-2">Product Launch</h4>
-      <p class="text-muted-foreground mb-6">
-        Get ready for something amazing!
-      </p>
+      <p class="text-muted-foreground mb-6">Get ready for something amazing!</p>
       <sc-countdown
         [targetDate]="futureDate"
         variant="cards"
@@ -27,6 +29,7 @@ import { ScCountdown } from '@semantic-components/ui';
       </button>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventCountdownDemo {

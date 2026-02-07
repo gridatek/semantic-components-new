@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicAvatarGroupDemoContainer } from './demos/basic-avatar-group-demo-container';
 import { FallbackAvatarGroupDemoContainer } from './demos/fallback-avatar-group-demo-container';
 import { MaxCountAvatarGroupDemoContainer } from './demos/max-count-avatar-group-demo-container';
@@ -39,6 +43,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class AvatarGroupPage {}

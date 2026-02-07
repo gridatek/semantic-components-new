@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDiffViewer } from '@semantic-components/ui';
 
 @Component({
@@ -12,6 +16,7 @@ import { ScDiffViewer } from '@semantic-components/ui';
       [newTitle]="'config.json (after)'"
     />
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JsonDiffViewerDemo {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicBarcodeScannerDemoContainer } from './demos/basic-barcode-scanner-demo-container';
 import { BrowserSupportBarcodeScannerDemoContainer } from './demos/browser-support-barcode-scanner-demo-container';
 import { FormatsBarcodeScannerDemoContainer } from './demos/formats-barcode-scanner-demo-container';
@@ -42,6 +46,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BarcodeScannerPage {}

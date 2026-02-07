@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicEditorDemoContainer } from './demos/basic-editor-demo-container';
 import { PrefilledEditorDemoContainer } from './demos/prefilled-editor-demo-container';
 import { MinimalToolbarEditorDemoContainer } from './demos/minimal-toolbar-editor-demo-container';
@@ -42,6 +46,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class EditorPage {}

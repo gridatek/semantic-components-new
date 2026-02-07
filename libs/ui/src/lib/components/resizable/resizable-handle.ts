@@ -5,6 +5,7 @@ import {
   ElementRef,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScResizablePanelGroup } from './resizable-panel-group';
@@ -43,6 +44,7 @@ import { ScResizablePanelGroup } from './resizable-panel-group';
       </div>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScResizableHandle {

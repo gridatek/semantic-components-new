@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BadgesDockDemoContainer } from './demos/badges-dock-demo-container';
 import { BasicDockDemoContainer } from './demos/basic-dock-demo-container';
 import { MagnificationScaleDockDemoContainer } from './demos/magnification-scale-dock-demo-container';
@@ -33,6 +37,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DockPage {}

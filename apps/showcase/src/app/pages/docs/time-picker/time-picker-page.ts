@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ClockHoursTimePickerDemoContainer } from './demos/clock-hours-time-picker-demo-container';
 import { ClockMinutesTimePickerDemoContainer } from './demos/clock-minutes-time-picker-demo-container';
 import { DisabledTimePickerDemoContainer } from './demos/disabled-time-picker-demo-container';
@@ -41,6 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TimePickerPage {}

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScDateRangePicker, DateRange } from '@semantic-components/ui';
 
 @Component({
@@ -19,6 +24,7 @@ import { ScDateRangePicker, DateRange } from '@semantic-components/ui';
       }
     </p>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicDateRangePickerDemo {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicPaginationDemoContainer } from './demos/basic-pagination-demo-container';
 import { EllipsisPaginationDemoContainer } from './demos/ellipsis-pagination-demo-container';
 import { ManyPagesPaginationDemoContainer } from './demos/many-pages-pagination-demo-container';
@@ -43,6 +47,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class PaginationPage {}

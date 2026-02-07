@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ScEmojiPicker } from '@semantic-components/ui';
 
 @Component({
@@ -7,5 +7,6 @@ import { ScEmojiPicker } from '@semantic-components/ui';
   template: `
     <sc-emoji-picker [showSearch]="false" />
   `,
+  encapsulation: ViewEncapsulation.None,
 })
 export class NoSearchEmojiPickerDemo {}

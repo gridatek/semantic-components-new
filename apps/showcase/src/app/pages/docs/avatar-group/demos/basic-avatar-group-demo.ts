@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
 
 @Component({
@@ -17,6 +22,7 @@ import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
       </p>
     }
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicAvatarGroupDemo {

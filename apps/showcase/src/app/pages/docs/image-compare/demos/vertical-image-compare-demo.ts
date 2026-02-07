@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScImageCompare,
   ScImageCompareContainer,
@@ -19,7 +23,11 @@ import {
     ScImageCompareLabel,
   ],
   template: `
-    <div sc-image-compare [orientation]="'vertical'" class="w-full max-w-sm aspect-[2/3]">
+    <div
+      sc-image-compare
+      [orientation]="'vertical'"
+      class="w-full max-w-sm aspect-[2/3]"
+    >
       <div sc-image-compare-container>
         <img
           sc-image-compare-before
@@ -37,6 +45,7 @@ import {
       </div>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerticalImageCompareDemo {}

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicEmojiPickerDemoContainer } from './demos/basic-emoji-picker-demo-container';
 import { NoSearchEmojiPickerDemoContainer } from './demos/no-search-emoji-picker-demo-container';
 import { NoCategoriesEmojiPickerDemoContainer } from './demos/no-categories-emoji-picker-demo-container';
@@ -47,6 +51,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class EmojiPickerPage {}

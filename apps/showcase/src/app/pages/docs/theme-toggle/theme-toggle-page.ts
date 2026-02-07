@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { BasicThemeToggleDemoContainer } from './demos/basic-theme-toggle-demo-container';
 import { NavigationThemeToggleDemoContainer } from './demos/navigation-theme-toggle-demo-container';
 import { SettingsPanelThemeToggleDemoContainer } from './demos/settings-panel-theme-toggle-demo-container';
@@ -39,6 +43,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
       </section>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ThemeTogglePage {}
