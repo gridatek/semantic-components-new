@@ -11,8 +11,7 @@ import {
 import { cn } from '../../utils';
 import { ScSidebarState } from './sidebar-state.service';
 
-const SIDEBAR_COOKIE_NAME = 'sidebar_state';
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
+const SIDEBAR_STORAGE_KEY = 'sc-sidebar-state';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 const MOBILE_BREAKPOINT = 768;
 
@@ -51,15 +50,15 @@ export class ScSidebarProvider implements OnInit, OnDestroy {
     effect(() => this.state.setOpen(this.open()));
     effect(() => this.open.set(this.state.open()));
 
-    // Save to cookie when state changes
+    // Save to localStorage when state changes
     effect(() => {
-      this.saveToCookie(this.state.open());
+      this.saveToStorage(this.state.open());
     });
   }
 
   ngOnInit(): void {
-    // Load initial state from cookie
-    const savedState = this.loadFromCookie();
+    // Load initial state from localStorage
+    const savedState = this.loadFromStorage();
     if (savedState !== null) {
       this.open.set(savedState);
     }
@@ -94,16 +93,20 @@ export class ScSidebarProvider implements OnInit, OnDestroy {
     }
   }
 
-  private saveToCookie(open: boolean): void {
-    if (typeof document === 'undefined') return;
-    document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+  private saveToStorage(open: boolean): void {
+    try {
+      localStorage.setItem(SIDEBAR_STORAGE_KEY, String(open));
+    } catch {
+      // localStorage unavailable
+    }
   }
 
-  private loadFromCookie(): boolean | null {
-    if (typeof document === 'undefined') return null;
-    const match = document.cookie.match(
-      new RegExp(`${SIDEBAR_COOKIE_NAME}=([^;]+)`),
-    );
-    return match ? match[1] === 'true' : null;
+  private loadFromStorage(): boolean | null {
+    try {
+      const value = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+      return value !== null ? value === 'true' : null;
+    } catch {
+      return null;
+    }
   }
 }
