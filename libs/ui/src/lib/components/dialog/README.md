@@ -21,17 +21,17 @@ ScDialogProvider (root wrapper - manages open state)
 
 ## Components
 
-| Component             | Selector                    | Description                           |
-| --------------------- | --------------------------- | ------------------------------------- |
-| `ScDialog`            | `div[sc-dialog]`            | Root wrapper, manages open state      |
-| `ScDialogTrigger`     | `button[sc-dialog-trigger]` | Button that opens the dialog          |
-| `ScDialogPortal`      | `div[sc-dialog-portal]`     | Overlay container with backdrop       |
-| `ScDialogContent`     | `div[sc-dialog-content]`    | Dialog panel with animations          |
-| `ScDialogHeader`      | `div[sc-dialog-header]`     | Header section container              |
-| `ScDialogTitle`       | `h2[sc-dialog-title]`       | Dialog title (aria-labelledby)        |
-| `ScDialogDescription` | `p[sc-dialog-description]`  | Dialog description (aria-describedby) |
-| `ScDialogFooter`      | `div[sc-dialog-footer]`     | Footer section for actions            |
-| `ScDialogClose`       | `button[sc-dialog-close]`   | Button that closes the dialog         |
+| Component             | Selector                    | Description                                       |
+| --------------------- | --------------------------- | ------------------------------------------------- |
+| `ScDialog`            | `div[sc-dialog]`            | Root wrapper, manages open state                  |
+| `ScDialogTrigger`     | `button[sc-dialog-trigger]` | Button that opens the dialog                      |
+| `ScDialogPortal`      | `div[sc-dialog-portal]`     | Overlay container with backdrop                   |
+| `ScDialogContent`     | `div[sc-dialog-content]`    | Dialog panel with animations                      |
+| `ScDialogHeader`      | `div[sc-dialog-header]`     | Header section container                          |
+| `ScDialogTitle`       | `h2[sc-dialog-title]`       | Dialog title (aria-labelledby)                    |
+| `ScDialogDescription` | `p[sc-dialog-description]`  | Dialog description (aria-describedby)             |
+| `ScDialogFooter`      | `div[sc-dialog-footer]`     | Footer section for actions                        |
+| `ScDialogClose`       | `button[sc-dialog-close]`   | Close button (sets `type="button"` automatically) |
 
 ## Usage
 

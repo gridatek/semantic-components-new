@@ -7,6 +7,7 @@ import { buttonVariants, ScButtonVariants } from '../button';
   selector: 'button[sc-dialog-close]',
   host: {
     'data-slot': 'dialog-close',
+    type: 'button',
     '[class]': 'class()',
     '(click)': 'closeDialog()',
   },
