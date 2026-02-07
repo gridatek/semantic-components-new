@@ -13,7 +13,7 @@ export class ScSidebarSeparator {
 
   protected readonly class = computed(() =>
     cn(
-      'mx-2 w-auto bg-sidebar-border',
+      'mx-2 h-px w-auto bg-sidebar-border',
       'group-data-[collapsible=icon]:mx-2',
       this.classInput(),
     ),

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   ScSidebarProvider,
   ScSidebar,
@@ -56,7 +60,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     RouterLinkActive,
   ],
   template: `
-    <div sc-sidebar-provider class="min-h-screen">
+    <div sc-sidebar-provider class="min-h-svh">
       <div sc-sidebar side="left" variant="sidebar" collapsible="icon">
         <div sc-sidebar-header>
           <ul sc-sidebar-menu>
@@ -201,7 +205,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </div>
           </div>
 
-          <div sc-sidebar-separator class="h-px"></div>
+          <div sc-sidebar-separator></div>
 
           <div sc-sidebar-group>
             <div sc-sidebar-group-label>Projects</div>
@@ -337,7 +341,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </div>
           </div>
 
-          <div sc-sidebar-separator class="h-px"></div>
+          <div sc-sidebar-separator></div>
 
           <div sc-sidebar-group>
             <div sc-sidebar-group-label>Loading Example</div>
@@ -474,6 +478,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       </main>
     </div>
   `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DashboardPage {}
