@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  ScButton,
   ScDialogProvider,
   ScDialogClose,
   ScDialog,
@@ -9,11 +10,16 @@ import {
   ScDialogPortal,
   ScDialogTitle,
   ScDialogTrigger,
+  ScField,
+  ScFieldGroup,
+  ScInput,
+  ScLabel,
 } from '@semantic-components/ui';
 
 @Component({
   selector: 'app-dialog-demo',
   imports: [
+    ScButton,
     ScDialogProvider,
     ScDialogClose,
     ScDialog,
@@ -23,73 +29,38 @@ import {
     ScDialogPortal,
     ScDialogTitle,
     ScDialogTrigger,
+    ScField,
+    ScFieldGroup,
+    ScInput,
+    ScLabel,
   ],
   template: `
     <div sc-dialog-provider>
-      <button
-        sc-dialog-trigger
-        class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
-        Open Dialog
-      </button>
+      <button sc-dialog-trigger sc-button variant="outline">Open Dialog</button>
       <div sc-dialog-portal>
         <ng-template>
-          <div sc-dialog>
-            <button sc-dialog-close>
-              <svg
-                class="size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
-              <span class="sr-only">Close</span>
-            </button>
+          <div sc-dialog class="sm:max-w-sm">
             <div sc-dialog-header>
               <h2 sc-dialog-title>Edit profile</h2>
               <p sc-dialog-description>
                 Make changes to your profile here. Click save when you're done.
               </p>
             </div>
-            <div class="grid gap-4 py-4">
-              <div class="grid grid-cols-4 items-center gap-4">
-                <label for="name" class="text-right text-sm font-medium">
-                  Name
-                </label>
-                <input
-                  cdkFocusInitial
-                  id="name"
-                  value="Pedro Duarte"
-                  class="col-span-3 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                />
+            <div sc-field-group>
+              <div sc-field orientation="horizontal">
+                <label sc-label>Name</label>
+                <input sc-input value="Pedro Duarte" />
               </div>
-              <div class="grid grid-cols-4 items-center gap-4">
-                <label for="username" class="text-right text-sm font-medium">
-                  Username
-                </label>
-                <input
-                  id="username"
-                  value="@peduarte"
-                  class="col-span-3 flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                />
+              <div sc-field orientation="horizontal">
+                <label sc-label>Username</label>
+                <input sc-input value="@peduarte" />
               </div>
             </div>
             <div sc-dialog-footer>
-              <button
-                type="submit"
-                class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-xs transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                Save changes
+              <button sc-dialog-close sc-button variant="outline">
+                Cancel
               </button>
+              <button sc-button type="submit">Save changes</button>
             </div>
           </div>
         </ng-template>
