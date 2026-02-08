@@ -45,6 +45,7 @@ import {
 } from '@semantic-icons/lucide-icons';
 import { filter } from 'rxjs';
 
+import { Logo } from '../../components/logo/logo';
 import { Toc } from '../../components/toc/toc';
 import { TocService } from '../../components/toc/toc.service';
 import { COMPONENTS } from '../../data/components';
@@ -78,6 +79,7 @@ import { COMPONENTS } from '../../data/components';
     SiMoonIcon,
     SiHomeIcon,
     SiBoxIcon,
+    Logo,
     Toc,
   ],
   template: `
@@ -90,21 +92,7 @@ import { COMPONENTS } from '../../data/components';
                 <div
                   class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m7 11 2-2-2-2" />
-                    <path d="M11 13h4" />
-                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                  </svg>
+                  <svg app-logo></svg>
                 </div>
                 <div class="grid flex-1 text-left text-sm leading-tight">
                   <span class="truncate font-semibold">

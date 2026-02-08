@@ -30,6 +30,7 @@ import {
   SiXIcon,
 } from '@semantic-icons/lucide-icons';
 import { COMPONENTS } from '../../data/components';
+import { Logo } from '../logo/logo';
 
 @Component({
   selector: 'app-navbar',
@@ -57,6 +58,7 @@ import { COMPONENTS } from '../../data/components';
     SiMoonIcon,
     SiMenuIcon,
     SiXIcon,
+    Logo,
   ],
   template: `
     <div sc-navbar-provider>
@@ -64,21 +66,7 @@ import { COMPONENTS } from '../../data/components';
         <div sc-navbar-group>
           <!-- Brand -->
           <a sc-navbar-brand href="#">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-            </svg>
-
+            <svg app-logo class="size-6"></svg>
             <span>Semantic Components</span>
           </a>
 
