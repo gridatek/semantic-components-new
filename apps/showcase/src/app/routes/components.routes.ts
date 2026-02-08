@@ -222,6 +222,11 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/input/input-page'),
       },
       {
+        path: 'input-group',
+        loadComponent: () =>
+          import('../pages/docs/input-group/input-group-page'),
+      },
+      {
         path: 'opt-field',
         loadComponent: () => import('../pages/docs/opt-field/opt-field-page'),
       },

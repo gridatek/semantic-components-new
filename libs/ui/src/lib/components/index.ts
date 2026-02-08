@@ -44,6 +44,7 @@ export * from './image-compare';
 export * from './image-cropper';
 export * from './infinite-scroll';
 export * from './input';
+export * from './input-group';
 export * from './opt-field';
 export * from './kanban-board';
 export * from './kbd';

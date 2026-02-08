@@ -1774,6 +1774,25 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/input-group',
+    children: [
+      {
+        path: 'basic-input-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-group/demos/basic-input-group-demo').then(
+            (m) => m.BasicInputGroupDemo,
+          ),
+      },
+      {
+        path: 'button-input-group-demo',
+        loadComponent: () =>
+          import('../pages/docs/input-group/demos/button-input-group-demo').then(
+            (m) => m.ButtonInputGroupDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/opt-field',
     children: [
       {

@@ -287,6 +287,13 @@ export const COMPONENTS: ComponentItem[] = [
     status: 'Experimental',
   },
   {
+    name: 'Input Group',
+    path: 'input-group',
+    description:
+      'A composable input group for combining inputs with addons, buttons, and text.',
+    status: 'Experimental',
+  },
+  {
     name: 'Opt Field',
     path: 'opt-field',
     description: 'An input for entering one-time passwords.',
