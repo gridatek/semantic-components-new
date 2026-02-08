@@ -10,6 +10,8 @@ import { MultipleDatePickerDemoContainer } from './demos/multiple-date-picker-de
 import { ConstrainedDatePickerDemoContainer } from './demos/constrained-date-picker-demo-container';
 import { FormDatePickerDemoContainer } from './demos/form-date-picker-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-date-picker-page',
@@ -21,6 +23,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     ConstrainedDatePickerDemoContainer,
     FormDatePickerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -29,6 +32,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A date picker component with calendar popup for selecting dates.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -45,4 +49,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DatePickerPage {}
+export default class DatePickerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'date-picker')!
+    .status;
+}

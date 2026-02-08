@@ -12,6 +12,8 @@ import { SmallSignaturePadDemoContainer } from './demos/small-signature-pad-demo
 import { PreviewSignaturePadDemoContainer } from './demos/preview-signature-pad-demo-container';
 import { FormSignaturePadDemoContainer } from './demos/form-signature-pad-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-signature-pad-page',
@@ -25,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     PreviewSignaturePadDemoContainer,
     FormSignaturePadDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -33,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Canvas-based signature capture with touch and mouse support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -51,4 +55,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SignaturePadPage {}
+export default class SignaturePadPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'signature-pad')!
+    .status;
+}

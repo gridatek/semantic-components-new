@@ -10,6 +10,8 @@ import { DotSeparatorOptFieldDemoContainer } from './demos/dot-separator-opt-fie
 import { DisabledOptFieldDemoContainer } from './demos/disabled-opt-field-demo-container';
 import { VerificationOptFieldDemoContainer } from './demos/verification-opt-field-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-opt-field-page',
@@ -21,6 +23,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     DisabledOptFieldDemoContainer,
     VerificationOptFieldDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -29,6 +32,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Accessible one-time password component with copy paste functionality.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -45,4 +49,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OptFieldPage {}
+export default class OptFieldPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'opt-field')!
+    .status;
+}

@@ -8,6 +8,8 @@ import { PositionsTooltipDemoContainer } from './demos/positions-tooltip-demo-co
 import { IconButtonTooltipDemoContainer } from './demos/icon-button-tooltip-demo-container';
 import { DelayTooltipDemoContainer } from './demos/delay-tooltip-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-tooltip-page',
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     IconButtonTooltipDemoContainer,
     DelayTooltipDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -27,6 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           focus. For rich content with HTML, images, or interactive elements,
           use Hovercard instead.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -41,4 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TooltipPage {}
+export default class TooltipPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'tooltip')!
+    .status;
+}

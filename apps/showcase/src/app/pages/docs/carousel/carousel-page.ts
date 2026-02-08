@@ -10,6 +10,8 @@ import { ImagesCarouselDemoContainer } from './demos/images-carousel-demo-contai
 import { ThirdWidthCarouselDemoContainer } from './demos/third-width-carousel-demo-container';
 import { VerticalCarouselDemoContainer } from './demos/vertical-carousel-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-carousel-page',
@@ -21,6 +23,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     VerticalCarouselDemoContainer,
     ImagesCarouselDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -29,6 +32,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A carousel with motion and swipe built using CSS scroll snap.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -45,4 +49,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CarouselPage {}
+export default class CarouselPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'carousel')!
+    .status;
+}

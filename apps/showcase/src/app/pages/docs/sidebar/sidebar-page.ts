@@ -4,10 +4,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-sidebar-page',
-  imports: [TocHeading],
+  imports: [TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -15,6 +17,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A composable, themeable and customizable sidebar component.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -25,4 +28,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SidebarPage {}
+export default class SidebarPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'sidebar')!
+    .status;
+}

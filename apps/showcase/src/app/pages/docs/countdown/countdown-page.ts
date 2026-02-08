@@ -14,6 +14,8 @@ import { EventCountdownDemoContainer } from './demos/event-countdown-demo-contai
 import { SaleCountdownDemoContainer } from './demos/sale-countdown-demo-container';
 import { CompletedCountdownDemoContainer } from './demos/completed-countdown-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-countdown-page',
@@ -29,6 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     SaleCountdownDemoContainer,
     CompletedCountdownDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -38,6 +41,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Countdown timer with multiple variants, customizable labels, and
           completion events.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -58,4 +62,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CountdownPage {}
+export default class CountdownPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'countdown')!
+    .status;
+}

@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { AudioPlayerDemoContainer } from './demos/audio-player-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-audio-player-page',
-  imports: [AudioPlayerDemoContainer, TocHeading],
+  imports: [AudioPlayerDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,6 +18,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Feature-rich audio player with playlist support, shuffle, and repeat.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -27,4 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class AudioPlayerPage {}
+export default class AudioPlayerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'audio-player')!
+    .status;
+}

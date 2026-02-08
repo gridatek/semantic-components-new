@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { ButtonGroupDemoContainer } from './demos/button-group-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-button-group-page',
-  imports: [ButtonGroupDemoContainer, TocHeading],
+  imports: [ButtonGroupDemoContainer, TocHeading, ComponentStatusBadge],
   encapsulation: ViewEncapsulation.None,
   template: `
     <div class="space-y-8">
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Groups buttons together with merged borders and rounding.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -27,4 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ButtonGroupPage {}
+export default class ButtonGroupPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'button-group')!
+    .status;
+}

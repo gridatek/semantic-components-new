@@ -11,6 +11,8 @@ import { Format24hTimePickerDemoContainer } from './demos/format-24h-time-picker
 import { PresetsTimePickerDemoContainer } from './demos/presets-time-picker-demo-container';
 import { SecondsTimePickerDemoContainer } from './demos/seconds-time-picker-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-time-picker-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     ClockMinutesTimePickerDemoContainer,
     PresetsTimePickerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -31,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A component for selecting time values.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -48,4 +52,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TimePickerPage {}
+export default class TimePickerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'time-picker')!
+    .status;
+}

@@ -13,6 +13,8 @@ import { TriggerEmojiPickerDemoContainer } from './demos/trigger-emoji-picker-de
 import { QuickReactionsEmojiPickerDemoContainer } from './demos/quick-reactions-emoji-picker-demo-container';
 import { MessageReactionsEmojiPickerDemoContainer } from './demos/message-reactions-emoji-picker-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-emoji-picker-page',
@@ -27,6 +29,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     QuickReactionsEmojiPickerDemoContainer,
     MessageReactionsEmojiPickerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -35,6 +38,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A searchable emoji picker with categories and recently used emojis.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -54,4 +58,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class EmojiPickerPage {}
+export default class EmojiPickerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'emoji-picker')!
+    .status;
+}

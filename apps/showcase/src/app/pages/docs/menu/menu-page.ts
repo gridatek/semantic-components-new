@@ -8,6 +8,8 @@ import { MenuShortcutsDemoContainer } from './demos/menu-shortcuts-demo-containe
 import { MenuToolsDemoContainer } from './demos/menu-tools-demo-container';
 import { MenuAvatarDemoContainer } from './demos/menu-avatar-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-menu-page',
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     MenuToolsDemoContainer,
     MenuAvatarDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -26,6 +29,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Displays a menu to the user — such as a set of actions or functions —
           triggered by a button.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -40,4 +44,6 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class MenuPage {}
+export default class MenuPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'menu')!.status;
+}

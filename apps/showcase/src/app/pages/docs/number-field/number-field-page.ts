@@ -16,6 +16,8 @@ import PriceNumberFieldDemoContainer from './demos/price-number-field-demo-conta
 import DisabledNumberFieldDemoContainer from './demos/disabled-number-field-demo-container';
 import WithoutLabelNumberFieldDemoContainer from './demos/without-label-number-field-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-number-field-page',
@@ -31,6 +33,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     DisabledNumberFieldDemoContainer,
     WithoutLabelNumberFieldDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -40,6 +43,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           A composable numeric input component with scrubbing support,
           increment/decrement buttons, and label integration.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-4">
@@ -71,6 +75,8 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class NumberFieldPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'number-field')!
+    .status;
   readonly usageCode = `import {
   ScNumberField,
   ScNumberFieldScrubArea,

@@ -19,6 +19,8 @@ import { SettingsPanelTimezoneDemoContainer } from './demos/settings-panel-timez
 import { SizesTimezoneDemoContainer } from './demos/sizes-timezone-demo-container';
 import { VariantsTimezoneDemoContainer } from './demos/variants-timezone-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-timezone-page',
@@ -39,6 +41,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     SettingsPanelTimezoneDemoContainer,
     CurrentTimeTimezoneDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -49,6 +52,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           persisting user preferences and formatting dates/times in the selected
           timezone.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -74,4 +78,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TimezonePage {}
+export default class TimezonePage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'timezone')!
+    .status;
+}

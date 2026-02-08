@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { ScQrCodeDemoContainer } from './demos/qr-code-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-qr-code-page',
-  imports: [ScQrCodeDemoContainer, TocHeading],
+  imports: [ScQrCodeDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Generate QR codes from text or URLs with customizable colors and logo
           support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -28,4 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class QrCodePage {}
+export default class QrCodePage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'qr-code')!
+    .status;
+}

@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { VideoPlayerDemoContainer } from './demos/video-player-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-video-player-page',
-  imports: [VideoPlayerDemoContainer, TocHeading],
+  imports: [VideoPlayerDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Full-featured HTML5 video player with custom controls, keyboard
           shortcuts, and fullscreen support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -28,4 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class VideoPlayerPage {}
+export default class VideoPlayerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'video-player')!
+    .status;
+}

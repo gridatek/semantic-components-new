@@ -12,6 +12,8 @@ import { NoLoopLightboxDemoContainer } from './demos/no-loop-lightbox-demo-conta
 import { SingleLightboxDemoContainer } from './demos/single-lightbox-demo-container';
 import { KeyboardLightboxDemoContainer } from './demos/keyboard-lightbox-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-lightbox-page',
@@ -25,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     SingleLightboxDemoContainer,
     KeyboardLightboxDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -33,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Full-screen image viewer with zoom, navigation, and keyboard support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -51,4 +55,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class LightboxPage {}
+export default class LightboxPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'lightbox')!
+    .status;
+}

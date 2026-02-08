@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { ScResizableDemoContainer } from './demos/resizable-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-resizable-page',
-  imports: [ScResizableDemoContainer, TocHeading],
+  imports: [ScResizableDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,6 +18,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Accessible resizable panel groups and layouts with keyboard support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -27,4 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ResizablePage {}
+export default class ResizablePage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'resizable')!
+    .status;
+}

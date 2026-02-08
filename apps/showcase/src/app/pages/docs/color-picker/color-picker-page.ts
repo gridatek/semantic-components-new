@@ -12,6 +12,8 @@ import { RgbColorPickerDemoContainer } from './demos/rgb-color-picker-demo-conta
 import { SimpleColorPickerDemoContainer } from './demos/simple-color-picker-demo-container';
 import { SwatchesColorPickerDemoContainer } from './demos/swatches-color-picker-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-color-picker-page',
@@ -25,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     HslColorPickerDemoContainer,
     PreviewColorPickerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -33,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A component for selecting colors with various formats.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -51,4 +55,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ColorPickerPage {}
+export default class ColorPickerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'color-picker')!
+    .status;
+}

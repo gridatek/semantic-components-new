@@ -9,6 +9,8 @@ import { MagnificationScaleDockDemoContainer } from './demos/magnification-scale
 import { NoMagnificationDockDemoContainer } from './demos/no-magnification-dock-demo-container';
 import { SizesDockDemoContainer } from './demos/sizes-dock-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-dock-page',
@@ -19,12 +21,14 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     SizesDockDemoContainer,
     MagnificationScaleDockDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
         <h1 class="text-3xl font-bold tracking-tight">Dock</h1>
         <p class="text-muted-foreground">A dock component.</p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -40,4 +44,6 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DockPage {}
+export default class DockPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'dock')!.status;
+}

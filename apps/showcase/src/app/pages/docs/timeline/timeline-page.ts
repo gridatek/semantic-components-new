@@ -9,6 +9,8 @@ import { SizesTimelineDemoContainer } from './demos/sizes-timeline-demo-containe
 import { ActivityTimelineDemoContainer } from './demos/activity-timeline-demo-container';
 import { TrackingTimelineDemoContainer } from './demos/tracking-timeline-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-timeline-page',
@@ -19,6 +21,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     ActivityTimelineDemoContainer,
     TrackingTimelineDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -27,6 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Display a sequence of events or activities in chronological order.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -42,4 +46,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TimelinePage {}
+export default class TimelinePage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'timeline')!
+    .status;
+}

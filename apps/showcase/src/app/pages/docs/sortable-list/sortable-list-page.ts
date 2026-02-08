@@ -11,6 +11,8 @@ import { HorizontalSortableListDemoContainer } from './demos/horizontal-sortable
 import { KanbanSortableListDemoContainer } from './demos/kanban-sortable-list-demo-container';
 import { DisabledSortableListDemoContainer } from './demos/disabled-sortable-list-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-sortable-list-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     KanbanSortableListDemoContainer,
     DisabledSortableListDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -31,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A drag and drop list component for reordering items.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -48,4 +52,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SortableListPage {}
+export default class SortableListPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'sortable-list')!
+    .status;
+}

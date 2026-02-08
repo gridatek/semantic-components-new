@@ -12,6 +12,8 @@ import { PlaceholderAspectRatioDemoContainer } from './demos/placeholder-aspect-
 import { VideoAspectRatioDemoContainer } from './demos/video-aspect-ratio-demo-container';
 import { MapAspectRatioDemoContainer } from './demos/map-aspect-ratio-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-aspect-ratio-page',
@@ -25,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     VideoAspectRatioDemoContainer,
     MapAspectRatioDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -33,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Displays content within a desired ratio.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -51,4 +55,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class AspectRatioPage {}
+export default class AspectRatioPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'aspect-ratio')!
+    .status;
+}

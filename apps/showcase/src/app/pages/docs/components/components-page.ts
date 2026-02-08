@@ -4,11 +4,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
 import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-components-page',
-  imports: [RouterLink],
+  imports: [RouterLink, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -31,6 +32,7 @@ import { COMPONENTS } from '../../../data/components';
             <p class="text-sm text-muted-foreground mt-2">
               {{ item.description }}
             </p>
+            <app-component-status-badge class="mt-3" [status]="item.status" />
           </a>
         }
       </div>

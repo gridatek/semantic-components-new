@@ -11,6 +11,8 @@ import { WhitespaceDiffViewerDemoContainer } from './demos/whitespace-diff-viewe
 import { LargeDiffViewerDemoContainer } from './demos/large-diff-viewer-demo-container';
 import { IdenticalDiffViewerDemoContainer } from './demos/identical-diff-viewer-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-diff-viewer-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     LargeDiffViewerDemoContainer,
     IdenticalDiffViewerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -31,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Side-by-side or unified view for comparing text and code changes.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -48,4 +52,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DiffViewerPage {}
+export default class DiffViewerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'diff-viewer')!
+    .status;
+}

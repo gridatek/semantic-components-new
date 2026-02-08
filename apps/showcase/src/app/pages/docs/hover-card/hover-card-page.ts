@@ -7,6 +7,8 @@ import { BasicHoverCardDemoContainer } from './demos/basic-hover-card-demo-conta
 import { RightHoverCardDemoContainer } from './demos/right-hover-card-demo-container';
 import { TopHoverCardDemoContainer } from './demos/top-hover-card-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-hover-card-page',
@@ -15,6 +17,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     RightHoverCardDemoContainer,
     TopHoverCardDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -23,6 +26,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           For sighted users to preview content available behind a link.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -36,4 +40,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class HoverCardPage {}
+export default class HoverCardPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'hover-card')!
+    .status;
+}

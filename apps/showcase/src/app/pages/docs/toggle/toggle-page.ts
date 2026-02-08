@@ -10,6 +10,8 @@ import { SizesToggleDemoContainer } from './demos/sizes-toggle-demo-container';
 import { ToolbarToggleDemoContainer } from './demos/toolbar-toggle-demo-container';
 import { WithTextToggleDemoContainer } from './demos/with-text-toggle-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-toggle-page',
@@ -21,6 +23,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     DisabledToggleDemoContainer,
     ToolbarToggleDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -29,6 +32,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A two-state button that can be either on or off.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -45,4 +49,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TogglePage {}
+export default class TogglePage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'toggle')!
+    .status;
+}

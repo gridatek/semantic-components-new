@@ -11,6 +11,8 @@ import { ReadonlyEditorDemoContainer } from './demos/readonly-editor-demo-contai
 import { CustomHeightEditorDemoContainer } from './demos/custom-height-editor-demo-container';
 import { FullFeaturedEditorDemoContainer } from './demos/full-featured-editor-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-editor-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     CustomHeightEditorDemoContainer,
     FullFeaturedEditorDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -32,6 +35,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Composable WYSIWYG editor powered by Tiptap, with customizable
           toolbar, keyboard shortcuts, and HTML output.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -49,4 +53,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class EditorPage {}
+export default class EditorPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'editor')!
+    .status;
+}

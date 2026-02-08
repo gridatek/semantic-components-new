@@ -12,6 +12,8 @@ import { LastPagePaginationDemoContainer } from './demos/last-page-pagination-de
 import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-demo-container';
 import { KeyboardNavigationPaginationDemoContainer } from './demos/keyboard-navigation-pagination-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-pagination-page',
@@ -25,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     PageSizePaginationDemoContainer,
     KeyboardNavigationPaginationDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -33,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Pagination with page navigation, next and previous links.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
       <section class="space-y-8">
         <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
@@ -50,4 +54,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PaginationPage {}
+export default class PaginationPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'pagination')!
+    .status;
+}

@@ -6,10 +6,17 @@ import {
 import { BasicTabsDemoContainer } from './demos/basic-tabs-demo-container';
 import { DisabledTabsDemoContainer } from './demos/disabled-tabs-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-tabs-page',
-  imports: [BasicTabsDemoContainer, DisabledTabsDemoContainer, TocHeading],
+  imports: [
+    BasicTabsDemoContainer,
+    DisabledTabsDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -18,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           A set of layered sections of content, known as tab panels, displayed
           one at a time.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -30,4 +38,6 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TabsPage {}
+export default class TabsPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'tabs')!.status;
+}

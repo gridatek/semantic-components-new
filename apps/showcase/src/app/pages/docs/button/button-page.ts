@@ -10,6 +10,8 @@ import { SizesButtonDemoContainer } from './demos/sizes-button-demo-container';
 import { VariantsButtonDemoContainer } from './demos/variants-button-demo-container';
 import { WithIconsButtonDemoContainer } from './demos/with-icons-button-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-button-page',
@@ -21,6 +23,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     AsLinkButtonDemoContainer,
     LoadingButtonDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -29,6 +32,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Displays a button or a component that looks like a button.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -45,4 +49,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ButtonPage {}
+export default class ButtonPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'button')!
+    .status;
+}

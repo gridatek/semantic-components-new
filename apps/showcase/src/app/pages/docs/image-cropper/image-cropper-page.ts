@@ -9,6 +9,8 @@ import { AvatarImageCropperDemoContainer } from './demos/avatar-image-cropper-de
 import { UploadImageCropperDemoContainer } from './demos/upload-image-cropper-demo-container';
 import { InfoImageCropperDemoContainer } from './demos/info-image-cropper-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-image-cropper-page',
@@ -19,6 +21,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     UploadImageCropperDemoContainer,
     InfoImageCropperDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -28,6 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           An interactive image cropping component with drag, resize, zoom, and
           aspect ratio controls.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -43,4 +47,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ImageCropperPage {}
+export default class ImageCropperPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'image-cropper')!
+    .status;
+}

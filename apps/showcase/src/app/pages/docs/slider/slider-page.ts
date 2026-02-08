@@ -12,6 +12,8 @@ import { StepSliderDemoContainer } from './demos/step-slider-demo-container';
 import { TemperatureSliderDemoContainer } from './demos/temperature-slider-demo-container';
 import { VolumeSliderDemoContainer } from './demos/volume-slider-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-slider-page',
@@ -25,6 +27,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     TemperatureSliderDemoContainer,
     SignalFormsSliderDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -33,6 +36,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           An input where the user selects a value from within a given range.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -51,4 +55,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SliderPage {}
+export default class SliderPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'slider')!
+    .status;
+}

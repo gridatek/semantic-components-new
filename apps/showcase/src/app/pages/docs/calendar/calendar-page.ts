@@ -9,6 +9,8 @@ import { MultipleDateCalendarDemoContainer } from './demos/multiple-date-calenda
 import { RangeCalendarDemoContainer } from './demos/range-calendar-demo-container';
 import { SingleDateCalendarDemoContainer } from './demos/single-date-calendar-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-calendar-page',
@@ -19,6 +21,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     DisabledDatesCalendarDemoContainer,
     MinMaxCalendarDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -28,6 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           A date picker component with support for single, multiple, and range
           selection.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -43,4 +47,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CalendarPage {}
+export default class CalendarPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'calendar')!
+    .status;
+}

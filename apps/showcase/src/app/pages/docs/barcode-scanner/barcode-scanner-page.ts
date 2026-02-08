@@ -11,6 +11,8 @@ import { ProductBarcodeScannerDemoContainer } from './demos/product-barcode-scan
 import { QrCodeBarcodeScannerDemoContainer } from './demos/qr-code-barcode-scanner-demo-container';
 import { SingleScanBarcodeScannerDemoContainer } from './demos/single-scan-barcode-scanner-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-barcode-scanner-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     FormatsBarcodeScannerDemoContainer,
     BrowserSupportBarcodeScannerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -32,6 +35,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Scan barcodes and QR codes using your device's camera with the Barcode
           Detection API.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -49,4 +53,8 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BarcodeScannerPage {}
+export default class BarcodeScannerPage {
+  readonly componentStatus = COMPONENTS.find(
+    (c) => c.path === 'barcode-scanner',
+  )!.status;
+}

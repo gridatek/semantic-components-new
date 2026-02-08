@@ -10,6 +10,8 @@ import { HorizontalRadioGroupDemoContainer } from './demos/horizontal-radio-grou
 import { FormRadioGroupDemoContainer } from './demos/form-radio-group-demo-container';
 import { CustomThemeRadioGroupDemoContainer } from './demos/custom-theme-radio-group-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-radio-group-page',
@@ -21,6 +23,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     FormRadioGroupDemoContainer,
     CustomThemeRadioGroupDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -30,6 +33,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           A set of checkable buttons where only one button can be checked at a
           time.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -46,4 +50,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class RadioGroupPage {}
+export default class RadioGroupPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'radio-group')!
+    .status;
+}

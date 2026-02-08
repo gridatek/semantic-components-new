@@ -7,6 +7,8 @@ import { BasicCollapsibleDemoContainer } from './demos/basic-collapsible-demo-co
 import { DisabledCollapsibleDemoContainer } from './demos/disabled-collapsible-demo-container';
 import { OpenCollapsibleDemoContainer } from './demos/open-collapsible-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-collapsible-page',
@@ -15,6 +17,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     OpenCollapsibleDemoContainer,
     DisabledCollapsibleDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -23,6 +26,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           An interactive component which expands/collapses a panel.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -36,4 +40,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CollapsiblePage {}
+export default class CollapsiblePage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'collapsible')!
+    .status;
+}

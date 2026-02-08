@@ -11,6 +11,8 @@ import { LabelTextareaDemoContainer } from './demos/label-textarea-demo-containe
 import { MaxlengthTextareaDemoContainer } from './demos/maxlength-textarea-demo-container';
 import { RowsTextareaDemoContainer } from './demos/rows-textarea-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-textarea-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     MaxlengthTextareaDemoContainer,
     FormTextareaDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -31,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Displays a form textarea or a component that looks like a textarea.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -48,4 +52,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TextareaPage {}
+export default class TextareaPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'textarea')!
+    .status;
+}

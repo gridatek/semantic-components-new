@@ -8,6 +8,8 @@ import { TopDrawerDemoContainer } from './demos/top-drawer-demo-container';
 import { LeftDrawerDemoContainer } from './demos/left-drawer-demo-container';
 import { RightDrawerDemoContainer } from './demos/right-drawer-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-drawer-page',
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     LeftDrawerDemoContainer,
     RightDrawerDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -27,6 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           the screen. Ideal for navigation menus, forms, and quick actions on
           touch devices.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -41,4 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DrawerPage {}
+export default class DrawerPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'drawer')!
+    .status;
+}

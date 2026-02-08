@@ -9,6 +9,8 @@ import { ImageFileUploadDemoContainer } from './demos/image-file-upload-demo-con
 import { ProgressFileUploadDemoContainer } from './demos/progress-file-upload-demo-container';
 import { SingleFileUploadDemoContainer } from './demos/single-file-upload-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-file-upload-page',
@@ -19,6 +21,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     SingleFileUploadDemoContainer,
     ProgressFileUploadDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -27,6 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A drag and drop file upload zone with preview and progress support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -42,4 +46,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class FileUploadPage {}
+export default class FileUploadPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'file-upload')!
+    .status;
+}

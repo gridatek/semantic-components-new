@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { SpeedDialDemoContainer } from './demos/speed-dial-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-speed-dial-page',
-  imports: [SpeedDialDemoContainer, TocHeading],
+  imports: [SpeedDialDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           A floating action button that expands to reveal a set of related
           actions.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -28,4 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class SpeedDialPage {}
+export default class SpeedDialPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'speed-dial')!
+    .status;
+}

@@ -6,10 +6,17 @@ import {
 import { ScCommandDemoContainer } from './demos/command-demo-container';
 import { ScCommandDialogDemoContainer } from './demos/command-dialog-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-command-page',
-  imports: [ScCommandDemoContainer, ScCommandDialogDemoContainer, TocHeading],
+  imports: [
+    ScCommandDemoContainer,
+    ScCommandDialogDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,6 +24,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A command palette for fast, keyboard-driven navigation and actions.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -29,4 +37,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CommandPage {}
+export default class CommandPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'command')!
+    .status;
+}

@@ -11,6 +11,8 @@ import { CustomIconsRatingFieldDemoContainer } from './demos/custom-icons-rating
 import { MaxRatingFieldDemoContainer } from './demos/max-rating-field-demo-container';
 import { FormRatingFieldDemoContainer } from './demos/form-rating-field-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-rating-field-page',
@@ -23,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     MaxRatingFieldDemoContainer,
     FormRatingFieldDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -31,6 +34,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A composable rating field for feedback and reviews.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -48,4 +52,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class RatingFieldPage {}
+export default class RatingFieldPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'rating-field')!
+    .status;
+}

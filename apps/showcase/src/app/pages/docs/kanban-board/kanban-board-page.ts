@@ -6,6 +6,8 @@ import {
 import { BasicKanbanBoardDemoContainer } from './demos/basic-kanban-board-demo-container';
 import { MinimalKanbanBoardDemoContainer } from './demos/minimal-kanban-board-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-kanban-board-page',
@@ -13,6 +15,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     BasicKanbanBoardDemoContainer,
     MinimalKanbanBoardDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -22,6 +25,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Drag-and-drop task board for project management and workflow
           visualization.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -34,4 +38,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class KanbanBoardPage {}
+export default class KanbanBoardPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'kanban-board')!
+    .status;
+}

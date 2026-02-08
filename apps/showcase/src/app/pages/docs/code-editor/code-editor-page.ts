@@ -16,6 +16,8 @@ import { SqlCodeEditorDemoContainer } from './demos/sql-code-editor-demo-contain
 import { TypescriptCodeEditorDemoContainer } from './demos/typescript-code-editor-demo-container';
 import { WordWrapCodeEditorDemoContainer } from './demos/word-wrap-code-editor-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-code-editor-page',
@@ -33,6 +35,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     WordWrapCodeEditorDemoContainer,
     InteractiveCodeEditorDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -42,6 +45,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           Syntax-highlighted code editor with line numbers, auto-indent, and
           multiple language support.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -64,4 +68,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CodeEditorPage {}
+export default class CodeEditorPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'code-editor')!
+    .status;
+}

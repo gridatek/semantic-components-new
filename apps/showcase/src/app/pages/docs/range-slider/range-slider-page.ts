@@ -8,6 +8,8 @@ import { PriceRangeSliderDemoContainer } from './demos/price-range-slider-demo-c
 import { TemperatureRangeSliderDemoContainer } from './demos/temperature-range-slider-demo-container';
 import { DisabledRangeSliderDemoContainer } from './demos/disabled-range-slider-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-range-slider-page',
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     TemperatureRangeSliderDemoContainer,
     DisabledRangeSliderDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -26,6 +29,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           An input where the user selects a range with minimum and maximum
           values from within a given range using dual thumbs.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -40,4 +44,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class RangeSliderPage {}
+export default class RangeSliderPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'range-slider')!
+    .status;
+}

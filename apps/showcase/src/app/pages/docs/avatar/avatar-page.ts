@@ -7,6 +7,8 @@ import { BasicAvatarDemoContainer } from './demos/basic-avatar-demo-container';
 import { FallbackAvatarDemoContainer } from './demos/fallback-avatar-demo-container';
 import { SizesAvatarDemoContainer } from './demos/sizes-avatar-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-avatar-page',
@@ -15,6 +17,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     FallbackAvatarDemoContainer,
     SizesAvatarDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -23,6 +26,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           An image element with a fallback for representing the user.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -36,4 +40,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class AvatarPage {}
+export default class AvatarPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'avatar')!
+    .status;
+}

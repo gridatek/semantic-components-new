@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { ScDialogDemoContainer } from './demos/dialog-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-dialog-page',
-  imports: [ScDialogDemoContainer, TocHeading],
+  imports: [ScDialogDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -17,6 +19,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
           A window overlaid on either the primary window or another dialog
           window, rendering the content underneath inert.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -28,4 +31,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DialogPage {}
+export default class DialogPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'dialog')!
+    .status;
+}

@@ -5,10 +5,12 @@ import {
 } from '@angular/core';
 import { OrgChartDemoContainer } from './demos/org-chart-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-org-chart-page',
-  imports: [OrgChartDemoContainer, TocHeading],
+  imports: [OrgChartDemoContainer, TocHeading, ComponentStatusBadge],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -16,6 +18,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           A hierarchical organization chart for visualizing company structures.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -27,4 +30,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OrgChartPage {}
+export default class OrgChartPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'org-chart')!
+    .status;
+}

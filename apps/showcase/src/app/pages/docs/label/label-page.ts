@@ -7,6 +7,8 @@ import { BasicLabelDemoContainer } from './demos/basic-label-demo-container';
 import { CheckboxLabelDemoContainer } from './demos/checkbox-label-demo-container';
 import { FieldLabelDemoContainer } from './demos/field-label-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
+import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
+import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-label-page',
@@ -15,6 +17,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
     CheckboxLabelDemoContainer,
     FieldLabelDemoContainer,
     TocHeading,
+    ComponentStatusBadge,
   ],
   template: `
     <div class="space-y-8">
@@ -23,6 +26,7 @@ import { TocHeading } from '../../../components/toc/toc-heading';
         <p class="text-muted-foreground">
           Renders an accessible label associated with controls.
         </p>
+        <app-component-status-badge [status]="componentStatus" />
       </div>
 
       <section class="space-y-8">
@@ -36,4 +40,6 @@ import { TocHeading } from '../../../components/toc/toc-heading';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class LabelPage {}
+export default class LabelPage {
+  readonly componentStatus = COMPONENTS.find((c) => c.path === 'label')!.status;
+}
