@@ -30,12 +30,13 @@ import {
     ScCodeViewerLabel,
     ScCodeViewerContent,
     ScCopyButton,
+    TocHeading,
   ],
   template: `
     <div class="space-y-4">
       @if (title()) {
         <div class="flex items-center gap-2">
-          <h3 class="text-sm font-medium">{{ title() }}</h3>
+          <h3 toc class="text-sm font-medium">{{ title() }}</h3>
           @if (demoUrl()) {
             <a
               [href]="demoUrl()"
