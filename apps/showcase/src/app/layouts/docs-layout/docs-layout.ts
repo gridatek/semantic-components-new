@@ -28,13 +28,21 @@ import {
   ScSidebarMenu,
   ScSidebarMenuButton,
   ScSidebarMenuItem,
+  ScSidebarMenuSub,
+  ScSidebarMenuSubButton,
+  ScSidebarMenuSubItem,
   ScSidebarProvider,
   ScSidebarRail,
   ScSidebarTrigger,
   ScSeparator,
   ScThemeToggle,
 } from '@semantic-components/ui';
-import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
+import {
+  SiBoxIcon,
+  SiHomeIcon,
+  SiMoonIcon,
+  SiSunIcon,
+} from '@semantic-icons/lucide-icons';
 import { filter } from 'rxjs';
 
 import { Toc } from '../../components/toc/toc';
@@ -58,6 +66,9 @@ import { COMPONENTS } from '../../data/components';
     ScSidebarMenu,
     ScSidebarMenuItem,
     ScSidebarMenuButton,
+    ScSidebarMenuSub,
+    ScSidebarMenuSubItem,
+    ScSidebarMenuSubButton,
     ScSidebarInset,
     ScSidebarTrigger,
     ScSidebarRail,
@@ -65,6 +76,8 @@ import { COMPONENTS } from '../../data/components';
     ScThemeToggle,
     SiSunIcon,
     SiMoonIcon,
+    SiHomeIcon,
+    SiBoxIcon,
     Toc,
   ],
   template: `
@@ -108,22 +121,42 @@ import { COMPONENTS } from '../../data/components';
 
         <div sc-sidebar-content>
           <div sc-sidebar-group>
-            <div sc-sidebar-group-label>Components</div>
             <div sc-sidebar-group-content>
               <ul sc-sidebar-menu>
-                @for (item of components; track item.path) {
-                  <li sc-sidebar-menu-item>
-                    <a
-                      sc-sidebar-menu-button
-                      [routerLink]="'/docs/components/' + item.path"
-                      routerLinkActive
-                      #rla="routerLinkActive"
-                      [isActive]="rla.isActive"
-                    >
-                      <span>{{ item.name }}</span>
-                    </a>
-                  </li>
-                }
+                <li sc-sidebar-menu-item>
+                  <a
+                    sc-sidebar-menu-button
+                    routerLink="/docs/components"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    routerLinkActive
+                    #overviewRla="routerLinkActive"
+                    [isActive]="overviewRla.isActive"
+                  >
+                    <svg si-home-icon></svg>
+                    <span>Overview</span>
+                  </a>
+                </li>
+                <li sc-sidebar-menu-item>
+                  <a sc-sidebar-menu-button>
+                    <svg si-box-icon></svg>
+                    <span>Components</span>
+                  </a>
+                  <ul sc-sidebar-menu-sub>
+                    @for (item of components; track item.path) {
+                      <li sc-sidebar-menu-sub-item>
+                        <a
+                          sc-sidebar-menu-sub-button
+                          [routerLink]="'/docs/components/' + item.path"
+                          routerLinkActive
+                          #rla="routerLinkActive"
+                          [isActive]="rla.isActive"
+                        >
+                          <span>{{ item.name }}</span>
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
