@@ -90,7 +90,7 @@ import { COMPONENTS } from '../../data/components';
             <li sc-sidebar-menu-item>
               <a sc-sidebar-menu-button size="lg" routerLink="/">
                 <div
-                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-foreground text-background"
                 >
                   <svg app-logo></svg>
                 </div>
