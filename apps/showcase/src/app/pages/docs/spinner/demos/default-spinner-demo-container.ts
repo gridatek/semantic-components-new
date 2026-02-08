@@ -25,18 +25,13 @@ export class DefaultSpinnerDemoContainer {
   ViewEncapsulation,
 } from '@angular/core';
 import { ScSpinner } from '@semantic-components/ui';
+import { SiLoader2Icon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-default-spinner-demo',
-  imports: [ScSpinner],
+  imports: [ScSpinner, SiLoader2Icon],
   template: \`
-    <div class="flex items-center gap-6">
-      <span sc-spinner size="xs"></span>
-      <span sc-spinner size="sm"></span>
-      <span sc-spinner></span>
-      <span sc-spinner size="lg"></span>
-      <span sc-spinner size="xl"></span>
-    </div>
+    <svg sc-spinner si-loader-2-icon></svg>
   \`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2962,34 +2962,6 @@ export const demosRoutes: Route[] = [
           ),
       },
       {
-        path: 'dots-spinner-demo',
-        loadComponent: () =>
-          import('../pages/docs/spinner/demos/dots-spinner-demo').then(
-            (m) => m.DotsSpinnerDemo,
-          ),
-      },
-      {
-        path: 'bars-spinner-demo',
-        loadComponent: () =>
-          import('../pages/docs/spinner/demos/bars-spinner-demo').then(
-            (m) => m.BarsSpinnerDemo,
-          ),
-      },
-      {
-        path: 'ring-spinner-demo',
-        loadComponent: () =>
-          import('../pages/docs/spinner/demos/ring-spinner-demo').then(
-            (m) => m.RingSpinnerDemo,
-          ),
-      },
-      {
-        path: 'variants-spinner-demo',
-        loadComponent: () =>
-          import('../pages/docs/spinner/demos/variants-spinner-demo').then(
-            (m) => m.VariantsSpinnerDemo,
-          ),
-      },
-      {
         path: 'button-spinner-demo',
         loadComponent: () =>
           import('../pages/docs/spinner/demos/button-spinner-demo').then(

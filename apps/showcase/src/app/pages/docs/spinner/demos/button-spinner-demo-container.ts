@@ -24,37 +24,20 @@ export class ButtonSpinnerDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  ScSpinner,
-  ScSpinnerDots,
-  ScSpinnerRing,
-} from '@semantic-components/ui';
+import { ScSpinner } from '@semantic-components/ui';
+import { SiLoader2Icon } from '@semantic-icons/lucide-icons';
 
 @Component({
   selector: 'app-button-spinner-demo',
-  imports: [ScSpinner, ScSpinnerDots, ScSpinnerRing],
+  imports: [ScSpinner, SiLoader2Icon],
   template: \`
     <div class="flex items-center gap-4">
       <button
         class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
         disabled
       >
-        <span sc-spinner size="sm" class="text-primary-foreground"></span>
+        <svg sc-spinner si-loader-2-icon></svg>
         Loading...
-      </button>
-      <button
-        class="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium"
-        disabled
-      >
-        <span sc-spinner-ring size="sm"></span>
-        Processing
-      </button>
-      <button
-        class="inline-flex items-center gap-2 rounded-md bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground"
-        disabled
-      >
-        <span sc-spinner-dots size="sm"></span>
-        Saving
       </button>
     </div>
   \`,
