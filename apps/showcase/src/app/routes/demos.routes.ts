@@ -1435,34 +1435,20 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
-    path: 'demos/empty-state',
+    path: 'demos/empty',
     children: [
       {
-        path: 'basic-empty-state-demo',
+        path: 'basic-empty-demo',
         loadComponent: () =>
-          import('../pages/docs/empty-state/demos/basic-empty-state-demo').then(
-            (m) => m.BasicEmptyStateDemo,
+          import('../pages/docs/empty/demos/basic-empty-demo').then(
+            (m) => m.BasicEmptyDemo,
           ),
       },
       {
-        path: 'actions-empty-state-demo',
+        path: 'actions-empty-demo',
         loadComponent: () =>
-          import('../pages/docs/empty-state/demos/actions-empty-state-demo').then(
-            (m) => m.ActionsEmptyStateDemo,
-          ),
-      },
-      {
-        path: 'sizes-empty-state-demo',
-        loadComponent: () =>
-          import('../pages/docs/empty-state/demos/sizes-empty-state-demo').then(
-            (m) => m.SizesEmptyStateDemo,
-          ),
-      },
-      {
-        path: 'usecases-empty-state-demo',
-        loadComponent: () =>
-          import('../pages/docs/empty-state/demos/usecases-empty-state-demo').then(
-            (m) => m.UsecasesEmptyStateDemo,
+          import('../pages/docs/empty/demos/actions-empty-demo').then(
+            (m) => m.ActionsEmptyDemo,
           ),
       },
     ],

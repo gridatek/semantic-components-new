@@ -232,8 +232,8 @@ export const COMPONENTS: ComponentItem[] = [
     status: 'Experimental',
   },
   {
-    name: 'Empty State',
-    path: 'empty-state',
+    name: 'Empty',
+    path: 'empty',
     description: 'Placeholder for empty content.',
     status: 'Experimental',
   },

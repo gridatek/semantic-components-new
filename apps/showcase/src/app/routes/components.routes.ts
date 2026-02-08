@@ -181,9 +181,8 @@ export const componentsRoutes: Route[] = [
         loadComponent: () => import('../pages/docs/editor/editor-page'),
       },
       {
-        path: 'empty-state',
-        loadComponent: () =>
-          import('../pages/docs/empty-state/empty-state-page'),
+        path: 'empty',
+        loadComponent: () => import('../pages/docs/empty/empty-page'),
       },
       {
         path: 'field',
