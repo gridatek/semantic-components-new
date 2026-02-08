@@ -7,6 +7,7 @@ import { BasicPaginationDemoContainer } from './demos/basic-pagination-demo-cont
 import { EllipsisPaginationDemoContainer } from './demos/ellipsis-pagination-demo-container';
 import { ManyPagesPaginationDemoContainer } from './demos/many-pages-pagination-demo-container';
 import { ButtonsPaginationDemoContainer } from './demos/buttons-pagination-demo-container';
+import { DisabledLinkPaginationDemoContainer } from './demos/disabled-link-pagination-demo-container';
 import { FirstPagePaginationDemoContainer } from './demos/first-page-pagination-demo-container';
 import { LastPagePaginationDemoContainer } from './demos/last-page-pagination-demo-container';
 import { PageSizePaginationDemoContainer } from './demos/page-size-pagination-demo-container';
@@ -22,6 +23,7 @@ import { COMPONENTS } from '../../../data/components';
     EllipsisPaginationDemoContainer,
     ManyPagesPaginationDemoContainer,
     ButtonsPaginationDemoContainer,
+    DisabledLinkPaginationDemoContainer,
     FirstPagePaginationDemoContainer,
     LastPagePaginationDemoContainer,
     PageSizePaginationDemoContainer,
@@ -44,6 +46,7 @@ import { COMPONENTS } from '../../../data/components';
         <app-ellipsis-pagination-demo-container />
         <app-many-pages-pagination-demo-container />
         <app-buttons-pagination-demo-container />
+        <app-disabled-link-pagination-demo-container />
         <app-first-page-pagination-demo-container />
         <app-last-page-pagination-demo-container />
         <app-page-size-pagination-demo-container />
