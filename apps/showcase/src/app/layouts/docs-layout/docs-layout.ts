@@ -89,11 +89,7 @@ import { COMPONENTS } from '../../data/components';
           <ul sc-sidebar-menu>
             <li sc-sidebar-menu-item>
               <a sc-sidebar-menu-button size="lg" routerLink="/">
-                <div
-                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-foreground text-background"
-                >
-                  <svg app-logo></svg>
-                </div>
+                <svg app-logo class="!size-8"></svg>
                 <div class="grid flex-1 text-left text-sm leading-tight">
                   <span class="truncate font-semibold">
                     Semantic Components
