@@ -20,8 +20,8 @@ export class ScSheetClose {
 
   protected readonly class = computed(() =>
     cn(
-      'absolute top-3 right-3',
       buttonVariants({ variant: this.variant(), size: this.size() }),
+      'absolute top-3 right-3',
       this.classInput(),
     ),
   );
