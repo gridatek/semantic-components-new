@@ -178,16 +178,14 @@ import { COMPONENTS } from '../../data/components';
         </header>
 
         <div class="flex flex-1">
-          <div #contentArea class="flex-1 overflow-auto p-6">
+          <div #contentArea class="flex-1 p-6">
             <div class="max-w-4xl">
               <router-outlet />
             </div>
           </div>
 
-          <aside
-            class="hidden xl:block w-56 border-l p-6 shrink-0 overflow-y-auto"
-          >
-            <div class="sticky top-6">
+          <aside class="hidden xl:block w-56 border-l shrink-0">
+            <div class="sticky top-14 p-6">
               <app-toc
                 [items]="tocService.items()"
                 [activeId]="tocService.activeId()"
