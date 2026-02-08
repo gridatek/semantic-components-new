@@ -25,6 +25,7 @@ export class ActionsEmptyDemoContainer {
   ViewEncapsulation,
 } from '@angular/core';
 import {
+  ScButton,
   ScEmpty,
   ScEmptyHeader,
   ScEmptyMedia,
@@ -37,6 +38,7 @@ import { SiFolderIcon } from '@semantic-icons/lucide-icons';
 @Component({
   selector: 'app-actions-empty-demo',
   imports: [
+    ScButton,
     ScEmpty,
     ScEmptyHeader,
     ScEmptyMedia,
@@ -57,11 +59,7 @@ import { SiFolderIcon } from '@semantic-icons/lucide-icons';
         </div>
       </div>
       <div sc-empty-content>
-        <button
-          class="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          Create Project
-        </button>
+        <button sc-button>Create Project</button>
       </div>
     </div>
   \`,
