@@ -630,6 +630,13 @@ export const COMPONENTS: ComponentItem[] = [
     status: 'Experimental',
   },
   {
+    name: 'Toolbar',
+    path: 'toolbar',
+    description:
+      'A container for grouping a set of controls, such as toggle buttons.',
+    status: 'Experimental',
+  },
+  {
     name: 'Tooltip',
     path: 'tooltip',
     description: 'A popup that displays information on hover or focus.',

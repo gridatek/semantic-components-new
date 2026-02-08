@@ -460,6 +460,10 @@ export const componentsRoutes: Route[] = [
           import('../pages/docs/toggle-group/toggle-group-page'),
       },
       {
+        path: 'toolbar',
+        loadComponent: () => import('../pages/docs/toolbar/toolbar-page'),
+      },
+      {
         path: 'tooltip',
         loadComponent: () => import('../pages/docs/tooltip/tooltip-page'),
       },

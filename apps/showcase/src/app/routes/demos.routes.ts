@@ -3679,6 +3679,18 @@ export const demosRoutes: Route[] = [
     ],
   },
   {
+    path: 'demos/toolbar',
+    children: [
+      {
+        path: 'basic-toolbar-demo',
+        loadComponent: () =>
+          import('../pages/docs/toolbar/demos/basic-toolbar-demo').then(
+            (m) => m.BasicToolbarDemo,
+          ),
+      },
+    ],
+  },
+  {
     path: 'demos/tooltip',
     children: [
       {
