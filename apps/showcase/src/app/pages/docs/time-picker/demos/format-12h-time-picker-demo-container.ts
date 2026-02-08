@@ -44,9 +44,9 @@ import {
   template: \`
     <div class="flex flex-col gap-4">
       <div sc-time-picker format="12h" [(value)]="time">
-        <input sc-time-picker-input type="hours" label="Hours" />
+        <input sc-time-picker-input type="hours" aria-label="Hours" />
         <span sc-time-picker-separator>:</span>
-        <input sc-time-picker-input type="minutes" label="Minutes" />
+        <input sc-time-picker-input type="minutes" aria-label="Minutes" />
         <div sc-time-picker-period></div>
       </div>
       <p class="text-sm text-muted-foreground">

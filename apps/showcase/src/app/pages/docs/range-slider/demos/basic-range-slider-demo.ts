@@ -15,8 +15,8 @@ import { ScRangeSlider } from '@semantic-components/ui';
         sc-range-slider
         [(minValue)]="minValue"
         [(maxValue)]="maxValue"
-        [minLabel]="'Minimum value'"
-        [maxLabel]="'Maximum value'"
+        [min-aria-label]="'Minimum value'"
+        [max-aria-label]="'Maximum value'"
       ></div>
       <p class="mt-2 text-sm text-muted-foreground">
         Range: {{ minValue() }} - {{ maxValue() }}

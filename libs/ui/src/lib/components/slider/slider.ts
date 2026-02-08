@@ -39,7 +39,7 @@ import { ScSliderThumb } from './slider-thumb';
       [max]="max()"
       [step]="step()"
       [disabled]="disabled()"
-      [label]="label()"
+      [aria-label]="ariaLabel()"
       [aria-labelledby]="ariaLabelledby()"
       (keydown)="onKeydown($event)"
       (mouseDown)="onThumbMouseDown($event)"
@@ -59,7 +59,9 @@ export class ScSlider implements OnInit, FormValueControl<number> {
   readonly max = input<number | undefined>(100);
   readonly step = input<number>(1);
   readonly disabled = input<boolean>(false);
-  readonly label = input<string | undefined>(undefined);
+  readonly ariaLabel = input<string | undefined>(undefined, {
+    alias: 'aria-label',
+  });
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
   });

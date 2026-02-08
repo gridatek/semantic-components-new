@@ -20,7 +20,7 @@ import { cn } from '../../utils';
     '[attr.aria-valuemax]': 'max()',
     '[attr.aria-valuenow]': 'value()',
     '[attr.aria-disabled]': 'disabled() || null',
-    '[attr.aria-label]': 'label() ?? null',
+    '[attr.aria-label]': 'ariaLabel() ?? null',
     '[attr.aria-labelledby]': 'ariaLabelledby() ?? null',
     '(keydown)': 'onKeydown($event)',
     '(mousedown)': 'onMouseDown($event)',
@@ -38,7 +38,9 @@ export class ScSliderThumb {
   readonly max = input<number | undefined>(100);
   readonly step = input<number>(1);
   readonly disabled = input<boolean>(false);
-  readonly label = input<string | undefined>(undefined);
+  readonly ariaLabel = input<string | undefined>(undefined, {
+    alias: 'aria-label',
+  });
   readonly ariaLabelledby = input<string | undefined>(undefined, {
     alias: 'aria-labelledby',
   });

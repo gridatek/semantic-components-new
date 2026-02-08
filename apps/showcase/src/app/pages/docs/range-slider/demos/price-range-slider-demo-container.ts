@@ -43,8 +43,8 @@ import { ScRangeSlider } from '@semantic-components/ui';
         [min]="0"
         [max]="1000"
         [step]="10"
-        [minLabel]="'Minimum price'"
-        [maxLabel]="'Maximum price'"
+        [min-aria-label]="'Minimum price'"
+        [max-aria-label]="'Maximum price'"
       ></div>
     </div>
   \`,

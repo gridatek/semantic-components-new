@@ -22,8 +22,8 @@ import { ScRangeSlider } from '@semantic-components/ui';
         [min]="16"
         [max]="30"
         [step]="1"
-        [minLabel]="'Minimum temperature'"
-        [maxLabel]="'Maximum temperature'"
+        [min-aria-label]="'Minimum temperature'"
+        [max-aria-label]="'Maximum temperature'"
       ></div>
     </div>
   `,

@@ -27,7 +27,7 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
     'data-slot': 'rating-field',
     role: 'group',
     '[class]': 'class()',
-    '[attr.aria-label]': 'label() || null',
+    '[attr.aria-label]': 'ariaLabel() || null',
     '[attr.aria-labelledby]': 'ariaLabelledby() || null',
     '[attr.data-disabled]': 'disabled() || null',
     '[attr.data-readonly]': 'readonly() || null',
@@ -41,8 +41,8 @@ export class ScRatingField {
   readonly disabled = input<boolean>(false);
   readonly allowHalf = input<boolean>(false);
   readonly allowClear = input<boolean>(true);
-  readonly label = input<string>('');
-  readonly ariaLabelledby = input<string>('');
+  readonly ariaLabel = input<string>('', { alias: 'aria-label' });
+  readonly ariaLabelledby = input<string>('', { alias: 'aria-labelledby' });
 
   private readonly items = contentChildren(ScRatingFieldItem, {
     descendants: true,

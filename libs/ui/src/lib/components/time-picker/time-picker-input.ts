@@ -25,7 +25,7 @@ import { SC_TIME_PICKER } from './time-picker';
     '[disabled]': 'timePicker.disabled()',
     '[attr.min]': 'min()',
     '[attr.max]': 'max()',
-    '[attr.aria-label]': 'label()',
+    '[attr.aria-label]': 'ariaLabel()',
     '(input)': 'onInput($event)',
     '(blur)': 'onBlur()',
     '(keydown)': 'onKeydown($event)',
@@ -39,7 +39,7 @@ export class ScTimePickerInput {
 
   readonly classInput = input<string>('', { alias: 'class' });
   readonly type = input.required<'hours' | 'minutes' | 'seconds'>();
-  readonly label = input<string>('');
+  readonly ariaLabel = input<string>('', { alias: 'aria-label' });
 
   readonly focused = signal(false);
 

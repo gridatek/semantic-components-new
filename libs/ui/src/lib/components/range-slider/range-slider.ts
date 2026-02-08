@@ -40,7 +40,7 @@ import { ScSliderTrack, ScSliderRange, ScSliderThumb } from '../slider';
       [max]="max()"
       [step]="step()"
       [disabled]="disabled()"
-      [label]="minLabel()"
+      [aria-label]="minAriaLabel()"
       [aria-labelledby]="minAriaLabelledby()"
       (keydown)="onMinKeydown($event)"
       (mouseDown)="onMinThumbMouseDown($event)"
@@ -54,7 +54,7 @@ import { ScSliderTrack, ScSliderRange, ScSliderThumb } from '../slider';
       [max]="max()"
       [step]="step()"
       [disabled]="disabled()"
-      [label]="maxLabel()"
+      [aria-label]="maxAriaLabel()"
       [aria-labelledby]="maxAriaLabelledby()"
       (keydown)="onMaxKeydown($event)"
       (mouseDown)="onMaxThumbMouseDown($event)"
@@ -75,8 +75,12 @@ export class ScRangeSlider implements OnInit {
   readonly max = input<number>(100);
   readonly step = input<number>(1);
   readonly disabled = input<boolean>(false);
-  readonly minLabel = input<string | undefined>(undefined);
-  readonly maxLabel = input<string | undefined>(undefined);
+  readonly minAriaLabel = input<string | undefined>(undefined, {
+    alias: 'min-aria-label',
+  });
+  readonly maxAriaLabel = input<string | undefined>(undefined, {
+    alias: 'max-aria-label',
+  });
   readonly minAriaLabelledby = input<string | undefined>(undefined, {
     alias: 'min-aria-labelledby',
   });
