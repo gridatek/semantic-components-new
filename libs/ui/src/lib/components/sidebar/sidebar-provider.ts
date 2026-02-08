@@ -9,6 +9,9 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { cn } from '../../utils';
 import { ScSidebarState } from './sidebar-state.service';
 
@@ -47,6 +50,8 @@ export class ScSidebarProvider implements OnInit, OnDestroy {
   private keydownHandler?: (event: KeyboardEvent) => void;
   private resizeHandler?: () => void;
 
+  private readonly router = inject(Router);
+
   constructor() {
     // Sync model with state
     effect(() => this.state.setOpen(this.open()));
@@ -56,6 +61,15 @@ export class ScSidebarProvider implements OnInit, OnDestroy {
     effect(() => {
       this.saveToStorage(this.state.open());
     });
+
+    // Close mobile sidebar on navigation
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        filter(() => this.state.isMobile() && this.state.openMobile()),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.state.setOpenMobile(false));
   }
 
   ngOnInit(): void {
