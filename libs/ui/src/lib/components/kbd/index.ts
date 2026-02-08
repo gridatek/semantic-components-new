@@ -1,2 +1,2 @@
 export { ScKbd } from './kbd';
-export type { KbdVariant, KbdSize } from './kbd';
+export { ScKbdGroup } from './kbd-group';

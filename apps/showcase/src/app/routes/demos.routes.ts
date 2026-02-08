@@ -1878,13 +1878,6 @@ export const demosRoutes: Route[] = [
           ),
       },
       {
-        path: 'sizes-kbd-demo',
-        loadComponent: () =>
-          import('../pages/docs/kbd/demos/sizes-kbd-demo').then(
-            (m) => m.SizesKbdDemo,
-          ),
-      },
-      {
         path: 'arrow-keys-kbd-demo',
         loadComponent: () =>
           import('../pages/docs/kbd/demos/arrow-keys-kbd-demo').then(

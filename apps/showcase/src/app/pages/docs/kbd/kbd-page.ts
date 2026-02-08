@@ -9,7 +9,6 @@ import { ComplexShortcutsKbdDemoContainer } from './demos/complex-shortcuts-kbd-
 import { FunctionKeysKbdDemoContainer } from './demos/function-keys-kbd-demo-container';
 import { InlineKbdDemoContainer } from './demos/inline-kbd-demo-container';
 import { ShortcutsKbdDemoContainer } from './demos/shortcuts-kbd-demo-container';
-import { SizesKbdDemoContainer } from './demos/sizes-kbd-demo-container';
 import { VariantsKbdDemoContainer } from './demos/variants-kbd-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
 import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
@@ -21,7 +20,6 @@ import { COMPONENTS } from '../../../data/components';
     BasicKbdDemoContainer,
     ShortcutsKbdDemoContainer,
     VariantsKbdDemoContainer,
-    SizesKbdDemoContainer,
     ArrowKeysKbdDemoContainer,
     FunctionKeysKbdDemoContainer,
     InlineKbdDemoContainer,
@@ -44,7 +42,6 @@ import { COMPONENTS } from '../../../data/components';
         <app-basic-kbd-demo-container />
         <app-shortcuts-kbd-demo-container />
         <app-variants-kbd-demo-container />
-        <app-sizes-kbd-demo-container />
         <app-arrow-keys-kbd-demo-container />
         <app-function-keys-kbd-demo-container />
         <app-inline-kbd-demo-container />
