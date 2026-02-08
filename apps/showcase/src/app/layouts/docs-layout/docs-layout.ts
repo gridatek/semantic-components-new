@@ -121,6 +121,7 @@ import { COMPONENTS } from '../../data/components';
 
         <div sc-sidebar-content>
           <div sc-sidebar-group>
+            <div sc-sidebar-group-label>Components</div>
             <div sc-sidebar-group-content>
               <ul sc-sidebar-menu>
                 <li sc-sidebar-menu-item>
