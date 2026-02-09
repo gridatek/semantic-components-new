@@ -1,10 +1,13 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { ScMenuSubProvider } from './menu-sub-provider';
@@ -12,7 +15,7 @@ import { cn } from '../../utils';
 
 @Component({
   selector: 'div[sc-menu-sub-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, NgTemplateOutlet],
   template: `
     @if (origin(); as origin) {
       <ng-template
@@ -29,7 +32,7 @@ import { cn } from '../../utils';
         ]"
         cdkAttachPopoverAsChild
       >
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </ng-template>
     }
   `,
@@ -41,6 +44,7 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenuSubPortal {
+  readonly contentTpl = contentChild.required(TemplateRef);
   private readonly scMenuSub = inject(ScMenuSubProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 

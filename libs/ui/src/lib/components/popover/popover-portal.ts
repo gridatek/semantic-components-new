@@ -1,10 +1,13 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { OverlayModule, ConnectedPosition } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
@@ -114,7 +117,7 @@ const positionMap: Record<
 
 @Component({
   selector: 'div[sc-popover-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, NgTemplateOutlet],
   template: `
     @if (origin(); as origin) {
       <ng-template
@@ -124,7 +127,7 @@ const positionMap: Record<
         (overlayOutsideClick)="closePopover()"
         (overlayKeydown)="onKeydown($event)"
       >
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </ng-template>
     }
   `,
@@ -136,6 +139,7 @@ const positionMap: Record<
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPopoverPortal {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly popover = inject(ScPopoverProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 

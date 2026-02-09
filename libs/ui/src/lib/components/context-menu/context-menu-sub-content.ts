@@ -1,10 +1,13 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ConnectedPosition, OverlayModule } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
@@ -30,7 +33,7 @@ const positions: ConnectedPosition[] = [
 
 @Component({
   selector: 'div[sc-context-menu-sub-content]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, NgTemplateOutlet],
   template: `
     <ng-template
       cdkConnectedOverlay
@@ -44,7 +47,7 @@ const positions: ConnectedPosition[] = [
         (mouseenter)="onMouseEnter()"
         (mouseleave)="onMouseLeave()"
       >
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </div>
     </ng-template>
   `,
@@ -56,6 +59,7 @@ const positions: ConnectedPosition[] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScContextMenuSubContent {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly submenu = inject(ScContextMenuSub);
   readonly trigger = inject(ScContextMenuSubTrigger);
   readonly classInput = input<string>('', { alias: 'class' });

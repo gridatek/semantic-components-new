@@ -1,10 +1,13 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ConnectedPosition, OverlayModule } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
@@ -105,7 +108,7 @@ const positionMap: Record<PositionKey, ConnectedPosition> = {
 
 @Component({
   selector: 'div[sc-hover-card-portal]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, NgTemplateOutlet],
   template: `
     @if (origin(); as origin) {
       <ng-template
@@ -114,7 +117,7 @@ const positionMap: Record<PositionKey, ConnectedPosition> = {
         [cdkConnectedOverlayOpen]="hoverCardProvider.overlayOpen()"
         [cdkConnectedOverlayPositions]="[position()]"
       >
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </ng-template>
     }
   `,
@@ -126,6 +129,7 @@ const positionMap: Record<PositionKey, ConnectedPosition> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScHoverCardPortal {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly hoverCardProvider = inject(ScHoverCardProvider);
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -1,10 +1,13 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { TreeItemGroup } from '@angular/aria/tree';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
@@ -12,10 +15,10 @@ import { SC_TREE_ITEM } from './tree-item';
 
 @Component({
   selector: 'ul[sc-tree-item-group]',
-  imports: [TreeItemGroup],
+  imports: [TreeItemGroup, NgTemplateOutlet],
   template: `
     <ng-template ngTreeItemGroup [ownedBy]="item.treeItem">
-      <ng-content />
+      <ng-template [ngTemplateOutlet]="contentTpl()" />
     </ng-template>
   `,
   host: {
@@ -27,6 +30,7 @@ import { SC_TREE_ITEM } from './tree-item';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTreeItemGroup {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly item = inject(SC_TREE_ITEM);
   readonly classInput = input<string>('', { alias: 'class' });
 

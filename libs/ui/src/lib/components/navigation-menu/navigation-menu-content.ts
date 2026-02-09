@@ -1,10 +1,13 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ConnectedPosition, OverlayModule } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
@@ -20,7 +23,7 @@ const position: ConnectedPosition = {
 
 @Component({
   selector: 'div[sc-navigation-menu-content]',
-  imports: [OverlayModule],
+  imports: [OverlayModule, NgTemplateOutlet],
   template: `
     @if (origin(); as origin) {
       <ng-template
@@ -34,7 +37,7 @@ const position: ConnectedPosition = {
           (mouseenter)="onMouseEnter()"
           (mouseleave)="onMouseLeave()"
         >
-          <ng-content />
+          <ng-template [ngTemplateOutlet]="contentTpl()" />
         </div>
       </ng-template>
     }
@@ -47,6 +50,7 @@ const position: ConnectedPosition = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScNavigationMenuContent {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly menuItem = inject(ScNavigationMenuItem);
   readonly classInput = input<string>('', { alias: 'class' });
 

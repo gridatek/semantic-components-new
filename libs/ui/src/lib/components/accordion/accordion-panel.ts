@@ -1,16 +1,19 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { AccordionContent, AccordionPanel } from '@angular/aria/accordion';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
 @Component({
   selector: 'div[sc-accordion-panel]',
-  imports: [AccordionContent],
+  imports: [AccordionContent, NgTemplateOutlet],
   hostDirectives: [
     {
       directive: AccordionPanel,
@@ -24,7 +27,7 @@ import { cn } from '../../utils';
         animate.enter="animate-accordion-down"
         animate.leave="animate-accordion-up"
       >
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </div>
     </ng-template>
   `,
@@ -36,6 +39,7 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAccordionPanel {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly classInput = input<string>('', { alias: 'class' });
 
   protected readonly class = computed(() => cn('', this.classInput()));

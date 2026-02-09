@@ -1,17 +1,20 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { TabContent, TabPanel } from '@angular/aria/tabs';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
 @Component({
   selector: 'div[sc-tab-panel]',
-  imports: [TabContent],
+  imports: [TabContent, NgTemplateOutlet],
   hostDirectives: [
     {
       directive: TabPanel,
@@ -20,7 +23,7 @@ import { cn } from '../../utils';
   ],
   template: `
     <ng-template ngTabContent>
-      <ng-content />
+      <ng-template [ngTemplateOutlet]="contentTpl()" />
     </ng-template>
   `,
   host: {
@@ -31,6 +34,7 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScTabPanel {
+  readonly contentTpl = contentChild.required(TemplateRef);
   protected readonly tabPanel = inject(TabPanel);
 
   readonly classInput = input<string>('', { alias: 'class' });

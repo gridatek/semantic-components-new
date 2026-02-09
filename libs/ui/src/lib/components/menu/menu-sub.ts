@@ -1,21 +1,24 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Menu, MenuContent } from '@angular/aria/menu';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { cn } from '../../utils';
 
 @Component({
   selector: 'div[sc-menu-sub]',
-  imports: [MenuContent],
+  imports: [MenuContent, NgTemplateOutlet],
   hostDirectives: [Menu],
   template: `
     <ng-template ngMenuContent>
-      <ng-content />
+      <ng-template [ngTemplateOutlet]="contentTpl()" />
     </ng-template>
   `,
   host: {
@@ -26,6 +29,7 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScMenuSub {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly menu = inject(Menu);
   readonly classInput = input<string>('', { alias: 'class' });
 

@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import { Overlay, OverlayModule } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -5,6 +6,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   effect,
   inject,
   input,
@@ -19,7 +21,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
 
 @Component({
   selector: 'div[sc-alert-dialog-portal]',
-  imports: [OverlayModule, ScBackdrop, CdkTrapFocus],
+  imports: [OverlayModule, ScBackdrop, CdkTrapFocus, NgTemplateOutlet],
   template: `
     <ng-template #dialogTemplate>
       <!-- Visual backdrop (behind transparent CDK backdrop) -->
@@ -29,7 +31,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
         (animationComplete)="onBackdropAnimationComplete()"
       ></div>
       <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </div>
     </ng-template>
   `,
@@ -41,6 +43,7 @@ import { ScAlertDialogProvider } from './alert-dialog-provider';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScAlertDialogPortal {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly alertDialogProvider = inject(ScAlertDialogProvider);
   private readonly overlay = inject(Overlay);
   private readonly viewContainerRef = inject(ViewContainerRef);

@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   Combobox,
   ComboboxDialog,
@@ -9,10 +10,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   ElementRef,
   inject,
   input,
   model,
+  TemplateRef,
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -20,7 +23,13 @@ import { cn } from '../../utils';
 
 @Component({
   selector: 'div[sc-combobox-portal]',
-  imports: [ComboboxPopupContainer, ComboboxDialog, Combobox, ComboboxInput],
+  imports: [
+    ComboboxPopupContainer,
+    ComboboxDialog,
+    Combobox,
+    ComboboxInput,
+    NgTemplateOutlet,
+  ],
   template: `
     <ng-template ngComboboxPopupContainer>
       <dialog #dialog ngComboboxDialog [class]="dialogClass()">
@@ -51,7 +60,7 @@ import { cn } from '../../utils';
             />
           </div>
           <ng-template ngComboboxPopupContainer>
-            <ng-content />
+            <ng-template [ngTemplateOutlet]="contentTpl()" />
           </ng-template>
         </div>
       </dialog>
@@ -65,6 +74,7 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScComboboxPortal {
+  readonly contentTpl = contentChild.required(TemplateRef);
   readonly classInput = input<string>('', { alias: 'class' });
   readonly searchPlaceholder = input<string>('Search...');
   readonly searchValue = model<string>('');

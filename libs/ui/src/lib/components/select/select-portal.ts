@@ -1,11 +1,14 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ComboboxPopupContainer } from '@angular/aria/combobox';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { ScSelect } from './select';
@@ -13,7 +16,7 @@ import { cn } from '../../utils';
 
 @Component({
   selector: 'div[sc-select-portal]',
-  imports: [ComboboxPopupContainer, OverlayModule],
+  imports: [ComboboxPopupContainer, OverlayModule, NgTemplateOutlet],
   template: `
     <ng-template ngComboboxPopupContainer>
       @if (origin(); as origin) {
@@ -25,7 +28,7 @@ import { cn } from '../../utils';
           }"
           [cdkConnectedOverlayOpen]="true"
         >
-          <ng-content />
+          <ng-template [ngTemplateOutlet]="contentTpl()" />
         </ng-template>
       }
     </ng-template>
@@ -38,6 +41,7 @@ import { cn } from '../../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScSelectPortal {
+  readonly contentTpl = contentChild.required(TemplateRef);
   private readonly select = inject(ScSelect);
 
   protected readonly origin = computed(() => this.select.origin());

@@ -1,7 +1,9 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
   TemplateRef,
@@ -13,10 +15,11 @@ import { ScContextMenu } from './context-menu';
 
 @Component({
   selector: 'sc-context-menu-content',
+  imports: [NgTemplateOutlet],
   template: `
     <ng-template #contentTemplate>
       <div [class]="class()" role="menu" (keydown)="onKeydown($event)">
-        <ng-content />
+        <ng-template [ngTemplateOutlet]="contentTpl()" />
       </div>
     </ng-template>
   `,
@@ -24,6 +27,7 @@ import { ScContextMenu } from './context-menu';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScContextMenuContent {
+  readonly contentTpl = contentChild.required(TemplateRef);
   private readonly contextMenu = inject(ScContextMenu);
   readonly classInput = input<string>('', { alias: 'class' });
 
