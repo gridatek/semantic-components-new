@@ -2078,10 +2078,66 @@ export const demosRoutes: Route[] = [
     path: 'demos/marquee',
     children: [
       {
-        path: 'marquee-demo',
+        path: 'text-marquee-demo',
         loadComponent: () =>
-          import('../pages/docs/marquee/demos/marquee-demo').then(
-            (m) => m.ScMarqueeDemo,
+          import('../pages/docs/marquee/demos/text-marquee-demo').then(
+            (m) => m.TextMarqueeDemo,
+          ),
+      },
+      {
+        path: 'reversed-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/reversed-marquee-demo').then(
+            (m) => m.ReversedMarqueeDemo,
+          ),
+      },
+      {
+        path: 'logo-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/logo-marquee-demo').then(
+            (m) => m.LogoMarqueeDemo,
+          ),
+      },
+      {
+        path: 'testimonials-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/testimonials-marquee-demo').then(
+            (m) => m.TestimonialsMarqueeDemo,
+          ),
+      },
+      {
+        path: 'vertical-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/vertical-marquee-demo').then(
+            (m) => m.VerticalMarqueeDemo,
+          ),
+      },
+      {
+        path: 'speed-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/speed-marquee-demo').then(
+            (m) => m.SpeedMarqueeDemo,
+          ),
+      },
+      {
+        path: 'pause-on-hover-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/pause-on-hover-marquee-demo').then(
+            (m) => m.PauseOnHoverMarqueeDemo,
+          ),
+      },
+      {
+        path: 'gallery-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/gallery-marquee-demo').then(
+            (m) => m.GalleryMarqueeDemo,
+          ),
+      },
+      {
+        path: 'stacked-marquee-demo',
+        loadComponent: () =>
+          import('../pages/docs/marquee/demos/stacked-marquee-demo').then(
+            (m) => m.StackedMarqueeDemo,
           ),
       },
     ],
@@ -2123,10 +2179,38 @@ export const demosRoutes: Route[] = [
     path: 'demos/mention-input',
     children: [
       {
-        path: 'mention-input-demo',
+        path: 'basic-mention-input-demo',
         loadComponent: () =>
-          import('../pages/docs/mention-input/demos/mention-input-demo').then(
-            (m) => m.ScMentionInputDemo,
+          import('../pages/docs/mention-input/demos/basic-mention-input-demo').then(
+            (m) => m.BasicMentionInputDemo,
+          ),
+      },
+      {
+        path: 'avatars-mention-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/mention-input/demos/avatars-mention-input-demo').then(
+            (m) => m.AvatarsMentionInputDemo,
+          ),
+      },
+      {
+        path: 'custom-trigger-mention-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/mention-input/demos/custom-trigger-mention-input-demo').then(
+            (m) => m.CustomTriggerMentionInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-mention-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/mention-input/demos/disabled-mention-input-demo').then(
+            (m) => m.DisabledMentionInputDemo,
+          ),
+      },
+      {
+        path: 'form-mention-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/mention-input/demos/form-mention-input-demo').then(
+            (m) => m.FormMentionInputDemo,
           ),
       },
     ],
@@ -2234,11 +2318,25 @@ export const demosRoutes: Route[] = [
     path: 'demos/notification-center',
     children: [
       {
-        path: 'notification-center-demo',
+        path: 'grouped-notification-center-demo',
         loadComponent: () =>
-          import('../pages/docs/notification-center/demos/notification-center-demo').then(
-            (m) => m.NotificationCenterDemo,
-          ),
+          import(
+            '../pages/docs/notification-center/demos/grouped-notification-center-demo'
+          ).then((m) => m.GroupedNotificationCenterDemo),
+      },
+      {
+        path: 'flat-notification-center-demo',
+        loadComponent: () =>
+          import(
+            '../pages/docs/notification-center/demos/flat-notification-center-demo'
+          ).then((m) => m.FlatNotificationCenterDemo),
+      },
+      {
+        path: 'empty-notification-center-demo',
+        loadComponent: () =>
+          import(
+            '../pages/docs/notification-center/demos/empty-notification-center-demo'
+          ).then((m) => m.EmptyNotificationCenterDemo),
       },
     ],
   },
@@ -2293,10 +2391,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/org-chart',
     children: [
       {
-        path: 'org-chart-demo',
+        path: 'basic-org-chart-demo',
         loadComponent: () =>
-          import('../pages/docs/org-chart/demos/org-chart-demo').then(
-            (m) => m.OrgChartDemo,
+          import('../pages/docs/org-chart/demos/basic-org-chart-demo').then(
+            (m) => m.BasicOrgChartDemo,
+          ),
+      },
+      {
+        path: 'horizontal-org-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/org-chart/demos/horizontal-org-chart-demo').then(
+            (m) => m.HorizontalOrgChartDemo,
+          ),
+      },
+      {
+        path: 'avatars-org-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/org-chart/demos/avatars-org-chart-demo').then(
+            (m) => m.AvatarsOrgChartDemo,
+          ),
+      },
+      {
+        path: 'compact-org-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/org-chart/demos/compact-org-chart-demo').then(
+            (m) => m.CompactOrgChartDemo,
+          ),
+      },
+      {
+        path: 'non-collapsible-org-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/org-chart/demos/non-collapsible-org-chart-demo').then(
+            (m) => m.NonCollapsibleOrgChartDemo,
+          ),
+      },
+      {
+        path: 'large-org-chart-demo',
+        loadComponent: () =>
+          import('../pages/docs/org-chart/demos/large-org-chart-demo').then(
+            (m) => m.LargeOrgChartDemo,
           ),
       },
     ],
@@ -2467,10 +2600,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/phone-input',
     children: [
       {
-        path: 'phone-input-demo',
+        path: 'country-selector-phone-input-demo',
         loadComponent: () =>
-          import('../pages/docs/phone-input/demos/phone-input-demo').then(
-            (m) => m.ScPhoneInputDemo,
+          import('../pages/docs/phone-input/demos/country-selector-phone-input-demo').then(
+            (m) => m.CountrySelectorPhoneInputDemo,
+          ),
+      },
+      {
+        path: 'default-country-phone-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/phone-input/demos/default-country-phone-input-demo').then(
+            (m) => m.DefaultCountryPhoneInputDemo,
+          ),
+      },
+      {
+        path: 'us-format-phone-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/phone-input/demos/us-format-phone-input-demo').then(
+            (m) => m.UsFormatPhoneInputDemo,
+          ),
+      },
+      {
+        path: 'international-format-phone-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/phone-input/demos/international-format-phone-input-demo').then(
+            (m) => m.InternationalFormatPhoneInputDemo,
+          ),
+      },
+      {
+        path: 'without-icon-phone-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/phone-input/demos/without-icon-phone-input-demo').then(
+            (m) => m.WithoutIconPhoneInputDemo,
+          ),
+      },
+      {
+        path: 'disabled-phone-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/phone-input/demos/disabled-phone-input-demo').then(
+            (m) => m.DisabledPhoneInputDemo,
+          ),
+      },
+      {
+        path: 'form-phone-input-demo',
+        loadComponent: () =>
+          import('../pages/docs/phone-input/demos/form-phone-input-demo').then(
+            (m) => m.FormPhoneInputDemo,
           ),
       },
     ],
@@ -2559,10 +2734,66 @@ export const demosRoutes: Route[] = [
     path: 'demos/qr-code',
     children: [
       {
-        path: 'qr-code-demo',
+        path: 'basic-qr-code-demo',
         loadComponent: () =>
-          import('../pages/docs/qr-code/demos/qr-code-demo').then(
-            (m) => m.ScQrCodeDemo,
+          import('../pages/docs/qr-code/demos/basic-qr-code-demo').then(
+            (m) => m.BasicQrCodeDemo,
+          ),
+      },
+      {
+        path: 'interactive-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/interactive-qr-code-demo').then(
+            (m) => m.InteractiveQrCodeDemo,
+          ),
+      },
+      {
+        path: 'sizes-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/sizes-qr-code-demo').then(
+            (m) => m.SizesQrCodeDemo,
+          ),
+      },
+      {
+        path: 'colors-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/colors-qr-code-demo').then(
+            (m) => m.ColorsQrCodeDemo,
+          ),
+      },
+      {
+        path: 'error-correction-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/error-correction-qr-code-demo').then(
+            (m) => m.ErrorCorrectionQrCodeDemo,
+          ),
+      },
+      {
+        path: 'logo-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/logo-qr-code-demo').then(
+            (m) => m.LogoQrCodeDemo,
+          ),
+      },
+      {
+        path: 'quiet-zone-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/quiet-zone-qr-code-demo').then(
+            (m) => m.QuietZoneQrCodeDemo,
+          ),
+      },
+      {
+        path: 'download-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/download-qr-code-demo').then(
+            (m) => m.DownloadQrCodeDemo,
+          ),
+      },
+      {
+        path: 'use-cases-qr-code-demo',
+        loadComponent: () =>
+          import('../pages/docs/qr-code/demos/use-cases-qr-code-demo').then(
+            (m) => m.UseCasesQrCodeDemo,
           ),
       },
     ],
@@ -2611,10 +2842,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/resizable',
     children: [
       {
-        path: 'resizable-demo',
+        path: 'horizontal-resizable-demo',
         loadComponent: () =>
-          import('../pages/docs/resizable/demos/resizable-demo').then(
-            (m) => m.ScResizableDemo,
+          import('../pages/docs/resizable/demos/horizontal-resizable-demo').then(
+            (m) => m.HorizontalResizableDemo,
+          ),
+      },
+      {
+        path: 'vertical-resizable-demo',
+        loadComponent: () =>
+          import('../pages/docs/resizable/demos/vertical-resizable-demo').then(
+            (m) => m.VerticalResizableDemo,
+          ),
+      },
+      {
+        path: 'with-handle-resizable-demo',
+        loadComponent: () =>
+          import('../pages/docs/resizable/demos/with-handle-resizable-demo').then(
+            (m) => m.WithHandleResizableDemo,
+          ),
+      },
+      {
+        path: 'three-panels-resizable-demo',
+        loadComponent: () =>
+          import('../pages/docs/resizable/demos/three-panels-resizable-demo').then(
+            (m) => m.ThreePanelsResizableDemo,
+          ),
+      },
+      {
+        path: 'nested-resizable-demo',
+        loadComponent: () =>
+          import('../pages/docs/resizable/demos/nested-resizable-demo').then(
+            (m) => m.NestedResizableDemo,
+          ),
+      },
+      {
+        path: 'ide-layout-resizable-demo',
+        loadComponent: () =>
+          import('../pages/docs/resizable/demos/ide-layout-resizable-demo').then(
+            (m) => m.IdeLayoutResizableDemo,
           ),
       },
     ],
@@ -2955,10 +3221,45 @@ export const demosRoutes: Route[] = [
     path: 'demos/speed-dial',
     children: [
       {
-        path: 'speed-dial-demo',
+        path: 'basic-speed-dial-demo',
         loadComponent: () =>
-          import('../pages/docs/speed-dial/demos/speed-dial-demo').then(
-            (m) => m.SpeedDialDemo,
+          import('../pages/docs/speed-dial/demos/basic-speed-dial-demo').then(
+            (m) => m.BasicSpeedDialDemo,
+          ),
+      },
+      {
+        path: 'directions-speed-dial-demo',
+        loadComponent: () =>
+          import('../pages/docs/speed-dial/demos/directions-speed-dial-demo').then(
+            (m) => m.DirectionsSpeedDialDemo,
+          ),
+      },
+      {
+        path: 'custom-icons-speed-dial-demo',
+        loadComponent: () =>
+          import('../pages/docs/speed-dial/demos/custom-icons-speed-dial-demo').then(
+            (m) => m.CustomIconsSpeedDialDemo,
+          ),
+      },
+      {
+        path: 'sizes-speed-dial-demo',
+        loadComponent: () =>
+          import('../pages/docs/speed-dial/demos/sizes-speed-dial-demo').then(
+            (m) => m.SizesSpeedDialDemo,
+          ),
+      },
+      {
+        path: 'without-labels-speed-dial-demo',
+        loadComponent: () =>
+          import('../pages/docs/speed-dial/demos/without-labels-speed-dial-demo').then(
+            (m) => m.WithoutLabelsSpeedDialDemo,
+          ),
+      },
+      {
+        path: 'disabled-actions-speed-dial-demo',
+        loadComponent: () =>
+          import('../pages/docs/speed-dial/demos/disabled-actions-speed-dial-demo').then(
+            (m) => m.DisabledActionsSpeedDialDemo,
           ),
       },
     ],
@@ -3000,10 +3301,52 @@ export const demosRoutes: Route[] = [
     path: 'demos/split-button',
     children: [
       {
-        path: 'split-button-demo',
+        path: 'basic-split-button-demo',
         loadComponent: () =>
-          import('../pages/docs/split-button/demos/split-button-demo').then(
-            (m) => m.SplitButtonDemo,
+          import('../pages/docs/split-button/demos/basic-split-button-demo').then(
+            (m) => m.BasicSplitButtonDemo,
+          ),
+      },
+      {
+        path: 'variants-split-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/split-button/demos/variants-split-button-demo').then(
+            (m) => m.VariantsSplitButtonDemo,
+          ),
+      },
+      {
+        path: 'sizes-split-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/split-button/demos/sizes-split-button-demo').then(
+            (m) => m.SizesSplitButtonDemo,
+          ),
+      },
+      {
+        path: 'icons-split-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/split-button/demos/icons-split-button-demo').then(
+            (m) => m.IconsSplitButtonDemo,
+          ),
+      },
+      {
+        path: 'destructive-split-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/split-button/demos/destructive-split-button-demo').then(
+            (m) => m.DestructiveSplitButtonDemo,
+          ),
+      },
+      {
+        path: 'disabled-split-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/split-button/demos/disabled-split-button-demo').then(
+            (m) => m.DisabledSplitButtonDemo,
+          ),
+      },
+      {
+        path: 'form-split-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/split-button/demos/form-split-button-demo').then(
+            (m) => m.FormSplitButtonDemo,
           ),
       },
     ],
@@ -3012,11 +3355,32 @@ export const demosRoutes: Route[] = [
     path: 'demos/spotlight',
     children: [
       {
-        path: 'spotlight-demo',
+        path: 'basic-spotlight-demo',
         loadComponent: () =>
-          import('../pages/docs/spotlight/demos/spotlight-demo').then(
-            (m) => m.SpotlightDemo,
+          import('../pages/docs/spotlight/demos/basic-spotlight-demo').then(
+            (m) => m.BasicSpotlightDemo,
           ),
+      },
+      {
+        path: 'custom-overlay-spotlight-demo',
+        loadComponent: () =>
+          import(
+            '../pages/docs/spotlight/demos/custom-overlay-spotlight-demo'
+          ).then((m) => m.CustomOverlaySpotlightDemo),
+      },
+      {
+        path: 'placement-spotlight-demo',
+        loadComponent: () =>
+          import(
+            '../pages/docs/spotlight/demos/placement-spotlight-demo'
+          ).then((m) => m.PlacementSpotlightDemo),
+      },
+      {
+        path: 'interactive-spotlight-demo',
+        loadComponent: () =>
+          import(
+            '../pages/docs/spotlight/demos/interactive-spotlight-demo'
+          ).then((m) => m.InteractiveSpotlightDemo),
       },
     ],
   },
@@ -3741,10 +4105,17 @@ export const demosRoutes: Route[] = [
     path: 'demos/tour-guide',
     children: [
       {
-        path: 'tour-guide-demo',
+        path: 'full-tour-guide-demo',
         loadComponent: () =>
-          import('../pages/docs/tour-guide/demos/tour-guide-demo').then(
-            (m) => m.TourGuideDemo,
+          import('../pages/docs/tour-guide/demos/full-tour-guide-demo').then(
+            (m) => m.FullTourGuideDemo,
+          ),
+      },
+      {
+        path: 'minimal-tour-guide-demo',
+        loadComponent: () =>
+          import('../pages/docs/tour-guide/demos/minimal-tour-guide-demo').then(
+            (m) => m.MinimalTourGuideDemo,
           ),
       },
     ],

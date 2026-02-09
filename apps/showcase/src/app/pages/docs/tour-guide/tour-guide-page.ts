@@ -3,14 +3,20 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { TourGuideDemoContainer } from './demos/tour-guide-demo-container';
+import { FullTourGuideDemoContainer } from './demos/full-tour-guide-demo-container';
+import { MinimalTourGuideDemoContainer } from './demos/minimal-tour-guide-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
 import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
 import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-tour-guide-page',
-  imports: [TourGuideDemoContainer, TocHeading, ComponentStatusBadge],
+  imports: [
+    FullTourGuideDemoContainer,
+    MinimalTourGuideDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -24,7 +30,8 @@ import { COMPONENTS } from '../../../data/components';
 
       <section class="space-y-8">
         <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-tour-guide-demo-container />
+        <app-full-tour-guide-demo-container />
+        <app-minimal-tour-guide-demo-container />
       </section>
     </div>
   `,
