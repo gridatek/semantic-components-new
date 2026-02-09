@@ -3,14 +3,24 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { SpotlightDemoContainer } from './demos/spotlight-demo-container';
+import { BasicSpotlightDemoContainer } from './demos/basic-spotlight-demo-container';
+import { CustomOverlaySpotlightDemoContainer } from './demos/custom-overlay-spotlight-demo-container';
+import { PlacementSpotlightDemoContainer } from './demos/placement-spotlight-demo-container';
+import { InteractiveSpotlightDemoContainer } from './demos/interactive-spotlight-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
 import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
 import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-spotlight-page',
-  imports: [SpotlightDemoContainer, TocHeading, ComponentStatusBadge],
+  imports: [
+    BasicSpotlightDemoContainer,
+    CustomOverlaySpotlightDemoContainer,
+    PlacementSpotlightDemoContainer,
+    InteractiveSpotlightDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -23,7 +33,10 @@ import { COMPONENTS } from '../../../data/components';
 
       <section class="space-y-8">
         <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-spotlight-demo-container />
+        <app-basic-spotlight-demo-container />
+        <app-custom-overlay-spotlight-demo-container />
+        <app-placement-spotlight-demo-container />
+        <app-interactive-spotlight-demo-container />
       </section>
     </div>
   `,

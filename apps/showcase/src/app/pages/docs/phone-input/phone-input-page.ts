@@ -3,14 +3,30 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScPhoneInputDemoContainer } from './demos/phone-input-demo-container';
+import { CountrySelectorPhoneInputDemoContainer } from './demos/country-selector-phone-input-demo-container';
+import { DefaultCountryPhoneInputDemoContainer } from './demos/default-country-phone-input-demo-container';
+import { UsFormatPhoneInputDemoContainer } from './demos/us-format-phone-input-demo-container';
+import { InternationalFormatPhoneInputDemoContainer } from './demos/international-format-phone-input-demo-container';
+import { WithoutIconPhoneInputDemoContainer } from './demos/without-icon-phone-input-demo-container';
+import { DisabledPhoneInputDemoContainer } from './demos/disabled-phone-input-demo-container';
+import { FormPhoneInputDemoContainer } from './demos/form-phone-input-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
 import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
 import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-phone-input-page',
-  imports: [ScPhoneInputDemoContainer, TocHeading, ComponentStatusBadge],
+  imports: [
+    CountrySelectorPhoneInputDemoContainer,
+    DefaultCountryPhoneInputDemoContainer,
+    UsFormatPhoneInputDemoContainer,
+    InternationalFormatPhoneInputDemoContainer,
+    WithoutIconPhoneInputDemoContainer,
+    DisabledPhoneInputDemoContainer,
+    FormPhoneInputDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -23,7 +39,13 @@ import { COMPONENTS } from '../../../data/components';
 
       <section class="space-y-8">
         <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-phone-input-demo-container />
+        <app-country-selector-phone-input-demo-container />
+        <app-default-country-phone-input-demo-container />
+        <app-us-format-phone-input-demo-container />
+        <app-international-format-phone-input-demo-container />
+        <app-without-icon-phone-input-demo-container />
+        <app-disabled-phone-input-demo-container />
+        <app-form-phone-input-demo-container />
       </section>
     </div>
   `,

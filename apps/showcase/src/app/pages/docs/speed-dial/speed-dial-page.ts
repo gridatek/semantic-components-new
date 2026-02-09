@@ -3,14 +3,28 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { SpeedDialDemoContainer } from './demos/speed-dial-demo-container';
+import { BasicSpeedDialDemoContainer } from './demos/basic-speed-dial-demo-container';
+import { DirectionsSpeedDialDemoContainer } from './demos/directions-speed-dial-demo-container';
+import { CustomIconsSpeedDialDemoContainer } from './demos/custom-icons-speed-dial-demo-container';
+import { SizesSpeedDialDemoContainer } from './demos/sizes-speed-dial-demo-container';
+import { WithoutLabelsSpeedDialDemoContainer } from './demos/without-labels-speed-dial-demo-container';
+import { DisabledActionsSpeedDialDemoContainer } from './demos/disabled-actions-speed-dial-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
 import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
 import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-speed-dial-page',
-  imports: [SpeedDialDemoContainer, TocHeading, ComponentStatusBadge],
+  imports: [
+    BasicSpeedDialDemoContainer,
+    DirectionsSpeedDialDemoContainer,
+    CustomIconsSpeedDialDemoContainer,
+    SizesSpeedDialDemoContainer,
+    WithoutLabelsSpeedDialDemoContainer,
+    DisabledActionsSpeedDialDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -24,7 +38,12 @@ import { COMPONENTS } from '../../../data/components';
 
       <section class="space-y-8">
         <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-speed-dial-demo-container />
+        <app-basic-speed-dial-demo-container />
+        <app-directions-speed-dial-demo-container />
+        <app-custom-icons-speed-dial-demo-container />
+        <app-sizes-speed-dial-demo-container />
+        <app-without-labels-speed-dial-demo-container />
+        <app-disabled-actions-speed-dial-demo-container />
       </section>
     </div>
   `,

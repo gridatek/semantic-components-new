@@ -3,14 +3,26 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMentionInputDemoContainer } from './demos/mention-input-demo-container';
+import { BasicMentionInputDemoContainer } from './demos/basic-mention-input-demo-container';
+import { AvatarsMentionInputDemoContainer } from './demos/avatars-mention-input-demo-container';
+import { CustomTriggerMentionInputDemoContainer } from './demos/custom-trigger-mention-input-demo-container';
+import { DisabledMentionInputDemoContainer } from './demos/disabled-mention-input-demo-container';
+import { FormMentionInputDemoContainer } from './demos/form-mention-input-demo-container';
 import { TocHeading } from '../../../components/toc/toc-heading';
 import { ComponentStatusBadge } from '../../../components/component-status-badge/component-status-badge';
 import { COMPONENTS } from '../../../data/components';
 
 @Component({
   selector: 'app-mention-input-page',
-  imports: [ScMentionInputDemoContainer, TocHeading, ComponentStatusBadge],
+  imports: [
+    BasicMentionInputDemoContainer,
+    AvatarsMentionInputDemoContainer,
+    CustomTriggerMentionInputDemoContainer,
+    DisabledMentionInputDemoContainer,
+    FormMentionInputDemoContainer,
+    TocHeading,
+    ComponentStatusBadge,
+  ],
   template: `
     <div class="space-y-8">
       <div class="space-y-2">
@@ -24,7 +36,11 @@ import { COMPONENTS } from '../../../data/components';
 
       <section class="space-y-8">
         <h2 toc class="text-xl font-semibold tracking-tight">Examples</h2>
-        <app-mention-input-demo-container />
+        <app-basic-mention-input-demo-container />
+        <app-avatars-mention-input-demo-container />
+        <app-custom-trigger-mention-input-demo-container />
+        <app-disabled-mention-input-demo-container />
+        <app-form-mention-input-demo-container />
       </section>
     </div>
   `,
