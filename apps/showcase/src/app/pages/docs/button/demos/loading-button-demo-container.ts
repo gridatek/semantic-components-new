@@ -35,7 +35,7 @@ import { ScButton } from '@semantic-components/ui';
   imports: [ScButton],
   template: \`
     <div class="flex flex-wrap items-center gap-4">
-      <button sc-button aria-disabled="true">
+      <button sc-button disabled>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

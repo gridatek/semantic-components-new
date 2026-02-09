@@ -1,4 +1,11 @@
-import { computed, Directive, ElementRef, inject, input } from '@angular/core';
+import {
+  booleanAttribute,
+  computed,
+  Directive,
+  ElementRef,
+  inject,
+  input,
+} from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
@@ -46,6 +53,7 @@ export type ScButtonVariants = VariantProps<typeof buttonVariants>;
   host: {
     'data-slot': 'button',
     '[attr.type]': 'isButton() ? type() : null',
+    '[attr.aria-disabled]': 'disabled() || null',
     '[class]': 'class()',
   },
 })
@@ -56,6 +64,9 @@ export class ScButton {
   readonly variant = input<ScButtonVariants['variant']>('default');
   readonly size = input<ScButtonVariants['size']>('default');
   readonly type = input<string>('button');
+  readonly disabled = input<boolean, unknown>(false, {
+    transform: booleanAttribute,
+  });
 
   protected readonly isButton = computed(
     () => this.elementRef.nativeElement.tagName === 'BUTTON',
