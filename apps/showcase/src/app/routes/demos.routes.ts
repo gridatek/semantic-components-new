@@ -388,6 +388,13 @@ export const demosRoutes: Route[] = [
             (m) => m.LoadingButtonDemo,
           ),
       },
+      {
+        path: 'disabled-link-button-demo',
+        loadComponent: () =>
+          import('../pages/docs/button/demos/disabled-link-button-demo').then(
+            (m) => m.DisabledLinkButtonDemo,
+          ),
+      },
     ],
   },
   {
@@ -2412,6 +2419,13 @@ export const demosRoutes: Route[] = [
         loadComponent: () =>
           import('../pages/docs/pagination/demos/keyboard-navigation-pagination-demo').then(
             (m) => m.KeyboardNavigationPaginationDemo,
+          ),
+      },
+      {
+        path: 'disabled-link-pagination-demo',
+        loadComponent: () =>
+          import('../pages/docs/pagination/demos/disabled-link-pagination-demo').then(
+            (m) => m.DisabledLinkPaginationDemo,
           ),
       },
     ],

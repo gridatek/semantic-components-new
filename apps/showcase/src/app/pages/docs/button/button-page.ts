@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { AsLinkButtonDemoContainer } from './demos/as-link-button-demo-container';
 import { DisabledButtonDemoContainer } from './demos/disabled-button-demo-container';
+import { DisabledLinkButtonDemoContainer } from './demos/disabled-link-button-demo-container';
 import { LoadingButtonDemoContainer } from './demos/loading-button-demo-container';
 import { SizesButtonDemoContainer } from './demos/sizes-button-demo-container';
 import { VariantsButtonDemoContainer } from './demos/variants-button-demo-container';
@@ -20,6 +21,7 @@ import { COMPONENTS } from '../../../data/components';
     SizesButtonDemoContainer,
     WithIconsButtonDemoContainer,
     DisabledButtonDemoContainer,
+    DisabledLinkButtonDemoContainer,
     AsLinkButtonDemoContainer,
     LoadingButtonDemoContainer,
     TocHeading,
@@ -41,6 +43,7 @@ import { COMPONENTS } from '../../../data/components';
         <app-sizes-button-demo-container />
         <app-with-icons-button-demo-container />
         <app-disabled-button-demo-container />
+        <app-disabled-link-button-demo-container />
         <app-as-link-button-demo-container />
         <app-loading-button-demo-container />
       </section>
