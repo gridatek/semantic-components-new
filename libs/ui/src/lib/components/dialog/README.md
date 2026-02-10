@@ -4,12 +4,12 @@ A set of Angular components for creating accessible modal dialogs with shadcn/ui
 
 ## Architecture
 
-The components follow a dependency injection (DI) pattern where child components inject the parent `ScDialogProvider` to access shared state.
+The components follow a dependency injection (DI) pattern where child components inject the parent `ScDialogProvider` to access shared state. `ScDialogProvider` owns all overlay lifecycle logic (CDK overlay, backdrop, focus trap). The `ScDialogPortal` directive marks the lazy content template that gets portaled into the overlay.
 
 ```
-ScDialogProvider (root wrapper - manages open state)
+ScDialogProvider (root wrapper - manages open state + overlay lifecycle)
 ├── ScDialogTrigger (button that opens dialog)
-└── ScDialogPortal (overlay with backdrop)
+└── ng-template[scDialogPortal] (lazy content, portaled to CDK overlay)
     └── ScDialog (dialog container)
         ├── ScDialogClose (close button)
         ├── ScDialogHeader
@@ -21,27 +21,27 @@ ScDialogProvider (root wrapper - manages open state)
 
 ## Components
 
-| Component             | Selector                    | Description                                       |
-| --------------------- | --------------------------- | ------------------------------------------------- |
-| `ScDialog`            | `div[sc-dialog]`            | Root wrapper, manages open state                  |
-| `ScDialogTrigger`     | `button[sc-dialog-trigger]` | Button that opens the dialog                      |
-| `ScDialogPortal`      | `div[sc-dialog-portal]`     | Overlay container with backdrop                   |
-| `ScDialogContent`     | `div[sc-dialog-content]`    | Dialog panel with animations                      |
-| `ScDialogHeader`      | `div[sc-dialog-header]`     | Header section container                          |
-| `ScDialogTitle`       | `h2[sc-dialog-title]`       | Dialog title (aria-labelledby)                    |
-| `ScDialogDescription` | `p[sc-dialog-description]`  | Dialog description (aria-describedby)             |
-| `ScDialogFooter`      | `div[sc-dialog-footer]`     | Footer section for actions                        |
-| `ScDialogClose`       | `button[sc-dialog-close]`   | Close button (sets `type="button"` automatically) |
+| Component             | Selector                      | Description                                       |
+| --------------------- | ----------------------------- | ------------------------------------------------- |
+| `ScDialogProvider`    | `div[sc-dialog-provider]`     | Root wrapper, manages open state + overlay        |
+| `ScDialogTrigger`     | `button[sc-dialog-trigger]`   | Button that opens the dialog                      |
+| `ScDialogPortal`      | `ng-template[scDialogPortal]` | Directive marking lazy content for the overlay    |
+| `ScDialog`            | `div[sc-dialog]`              | Dialog panel with animations                      |
+| `ScDialogHeader`      | `div[sc-dialog-header]`       | Header section container                          |
+| `ScDialogTitle`       | `h2[sc-dialog-title]`         | Dialog title (aria-labelledby)                    |
+| `ScDialogDescription` | `p[sc-dialog-description]`    | Dialog description (aria-describedby)             |
+| `ScDialogFooter`      | `div[sc-dialog-footer]`       | Footer section for actions                        |
+| `ScDialogClose`       | `button[sc-dialog-close]`     | Close button (sets `type="button"` automatically) |
 
 ## Usage
 
 ### Basic Dialog
 
 ```html
-<div sc-dialog>
+<div sc-dialog-provider [(open)]="isOpen">
   <button sc-dialog-trigger>Open Dialog</button>
-  <div sc-dialog-portal>
-    <div sc-dialog-content>
+  <ng-template scDialogPortal>
+    <div sc-dialog>
       <button sc-dialog-close>
         <svg><!-- X icon --></svg>
         <span class="sr-only">Close</span>
@@ -56,7 +56,7 @@ ScDialogProvider (root wrapper - manages open state)
         <button>Save</button>
       </div>
     </div>
-  </div>
+  </ng-template>
 </div>
 ```
 
@@ -67,13 +67,13 @@ You can control the dialog state programmatically using the `open` model:
 ```typescript
 @Component({
   template: `
-    <div sc-dialog [(open)]="isOpen">
+    <div sc-dialog-provider [(open)]="isOpen">
       <button sc-dialog-trigger>Open</button>
-      <div sc-dialog-portal>
-        <div sc-dialog-content>
+      <ng-template scDialogPortal>
+        <div sc-dialog>
           <!-- content -->
         </div>
-      </div>
+      </ng-template>
     </div>
   `,
 })
@@ -93,28 +93,30 @@ export class MyComponent {
 ### Form Dialog
 
 ```html
-<div sc-dialog>
+<div sc-dialog-provider [(open)]="isOpen">
   <button sc-dialog-trigger>Edit Profile</button>
-  <div sc-dialog-portal>
-    <div sc-dialog-content>
-      <button sc-dialog-close>
-        <svg><!-- X icon --></svg>
-      </button>
-      <div sc-dialog-header>
-        <h2 sc-dialog-title>Edit profile</h2>
-        <p sc-dialog-description>Make changes to your profile here.</p>
-      </div>
-      <form class="grid gap-4 py-4">
-        <div class="grid grid-cols-4 items-center gap-4">
-          <label for="name" class="text-right">Name</label>
-          <input id="name" class="col-span-3" />
+  <ng-template scDialogPortal>
+    <form>
+      <div sc-dialog>
+        <button sc-dialog-close>
+          <svg><!-- X icon --></svg>
+        </button>
+        <div sc-dialog-header>
+          <h2 sc-dialog-title>Edit profile</h2>
+          <p sc-dialog-description>Make changes to your profile here.</p>
         </div>
-      </form>
-      <div sc-dialog-footer>
-        <button type="submit">Save changes</button>
+        <div class="grid gap-4 py-4">
+          <div class="grid grid-cols-4 items-center gap-4">
+            <label for="name" class="text-right">Name</label>
+            <input id="name" class="col-span-3" />
+          </div>
+        </div>
+        <div sc-dialog-footer>
+          <button type="submit">Save changes</button>
+        </div>
       </div>
-    </div>
-  </div>
+    </form>
+  </ng-template>
 </div>
 ```
 
@@ -129,39 +131,41 @@ export class MyComponent {
 
 ### State Management
 
-`ScDialog` uses a `model` signal for the `open` state:
+`ScDialogProvider` uses a `model` signal for the `open` state:
 
 ```typescript
 readonly open = model<boolean>(false);
 ```
 
-Child components inject `ScDialog` to read or modify this state:
+Child components inject `ScDialogProvider` to read or modify this state:
 
 ```typescript
 // ScDialogTrigger
 openDialog(): void {
-  this.dialog.open.set(true);
+  this.dialogProvider.open.set(true);
 }
 
 // ScDialogClose
 closeDialog(): void {
-  this.dialog.open.set(false);
+  this.dialogProvider.open.set(false);
 }
 ```
 
 ### Overlay Management
 
-`ScDialogPortal` creates a CDK overlay and attaches/detaches content based on the `open` state:
+`ScDialogProvider` creates a CDK overlay and attaches/detaches the `scDialogPortal` template based on state:
 
 ```typescript
 effect(() => {
-  if (this.dialog.open()) {
+  if (this.overlayOpen()) {
     this.attachDialog();
   } else {
     this.detachDialog();
   }
 });
 ```
+
+The `scDialogPortal` directive marks the `ng-template` whose content is lazily instantiated into the overlay only when the dialog opens.
 
 ### Animations
 
@@ -174,19 +178,6 @@ effect(() => {
 | `closed` | `data-closed`  | Exit animation (`fade-out`, `zoom-out`) → back to `idle` |
 
 The flow is: `idle` → `open` → `closed` → `idle`
-
-```typescript
-type ScDialogState = 'idle' | 'open' | 'closed';
-
-protected readonly class = computed(() =>
-  cn(
-    'data-idle:opacity-0',
-    'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95',
-    'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
-    // ...
-  ),
-);
-```
 
 On `animationend`, the `closed` state resets to `idle`, which triggers overlay cleanup via `onDialogAnimationComplete()`.
 
@@ -207,7 +198,7 @@ On `animationend`, the `closed` state resets to `idle`, which triggers overlay c
 All components accept a `class` input for custom styling:
 
 ```html
-<div sc-dialog-content class="max-w-2xl">
+<div sc-dialog class="max-w-2xl">
   <!-- wider dialog -->
 </div>
 

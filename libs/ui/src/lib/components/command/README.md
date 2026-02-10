@@ -120,10 +120,9 @@ Items will match if the search query matches either the `value` or any of the `k
 ### In a Dialog
 
 ```html
-<div sc-dialog>
-  <button sc-dialog-trigger>Open Command</button>
-  <div sc-dialog-portal>
-    <div sc-dialog-content class="p-0">
+<div sc-dialog-provider [(open)]="open">
+  <ng-template scDialogPortal>
+    <div sc-dialog class="p-0">
       <div sc-command>
         <div sc-command-input />
         <div sc-command-list>
@@ -131,7 +130,7 @@ Items will match if the search query matches either the `value` or any of the `k
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 </div>
 ```
 
