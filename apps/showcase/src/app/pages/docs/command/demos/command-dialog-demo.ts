@@ -20,11 +20,7 @@ import {
   ScCommandSeparator,
   ScCommandShortcut,
 } from '@semantic-components/ui';
-import {
-  ScDialogProvider,
-  ScDialogPortal,
-  ScDialog,
-} from '@semantic-components/ui';
+import { ScDialogProvider, ScDialog } from '@semantic-components/ui';
 
 interface CommandItem {
   value: string;
@@ -47,7 +43,6 @@ interface CommandItem {
     ScCommandSeparator,
     ScCommandShortcut,
     ScDialogProvider,
-    ScDialogPortal,
     ScDialog,
   ],
   template: `
@@ -63,68 +58,66 @@ interface CommandItem {
 
     <div sc-dialog-provider [(open)]="open">
       <ng-template>
-        <div sc-dialog-portal>
-          <div sc-dialog class="w-lg gap-0 p-0">
-            <div sc-command class="[&_[data-slot=command-input]]:h-12">
-              <div
-                sc-command-input
-                placeholder="Type a command or search..."
-              ></div>
-              <div sc-command-list>
-                @if (
-                  filteredSuggestions().length === 0 &&
-                  filteredSettings().length === 0
-                ) {
-                  <div sc-command-empty>No results found.</div>
-                }
-                @if (filteredSuggestions().length > 0) {
-                  <div sc-command-group>
-                    <span sc-command-group-heading>Suggestions</span>
-                    @for (item of filteredSuggestions(); track item.value) {
-                      <div
-                        sc-command-item
-                        [value]="item.value"
-                        [label]="item.label"
-                        (select)="onSelect(item.label)"
-                      >
-                        <span
-                          class="[&>svg]:size-4 [&>svg]:shrink-0"
-                          [innerHTML]="item.icon"
-                        ></span>
-                        <span>{{ item.label }}</span>
-                      </div>
-                    }
-                  </div>
-                }
-                @if (
-                  filteredSuggestions().length > 0 &&
-                  filteredSettings().length > 0
-                ) {
-                  <div sc-command-separator></div>
-                }
-                @if (filteredSettings().length > 0) {
-                  <div sc-command-group>
-                    <span sc-command-group-heading>Settings</span>
-                    @for (item of filteredSettings(); track item.value) {
-                      <div
-                        sc-command-item
-                        [value]="item.value"
-                        [label]="item.label"
-                        (select)="onSelect(item.label)"
-                      >
-                        <span
-                          class="[&>svg]:size-4 [&>svg]:shrink-0"
-                          [innerHTML]="item.icon"
-                        ></span>
-                        <span>{{ item.label }}</span>
-                        @if (item.shortcut) {
-                          <span sc-command-shortcut>{{ item.shortcut }}</span>
-                        }
-                      </div>
-                    }
-                  </div>
-                }
-              </div>
+        <div sc-dialog class="w-lg gap-0 p-0">
+          <div sc-command class="[&_[data-slot=command-input]]:h-12">
+            <div
+              sc-command-input
+              placeholder="Type a command or search..."
+            ></div>
+            <div sc-command-list>
+              @if (
+                filteredSuggestions().length === 0 &&
+                filteredSettings().length === 0
+              ) {
+                <div sc-command-empty>No results found.</div>
+              }
+              @if (filteredSuggestions().length > 0) {
+                <div sc-command-group>
+                  <span sc-command-group-heading>Suggestions</span>
+                  @for (item of filteredSuggestions(); track item.value) {
+                    <div
+                      sc-command-item
+                      [value]="item.value"
+                      [label]="item.label"
+                      (select)="onSelect(item.label)"
+                    >
+                      <span
+                        class="[&>svg]:size-4 [&>svg]:shrink-0"
+                        [innerHTML]="item.icon"
+                      ></span>
+                      <span>{{ item.label }}</span>
+                    </div>
+                  }
+                </div>
+              }
+              @if (
+                filteredSuggestions().length > 0 &&
+                filteredSettings().length > 0
+              ) {
+                <div sc-command-separator></div>
+              }
+              @if (filteredSettings().length > 0) {
+                <div sc-command-group>
+                  <span sc-command-group-heading>Settings</span>
+                  @for (item of filteredSettings(); track item.value) {
+                    <div
+                      sc-command-item
+                      [value]="item.value"
+                      [label]="item.label"
+                      (select)="onSelect(item.label)"
+                    >
+                      <span
+                        class="[&>svg]:size-4 [&>svg]:shrink-0"
+                        [innerHTML]="item.icon"
+                      ></span>
+                      <span>{{ item.label }}</span>
+                      @if (item.shortcut) {
+                        <span sc-command-shortcut>{{ item.shortcut }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              }
             </div>
           </div>
         </div>

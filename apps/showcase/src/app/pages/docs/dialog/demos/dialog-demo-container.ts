@@ -28,7 +28,6 @@ import {
   ScDialogDescription,
   ScDialogFooter,
   ScDialogHeader,
-  ScDialogPortal,
   ScDialogTitle,
   ScDialogTrigger,
   ScField,
@@ -48,7 +47,6 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
     ScDialogDescription,
     ScDialogFooter,
     ScDialogHeader,
-    ScDialogPortal,
     ScDialogTitle,
     ScDialogTrigger,
     ScField,
@@ -61,39 +59,37 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
     <div sc-dialog-provider [(open)]="isOpen">
       <button sc-dialog-trigger sc-button variant="outline">Open Dialog</button>
       <ng-template>
-        <div sc-dialog-portal>
-          <form>
-            <div sc-dialog class="sm:max-w-sm">
-              <button sc-dialog-close>
-                <svg si-x-icon></svg>
-                <span class="sr-only">Close</span>
-              </button>
-              <div sc-dialog-header>
-                <h2 sc-dialog-title>Edit profile</h2>
-                <p sc-dialog-description>
-                  Make changes to your profile here. Click save when you're
-                  done.
-                </p>
+        <form>
+          <div sc-dialog class="sm:max-w-sm">
+            <button sc-dialog-close>
+              <svg si-x-icon></svg>
+              <span class="sr-only">Close</span>
+            </button>
+            <div sc-dialog-header>
+              <h2 sc-dialog-title>Edit profile</h2>
+              <p sc-dialog-description>
+                Make changes to your profile here. Click save when you're
+                done.
+              </p>
+            </div>
+            <div sc-field-group>
+              <div sc-field orientation="horizontal">
+                <label sc-label>Name</label>
+                <input cdkFocusInitial sc-input value="Pedro Duarte" />
               </div>
-              <div sc-field-group>
-                <div sc-field orientation="horizontal">
-                  <label sc-label>Name</label>
-                  <input cdkFocusInitial sc-input value="Pedro Duarte" />
-                </div>
-                <div sc-field orientation="horizontal">
-                  <label sc-label>Username</label>
-                  <input sc-input value="@peduarte" />
-                </div>
-              </div>
-              <div sc-dialog-footer>
-                <button sc-button variant="outline" (click)="isOpen.set(false)">
-                  Cancel
-                </button>
-                <button sc-button type="submit">Save changes</button>
+              <div sc-field orientation="horizontal">
+                <label sc-label>Username</label>
+                <input sc-input value="@peduarte" />
               </div>
             </div>
-          </form>
-        </div>
+            <div sc-dialog-footer>
+              <button sc-button variant="outline" (click)="isOpen.set(false)">
+                Cancel
+              </button>
+              <button sc-button type="submit">Save changes</button>
+            </div>
+          </div>
+        </form>
       </ng-template>
     </div>
   \`,
