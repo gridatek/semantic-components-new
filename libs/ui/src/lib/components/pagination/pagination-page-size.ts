@@ -37,6 +37,7 @@ export class ScPaginationPageSize {
   protected readonly class = computed(() => cn('', this.classInput()));
 
   protected onPageSizeChange(event: Event): void {
+    event.stopPropagation();
     const select = event.target as HTMLSelectElement;
     const newPageSize = parseInt(select.value, 10);
     this.pagination.changePageSize(newPageSize);
