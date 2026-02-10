@@ -18,12 +18,14 @@ Button directive that can be applied to `button` or `a` elements.
 
 **Inputs:**
 
-| Input     | Type            | Default     | Description                                                 |
-| --------- | --------------- | ----------- | ----------------------------------------------------------- |
-| `variant` | `ButtonVariant` | `'default'` | Visual style variant                                        |
-| `size`    | `ButtonSize`    | `'default'` | Size of the button                                          |
-| `type`    | `string`        | `'button'`  | Button type attribute (only applied to `<button>` elements) |
-| `class`   | `string`        | `''`        | Additional CSS classes                                      |
+| Input      | Type                              | Default     | Description                                                  |
+| ---------- | --------------------------------- | ----------- | ------------------------------------------------------------ |
+| `variant`  | `ButtonVariant`                   | `'default'` | Visual style variant                                         |
+| `size`     | `ButtonSize`                      | `'default'` | Size of the button                                           |
+| `type`     | `'button' \| 'submit' \| 'reset'` | `'button'`  | Button type attribute (only applied to `<button>` elements)  |
+| `href`     | `string`                          | `'#'`       | Href attribute (only applied to `<a>` elements, overridable) |
+| `disabled` | `boolean`                         | `false`     | Disables the button (sets `aria-disabled`)                   |
+| `class`    | `string`                          | `''`        | Additional CSS classes                                       |
 
 **ButtonVariant:**
 
@@ -36,10 +38,14 @@ Button directive that can be applied to `button` or `a` elements.
 
 **ButtonSize:**
 
-- `default` - Standard size (h-10)
-- `sm` - Small size (h-9)
-- `lg` - Large size (h-11)
-- `icon` - Square icon button (size-10)
+- `default` - Standard size (h-8)
+- `xs` - Extra small size (h-6)
+- `sm` - Small size (h-7)
+- `lg` - Large size (h-9)
+- `icon` - Square icon button (size-8)
+- `icon-xs` - Extra small icon button (size-6)
+- `icon-sm` - Small icon button (size-7)
+- `icon-lg` - Large icon button (size-9)
 
 ## Examples
 
@@ -87,9 +93,15 @@ Button directive that can be applied to `button` or `a` elements.
 
 ### As Link
 
+`ScButton` automatically sets `href="#"` on `<a>` elements. Override with `[href]` for real navigation:
+
 ```html
-<a sc-button href="/somewhere">Link Button</a>
-<a sc-button variant="outline" href="/somewhere">Outline Link</a>
+<!-- Default href="#" -->
+<a sc-button>Link Button</a>
+<a sc-button variant="outline">Outline Link</a>
+
+<!-- Custom href -->
+<a sc-button href="/somewhere">Navigate</a>
 ```
 
 ### Form Submit
@@ -110,7 +122,7 @@ By default, `sc-button` sets `type="button"` to prevent accidental form submissi
 
 ```html
 <button sc-button disabled>
-  <svg class="animate-spin"><!-- spinner icon --></svg>
+  <svg sc-spinner si-loader-2-icon></svg>
   Please wait
 </button>
 ```
