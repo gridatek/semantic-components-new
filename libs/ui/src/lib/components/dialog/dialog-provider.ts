@@ -78,7 +78,7 @@ export class ScDialogProvider {
 
   private overlayRef: OverlayRef | null = null;
 
-  protected readonly class = computed(() => cn('relative', this.classInput()));
+  protected readonly class = computed(() => cn('contents', this.classInput()));
 
   constructor() {
     // Synchronize overlay state with logical state for opening
