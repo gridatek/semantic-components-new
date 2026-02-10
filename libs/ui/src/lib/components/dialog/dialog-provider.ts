@@ -19,6 +19,7 @@ import {
 } from '@angular/core';
 import { cn } from '../../utils';
 import { ScBackdrop } from '../backdrop';
+import { ScDialogPortal } from './dialog-portal';
 
 @Component({
   selector: 'div[sc-dialog-provider]',
@@ -32,7 +33,7 @@ import { ScBackdrop } from '../backdrop';
         (animationComplete)="onBackdropAnimationComplete()"
       ></div>
       <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
-        <ng-container [ngTemplateOutlet]="contentTemplate()" />
+        <ng-container [ngTemplateOutlet]="dialogPortal().templateRef" />
       </div>
     </ng-template>
   `,
@@ -52,7 +53,7 @@ export class ScDialogProvider {
   private readonly overlayTemplate =
     viewChild.required<TemplateRef<unknown>>('overlayTemplate');
 
-  protected readonly contentTemplate = contentChild.required(TemplateRef);
+  protected readonly dialogPortal = contentChild.required(ScDialogPortal);
 
   /**
    * Logical state: Controls animation state (open/closed)

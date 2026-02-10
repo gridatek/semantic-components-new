@@ -20,7 +20,11 @@ import {
   ScCommandSeparator,
   ScCommandShortcut,
 } from '@semantic-components/ui';
-import { ScDialogProvider, ScDialog } from '@semantic-components/ui';
+import {
+  ScDialogProvider,
+  ScDialogPortal,
+  ScDialog,
+} from '@semantic-components/ui';
 
 interface CommandItem {
   value: string;
@@ -43,6 +47,7 @@ interface CommandItem {
     ScCommandSeparator,
     ScCommandShortcut,
     ScDialogProvider,
+    ScDialogPortal,
     ScDialog,
   ],
   template: `
@@ -57,7 +62,7 @@ interface CommandItem {
     </p>
 
     <div sc-dialog-provider [(open)]="open">
-      <ng-template>
+      <ng-template scDialogPortal>
         <div sc-dialog class="w-lg gap-0 p-0">
           <div sc-command class="[&_[data-slot=command-input]]:h-12">
             <div

@@ -1,26 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-  ViewEncapsulation,
-} from '@angular/core';
-import { cn } from '../../utils';
+import { Directive, inject, TemplateRef } from '@angular/core';
 
-@Component({
-  selector: 'div[sc-dialog-portal]',
-  template: `
-    <ng-content />
-  `,
-  host: {
-    'data-slot': 'dialog-portal',
-    '[class]': 'class()',
-  },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+@Directive({
+  selector: 'ng-template[scDialogPortal]',
 })
 export class ScDialogPortal {
-  readonly classInput = input<string>('', { alias: 'class' });
-
-  protected readonly class = computed(() => cn('', this.classInput()));
+  readonly templateRef = inject(TemplateRef);
 }

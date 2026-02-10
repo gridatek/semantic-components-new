@@ -12,6 +12,7 @@ import {
   ScDialogDescription,
   ScDialogFooter,
   ScDialogHeader,
+  ScDialogPortal,
   ScDialogTitle,
   ScDialogTrigger,
   ScField,
@@ -31,6 +32,7 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
     ScDialogDescription,
     ScDialogFooter,
     ScDialogHeader,
+    ScDialogPortal,
     ScDialogTitle,
     ScDialogTrigger,
     ScField,
@@ -42,7 +44,7 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
   template: `
     <div sc-dialog-provider [(open)]="isOpen">
       <button sc-dialog-trigger sc-button variant="outline">Open Dialog</button>
-      <ng-template>
+      <ng-template scDialogPortal>
         <form>
           <div sc-dialog class="sm:max-w-sm">
             <button sc-dialog-close>
