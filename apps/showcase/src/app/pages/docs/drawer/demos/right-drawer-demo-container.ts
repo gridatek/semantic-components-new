@@ -59,7 +59,7 @@ import {
       >
         Open Right Drawer
       </button>
-      <div sc-drawer-portal>
+      <ng-template scDrawerPortal>
         <div sc-drawer>
           <button
             sc-drawer-close
@@ -113,7 +113,7 @@ import {
             </div>
           </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,

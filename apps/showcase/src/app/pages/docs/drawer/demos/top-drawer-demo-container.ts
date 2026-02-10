@@ -61,7 +61,7 @@ import {
       >
         Open Top Drawer
       </button>
-      <div sc-drawer-portal>
+      <ng-template scDrawerPortal>
         <div sc-drawer>
           <div sc-drawer-header>
             <h2 sc-drawer-title>Notifications</h2>
@@ -94,7 +94,7 @@ import {
             </button>
           </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,

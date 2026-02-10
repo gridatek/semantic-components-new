@@ -38,7 +38,7 @@ import {
       <button sc-button sc-alert-dialog-trigger variant="destructive">
         Delete All
       </button>
-      <div sc-alert-dialog-portal>
+      <ng-template scAlertDialogPortal>
         <div sc-alert-dialog>
           <div sc-alert-dialog-header>
             <h2 sc-alert-dialog-title>Delete all items?</h2>
@@ -54,7 +54,7 @@ import {
             </button>
           </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

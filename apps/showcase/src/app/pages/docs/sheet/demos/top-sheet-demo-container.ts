@@ -59,7 +59,7 @@ import {
       >
         Open Top Sheet
       </button>
-      <div sc-sheet-portal>
+      <ng-template scSheetPortal>
         <div sc-sheet>
           <button sc-sheet-close>
             <svg
@@ -85,7 +85,7 @@ import {
             <p sc-sheet-description>You have 3 unread messages.</p>
           </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,

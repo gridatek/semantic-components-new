@@ -57,7 +57,7 @@ import {
       >
         Open Left Drawer
       </button>
-      <div sc-drawer-portal>
+      <ng-template scDrawerPortal>
         <div sc-drawer>
           <div sc-drawer-header>
             <h2 sc-drawer-title>Navigation</h2>
@@ -90,7 +90,7 @@ import {
             </a>
           </nav>
         </div>
-      </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,

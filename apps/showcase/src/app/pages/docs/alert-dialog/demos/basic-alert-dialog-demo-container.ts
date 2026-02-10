@@ -59,7 +59,7 @@ import {
       <button sc-button sc-alert-dialog-trigger variant="outline">
         Delete Account
       </button>
-      <div sc-alert-dialog-portal>
+      <ng-template scAlertDialogPortal>
         <div sc-alert-dialog>
           <div sc-alert-dialog-header>
             <h2 sc-alert-dialog-title>Are you absolutely sure?</h2>
@@ -73,7 +73,7 @@ import {
             <button sc-alert-dialog-action>Continue</button>
           </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,

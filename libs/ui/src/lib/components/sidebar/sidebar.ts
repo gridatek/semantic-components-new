@@ -34,7 +34,7 @@ import { ScSidebarState } from './sidebar-state.service';
     <!-- Mobile sidebar uses default width from sheet component -->
     @if (isMobile()) {
       <div sc-sheet-provider [(open)]="state.openMobile" [side]="side()">
-        <div sc-sheet-portal>
+        <ng-template scSheetPortal>
           <div
             sc-sheet
             class="bg-sidebar text-sidebar-foreground p-0 flex h-full flex-col"
@@ -45,7 +45,7 @@ import { ScSidebarState } from './sidebar-state.service';
             </button>
             <ng-container *ngTemplateOutlet="content" />
           </div>
-        </div>
+        </ng-template>
       </div>
     } @else {
       <div

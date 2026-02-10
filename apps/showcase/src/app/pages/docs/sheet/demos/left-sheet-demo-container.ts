@@ -59,7 +59,7 @@ import {
       >
         Open Left Sheet
       </button>
-      <div sc-sheet-portal>
+      <ng-template scSheetPortal>
         <div sc-sheet>
           <button sc-sheet-close>
             <svg
@@ -111,7 +111,7 @@ import {
             </a>
           </nav>
         </div>
-      </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,
