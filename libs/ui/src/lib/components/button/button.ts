@@ -64,7 +64,7 @@ export class ScButton {
   readonly classInput = input<string>('', { alias: 'class' });
   readonly variant = input<ScButtonVariants['variant']>('default');
   readonly size = input<ScButtonVariants['size']>('default');
-  readonly type = input<string>('button');
+  readonly type = input<'button' | 'submit' | 'reset'>('button');
   readonly href = input<string>('#');
   readonly disabled = input<boolean, unknown>(false, {
     transform: booleanAttribute,
