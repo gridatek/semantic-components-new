@@ -53,6 +53,7 @@ export type ScButtonVariants = VariantProps<typeof buttonVariants>;
   host: {
     'data-slot': 'button',
     '[attr.type]': 'isButton() ? type() : null',
+    '[attr.href]': 'isAnchor() ? href() : null',
     '[attr.aria-disabled]': 'disabled() || null',
     '[class]': 'class()',
   },
@@ -64,12 +65,17 @@ export class ScButton {
   readonly variant = input<ScButtonVariants['variant']>('default');
   readonly size = input<ScButtonVariants['size']>('default');
   readonly type = input<string>('button');
+  readonly href = input<string>('#');
   readonly disabled = input<boolean, unknown>(false, {
     transform: booleanAttribute,
   });
 
   protected readonly isButton = computed(
     () => this.elementRef.nativeElement.tagName === 'BUTTON',
+  );
+
+  protected readonly isAnchor = computed(
+    () => this.elementRef.nativeElement.tagName === 'A',
   );
 
   protected readonly class = computed(() =>

@@ -10,9 +10,9 @@ import { ScButton } from '@semantic-components/ui';
   imports: [ScButton],
   template: `
     <div class="flex flex-wrap items-center gap-4">
-      <a sc-button href="#">Default Link</a>
-      <a sc-button variant="outline" href="#">Outline Link</a>
-      <a sc-button variant="ghost" href="#">Ghost Link</a>
+      <a sc-button>Default Link</a>
+      <a sc-button variant="outline">Outline Link</a>
+      <a sc-button variant="ghost">Ghost Link</a>
     </div>
   `,
   encapsulation: ViewEncapsulation.None,
