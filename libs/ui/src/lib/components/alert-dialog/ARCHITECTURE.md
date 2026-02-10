@@ -7,8 +7,11 @@ The alert-dialog component uses a multi-signal architecture pattern to ensure sm
 ## Component Structure
 
 ```
-ScAlertDialogProvider (Root State Manager)
-└── ScAlertDialogPortal (CDK Overlay Manager)
+ScAlertDialogProvider (Root State Manager + CDK Overlay Manager)
+├── ScAlertDialogTrigger (Opens dialog)
+└── ng-template[scAlertDialogPortal] (Lazy content, portaled to CDK overlay)
+    │
+    Inside CDK Overlay (managed by Provider):
     ├── CDK Backdrop (Transparent - click blocking only)
     ├── ScBackdrop (Visual backdrop with animations)
     └── ScAlertDialog (Dialog Content)
@@ -19,9 +22,37 @@ ScAlertDialogProvider (Root State Manager)
         └── ScAlertDialogFooter
             ├── ScAlertDialogCancel
             └── ScAlertDialogAction
-
-Plus: ScAlertDialogTrigger (Opens dialog)
 ```
+
+### ScAlertDialogPortal Directive
+
+`ScAlertDialogPortal` is a structural directive on `ng-template` that marks the lazy content to be portaled into the CDK overlay. It holds a reference to the `TemplateRef` which the provider reads via `contentChild`.
+
+```typescript
+@Directive({
+  selector: 'ng-template[scAlertDialogPortal]',
+})
+export class ScAlertDialogPortal {
+  readonly templateRef = inject(TemplateRef);
+}
+```
+
+The provider queries it and projects the template into the overlay:
+
+```typescript
+// In ScAlertDialogProvider
+protected readonly alertDialogPortal = contentChild.required(ScAlertDialogPortal);
+
+// In provider's overlay template
+<ng-container [ngTemplateOutlet]="alertDialogPortal().templateRef" />
+```
+
+### Why a Directive?
+
+- **Explicit**: A bare `<ng-template>` is ambiguous; `scAlertDialogPortal` communicates intent
+- **Lazy**: Content inside `ng-template` is not instantiated until the provider stamps it
+- **Provider owns lifecycle**: The provider decides _when_ to stamp the template (on open)
+- **DI preserved**: Using `TemplatePortal(overlayTemplate, viewContainerRef)` with the provider's own `ViewContainerRef` keeps the injector chain intact — `ScAlertDialog` can inject `ScAlertDialogProvider`
 
 ## The Multi-Signal Pattern
 
@@ -121,15 +152,18 @@ if (open()) {
    - Class: `cdk-overlay-transparent-backdrop`
    - Purpose: Click blocking and scroll prevention
    - Functional layer only, no visual styling
+   - Note: No `backdropClick` handler — alert dialog requires explicit dismissal
 
-2. **ScBackdrop Component** (300ms fade animation)
+2. **ScBackdrop Component** (100ms fade animation)
    - Reusable component from `components/backdrop`
+   - Three-state model (`idle` / `open` / `closed`) with `data-idle`, `data-open`, `data-closed` attributes
    - Fade effect via Tailwind animate classes
-   - Positioned with `-z-10` (behind dialog)
+   - Positioned with `fixed inset-0 -z-50` (behind dialog, behind CDK overlay)
    - Emits `animationComplete` output when close animation finishes
 
-3. **Dialog Content Animation** (300ms)
+3. **Dialog Content Animation** (100ms)
    - Zoom + Fade effects
+   - Three-state model (`idle` / `open` / `closed`) with `data-idle`, `data-open`, `data-closed` attributes
    - Managed by Tailwind animate classes
    - Completion detected via `animationend` event (triggers cleanup)
 
@@ -138,9 +172,25 @@ if (open()) {
 Both ScBackdrop and Dialog animations:
 
 - Start simultaneously when `open` changes
-- Use same duration (300ms)
-- Respond to same `data-state` attribute
-- Inside same portal template (removed together)
+- Use same duration (100ms)
+- Use same three-state model (`idle` → `open` → `closed` → `idle`)
+- Inside same overlay (removed together)
+
+### Dialog Three-State Model
+
+The dialog uses three states to prevent a flash of content on first render:
+
+```typescript
+type ScAlertDialogState = 'idle' | 'open' | 'closed';
+```
+
+| State    | Data Attribute | Purpose                                                  |
+| -------- | -------------- | -------------------------------------------------------- |
+| `idle`   | `data-idle`    | Hidden (`opacity-0`), resting state                      |
+| `open`   | `data-open`    | Entry animation (`fade-in`, `zoom-in`)                   |
+| `closed` | `data-closed`  | Exit animation (`fade-out`, `zoom-out`) → back to `idle` |
+
+Flow: `idle` → `open` → `closed` → `idle`
 
 ### Dialog Content Animations
 
@@ -149,60 +199,61 @@ Applied via Tailwind classes in `alert-dialog.ts`:
 ```typescript
 protected readonly class = computed(() =>
   cn(
+    // Idle state: hidden
+    'data-idle:opacity-0',
+
+    // Entry animation (triggered by data-open)
+    'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95',
+
+    // Exit animation (triggered by data-closed)
+    'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
+
     // Base styles
-    'bg-background ring-foreground/10 ...',
-
-    // Entry animation
-    'animate-in fade-in-0 zoom-in-95 duration-300',
-
-    // Exit animation (triggered by data-state="closed")
-    'data-[state=closed]:animate-out',
-    'data-[state=closed]:fade-out-0',
-    'data-[state=closed]:zoom-out-95',
-    'data-[state=closed]:duration-300',
+    'bg-background ring-foreground/10 grid max-w-sm gap-4 rounded-xl p-4 text-sm ring-1 duration-100 ...',
   ),
 );
 ```
 
 **Animation Flow:**
 
-1. `state` signal changes from `'open'` to `'closed'`
-2. `data-state` attribute updates to `"closed"`
-3. Tailwind applies exit animation classes
-4. Animation plays for 300ms
-5. `animationend` event fires
+1. `state` signal changes from `'idle'` to `'open'`
+2. `data-open` attribute set → entry animation starts
+3. User clicks cancel/action → `state` changes to `'closed'`
+4. `data-closed` attribute set → exit animation starts
+5. `animationend` event fires → `state` resets to `'idle'` (`opacity-0`)
 
 ### ScBackdrop Component Animations
 
-Managed via ScBackdrop component from `components/backdrop`:
+Managed via ScBackdrop component from `components/backdrop`. Uses the same three-state model as the dialog:
 
 ```typescript
 // In backdrop.ts
+type ScBackdropState = 'idle' | 'open' | 'closed';
+
 protected readonly class = computed(() =>
   cn(
-    'fixed inset-0 -z-10 bg-black/10',
-    'supports-backdrop-filter:backdrop-blur-xs',
-    'animate-in fade-in-0 duration-300',
-    'data-[state=closed]:animate-out',
-    'data-[state=closed]:fade-out-0',
-    'data-[state=closed]:duration-300',
+    'pointer-events-none fixed inset-0 -z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs',
+    'data-idle:opacity-0',
+    'data-open:animate-in data-open:fade-in-0',
+    'data-closed:animate-out data-closed:fade-out-0',
+    this.classInput(),
   ),
 );
 ```
 
 **Animation Flow:**
 
-1. Portal renders: `<div sc-backdrop [open]="provider.open()" (animationComplete)="..."></div>`
+1. Provider renders: `<div sc-backdrop [open]="open()" (animationComplete)="onBackdropAnimationComplete()"></div>`
 2. ScBackdrop receives `open` input
-3. Sets `data-state` based on `open` value
-4. Tailwind applies appropriate animation classes
-5. Animation plays for 300ms
-6. On `animationend`, emits `animationComplete` output
-7. Portal forwards event to provider for coordination
+3. Effect sets `state` to `'open'` or `'closed'` based on `open` value
+4. Data attribute (`data-open` / `data-closed`) triggers Tailwind animation classes
+5. Animation plays for 100ms
+6. On `animationend`, if closing: state resets to `'idle'` (hidden), emits `animationComplete` output
+7. Provider handles the event directly for coordination
 
 **Why Separate Component?**
 
-- Reusable across dialog, drawer, sheet, etc.
+- Reusable across dialog, drawer, sheet, alert-dialog, etc.
 - Consistent animation pattern
 - Single responsibility (visual layer only)
 - CDK backdrop handles functionality separately
@@ -216,70 +267,73 @@ User clicks trigger:
 │
 ├─ t=0ms: Trigger calls open.set(true)
 │  │
-│  ├─ Provider effect:
-│  │  └─ overlayOpen.set(true)  ← Effect responds immediately
+│  ├─ Provider effect 1:
+│  │  ├─ overlayOpen.set(true)  ← Mount DOM immediately
+│  │  └─ animationsCompleted.set(0)  ← Reset for next cycle
 │  │
-│  └─ Portal effect (triggered by overlayOpen):
-│     └─ overlayRef.attach(portal)  ← DOM mounted
+│  └─ Provider effect 3 (triggered by overlayOpen):
+│     └─ attachDialog()  ← CDK overlay attached
+│        └─ TemplatePortal(overlayTemplate, viewContainerRef)
+│           ├─ ScBackdrop rendered with [open]="open()"
+│           └─ ng-template outlet stamps scAlertDialogPortal content
 │
 ├─ t=0ms: CDK adds .cdk-overlay-backdrop-showing
-│  └─ Backdrop: opacity 0 → 1 (300ms)
+│  └─ Backdrop: state → 'open' (data-open set, 100ms fade-in)
 │
 ├─ t=0ms: Dialog effect (triggered by open):
 │  └─ state.set('open')
-│     └─ data-state="open" → Entry animation starts
+│     └─ data-open set → Entry animation starts
 │        ├─ fade-in-0
 │        ├─ zoom-in-95
-│        └─ duration-300
+│        └─ duration-100
 │
-├─ t=0-300ms: Both animations play
+├─ t=0-100ms: Both animations play
 │
-└─ t=300ms: Animations complete, dialog visible
+└─ t=100ms: Animations complete, dialog visible
 ```
 
 ### Closing Sequence (Coordinated Completion)
 
 ```
-User clicks cancel/action:
+User clicks cancel/action button:
 │
 ├─ t=0ms: Button calls open.set(false)
 │  │
 │  ├─ Dialog effect (triggered by open):
 │  │  └─ state.set('closed')  ← Triggers animation
-│  │     └─ data-state="closed" → Exit animation starts
+│  │     └─ data-closed set → Exit animation starts
 │  │        ├─ animate-out
 │  │        ├─ fade-out-0
-│  │        ├─ zoom-out-95
-│  │        └─ duration-300
+│  │        └─ zoom-out-95
 │  │
 │  └─ Backdrop receives [open]="false" input:
 │     └─ state.set('closed')  ← Triggers backdrop animation
-│        └─ data-state="closed" → Backdrop fade-out (300ms)
+│        └─ data-closed set → Backdrop fade-out
 │
 ├─ IMPORTANT: overlayOpen is STILL true!
 │  └─ DOM remains mounted so animations can play
 │  └─ animationsCompleted = 0 (waiting for both)
 │
-├─ t=0-300ms: Both animations play simultaneously
+├─ t=0-100ms: Both animations play simultaneously
 │
-├─ t=~300ms: Dialog animation completes
+├─ t=~100ms: Dialog animation completes
 │  └─ onAnimationEnd(event) fires
 │     └─ if (state === 'closed' && target === element):
+│        ├─ state.set('idle')  ← Reset to hidden resting state
 │        └─ provider.onDialogAnimationComplete()
 │           └─ animationsCompleted.update(n => n + 1)  ← Count = 1
 │
-├─ t=~300ms: Backdrop animation completes
+├─ t=~100ms: Backdrop animation completes
 │  └─ backdrop emits (animationComplete)
-│     └─ portal.onBackdropAnimationComplete()
-│        └─ provider.onBackdropAnimationComplete()
-│           └─ animationsCompleted.update(n => n + 1)  ← Count = 2
+│     └─ provider.onBackdropAnimationComplete()
+│        └─ animationsCompleted.update(n => n + 1)  ← Count = 2
 │
-├─ Effect detects: animationsCompleted === 2 && !open()
+├─ Provider effect 2 detects: animationsCompleted === 2 && !open()
 │  └─ overlayOpen.set(false)  ← Cleanup triggered!
 │  └─ animationsCompleted.set(0)  ← Reset for next cycle
 │
-└─ t=~300ms: Portal effect (triggered by overlayOpen):
-   └─ overlayRef.detach()  ← DOM removed cleanly after BOTH complete
+└─ t=~100ms: Provider effect 3 (triggered by overlayOpen):
+   └─ detachDialog()  ← DOM removed cleanly after BOTH complete
 ```
 
 ## Why Track Both Animations?
@@ -295,15 +349,15 @@ User clicks cancel/action:
 onDialogAnimationComplete(): void {
   setTimeout(() => {
     this.overlayOpen.set(false);
-  }, 300); // Hope backdrop finishes too!
+  }, 100); // Hope backdrop finishes too!
 }
 ```
 
 **Issues:**
 
-- Assumes backdrop takes exactly 300ms
+- Assumes backdrop takes exactly 100ms
 - Browser rendering variations can cause timing differences
-- Backdrop might take 305ms, getting cut off at 300ms
+- Backdrop might take 105ms, getting cut off at 100ms
 - No way to know if backdrop actually completed
 - Might wait longer than necessary if backdrop finishes early
 
@@ -331,7 +385,7 @@ effect(() => {
 **Benefits:**
 
 1. **Event-driven**: Waits for actual completion, not estimated time
-2. **Robust**: Handles browser timing variations (300ms vs 305ms)
+2. **Robust**: Handles browser timing variations (100ms vs 105ms)
 3. **Accurate**: Both animations explicitly signal completion
 4. **Extensible**: Easy to add more animations (just increase target count)
 5. **No race conditions**: Counter resets on open for clean cycles
@@ -364,8 +418,33 @@ constructor() {
       this.animationsCompleted.set(0);
     }
   });
+
+  // Effect 3: Attach/detach CDK overlay based on overlayOpen
+  effect(() => {
+    if (this.overlayOpen()) {
+      this.attachDialog();
+    } else {
+      this.detachDialog();
+    }
+  });
 }
 ```
+
+### Provider Overlay Template
+
+The provider's template includes the backdrop and focus trap, projecting the consumer's `scAlertDialogPortal` template via `ngTemplateOutlet`:
+
+```html
+<ng-content />
+<ng-template #overlayTemplate>
+  <div sc-backdrop [open]="open()" (animationComplete)="onBackdropAnimationComplete()"></div>
+  <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <ng-container [ngTemplateOutlet]="alertDialogPortal().templateRef" />
+  </div>
+</ng-template>
+```
+
+Note: Unlike the Dialog provider, there are no `backdropClick` or `keydownEvents` handlers. An alert dialog requires the user to explicitly choose an action (Cancel or Action) to dismiss it.
 
 ### Dialog Constructor Effects
 
@@ -376,36 +455,8 @@ constructor() {
     const isOpen = this.alertDialogProvider.open();
     this.state.set(isOpen ? 'open' : 'closed');
   });
-
-  // Auto-focus dialog when it opens
-  setTimeout(() => {
-    this.elementRef.nativeElement.focus();
-  });
 }
 ```
-
-### Portal Constructor Effects
-
-```typescript
-constructor() {
-  // Effect: Control overlay attachment based on overlayOpen
-  effect(() => {
-    if (this.alertDialogProvider.overlayOpen()) {
-      this.attachDialog();
-    } else {
-      this.detachDialog();
-    }
-  });
-}
-```
-
-**Backdrop Coordination:**
-
-The portal doesn't need an effect for backdrop animation coordination. Instead, it:
-
-1. **Binds backdrop input**: `[open]="alertDialogProvider.open()"` - Backdrop manages its own animation state
-2. **Listens to completion**: `(animationComplete)="onBackdropAnimationComplete()"` - Forwards event to provider
-3. **Keeps components decoupled**: Backdrop remains reusable, portal acts as coordinator
 
 ## Animation Completion Handling
 
@@ -418,6 +469,7 @@ protected onAnimationEnd(event: AnimationEvent): void {
     this.state() === 'closed' &&
     event.target === this.elementRef.nativeElement
   ) {
+    this.state.set('idle'); // Reset to hidden resting state
     this.alertDialogProvider.onDialogAnimationComplete();
   }
 }
@@ -429,43 +481,23 @@ protected onAnimationEnd(event: AnimationEvent): void {
 - We only care about the dialog's own animation
 - Prevents false triggers from child element animations
 
-### Portal Component
-
-```typescript
-// Template
-<div
-  sc-backdrop
-  [open]="alertDialogProvider.open()"
-  (animationComplete)="onBackdropAnimationComplete()"></div>
-
-// Component
-protected onBackdropAnimationComplete(): void {
-  this.alertDialogProvider.onBackdropAnimationComplete();
-}
-```
-
-**Why forward the event?**
-
-- Backdrop is a reusable component with its own animation events
-- Portal acts as coordinator between backdrop and provider
-- Keeps backdrop decoupled from alert-dialog specifics
-- Method must be `protected` (not `private`) for template access
-
 ### Provider Component
 
+The provider directly handles backdrop animation completion in its template — no intermediary needed:
+
+```html
+<!-- In provider's overlay template -->
+<div sc-backdrop [open]="open()" (animationComplete)="onBackdropAnimationComplete()"></div>
+```
+
 ```typescript
-/**
- * Called by dialog when its close animation completes
- */
+// In ScAlertDialogProvider
 onDialogAnimationComplete(): void {
   if (!this.open()) {
     this.animationsCompleted.update(n => n + 1);
   }
 }
 
-/**
- * Called by portal when backdrop close animation completes
- */
 onBackdropAnimationComplete(): void {
   if (!this.open()) {
     this.animationsCompleted.update(n => n + 1);
@@ -490,7 +522,7 @@ onBackdropAnimationComplete(): void {
 
 ## Comparison: Evolution of Animation Coordination
 
-### Approach 1: Single Timer (Original)
+### Approach 1: Single Timer (Previous Implementation)
 
 ```typescript
 // ❌ Problems:
@@ -499,8 +531,8 @@ private async detachDialogWithAnimation() {
     const backdrop = this.overlayRef.backdropElement;
     backdrop?.classList.add('sc-backdrop-hiding');
 
-    // Wait arbitrary 300ms
-    await firstValueFrom(timer(300));
+    // Wait arbitrary time
+    await firstValueFrom(timer(100));
 
     this.overlayRef.detach();  // Might cut off dialog animation!
   }
@@ -515,31 +547,7 @@ private async detachDialogWithAnimation() {
 4. Not coordinated with dialog state
 5. No way to cancel if reopened
 
-### Approach 2: Event + Timer Hybrid (Previous)
-
-```typescript
-// ⚠️ Better, but still has timing assumptions:
-onAnimationComplete(): void {
-  if (!this.open()) {
-    // Wait for dialog, then wait another 300ms for backdrop
-    setTimeout(() => {
-      if (!this.open()) {
-        this.overlayOpen.set(false);
-      }
-    }, 300);
-  }
-}
-```
-
-**Issues:**
-
-1. Dialog event-driven ✅
-2. Backdrop still timer-based ⚠️
-3. Assumes backdrop takes exactly 300ms
-4. Might wait too long or cut off early
-5. No explicit confirmation from backdrop
-
-### Approach 3: Signal Counter (Current)
+### Approach 2: Signal Counter (Current Implementation)
 
 ```typescript
 // ✅ Both animations explicitly tracked:
@@ -561,6 +569,15 @@ constructor() {
       this.animationsCompleted.set(0);
     }
   });
+
+  // Effect 3: Attach/detach CDK overlay
+  effect(() => {
+    if (this.overlayOpen()) {
+      this.attachDialog();
+    } else {
+      this.detachDialog();
+    }
+  });
 }
 
 // Both animations signal completion
@@ -579,17 +596,50 @@ onBackdropAnimationComplete(): void {
 
 **Improvements:**
 
-1. ✅ Both animations event-driven
-2. ✅ No timing assumptions
-3. ✅ Handles browser rendering variations
-4. ✅ Explicit completion signals
-5. ✅ Extensible (easy to add more animations)
-6. ✅ Signal-based reactivity
-7. ✅ Clean cycle management
+1. Both animations event-driven
+2. No timing assumptions
+3. Handles browser rendering variations
+4. Explicit completion signals
+5. Extensible (easy to add more animations)
+6. Signal-based reactivity
+7. Clean cycle management
 
 ## Key Design Decisions
 
-### 1. Separation of Concerns
+### 1. Provider Owns Everything
+
+**Decision:** `ScAlertDialogProvider` manages state, overlay lifecycle, backdrop, and focus trap
+
+**Why:**
+
+- Provider controls _when_ content appears (open state)
+- Provider controls _where_ content appears (CDK overlay)
+- Single component owns the full lifecycle — no coordination between sibling components
+- `ScAlertDialogPortal` directive just marks _what_ content to portal — no logic
+
+### 2. `display: contents` on Provider
+
+**Decision:** Provider uses `display: contents` to be invisible to CSS layout
+
+**Why:**
+
+- Provider is a `<div>` (required for CDK overlay's `ViewContainerRef`)
+- But it shouldn't affect the consumer's layout
+- `display: contents` makes the element's box disappear while keeping children in flow
+- Consumer can place trigger and other content without layout interference
+
+### 3. No Backdrop Click / Escape Handlers
+
+**Decision:** Alert dialog does not close on backdrop click or Escape key
+
+**Why:**
+
+- Alert dialogs require explicit user action (Cancel or Action button)
+- This follows WAI-ARIA alert dialog best practices
+- Prevents accidental dismissal of critical confirmations
+- Unlike `ScDialogProvider`, the provider does not subscribe to `overlayRef.backdropClick()` or `overlayRef.keydownEvents()`
+
+### 4. Separation of Logical and Physical State
 
 **Decision:** Split logical state (`open`) from physical state (`overlayOpen`)
 
@@ -600,7 +650,7 @@ onBackdropAnimationComplete(): void {
 - Animations need time to complete before DOM removal
 - Clean separation makes flow easier to understand
 
-### 2. Signal Counter Pattern
+### 5. Signal Counter Pattern
 
 **Decision:** Use signal counter to track multiple animation completions
 
@@ -612,7 +662,7 @@ onBackdropAnimationComplete(): void {
 - Extensible: easy to add more animations (increase target)
 - Debuggable: counter value visible in Angular DevTools
 
-### 3. Event-Driven Completion
+### 6. Event-Driven Completion
 
 **Decision:** Both dialog and backdrop emit completion events
 
@@ -621,10 +671,9 @@ onBackdropAnimationComplete(): void {
 - Precise: no guessing when animations finish
 - Robust: handles browser timing variations
 - Decoupled: backdrop component remains reusable
-- Portal coordinates events to provider
 - No arbitrary timeouts or magic numbers
 
-### 4. Guard Pattern for Counter Increments
+### 7. Guard Pattern for Counter Increments
 
 **Decision:** Check `!open()` before incrementing animation counter
 
@@ -636,7 +685,7 @@ onBackdropAnimationComplete(): void {
 - Example: Close starts → dialog completes → user reopens → backdrop completes would incorrectly increment counter for new open
 - Effect checks both counter AND `!open()` for safety
 
-### 5. Effect-Based Reactivity
+### 8. Effect-Based Reactivity
 
 **Decision:** Use Angular effects instead of manual subscriptions
 
@@ -652,46 +701,39 @@ onBackdropAnimationComplete(): void {
 ### Dialog Content Classes
 
 ```typescript
-// Entry animation
-'animate-in fade-in-0 zoom-in-95 duration-300';
+// Idle state (hidden)
+'data-idle:opacity-0';
 
-// Exit animation (via data-state="closed")
-'data-[state=closed]:animate-out';
-'data-[state=closed]:fade-out-0';
-'data-[state=closed]:zoom-out-95';
-'data-[state=closed]:duration-300';
+// Entry animation (via data-open)
+'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95';
+
+// Exit animation (via data-closed)
+'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95';
 ```
 
-### Backdrop Classes (CSS)
+### Backdrop Classes
 
-```css
-/* Base */
-.sc-backdrop {
-  @apply bg-black/10;
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
-}
+```typescript
+// Idle state (hidden)
+'data-idle:opacity-0';
 
-/* Entry (CDK automatic) */
-.cdk-overlay-backdrop-showing.sc-backdrop {
-  opacity: 1;
-}
+// Entry animation (via data-open)
+'data-open:animate-in data-open:fade-in-0';
 
-/* Exit (manual) */
-.sc-backdrop-hiding {
-  opacity: 0 !important;
-}
+// Exit animation (via data-closed)
+'data-closed:animate-out data-closed:fade-out-0';
 ```
 
 ## Accessibility Considerations
 
 The animation system preserves accessibility:
 
-1. **Focus Management:** Dialog auto-focuses on mount
-2. **ARIA Attributes:** Set before animations start
+1. **Focus Management:** Dialog auto-focuses on mount via `cdkTrapFocus` with `cdkTrapFocusAutoCapture`
+2. **ARIA Attributes:** Set before animations start (`role="alertdialog"`, `aria-modal="true"`)
 3. **Screen Readers:** Announce dialog immediately (not after animation)
-4. **Keyboard:** Close works during animations
-5. **Reduced Motion:** Could add `@media (prefers-reduced-motion)` support
+4. **No Escape Dismiss:** Escape key does NOT close the alert dialog — user must choose an action
+5. **No Backdrop Dismiss:** Clicking outside does NOT close the alert dialog — user must choose an action
+6. **Reduced Motion:** Could add `@media (prefers-reduced-motion)` support
 
 ## Performance Considerations
 
@@ -712,85 +754,37 @@ The animation system preserves accessibility:
 ### Memory Management
 
 - Effects auto-cleanup on destroy
-- Timeout cleared if reopened
+- No timeout leaks (event-driven approach)
 - Overlay detached after use
 - No memory leaks
 
-## Future Enhancements
+## Consumer API
 
-### Potential Improvements
-
-1. **Variable Animation Durations:**
-   - Input property for animation duration
-   - Provider passes duration to dialog and backdrop
-   - Dynamic `setTimeout` based on duration
-
-2. **Animation Events:**
-   - Output events for animation start/end
-   - External components can react to animation state
-
-3. **Reduced Motion Support:**
-   - Detect `prefers-reduced-motion`
-   - Instant show/hide if user prefers
-   - Keep accessibility benefits
-
-4. **Stacking Context:**
-   - Support multiple overlapping dialogs
-   - z-index management
-   - Close all vs close top
-
-5. **Custom Animations:**
-   - Allow custom animation classes via input
-   - Support different animation styles (slide, scale, etc.)
-
-## Testing Considerations
-
-### What to Test
-
-1. **State Transitions:**
-   - open: false → true → false
-   - overlayOpen follows correctly
-   - state syncs with open
-
-2. **Animation Timing:**
-   - Animations play for full duration
-   - DOM not removed early
-   - Backdrop fades correctly
-
-3. **Edge Cases:**
-   - Rapid open/close
-   - Open during close animation
-   - Close during open animation
-   - Multiple dialogs
-
-4. **Cleanup:**
-   - No memory leaks
-   - Effects unsubscribe
-   - Timeouts cleared
-
-### Testing Strategy
-
-```typescript
-// Example test structure
-describe('AlertDialog Animations', () => {
-  it('should keep DOM mounted during close animation', async () => {
-    // Open dialog
-    provider.open.set(true);
-    fixture.detectChanges();
-
-    // Close dialog
-    provider.open.set(false);
-    fixture.detectChanges();
-
-    // Immediately after close - DOM should still exist
-    expect(overlayRef.hasAttached()).toBe(true);
-
-    // After animations complete - DOM should be removed
-    await delay(700);
-    expect(overlayRef.hasAttached()).toBe(false);
-  });
-});
+```html
+<div sc-alert-dialog-provider [(open)]="isOpen">
+  <button sc-alert-dialog-trigger sc-button>Delete</button>
+  <ng-template scAlertDialogPortal>
+    <div sc-alert-dialog>
+      <div sc-alert-dialog-header>
+        <h2 sc-alert-dialog-title>Are you sure?</h2>
+        <p sc-alert-dialog-description>This action cannot be undone.</p>
+      </div>
+      <div sc-alert-dialog-footer>
+        <button sc-alert-dialog-cancel sc-button>Cancel</button>
+        <button sc-alert-dialog-action sc-button>Continue</button>
+      </div>
+    </div>
+  </ng-template>
+</div>
 ```
+
+**Key points:**
+
+- `scAlertDialogPortal` on `ng-template` marks lazy content
+- Content is only instantiated when dialog opens
+- `ScAlertDialogPortal` must be imported in the consumer's `imports` array
+- `[(open)]` provides two-way binding for programmatic control
+- No close button, escape, or backdrop click — user must choose Cancel or Action
 
 ## Summary
 
@@ -801,12 +795,14 @@ The alert-dialog animation architecture achieves smooth, reliable animations thr
 3. **Event-driven completion:** Both dialog and backdrop explicitly signal when done
 4. **Reactive updates:** Effects respond to state changes automatically
 5. **Robust timing:** No assumptions, handles browser variations
+6. **Centralized ownership:** Provider owns all lifecycle logic; portal directive is just a content marker
 
 This architecture provides:
 
-- ✅ Reliable animation completion detection
-- ✅ Clean separation of concerns
-- ✅ Extensibility (easy to add more animations)
-- ✅ No race conditions or timing assumptions
-- ✅ Debuggable signal-based state
-- ✅ Better user experience (smooth, never cut off)
+- Reliable animation completion detection
+- Clean separation of concerns
+- Extensibility (easy to add more animations)
+- No race conditions or timing assumptions
+- Debuggable signal-based state
+- Better user experience (smooth, never cut off)
+- Lazy content instantiation via `ng-template`

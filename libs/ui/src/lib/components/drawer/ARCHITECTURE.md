@@ -6,15 +6,18 @@ The drawer component uses a multi-signal architecture pattern to ensure smooth, 
 
 **Drawer-Specific Features:**
 
-- Uses directional slide animations (top, right, bottom, left) similar to sheet
+- Uses directional slide animations (top, right, bottom, left) via `direction` input
 - Implements `ScDrawer` as a **Directive** instead of a Component
 - Often includes a handle indicator for mobile-friendly dragging affordance
 
 ## Component Structure
 
 ```
-ScDrawerProvider (Root State Manager)
-└── ScDrawerPortal (CDK Overlay Manager)
+ScDrawerProvider (Root State Manager + CDK Overlay Manager)
+├── ScDrawerTrigger (Opens drawer)
+└── ng-template[scDrawerPortal] (Lazy content, portaled to CDK overlay)
+    │
+    Inside CDK Overlay (managed by Provider):
     ├── CDK Backdrop (Transparent - click blocking only)
     ├── ScBackdrop (Visual backdrop with animations)
     └── ScDrawer (Drawer Directive - slides from configured direction)
@@ -27,6 +30,36 @@ ScDrawerProvider (Root State Manager)
 
 Plus: ScDrawerTrigger (Opens drawer)
 ```
+
+### ScDrawerPortal Directive
+
+`ScDrawerPortal` is a structural directive on `ng-template` that marks the lazy content to be portaled into the CDK overlay. It holds a reference to the `TemplateRef` which the provider reads via `contentChild`.
+
+```typescript
+@Directive({
+  selector: 'ng-template[scDrawerPortal]',
+})
+export class ScDrawerPortal {
+  readonly templateRef = inject(TemplateRef);
+}
+```
+
+The provider queries it and projects the template into the overlay:
+
+```typescript
+// In ScDrawerProvider
+protected readonly drawerPortal = contentChild.required(ScDrawerPortal);
+
+// In provider's overlay template
+<ng-container [ngTemplateOutlet]="drawerPortal().templateRef" />
+```
+
+### Why a Directive?
+
+- **Explicit**: A bare `<ng-template>` is ambiguous; `scDrawerPortal` communicates intent
+- **Lazy**: Content inside `ng-template` is not instantiated until the provider stamps it
+- **Provider owns lifecycle**: The provider decides _when_ to stamp the template (on open)
+- **DI preserved**: Using `TemplatePortal(overlayTemplate, viewContainerRef)` with the provider's own `ViewContainerRef` keeps the injector chain intact -- `ScDrawer` can inject `ScDrawerProvider`
 
 ## The Multi-Signal Pattern
 
@@ -87,7 +120,7 @@ private readonly animationsCompleted = signal<number>(0);
 CDK overlay's lifecycle is tied to DOM presence:
 
 ```typescript
-// ❌ This doesn't work:
+// This doesn't work:
 if (open()) {
   overlayRef.attach(portal); // DOM mounted
 } else {
@@ -101,7 +134,7 @@ if (open()) {
 Separate signals allow animation completion:
 
 ```typescript
-// ✅ This works:
+// This works:
 if (overlayOpen()) {
   // Physical state
   overlayRef.attach(portal); // DOM mounted
@@ -145,7 +178,7 @@ Both ScBackdrop and Drawer animations:
 - Start simultaneously when `open` changes
 - Use same duration (300ms)
 - Respond to same `data-state` attribute
-- Inside same portal template (removed together)
+- Inside same overlay (removed together)
 
 ### Drawer Content Animations
 
@@ -218,13 +251,13 @@ protected readonly class = computed(() =>
 
 **Animation Flow:**
 
-1. Portal renders: `<div sc-backdrop [open]="drawer.open()" (animationComplete)="..."></div>`
+1. Provider renders: `<div sc-backdrop [open]="open()" (animationComplete)="onBackdropAnimationComplete()"></div>`
 2. ScBackdrop receives `open` input
 3. Sets `data-state` based on `open` value
 4. Tailwind applies appropriate animation classes
 5. Animation plays for 300ms
 6. On `animationend`, emits `animationComplete` output
-7. Portal forwards event to provider for coordination
+7. Provider handles the event directly for coordination
 
 **Why Separate Component?**
 
@@ -242,18 +275,22 @@ User clicks trigger:
 │
 ├─ t=0ms: Trigger calls open.set(true)
 │  │
-│  ├─ Provider effect:
-│  │  └─ overlayOpen.set(true)  ← Effect responds immediately
+│  ├─ Provider effect 1:
+│  │  ├─ overlayOpen.set(true)  <- Mount DOM immediately
+│  │  └─ animationsCompleted.set(0)  <- Reset for next cycle
 │  │
-│  └─ Portal effect (triggered by overlayOpen):
-│     └─ overlayRef.attach(portal)  ← DOM mounted
+│  └─ Provider effect 3 (triggered by overlayOpen):
+│     └─ attachDrawer()  <- CDK overlay attached
+│        └─ TemplatePortal(overlayTemplate, viewContainerRef)
+│           ├─ ScBackdrop rendered with [open]="open()"
+│           └─ ng-template outlet stamps scDrawerPortal content
 │
 ├─ t=0ms: CDK adds .cdk-overlay-backdrop-showing
-│  └─ Backdrop: opacity 0 → 1 (300ms)
+│  └─ Backdrop: opacity 0 -> 1 (300ms)
 │
 ├─ t=0ms: Drawer effect (triggered by open):
 │  └─ state.set('open')
-│     └─ data-state="open" → Entry animation starts
+│     └─ data-state="open" -> Entry animation starts
 │        ├─ fade-in-0
 │        ├─ slide-in-from-{direction}
 │        └─ duration-300
@@ -268,19 +305,19 @@ User clicks trigger:
 ```
 User clicks close/backdrop/escape:
 │
-├─ t=0ms: Portal calls open.set(false)
+├─ t=0ms: Provider calls open.set(false)
 │  │
 │  ├─ Drawer effect (triggered by open):
-│  │  └─ state.set('closed')  ← Triggers animation
-│  │     └─ data-state="closed" → Exit animation starts
+│  │  └─ state.set('closed')  <- Triggers animation
+│  │     └─ data-state="closed" -> Exit animation starts
 │  │        ├─ animate-out
 │  │        ├─ fade-out-0
 │  │        ├─ slide-out-to-{direction}
 │  │        └─ duration-300
 │  │
 │  └─ Backdrop receives [open]="false" input:
-│     └─ state.set('closed')  ← Triggers backdrop animation
-│        └─ data-state="closed" → Backdrop fade-out (300ms)
+│     └─ state.set('closed')  <- Triggers backdrop animation
+│        └─ data-state="closed" -> Backdrop fade-out (300ms)
 │
 ├─ IMPORTANT: overlayOpen is STILL true!
 │  └─ DOM remains mounted so animations can play
@@ -292,20 +329,19 @@ User clicks close/backdrop/escape:
 │  └─ onAnimationEnd(event) fires
 │     └─ if (state === 'closed' && target === element):
 │        └─ provider.onDrawerAnimationComplete()
-│           └─ animationsCompleted.update(n => n + 1)  ← Count = 1
+│           └─ animationsCompleted.update(n => n + 1)  <- Count = 1
 │
 ├─ t=~300ms: Backdrop animation completes
 │  └─ backdrop emits (animationComplete)
-│     └─ portal.onBackdropAnimationComplete()
-│        └─ provider.onBackdropAnimationComplete()
-│           └─ animationsCompleted.update(n => n + 1)  ← Count = 2
+│     └─ provider.onBackdropAnimationComplete()
+│        └─ animationsCompleted.update(n => n + 1)  <- Count = 2
 │
-├─ Effect detects: animationsCompleted === 2 && !open()
-│  └─ overlayOpen.set(false)  ← Cleanup triggered!
-│  └─ animationsCompleted.set(0)  ← Reset for next cycle
+├─ Provider effect 2 detects: animationsCompleted === 2 && !open()
+│  └─ overlayOpen.set(false)  <- Cleanup triggered!
+│  └─ animationsCompleted.set(0)  <- Reset for next cycle
 │
-└─ t=~300ms: Portal effect (triggered by overlayOpen):
-   └─ overlayRef.detach()  ← DOM removed cleanly after BOTH complete
+└─ t=~300ms: Provider effect 3 (triggered by overlayOpen):
+   └─ detachDrawer()  <- DOM removed cleanly after BOTH complete
 ```
 
 ## Why Track Both Animations?
@@ -317,7 +353,7 @@ User clicks close/backdrop/escape:
 ### The Problem with Single Timers
 
 ```typescript
-// ❌ Old approach - assumes both animations finish together
+// Old approach - assumes both animations finish together
 onDrawerAnimationComplete(): void {
   setTimeout(() => {
     this.overlayOpen.set(false);
@@ -336,7 +372,7 @@ onDrawerAnimationComplete(): void {
 ### The Solution: Signal Counter Pattern
 
 ```typescript
-// ✅ New approach - explicitly track both completions
+// New approach - explicitly track both completions
 private readonly animationsCompleted = signal<number>(0);
 
 onDrawerAnimationComplete(): void {
@@ -390,7 +426,30 @@ constructor() {
       this.animationsCompleted.set(0);
     }
   });
+
+  // Effect 3: Attach/detach CDK overlay based on overlayOpen
+  effect(() => {
+    if (this.overlayOpen()) {
+      this.attachDrawer();
+    } else {
+      this.detachDrawer();
+    }
+  });
 }
+```
+
+### Provider Overlay Template
+
+The provider's template includes the backdrop and focus trap, projecting the consumer's `scDrawerPortal` template via `ngTemplateOutlet`:
+
+```html
+<ng-content />
+<ng-template #overlayTemplate>
+  <div sc-backdrop [open]="open()" (animationComplete)="onBackdropAnimationComplete()"></div>
+  <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <ng-container [ngTemplateOutlet]="drawerPortal().templateRef" />
+  </div>
+</ng-template>
 ```
 
 ### Drawer Directive Constructor Effects
@@ -406,29 +465,6 @@ constructor() {
 ```
 
 **Note:** Unlike dialog and sheet, drawer is a **Directive** not a Component, so it doesn't have its own template. It attaches behavior to a host element and relies on the host for focus management and content.
-
-### Portal Constructor Effects
-
-```typescript
-constructor() {
-  // Effect: Control overlay attachment based on overlayOpen
-  effect(() => {
-    if (this.drawer.overlayOpen()) {
-      this.attachDrawer();
-    } else {
-      this.detachDrawer();
-    }
-  });
-}
-```
-
-**Backdrop Coordination:**
-
-The portal doesn't need an effect for backdrop animation coordination. Instead, it:
-
-1. **Binds backdrop input**: `[open]="drawer.open()"` - Backdrop manages its own animation state
-2. **Listens to completion**: `(animationComplete)="onBackdropAnimationComplete()"` - Forwards event to provider
-3. **Keeps components decoupled**: Backdrop remains reusable, portal acts as coordinator
 
 ## Animation Completion Handling
 
@@ -461,43 +497,23 @@ Unlike the dialog and sheet components, drawer is a directive. This means:
 - `(animationend)` is bound in the host metadata
 - Still requires ElementRef to check event.target
 
-### Portal Component
-
-```typescript
-// Template
-<div
-  sc-backdrop
-  [open]="drawer.open()"
-  (animationComplete)="onBackdropAnimationComplete()"></div>
-
-// Component
-protected onBackdropAnimationComplete(): void {
-  this.drawer.onBackdropAnimationComplete();
-}
-```
-
-**Why forward the event?**
-
-- Backdrop is a reusable component with its own animation events
-- Portal acts as coordinator between backdrop and provider
-- Keeps backdrop decoupled from drawer specifics
-- Method must be `protected` (not `private`) for template access
-
 ### Provider Component
 
+The provider directly handles backdrop animation completion in its template -- no intermediary needed:
+
+```html
+<!-- In provider's overlay template -->
+<div sc-backdrop [open]="open()" (animationComplete)="onBackdropAnimationComplete()"></div>
+```
+
 ```typescript
-/**
- * Called by drawer when its close animation completes
- */
+// In ScDrawerProvider
 onDrawerAnimationComplete(): void {
   if (!this.open()) {
     this.animationsCompleted.update(n => n + 1);
   }
 }
 
-/**
- * Called by portal when backdrop close animation completes
- */
 onBackdropAnimationComplete(): void {
   if (!this.open()) {
     this.animationsCompleted.update(n => n + 1);
@@ -525,7 +541,7 @@ onBackdropAnimationComplete(): void {
 ### Approach 1: Single Timer (Previous Implementation)
 
 ```typescript
-// ❌ Problems:
+// Problems:
 private async detachDrawerWithAnimation() {
   if (this.overlayRef.hasAttached()) {
     const backdrop = this.overlayRef.backdropElement;
@@ -550,7 +566,7 @@ private async detachDrawerWithAnimation() {
 ### Approach 2: Signal Counter (Current Implementation)
 
 ```typescript
-// ✅ Both animations explicitly tracked:
+// Both animations explicitly tracked:
 private readonly animationsCompleted = signal<number>(0);
 
 constructor() {
@@ -567,6 +583,15 @@ constructor() {
     if (this.animationsCompleted() === 2 && !this.open()) {
       this.overlayOpen.set(false);
       this.animationsCompleted.set(0);
+    }
+  });
+
+  // Effect 3: Attach/detach CDK overlay
+  effect(() => {
+    if (this.overlayOpen()) {
+      this.attachDrawer();
+    } else {
+      this.detachDrawer();
     }
   });
 }
@@ -587,17 +612,39 @@ onBackdropAnimationComplete(): void {
 
 **Improvements:**
 
-1. ✅ Both animations event-driven
-2. ✅ No timing assumptions
-3. ✅ Handles browser rendering variations
-4. ✅ Explicit completion signals
-5. ✅ Extensible (easy to add more animations)
-6. ✅ Signal-based reactivity
-7. ✅ Clean cycle management
+1. Both animations event-driven
+2. No timing assumptions
+3. Handles browser rendering variations
+4. Explicit completion signals
+5. Extensible (easy to add more animations)
+6. Signal-based reactivity
+7. Clean cycle management
 
 ## Key Design Decisions
 
-### 1. Separation of Concerns
+### 1. Provider Owns Everything
+
+**Decision:** `ScDrawerProvider` manages state, overlay lifecycle, backdrop, and focus trap
+
+**Why:**
+
+- Provider controls _when_ content appears (open state)
+- Provider controls _where_ content appears (CDK overlay)
+- Single component owns the full lifecycle -- no coordination between sibling components
+- `ScDrawerPortal` directive just marks _what_ content to portal -- no logic
+
+### 2. `display: contents` on Provider
+
+**Decision:** Provider uses `display: contents` via Tailwind `contents` class to be invisible to CSS layout
+
+**Why:**
+
+- Provider is a `<div>` (required for CDK overlay's `ViewContainerRef`)
+- But it shouldn't affect the consumer's layout
+- `display: contents` makes the element's box disappear while keeping children in flow
+- Consumer can place trigger and other content without layout interference
+
+### 3. Separation of Logical and Physical State
 
 **Decision:** Split logical state (`open`) from physical state (`overlayOpen`)
 
@@ -608,7 +655,7 @@ onBackdropAnimationComplete(): void {
 - Animations need time to complete before DOM removal
 - Clean separation makes flow easier to understand
 
-### 2. Signal Counter Pattern
+### 4. Signal Counter Pattern
 
 **Decision:** Use signal counter to track multiple animation completions
 
@@ -620,7 +667,7 @@ onBackdropAnimationComplete(): void {
 - Extensible: easy to add more animations (increase target)
 - Debuggable: counter value visible in Angular DevTools
 
-### 3. Event-Driven Completion
+### 5. Event-Driven Completion
 
 **Decision:** Both drawer and backdrop emit completion events
 
@@ -629,10 +676,10 @@ onBackdropAnimationComplete(): void {
 - Precise: no guessing when animations finish
 - Robust: handles browser timing variations
 - Decoupled: backdrop component remains reusable
-- Portal coordinates events to provider
+- Provider handles backdrop events directly in its own template
 - No arbitrary timeouts or magic numbers
 
-### 4. Guard Pattern for Counter Increments
+### 6. Guard Pattern for Counter Increments
 
 **Decision:** Check `!open()` before incrementing animation counter
 
@@ -641,10 +688,10 @@ onBackdropAnimationComplete(): void {
 - Prevents counter increments during new open cycle
 - User might reopen during close animation
 - Without guard, counter would increment incorrectly for new cycle
-- Example: Close starts → drawer completes → user reopens → backdrop completes would incorrectly increment counter for new open
+- Example: Close starts -> drawer completes -> user reopens -> backdrop completes would incorrectly increment counter for new open
 - Effect checks both counter AND `!open()` for safety
 
-### 5. Effect-Based Reactivity
+### 7. Effect-Based Reactivity
 
 **Decision:** Use Angular effects instead of manual subscriptions
 
@@ -655,7 +702,7 @@ onBackdropAnimationComplete(): void {
 - Runs automatically when dependencies change
 - Easier to reason about than imperative code
 
-### 6. Directive Pattern
+### 8. Directive Pattern
 
 **Decision:** Implement ScDrawer as a Directive instead of a Component
 
@@ -667,7 +714,7 @@ onBackdropAnimationComplete(): void {
 - Similar to how CDK components work
 - Still supports animation coordination through host bindings
 
-### 7. Directional Animation System
+### 9. Directional Animation System
 
 **Decision:** Use `direction` input to determine animation direction dynamically
 
@@ -677,6 +724,18 @@ onBackdropAnimationComplete(): void {
 - Animation classes computed based on direction
 - Maintains consistency across all directions
 - Easy to add new directions if needed
+
+### 10. Backdrop + Escape Handling
+
+**Decision:** Provider subscribes to CDK overlay's `backdropClick()` and `keydownEvents()` directly
+
+**Why:**
+
+- Provider owns the overlay, so it handles all overlay events directly
+- No need for portal to forward events
+- `backdropClick()` triggers `open.set(false)` on the provider
+- `keydownEvents()` filters for Escape key and triggers `open.set(false)`
+- Keeps event handling centralized in the lifecycle owner
 
 ## Animation Classes Reference
 
@@ -725,11 +784,11 @@ directionAnimationClasses[direction];
 
 The animation system preserves accessibility:
 
-1. **Focus Management:** Host element can receive focus (via tabindex on host element)
+1. **Focus Management:** Drawer auto-focuses on mount via `cdkTrapFocus` with `cdkTrapFocusAutoCapture`
 2. **ARIA Attributes:** Set before animations start (`role="dialog"`, `aria-modal="true"`)
 3. **Screen Readers:** Announce drawer immediately (not after animation)
-4. **Keyboard:** Escape key works during animations to trigger close
-5. **Backdrop Click:** Click outside works during animations to trigger close
+4. **Keyboard:** Escape key closes the drawer (via CDK overlay keydown events)
+5. **Backdrop Click:** Click outside closes the drawer (via CDK overlay backdrop click)
 6. **Reduced Motion:** Could add `@media (prefers-reduced-motion)` support
 7. **Drawer Handle:** Optional visual indicator improves discoverability on mobile
 
@@ -756,6 +815,35 @@ The animation system preserves accessibility:
 - No timeout leaks (event-driven approach)
 - Overlay detached after use
 - No memory leaks
+
+## Consumer API
+
+```html
+<div sc-drawer-provider direction="bottom" [(open)]="isOpen">
+  <button sc-drawer-trigger sc-button>Open</button>
+  <ng-template scDrawerPortal>
+    <div sc-drawer>
+      <div sc-drawer-handle></div>
+      <div sc-drawer-header>
+        <h2 sc-drawer-title>Title</h2>
+        <p sc-drawer-description>Description</p>
+      </div>
+      <!-- content -->
+      <div sc-drawer-footer>
+        <button sc-drawer-close sc-button>Close</button>
+      </div>
+    </div>
+  </ng-template>
+</div>
+```
+
+**Key points:**
+
+- `scDrawerPortal` on `ng-template` marks lazy content
+- Content is only instantiated when drawer opens
+- `ScDrawerPortal` must be imported in the consumer's `imports` array
+- `[(open)]` provides two-way binding for programmatic control
+- `direction` input on the provider controls slide direction
 
 ## Future Enhancements
 
@@ -794,7 +882,7 @@ The animation system preserves accessibility:
 ### What to Test
 
 1. **State Transitions:**
-   - open: false → true → false
+   - open: false -> true -> false
    - overlayOpen follows correctly
    - state syncs with open
 
@@ -867,16 +955,18 @@ The drawer animation architecture achieves smooth, reliable animations through:
 3. **Event-driven completion:** Both drawer and backdrop explicitly signal when done
 4. **Reactive updates:** Effects respond to state changes automatically
 5. **Robust timing:** No assumptions, handles browser variations
-6. **Directional animations:** Dynamically applies correct slide direction based on `direction` input
-7. **Directive pattern:** Lightweight, composable behavior attachment
+6. **Centralized ownership:** Provider owns all lifecycle logic; portal directive is just a content marker
+7. **Directional animations:** Dynamically applies correct slide direction based on `direction` input
+8. **Directive pattern:** Lightweight, composable behavior attachment
 
 This architecture provides:
 
-- ✅ Reliable animation completion detection
-- ✅ Clean separation of concerns
-- ✅ Extensibility (easy to add more animations)
-- ✅ No race conditions or timing assumptions
-- ✅ Debuggable signal-based state
-- ✅ Better user experience (smooth, never cut off)
-- ✅ Flexible directional animations (top, right, bottom, left)
-- ✅ Directive pattern for maximum flexibility
+- Reliable animation completion detection
+- Clean separation of concerns
+- Extensibility (easy to add more animations)
+- No race conditions or timing assumptions
+- Debuggable signal-based state
+- Better user experience (smooth, never cut off)
+- Flexible directional animations (top, right, bottom, left)
+- Directive pattern for maximum flexibility
+- Lazy content instantiation via `ng-template`
