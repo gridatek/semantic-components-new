@@ -87,8 +87,8 @@ interface CommandItem {
     </p>
 
     <div sc-dialog-provider [(open)]="open">
-      <div sc-dialog-portal>
-        <ng-template>
+      <ng-template>
+        <div sc-dialog-portal>
           <div sc-dialog class="w-lg gap-0 p-0">
             <div sc-command class="[&_[data-slot=command-input]]:h-12">
               <div
@@ -152,8 +152,8 @@ interface CommandItem {
               </div>
             </div>
           </div>
-        </ng-template>
-      </div>
+        </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,

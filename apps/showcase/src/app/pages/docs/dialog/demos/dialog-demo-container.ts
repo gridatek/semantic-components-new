@@ -60,8 +60,8 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
   template: \`
     <div sc-dialog-provider [(open)]="isOpen">
       <button sc-dialog-trigger sc-button variant="outline">Open Dialog</button>
-      <div sc-dialog-portal>
-        <ng-template>
+      <ng-template>
+        <div sc-dialog-portal>
           <form>
             <div sc-dialog class="sm:max-w-sm">
               <button sc-dialog-close>
@@ -93,8 +93,8 @@ import { SiXIcon } from '@semantic-icons/lucide-icons';
               </div>
             </div>
           </form>
-        </ng-template>
-      </div>
+        </div>
+      </ng-template>
     </div>
   \`,
   encapsulation: ViewEncapsulation.None,
