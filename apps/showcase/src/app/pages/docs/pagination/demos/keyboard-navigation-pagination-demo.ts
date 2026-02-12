@@ -16,7 +16,7 @@ import {
   ScPaginationLink,
   ScPaginationList,
   ScPaginationNext,
-  ScPaginationPageSize,
+  ScPaginationPageSizeSelect,
   ScPaginationPrevious,
 } from '@semantic-components/ui';
 import {
@@ -41,7 +41,7 @@ import {
     ScPaginationFirst,
     ScPaginationLast,
     ScPaginationEllipsis,
-    ScPaginationPageSize,
+    ScPaginationPageSizeSelect,
     SiChevronLeftIcon,
     SiChevronRightIcon,
     SiChevronsLeftIcon,
@@ -95,7 +95,7 @@ import {
             <label sc-label class="text-sm text-muted-foreground">
               Items per page:
             </label>
-            <select sc-pagination-page-size>
+            <select sc-pagination-page-size-select>
               @for (size of pagination.pageSizes(); track size) {
                 <option [value]="size">{{ size }}</option>
               }

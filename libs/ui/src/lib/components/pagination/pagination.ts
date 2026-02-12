@@ -93,7 +93,7 @@ export class ScPagination {
   }
 
   /**
-   * Change the page size. Called internally by ScPaginationPageSize.
+   * Change the page size. Called internally by ScPaginationPageSizeSelect.
    * @param newPageSize The new page size
    */
   changePageSize(newPageSize: number): void {

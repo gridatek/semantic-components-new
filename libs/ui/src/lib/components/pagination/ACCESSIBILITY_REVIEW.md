@@ -129,7 +129,7 @@ The page size `<select>` element has no programmatically associated label.
 <!-- keyboard-navigation-pagination-demo.ts:90-93 -->
 <label class="flex items-center gap-2">
   <span class="text-sm text-muted-foreground">Items per page:</span>
-  <sc-pagination-page-size />
+  <sc-pagination-page-size-select />
 </label>
 ```
 
@@ -168,7 +168,7 @@ The page size `<select>` element has no programmatically associated label.
 
 ```typescript
 // pagination-page-size.ts
-export class ScPaginationPageSize {
+export class ScPaginationPageSizeSelect {
   private readonly idGenerator = inject(_IdGenerator);
   protected readonly selectId = computed(() => this.idGenerator.generate('sc-page-size-select-'));
 
@@ -184,7 +184,7 @@ export class ScPaginationPageSize {
 ```html
 <!-- Consumer usage -->
 <label [for]="pageSizeRef.selectId()">Items per page:</label>
-<sc-pagination-page-size #pageSizeRef />
+<sc-pagination-page-size-select #pageSizeRef />
 ```
 
 **Recommendation:** Use Option A (aria-label). It's simpler and doesn't require consumer template changes. Option B is more semantic but requires the consumer to connect the label manually.

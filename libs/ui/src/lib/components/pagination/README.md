@@ -13,7 +13,7 @@ Pagination with page navigation, next and previous links. Supports both manual a
 - `ScPaginationFirst` - First page link/button
 - `ScPaginationLast` - Last page link/button
 - `ScPaginationEllipsis` - Ellipsis indicator
-- `ScPaginationPageSize` - Page size selector (select dropdown)
+- `ScPaginationPageSizeSelect` - Page size selector (select dropdown)
 
 ## Features
 
@@ -225,7 +225,7 @@ Use `ScPaginationFirst` and `ScPaginationLast` for quick navigation to the first
 
 ## Page Size Selector
 
-Use `ScPaginationPageSize` to allow users to change the number of items displayed per page:
+Use `ScPaginationPageSizeSelect` to allow users to change the number of items displayed per page:
 
 ```typescript
 import { Component, signal } from '@angular/core';
@@ -236,7 +236,7 @@ import { ScPaginationChange } from '@semantic-components/ui';
     <nav sc-pagination #pagination="scPagination" [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [pageSizes]="[10, 25, 50, 100]" (change)="onPaginationChange($event)">
       <div class="flex items-center gap-2">
         <span class="text-sm text-muted-foreground">Items per page:</span>
-        <sc-pagination-page-size />
+        <sc-pagination-page-size-select />
       </div>
 
       <ul sc-pagination-list>
@@ -259,7 +259,7 @@ export class MyComponent {
 
 Key points:
 
-- `ScPaginationPageSize` renders only the select element
+- `ScPaginationPageSizeSelect` renders only the select element
 - Wrap it with a label or other elements as needed in your template
 - Must be a child of `<nav sc-pagination>` to access pagination context
 - Configure available options via `[pageSizes]` on the parent `ScPagination`
@@ -330,7 +330,7 @@ interface ScPaginationChange {
 | `disabled` | `boolean` | `false` | Disabled state         |
 | `class`    | `string`  | `''`    | Additional CSS classes |
 
-### ScPaginationPageSize
+### ScPaginationPageSizeSelect
 
 | Input   | Type     | Default | Description            |
 | ------- | -------- | ------- | ---------------------- |

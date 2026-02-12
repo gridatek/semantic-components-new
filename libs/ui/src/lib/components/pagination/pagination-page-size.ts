@@ -5,20 +5,20 @@ import { SC_FIELD } from '../field';
 import { ScPagination } from './pagination';
 
 @Directive({
-  selector: 'select[sc-pagination-page-size]',
+  selector: 'select[sc-pagination-page-size-select]',
   host: {
-    'data-slot': 'pagination-page-size',
+    'data-slot': 'pagination-page-size-select',
     '[attr.id]': 'id()',
     '[value]': 'pagination.pageSize()',
     '[class]': 'class()',
     '(change)': 'onPageSizeChange($event)',
   },
 })
-export class ScPaginationPageSize {
+export class ScPaginationPageSizeSelect {
   protected readonly pagination = inject(ScPagination);
   private readonly field = inject(SC_FIELD, { optional: true });
   private readonly fallbackId = inject(_IdGenerator).getId(
-    'sc-pagination-page-size-',
+    'sc-pagination-page-size-select-',
   );
 
   readonly idInput = input('', { alias: 'id' });

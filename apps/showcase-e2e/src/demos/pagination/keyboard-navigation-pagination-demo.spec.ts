@@ -102,10 +102,12 @@ test.describe('Keyboard Navigation Pagination Demo', () => {
   });
 
   test('should render page size selector', async ({ page }) => {
-    const pageSizeSelector = page.locator('select[sc-pagination-page-size]');
+    const pageSizeSelector = page.locator(
+      'select[sc-pagination-page-size-select]',
+    );
     await expect(pageSizeSelector).toBeVisible();
 
-    const select = page.locator('select[sc-pagination-page-size]');
+    const select = page.locator('select[sc-pagination-page-size-select]');
     await expect(select).toBeVisible();
   });
 
@@ -125,7 +127,7 @@ test.describe('Keyboard Navigation Pagination Demo', () => {
     );
 
     // Tab to the page size select first (it's before the pagination list)
-    const select = page.locator('select[sc-pagination-page-size]');
+    const select = page.locator('select[sc-pagination-page-size-select]');
 
     // Tab into the pagination area
     await page.keyboard.press('Tab');
@@ -148,7 +150,7 @@ test.describe('Keyboard Navigation Pagination Demo', () => {
   });
 
   test('should change page size via keyboard', async ({ page }) => {
-    const select = page.locator('select[sc-pagination-page-size]');
+    const select = page.locator('select[sc-pagination-page-size-select]');
     await select.focus();
     await select.selectOption('25');
 
