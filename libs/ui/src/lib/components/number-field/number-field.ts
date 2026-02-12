@@ -2,6 +2,7 @@ import { _IdGenerator } from '@angular/cdk/a11y';
 import {
   computed,
   Directive,
+  ElementRef,
   inject,
   InjectionToken,
   input,
@@ -16,19 +17,27 @@ export const SC_NUMBER_FIELD = new InjectionToken<ScNumberField>(
 );
 
 @Directive({
-  selector: '[sc-number-field]',
+  selector: 'div[sc-number-field], label[sc-number-field]',
   exportAs: 'scNumberField',
   providers: [
     { provide: SC_NUMBER_FIELD, useExisting: ScNumberField },
     { provide: SC_FIELD, useExisting: ScNumberField },
   ],
   host: {
+    '[attr.role]': 'role()',
     'data-slot': 'number-field',
     '[attr.data-disabled]': 'disabled() || null',
   },
 })
 export class ScNumberField {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly id = input(inject(_IdGenerator).getId('sc-number-field-'));
+
+  protected readonly role = computed(() => {
+    const tagName = this.elementRef.nativeElement.tagName;
+    return tagName === 'LABEL' ? null : 'group';
+  });
   readonly value = model<number | null>(null);
   readonly min = input<number | null>(null);
   readonly max = input<number | null>(null);

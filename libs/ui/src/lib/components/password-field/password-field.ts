@@ -1,7 +1,9 @@
 import { _IdGenerator } from '@angular/cdk/a11y';
 import {
+  computed,
   Directive,
   effect,
+  ElementRef,
   inject,
   InjectionToken,
   input,
@@ -29,21 +31,28 @@ export const SC_PASSWORD_FIELD = new InjectionToken<ScPasswordFieldContext>(
 );
 
 @Directive({
-  selector: '[sc-password-field]',
+  selector: 'div[sc-password-field], label[sc-password-field]',
   exportAs: 'scPasswordField',
   providers: [
     { provide: SC_PASSWORD_FIELD, useExisting: ScPasswordField },
     { provide: SC_FIELD, useExisting: ScPasswordField },
   ],
   host: {
-    role: 'group',
+    '[attr.role]': 'role()',
     'data-slot': 'password-field',
     '[attr.data-invalid]': 'invalid()',
     '[attr.data-disabled]': 'disabled() || null',
   },
 })
 export class ScPasswordField implements ScPasswordFieldContext {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly id = input(inject(_IdGenerator).getId('sc-password-field-'));
+
+  protected readonly role = computed(() => {
+    const tagName = this.elementRef.nativeElement.tagName;
+    return tagName === 'LABEL' ? null : 'group';
+  });
   readonly invalid = input<boolean>(false);
   readonly value = model<string>('');
   readonly disabled = input<boolean>(false);
