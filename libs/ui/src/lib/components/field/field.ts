@@ -3,6 +3,7 @@ import {
   computed,
   contentChild,
   Directive,
+  ElementRef,
   inject,
   InjectionToken,
   input,
@@ -38,9 +39,9 @@ export interface ScFieldContext {
 export const SC_FIELD = new InjectionToken<ScFieldContext>('SC_FIELD');
 
 @Directive({
-  selector: '[sc-field]',
+  selector: 'div[sc-field], label[sc-field]',
   host: {
-    role: 'group',
+    '[attr.role]': 'role()',
     'data-slot': 'field',
     '[attr.id]': 'id()',
     '[attr.data-orientation]': 'orientation()',
@@ -56,6 +57,8 @@ export const SC_FIELD = new InjectionToken<ScFieldContext>('SC_FIELD');
   ],
 })
 export class ScField implements ScFieldContext {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly id = input(inject(_IdGenerator).getId('sc-field-'));
   readonly classInput = input<string>('', { alias: 'class' });
   readonly orientation = input<ScFieldVariants['orientation']>('vertical');
@@ -63,6 +66,12 @@ export class ScField implements ScFieldContext {
   readonly disabledInput = input<boolean>(false, { alias: 'disabled' });
 
   private readonly formFieldDirective = contentChild(FormField);
+
+  protected readonly role = computed(() => {
+    // Only LABEL preserves native semantics, DIV gets role="group"
+    const tagName = this.elementRef.nativeElement.tagName;
+    return tagName === 'LABEL' ? null : 'group';
+  });
 
   readonly invalid = computed(() => {
     if (this.invalidInput()) return true;
