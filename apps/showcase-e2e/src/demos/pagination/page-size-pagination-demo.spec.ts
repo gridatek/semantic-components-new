@@ -5,25 +5,21 @@ test.describe('Page Size Pagination Demo', () => {
     await page.goto('/demos/pagination/page-size-pagination-demo');
   });
 
-  test('should render pagination with page size selector', async ({
-    page,
-  }) => {
+  test('should render pagination with page size selector', async ({ page }) => {
     const nav = page.locator('nav[sc-pagination]');
     await expect(nav).toBeVisible();
 
-    const pageSizeSelector = page.locator(
-      'sc-pagination-page-size',
-    );
+    const pageSizeSelector = page.locator('select[sc-pagination-page-size]');
     await expect(pageSizeSelector).toBeVisible();
   });
 
   test('should render page size select element', async ({ page }) => {
-    const select = page.locator('sc-pagination-page-size select');
+    const select = page.locator('select[sc-pagination-page-size]');
     await expect(select).toBeVisible();
   });
 
   test('should have all page size options', async ({ page }) => {
-    const options = page.locator('sc-pagination-page-size select option');
+    const options = page.locator('select[sc-pagination-page-size] option');
     await expect(options).toHaveCount(4);
     await expect(options.nth(0)).toHaveText('10');
     await expect(options.nth(1)).toHaveText('25');
@@ -32,7 +28,7 @@ test.describe('Page Size Pagination Demo', () => {
   });
 
   test('should default to page size 10', async ({ page }) => {
-    const select = page.locator('sc-pagination-page-size select');
+    const select = page.locator('select[sc-pagination-page-size]');
     await expect(select).toHaveValue('10');
   });
 
@@ -52,7 +48,7 @@ test.describe('Page Size Pagination Demo', () => {
     await nextBtn.click();
 
     // Change page size to 25
-    const select = page.locator('sc-pagination-page-size select');
+    const select = page.locator('select[sc-pagination-page-size]');
     await select.selectOption('25');
 
     // Should reset to page 1
@@ -69,7 +65,7 @@ test.describe('Page Size Pagination Demo', () => {
   test('should update total pages when changing page size to 50', async ({
     page,
   }) => {
-    const select = page.locator('sc-pagination-page-size select');
+    const select = page.locator('select[sc-pagination-page-size]');
     await select.selectOption('50');
 
     // 250 / 50 = 5 pages
@@ -80,7 +76,7 @@ test.describe('Page Size Pagination Demo', () => {
   test('should update total pages when changing page size to 100', async ({
     page,
   }) => {
-    const select = page.locator('sc-pagination-page-size select');
+    const select = page.locator('select[sc-pagination-page-size]');
     await select.selectOption('100');
 
     // 250 / 100 = 3 pages
@@ -89,7 +85,7 @@ test.describe('Page Size Pagination Demo', () => {
   });
 
   test('should have data-slot on page size component', async ({ page }) => {
-    const pageSizeSelector = page.locator('sc-pagination-page-size');
+    const pageSizeSelector = page.locator('select[sc-pagination-page-size]');
     await expect(pageSizeSelector).toHaveAttribute(
       'data-slot',
       'pagination-page-size',
