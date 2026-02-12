@@ -12,6 +12,7 @@ export * from './barcode-scanner';
 export * from './breadcrumb';
 export * from './button';
 export * from './button-group';
+export * from './link';
 export * from './calendar';
 export * from './card';
 export * from './chart';
