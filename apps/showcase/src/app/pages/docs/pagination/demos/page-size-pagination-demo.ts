@@ -5,6 +5,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import {
+  ScField,
+  ScLabel,
   ScPagination,
   ScPaginationChange,
   ScPaginationEllipsis,
@@ -24,6 +26,8 @@ import {
 @Component({
   selector: 'app-page-size-pagination-demo',
   imports: [
+    ScField,
+    ScLabel,
     ScPagination,
     ScPaginationList,
     ScPaginationItem,
@@ -48,9 +52,15 @@ import {
         (change)="onPaginationChange($event)"
       >
         <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="text-sm text-muted-foreground">Items per page:</span>
-            <sc-pagination-page-size />
+          <div sc-field orientation="horizontal" class="w-auto">
+            <label sc-label class="text-sm text-muted-foreground">
+              Items per page:
+            </label>
+            <select sc-pagination-page-size>
+              @for (size of pagination.pageSizes(); track size) {
+                <option [value]="size">{{ size }}</option>
+              }
+            </select>
           </div>
 
           <p class="text-sm text-muted-foreground">

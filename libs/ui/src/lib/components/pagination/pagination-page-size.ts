@@ -1,40 +1,39 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-  ViewEncapsulation,
-} from '@angular/core';
+import { _IdGenerator } from '@angular/cdk/a11y';
+import { computed, Directive, inject, input } from '@angular/core';
 import { cn } from '../../utils';
+import { SC_FIELD } from '../field';
 import { ScPagination } from './pagination';
 
-@Component({
-  selector: 'sc-pagination-page-size',
+@Directive({
+  selector: 'select[sc-pagination-page-size]',
   host: {
     'data-slot': 'pagination-page-size',
+    '[attr.id]': 'id()',
+    '[value]': 'pagination.pageSize()',
     '[class]': 'class()',
+    '(change)': 'onPageSizeChange($event)',
   },
-  template: `
-    <select
-      [value]="pagination.pageSize()"
-      (change)="onPageSizeChange($event)"
-      class="h-8 rounded-md border border-input bg-background px-3 text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-    >
-      @for (option of pagination.pageSizes(); track option) {
-        <option [value]="option">{{ option }}</option>
-      }
-    </select>
-  `,
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScPaginationPageSize {
   protected readonly pagination = inject(ScPagination);
+  private readonly field = inject(SC_FIELD, { optional: true });
+  private readonly fallbackId = inject(_IdGenerator).getId(
+    'sc-pagination-page-size-',
+  );
 
+  readonly idInput = input('', { alias: 'id' });
   readonly classInput = input<string>('', { alias: 'class' });
 
-  protected readonly class = computed(() => cn('', this.classInput()));
+  readonly id = computed(
+    () => this.idInput() || this.field?.id() || this.fallbackId,
+  );
+
+  protected readonly class = computed(() =>
+    cn(
+      'h-8 rounded-md border border-input bg-background px-3 text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      this.classInput(),
+    ),
+  );
 
   protected onPageSizeChange(event: Event): void {
     event.stopPropagation();
