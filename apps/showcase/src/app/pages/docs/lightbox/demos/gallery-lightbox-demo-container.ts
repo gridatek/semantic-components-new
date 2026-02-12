@@ -24,7 +24,7 @@ export class GalleryLightboxDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScLightboxGallery, LightboxImage } from '@semantic-components/ui';
+import { ScLightboxGallery, LightboxImage } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-gallery-lightbox-demo',

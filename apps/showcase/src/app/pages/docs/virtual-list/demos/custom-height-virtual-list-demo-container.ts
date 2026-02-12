@@ -29,7 +29,7 @@ export class CustomHeightVirtualListDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScVirtualList } from '@semantic-components/ui';
+import { ScVirtualList } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-custom-height-virtual-list-demo',

@@ -1,5 +1,5 @@
 {
-  "name": "@semantic-components/ui",
+  "name": "@semantic-components/ui-lab",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": ">=21.1.0",

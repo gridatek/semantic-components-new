@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui';
+import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-image-gallery-masonry-grid-demo',

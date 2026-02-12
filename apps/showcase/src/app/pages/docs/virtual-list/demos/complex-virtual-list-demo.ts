@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScVirtualList } from '@semantic-components/ui';
+import { ScVirtualList } from '@semantic-components/ui-lab';
 
 interface User {
   id: number;

@@ -24,7 +24,7 @@ export class InlineCopyButtonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCopyButton } from '@semantic-components/ui';
+import { ScCopyButton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-inline-copy-button-demo',

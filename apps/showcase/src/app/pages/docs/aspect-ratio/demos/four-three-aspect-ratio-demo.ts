@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAspectRatio } from '@semantic-components/ui';
+import { ScAspectRatio } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-four-three-aspect-ratio-demo',

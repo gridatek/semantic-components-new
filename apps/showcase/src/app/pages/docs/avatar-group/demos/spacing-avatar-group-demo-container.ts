@@ -29,7 +29,7 @@ export class SpacingAvatarGroupDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
+import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-spacing-avatar-group-demo',

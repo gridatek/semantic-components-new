@@ -11,7 +11,7 @@ import {
   ScBreadcrumbList,
   ScBreadcrumbPage,
   ScBreadcrumbSeparator,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-ellipsis-breadcrumb-demo',

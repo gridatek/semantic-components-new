@@ -24,7 +24,7 @@ export class HorizontalScrollAreaDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
+import { ScScrollArea, ScScrollBar } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-horizontal-scroll-area-demo',

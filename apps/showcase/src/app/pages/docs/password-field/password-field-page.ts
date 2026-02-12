@@ -9,7 +9,7 @@ import {
   ScCodeViewerHeader,
   ScCodeViewerLabel,
   ScCopyButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import BasicPasswordFieldDemoContainer from './demos/basic-password-field-demo-container';
 import ShowDefaultPasswordFieldDemoContainer from './demos/show-default-password-field-demo-container';
 import DisabledPasswordFieldDemoContainer from './demos/disabled-password-field-demo-container';
@@ -89,7 +89,7 @@ export default class PasswordFieldPage {
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   imports: [

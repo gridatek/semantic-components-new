@@ -24,7 +24,7 @@ export class DisabledSliderDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSlider } from '@semantic-components/ui';
+import { ScSlider } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-slider-demo',

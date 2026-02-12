@@ -25,7 +25,7 @@ export class SelectallMultiSelectDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui';
+import { ScMultiSelect, MultiSelectOption } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-selectall-multi-select-demo',

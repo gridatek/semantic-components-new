@@ -29,7 +29,7 @@ import {
   ScInputGroupAddon,
   ScInputGroupInput,
   ScInputGroupText,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiMailIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

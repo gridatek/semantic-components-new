@@ -9,7 +9,7 @@ import {
   ScCodeViewerHeader,
   ScCodeViewerLabel,
   ScCopyButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import BasicNumberFieldDemoContainer from './demos/basic-number-field-demo-container';
 import ScrubbingNumberFieldDemoContainer from './demos/scrubbing-number-field-demo-container';
 import PriceNumberFieldDemoContainer from './demos/price-number-field-demo-container';
@@ -85,7 +85,7 @@ export default class NumberFieldPage {
   ScNumberFieldInput,
   ScNumberFieldIncrement,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   imports: [

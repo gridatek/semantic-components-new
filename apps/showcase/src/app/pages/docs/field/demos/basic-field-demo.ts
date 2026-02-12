@@ -8,7 +8,7 @@ import {
   ScLabel,
   ScFieldDescription,
   ScInput,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-field-demo',

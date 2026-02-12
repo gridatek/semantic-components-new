@@ -10,7 +10,7 @@ import {
   ScImageCompareAfter,
   ScImageCompareSlider,
   ScImageCompareLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-labels-image-compare-demo',

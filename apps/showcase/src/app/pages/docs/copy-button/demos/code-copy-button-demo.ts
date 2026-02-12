@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCopyCode } from '@semantic-components/ui';
+import { ScCopyCode } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-code-copy-button-demo',

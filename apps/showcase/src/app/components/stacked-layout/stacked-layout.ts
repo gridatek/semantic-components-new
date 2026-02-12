@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScStackedLayout } from '@semantic-components/ui';
+import { ScStackedLayout } from '@semantic-components/ui-lab';
 import Navbar from '../navbar/navbar';
 import { Footer } from '../footer/footer';
 

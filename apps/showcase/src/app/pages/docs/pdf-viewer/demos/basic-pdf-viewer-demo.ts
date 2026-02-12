@@ -26,7 +26,7 @@ import {
   ScPdfViewerLoading,
   ScPdfViewerError,
   ScPdfViewerEmpty,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-pdf-viewer-demo',

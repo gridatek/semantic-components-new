@@ -31,7 +31,7 @@ import {
   ScTagInputCount,
   ScTagInputField,
   ScTagInputTag,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-form-field-tag-input-demo',

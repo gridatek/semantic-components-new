@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSwitch } from '@semantic-components/ui';
+import { ScSwitch } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-description-switch-demo',

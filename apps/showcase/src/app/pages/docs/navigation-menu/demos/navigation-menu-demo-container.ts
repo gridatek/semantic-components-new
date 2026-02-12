@@ -31,7 +31,7 @@ import {
   ScNavigationMenuLink,
   ScNavigationMenuList,
   ScNavigationMenuTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiSparklesIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

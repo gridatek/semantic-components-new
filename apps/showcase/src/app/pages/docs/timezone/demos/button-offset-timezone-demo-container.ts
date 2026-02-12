@@ -24,7 +24,7 @@ export class ButtonOffsetTimezoneDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneButton } from '@semantic-components/ui';
+import { ScTimezoneButton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-button-offset-timezone-demo',

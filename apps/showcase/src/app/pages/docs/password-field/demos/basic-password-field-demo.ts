@@ -9,8 +9,8 @@ import {
   ScPasswordFieldInputGroup,
   ScPasswordFieldInput,
   ScPasswordFieldToggle,
-} from '@semantic-components/ui';
-import { ScLabel } from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
+import { ScLabel } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-password-field-demo',

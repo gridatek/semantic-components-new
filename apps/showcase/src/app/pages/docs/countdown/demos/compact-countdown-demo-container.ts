@@ -24,7 +24,7 @@ export class CompactCountdownDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCountdown } from '@semantic-components/ui';
+import { ScCountdown } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-compact-countdown-demo',

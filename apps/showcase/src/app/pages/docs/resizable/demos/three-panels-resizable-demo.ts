@@ -7,7 +7,7 @@ import {
   ScResizableHandle,
   ScResizablePanel,
   ScResizablePanelGroup,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-three-panels-resizable-demo',

@@ -30,7 +30,7 @@ export class SingleScanBarcodeScannerDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScBarcodeScanner, BarcodeResult } from '@semantic-components/ui';
+import { ScBarcodeScanner, BarcodeResult } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-single-scan-barcode-scanner-demo',

@@ -24,7 +24,7 @@ export class InputCopyButtonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCopyInput } from '@semantic-components/ui';
+import { ScCopyInput } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-input-copy-button-demo',

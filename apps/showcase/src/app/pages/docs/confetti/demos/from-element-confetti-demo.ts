@@ -4,7 +4,7 @@ import {
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScConfetti } from '@semantic-components/ui';
+import { ScConfetti } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-from-element-confetti-demo',

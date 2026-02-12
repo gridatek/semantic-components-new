@@ -24,7 +24,7 @@ export class PauseOnHoverMarqueeDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMarqueeText } from '@semantic-components/ui';
+import { ScMarqueeText } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-pause-on-hover-marquee-demo',

@@ -29,7 +29,7 @@ export class FormatsBarcodeScannerDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { BarcodeFormat } from '@semantic-components/ui';
+import { BarcodeFormat } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-formats-barcode-scanner-demo',

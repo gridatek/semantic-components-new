@@ -31,7 +31,7 @@ export class SignalFormsSwitchDemoContainer {
 } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required } from '@angular/forms/signals';
-import { ScSwitch } from '@semantic-components/ui';
+import { ScSwitch } from '@semantic-components/ui-lab';
 import { JsonPipe } from '@angular/common';
 
 interface SwitchFormModel {

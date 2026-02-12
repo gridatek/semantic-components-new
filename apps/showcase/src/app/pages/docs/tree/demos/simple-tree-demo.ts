@@ -9,7 +9,7 @@ import {
   ScTreeItemTrigger,
   ScTreeItemTriggerIcon,
   ScTreeItemGroup,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiChevronRightIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

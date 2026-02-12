@@ -38,7 +38,7 @@ import {
   ScSheetPortal,
   ScSheetTitle,
   ScSheetTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-bottom-sheet-demo',

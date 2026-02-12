@@ -34,7 +34,7 @@ import {
   ScImageCropper,
   ScImageCropperContainer,
   ScImageCropperControls,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-upload-image-cropper-demo',

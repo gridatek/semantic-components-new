@@ -25,7 +25,7 @@ export class BasicCopyButtonDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCopyButton } from '@semantic-components/ui';
+import { ScCopyButton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-copy-button-demo',

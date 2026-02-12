@@ -9,7 +9,7 @@ import {
   ScTagInput,
   ScTagInputField,
   ScTagInputTag,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-output-tag-input-demo',

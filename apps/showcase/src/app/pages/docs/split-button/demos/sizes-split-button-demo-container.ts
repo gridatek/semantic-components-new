@@ -25,7 +25,7 @@ export class SizesSplitButtonDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSplitButton, type SplitButtonAction } from '@semantic-components/ui';
+import { ScSplitButton, type SplitButtonAction } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-split-button-demo',

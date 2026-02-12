@@ -33,7 +33,7 @@ import {
   CropArea,
   ScImageCropper,
   ScImageCropperContainer,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-info-image-cropper-demo',

@@ -31,7 +31,7 @@ export class SignalFormsSliderDemoContainer {
 } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required, min, max } from '@angular/forms/signals';
-import { ScSlider } from '@semantic-components/ui';
+import { ScSlider } from '@semantic-components/ui-lab';
 import { JsonPipe } from '@angular/common';
 
 interface SliderFormModel {

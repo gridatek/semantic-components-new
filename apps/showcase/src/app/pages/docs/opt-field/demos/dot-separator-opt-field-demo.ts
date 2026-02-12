@@ -9,7 +9,7 @@ import {
   ScOptFieldSlotGroup,
   ScOptFieldSeparator,
   ScOptFieldSlot,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-dot-separator-opt-field-demo',

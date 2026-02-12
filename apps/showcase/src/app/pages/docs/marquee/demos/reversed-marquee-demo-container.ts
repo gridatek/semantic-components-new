@@ -24,7 +24,7 @@ export class ReversedMarqueeDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMarqueeText } from '@semantic-components/ui';
+import { ScMarqueeText } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-reversed-marquee-demo',

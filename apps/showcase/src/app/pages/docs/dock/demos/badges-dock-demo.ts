@@ -8,8 +8,8 @@ import {
   ScDockItems,
   ScDockItem,
   ScDockBadge,
-} from '@semantic-components/ui';
-import type { DockItem } from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
+import type { DockItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-badges-dock-demo',

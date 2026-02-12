@@ -8,7 +8,7 @@ import {
   ScSpeedDial,
   type SpeedDialAction,
   type SpeedDialActionClickEvent,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-speed-dial-demo',

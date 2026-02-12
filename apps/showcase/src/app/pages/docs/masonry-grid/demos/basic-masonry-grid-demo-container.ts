@@ -25,7 +25,7 @@ export class BasicMasonryGridDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui';
+import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui-lab';
 
 interface DemoItem {
   id: number;

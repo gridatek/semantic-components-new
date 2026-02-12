@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAnimatedCounter } from '@semantic-components/ui';
+import { ScAnimatedCounter } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-prefix-animated-counter-demo',

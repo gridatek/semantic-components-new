@@ -24,7 +24,7 @@ export class BadgeNoIconTimezoneDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneBadge } from '@semantic-components/ui';
+import { ScTimezoneBadge } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-badge-no-icon-timezone-demo',

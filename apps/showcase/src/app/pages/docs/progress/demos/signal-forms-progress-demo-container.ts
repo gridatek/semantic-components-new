@@ -32,8 +32,8 @@ export class SignalFormsProgressDemoContainer {
 } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { required, minLength } from '@angular/forms/signals';
-import { ScProgress } from '@semantic-components/ui';
-import { ScLabel } from '@semantic-components/ui';
+import { ScProgress } from '@semantic-components/ui-lab';
+import { ScLabel } from '@semantic-components/ui-lab';
 import { JsonPipe } from '@angular/common';
 
 interface UserFormModel {

@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSpeedDial, type SpeedDialAction } from '@semantic-components/ui';
+import { ScSpeedDial, type SpeedDialAction } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-speed-dial-demo',

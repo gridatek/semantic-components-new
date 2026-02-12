@@ -28,7 +28,7 @@ export class DisabledDateRangePickerDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScDateRangePicker } from '@semantic-components/ui';
+import { ScDateRangePicker } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-date-range-picker-demo',

@@ -29,7 +29,7 @@ export class RangeDatePickerDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { DateRange, ScDatePicker } from '@semantic-components/ui';
+import { DateRange, ScDatePicker } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-range-date-picker-demo',

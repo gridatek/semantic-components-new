@@ -24,7 +24,7 @@ export class DisabledSortableListDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSortableItem, ScSortableList } from '@semantic-components/ui';
+import { ScSortableItem, ScSortableList } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-sortable-list-demo',

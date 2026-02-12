@@ -28,7 +28,7 @@ export class BasicTooltipDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTooltipTrigger } from '@semantic-components/ui';
+import { ScTooltipTrigger } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-tooltip-demo',

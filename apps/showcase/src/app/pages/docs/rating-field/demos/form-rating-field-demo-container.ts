@@ -30,7 +30,7 @@ import {
   ScRatingItemGroup,
   ScRatingFieldItem,
   ScButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiStarIcon } from '@semantic-icons/lucide-icons';
 import { JsonPipe } from '@angular/common';
 

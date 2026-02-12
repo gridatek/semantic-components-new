@@ -30,7 +30,7 @@ export class RangeCalendarDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { DateRange, ScCalendar } from '@semantic-components/ui';
+import { DateRange, ScCalendar } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-range-calendar-demo',

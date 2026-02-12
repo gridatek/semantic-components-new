@@ -28,7 +28,7 @@ export class ThemeSelectDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScThemeField, ScThemeSelect } from '@semantic-components/ui';
+import { ScThemeField, ScThemeSelect } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-theme-select-demo',

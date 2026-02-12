@@ -24,7 +24,7 @@ export class FallbackAvatarDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAvatar, ScAvatarFallback } from '@semantic-components/ui';
+import { ScAvatar, ScAvatarFallback } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-fallback-avatar-demo',

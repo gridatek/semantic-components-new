@@ -11,7 +11,7 @@ import {
   ScAccordionPanel,
   ScAccordionTrigger,
   ScAccordionTriggerIcon,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 

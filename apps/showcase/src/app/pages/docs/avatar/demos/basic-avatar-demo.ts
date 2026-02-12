@@ -7,7 +7,7 @@ import {
   ScAvatar,
   ScAvatarFallback,
   ScAvatarImage,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-avatar-demo',

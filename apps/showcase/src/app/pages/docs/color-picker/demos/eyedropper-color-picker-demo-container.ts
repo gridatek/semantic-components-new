@@ -32,7 +32,7 @@ import {
   ScColorPickerPreview,
   ScColorPickerInput,
   ScColorPickerEyeDropper,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-eyedropper-color-picker-demo',

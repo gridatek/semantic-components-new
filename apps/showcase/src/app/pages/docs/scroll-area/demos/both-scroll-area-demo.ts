@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
+import { ScScrollArea, ScScrollBar } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-both-scroll-area-demo',

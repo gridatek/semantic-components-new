@@ -30,7 +30,7 @@ import {
   ScSortableItem,
   ScSortableList,
   ScSortableOverlay,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface KanbanCard {
   id: number;

@@ -24,7 +24,7 @@ export class DisabledToggleGroupDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
+import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-toggle-group-demo',

@@ -30,7 +30,7 @@ import {
   ScInputGroupButton,
   ScInputGroupInput,
   ScInputGroupText,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiSearchIcon, SiXIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

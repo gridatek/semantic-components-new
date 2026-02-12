@@ -35,7 +35,7 @@ import {
   ScFieldError,
   ScInput,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-label-input-demo',

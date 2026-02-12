@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScField, ScLabel, ScInput } from '@semantic-components/ui';
+import { ScField, ScLabel, ScInput } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-horizontal-field-demo',

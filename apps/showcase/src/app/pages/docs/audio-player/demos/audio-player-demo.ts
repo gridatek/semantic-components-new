@@ -15,7 +15,7 @@ import {
   ScAudioPlayerRepeat,
   ScAudioPlayerVolume,
   ScAudioTrack,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiPlayIcon,
   SiPauseIcon,

@@ -25,7 +25,7 @@ export class SingleToggleGroupDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
+import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-single-toggle-group-demo',

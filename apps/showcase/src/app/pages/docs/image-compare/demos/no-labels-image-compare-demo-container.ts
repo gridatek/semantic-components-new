@@ -34,7 +34,7 @@ import {
   ScImageCompareBefore,
   ScImageCompareAfter,
   ScImageCompareSlider,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-no-labels-image-compare-demo',

@@ -25,7 +25,7 @@ export class BasicRangeSliderDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScRangeSlider } from '@semantic-components/ui';
+import { ScRangeSlider } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-range-slider-demo',

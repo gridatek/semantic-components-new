@@ -24,7 +24,7 @@ export class ListSkeletonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSkeleton } from '@semantic-components/ui';
+import { ScSkeleton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-list-skeleton-demo',

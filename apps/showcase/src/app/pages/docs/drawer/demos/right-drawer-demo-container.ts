@@ -37,7 +37,7 @@ import {
   ScDrawerProvider,
   ScDrawerTitle,
   ScDrawerTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-right-drawer-demo',

@@ -10,7 +10,7 @@ import {
   ScCarouselItem,
   ScCarouselNext,
   ScCarouselPrevious,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiChevronLeftIcon,
   SiChevronRightIcon,

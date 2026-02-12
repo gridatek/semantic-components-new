@@ -9,7 +9,7 @@ import {
   ScCodeEditorHeader,
   ScCodeEditorLabel,
   ScCodeEditorCopyButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-json-code-editor-demo',

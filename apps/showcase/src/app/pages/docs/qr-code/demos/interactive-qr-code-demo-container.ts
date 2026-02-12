@@ -29,7 +29,7 @@ export class InteractiveQrCodeDemoContainer {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ScQrCode } from '@semantic-components/ui';
+import { ScQrCode } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-interactive-qr-code-demo',

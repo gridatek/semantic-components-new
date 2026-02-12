@@ -14,7 +14,7 @@ import {
   ScDrawerProvider,
   ScDrawerTitle,
   ScDrawerTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-drawer-demo',

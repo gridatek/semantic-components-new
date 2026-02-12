@@ -28,7 +28,7 @@ export class NavigationThemeToggleDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScThemeToggle } from '@semantic-components/ui';
+import { ScThemeToggle } from '@semantic-components/ui-lab';
 import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

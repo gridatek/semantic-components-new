@@ -24,7 +24,7 @@ export class SizesLanguageSwitcherDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScLanguageToggle } from '@semantic-components/ui';
+import { ScLanguageToggle } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-language-switcher-demo',

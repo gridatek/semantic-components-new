@@ -24,7 +24,7 @@ export class NoAbbrTimezoneDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneSelect } from '@semantic-components/ui';
+import { ScTimezoneSelect } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-no-abbr-timezone-demo',

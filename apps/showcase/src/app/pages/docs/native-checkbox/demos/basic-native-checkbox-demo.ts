@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScNativeCheckbox } from '@semantic-components/ui';
+import { ScNativeCheckbox } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-native-checkbox-demo',

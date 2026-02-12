@@ -29,7 +29,7 @@ export class SizesAvatarGroupDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
+import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-avatar-group-demo',

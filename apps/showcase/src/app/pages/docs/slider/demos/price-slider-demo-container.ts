@@ -25,7 +25,7 @@ export class PriceSliderDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSlider } from '@semantic-components/ui';
+import { ScSlider } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-price-slider-demo',

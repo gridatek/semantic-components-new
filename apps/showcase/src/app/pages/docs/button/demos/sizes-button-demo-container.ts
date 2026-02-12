@@ -28,7 +28,7 @@ export class SizesButtonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScButton } from '@semantic-components/ui';
+import { ScButton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-button-demo',

@@ -25,7 +25,7 @@ export class BasicMentionInputDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMentionInput, MentionUser } from '@semantic-components/ui';
+import { ScMentionInput, MentionUser } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-mention-input-demo',

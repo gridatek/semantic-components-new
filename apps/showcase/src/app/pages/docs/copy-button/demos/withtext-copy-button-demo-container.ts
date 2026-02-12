@@ -24,7 +24,7 @@ export class WithtextCopyButtonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCopyButtonWithText } from '@semantic-components/ui';
+import { ScCopyButtonWithText } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-withtext-copy-button-demo',

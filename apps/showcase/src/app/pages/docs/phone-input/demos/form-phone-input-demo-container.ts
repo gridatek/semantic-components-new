@@ -24,7 +24,7 @@ export class FormPhoneInputDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScPhoneInput } from '@semantic-components/ui';
+import { ScPhoneInput } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-form-phone-input-demo',

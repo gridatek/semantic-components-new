@@ -24,7 +24,7 @@ export class ButtonLanguageSwitcherDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScLanguageButton } from '@semantic-components/ui';
+import { ScLanguageButton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-button-language-switcher-demo',

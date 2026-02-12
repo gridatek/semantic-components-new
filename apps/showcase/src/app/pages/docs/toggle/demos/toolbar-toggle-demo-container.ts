@@ -29,7 +29,7 @@ export class ToolbarToggleDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScToggle } from '@semantic-components/ui';
+import { ScToggle } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-toolbar-toggle-demo',

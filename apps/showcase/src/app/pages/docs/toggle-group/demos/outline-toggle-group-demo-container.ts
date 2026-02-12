@@ -25,7 +25,7 @@ export class OutlineToggleGroupDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui';
+import { ScToggleGroup, ScToggleGroupItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-outline-toggle-group-demo',

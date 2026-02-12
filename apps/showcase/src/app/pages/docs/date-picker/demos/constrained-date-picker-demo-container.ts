@@ -29,7 +29,7 @@ export class ConstrainedDatePickerDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScDatePicker } from '@semantic-components/ui';
+import { ScDatePicker } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-constrained-date-picker-demo',

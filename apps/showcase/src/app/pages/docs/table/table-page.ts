@@ -9,7 +9,7 @@ import {
   ScCodeViewerHeader,
   ScCodeViewerLabel,
   ScCopyButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import BasicTableDemoContainer from './demos/basic-table-demo-container';
 import CaptionTableDemoContainer from './demos/caption-table-demo-container';
 import FooterTableDemoContainer from './demos/footer-table-demo-container';
@@ -79,7 +79,7 @@ export default class TablePage {
   ScTableHeaderCell,
   ScTableHeader,
   ScTableRow,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   imports: [

@@ -34,7 +34,7 @@ import {
   DateRange,
   DateRangePreset,
   createDateRangePresets,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-presets-date-range-picker-demo',

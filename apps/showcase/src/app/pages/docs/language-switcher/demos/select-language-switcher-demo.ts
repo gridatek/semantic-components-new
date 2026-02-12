@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScLanguageSelect } from '@semantic-components/ui';
+import { ScLanguageSelect } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-select-language-switcher-demo',

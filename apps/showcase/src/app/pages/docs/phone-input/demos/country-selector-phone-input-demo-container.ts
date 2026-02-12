@@ -25,7 +25,7 @@ export class CountrySelectorPhoneInputDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScPhoneInput, Country } from '@semantic-components/ui';
+import { ScPhoneInput, Country } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-country-selector-phone-input-demo',

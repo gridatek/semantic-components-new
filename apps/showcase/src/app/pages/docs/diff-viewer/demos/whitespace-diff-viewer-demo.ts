@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScDiffViewer } from '@semantic-components/ui';
+import { ScDiffViewer } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-whitespace-diff-viewer-demo',

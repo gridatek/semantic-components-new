@@ -30,7 +30,7 @@ export class DisabledDatesCalendarDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCalendar } from '@semantic-components/ui';
+import { ScCalendar } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-dates-calendar-demo',

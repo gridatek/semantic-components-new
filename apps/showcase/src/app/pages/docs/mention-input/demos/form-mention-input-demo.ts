@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMentionInput, MentionUser } from '@semantic-components/ui';
+import { ScMentionInput, MentionUser } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-form-mention-input-demo',

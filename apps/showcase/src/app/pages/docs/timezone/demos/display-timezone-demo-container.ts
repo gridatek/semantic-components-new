@@ -24,7 +24,7 @@ export class DisplayTimezoneDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneDisplay } from '@semantic-components/ui';
+import { ScTimezoneDisplay } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-display-timezone-demo',

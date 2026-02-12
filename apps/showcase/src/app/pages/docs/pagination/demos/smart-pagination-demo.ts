@@ -13,7 +13,7 @@ import {
   ScPaginationList,
   ScPaginationNext,
   ScPaginationPrevious,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiChevronLeftIcon,
   SiChevronRightIcon,

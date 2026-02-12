@@ -9,7 +9,7 @@ import {
   ScImageCropperContainer,
   ScImageCropperControls,
   ScImageCropperPreview,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-avatar-image-cropper-demo',

@@ -9,7 +9,7 @@ import {
   ScImageCropperContainer,
   ScImageCropperAspectRatio,
   ScImageCropperControls,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-aspect-ratio-image-cropper-demo',

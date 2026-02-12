@@ -25,7 +25,7 @@ export class FormSwitchDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSwitch } from '@semantic-components/ui';
+import { ScSwitch } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-form-switch-demo',

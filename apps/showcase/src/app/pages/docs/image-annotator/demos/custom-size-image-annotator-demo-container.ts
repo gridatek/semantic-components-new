@@ -25,7 +25,7 @@ export class CustomSizeImageAnnotatorDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScImageAnnotator } from '@semantic-components/ui';
+import { ScImageAnnotator } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-custom-size-image-annotator-demo',

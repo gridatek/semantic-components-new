@@ -33,7 +33,7 @@ import {
   ScTimelineTitle,
   ScTimelineDescription,
   ScTimelineTime,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-tracking-timeline-demo',

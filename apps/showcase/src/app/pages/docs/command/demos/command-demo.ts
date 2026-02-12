@@ -17,7 +17,7 @@ import {
   ScCommandList,
   ScCommandSeparator,
   ScCommandShortcut,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface CommandItem {
   value: string;

@@ -24,7 +24,7 @@ export class SettingsPanelLanguageSwitcherDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScLanguageSelect } from '@semantic-components/ui';
+import { ScLanguageSelect } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-settings-panel-language-switcher-demo',

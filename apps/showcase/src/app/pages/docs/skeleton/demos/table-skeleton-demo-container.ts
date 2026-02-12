@@ -24,7 +24,7 @@ export class TableSkeletonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSkeleton } from '@semantic-components/ui';
+import { ScSkeleton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-table-skeleton-demo',

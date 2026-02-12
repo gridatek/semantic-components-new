@@ -24,7 +24,7 @@ import { NoSearchEmojiPickerDemo } from './no-search-emoji-picker-demo';
 })
 export class NoSearchEmojiPickerDemoContainer {
   readonly code = `import { Component, ViewEncapsulation } from '@angular/core';
-import { ScEmojiPicker } from '@semantic-components/ui';
+import { ScEmojiPicker } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-no-search-emoji-picker-demo',

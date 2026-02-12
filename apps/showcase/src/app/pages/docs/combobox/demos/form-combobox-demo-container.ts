@@ -37,7 +37,7 @@ import {
   ScComboboxItemIndicator,
   ScComboboxList,
   ScComboboxTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface ComboboxOption {
   value: string;

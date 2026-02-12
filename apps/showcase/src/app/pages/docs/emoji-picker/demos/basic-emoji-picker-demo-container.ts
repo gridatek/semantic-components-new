@@ -24,7 +24,7 @@ import { BasicEmojiPickerDemo } from './basic-emoji-picker-demo';
 })
 export class BasicEmojiPickerDemoContainer {
   readonly code = `import { Component, signal, ViewEncapsulation } from '@angular/core';
-import { ScEmojiPicker, Emoji } from '@semantic-components/ui';
+import { ScEmojiPicker, Emoji } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-emoji-picker-demo',

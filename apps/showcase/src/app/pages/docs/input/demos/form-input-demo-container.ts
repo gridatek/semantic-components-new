@@ -38,7 +38,7 @@ import {
   ScField,
   ScInput,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface CreateAccountForm {
   firstName: string;

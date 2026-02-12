@@ -9,7 +9,7 @@ import {
   ScSpotlightActions,
   ScSpotlightDescription,
   ScSpotlightTitle,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-custom-overlay-spotlight-demo',

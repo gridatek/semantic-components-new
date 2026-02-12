@@ -30,7 +30,7 @@ export class QrCodeBarcodeScannerDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScBarcodeScanner, BarcodeResult } from '@semantic-components/ui';
+import { ScBarcodeScanner, BarcodeResult } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-qr-code-barcode-scanner-demo',

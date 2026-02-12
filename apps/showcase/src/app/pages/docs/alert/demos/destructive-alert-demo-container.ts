@@ -23,7 +23,7 @@ import {
   ScAlert,
   ScAlertDescription,
   ScAlertTitle,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiAlertTriangleIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

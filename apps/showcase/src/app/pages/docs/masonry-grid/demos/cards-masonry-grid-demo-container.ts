@@ -25,7 +25,7 @@ export class CardsMasonryGridDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui';
+import { ScMasonryGrid, ScMasonryItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-cards-masonry-grid-demo',

@@ -14,7 +14,7 @@ import {
   ScFileUploadItemSize,
   ScFileUploadItemDelete,
   FileUploadFile,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-image-file-upload-demo',

@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScRangeSlider } from '@semantic-components/ui';
+import { ScRangeSlider } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-range-slider-demo',

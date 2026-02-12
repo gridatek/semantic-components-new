@@ -25,7 +25,7 @@ export class LargeOrgChartDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScOrgChart, type OrgChartNode } from '@semantic-components/ui';
+import { ScOrgChart, type OrgChartNode } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-large-org-chart-demo',

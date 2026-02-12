@@ -15,7 +15,7 @@ import {
   ScAlertDialogTitle,
   ScAlertDialogTrigger,
   ScButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-destructive-alert-dialog-demo',

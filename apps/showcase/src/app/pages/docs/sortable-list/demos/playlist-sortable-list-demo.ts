@@ -9,7 +9,7 @@ import {
   ScSortableItem,
   ScSortableList,
   ScSortableOverlay,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface PlaylistItem {
   id: number;

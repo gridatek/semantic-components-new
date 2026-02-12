@@ -25,7 +25,7 @@ export class EasingAnimatedCounterDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAnimatedCounter } from '@semantic-components/ui';
+import { ScAnimatedCounter } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-easing-animated-counter-demo',

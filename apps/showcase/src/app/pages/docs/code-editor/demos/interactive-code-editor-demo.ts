@@ -11,7 +11,7 @@ import {
   ScCodeEditorLabel,
   ScCodeEditorCopyButton,
   ScCodeEditorLanguage,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-interactive-code-editor-demo',

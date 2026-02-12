@@ -5,7 +5,7 @@ import {
   input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScBadge, ScBadgeVariants } from '@semantic-components/ui';
+import { ScBadge, ScBadgeVariants } from '@semantic-components/ui-lab';
 import { ComponentStatus } from '../../data/components';
 
 const variantMap: Record<ComponentStatus, ScBadgeVariants['variant']> = {

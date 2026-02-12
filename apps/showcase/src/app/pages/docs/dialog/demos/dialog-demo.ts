@@ -19,7 +19,7 @@ import {
   ScFieldGroup,
   ScInput,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiXIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

@@ -29,7 +29,7 @@ export class SingleDateCalendarDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCalendar } from '@semantic-components/ui';
+import { ScCalendar } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-single-date-calendar-demo',

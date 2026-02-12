@@ -28,7 +28,7 @@ export class SizesToggleDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScToggle } from '@semantic-components/ui';
+import { ScToggle } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-toggle-demo',

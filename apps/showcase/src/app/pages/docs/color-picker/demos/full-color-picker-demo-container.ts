@@ -31,7 +31,7 @@ import {
   ScColorPickerHue,
   ScColorPickerPreview,
   ScColorPickerInput,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-full-color-picker-demo',

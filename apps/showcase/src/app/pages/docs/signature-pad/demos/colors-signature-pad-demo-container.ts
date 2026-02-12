@@ -33,7 +33,7 @@ import {
   ScSignaturePadToolbar,
   ScSignaturePadColorButton,
   ScSignaturePadWidthButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiUndoIcon, SiTrash2Icon } from '@semantic-icons/lucide-icons';
 
 @Component({

@@ -35,7 +35,7 @@ import {
   ScPdfViewerLoading,
   ScPdfViewerError,
   ScPdfViewerEmpty,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-custom-toolbar-pdf-viewer-demo',

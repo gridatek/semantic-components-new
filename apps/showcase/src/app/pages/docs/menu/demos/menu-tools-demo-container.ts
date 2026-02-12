@@ -40,7 +40,7 @@ import {
   ScMenuSubTrigger,
   ScMenuProvider,
   ScMenuTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-menu-tools-demo',

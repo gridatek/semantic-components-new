@@ -24,7 +24,7 @@ export class DisabledPhoneInputDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScPhoneInput, ScPhoneInputSimple } from '@semantic-components/ui';
+import { ScPhoneInput, ScPhoneInputSimple } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-phone-input-demo',

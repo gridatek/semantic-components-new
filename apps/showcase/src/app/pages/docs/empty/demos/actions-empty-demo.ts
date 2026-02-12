@@ -11,7 +11,7 @@ import {
   ScEmptyTitle,
   ScEmptyDescription,
   ScEmptyContent,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiFolderIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

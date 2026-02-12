@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScField, ScInput, ScLabel } from '@semantic-components/ui';
+import { ScField, ScInput, ScLabel } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-file-input-demo',

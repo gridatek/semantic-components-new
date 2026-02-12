@@ -29,7 +29,7 @@ export class GridInfiniteScrollDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScInfiniteScroll } from '@semantic-components/ui';
+import { ScInfiniteScroll } from '@semantic-components/ui-lab';
 
 interface Item {
   id: number;

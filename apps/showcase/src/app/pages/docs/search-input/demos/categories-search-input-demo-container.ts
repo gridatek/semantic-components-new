@@ -25,8 +25,8 @@ export class CategoriesSearchInputDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSearchInput } from '@semantic-components/ui';
-import type { SearchSuggestion } from '@semantic-components/ui';
+import { ScSearchInput } from '@semantic-components/ui-lab';
+import type { SearchSuggestion } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-categories-search-input-demo',

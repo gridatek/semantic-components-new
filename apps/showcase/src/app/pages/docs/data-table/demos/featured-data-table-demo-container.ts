@@ -37,7 +37,7 @@ import {
   ScDataTableHeader,
   ScDataTablePagination,
   ScDataTableRow,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface User {
   id: number;

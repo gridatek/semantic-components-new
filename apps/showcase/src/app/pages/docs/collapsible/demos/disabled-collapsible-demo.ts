@@ -8,7 +8,7 @@ import {
   ScCollapsibleContent,
   ScCollapsiblePanel,
   ScCollapsibleTrigger,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiChevronDownIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

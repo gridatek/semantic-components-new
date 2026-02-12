@@ -17,7 +17,7 @@ import {
   ScVideoPlayerPipButton,
   ScVideoPlayerBigPlayButton,
   ScVideoPlayerBuffering,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiPlayIcon,
   SiPauseIcon,

@@ -8,7 +8,7 @@ import {
   ScStatCardIcon,
   ScStatCardLabel,
   ScStatCardValue,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-stat-card-demo',

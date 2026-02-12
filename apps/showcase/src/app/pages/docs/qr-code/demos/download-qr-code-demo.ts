@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScQrCodeDownload } from '@semantic-components/ui';
+import { ScQrCodeDownload } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-download-qr-code-demo',

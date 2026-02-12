@@ -15,7 +15,7 @@ import {
   ScEditorSeparator,
   ScEditorBulletListButton,
   ScEditorNumberedListButton,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiBoldIcon,
   SiItalicIcon,

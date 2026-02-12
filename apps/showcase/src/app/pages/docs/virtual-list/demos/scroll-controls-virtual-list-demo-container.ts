@@ -30,7 +30,7 @@ export class ScrollControlsVirtualListDemoContainer {
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScVirtualList } from '@semantic-components/ui';
+import { ScVirtualList } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-scroll-controls-virtual-list-demo',

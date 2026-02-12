@@ -37,7 +37,7 @@ import {
   ScCardTitle,
   ScInput,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-form-card-demo',

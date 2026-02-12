@@ -9,7 +9,7 @@ import {
   ScCheckbox,
   ScLabel,
   ScFieldDescription,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { FormsModule } from '@angular/forms';
 
 @Component({

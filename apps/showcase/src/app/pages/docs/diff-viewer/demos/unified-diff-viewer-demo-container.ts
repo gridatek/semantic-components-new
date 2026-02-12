@@ -28,7 +28,7 @@ export class UnifiedDiffViewerDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScDiffViewer } from '@semantic-components/ui';
+import { ScDiffViewer } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-unified-diff-viewer-demo',

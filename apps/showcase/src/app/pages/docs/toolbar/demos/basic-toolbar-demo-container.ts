@@ -33,7 +33,7 @@ import {
   ScToolbarSeparator,
   ScToolbarWidget,
   ScToolbarWidgetGroup,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-toolbar-demo',

@@ -24,7 +24,7 @@ export class SettingsPanelTimezoneDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneSelect } from '@semantic-components/ui';
+import { ScTimezoneSelect } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-settings-panel-timezone-demo',

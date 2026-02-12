@@ -25,7 +25,7 @@ export class TitleToastDemoContainer {
   inject,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScToastStack, ScToaster } from '@semantic-components/ui';
+import { ScToastStack, ScToaster } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-title-toast-demo',

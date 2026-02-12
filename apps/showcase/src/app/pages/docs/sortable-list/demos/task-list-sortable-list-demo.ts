@@ -10,7 +10,7 @@ import {
   ScSortableList,
   ScSortableOverlay,
   SortableEvent,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface Task {
   id: number;

@@ -29,7 +29,7 @@ import {
   ScSortableItem,
   ScSortableList,
   ScSortableOverlay,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-horizontal-sortable-list-demo',

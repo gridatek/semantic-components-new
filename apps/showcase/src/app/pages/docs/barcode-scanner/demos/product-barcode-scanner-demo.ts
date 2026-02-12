@@ -8,7 +8,7 @@ import {
   ScBarcodeScanner,
   BarcodeResult,
   BarcodeFormat,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-product-barcode-scanner-demo',

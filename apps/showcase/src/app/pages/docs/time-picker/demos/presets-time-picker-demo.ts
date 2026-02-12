@@ -10,7 +10,7 @@ import {
   ScTimePickerSeparator,
   ScTimePickerPeriod,
   TimeValue,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-presets-time-picker-demo',

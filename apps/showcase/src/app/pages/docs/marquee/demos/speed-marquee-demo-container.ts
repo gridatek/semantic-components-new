@@ -24,7 +24,7 @@ export class SpeedMarqueeDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMarqueeText } from '@semantic-components/ui';
+import { ScMarqueeText } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-speed-marquee-demo',

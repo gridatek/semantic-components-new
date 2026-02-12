@@ -6,7 +6,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScProgress } from '@semantic-components/ui';
+import { ScProgress } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-progress-demo',

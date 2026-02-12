@@ -8,7 +8,7 @@ import {
   ScNotificationCenter,
   ScNotificationCenterContainer,
   type Notification,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-empty-notification-center-demo',

@@ -29,7 +29,7 @@ export class FallbackAvatarGroupDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
+import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-fallback-avatar-group-demo',

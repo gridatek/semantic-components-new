@@ -29,7 +29,7 @@ export class BasicThemeToggleDemoContainer {
   inject,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTheme, ScThemeToggle } from '@semantic-components/ui';
+import { ScTheme, ScThemeToggle } from '@semantic-components/ui-lab';
 import { SiMoonIcon, SiSunIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

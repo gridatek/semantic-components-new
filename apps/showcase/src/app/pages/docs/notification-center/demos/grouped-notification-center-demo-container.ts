@@ -34,7 +34,7 @@ import {
   ScNotificationCenterContainer,
   type Notification,
   type NotificationGroup,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-grouped-notification-center-demo',

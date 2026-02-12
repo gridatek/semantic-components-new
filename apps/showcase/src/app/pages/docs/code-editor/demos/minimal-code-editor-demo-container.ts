@@ -28,7 +28,7 @@ export class MinimalCodeEditorDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCodeEditor, ScCodeEditorContent } from '@semantic-components/ui';
+import { ScCodeEditor, ScCodeEditorContent } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-minimal-code-editor-demo',

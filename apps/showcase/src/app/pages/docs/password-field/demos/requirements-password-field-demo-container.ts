@@ -36,7 +36,7 @@ import {
   ScPasswordFieldToggle,
   ScPasswordFieldRequirements,
   ScLabel,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-requirements-password-field-demo',

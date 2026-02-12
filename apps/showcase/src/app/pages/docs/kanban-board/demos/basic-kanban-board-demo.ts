@@ -9,7 +9,7 @@ import {
   type KanbanCard,
   type KanbanColumn,
   type KanbanDragEvent,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-kanban-board-demo',

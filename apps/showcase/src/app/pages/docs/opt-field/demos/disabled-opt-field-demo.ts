@@ -7,7 +7,7 @@ import {
   ScOptField,
   ScOptFieldSlotGroup,
   ScOptFieldSlot,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-opt-field-demo',

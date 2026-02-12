@@ -24,7 +24,7 @@ export class VariantsCopyButtonDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCopyButton } from '@semantic-components/ui';
+import { ScCopyButton } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-variants-copy-button-demo',

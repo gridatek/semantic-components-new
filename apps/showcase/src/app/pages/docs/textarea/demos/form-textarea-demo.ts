@@ -14,7 +14,7 @@ import {
   ScInput,
   ScLabel,
   ScTextarea,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface ContactForm {
   name: string;

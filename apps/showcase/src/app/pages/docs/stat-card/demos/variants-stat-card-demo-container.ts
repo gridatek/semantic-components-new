@@ -33,7 +33,7 @@ import {
   ScStatCardChange,
   ScStatCardLabel,
   ScStatCardValue,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-variants-stat-card-demo',

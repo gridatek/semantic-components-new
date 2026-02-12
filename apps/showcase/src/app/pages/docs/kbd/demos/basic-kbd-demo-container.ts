@@ -28,7 +28,7 @@ export class BasicKbdDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScKbd } from '@semantic-components/ui';
+import { ScKbd } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-kbd-demo',

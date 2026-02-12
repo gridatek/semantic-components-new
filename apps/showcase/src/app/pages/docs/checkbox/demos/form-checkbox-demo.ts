@@ -4,7 +4,11 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCheckboxField, ScCheckbox, ScLabel } from '@semantic-components/ui';
+import {
+  ScCheckboxField,
+  ScCheckbox,
+  ScLabel,
+} from '@semantic-components/ui-lab';
 import { FormsModule } from '@angular/forms';
 
 @Component({

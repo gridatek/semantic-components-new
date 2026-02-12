@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneBadge } from '@semantic-components/ui';
+import { ScTimezoneBadge } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-badge-timezone-demo',

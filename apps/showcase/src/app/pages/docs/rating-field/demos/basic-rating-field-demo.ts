@@ -8,7 +8,7 @@ import {
   ScRatingField,
   ScRatingItemGroup,
   ScRatingFieldItem,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import { SiStarIcon } from '@semantic-icons/lucide-icons';
 
 @Component({

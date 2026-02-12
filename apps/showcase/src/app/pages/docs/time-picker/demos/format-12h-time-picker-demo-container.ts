@@ -31,7 +31,7 @@ import {
   ScTimePickerSeparator,
   ScTimePickerPeriod,
   TimeValue,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-format-12h-time-picker-demo',

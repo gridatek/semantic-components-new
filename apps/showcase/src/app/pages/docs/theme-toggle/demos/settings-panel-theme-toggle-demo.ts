@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScThemeSelect } from '@semantic-components/ui';
+import { ScThemeSelect } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-settings-panel-theme-toggle-demo',

@@ -28,7 +28,7 @@ export class UseCasesQrCodeDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScQrCode } from '@semantic-components/ui';
+import { ScQrCode } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-use-cases-qr-code-demo',

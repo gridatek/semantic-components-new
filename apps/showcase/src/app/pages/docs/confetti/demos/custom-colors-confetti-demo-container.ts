@@ -25,7 +25,7 @@ export class CustomColorsConfettiDemoContainer {
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScConfetti } from '@semantic-components/ui';
+import { ScConfetti } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-custom-colors-confetti-demo',

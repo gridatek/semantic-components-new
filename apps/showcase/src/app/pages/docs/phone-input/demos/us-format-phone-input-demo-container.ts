@@ -25,7 +25,7 @@ export class UsFormatPhoneInputDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScPhoneInputSimple } from '@semantic-components/ui';
+import { ScPhoneInputSimple } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-us-format-phone-input-demo',

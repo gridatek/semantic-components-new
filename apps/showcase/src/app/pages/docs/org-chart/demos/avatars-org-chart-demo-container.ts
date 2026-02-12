@@ -25,7 +25,7 @@ export class AvatarsOrgChartDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScOrgChart, type OrgChartNode } from '@semantic-components/ui';
+import { ScOrgChart, type OrgChartNode } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-avatars-org-chart-demo',

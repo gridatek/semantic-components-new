@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCountdownSimple } from '@semantic-components/ui';
+import { ScCountdownSimple } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-simple-countdown-demo',

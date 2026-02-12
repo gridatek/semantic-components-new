@@ -4,7 +4,7 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScPhoneInputSimple } from '@semantic-components/ui';
+import { ScPhoneInputSimple } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-international-format-phone-input-demo',

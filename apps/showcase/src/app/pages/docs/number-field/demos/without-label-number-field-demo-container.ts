@@ -35,7 +35,7 @@ import {
   ScNumberFieldInputGroup,
   ScNumberFieldIncrement,
   ScNumberFieldInput,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-without-label-number-field-demo',

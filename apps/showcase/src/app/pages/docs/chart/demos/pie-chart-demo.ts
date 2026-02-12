@@ -8,7 +8,7 @@ import {
   ScChartLegend,
   ScPieChart,
   ChartDataPoint,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-pie-chart-demo',

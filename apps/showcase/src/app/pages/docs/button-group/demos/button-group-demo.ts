@@ -8,7 +8,7 @@ import {
   ScButtonGroup,
   ScButtonGroupSeparator,
   ScButtonGroupText,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-button-group-demo',

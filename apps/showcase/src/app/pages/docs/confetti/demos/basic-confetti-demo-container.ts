@@ -25,7 +25,7 @@ export class BasicConfettiDemoContainer {
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScConfetti } from '@semantic-components/ui';
+import { ScConfetti } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-confetti-demo',

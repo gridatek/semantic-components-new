@@ -25,7 +25,7 @@ export class WithoutLabelsSpeedDialDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSpeedDial, type SpeedDialAction } from '@semantic-components/ui';
+import { ScSpeedDial, type SpeedDialAction } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-without-labels-speed-dial-demo',

@@ -22,7 +22,7 @@ import {
   ScNavigationMenuList,
   ScNavigationMenuTrigger,
   ScThemeToggle,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiMenuIcon,
   SiMoonIcon,

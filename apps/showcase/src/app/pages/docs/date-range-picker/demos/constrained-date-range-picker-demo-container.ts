@@ -28,7 +28,7 @@ export class ConstrainedDateRangePickerDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScDateRangePicker } from '@semantic-components/ui';
+import { ScDateRangePicker } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-constrained-date-range-picker-demo',

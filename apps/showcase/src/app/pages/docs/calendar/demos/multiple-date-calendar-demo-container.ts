@@ -29,7 +29,7 @@ export class MultipleDateCalendarDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScCalendar } from '@semantic-components/ui';
+import { ScCalendar } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-multiple-date-calendar-demo',

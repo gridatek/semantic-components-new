@@ -33,7 +33,7 @@ import {
   ScKanbanBoard,
   type KanbanCard,
   type KanbanColumn,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-minimal-kanban-board-demo',

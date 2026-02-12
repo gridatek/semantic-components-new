@@ -24,7 +24,7 @@ export class VerticalScrollAreaDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScScrollArea, ScScrollBar } from '@semantic-components/ui';
+import { ScScrollArea, ScScrollBar } from '@semantic-components/ui-lab';
 
 interface Tag {
   id: string;

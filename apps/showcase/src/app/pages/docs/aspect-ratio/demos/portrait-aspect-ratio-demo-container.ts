@@ -28,7 +28,7 @@ export class PortraitAspectRatioDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAspectRatio } from '@semantic-components/ui';
+import { ScAspectRatio } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-portrait-aspect-ratio-demo',

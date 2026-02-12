@@ -35,7 +35,7 @@ import {
   ScFieldDescription,
   ScLabel,
   ScTextarea,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-maxlength-textarea-demo',

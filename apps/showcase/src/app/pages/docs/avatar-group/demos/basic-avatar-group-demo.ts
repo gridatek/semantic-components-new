@@ -4,7 +4,10 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAvatarGroup, type AvatarGroupItem } from '@semantic-components/ui';
+import {
+  ScAvatarGroup,
+  type AvatarGroupItem,
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-avatar-group-demo',

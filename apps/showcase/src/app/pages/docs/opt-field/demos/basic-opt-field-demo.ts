@@ -8,7 +8,7 @@ import {
   ScOptField,
   ScOptFieldSlotGroup,
   ScOptFieldSlot,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-opt-field-demo',

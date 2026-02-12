@@ -28,7 +28,7 @@ export class SixteenNineAspectRatioDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScAspectRatio } from '@semantic-components/ui';
+import { ScAspectRatio } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sixteen-nine-aspect-ratio-demo',

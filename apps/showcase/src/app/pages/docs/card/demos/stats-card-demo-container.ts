@@ -34,7 +34,7 @@ import {
   ScCardDescription,
   ScCardHeader,
   ScCardTitle,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-stats-card-demo',

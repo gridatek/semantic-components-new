@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { cn } from '@semantic-components/ui';
+import { cn } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-root',

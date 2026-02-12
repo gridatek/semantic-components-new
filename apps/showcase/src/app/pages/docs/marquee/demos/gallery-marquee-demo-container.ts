@@ -24,7 +24,7 @@ export class GalleryMarqueeDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScMarquee, ScMarqueeClone, ScMarqueeItem } from '@semantic-components/ui';
+import { ScMarquee, ScMarqueeClone, ScMarqueeItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-gallery-marquee-demo',

@@ -8,7 +8,7 @@ import {
   ScTimePicker,
   ScTimePickerClock,
   TimeValue,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-clock-minutes-time-picker-demo',

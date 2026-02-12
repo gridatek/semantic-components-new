@@ -11,7 +11,7 @@ import {
   ScTimelineContent,
   ScTimelineTitle,
   ScTimelineDescription,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-status-timeline-demo',

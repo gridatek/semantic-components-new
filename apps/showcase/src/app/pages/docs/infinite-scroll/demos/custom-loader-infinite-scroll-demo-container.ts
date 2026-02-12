@@ -32,7 +32,7 @@ export class CustomLoaderInfiniteScrollDemoContainer {
 import {
   ScInfiniteScroll,
   ScInfiniteScrollLoader,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 
 interface Item {
   id: number;

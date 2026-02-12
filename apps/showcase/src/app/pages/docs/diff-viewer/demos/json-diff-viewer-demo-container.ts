@@ -28,7 +28,7 @@ export class JsonDiffViewerDemoContainer {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScDiffViewer } from '@semantic-components/ui';
+import { ScDiffViewer } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-json-diff-viewer-demo',

@@ -29,8 +29,8 @@ export class BasicTransferListDemoContainer {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTransferList } from '@semantic-components/ui';
-import type { TransferListItem } from '@semantic-components/ui';
+import { ScTransferList } from '@semantic-components/ui-lab';
+import type { TransferListItem } from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-basic-transfer-list-demo',

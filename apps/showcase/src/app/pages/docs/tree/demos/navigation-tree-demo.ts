@@ -10,7 +10,7 @@ import {
   ScTreeItemTriggerIcon,
   ScTreeItemGroup,
   ScTreeItemIcon,
-} from '@semantic-components/ui';
+} from '@semantic-components/ui-lab';
 import {
   SiChevronRightIcon,
   SiHomeIcon,
