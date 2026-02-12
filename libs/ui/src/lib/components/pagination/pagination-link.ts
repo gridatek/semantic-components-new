@@ -17,7 +17,8 @@ import { buttonVariants, ScButtonVariants } from '../button';
     '[class]': 'class()',
     '[attr.aria-current]': 'isActive() ? "page" : null',
     '[attr.aria-disabled]': 'disabled() || null',
-    '[attr.href]': 'isAnchor() ? "#" : null',
+    '[attr.tabindex]': 'disabled() ? -1 : null',
+    '[attr.href]': 'isAnchor() && !disabled() ? "#" : null',
     '(click)': 'onClick($event)',
   },
 })
