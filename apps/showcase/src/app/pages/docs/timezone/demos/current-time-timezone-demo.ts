@@ -4,7 +4,10 @@ import {
   inject,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScTimezoneBadge, ScTimezoneService } from '@semantic-components/ui-lab';
+import {
+  ScTimezoneBadge,
+  ScTimezoneService,
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-current-time-timezone-demo',

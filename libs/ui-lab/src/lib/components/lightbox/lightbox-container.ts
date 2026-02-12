@@ -148,11 +148,14 @@ import { SC_LIGHTBOX } from './lightbox';
           <!-- Image info -->
           @if (
             lightbox.showInfo() &&
-            (lightbox.currentImage().title || lightbox.currentImage().description)
+            (lightbox.currentImage().title ||
+              lightbox.currentImage().description)
           ) {
             <div class="flex-1 text-white">
               @if (lightbox.currentImage().title) {
-                <h3 class="font-semibold">{{ lightbox.currentImage().title }}</h3>
+                <h3 class="font-semibold">
+                  {{ lightbox.currentImage().title }}
+                </h3>
               }
               @if (lightbox.currentImage().description) {
                 <p class="text-sm text-white/80">
@@ -167,7 +170,8 @@ import { SC_LIGHTBOX } from './lightbox';
             <!-- Counter -->
             @if (lightbox.showCounter() && lightbox.images().length > 1) {
               <span class="text-sm text-white/80">
-                {{ lightbox.currentIndex() + 1 }} / {{ lightbox.images().length }}
+                {{ lightbox.currentIndex() + 1 }} /
+                {{ lightbox.images().length }}
               </span>
             }
 
@@ -243,11 +247,7 @@ import { SC_LIGHTBOX } from './lightbox';
         <!-- Thumbnails -->
         @if (lightbox.showThumbnails() && lightbox.images().length > 1) {
           <div [class]="thumbnailsClass()">
-            @for (
-              image of lightbox.images();
-              track image.src;
-              let i = $index
-            ) {
+            @for (image of lightbox.images(); track image.src; let i = $index) {
               <button
                 type="button"
                 [class]="thumbnailClass(i)"

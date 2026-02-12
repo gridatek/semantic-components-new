@@ -4,7 +4,10 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSplitButton, type SplitButtonAction } from '@semantic-components/ui-lab';
+import {
+  ScSplitButton,
+  type SplitButtonAction,
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-sizes-split-button-demo',
@@ -12,11 +15,7 @@ import { ScSplitButton, type SplitButtonAction } from '@semantic-components/ui-l
   template: `
     <div class="flex flex-wrap items-center gap-4">
       <sc-split-button label="Small" size="sm" [actions]="basicActions()" />
-      <sc-split-button
-        label="Medium"
-        size="md"
-        [actions]="basicActions()"
-      />
+      <sc-split-button label="Medium" size="md" [actions]="basicActions()" />
       <sc-split-button label="Large" size="lg" [actions]="basicActions()" />
     </div>
   `,

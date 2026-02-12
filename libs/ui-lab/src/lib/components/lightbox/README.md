@@ -15,13 +15,9 @@ Full-screen image viewer with zoom, navigation, and keyboard support. Built usin
 <div sc-lightbox [images]="images">
   <div class="flex gap-4">
     @for (image of images; track image.src; let i = $index) {
-      <button
-        sc-lightbox-trigger
-        [index]="i"
-        class="w-32 h-32 rounded overflow-hidden"
-      >
-        <img [src]="image.src" [alt]="image.alt" class="size-full object-cover" />
-      </button>
+    <button sc-lightbox-trigger [index]="i" class="w-32 h-32 rounded overflow-hidden">
+      <img [src]="image.src" [alt]="image.alt" class="size-full object-cover" />
+    </button>
     }
   </div>
   <div sc-lightbox-container></div>
@@ -34,11 +30,11 @@ Full-screen image viewer with zoom, navigation, and keyboard support. Built usin
 
 ```typescript
 interface LightboxImage {
-  src: string;           // Full-size image URL
-  alt?: string;          // Alt text
-  title?: string;        // Title shown in bottom bar
-  description?: string;  // Description shown in bottom bar
-  thumbnail?: string;    // Thumbnail URL (uses src if not provided)
+  src: string; // Full-size image URL
+  alt?: string; // Alt text
+  title?: string; // Title shown in bottom bar
+  description?: string; // Description shown in bottom bar
+  thumbnail?: string; // Thumbnail URL (uses src if not provided)
 }
 ```
 
@@ -117,9 +113,9 @@ Directive that opens the lightbox when clicked.
 
 **Inputs:**
 
-| Input   | Type     | Default | Description                      |
-| ------- | -------- | ------- | -------------------------------- |
-| `index` | `number` | `0`     | Image index to open (0-indexed)  |
+| Input   | Type     | Default | Description                     |
+| ------- | -------- | ------- | ------------------------------- |
+| `index` | `number` | `0`     | Image index to open (0-indexed) |
 
 ### ScLightboxGallery
 
@@ -129,17 +125,17 @@ Pre-built gallery grid with integrated lightbox.
 
 **Inputs:**
 
-| Input            | Type              | Default | Description                |
-| ---------------- | ----------------- | ------- | -------------------------- |
-| `images`         | `LightboxImage[]` | `[]`    | Array of images            |
-| `columns`        | `number`          | `3`     | Number of grid columns     |
-| `gap`            | `number`          | `4`     | Gap size (Tailwind scale)  |
-| `loop`           | `boolean`         | `true`  | Loop navigation            |
-| `showCounter`    | `boolean`         | `true`  | Show counter               |
-| `showInfo`       | `boolean`         | `true`  | Show image info            |
-| `showZoom`       | `boolean`         | `true`  | Show zoom controls         |
-| `showThumbnails` | `boolean`         | `true`  | Show thumbnails            |
-| `class`          | `string`          | `''`    | Additional CSS class       |
+| Input            | Type              | Default | Description               |
+| ---------------- | ----------------- | ------- | ------------------------- |
+| `images`         | `LightboxImage[]` | `[]`    | Array of images           |
+| `columns`        | `number`          | `3`     | Number of grid columns    |
+| `gap`            | `number`          | `4`     | Gap size (Tailwind scale) |
+| `loop`           | `boolean`         | `true`  | Loop navigation           |
+| `showCounter`    | `boolean`         | `true`  | Show counter              |
+| `showInfo`       | `boolean`         | `true`  | Show image info           |
+| `showZoom`       | `boolean`         | `true`  | Show zoom controls        |
+| `showThumbnails` | `boolean`         | `true`  | Show thumbnails           |
+| `class`          | `string`          | `''`    | Additional CSS class      |
 
 ## Examples
 
@@ -149,13 +145,9 @@ Pre-built gallery grid with integrated lightbox.
 <div sc-lightbox [images]="images">
   <div class="flex gap-4">
     @for (image of images; track image.src; let i = $index) {
-      <button
-        sc-lightbox-trigger
-        [index]="i"
-        class="w-32 h-32 rounded-lg overflow-hidden"
-      >
-        <img [src]="image.src" [alt]="image.alt" class="size-full object-cover" />
-      </button>
+    <button sc-lightbox-trigger [index]="i" class="w-32 h-32 rounded-lg overflow-hidden">
+      <img [src]="image.src" [alt]="image.alt" class="size-full object-cover" />
+    </button>
     }
   </div>
   <div sc-lightbox-container></div>
@@ -176,9 +168,9 @@ readonly images: LightboxImage[] = [
 <div sc-lightbox [images]="images">
   <div class="flex gap-4">
     @for (image of images; track image.src; let i = $index) {
-      <button sc-lightbox-trigger [index]="i">
-        <img [src]="image.thumbnail || image.src" [alt]="image.alt" />
-      </button>
+    <button sc-lightbox-trigger [index]="i">
+      <img [src]="image.thumbnail || image.src" [alt]="image.alt" />
+    </button>
     }
   </div>
   <div sc-lightbox-container></div>
@@ -201,10 +193,7 @@ readonly images: LightboxImage[] = [
 ### Pre-built Gallery
 
 ```html
-<sc-lightbox-gallery
-  [images]="images"
-  class="grid-cols-4 gap-2 max-w-4xl"
-/>
+<sc-lightbox-gallery [images]="images" class="grid-cols-4 gap-2 max-w-4xl" />
 ```
 
 ### Controlled Lightbox
@@ -246,17 +235,12 @@ export class MyComponent {
 ### Without Thumbnails or Zoom
 
 ```html
-<div
-  sc-lightbox
-  [images]="images"
-  [showThumbnails]="false"
-  [showZoom]="false"
->
+<div sc-lightbox [images]="images" [showThumbnails]="false" [showZoom]="false">
   <div class="flex gap-4">
     @for (image of images; track image.src; let i = $index) {
-      <button sc-lightbox-trigger [index]="i">
-        <img [src]="image.src" [alt]="image.alt" />
-      </button>
+    <button sc-lightbox-trigger [index]="i">
+      <img [src]="image.src" [alt]="image.alt" />
+    </button>
     }
   </div>
   <div sc-lightbox-container></div>
@@ -271,9 +255,9 @@ Use content projection to customize icons:
 <div sc-lightbox [images]="images">
   <div class="flex gap-4">
     @for (image of images; track image.src; let i = $index) {
-      <button sc-lightbox-trigger [index]="i">
-        <img [src]="image.src" [alt]="image.alt" />
-      </button>
+    <button sc-lightbox-trigger [index]="i">
+      <img [src]="image.src" [alt]="image.alt" />
+    </button>
     }
   </div>
 
@@ -346,9 +330,9 @@ export class MyComponent {
   <!-- Previous/Next buttons will be disabled at start/end -->
   <div class="flex gap-4">
     @for (image of images; track image.src; let i = $index) {
-      <button sc-lightbox-trigger [index]="i">
-        <img [src]="image.src" [alt]="image.alt" />
-      </button>
+    <button sc-lightbox-trigger [index]="i">
+      <img [src]="image.src" [alt]="image.alt" />
+    </button>
     }
   </div>
   <div sc-lightbox-container></div>
@@ -359,14 +343,14 @@ export class MyComponent {
 
 When lightbox is open:
 
-| Key             | Action                         |
-| --------------- | ------------------------------ |
-| `←` / `ArrowLeft`  | Previous image              |
-| `→` / `ArrowRight` | Next image                  |
-| `Escape`        | Close lightbox                 |
-| `+` / `=`       | Zoom in                        |
-| `-`             | Zoom out                       |
-| `0`             | Reset zoom to 100%             |
+| Key                | Action             |
+| ------------------ | ------------------ |
+| `←` / `ArrowLeft`  | Previous image     |
+| `→` / `ArrowRight` | Next image         |
+| `Escape`           | Close lightbox     |
+| `+` / `=`          | Zoom in            |
+| `-`                | Zoom out           |
+| `0`                | Reset zoom to 100% |
 
 ## Composable Architecture
 
@@ -378,6 +362,7 @@ This component follows the composable architecture pattern:
 - **Gallery**: Pre-built component that combines everything
 
 Benefits:
+
 - Separation of concerns: state vs UI
 - Container handles all rendering and user interactions
 - Content projection for customizing icons and loading indicator

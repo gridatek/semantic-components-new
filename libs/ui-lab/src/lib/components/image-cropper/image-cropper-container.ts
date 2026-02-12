@@ -157,8 +157,7 @@ export class ScImageCropperContainer {
   protected readonly class = computed(() => cn('block', this.classInput()));
 
   private readonly imageEl = viewChild<ElementRef<HTMLImageElement>>('imageEl');
-  readonly canvasEl =
-    viewChild<ElementRef<HTMLCanvasElement>>('canvasEl');
+  readonly canvasEl = viewChild<ElementRef<HTMLCanvasElement>>('canvasEl');
 
   protected readonly scaledImageWidth = computed(() =>
     this.cropper.getScaledImageWidth(),
@@ -173,7 +172,10 @@ export class ScImageCropperContainer {
 
   constructor() {
     afterNextRender(() => {
-      document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this));
+      document.addEventListener(
+        'mousemove',
+        this.onDocumentMouseMove.bind(this),
+      );
     });
   }
 

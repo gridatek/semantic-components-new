@@ -1,10 +1,4 @@
-import {
-  Directive,
-  InjectionToken,
-  input,
-  model,
-  signal,
-} from '@angular/core';
+import { Directive, InjectionToken, input, model, signal } from '@angular/core';
 
 /**
  * Injection token for ScImageCompare
@@ -28,7 +22,9 @@ export const SC_IMAGE_COMPARE = new InjectionToken<ScImageCompare>(
 @Directive({
   selector: '[sc-image-compare]',
   exportAs: 'scImageCompare',
-  providers: [{ provide: SC_IMAGE_COMPARE, useExisting: ScImageCompareDirective }],
+  providers: [
+    { provide: SC_IMAGE_COMPARE, useExisting: ScImageCompareDirective },
+  ],
   host: {
     'data-slot': 'image-compare',
     '[attr.data-orientation]': 'orientation()',

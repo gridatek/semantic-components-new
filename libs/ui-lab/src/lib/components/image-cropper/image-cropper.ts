@@ -64,8 +64,16 @@ export interface ScImageCropper {
   getScaledImageHeight: () => number;
   startDragging: (clientX: number, clientY: number) => void;
   startResizing: (clientX: number, clientY: number, handle: string) => void;
-  handleDrag: (clientX: number, clientY: number, containerWidth: number) => void;
-  handleResize: (clientX: number, clientY: number, containerWidth: number) => void;
+  handleDrag: (
+    clientX: number,
+    clientY: number,
+    containerWidth: number,
+  ) => void;
+  handleResize: (
+    clientX: number,
+    clientY: number,
+    containerWidth: number,
+  ) => void;
   stopInteraction: () => void;
   crop: (
     imageElement: HTMLImageElement,
@@ -85,7 +93,9 @@ export const SC_IMAGE_CROPPER = new InjectionToken<ScImageCropper>(
 @Directive({
   selector: '[sc-image-cropper]',
   exportAs: 'scImageCropper',
-  providers: [{ provide: SC_IMAGE_CROPPER, useExisting: ScImageCropperDirective }],
+  providers: [
+    { provide: SC_IMAGE_CROPPER, useExisting: ScImageCropperDirective },
+  ],
   host: {
     'data-slot': 'image-cropper',
     '[attr.data-disabled]': 'disabled() || null',
@@ -381,7 +391,11 @@ export class ScImageCropperDirective implements ScImageCropper, OnDestroy {
     // Calculate the scale between displayed image and natural image
     const displayedW = this.getScaledImageWidth();
     const displayedH = this.getScaledImageHeight();
-    const scale = Math.min(containerWidth / displayedW, containerH / displayedH, 1);
+    const scale = Math.min(
+      containerWidth / displayedW,
+      containerH / displayedH,
+      1,
+    );
 
     const offsetX = (containerWidth - displayedW * scale) / 2;
     const offsetY = (containerH - displayedH * scale) / 2;

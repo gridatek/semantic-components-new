@@ -4,7 +4,10 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { ScSplitButton, type SplitButtonAction } from '@semantic-components/ui-lab';
+import {
+  ScSplitButton,
+  type SplitButtonAction,
+} from '@semantic-components/ui-lab';
 
 @Component({
   selector: 'app-disabled-split-button-demo',

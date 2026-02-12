@@ -43,10 +43,10 @@ The root directive that manages state.
 
 The interactive container that handles user input.
 
-| Input        | Type     | Default                     | Description          |
-| ------------ | -------- | --------------------------- | -------------------- |
-| `ariaLabel`  | `string` | `'Image comparison slider'` | Accessibility label  |
-| `class`      | `string` | -                           | Additional CSS class |
+| Input       | Type     | Default                     | Description          |
+| ----------- | -------- | --------------------------- | -------------------- |
+| `ariaLabel` | `string` | `'Image comparison slider'` | Accessibility label  |
+| `class`     | `string` | -                           | Additional CSS class |
 
 ### ScImageCompareBefore / ScImageCompareAfter
 
@@ -128,12 +128,8 @@ Labels have full positioning control:
     <img sc-image-compare-before src="before.jpg" alt="Before" />
     <img sc-image-compare-after src="after.jpg" alt="After" />
     <div sc-image-compare-slider></div>
-    <div sc-image-compare-label class="bottom-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full">
-      Original
-    </div>
-    <div sc-image-compare-label class="bottom-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full">
-      Enhanced
-    </div>
+    <div sc-image-compare-label class="bottom-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full">Original</div>
+    <div sc-image-compare-label class="bottom-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full">Enhanced</div>
   </div>
 </div>
 ```
@@ -168,13 +164,7 @@ Use content projection to customize the slider handle:
       </div>
     </div>
 
-    <input
-      type="range"
-      min="0"
-      max="100"
-      [value]="position()"
-      (input)="position.set(+$any($event.target).value)"
-    />
+    <input type="range" min="0" max="100" [value]="position()" (input)="position.set(+$any($event.target).value)" />
   `,
 })
 export class MyComponent {
@@ -214,19 +204,13 @@ The component uses CSS `clip-path` for the reveal effect. Set dimensions on the 
 
 ```html
 <!-- Fixed aspect ratio -->
-<div sc-image-compare class="w-full max-w-2xl aspect-[16/9]">
-  ...
-</div>
+<div sc-image-compare class="w-full max-w-2xl aspect-[16/9]">...</div>
 
 <!-- Square -->
-<div sc-image-compare class="w-full max-w-md aspect-square">
-  ...
-</div>
+<div sc-image-compare class="w-full max-w-md aspect-square">...</div>
 
 <!-- Custom dimensions -->
-<div sc-image-compare class="w-[600px] h-[400px]">
-  ...
-</div>
+<div sc-image-compare class="w-[600px] h-[400px]">...</div>
 ```
 
 ## Composable Architecture
@@ -240,6 +224,7 @@ This component follows the composable architecture pattern:
 - **Labels**: Optional, fully customizable positioning and styling
 
 Benefits:
+
 - Full control over structure and layout
 - Easy customization of all visual elements
 - Content projection for icons and labels

@@ -664,4 +664,3 @@ export class ScEmojiPicker {
     this.recentEmojis.set([]);
   }
 }
-

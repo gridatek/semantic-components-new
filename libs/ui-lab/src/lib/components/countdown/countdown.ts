@@ -233,4 +233,3 @@ export class ScCountdown {
     return this.intervalId !== null;
   }
 }
-
