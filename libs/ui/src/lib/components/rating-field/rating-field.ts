@@ -3,6 +3,7 @@ import {
   computed,
   contentChildren,
   Directive,
+  ElementRef,
   inject,
   InjectionToken,
   input,
@@ -18,14 +19,14 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
 );
 
 @Directive({
-  selector: '[sc-rating-field]',
+  selector: 'div[sc-rating-field], label[sc-rating-field]',
   providers: [
     { provide: SC_RATING_FIELD, useExisting: ScRatingField },
     { provide: SC_FIELD, useExisting: ScRatingField },
   ],
   host: {
+    '[attr.role]': 'role()',
     'data-slot': 'rating-field',
-    role: 'group',
     '[class]': 'class()',
     '[attr.aria-label]': 'ariaLabel() || null',
     '[attr.aria-labelledby]': 'ariaLabelledby() || null',
@@ -34,7 +35,14 @@ export const SC_RATING_FIELD = new InjectionToken<ScRatingField>(
   },
 })
 export class ScRatingField {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly id = input(inject(_IdGenerator).getId('sc-rating-field-'));
+
+  protected readonly role = computed(() => {
+    const tagName = this.elementRef.nativeElement.tagName;
+    return tagName === 'LABEL' ? null : 'group';
+  });
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<number>(0);
   readonly readonly = input<boolean>(false);

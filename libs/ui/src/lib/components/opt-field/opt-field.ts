@@ -4,6 +4,7 @@ import {
   contentChildren,
   Directive,
   effect,
+  ElementRef,
   inject,
   input,
   model,
@@ -13,16 +14,24 @@ import { SC_FIELD } from '../field';
 import { ScOptFieldSlot } from './opt-field-slot';
 
 @Directive({
-  selector: 'div[sc-opt-field]',
+  selector: 'div[sc-opt-field], label[sc-opt-field]',
   providers: [{ provide: SC_FIELD, useExisting: ScOptField }],
   host: {
+    '[attr.role]': 'role()',
     'data-slot': 'opt-field',
     '[class]': 'class()',
     '(paste)': 'onPaste($event)',
   },
 })
 export class ScOptField {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+
   readonly id = input(inject(_IdGenerator).getId('sc-opt-field-'));
+
+  protected readonly role = computed(() => {
+    const tagName = this.elementRef.nativeElement.tagName;
+    return tagName === 'LABEL' ? null : 'group';
+  });
   readonly classInput = input<string>('', { alias: 'class' });
   readonly value = model<string>('');
   readonly disabled = input<boolean>(false);
@@ -86,8 +95,9 @@ export class ScOptField {
     }
   }
 
-  protected onPaste(event: ClipboardEvent): void {
+  protected onPaste(event: Event): void {
     if (this.disabled()) return;
+    if (!(event instanceof ClipboardEvent)) return;
 
     event.preventDefault();
     const pastedData = event.clipboardData?.getData('text') || '';

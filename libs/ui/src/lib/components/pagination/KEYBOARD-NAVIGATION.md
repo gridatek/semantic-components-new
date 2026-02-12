@@ -74,7 +74,7 @@ All pagination components support full keyboard navigation following WAI-ARIA be
 <button sc-pagination-first [disabled]="currentPage() === 1">First</button>
 ```
 
-### ScPaginationPageSize
+### ScPaginationPageSizeSelect
 
 **Element**: Select element
 
@@ -91,7 +91,7 @@ All pagination components support full keyboard navigation following WAI-ARIA be
 **Focus indicator**: Visible focus ring using `focus-visible:ring-2`
 
 ```html
-<select sc-pagination-page-size></select>
+<select sc-pagination-page-size-select></select>
 ```
 
 ## Focus Management
@@ -246,13 +246,13 @@ Wrap the select with a visible label:
 <!-- Good: Visible label associated -->
 <div class="flex items-center gap-2">
   <span class="text-sm text-muted-foreground">Items per page:</span>
-  <sc-pagination-page-size />
+  <sc-pagination-page-size-select />
 </div>
 
 <!-- Better: Using label element -->
 <label class="flex items-center gap-2">
   <span class="text-sm text-muted-foreground">Items per page:</span>
-  <sc-pagination-page-size />
+  <sc-pagination-page-size-select />
 </label>
 ```
 

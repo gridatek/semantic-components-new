@@ -1,11 +1,4 @@
-import {
-  booleanAttribute,
-  computed,
-  Directive,
-  ElementRef,
-  inject,
-  input,
-} from '@angular/core';
+import { booleanAttribute, computed, Directive, input } from '@angular/core';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils';
 
@@ -49,34 +42,23 @@ export const buttonVariants = cva(
 export type ScButtonVariants = VariantProps<typeof buttonVariants>;
 
 @Directive({
-  selector: 'button[sc-button], a[sc-button]',
+  selector: 'button[sc-button]',
   host: {
     'data-slot': 'button',
-    '[attr.type]': 'isButton() ? type() : null',
-    '[attr.href]': 'isAnchor() ? href() : null',
+    '[attr.type]': 'type()',
+    '[disabled]': 'disabled()',
     '[attr.aria-disabled]': 'disabled() || null',
     '[class]': 'class()',
   },
 })
 export class ScButton {
-  private readonly elementRef = inject(ElementRef<HTMLElement>);
-
   readonly classInput = input<string>('', { alias: 'class' });
   readonly variant = input<ScButtonVariants['variant']>('default');
   readonly size = input<ScButtonVariants['size']>('default');
   readonly type = input<'button' | 'submit' | 'reset'>('button');
-  readonly href = input<string>('#');
   readonly disabled = input<boolean, unknown>(false, {
     transform: booleanAttribute,
   });
-
-  protected readonly isButton = computed(
-    () => this.elementRef.nativeElement.tagName === 'BUTTON',
-  );
-
-  protected readonly isAnchor = computed(
-    () => this.elementRef.nativeElement.tagName === 'A',
-  );
 
   protected readonly class = computed(() =>
     cn(

@@ -5,6 +5,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import {
+  ScField,
+  ScLabel,
   ScPagination,
   ScPaginationChange,
   ScPaginationEllipsis,
@@ -14,7 +16,7 @@ import {
   ScPaginationLink,
   ScPaginationList,
   ScPaginationNext,
-  ScPaginationPageSize,
+  ScPaginationPageSizeSelect,
   ScPaginationPrevious,
 } from '@semantic-components/ui';
 import {
@@ -28,6 +30,8 @@ import {
 @Component({
   selector: 'app-keyboard-navigation-pagination-demo',
   imports: [
+    ScField,
+    ScLabel,
     ScPagination,
     ScPaginationList,
     ScPaginationItem,
@@ -37,7 +41,7 @@ import {
     ScPaginationFirst,
     ScPaginationLast,
     ScPaginationEllipsis,
-    ScPaginationPageSize,
+    ScPaginationPageSizeSelect,
     SiChevronLeftIcon,
     SiChevronRightIcon,
     SiChevronsLeftIcon,
@@ -87,10 +91,16 @@ import {
         (change)="onPaginationChange($event)"
       >
         <div class="mb-4 flex items-center justify-between">
-          <label class="flex items-center gap-2">
-            <span class="text-sm text-muted-foreground">Items per page:</span>
-            <sc-pagination-page-size />
-          </label>
+          <div sc-field orientation="horizontal" class="w-auto">
+            <label sc-label class="text-sm text-muted-foreground">
+              Items per page:
+            </label>
+            <select sc-pagination-page-size-select>
+              @for (size of pagination.pageSizes(); track size) {
+                <option [value]="size">{{ size }}</option>
+              }
+            </select>
+          </div>
 
           <p class="text-sm text-muted-foreground">
             Page {{ currentPage() }} of {{ pagination.totalPages() }} ({{

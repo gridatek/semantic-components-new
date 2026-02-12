@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   contentChild,
+  ElementRef,
   inject,
   input,
   ViewEncapsulation,
@@ -22,6 +23,7 @@ import { ScVisualCheckbox } from './visual-checkbox';
     { provide: SC_FIELD, useExisting: ScCheckboxField },
   ],
   host: {
+    '[attr.role]': 'role()',
     'data-slot': 'checkbox-field',
     '[class]': 'class()',
     '[attr.data-state]': 'dataState()',
@@ -36,11 +38,17 @@ import { ScVisualCheckbox } from './visual-checkbox';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScCheckboxField implements ScCheckboxContext {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
   private readonly checkbox = contentChild(ScCheckbox);
 
   readonly classInput = input<string>('', { alias: 'class' });
 
   readonly id = input(inject(_IdGenerator).getId('sc-checkbox-field-'));
+
+  protected readonly role = computed(() => {
+    const tagName = this.elementRef.nativeElement.tagName;
+    return tagName === 'LABEL' ? null : 'group';
+  });
 
   // Computed state from input (implements ScCheckboxContext)
   // These read directly from the ScCheckbox's signals
