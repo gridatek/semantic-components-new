@@ -6,12 +6,12 @@ test.describe('Disabled Link Button Demo', () => {
   });
 
   test('should render all four disabled link buttons', async ({ page }) => {
-    const links = page.locator('a[sc-button]');
+    const links = page.locator('a[sc-link]');
     await expect(links).toHaveCount(4);
   });
 
   test('should have aria-disabled on all link buttons', async ({ page }) => {
-    const links = page.locator('a[sc-button]');
+    const links = page.locator('a[sc-link]');
     const count = await links.count();
     for (let i = 0; i < count; i++) {
       await expect(links.nth(i)).toHaveAttribute('aria-disabled', 'true');
@@ -43,18 +43,18 @@ test.describe('Disabled Link Button Demo', () => {
   });
 
   test('should have reduced opacity when disabled', async ({ page }) => {
-    const links = page.locator('a[sc-button]');
+    const links = page.locator('a[sc-link]');
     const count = await links.count();
     for (let i = 0; i < count; i++) {
-      const opacity = await links.nth(i).evaluate(
-        (el) => window.getComputedStyle(el).opacity,
-      );
+      const opacity = await links
+        .nth(i)
+        .evaluate((el) => window.getComputedStyle(el).opacity);
       expect(parseFloat(opacity)).toBeLessThan(1);
     }
   });
 
   test('should use anchor elements', async ({ page }) => {
-    const links = page.locator('a[sc-button]');
+    const links = page.locator('a[sc-link]');
     const count = await links.count();
     for (let i = 0; i < count; i++) {
       const tagName = await links.nth(i).evaluate((el) => el.tagName);
@@ -63,10 +63,10 @@ test.describe('Disabled Link Button Demo', () => {
   });
 
   test('should have data-slot attribute', async ({ page }) => {
-    const links = page.locator('a[sc-button]');
+    const links = page.locator('a[sc-link]');
     const count = await links.count();
     for (let i = 0; i < count; i++) {
-      await expect(links.nth(i)).toHaveAttribute('data-slot', 'button');
+      await expect(links.nth(i)).toHaveAttribute('data-slot', 'link');
     }
   });
 });
