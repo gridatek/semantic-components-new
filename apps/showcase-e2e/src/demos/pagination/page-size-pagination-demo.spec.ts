@@ -94,7 +94,7 @@ test.describe('Page Size Pagination Demo', () => {
     );
     await expect(pageSizeSelector).toHaveAttribute(
       'data-slot',
-      'pagination-page-size',
+      'pagination-page-size-select',
     );
   });
 
