@@ -15,7 +15,7 @@ import { buttonVariants, type ScButtonVariants } from '../button';
 })
 export class ScLink {
   readonly classInput = input<string>('', { alias: 'class' });
-  readonly variant = input<ScButtonVariants['variant']>('default');
+  readonly variant = input<ScButtonVariants['variant']>('link');
   readonly size = input<ScButtonVariants['size']>('default');
   readonly href = input<string>('#');
   readonly disabled = input<boolean, unknown>(false, {
