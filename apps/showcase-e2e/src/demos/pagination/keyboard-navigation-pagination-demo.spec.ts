@@ -133,22 +133,18 @@ test.describe('Keyboard Navigation Pagination Demo', () => {
   });
 
   test('should activate page link via keyboard Enter', async ({ page }) => {
-    // Tab to first focusable element and keep tabbing to a page link
-    const firstBtn = page.locator('button[sc-pagination-first]');
-
-    // Focus on First button
-    await firstBtn.focus();
-    await expect(firstBtn).toBeFocused();
-
-    // Tab to Previous
-    await page.keyboard.press('Tab');
-    const previousBtn = page.locator('button[sc-pagination-previous]');
-    await expect(previousBtn).toBeFocused();
-
-    // Tab to first page link
-    await page.keyboard.press('Tab');
+    // On page 1, First and Previous buttons are disabled (not focusable)
+    // So tabbing goes directly to the first page link
     const firstPageLink = page.locator('button[sc-pagination-link]').first();
+
+    // Focus on first page link (disabled buttons are skipped in tab order)
+    await firstPageLink.focus();
     await expect(firstPageLink).toBeFocused();
+
+    // Tab to next page link
+    await page.keyboard.press('Tab');
+    const secondPageLink = page.locator('button[sc-pagination-link]').nth(1);
+    await expect(secondPageLink).toBeFocused();
   });
 
   test('should change page size via keyboard', async ({ page }) => {

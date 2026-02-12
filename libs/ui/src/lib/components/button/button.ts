@@ -54,6 +54,7 @@ export type ScButtonVariants = VariantProps<typeof buttonVariants>;
     'data-slot': 'button',
     '[attr.type]': 'isButton() ? type() : null',
     '[attr.href]': 'isAnchor() && !disabled() ? href() : null',
+    '[attr.role]': 'isAnchor() && disabled() ? "link" : null',
     '[attr.aria-disabled]': 'disabled() || null',
     '[attr.tabindex]': 'disabled() ? -1 : null',
     '[class]': 'class()',
